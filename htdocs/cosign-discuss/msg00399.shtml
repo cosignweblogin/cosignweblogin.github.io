@@ -1,0 +1,269 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Very weird errors -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Sun, 3 Apr 2005 22:57:46 &#45;0400 (EDT) -->
+<!--X-Message-Id: 1112583352.4338.37.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00398.shtml">Date Prev</a>][<a href="msg00400.shtml">Date Next</a>][<a href="msg00402.shtml">Thread Prev</a>][<a href="msg00400.shtml">Thread Next</a>][<a href="maillist.shtml#00399">Date Index</a>][<a href="threads.shtml#00399">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Very weird errors</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Very weird errors</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 04 Apr 2005 14:55:53 +1200</li>
+<li><em>Cc</em>: Timothy Chaffe &lt;<a href="mailto:t.chaffe@DOMAIN.HIDDEN">t.chaffe@xxxxxxxxxxxxxx</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi all,
+
+I am getting very weird SSL errors, and am wondering if anyone has some
+brilliant ideas.
+
+When some of our webservers connect I get the following error:
+Apr  4 14:09:40 cerberus2 cosignd[18631]: f_starttls: snet_starttls:
+error:14094418:SSL routines:SSL3_READ_BYTES:tlsv1 alert unknown ca
+
+now normally i would attribute this to a CA not being installed on the
+machine, but alas this is not the case. The web server's client
+certificate details are:
+subject= /CN=b.lomas2.enarc.auckland.ac.nz/C=NZ/ST=NZ/L=Auckland/O=The
+University of Auckland/OU=ITSS/emailAddress=b.lomas@xxxxxxxxxxxxxx
+issuer= /C=NZ/ST=  /L=Auckland/O=The University of
+AUckland/CN=ITSS/emailAddress=s.shipway@xxxxxxxxxxxxxx
+
+and on the cosign server the following CA certs are installed (along
+with their hash values):
+[root@cerberus2 CA]# for cert in *; do echo $cert; openssl x509 -in
+$cert -noout -subject -issuer; done
+3b17b9f7.0
+subject= /DC=nz/DC=ac/DC=auckland/DC=unet/CN=Serguei
+issuer= /DC=nz/DC=ac/DC=auckland/DC=unet/CN=Serguei
+62e1e289.0
+subject= /C=NZ/ST=  /L=Auckland/O=The University of
+AUckland/CN=ITSS/emailAddress=s.shipway@xxxxxxxxxxxxxx
+issuer= /C=NZ/ST=  /L=Auckland/O=The University of
+AUckland/CN=ITSS/emailAddress=s.shipway@xxxxxxxxxxxxxx
+ddc328ff.0
+subject= /C=ZA/ST=Western Cape/L=Cape Town/O=Thawte Consulting
+cc/OU=Certification Services Division/CN=Thawte Server
+CA/emailAddress=server-certs@xxxxxxxxxx
+issuer= /C=ZA/ST=Western Cape/L=Cape Town/O=Thawte Consulting
+cc/OU=Certification Services Division/CN=Thawte Server
+CA/emailAddress=server-certs@xxxxxxxxxx
+
+
+It is clear from this the CA certificate is indeed installed
+(62e1e289.0).
+
+When i strace the cosign daemon I get the following. This is from a good
+connection which works and is a cert signed from Thawte:
+[pid 18600] 1112580574.576406
+stat64(&quot;/var/unisign//certs/CA/62e1e289.0&quot;, {st_mode=S_IFREG|0664,
+st_size=936, ...}) = 0
+[pid 18600] 1112580574.576570 open(&quot;/var/unisign//certs/CA/62e1e289.0&quot;,
+O_RDONLY) = 7
+[pid 18600] 1112580574.576665 fstat64(7, {st_mode=S_IFREG|0664,
+st_size=936, ...}) = 0
+[pid 18600] 1112580574.576784 mmap2(NULL, 4096, PROT_READ|PROT_WRITE,
+MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb75f2000
+[pid 18600] 1112580574.576857 read(7, &quot;-----BEGIN
+CERTIFICATE-----\nMIIC&quot;..., 4096) = 936
+[pid 18600] 1112580574.577066 read(7, &quot;&quot;, 4096) = 0
+[pid 18600] 1112580574.577129 getpid()  = 18600
+[pid 18600] 1112580574.577190 getpid()  = 18600
+[pid 18600] 1112580574.577251 getpid()  = 18600
+[pid 18600] 1112580574.577310 getpid()  = 18600
+[pid 18600] 1112580574.577368 getpid()  = 18600
+[pid 18600] 1112580574.577430 close(7)  = 0
+[pid 18600] 1112580574.577492 munmap(0xb75f2000, 4096) = 0
+[pid 18600] 1112580574.577566
+stat64(&quot;/var/unisign//certs/CA/62e1e289.1&quot;, 0xbfff809c) = -1 ENOENT (No
+such file or directory)
+[pid 18600] 1112580574.577737 write(6,
+&quot;\26\3\1\0J\2\0\0F\3\1BP\241\336\331\225e\256\354\241\265&quot;..., 1446) =
+1446
+[pid 18600] 1112580574.577885 read(6, &quot;\26\3\1\6\216&quot;, 5) = 5
+[pid 18600] 1112580574.584994 read(6,
+&quot;\v\0\6\212\0\6\207\0\3j0\202\3f0\202\2\317\240\3\2\1\2&quot;..., 1678) =
+1678
+[pid 18600] 1112580574.585445
+stat64(&quot;/var/unisign//certs/CA/ddc328ff.0&quot;, {st_mode=S_IFREG|0664,
+st_size=1146, ...}) = 0
+[pid 18600] 1112580574.585619 open(&quot;/var/unisign//certs/CA/ddc328ff.0&quot;,
+O_RDONLY) = 7
+[pid 18600] 1112580574.585719 fstat64(7, {st_mode=S_IFREG|0664,
+st_size=1146, ...}) = 0
+[pid 18600] 1112580574.585854 mmap2(NULL, 4096, PROT_READ|PROT_WRITE,
+MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb75f2000
+[pid 18600] 1112580574.585930 read(7, &quot;-----BEGIN
+CERTIFICATE-----\r\nMII&quot;..., 4096) = 1146
+[pid 18600] 1112580574.586087 brk(0)    = 0x8960000
+[pid 18600] 1112580574.586155 brk(0x8981000) = 0x8981000
+[pid 18600] 1112580574.586271 read(7, &quot;&quot;, 4096) = 0
+[pid 18600] 1112580574.586338 getpid()  = 18600
+[pid 18600] 1112580574.586404 getpid()  = 18600
+[pid 18600] 1112580574.586469 getpid()  = 18600
+[pid 18600] 1112580574.586533 getpid()  = 18600
+[pid 18600] 1112580574.586597 getpid()  = 18600
+[pid 18600] 1112580574.586664 close(7)  = 0
+[pid 18600] 1112580574.586731 munmap(0xb75f2000, 4096) = 0
+[pid 18600] 1112580574.586808
+stat64(&quot;/var/unisign//certs/CA/ddc328ff.1&quot;, 0xbfff800c) = -1 ENOENT (No
+such file or directory)
+
+
+after which good SSL stuff happens. It clearly stops when it reaches the
+correct cert.
+
+Now later on my bad web server comes along and the following happens:
+[pid 18604] 1112580579.417658
+stat64(&quot;/var/unisign//certs/CA/ddc328ff.0&quot;, {st_mode=S_IFREG|0664,
+st_size=1146, ...}) = 0
+[pid 18604] 1112580579.417853 open(&quot;/var/unisign//certs/CA/ddc328ff.0&quot;,
+O_RDONLY) = 7
+[pid 18604] 1112580579.417947 fstat64(7, {st_mode=S_IFREG|0664,
+st_size=1146, ...}) = 0
+[pid 18604] 1112580579.418066 mmap2(NULL, 4096, PROT_READ|PROT_WRITE,
+MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb75f3000
+[pid 18604] 1112580579.418135 read(7, &quot;-----BEGIN
+CERTIFICATE-----\r\nMII&quot;..., 4096) = 1146
+[pid 18604] 1112580579.418351 read(7, &quot;&quot;, 4096) = 0
+[pid 18604] 1112580579.418412 getpid()  = 18604
+[pid 18604] 1112580579.418472 getpid()  = 18604
+[pid 18604] 1112580579.418532 getpid()  = 18604
+[pid 18604] 1112580579.418590 getpid()  = 18604
+[pid 18604] 1112580579.418648 getpid()  = 18604
+[pid 18604] 1112580579.418709 close(7)  = 0
+[pid 18604] 1112580579.418771 munmap(0xb75f3000, 4096) = 0
+[pid 18604] 1112580579.418843
+stat64(&quot;/var/unisign//certs/CA/ddc328ff.1&quot;, 0xbfff809c) = -1 ENOENT (No
+such file or directory)
+[pid 18604] 1112580579.419024 write(6,
+&quot;\26\3\1\0J\2\0\0F\3\1BP\241\343\224@\206\312.8\317E:\35&quot;..., 1780) =
+1780
+[pid 18604] 1112580579.419128 read(6, &quot;\25\3\1\0\2&quot;, 5) = 5
+[pid 18604] 1112580579.421481 read(6, &quot;\0020&quot;, 2) = 2
+[pid 18604] 1112580579.421551 getpid()  = 18604
+[pid 18604] 1112580579.421628 getpid()  = 18604
+[pid 18604] 1112580579.421692 getpid()  = 18604
+[pid 18604] 1112580579.421803 time([1112580579]) = 1112580579
+[pid 18604] 1112580579.421879 getpid()  = 18604
+[pid 18604] 1112580579.421945 rt_sigaction(SIGPIPE, {0x498140, [],
+SA_RESTORER, 0x3e6ec8}, {SIG_DFL}, 8) = 0
+[pid 18604] 1112580579.422047 send(3, &quot;&lt;27&gt;Apr  4 14:09:39
+cosignd[1860&quot;..., 129, 0) = 129
+[pid 18604] 1112580579.422156 rt_sigaction(SIGPIPE, {SIG_DFL}, NULL, 8)
+= 0
+[pid 18604] 1112580579.422285 write(6, &quot;501 SSL didn\'t work
+error!\r\n&quot;, 28) = 28
+
+
+it only looks at the Twarte certificate, and then seems to die and tell
+the server to bugger off.
+
+I have only ever seen this happen (and happen consistently) with the
+windows web servers using the DLL against the production cosign servers
+which are directly connect to a foundry. The same web servers do not
+show this problem when
+a. pointing to the test cosign servers (only in a VIP from the foundry)
+b. pointing DIRECTLY (not using the foundry) to one of the production
+servers.
+
+The apache web servers seem to work quite happily using the same CA and
+all.
+
+Does anyone have any suggestions, as this would be much appreciated.
+
+Thanks
+
+Brett
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00400" href="msg00400.shtml">Re: Very weird errors</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00398.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00400.shtml">Re: Very weird errors</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00402.shtml">Re: IISCosign - Looping problem on Windows 2003</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00400.shtml">Re: Very weird errors</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00399"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00399"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

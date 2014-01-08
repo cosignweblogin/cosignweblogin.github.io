@@ -1,0 +1,141 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Where does cosign write its log(s)? <EOM> -->
+<!--X-From-R13: Xbanguna [nlonhz <znlonhzNhzvpu.rqh> -->
+<!--X-Date: Fri, 12 Aug 2005 16:30:35 &#45;0400 (EDT) -->
+<!--X-Message-Id: 3CCEE7E8&#45;5973&#45;487C&#45;AD58&#45;019CDD2A0D3C@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 80003447&#45;0656&#45;429B&#45;982E&#45;63532DB7ECA3@umich.edu -->
+<!--X-Reference: F673F0D7&#45;83C1&#45;412C&#45;9586&#45;422A3FE9CD0A@umich.edu -->
+<!--X-Reference: 33C7540A&#45;58EF&#45;4157&#45;944F&#45;9E16EFF51F84@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00505.shtml">Date Prev</a>][<a href="msg00507.shtml">Date Next</a>][<a href="msg00502.shtml">Thread Prev</a>][<a href="msg00496.shtml">Thread Next</a>][<a href="maillist.shtml#00506">Date Index</a>][<a href="threads.shtml#00506">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Where does cosign write its log(s)? &lt;EOM&gt;</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Wesley Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Where does cosign write its log(s)? &lt;EOM&gt;</li>
+<li><em>From</em>: Jonathan Maybaum &lt;<a href="mailto:maybaum@DOMAIN.HIDDEN">maybaum@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 12 Aug 2005 16:29:08 -0400</li>
+<li><em>Cc</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00502.shtml">33C7540A-58EF-4157-944F-9E16EFF51F84@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00492.shtml">80003447-0656-429B-982E-63532DB7ECA3@umich.edu</a>&gt; &lt;<a href="msg00494.shtml">F673F0D7-83C1-412C-9586-422A3FE9CD0A@umich.edu</a>&gt; &lt;<a href="msg00502.shtml">33C7540A-58EF-4157-944F-9E16EFF51F84@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Well, I see mostly entries like:<br>
+Aug 12 15:35:22 maybaum-med-umich-edu kernel[0]: cosignd[223] uses  
+send/recv on a pipe</tt><br>
+<br>
+<tt>This does not appear to be helpful in diagnosing problems, though.</tt><br>
+<br>
+<tt>--JM</tt><br>
+<br>
+<tt>On Aug 12, 2005, at 2:54 PM, Wesley Craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>On 12 Aug 2005, at 10:34, johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>The default location is whatever you have defined as LOG_DAEMON  
+( likely daemon )<br>
+This is set in this line of the Makefile<br>
+COSIGNSYSLOG=LOG_DAEMON<br>
+And can be overridden with command line option -F.</tt><br>
+<br>
+</blockquote><tt><br>Another way of saying this: cosignd writes it's logs with syslog.   
+syslog on Mac OS X might not be putting these where you expect.   
+Check out /etc/syslog.conf.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00492" href="msg00492.shtml">Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+<ul><li><em>From:</em> Jonathan Maybaum</li></ul></li>
+<li><strong><a name="00494" href="msg00494.shtml">Re: Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00502" href="msg00502.shtml">Re: Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00505.shtml">RE: IISCosign - one physical server more than 1	cosign-servicepossible?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00507.shtml">RE: IISCosign - one physical server more than 1cosign-servicepossible?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00502.shtml">Re: Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00496.shtml">Where files are placed</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00506"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00506"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

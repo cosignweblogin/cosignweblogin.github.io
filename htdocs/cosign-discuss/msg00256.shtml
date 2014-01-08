@@ -1,0 +1,123 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: access problem -->
+<!--X-From-R13: Irfyrl R Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Mon, 1 Nov 2004 19:24:04 &#45;0500 (EST) -->
+<!--X-Message-Id: 953A0B8A&#45;2C64&#45;11D9&#45;B535&#45;000A95A0453E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: D78043473550FC44A6BD0226E6601EAD896EF6@adam.judsoncollege.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00255.shtml">Date Prev</a>][<a href="msg00257.shtml">Date Next</a>][<a href="msg00255.shtml">Thread Prev</a>][<a href="msg00257.shtml">Thread Next</a>][<a href="maillist.shtml#00256">Date Index</a>][<a href="threads.shtml#00256">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: access problem</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Goldrick, Jim&quot; &lt;<a href="mailto:jgoldrick@DOMAIN.HIDDEN">jgoldrick@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: access problem</li>
+<li><em>From</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 1 Nov 2004 19:17:29 -0500</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00255.shtml">D78043473550FC44A6BD0226E6601EAD896EF6@adam.judsoncollege.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00255.shtml">D78043473550FC44A6BD0226E6601EAD896EF6@adam.judsoncollege.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 29 Oct 2004, at 16:03, Goldrick, Jim wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Where does the Judson College come from?  The certificate?  Should it 
+be in the conf file?  here is that.
+</tt></blockquote><tt><br>The string &quot;Judson College&quot; is coming from the CN of the certificate.  
+You could put that name in the conf file, if the conf file supported 
+quoting, which it doesn't currently.  Typically, certificates for web 
+services have a hostname for the CN.  To get it to &quot;just work&quot; for 
+testing purposes, you can specify a wildcard, e.g.,</tt><br>
+<br>
+<tt>	service	*	0</tt><br>
+<br>
+<tt>Hope that helps.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00255" href="msg00255.shtml">access problem</a></strong>
+<ul><li><em>From:</em> Goldrick, Jim</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00255.shtml">access problem</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00257.shtml">RE: access problem</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00255.shtml">access problem</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00257.shtml">RE: access problem</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00256"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00256"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

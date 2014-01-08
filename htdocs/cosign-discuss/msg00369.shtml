@@ -1,0 +1,116 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: LOOP_PAGE in cgi.c is hard&#45;coded -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Fri, 18 Mar 2005 11:35:48 &#45;0500 (EST) -->
+<!--X-Message-Id: 4D95DB2A&#45;97CB&#45;11D9&#45;A25A&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 6F9570CA&#45;05BF&#45;456B&#45;853C&#45;BD7BE0E52EC7@ed.ac.uk -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00368.shtml">Date Prev</a>][<a href="msg00370.shtml">Date Next</a>][<a href="msg00313.shtml">Thread Prev</a>][<a href="msg00314.shtml">Thread Next</a>][<a href="maillist.shtml#00369">Date Index</a>][<a href="threads.shtml#00369">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: LOOP_PAGE in cgi.c is hard-coded</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Graeme Wood &lt;<a href="mailto:Graeme.Wood@DOMAIN.HIDDEN">Graeme.Wood@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: LOOP_PAGE in cgi.c is hard-coded</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 18 Mar 2005 11:32:21 -0500</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;6F9570CA-05BF-456B-853C-BD7BE0E52EC7@ed.ac.uk&gt;</li>
+<li><em>References</em>: &lt;6F9570CA-05BF-456B-853C-BD7BE0E52EC7@ed.ac.uk&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Jan 25, 2005, at 6:47 AM, Graeme Wood wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>LOOP_PAGE is hard-coded in cgi.c to point to a document at Michigan in<br>
+version 1.7.0 of Cosign. I think this should either point to a 
+document in<br>
+the templates directory, or should be an option controlled by 
+configure.
+</tt></blockquote><tt><br>Good call. In 1.8.1 it will be a build time configure option, which can 
+be overridden as a runtime option by a URL in the cgi's config file as 
+well. :)</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00368.shtml">Re: Cosign 1.8.0 Released</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00370.shtml">CoSign 1.8.0 Compile Problem</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00313.shtml">LOOP_PAGE in cgi.c is hard-coded</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00314.shtml">Replication Problems</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00369"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00369"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

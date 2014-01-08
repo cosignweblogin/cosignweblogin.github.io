@@ -1,0 +1,169 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: CoSign 1.8.0 Compile Problem -->
+<!--X-From-R13: "Inyynpr, Pevna E." <jnyynprofNbeay.tbi> -->
+<!--X-Date: Tue, 22 Mar 2005 08:45:19 &#45;0500 (EST) -->
+<!--X-Message-Id: 325F46FDC9A60242846F2DCBFB4D0927020B994C@ORNLEXCHANGE.ornl.gov -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00369.shtml">Date Prev</a>][<a href="msg00371.shtml">Date Next</a>][<a href="msg00368.shtml">Thread Prev</a>][<a href="msg00371.shtml">Thread Next</a>][<a href="maillist.shtml#00370">Date Index</a>][<a href="threads.shtml#00370">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>CoSign 1.8.0 Compile Problem</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: CoSign 1.8.0 Compile Problem</li>
+<li><em>From</em>: &quot;Wallace, Brian S.&quot; &lt;<a href="mailto:wallacebs@DOMAIN.HIDDEN">wallacebs@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 22 Mar 2005 08:34:52 -0500</li>
+<li><em>Thread-index</em>: AcUu4+13y/hyYIpbR3+2pYe+IBTfpw==</li>
+<li><em>Thread-topic</em>: CoSign 1.8.0 Compile Problem</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi:
+
+I'm trying to compile CoSign 1.8.0 on a SPARC Solaris 9 system with
+Apache 2.0.53/OpenSSL 0.9.7e. and GCC 3.4.2.  The configure command
+worked:
+
+./configure --enable-apache2=/usr/local/apache-2.0.53/bin/apxs
+
+The &quot;make everything&quot; command gives the following error:
+
+make[1]: Entering directory
+`/usr/local/src/cosign/cosign-1.8.0/filters/apache2'
+/usr/local/apache-2.0.53/bin/apxs -c mod_cosign.o connect.o cookiefs.o
+sparse.o ../../common/argcargv.o ../../common/fbase64.o
+../../common/mkcookie.o ../../common/rate.o ../../version.o
+-L../../libsnet/     -L/usr/local/ssl/lib -lsnet
+/usr/local/apache-2.0.53/build/libtool --silent --mode=link gcc -o
+mod_cosign.la  -rpath /usr/local/apache-2.0.53/modules -module
+-avoid-version    mod_cosign.o connect.o cookiefs.o sparse.o
+../../common/argcargv.o ../../common/fbase64.o ../../common/mkcookie.o
+../../common/rate.o ../../version.o -L../../libsnet/
+-L/usr/local/ssl/lib -lsnet
+
+*** Warning: Linking the shared library mod_cosign.la against the
+non-libtool
+*** objects  mod_cosign.o connect.o cookiefs.o sparse.o
+../../common/argcargv.o ../../common/fbase64.o ../../common/mkcookie.o
+../../common/rate.o ../../version.o is not portable!
+Text relocation remains                         referenced
+    against symbol                  offset      in file
+&lt;unknown&gt;                           0xcdc
+/usr/local/src/cosign/cosign-1.8.0/libsnet/.libs/libsnet.a(snet.o)
+.
+.
+.
+SSL_set_fd                          0x298
+/usr/local/src/cosign/cosign-1.8.0/libsnet/.libs/libsnet.a(snet.o)
+read                                0x1084
+/usr/local/src/cosign/cosign-1.8.0/libsnet/.libs/libsnet.a(snet.o)
+ld: fatal: relocations remain against allocatable but non-writable
+sections
+collect2: ld returned 1 exit status
+apxs:Error: Command failed with rc=65536
+.
+make[1]: *** [mod_cosign.la] Error 1
+make[1]: Leaving directory
+`/usr/local/src/cosign/cosign-1.8.0/filters/apache2'
+make: *** [filters/apache2] Error 2
+
+I have removed the rather long function list in the middle.  The problem
+appears to be with the apxs command.  Any ideas?
+
+Thanks for your help,
+
+Brian S. Wallace
+
+Oak Ridge National Laboratory
+P. O. Box 2008, MS 6025
+Oak Ridge, Tennessee  37831-6025
+
+Voice (865) 576-3193
+Fax   (865) 241-4000
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00371" href="msg00371.shtml">Re: CoSign 1.8.0 Compile Problem</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00369.shtml">Re: LOOP_PAGE in cgi.c is hard-coded</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00371.shtml">Re: CoSign 1.8.0 Compile Problem</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00368.shtml">Re: Cosign 1.8.0 Released</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00371.shtml">Re: CoSign 1.8.0 Compile Problem</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00370"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00370"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

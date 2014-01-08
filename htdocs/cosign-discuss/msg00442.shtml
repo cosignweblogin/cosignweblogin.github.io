@@ -1,0 +1,151 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: IIS errors -->
+<!--X-From-R13: Quevf Vreqg <pureqgNhzvpu.rqh> -->
+<!--X-Date: Thu, 7 Jul 2005 15:24:54 &#45;0400 (EDT) -->
+<!--X-Message-Id: 6E7CF3D0245A6557CD4107E3@SSW&#45;GP4TW31.adsroot.itcs.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: AA997F4A72F59E4091BF4451D130B27D01058FEC@bf&#45;it&#45;equinox02.bf.umi ch.edu -->
+<!--X-Reference: AA997F4A72F59E4091BF4451D130B27D01058FEC@bf&#45;it&#45;equinox02.bf.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00441.shtml">Date Prev</a>][<a href="msg00443.shtml">Date Next</a>][<a href="msg00441.shtml">Thread Prev</a>][<a href="msg00444.shtml">Thread Next</a>][<a href="maillist.shtml#00442">Date Index</a>][<a href="threads.shtml#00442">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: IIS errors</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Sweetman, David&quot; &lt;<a href="mailto:dsweetma@DOMAIN.HIDDEN">dsweetma@xxxxxxxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: RE: IIS errors</li>
+<li><em>From</em>: Chris Herdt &lt;<a href="mailto:cherdt@DOMAIN.HIDDEN">cherdt@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 07 Jul 2005 15:23:05 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00441.shtml">AA997F4A72F59E4091BF4451D130B27D01058FEC@bf-it-equinox02.bf.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;AA997F4A72F59E4091BF4451D130B27D01058FEC@bf-it-equinox02.bf.umi ch.edu&gt;</li>
+<li><em>Sender</em>: <a href="mailto:cherdt@DOMAIN.HIDDEN">cherdt@xxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Thanks, David, that did the trick! (Well, that AND figuring out that the 
+1.1.1 upgrade overwrote cosign.dll.config with placeholder values.)</tt><br>
+<br>
+<tt>- Chris</tt><br>
+<br>
+<tt><br>--On Thursday, July 07, 2005 3:04 PM -0400 &quot;Sweetman, David&quot; 
+&lt;dsweetma@xxxxxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">Have you hashed your umwebca.pem file?  That's new to v1.1.1  Check out
+the details here:</pre><br>
+<pre style="margin: 0em;">&lt;<a  href="http://www.umich.edu/~umweb/software/cosign/cosign-announce/msg00023.ht">http://www.umich.edu/~umweb/software/cosign/cosign-announce/msg00023.ht</a>
+ml&gt;</pre><br>
+<tt>David</tt><br>
+<br>
+<pre style="margin: 0em;">-----Original Message-----
+From: cherdt@xxxxxxxxxxxxxx [<a  href="mailto:cherdt@xxxxxxxxxxxxxx">mailto:cherdt@xxxxxxxxxxxxxx</a>] On Behalf Of
+Chris Herdt
+Sent: Thursday, July 07, 2005 1:51 PM
+To: cosign-discuss@xxxxxxxxx
+Subject: IIS errors</pre><br>
+<pre style="margin: 0em;">We've had the Cosign IIS filter running on our web server for a couple
+years now (longer than I've worked here, at any rate). After a recent
+security breach on the server, the sys admin made some changes to the
+firewall (but left port 6663 open) and also upgraded the anti-virus
+software. I upgraded to IISCosign 1.1.1.</pre><br>
+<pre style="margin: 0em;">Now Cosign doesn't appear to running. In the IIS manager under ISAPI
+filters, it shows a status of &quot;not loaded&quot; for Cosign.</pre><br>
+<pre style="margin: 0em;">The application event viewer has the following Cosign-related error
+messages:</pre><br>
+<pre style="margin: 0em;">Could not load all ISAPI filters for site/service.  Therefore startup
+aborted.</pre><br>
+<pre style="margin: 0em;">The HTTP Filter DLL D:\Cosign\cosign.dll failed to load.  The data is
+the
+error.</pre><br>
+<pre style="margin: 0em;"><br>D:\Cosign\cosign.dll is indeed the correct location of the cosign.dll
+file.
+Any ideas what the trouble might be?</pre><br>
+<pre style="margin: 0em;">Thanks,
+Chris</pre><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00441" href="msg00441.shtml">RE: IIS errors</a></strong>
+<ul><li><em>From:</em> Sweetman, David</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00441.shtml">RE: IIS errors</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00443.shtml">Re: IIS 6 certificate install problem</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00441.shtml">RE: IIS errors</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00444.shtml">Cosign friend xml-rpc server available for testing</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00442"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00442"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

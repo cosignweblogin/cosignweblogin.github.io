@@ -1,0 +1,142 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign in production at UoA and thanks -->
+<!--X-From-R13: Rnivq Oyrknaqre <nyrknaqqNbuvb.rqh> -->
+<!--X-Date: Tue, 14 Jun 2005 11:58:23 &#45;0400 (EDT) -->
+<!--X-Message-Id: 02A18961574E835B0BA0D908@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1118616884.4259.27.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Reference: 20050612231319.GT6036@ifokr.org -->
+<!--X-Reference: A4F385A8F4391A07DECE24FC@OHIO&#45;LZ8JRIPC1D.ohio.edu -->
+<!--X-Reference: 561F4F38&#45;D06E&#45;4DBA&#45;B957&#45;666110A43867@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00424.shtml">Date Prev</a>][<a href="msg00426.shtml">Date Next</a>][<a href="msg00424.shtml">Thread Prev</a>][<a href="msg00422.shtml">Thread Next</a>][<a href="maillist.shtml#00425">Date Index</a>][<a href="threads.shtml#00425">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign in production at UoA and thanks</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Wesley Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign in production at UoA and thanks</li>
+<li><em>From</em>: David Alexander &lt;<a href="mailto:alexandd@DOMAIN.HIDDEN">alexandd@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 14 Jun 2005 11:56:39 -0400</li>
+<li><em>Cc</em>: Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;, cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00424.shtml">561F4F38-D06E-4DBA-B957-666110A43867@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00418.shtml">1118616884.4259.27.camel@brett.enarc.auckland.ac.nz</a>&gt; &lt;<a href="msg00419.shtml">20050612231319.GT6036@ifokr.org</a>&gt; &lt;<a href="msg00423.shtml">A4F385A8F4391A07DECE24FC@OHIO-LZ8JRIPC1D.ohio.edu</a>&gt; &lt;<a href="msg00424.shtml">561F4F38-D06E-4DBA-B957-666110A43867@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt></tt><br>
+<br>
+<tt>--On Tuesday, June 14, 2005 10:31 AM -0400 Wesley Craig &lt;wes@xxxxxxxxx&gt; 
+wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>On 14 Jun 2005, at 10:06, David Alexander wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">We implemented Cosign behind a F5 BigIP load balancer.  Our short-
+term solution uses NFS as a shared file store between blades.
+Although we have a high availability architecture for NFS, we are
+concerned with the response time of NFS under load.  In the future,
+we would like to replace the file reads and writes with Oracle
+database calls.
+</pre></blockquote><pre style="margin: 0em;"><br>So you're not using replication at all?  Can you describe how you've
+deployed NFS with high-availability?</pre><br>
+</blockquote><tt><br>We are not using Cosign's replication.  We configured each Cosign blade to 
+store cookies on the NFS mount point.</tt><br>
+<br>
+<tt>NFS is hosted on an Alpha cluster with memory channel interconnect.  NFS 
+can fail over between cluster members.  We did a lot of performance testing 
+of this NFS system because we are using it in production for other 
+applications.  The disk use profile of Cosign - lots of small reads and 
+writes - does not cause contention on the NFS cluster.  The NFS solution is 
+a temporary kludge until we can get Cosign working with Oracle.</tt><br>
+<br>
+<tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00418" href="msg00418.shtml">Cosign in production at UoA and thanks</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00419" href="msg00419.shtml">Re: Cosign in production at UoA and thanks</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+<li><strong><a name="00423" href="msg00423.shtml">Re: Cosign in production at UoA and thanks</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00424" href="msg00424.shtml">Re: Cosign in production at UoA and thanks</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00424.shtml">Re: Cosign in production at UoA and thanks</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00426.shtml">Re: Cosign, Solaris 9, and Sun CC compiler</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00424.shtml">Re: Cosign in production at UoA and thanks</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00422.shtml">Cosign, Solaris 9, and Sun CC compiler</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00425"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00425"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

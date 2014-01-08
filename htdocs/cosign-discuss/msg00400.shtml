@@ -1,0 +1,133 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Very weird errors -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Sun, 3 Apr 2005 23:26:50 &#45;0400 (EDT) -->
+<!--X-Message-Id: 4250B391.8000102@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1112583352.4338.37.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00399.shtml">Date Prev</a>][<a href="msg00401.shtml">Date Next</a>][<a href="msg00399.shtml">Thread Prev</a>][<a href="msg00401.shtml">Thread Next</a>][<a href="maillist.shtml#00400">Date Index</a>][<a href="threads.shtml#00400">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Very weird errors</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Very weird errors</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sun, 03 Apr 2005 23:25:05 -0400</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;,   Timothy Chaffe &lt;<a href="mailto:t.chaffe@DOMAIN.HIDDEN">t.chaffe@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00399.shtml">1112583352.4338.37.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00399.shtml">1112583352.4338.37.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla Thunderbird 1.0.2 (Macintosh/20050317)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 4/3/05 10:55 PM, Brett Lomas wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">When some of our webservers connect I get the following error:
+Apr  4 14:09:40 cerberus2 cosignd[18631]: f_starttls: snet_starttls:
+error:14094418:SSL routines:SSL3_READ_BYTES:tlsv1 alert unknown ca</pre><br>
+<pre style="margin: 0em;">now normally i would attribute this to a CA not being installed on the
+machine, but alas this is not the case. The web server's client
+certificate details are:
+...</pre><br>
+<tt>and on the cosign server the following CA certs are installed (along<br>
+with their hash values):<br>
+ </tt><br>
+<br>
+</blockquote><tt><br>Not brilliant ideas, but...</tt><br>
+<br>
+<tt>The cosignd's CA is installed on the web server client?  (And it wasn't 
+upgraded to 1.1.1, and needs the path changed and hashing done?)</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00401" href="msg00401.shtml">Re: Very weird errors</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00399" href="msg00399.shtml">Very weird errors</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00399.shtml">Very weird errors</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00401.shtml">Re: Very weird errors</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00399.shtml">Very weird errors</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00401.shtml">Re: Very weird errors</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00400"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00400"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

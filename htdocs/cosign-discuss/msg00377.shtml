@@ -1,0 +1,196 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: replication behind load balancer -->
+<!--X-From-R13: Pevna Vngpu <oevNvsbxe.bet> -->
+<!--X-Date: Thu, 24 Mar 2005 14:22:57 &#45;0500 (EST) -->
+<!--X-Message-Id: 20050324192059.GI4631@ifokr.org -->
+<!--X-Content-Type: multipart/signed -->
+<!--X-Reference: 1903C2857DAD40192421385B@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Reference: 20050323214127.GR4631@ifokr.org -->
+<!--X-Reference: 260EF50AA0A1432810FC6D3C@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Reference: F535BC10&#45;9C7B&#45;11D9&#45;81A3&#45;000A95E48A4E@umich.edu -->
+<!--X-Derived: pgp00012.pgp -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00376.shtml">Date Prev</a>][<a href="msg00378.shtml">Date Next</a>][<a href="msg00376.shtml">Thread Prev</a>][<a href="msg00380.shtml">Thread Next</a>][<a href="maillist.shtml#00377">Date Index</a>][<a href="threads.shtml#00377">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: replication behind load balancer</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: replication behind load balancer</li>
+<li><em>From</em>: Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 24 Mar 2005 11:20:59 -0800</li>
+<li><em>Cc</em>: David Alexander &lt;<a href="mailto:alexandd@DOMAIN.HIDDEN">alexandd@xxxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00376.shtml">F535BC10-9C7B-11D9-81A3-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00372.shtml">1903C2857DAD40192421385B@dhcp-196-004.cns.ohiou.edu</a>&gt; &lt;<a href="msg00373.shtml">20050323214127.GR4631@ifokr.org</a>&gt; &lt;<a href="msg00374.shtml">260EF50AA0A1432810FC6D3C@dhcp-196-004.cns.ohiou.edu</a>&gt; &lt;<a href="msg00376.shtml">F535BC10-9C7B-11D9-81A3-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mutt/1.5.6+20040907i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+
+&gt; Also, as a side note, I'm not sure fail over in the clients will work 
+&gt; right if both cosign servers are behind a load balancer. I haven't 
+&gt; drawn it all out yet, but the basic idea behind client fail over is 
+&gt; that the filters ask every weblogin server they are aware of ( A, B, 
+&gt; and C ) based on the lookup they did at startup. If they are talking to 
+&gt; a load balancer that only had 1 IP/name, they might only get A when in 
+&gt; fact B happen to have the most  up-to-date information. Like I said, I 
+&gt; haven't really thought about this though, so I might be wrong, too.
+
+
+Haven't started with replication yet, but using a load balancer was
+the way I was going to implement this.  (I work at F5, so it's a
+&quot;eat your own dogfood&quot; issue.  ;-)
+
+In our case, the number of connections (internal users) is going to
+be much smaller than in a university setting, so I was planning on
+having one be primary and the other secondary, so you'd only hit
+the secondary if the first is down.  However 'true load balancing'
+would be something I'd be interested in looking at and helping out
+with.
+
+Will have to think about how this could work.
+
+Here's a horrible thought: does the filter try each returned A record in
+sequence, without eliminating duplicates?  You could increase your odds
+by having multiple A's for the DNS reply, all with the same load
+balancer as the IP address, and have the load balancer use simple round
+robin to get to the actual daemons.  Not 100% (other competing
+connections could cause you to get to the same machine repeatedly)
+but a possibility.
+
+Perhaps a better possibility is this:
+
+	Load balancer has X IP addresses listening to port 6663
+	Load balancer has X pools of weblogin daemon hosts, like this:
+	   Pool 1:
+		A is primary
+		B is secondary
+		...
+		X is last
+	
+	   Pool 2:
+		B is primary
+		C is secondary
+		...
+		A is last
+	   ...
+
+Then in DNS, list all IP addresses for weblogin.example.com.  As you
+loop through, you'll hit the highest priority machine that's working
+in the first pool, if that doesn't have answers you like you hit
+the next pool's top ranked machine, etc.
+
+How often does it check the DNS name weblogin.example.com, by the way?
+Another possibility is to use small DNS TTLs, but that will not work
+if you cache an IP address list beyond the TTL that is returned.
+(Not honoring TTLs would break my ability to add or change hosts
+regardless.)
+
+If it does a lookup any time it gets a negative response from an
+existing TCP connection and then wants to find other servers
+to contact, you're probably fine.
+
+
+I'm going to need to think about this too.
+
+-- 
+Brian Hatch                  Good. Bad.
+   Systems and                I'm the guy
+   Security Engineer          with the gun.
+<a  href="http://www.ifokr.org/bri/">http://www.ifokr.org/bri/</a>
+
+Every message PGP signed
+</pre><p><strong>Attachment:
+<a href="pgp00012.pgp" ><tt>signature.asc</tt></a></strong><br>
+<em>Description:</em> Digital signature</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00372" href="msg00372.shtml">replication behind load balancer</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00373" href="msg00373.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+<li><strong><a name="00374" href="msg00374.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00376" href="msg00376.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00376.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00378.shtml">Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00376.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00380.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00377"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00377"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

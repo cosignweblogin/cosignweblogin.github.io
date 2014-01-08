@@ -1,0 +1,163 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: mod_cosign / mod_authz_ldap behavior -->
+<!--X-From-R13: Yevf Egrvaubss <fgrvaubsNhzvpu.rqh> -->
+<!--X-Date: Wed, 7 Sep 2005 09:31:15 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20050907132944.GB727@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00537.shtml">Date Prev</a>][<a href="msg00539.shtml">Date Next</a>][<a href="msg00537.shtml">Thread Prev</a>][<a href="msg00543.shtml">Thread Next</a>][<a href="maillist.shtml#00538">Date Index</a>][<a href="threads.shtml#00538">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>mod_cosign / mod_authz_ldap behavior</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: mod_cosign / mod_authz_ldap behavior</li>
+<li><em>From</em>: Kris Steinhoff &lt;<a href="mailto:steinhof@DOMAIN.HIDDEN">steinhof@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 7 Sep 2005 09:29:44 -0400</li>
+<li><em>Mail-followup-to</em>: cosign-discuss@umich.edu</li>
+<li><em>User-agent</em>: Mutt/1.4.2.1i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I have mod_cosign setup and working nicely on my OS X Server (10.4.2),
+and I've followed the directions for setting up mod_authz_ldap to work
+with cosign:
+  <a  href="http://www.umich.edu/~umweb/downloads/mod_authz_ldap-NOTES-UMICH.txt">http://www.umich.edu/~umweb/downloads/mod_authz_ldap-NOTES-UMICH.txt</a>
+
+However using that file to patch mod_authz_ldap fails in two places:
+
+  patching file module/auth.c
+  patching file module/mod_authz_ldap.h
+  Hunk #1 FAILED at 52.
+  Hunk #2 FAILED at 61.
+  2 out of 2 hunks FAILED -- saving rejects to file
+  module/mod_authz_ldap.h.rej
+  patching file module/modconf.c
+
+I've applied the changes in those two hunks by hand and compiled
+mod_authz_ldap.
+
+Things seem to work pretty well, but there is a problem with my server
+not redirecting to the weblogin server when the browser requests a
+directory which has a &quot;Require group ...&quot; directive associated with
+it. But it works just fine if the browser already has the cosign
+cookies set.
+
+For example, take two directories &quot;/broken&quot; and &quot;/ok.&quot; The directory
+entries in httpd.conf are the same for both, but &quot;/broken&quot; includes a
+&quot;Require group ... &quot; directive. If I visit &quot;/broken&quot; the browser gets
+a 401 error and
+
+  basic LDAP authentication of user '(null)' failed
+
+is printed to my server's error log. But if I then visit &quot;/ok&quot; the
+browser is redirected normally to the weblogin server. After I
+authenticate at the weblogin server and the cosign cookies are set I
+can visit &quot;/broken&quot; without any trouble.
+
+It seems like mod_authz_ldap is doing its thing before mod_cosign gets
+a chance to, but I've double checked to make sure that mod_cosign is
+loaded before mod_authz_ldap, so I'm not sure if that the problem.
+
+Any suggesting about where I might start looking to fix this? Could it
+be the problem I had with the patch? Something else?
+
+thanks
+-kris
+
+
+
+
+
+-- 
+Kris Steinhoff
+University of Michigan Health Service
+Information Technology Services
+
+Electronic mail is not secure, may not be read every day, 
+and should not be used for urgent or sensitive issues.
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00543" href="msg00543.shtml">Re: mod_cosign / mod_authz_ldap behavior</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00537.shtml">From Mr. John Trocki.</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00539.shtml">the &quot;back&quot; button on the weblogout page</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00537.shtml">From Mr. John Trocki.</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00543.shtml">Re: mod_cosign / mod_authz_ldap behavior</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00538"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00538"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

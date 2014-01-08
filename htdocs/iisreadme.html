@@ -1,0 +1,404 @@
+<HTML>
+	<HEAD>
+		<TITLE>cosign: IISCoSign Readme</TITLE>
+		<link rel="stylesheet" type="text/css" href="cosign.css">
+	</HEAD>
+	<BODY>
+		<br />
+		<h1><a name="index">IISCoSign Filter</a></h1>
+		<p>Also be sure to check out the <a href="http://webapps.itcs.umich.edu/cosign/">Cosign Wiki</a> for more help.</p>
+		<h2>Contents</h2>
+		<a href="#overview">Overview</a><br />
+		<a href="#installation">Installation</a><br />
+		<a href="#signcsr">Signing the CSR</a><br />
+		<a href="#whatelse">What else to do</a><br />
+		<a href="#permissions">Setting permissions in Windows 2003</a><br />
+		<a href="#opensslhttps">Using OpenSSL certs for https</a><br />
+		<a href="#opensslcreate">Using openssl.exe to create certificates</a><br />
+		<a href="#resigncert">Re-signing an expired certificate</a><br />
+		<a href="#existingcert">Using an existing key-cert pair from the MS certificate 
+			store</a><br />
+		<a href="#aboutssl">More about SSL</a><br />
+		<a href="#config">The IISCoSign configuration file</a><br />
+		<a href="#help">More help</a><br />
+		<a href="#compiling">Compiling IISCoSign</a><br />
+
+		<h2><a name="overview">Overview</a></h2>
+		<p>IISCoSign is an ISAPI filter. It follows the container model of authentication 
+			and needs a central login server to talk to.</p>
+		<p>See the <a href="http://weblogin.org">CoSign home page</a> for more background 
+			information.</p>
+		<p>E-mail any questions or comments to cosign <i>at</i> umich <i>dot</i> edu.</p>
+		<a href="#index">Back to index</a>
+		
+		
+		<h2>Installation</h2>
+		<p><a name="installation">Unzip the setup files then double-click on setup.exe.</a><br />
+		Follow the prompts for installing IISCoSign.<br />
+		Selecting custom will allow you to change the default install location for IISCoSign.<br />
+		Custom will also allow you to select which components are installed.  If this is your first time installing, it is highly recommended you install all available components.<br />
+		After installation you will be prompted to generate SSL certificates.  If this is selected you will then be prompted for some information that is embedded into your certificate signing request (CSR).<br />
+		After certificates are generated (or you elected to skip this) you will be prompted for some configuration information.  The first item is the name of your service.  Whatever you type in here, "cosign-" will be prepended to it.<br />
+		Login is the DNS name of the login server the filter will talk to in order to determine whether somebody is logged in.
+		Login CGI is the URL users will be redirected to to log in.</p>
+		
+		<p>After the installer is done, there are a few more steps necessary to finish setup.</p>
+		<ol>
+		<li>Have your CSR signed.</li>
+		<li>For Windows 2003 servers, set permissions.</li>
+		<li>Add the filter to the web site(s) you want CoSign-protected.</li>
+		</ol>
+		<a href="#index">Back to index</a>
+
+
+		
+		<h2><a name="signcsr">Signing the CSR</a></h2>
+		<p>This installer uses a certificate authority cert (the umwebca.pem file) issued 
+			to the University of Michigan. If you are not setting up a server for use in 
+			the U-M computing environment this file is useless to you. Contact the 
+			administrator for your particular institution's weblogin server to obtain an 
+			appropriate certificate authority file.</p>
+		<ol>
+			<li>
+			E-mail webmaster <i>at</i> umich <I>dot</I> edu (or the webmaster for your institution).  If you 
+			chose to generate your certificates during the install you will find a file 
+			ending with the extension *.csr in your \IISCoSign\SSL folder. Open this file 
+			with Wordpad then copy-and- paste the contents into your e-mail. Include a nice 
+			message asking the webmasters to sign your csr. Also include the name of the 
+			server this certificate will be residing on as well as the name of your CoSign 
+			service.
+			<li>
+				When you get your signed certificate back take the 'cert' part of the e-mail 
+				and put it into the file called [my.servername.umich.edu].cert. (This file was 
+				auto-generated for you.) The cert part is the data between and including the 
+				lines: <blockquote>-----BEGIN CERTIFICATE-----<br />
+					-----END CERTIFICATE-----</blockquote>
+			Be sure the line with BEGIN CERTIFICATE is the very first line of the *.cert 
+			file.
+			<li>
+				Hash your certificate authority (CA) file(s). CA certs are used by the filter 
+				to verify the identity of the Weblogin server. OpenSSL looks up a hash value 
+				associated with the CA file and uses this to do said verification. As such, 
+				here is how to hash:
+				<p>From a command prompt, run:</p>
+				<blockquote> openssl x509 -noout -hash -in \path\to\umwebCA.pem </blockquote>
+				<p>A hash value is displayed. Copy-and-paste the contents of the 
+					C:\path\to\CAFileName file into a file called &lt;hash value&gt;.0</p>
+				<p>In your CoSign.dll.config file have &lt;CAFilePath&gt; point to the folder where 
+					the hash is located. (Whereas in the past it would point directly to the file).</p>
+			<li>
+			Open up the Internet Services Manager. Stop the web site you would like to have 
+			protected by CoSign.
+			<li>
+			Right-click on the site you just stopped and select 'Properties.' Select the 
+			'ISAPI Filters' tab. Click 'Add.' Browse or type in the path where you placed 
+			CoSign.dll and name it "CoSign Filter."
+			<li>
+				Restart the web site. It is now filtered! Try visiting your site: make sure 
+				you're properly redirected to the weblogin server and are then redirected back 
+				with authenticated access.
+				<br />
+				<b>NOTE:</b> Some servers require you to restart IIS for the filter to load.</li>
+		</ol>
+		<a href="#index">Back to index</a>
+		<h2><a name="whatelse">What else to do</a></h2>
+		<p>If you didn't generate SSL certs using the installer then you have much more to 
+			do. If you want to use certificates that are in your Windows local certificate 
+			repository you will have to export your key and cert as files so that IISCoSign 
+			can use them. After that, update your CoSign.dll.config file with the 
+			appropriate file paths to the certs. You'll also need to add a service name to 
+			the file.</p>
+		<a href="#index">Back to index</a>
+		<h2><a name="permissions">Setting permissions in Windows 2003</a></h2>
+		<p>The following permissions need to be set for Windows 2003 (this is not necessary 
+			for a Win2k/IIS5 setup):</p>
+		<ol>
+			<li>
+				For your entire \IISCoSign\ folder:<br />
+			IIS_WPG needs needs everything selected except for "Special Permissions." Be 
+			sure to select the option that applies these permissions to the folder contents 
+			and sub-folders.
+			<li>
+				For the \CookieDB\ folder:<br />
+			Internet Guest Account, IUSR_[machine name] needs Read and Write selected.
+			<li>
+				For the \Logs\ folder:<br />
+				IUSR_[machine name] - Read &amp; execute, list folder contents, Read, and 
+				Write.</li>
+		</ol>
+		<a href="#index">Back to index</a>
+		<h2><a name="opensslhttps">Using OpenSSL certificates for https</a></h2>
+		<p>
+		If you already have a certificate for 
+		this purpose then you are all set. If you have your own Windows Certificate 
+		Authority setup, you can use that as well. Finally, if none of these options 
+		are available to you you can reuse your openssl generated certificate for this.
+		<p>Here's how:
+			<ol>
+				<li>
+				Have your webmaster sign your openssl generated CSR. (The creation of a private 
+				key and csr was done automatically for you. If you chose to skip this step in 
+				the setup see +Using Openssl.exe to create certificates+.)
+				<li>
+				Open a command prompt and cd to your /iisCoSign/ folder.
+				<li>
+					Run the following command: <blockquote>openssl pkcs12 -in 
+						[server.name.umich.edu.cert] -inkey [server.name.umich.edu.key] -export -out 
+						[server.name.umich.edu].p12</blockquote>
+				You will be prompted for a password. Remember this password! You will need it 
+				later.
+				<li>
+				Run mmc.exe.
+				<li>
+				Open the certificates console. a. Go to File | Add/Remove Snap-in... b. Click 
+				Add... c. Select Certificates. Click Add. d. Select My Computer Account. Click 
+				next. e. Select Local Computer. Click Finish. f. Click Close. g. Select 
+				Certificates (Local Computer). Click OK.
+				<li>
+				Expand Certificates (Local Computer)-&gt;Personal-&gt;Certificates.
+				<li>
+				Right click on Certificates (the final one in the tree). Select All Tasks | 
+				Import...
+				<li>
+				Click next. Browse for the UMWebCA.pem file. (If you can't see the file make 
+				sure Files of Type is set to *.*) Click Ok. Click Next, Next, the Finish.
+				<li>
+				Right click on Certificates (the final one in the tree). Select All Tasks | 
+				Import...
+				<li>
+				Browse for the *.p12 file you generated in step 3. Click Next.
+				<li>
+					Enter the password you used in step 3. Click Next. Click Next. Click Finish.</li>
+			</ol>
+		<p>Now when you open up IIS Manager and select Server Certificate under the 
+			Directory Security tab you can select "Assign an existing certificate" option. 
+			The certificate you just imported should be listed.</p>
+		<a href="#index">Back to index</a>
+		<h2><a name="opensslcreate">Using Openssl.exe to create certificates</a></h2>
+		<p>If you skipped the auto-generating cert feature of the installer you can still 
+			use the openssl utility to do this.</p>
+		<ol>
+			<li>
+			Open a command prompt and cd to your IISCoSign folder. Assuming you opted to 
+			install the openssl component you should see the openssl executable in this 
+			folder.
+			<li>
+				2) Run the following commands: <blockquote> openssl genrsa 1024 &gt; 
+					[server.name.umich.edu].key<br />
+					openssl req -new -config umconfig.cfg -key [server.name.umich.edu].key -out 
+					[server.name.umich.edu].csr </blockquote>
+			<li>
+			When prompted for information, please provide the appropriate data. The common 
+			name will be the name of your server and the contact e-mail should be the 
+			e-mail of the person to be notified when the certificate is about to expire.
+			<li>
+			Send an e-mail to webmaster@umich.edu. Cut-and-paste the contents of the *.csr 
+			file into your e-mail.
+			<li>
+			Place the UmWebCA.pem file, *.key file you generated, and the *.cert file you 
+			receive from the webmaster into your C:\[CoSign path]\SSL\ folder.
+			<li>
+			Update your XML configuration file to point to these files. The CAFilePath item 
+			points to the umwebca.pem file. The ChainFilePath item specifies the 
+			[yourservername].cert file that you received from the U-M webmaster. The 
+			PrivateKeyFilePath item points to the [yourservername].key private key file 
+			that you generated. Be sure to include the full path such as C:\Program 
+			Files\CoSignFilter\SSL\servername.key.
+			<li>
+				See +What to do next+ section of this readme.</li>
+		</ol>
+		<a href="#index">Back to index</a>
+		<h2><a name="resigncert">Re-signing an expired certificate</a></h2>
+		<p>At the University of Michigan we sign our certificates for a one year period. 
+			This will probably be different for your institution or business. Generating a 
+			new certificate signing request is easy. Here's how:</p>
+		<ol>
+			<li>
+			Open a command prompt and cd to your \iisCoSign\ folder.
+			<li>
+				Run the following command: <blockquote> openssl req -new -config \SSL\sslconfig.cfg 
+					-key [server.name.umich.edu].key -out [server.name.umich.edu].csr </blockquote>
+			NOTE: If you generated your certificates automatically on install, you can 
+			reuse the sslconfig.cfg file. If not, you will need to edit the umconfig.cfg 
+			file.
+			<li>
+				Follow the steps in +What to do next+ for having your CSR signed. You will 
+				replace the contents of your current *.cert file with the certificate sent back 
+				to you by your webmaster.</li>
+		</ol>
+		<a href="#index">Back to index</a>
+		<h2><a name="existingcert">Using an existing key-cert pair from the MS certificate 
+				store</a></h2>
+		<ol>
+			<li>
+			Using the Certificates Manager in MMC (Start Menu -&gt; Run -&gt; then type 
+			mmc, press enter), export your key. Make sure "Yes, export the private key" is 
+			selected. You will be asked for to create a password. Be sure to remember this 
+			password!
+			<li>
+				Open a command prompt, go to C:\program files\iisCoSign\ then run this command: <blockquote>
+					openssl pkcs12 -nodes -in [exported_file_name.pfx] -out 
+					[exported_file_name.pem] </blockquote>
+			<li>
+			You will be asked for the password you used above.
+			<li>
+			Open the *.pem file with Wordpad.
+			<li>
+				The file can now be split into the private key and public certificate. The 
+				private key is designated by: <blockquote> -----BEGIN RSA PRIVATE KEY------<br />
+					-----END RSA PRIVATE KEY----- </blockquote>
+				<p>Copy these two lines and everything inbetween them and save them into a file 
+					such as exported_file_name.key.</p>
+				<p>The public certificate is designated by the lines:</p>
+				<blockquote> -----BEGIN CERTIFICATE-----<br />
+					-----END CERTIFICATE----- </blockquote>
+				<p>Save these lines and everything inbetween in a separate file such as 
+					exported_file_name.cert.</p>
+				<p>It's probably most convenient to place this in your c:\program 
+					files\iisCoSign\ssl folder.</p>
+			<li>
+			Edit CoSign.dll.config to have &lt;PrivateKeyFilePath&gt; to point to the file 
+			containing the private key.
+			<li>
+			Edit CoSign.dll.config to have &lt;ChainFilePath&gt; point to the file 
+			containing the cert.
+			<li>
+				You can now safely delete the exported .pfx and .pem files.</li>
+		</ol>
+		<p>Microsoft Knowledge Base article <a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;313299#Task3">
+				Q313299</a> has some more info on exporting keys.</p>
+		<a href="#index">Back to index</a>
+		
+		
+		<h2><a name="aboutssl">More about SSL</a></h2>
+		<p>A good place to start for an overview of how SSL works is at <a href="http://www.modssl.org/docs/2.8/ssl_intro.html">http://www.modssl.org/docs/2.8/ssl_intro.html</a></p>
+		<a href="#index">Back to index</a>
+
+
+		<h2><a name="config">The IISCoSign configuration file</a></h2>
+		<p>The default name for the configuration file is CoSign.dll.config. It is an XML 
+			file. IISCoSign looks for the location of the file by reading the registry 
+			value ConfigFile located at HKLM\SOFTWARE\University of Michigan\ITCS\CoSign. 
+			By default, this file is located at C:\Program Files\IISCoSign\.</p>
+		<ul>
+			<li>
+				<mono>&lt;CAFilePath&gt;C:\Program Files\CoSignFilter\SSL\&lt;/CAFilePath&gt;</mono>
+				<p>The location of the certificate authority file and its <a href="#signcsr">hash</a>.</p>
+			<li>
+				<mono>&lt;ChainFilePath&gt;C:\Program Files\CoSignFilter\SSL\my.server.name.umich.edu.cert&lt;/ChainFilePath&gt;</mono>
+				<p>The location of the SSL certificate for your server.</p>
+			<li>
+				<mono>&lt;PrivateKeyFilePath&gt;C:\Program Files\CoSignFilter\SSL\my.server.name.umich.edu.key&lt;/PrivateKeyFilePath&gt;</mono>
+				<p>The location of the private key file for your server.</p>
+			<li>
+				<mono>&lt;LogFilePath fileSizeInKB="4096" &gt;C:\Program Files\CoSignFilter\Logs&lt;/LogFilePath&gt;</mono>
+				<p>The folder where IISCoSign puts its log files and the maximum size of the log 
+					files. When the log grows to the size specified, it is closed and a new log 
+					file is started.</p>
+			<li>
+				<mono>&lt;CookieDBPath&gt;C:\Program Files\CoSignFilter\CookieDB&lt;/CookieDBPath&gt;</mono>
+				<p>The folder where IISCoSign caches service cookies.</p>
+			<li>
+				<mono>&lt;CoSignServer port="6663"&gt;weblogin.umich.edu&lt;/CoSignServer&gt;</mono>
+				<p>The port and DNS name of the central weblogin server(s). This is where the 
+					filter makes 'backside' connections to check the validity of cookies.</p>
+			<li>
+				<mono>&lt;RedirectURL&gt;https://weblogin.umich.edu/?&lt;/RedirectURL&gt;</mono>
+				<p>If a user is not logged in this is the URL they are sent to for logging in. 
+					You'll notice that the '?' means the user is being redirected to a CGI. The 
+					part after the <i>?</i> is constructed by the filter.</p>
+			<li>
+				<mono>&lt;ConnectionPool size="4" /&gt;</mono>
+				<p>The number of backside connections the filter has ready-to-use for doing cookie 
+					CHECKs.</p>
+			<li>
+				<mono>&lt;CookieDBExpireTime seconds="60" /&gt;</mono>
+				<p>The amount of time a cookie in the server's local cookie cache is considered 
+					good. When the cached cookie's last time stamp is greater than this value, the 
+					filter talks to the central login server to see if the user is still logged in. 
+					If the user is still logged in then the timestamp is updated. If the user is no 
+					longer logged in, then the user is redirected to the login page.</p>
+			<li>
+				<mono>&lt;WriteDataToEventViewer&gt;FALSE&lt;/WriteDataToEventViewer&gt;</mono>
+				<p>Probably best left to FALSE. If you are having trouble running the IISCoSign 
+					filter you can set this to TRUE to send logging information to the Windows 
+					Event Viewer. This is recommended only as a last resort since IISCoSign is 
+					quite verbose and will fill up your logs quickly. You can also open a debug 
+					viewer such as dbmon.exe or <a href="http://www.sysinternals.com/Utilities/DebugView.html">
+						DebugView</a> to see what IISCoSign is up to.</p>
+			<li>
+				<mono>&lt;CheckIPAddr&gt;FALSE&lt;/CheckIPAddr&gt;</mono>
+				<p>By setting this to TRUE IISCoSign will check that a service cookie is from the 
+					same IP address each time. Setting this to FALSE allows IISCoSign to work with 
+					hardware load balancers.</p>
+			<li>
+				<mono>&lt;Service website="my.server.name.umich.edu"&gt;CoSign-YOUR_SERVICE_NAME_HERE<br />
+		&nbsp;&lt;Protected&gt;/secure&lt;/Protected&gt;<br />
+		&nbsp;&lt;Protected allowPublicAccess="TRUE"&gt;/test1&lt;/Protected&gt;<br />
+		&nbsp;&lt;Protected&gt;/test2&lt;/Protected&gt;<br />
+		&nbsp;&lt;Protected&gt;/protected_page.html&lt;/Protected&gt;<br />
+&lt;/Service&gt;<br /></mono>
+				<p>You can have multiple web sites with different services or multiple web sites 
+					with one service. Just add more
+					<mono>&lt;service&gt;</mono>
+					tags. To make a resource CoSign protected, create as many
+					<mono>&lt;Protected&gt;</mono>
+					tags under the
+					<mono>&lt;Service&gt;</mono>
+					tag as you'd like. By default, protecting something like /test1 will also 
+					protect all URLs and pages underneath /test1 -- such as /test1/script.asp, 
+					/test1/images/pic1.jpg, and /test1/more/info/.</p>
+				<p>Currently, the website="" relies on the SERVER_NAME variable to determine if a 
+					web site is protected. <b>THIS IS INSECURE WITH THE DEFAULT IIS SETTINGS.</b> If 
+					you are using the website value you should also using IIS's 'Advanced Web Site 
+					Identification' feature to locally bind the DNS name of your server to an IP 
+					address. An alternative to using website="" is to use IISDescription. For 
+					example:</p>
+				<p><mono>&lt;Service IISDescription="Default Web Site"&gt;CoSign-YOUR_SERVICE_NAME_HERE<br />
+		...<br />
+&lt;/Service&gt;<br /></mono></p>
+				<p>This setting relies on the name of the web site used by IIS and uses the 
+					INSTANCE_ID server variable to lookup the web site name in the metabase. Be 
+					sure the value for IISDescription is <i>exactly the same</i>, including spaces, 
+					as it appears in the metabase.</p>
+				<p>The allowPublicAccess option can be set to TRUE or FALSE. By default, the value 
+					is FALSE. By setting this to TRUE a web page or URL can be viewed by anybody. 
+					However, if a user has already logged in AND visited a protected page then the 
+					CoSign variables HTTP_REMOTE_USER and HTTP_REMOTE_REALM will be added by the 
+					filter. The idea is that web applications can check for these variables, and, 
+					if present, can customize a page for a user if he's logged in or showing a 
+					generic page if he is not. The value HTTP_CoSign_SERVICE variable is always 
+					populated whether a user has authenticated or not (and is visiting a protected 
+					URL).</p>
+				<p>Unlike the Apache filter you cannot have 'alternating protection' such as 
+					/a/b/c/d where /a is protected, /a/b is not, /a/b/c is, and so on.</p>
+			</li>
+		</ul>
+		<a href="#index">Back to index</a>
+		
+		
+		<h2><a name="help">More help</a></h2>
+		<p>Join the e-mail list, cosign-discuss <b>at</b> umich <i>dot</i> edu.</p>
+		<p>Send questions to the developers, cosign <i>at</i> umich <b>dot</b> edu.</p>
+		<p>Read the archived <a href="http://www.umich.edu/~umweb/software/cosign/cosign-announce/">announcements</a> and <a href="http://www.umich.edu/~umweb/software/cosign/cosign-discuss/">discussions</a>.</p>
+		<a href="#index">Back to index</a>
+		
+		
+		<h2><a name="compiling">Compiling IISCoSign</a></h2>
+		<p>IISCoSign is distributed with a precompiled binary. If you're interested in 
+			building IISCoSign yourself, here is a basic outline of the different things 
+			you'll need.</p>
+		<p>This project was created using Microsoft Visual Studio.NET 2003</p>
+		<p>The source code is available from the <a href="http://weblogin.org">CoSign web site</a>
+		.
+		<p>You will also need libsnet, OpenSSL, and MSXML 4.0.</p>
+		<p>Libsnet is available via anoymous CVS from <a href="http://rsug.itd.umich.edu/cgi-bin/cvsweb.cgi/">
+				http://rsug.itd.umich.edu</a>.</p>
+		<p>OpenSSL can be downloaded from <a href="http://www.openssl.org">http://www.openssl.org</a>.</p>
+		<p>MSXML 4.0 is available from <a href="http://msdn.microsoft.com/XML/XMLDownloads/default.aspx">
+				Microsoft's web site</a>.</p>
+		<a href="#index">Back to index</a>
+				<br /><br /><center><p>Copyright (c) 2002-2005 Regents of The University of Michigan. All Rights 
+			Reserved. See <a href="COPYRIGHT">COPYRIGHT</a>.</p></center>
+	</BODY>
+</HTML>

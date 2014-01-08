@@ -1,0 +1,162 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: cosign and kerberos -->
+<!--X-From-R13: "Ubyqevpx, Xvz" <wtbyqevpxNwhqfbapbyyrtr.rqh> -->
+<!--X-Date: Fri, 30 Sep 2005 09:24:38 &#45;0400 (EDT) -->
+<!--X-Message-Id: 960714044BBA8045B489FBDD68C3E3610D2975@gabriel.judsoncollege.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00558.shtml">Date Prev</a>][<a href="msg00560.shtml">Date Next</a>][<a href="msg00558.shtml">Thread Prev</a>][<a href="msg00561.shtml">Thread Next</a>][<a href="maillist.shtml#00559">Date Index</a>][<a href="threads.shtml#00559">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: cosign and kerberos</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;cosign-discuss&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: cosign and kerberos</li>
+<li><em>From</em>: &quot;Goldrick, Jim&quot; &lt;<a href="mailto:jgoldrick@DOMAIN.HIDDEN">jgoldrick@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 30 Sep 2005 08:22:51 -0500</li>
+<li><em>Thread-index</em>: AcVKh5Fo3SMFe95YTrmh573TTOwp/x5umovAADdKv3AAKNam8A==</li>
+<li><em>Thread-topic</em>: logout.pl</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Ok, after researching some more, I have come to the conclusion that cross-realm authentication in itself won't do the trick.  I read the earler thread &quot;cosign with multiple kerberos realms&quot;.  I am wondering if modifying the cgi as such might not work;
+
+1.  Add COSIGNKRB5REALMS to config.h
+2.  modify login.c to get the COSINGKRB5REALMS, my thinking is a comma-delimited list.  Also modify it that if there is a list, process in cosign_login_krb by setting the default realm n number of times.  A question is can I just process the if block in cosign_login_krb5 multiple times without having to do anything else?
+
+ if (( kerror = krb5_get_init_creds_password( kcontext, &amp;kcreds,
+            kprinc, passwd, NULL, NULL, 0, NULL /*keytab */, &amp;kopts ))) {
+
+3.  If this works possibly check the COSIGNKRB5REALMS for inclusion in krb5_get_host_realm?
+
+any and all comments would be welcome.
+
+thanks much,
+
+jim
+
+-----Original Message-----
+From: Goldrick, Jim [<a  href="mailto:jgoldrick@xxxxxxxxxxxxxxxxx">mailto:jgoldrick@xxxxxxxxxxxxxxxxx</a>]
+Sent: Wednesday, September 28, 2005 10:42 AM
+To: cosign-discuss
+Subject: cosign and kerberos
+
+
+Hi all,
+
+Ok, we have cosign running and authenticating to Active Directory, which does not require a kerberos server to authenticate to (other than the AD).  Now, I need to authenticate to another KDC that has different users than in AD.  So, i have some questions.
+
+Can I use 2 kdc's in my default realm that don't share the same users or can I setup a cross-realm mapping for 2 kdc's?  Any examples would be welcome.
+
+I have a KDC setup on our test machine and can kinit from our cosign machine with myself/admin.  However, I cannot kinit cosign.  I get a invalid password.  Here is how I added cosign from the cosign machine.
+kadmin
+addprinc cosign/FQDN_cosign_server
+add password and verify
+ktadd -k /etc/keytab.cosign
+
+
+As I said, though, I get an invalid password error whenever I try to kinit it from the cosign server.  Am I not setting it properly?  I've deleted the cosign and re-added, but no use. Also, do I need to add the /etc/krb5.keytab file to the cosign configuration/Apache configuration?  Or will it default there?  How about the keytab.cosign?
+
+What do the apache configs for kerberos do?  I've somewhat confused.
+
+	CosignTicketPrefix	[ the path to the Kerberos ticket store ]
+	CosignGetKerberosTickets	[ on | off ]
+	    module asks for tgt from cosignd
+
+	CosignKerberos524		[ on | off ]	
+	    whether you want K5 tgt converted to K4 tgt
+
+	CosignKerberosSetupGSS		[ on | off ]
+	    setup the enviornment so that other apache modules
+	    that need GSSAPI/Kerberos work. e.g. IMP running under mod_php
+	CosignGetProxyCookies	[ on | off ]
+	    module asks for proxy cookies from cosignd
+
+Thanks much,
+
+jim
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00561" href="msg00561.shtml">Re: cosign and kerberos</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00558.shtml">cosign and kerberos</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00560.shtml">FREE V_I_A_G_R_A  sample</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00558.shtml">cosign and kerberos</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00561.shtml">Re: cosign and kerberos</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00559"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00559"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

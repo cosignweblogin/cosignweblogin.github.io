@@ -1,0 +1,137 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Bug in IIS filter? -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Fri, 3 Jun 2005 00:36:00 &#45;0400 (EDT) -->
+<!--X-Message-Id: 1117773163.5e777f343107e@webmail.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00413.shtml">Date Prev</a>][<a href="msg00415.shtml">Date Next</a>][<a href="msg00413.shtml">Thread Prev</a>][<a href="msg00416.shtml">Thread Next</a>][<a href="maillist.shtml#00414">Date Index</a>][<a href="threads.shtml#00414">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Bug in IIS filter?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Bug in IIS filter?</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri,  3 Jun 2005 16:32:43 +1200</li>
+<li><em>User-agent</em>: Internet Messaging Program (IMP) 4.0-cvs</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+
+Hi all,
+
+I have noticed a possibly bug in the IIS filter. I have not had to actually dig
+into the code as yet, but thought I would email here to see if anyone know about
+it or has seen it.
+
+When the filter does a check for a ticket, which hasn't been registered before
+(i.e. if one goes to the protected content for the first time, and then goes to
+the page again without signing in) the daemon returns a 533 status (ticket not
+in DB). The code (the bit i have looked at) return a 0 and essentially will try
+to look at other connections, but somewhere something is closing that connection
+for no good reason. (I can see this via tcpdump on the machine, as the remote
+peer port changes when this happens).
+
+Of course, this mean the next connection then suffers the penalty of the
+connection being established again.
+
+Also a quick question, what does the connection pool size and the connection
+pool do? Does the module open that many connections to the each of the server or
+what??
+
+
+Thanks heaps.
+
+
+Brett
+
+-------------------------------------------------
+This mail sent through University of Auckland
+<a  href="http://www.auckland.ac.nz/">http://www.auckland.ac.nz/</a>
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00416" href="msg00416.shtml">Re: Bug in IIS filter?</a></strong>
+<ul><li><em>From:</em> Jarod Malestein</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00413.shtml">Event Log Question</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00415.shtml">RE: Bug in IIS filter?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00413.shtml">Event Log Question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00416.shtml">Re: Bug in IIS filter?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00414"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00414"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

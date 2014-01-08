@@ -1,0 +1,203 @@
+<!--#set var="title" value="overview" -->
+<!--#set var="download" value="" --> 
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="y" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#include file="header.shtml" -->
+
+<table cellpadding="6" cellspacing="0" border="0" width="90%">
+    <tr>
+    <td >
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="images
+/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+	    Cosign Overview
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            How It Works.
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td> 
+    </tr>
+</table>
+    </td>
+    </tr>
+
+    <tr>
+    <td>
+	<blockquote>
+	    <p class="software">
+		This is a somewhat simplified visual representation of
+		Cosign authentication process and information flow.
+		Time flows from the top of the diagram to the bottom.
+		'Weblogin' is the central cosign server, 'user' is the
+		web user, and 'service' is a cosign-protected web
+		server.
+	    </p>
+
+	    <p class="software">
+		<img  src="media/cosignv3flow.png"
+			vspace="0" hspace="0" border="2"> <br />
+	    </p>
+
+	    <p class="software">
+		In .pdf, here are the two most common scenarios for
+		initial authentication:<br />
+	    </p>
+
+	    <p class="software">
+		User visits weblogin first:
+		<a href="media/cosigncase1.pdf"
+			target="_blank">cosigncase1.pdf</a> <br />
+
+		User visits service first:
+		<a href="media/cosigncase2.pdf"
+			target="_blank">cosigncase2.pdf</a> <br />
+	    </p>
+	</blockquote>
+
+	    <p class="software">
+		&nbsp;
+	    </p>
+        </p>
+
+	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	    <td colspan="2" align="left" valign="middle" class="line-bluedot">
+		&nbsp;
+	    </td>
+	    </tr>
+	</table>
+
+        <p class="software">
+        <blockquote>
+            <p class="software">
+	    Here's a brief overview of the components.  The CGI &
+	    Daemon make up "Weblogin" in the diagram.  Filter is the
+	    cosign part that runs on "Service" in the diagram.
+	    </p>
+	</blockquote>
+
+        <blockquote>
+            <p class="software">
+	    <h3>cgi</h3>
+	    The central cgi is responsible for logging users into
+	    and out of the central cosign server. It is also
+	    responsible for registering each service a user logs into -
+	    this action ties the user's central login cookie to their
+	    session on individual application servers such as our web
+	    mail client, web directory client, or CourseTools
+	    environment. The prototype CGI was built to use Kerberos
+	    V/GSSAPI to authenticate the user. 
+	    </p>
+	</blockquote>
+
+        <blockquote>
+            <p class="software">
+	    <h3>daemon</h3>
+	    The central daemon is responsible for maintaining the state
+	    of all cosign sessions. This includes keeping track of
+	    which users have logged in, logged out, and idle timed out.
+	    This also means the daemon keeps track of all of the
+	    service cookies that represent the authenticated web
+	    applications a user has accessed. The daemon has the
+	    ability to replicate its cookie database to multiply hosts,
+	    so a failure of one server does not constitute a failure of
+	    the system. The daemon answers queries of user identity
+	    from both the cgi and the filter, and talks to other
+	    daemons through a replication protocol. The daemon was
+	    written in C and has knowledge of Kerberos V tickets.
+	    </p>
+	</blockquote>
+
+        <blockquote>
+            <p class="software">
+	    <h3>filter</h3>
+	    The filter resides on an application server, and is not
+	    part of the centralized cosign infrastructure. The filter
+	    is responsible for determining which areas of a web site
+	    are protected by cosign and which are not. If a user
+	    attempts to access a protected area, the filter assures the
+	    user is authenticated, and obtains their username,
+	    authentication realm, IP address, and optionally a Kerberos
+	    ticket. This information can then be used by other
+	    authorization mechanisms to make further access decisions.
+	    The prototype filter was written in C for Apache 1.3.x.
+	    </p>
+	</blockquote>
+
+	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	    <td colspan="2" align="left" valign="middle" class="line-bluedot">
+		&nbsp;
+	    </td>
+	    </tr>
+	</table>
+
+        <p class="software">
+        <blockquote>
+	    <p class="software"> Leveraging Guest Accounts for
+	    Ubiquitous Web Sign-On System Acceptance - conference
+	    presentation from Educause 2005.  </p>
+
+            <p class="software">
+		<a href="http://www.educause.edu/ir/library/pdf/EDU05135.pdf" target="_blank">Educause 2005 Cosign Presentation</a> <br />
+            </p>
+        </blockquote>
+
+        <blockquote>
+	    <p class="software"> The Quest for Web Single-Sign On at
+	    the University of Michigan - poster presentation from
+	    Educause 2003.  </p>
+
+            <p class="software">
+		<a href="media/cosign-educause2003.pdf" target="_blank">Educause 2003 Cosign Presentation</a> <br />
+            </p>
+        </blockquote>
+
+        <p class="software">
+        <blockquote>
+            <p class="software">
+	    Umich response to Internet2 Middleware Initiative's WebISO
+	    Web Application Agent Questionnaire ( early 2003, but still
+	    relatively applicable ) </p>
+
+            <p class="software">
+		<a href="http://middleware.internet2.edu/webiso/docs/waa-questionnaire/umich.txt" target="_blank">umich.txt</a> <br />
+            </p>
+        </blockquote>
+
+        <p class="software">
+        <blockquote>
+            <p class="software">
+		History of cookie-based web authentication at the
+		University of Michigan and description of Cosign
+		enhancements.
+	    </p>
+
+            <p class="software">
+		<a href="media/proposal.rtf" target="_blank">proposal.rtf</a> <br />
+            </p>
+        </blockquote>
+
+        <p class="software">
+            &nbsp;
+        </p>
+        </p>
+    </td>
+    </tr>
+</table>
+
+<!--#include file="footer.shtml" -->
+

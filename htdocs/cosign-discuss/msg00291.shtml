@@ -1,0 +1,114 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Cold Fusion and Cosign Variables -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Wed, 17 Nov 2004 10:58:09 &#45;0500 (EST) -->
+<!--X-Message-Id: 419B74B7.8070009@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00290.shtml">Date Prev</a>][<a href="msg00292.shtml">Date Next</a>][<a href="msg00290.shtml">Thread Prev</a>][<a href="msg00292.shtml">Thread Next</a>][<a href="maillist.shtml#00291">Date Index</a>][<a href="threads.shtml#00291">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Cold Fusion and Cosign Variables</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Cold Fusion and Cosign Variables</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 17 Nov 2004 10:56:39 -0500</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.8a4) Gecko/20040927</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Anyone using Cold Fusion and accessing the variables set by CoSign?  A 
+CF developer here says that he can't find the realm, though he can 
+access the user as</tt><br>
+<br>
+<tt>CGI.REMOTE_USER</tt><br>
+<br>
+<tt>and continues with</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">A listing of all System
+variables indicated no other correct values for USER or REALM.</pre><br>
+</blockquote><tt><br>This is on a &quot;fully patched current Win2K Sever&quot; (don't know the version 
+of CF).</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00290.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00292.shtml">RE: file not found error - now unsupported certificate</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00290.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00292.shtml">RE: file not found error - now unsupported certificate</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00291"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00291"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

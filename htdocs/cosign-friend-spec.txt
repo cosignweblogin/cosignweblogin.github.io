@@ -1,0 +1,127 @@
+
+** Cosign Friend XML-RPC **
+
+The cosign friend xml-rpc server provides two functions: doAccountsExist and sendInvites.
+
+
+The U-M production server is https://friend.weblogin.umich.edu/friend/acquaintance/
+
+
+
+FUNCTION: doAccountsExist
+
+Will tell you if an account exists.
+
+
+IN: an array of XML-RPC strings of e-mail addresses
+
+RETURNS: an array, in the same order, if each account exists.
+<array> of <int>s
+-1 = bad e-mail address
+ 0 = no friend account
+ 1 = friend account exists
+
+
+FUNCTION: sendInvites
+
+Attempts to send an invite to the specified e-mail addresses.  The Message parameter can be NULL.
+If it is not, sendInvites will add the text to the e-mail invite.  If it comes across an invalid
+e-mail address, it will still attempt to send invites to the other e-mails.
+
+IN:
+<string> Contact - Contact e-mail for service.
+<string> Referrer - URL for service.
+<string> Message - Some text to be placed into the e-mail.
+<array> of <string>s Accounts array - e-mail addresses to send invites to.
+<string> Invitor - the e-mail address of the person sending the invite.
+
+RETURNS: an array, in the same order, upon success or failure of sending invite.
+<array> of <int>s
+-1 = bad e-mail address
+ 1 = invite sent
+
+
+
+Here are the current error responses:
+
+$needmoredata = 'At least one e-mail address needs to be provided.';
+$badcontact = 'The service contact needs to be in the ' .
+	$config[ 'root' ][ 'realm' ] . ' realm.';
+$dberr = 'There was a problem connecting to the Friend DB!';
+$baddatatype = 'All provided e-mail addresses must be string values.';
+$toomuchdata = "Only " . $config[ 'root' ][ 'maxinvites' ] . " invites are allowed to be sent at once.";
+
+…in addition to standard XML-RPC responses such as incorrect parameters or malformed RPC request.
+
+Sample PHP code:
+
+
+Here is a basic outline of how to use the doAccountsExist function.  This is taken from
+the code for /friend/invite/index.php.  This code relies on PHP XML-RPC, Pear XML-RPC,
+and Smarty.  Smarty is used to display html and is not required to use XML-RPC with PHP.
+
+
+    $all = $_POST[ 'accounts' ];
+    $accounts = preg_split( "/[\s,]+/", $all );
+    foreach( $accounts as $value ) {
+        $params[] = new XML_RPC_Value( $value, 'string' );
+    }
+
+    if ( count( $params ) < 1 ) {
+        exit( 0 );
+    }
+
+    $data = array( new XML_RPC_value( $params, 'array' ) );
+    $msg = new XML_RPC_Message( 'doAccountsExist', $data );
+    $cli = new XML_RPC_Client( '/friend/acquaintance/',
+        'https://friend.weblogin.umich.edu' );
+    // Acquaintance authorizes clients based on the client SSL cert's common name.
+    $cli->setCertificate( "/path/to/serverssl.pem", "optionalPassPhrase" );
+    // Set this to 1 to see the XML values being passed between server
+    // and client
+    $cli->setDebug( 0 );
+    $resp = $cli->send( $msg );
+
+    if ( !$resp ) {
+        error_log( 'XML-RPC communication error: ' . $cli->errstr );
+        $smarty->assign( 'error', 'Communication error.' );
+        $smarty->display( 'error.tpl' );
+        exit( 0 );
+    }
+    if ( $resp->faultCode() ) {
+        $smarty->assign( 'error', $resp->faultString() );
+        $smarty->display( 'error.tpl' );
+        exit( 0 );
+    }
+
+    $val = $resp->value();
+    //Sanity check.  Make sure we have the same number of items in the response
+    //array as the one we sent out.
+    if ( $val->arraysize() != count( $params ) ) {
+        error_log( 'Friend server sent an array of size ' . $val->arraysize()
+            . '. Was expecting size ' . count( $params ) );
+        $smarty->assign( 'error', 'Response array wrong size!' );
+        $smarty->display( 'error.tpl' );
+        exit( 0 );
+    }
+
+
+    for ( $i = 0; $i < count( $params ); $i++ ) {
+        $r = $val->arraymem( $i );
+        switch( $r->scalarval() ) {
+        case -1:
+            /// Invalid e-mail address
+            break;
+        case 0:
+            /// Account does not exists
+        case 1:
+            /// Account already exists
+        default:
+            error_log( 'Friend server sent undocumented response (' .
+                $r->scalarval() . ').' );
+            $smarty->assign( 'error', 'Invalid response from Friend server.' );
+            $smarty->display( 'error.tpl' );
+            exit( 0 );
+        }
+    }
+

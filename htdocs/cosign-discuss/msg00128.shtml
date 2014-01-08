@@ -1,0 +1,160 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign Loop Breaking -->
+<!--X-From-R13: Irfyrl R Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Wed, 9 Jun 2004 00:00:27 &#45;0400 (EDT) -->
+<!--X-Message-Id: 84E9645A&#45;B9C0&#45;11D8&#45;92F6&#45;000A95A0453E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 5DE44794&#45;B584&#45;11D8&#45;AD07&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: Pine.SOL.4.58.0406081354460.3073@mozi.lsait.lsa.umich.edu -->
+<!--X-Reference: 40C61583.4090303@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00127.shtml">Date Prev</a>][<a href="msg00129.shtml">Date Next</a>][<a href="msg00133.shtml">Thread Prev</a>][<a href="msg00134.shtml">Thread Next</a>][<a href="maillist.shtml#00128">Date Index</a>][<a href="threads.shtml#00128">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign Loop Breaking</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cory Snavely &lt;<a href="mailto:csnavely@DOMAIN.HIDDEN">csnavely@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign Loop Breaking</li>
+<li><em>From</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 8 Jun 2004 22:55:52 -0400</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00126.shtml">40C61583.4090303@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00119.shtml">5DE44794-B584-11D8-AD07-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00125.shtml">Pine.SOL.4.58.0406081354460.3073@mozi.lsait.lsa.umich.edu</a>&gt; &lt;<a href="msg00126.shtml">40C61583.4090303@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 08 Jun 2004, at 15:37, Cory Snavely wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>But maybe I've just offended the person with the weirdo application 
+8), and maybe the rationale for having protection from this in COSIGN 
+is clearer if we know the types of misconfigurations where this can 
+happen. Could you share more details?
+</tt></blockquote><tt><br>cosignd replication is lazy and lossy.  There is no requirement in the 
+protocol for all of the cosignd's to have exactly the same data.  This 
+managed inconsistency is dealt with by having the cosign filters query 
+multiple cosignd's if the first cosignd responds with &quot;I don't know.&quot;</tt><br>
+<br>
+<tt>At UMich, we saw the looping problem in a big way due to a bug in one 
+of the cosign filter implementations.  In particular, the java cosign 
+filter had an error where it would not fail over to other cosignd's 
+when the information it was looking for was not present on the 
+one-and-only cosignd it was currently connected to.</tt><br>
+<br>
+<tt>The effect of this bug was that users would visit the protected 
+service, be redirected to the cosign registration service, be 
+redirected back to the service, ad nauseam.  Since the protected 
+service was moderately popular, thousands of users bounced back and 
+forth between the service and cosign, bring both to their knees and 
+causing a campus-wide cosign outage.</tt><br>
+<br>
+<tt>The bug wasn't immediately obvious.  As I recall, a mis-configuration 
+in a firewall precipitated the problem.  One of the three campus cosign 
+servers is located behind on departmental firewall.  When the firewall 
+was briefly mis-configured, the cosign protected application that this 
+department runs was able to get to the cosign server, but no users were 
+able to get to the same cosign server's web interface.  Also, the other 
+two cosign servers weren't able to send data to the third cosign 
+server, causing their databases to be quite inconsistent.</tt><br>
+<br>
+<tt>So, we fixed the bug in the java filter.  However, if we had had the 
+loop breaking code in place, 1) the problem would have been more 
+obvious, and 2) we would not have had a campus-wide cosign outage.  
+Campus-wide cosign outages are real downer for me, so we spent some 
+time thinking how we could never, ever have another one.  This is how 
+we came up with the loop-breaking code.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00134" href="msg00134.shtml">Re: Cosign Loop Breaking</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00119" href="msg00119.shtml">Cosign Loop Breaking</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00125" href="msg00125.shtml">Re: Cosign Loop Breaking</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+<li><strong><a name="00126" href="msg00126.shtml">Re: Cosign Loop Breaking</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00127.shtml">RE: Cosign Loop Breaking</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00129.shtml">Web App Developer documentation ...</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00133.shtml">Re: Web App Developer documentation ...</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00134.shtml">Re: Cosign Loop Breaking</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00128"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00128"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

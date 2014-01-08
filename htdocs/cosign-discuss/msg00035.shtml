@@ -1,0 +1,120 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: friend functionality -->
+<!--X-From-R13: Rneera Xnpbof <qneera.wnpbofNhgbebagb.pn> -->
+<!--X-Date: Mon, 29 Mar 2004 10:32:35 &#45;0500 (EST) -->
+<!--X-Message-Id: 4068411E.3080509@utoronto.ca -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.SOL.4.58.0402041450130.9151@zektor.gpcc.itd.umich.edu -->
+<!--X-Reference: 9357385.1075910563@spike.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00034.shtml">Date Prev</a>][<a href="msg00036.shtml">Date Next</a>][<a href="msg00040.shtml">Thread Prev</a>][<a href="msg00036.shtml">Thread Next</a>][<a href="maillist.shtml#00035">Date Index</a>][<a href="threads.shtml#00035">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>friend functionality</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discussion@DOMAIN.HIDDEN">cosign-discussion@xxxxxxxxx</a></li>
+<li><em>Subject</em>: friend functionality</li>
+<li><em>From</em>: Darren Jacobs &lt;<a href="mailto:darren.jacobs@DOMAIN.HIDDEN">darren.jacobs@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 29 Mar 2004 10:30:38 -0500</li>
+<li><em>In-reply-to</em>: &lt;9357385.1075910563@spike.itd.umich.edu&gt;</li>
+<li><em>References</em>: &lt;Pine.SOL.4.58.0402041450130.9151@zektor.gpcc.itd.umich.edu&gt; &lt;9357385.1075910563@spike.itd.umich.edu&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.6a) Gecko/20031029</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Don't have a lot of experience with webiso systems (yet &lt;g&gt; ) so please 
+excuse me if my question is a bit basic...what exactly does the friend 
+functionality of Cosign give you?</tt><br>
+<br>
+<pre style="margin: 0em;"><br>Darren Jacobs
+_</pre><br>
+<tt>University of Toronto</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00036" href="msg00036.shtml">Re: friend functionality</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+<li><strong><a name="00037" href="msg00037.shtml">Re: friend functionality</a></strong>
+<ul><li><em>From:</em> Willie Northway</li></ul></li>
+<li><strong><a name="00038" href="msg00038.shtml">Re: friend functionality</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00034.shtml">Another quick question and possible bug report</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00036.shtml">Re: friend functionality</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00040.shtml">Re: Another quick question and possible bug report</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00036.shtml">Re: friend functionality</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00035"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00035"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

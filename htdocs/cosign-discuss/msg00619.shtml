@@ -1,0 +1,169 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: anonymous user w/ cosign? -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Mon, 7 Nov 2005 18:14:15 &#45;0500 (EST) -->
+<!--X-Message-Id: 286583A7&#45;09A1&#45;4200&#45;AD00&#45;D90ABFB1A5B9@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: p0623090dbf9565c5af94@[141.212.131.63] -->
+<!--X-Reference: E26EF7EA&#45;592B&#45;4083&#45;B15D&#45;835C11C64919@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00618.shtml">Date Prev</a>][<a href="msg00620.shtml">Date Next</a>][<a href="msg00618.shtml">Thread Prev</a>][<a href="msg00620.shtml">Thread Next</a>][<a href="maillist.shtml#00619">Date Index</a>][<a href="threads.shtml#00619">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: anonymous user w/ cosign?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Chris Africa &lt;<a href="mailto:cafrica@DOMAIN.HIDDEN">cafrica@xxxxxxxxx</a>&gt;, Kevin Worth &lt;<a href="mailto:kworth@DOMAIN.HIDDEN">kworth@xxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: anonymous user w/ cosign?</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 7 Nov 2005 18:13:07 -0500</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00618.shtml">E26EF7EA-592B-4083-B15D-835C11C64919@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;p0623090dbf9565c5af94@[141.212.131.63]&gt; &lt;<a href="msg00618.shtml">E26EF7EA-592B-4083-B15D-835C11C64919@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>you just need to use &quot;CosignProtected Off&quot; for the locations or  
+directories you want to turn cosign off but ssl on. if this isn't  
+what you want, let me know :)</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<tt><br>On Nov 7, 2005, at 5:15 PM, Chris Africa wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Paul Townsend had this suggestion to Kevin Worth's question (see  
+below):</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Asuming you've got all your other SSL ducks in a row, this should be<br>
+simply a matter of editing the cosine.dll.config file to indicate  
+which<br>
+sections require authentication and which ones don't.
+</tt></blockquote></blockquote><tt><br>However, Paul uses IIS Cosign, while Kevin &amp; I use Apache on OS X  
+Server. I presume this is handled in Apache's httpd.conf -- if not,  
+where else should I look?</tt><br>
+<br>
+<tt>Also, for anyone out there using Zope, our goal is actually to run  
+(on the same machine, either same Zope server or separate  
+installations) one Zope site that is Cosign protected and one that  
+is only SSL protected. If you're doing this, we'd love to hear how.</tt><br>
+<br>
+<tt>Many thanks!</tt><br>
+<br>
+<pre style="margin: 0em;">--
+Chris Africa
+Sr. Web Designer/Administrator
+Department of Mechanical Engineering
+University of Michigan
+734-764-8482</pre><br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">-----Original Message-----
+From: Kevin Worth [<a  href="mailto:kworth@xxxxxxxxxxxxxxx">mailto:kworth@xxxxxxxxxxxxxxx</a>]
+Sent: Monday, November 07, 2005 1:52 PM
+To: cosign-discuss@xxxxxxxxx
+Subject: anonymous user w/ cosign?</pre><br>
+<tt>Hello-</tt><br>
+<br>
+<pre style="margin: 0em;">We have cosign setup for various sections of our site to work with
+our users.  In a couple of places, we don't need to authenticate, but
+we do want SSL.  Is this possible?  We've also tried setting up
+another SSL port, but that doesn't seem to be possible, or at least
+it isn't straightforward.</pre><br>
+<tt>thanks</tt><br>
+<br>
+<pre style="margin: 0em;">Kevin
+--
+-----------------------------------------------
+Kevin Worth &lt;kworth@xxxxxxxxxxxxxxx&gt;
+Computer Systems Consultant III
+Department of Materials Science and Engineering
+University of Michigan
+</pre></blockquote><tt>!DSPAM:436fd25b317206132651990!
+</tt></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00620" href="msg00620.shtml">Re: anonymous user w/ cosign?</a></strong>
+<ul><li><em>From:</em> Chris Africa</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00618" href="msg00618.shtml">Fwd: anonymous user w/ cosign?</a></strong>
+<ul><li><em>From:</em> Chris Africa</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00618.shtml">Fwd: anonymous user w/ cosign?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00620.shtml">Re: anonymous user w/ cosign?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00618.shtml">Fwd: anonymous user w/ cosign?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00620.shtml">Re: anonymous user w/ cosign?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00619"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00619"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

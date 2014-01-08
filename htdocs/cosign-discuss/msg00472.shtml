@@ -1,0 +1,165 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: New Open Source Single Sign&#45;On System: OpenID -->
+<!--X-From-R13: [nex [bagnthr <znexzbagNhzvpu.rqh> -->
+<!--X-Date: Wed, 3 Aug 2005 10:44:38 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.SOL.4.63.0508031024000.14233@mozi.lsait.lsa.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 42F03C2C.6090208@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00471.shtml">Date Prev</a>][<a href="msg00473.shtml">Date Next</a>][<a href="msg00471.shtml">Thread Prev</a>][<a href="msg00481.shtml">Thread Next</a>][<a href="maillist.shtml#00472">Date Index</a>][<a href="threads.shtml#00472">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: New Open Source Single Sign-On System: OpenID</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Kyle Mulka &lt;<a href="mailto:mulka@DOMAIN.HIDDEN">mulka@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: New Open Source Single Sign-On System: OpenID</li>
+<li><em>From</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 3 Aug 2005 10:40:41 -0400 (EDT)</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00471.shtml">42F03C2C.6090208@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00471.shtml">42F03C2C.6090208@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On Tue, 2 Aug 2005, Kyle Mulka wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Just thought I would make you all aware of another open source single sign-on 
+system in development. <a  href="http://www.livejournal.com">http://www.livejournal.com</a> currently uses it.</tt><br>
+<br>
+<pre style="margin: 0em;">It is called OpenID and is explained here:
+<a  href="http://openid.net/">http://openid.net/</a>
+</pre></blockquote><pre style="margin: 0em;"><br>[ Disclaimer: I'm at UofM but I'm don't work for the same people that the
+cosign development team works for.  I'm mostly just a user of cosign. ]</pre><br>
+<pre style="margin: 0em;">Actually, as the web site says, this is a decentralized identity
+system, not a single-sign-on system.  You do have to log in for
+each host you visit, although you do so with just your URL instead
+of a username/password pair.  I haven't looked at the protocol
+in depth, so there may be other really significant differeces too.</pre><br>
+<pre style="margin: 0em;">The level of proof of identity is fairly low -- it just says whether
+or not you &quot;own&quot; a URL, and so it's much closer to cosign's Friend
+functionality than it is to cosign itself.  (cosign Friend just
+assures you that the person who is visiting owned a particular
+email address at the time their Friend password was set, or otherwise
+got access to the password).  For non-Friend users, cosign will
+verify passwords via Kerberos, or BasicAuth, and you can use KX.509
+certs as an alternative to these, providing a much higher level
+of protection (assuming that everyone trusts the weblogin server
+and Kerberos server, of course).</pre><br>
+<pre style="margin: 0em;">Unlike cosign, OpenID will not actually get any Kerberos / GSSAPI
+credentials for you.</pre><br>
+<pre style="margin: 0em;">The &quot;real&quot; alternative to cosign is Pubcookie, which is also
+open source:  <a  href="http://pubcookie.org/">http://pubcookie.org/</a>   cosign's principal
+advantage over Pubcookie is that, unlike Pubcookie, cosign does
+not use domain cookies and hence is more secure than Pubcookie.</pre><br>
+<pre style="margin: 0em;">Note that while cosign and Pubcookie are currently used mostly for
+single-sign-on within a given institution, that both are capable
+of operating with Shibboleth (<a  href="http://shibboleth.internet2.edu/">http://shibboleth.internet2.edu/</a>)
+which permits inter-institutional identity management and trust
+to be established.  (So, for example, a user at Stanford University
+could access our cosign-enabled web services at the University
+of Michigan by logging on to Stanford's single-sign-on system
+which will then, via Shibboleth, let us know who he is and even
+possible transfer credentials to us).</pre><br>
+<pre style="margin: 0em;">All of this is not intended to detract from OpenID in any way,
+I just think that OpenID is a different sort of system than
+cosign, and that it is intended for very different uses than
+cosign.  And while OpenID looks great for leaving comments
+on blogs, I'd want to review the spec thoroughly to be sure
+it provides sufficient levels of authentication before trying
+to use it to give people access to their email or files over
+the web.</pre><br>
+<pre style="margin: 0em;">I'd welcome any discussion or feedback.  (And I hope I didn't
+get too much wrong in this post).</pre><br>
+<pre style="margin: 0em;">                Mark Montague
+                The University of Michigan
+                markmont@xxxxxxxxx</pre><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00481" href="msg00481.shtml">Re: New Open Source Single Sign-On System: OpenID</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00471" href="msg00471.shtml">New Open Source Single Sign-On System: OpenID</a></strong>
+<ul><li><em>From:</em> Kyle Mulka</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00471.shtml">New Open Source Single Sign-On System: OpenID</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00473.shtml">Re[8]: discussion about our tabs</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00471.shtml">New Open Source Single Sign-On System: OpenID</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00481.shtml">Re: New Open Source Single Sign-On System: OpenID</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00472"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00472"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

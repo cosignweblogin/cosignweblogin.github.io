@@ -1,0 +1,166 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign or IP&#45;based access control -->
+<!--X-From-R13: Xvz Lnwxbjfxv <wnzrfrmNhzvpu.rqh> -->
+<!--X-Date: Wed, 19 Jan 2005 13:00:46 &#45;0500 (EST) -->
+<!--X-Message-Id: 27A3B94A&#45;6A43&#45;11D9&#45;9040&#45;000A95DA58FE@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 9615F710&#45;698C&#45;11D9&#45;9072&#45;000A95DA58FE@umich.edu -->
+<!--X-Reference: BE6A3DB2&#45;69CB&#45;11D9&#45;BE5D&#45;000A95A0453E@umich.edu -->
+<!--X-Reference: 420DBD56&#45;69D3&#45;11D9&#45;AF7B&#45;000A95DA58FE@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00310.shtml">Date Prev</a>][<a href="msg00312.shtml">Date Next</a>][<a href="msg00310.shtml">Thread Prev</a>][<a href="msg00312.shtml">Thread Next</a>][<a href="maillist.shtml#00311">Date Index</a>][<a href="threads.shtml#00311">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign or IP-based access control</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: Cosign or IP-based access control</li>
+<li><em>From</em>: Jim Zajkowski &lt;<a href="mailto:jamesez@DOMAIN.HIDDEN">jamesez@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 19 Jan 2005 12:54:24 -0500</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00309.shtml">420DBD56-69D3-11D9-AF7B-000A95DA58FE@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00305.shtml">9615F710-698C-11D9-9072-000A95DA58FE@umich.edu</a>&gt; &lt;<a href="msg00308.shtml">BE6A3DB2-69CB-11D9-BE5D-000A95A0453E@umich.edu</a>&gt; &lt;<a href="msg00309.shtml">420DBD56-69D3-11D9-AF7B-000A95DA58FE@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Jan 18, 2005, at 11:33 PM, Jim Zajkowski wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I'll give it a whirl when I get a chance.
+</tt></blockquote><tt><br>Well I wasn't quite able to get it to work using AuthType Cosign and  
+Require valid-user under Apache 2; it continually gave me this error:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>configuration error:  couldn't check user.  No user file?
+</tt></blockquote><tt><br>I already have stuff plugged into apache 2, not to mention that it is  
+vendor supplied, so downgrading to 1.3 to try it was not what I wanted  
+to spend the rest of the day on.</tt><br>
+<br>
+<tt>Instead I resorted to that swiss army knife of apache, mod_rewrite.   
+Note that our intranet is being served by a local Zope/Plone install;  
+some variation would be required for other setups.</tt><br>
+<br>
+<tt># if they are building-local, let them in<br>
+RewriteEngine On<br>
+RewriteCond %{REMOTE_ADDR}    141\.211\.182\.* [OR]<br>
+RewriteCond %{REMOTE_ADDR}    141\.211\.183\.* [OR]<br>
+RewriteCond %{REMOTE_ADDR}    141\.211\.74\.*<br>
+RewriteRule ^/(.*)  
+<a  href="http://127.0.0.1:8080/VirtualHostBase/https/intranet.lsi.umich.edu:443/">http://127.0.0.1:8080/VirtualHostBase/https/intranet.lsi.umich.edu:443/</a> 
+intranet.lsi.umich.edu/VirtualHostRoot/$1 [P]</tt><br>
+<br>
+<pre style="margin: 0em;"># if not, hand them to cosign
+RewriteRule ^/(.*) /cosign/$1 [PT]</pre><br>
+<pre style="margin: 0em;"># auth to cosign
+&lt;Location /cosign/&gt;
+  Options FollowSymLinks
+  CosignProtected On
+  RewriteEngine On</pre><br>
+<pre style="margin: 0em;">  # deny cosign friends
+  RewriteCond %{ENV:REMOTE_REALM} friend
+  RewriteRule ^/(.*) /$1 [F,L]</pre><br>
+<tt>  # otherwise rewrite them to the intranet<br>
+  RewriteRule ^/var/www/html/intranet/(.*)  
+<a  href="http://127.0.0.1:8080/VirtualHostBase/https/intranet.lsi.umich.edu:443/">http://127.0.0.1:8080/VirtualHostBase/https/intranet.lsi.umich.edu:443/</a> 
+intranet.lsi.umich.edu/VirtualHostRoot/$1 [P]</tt><br>
+<br>
+<tt>&lt;/Location&gt;</tt><br>
+<br>
+<tt>--Jim</tt><br>
+<br>
+<pre style="margin: 0em;">--
+Jim Zajkowski          OpenPGP 0x21135C3    <a  href="http://www.jimz.net/pgp.asc">http://www.jimz.net/pgp.asc</a>
+System Administrator  8A9E 1DDF 944D 83C3 AEAB  8F74 8697 A823 2113 5C53
+UM Life Sciences Institute</pre><br>
+<tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00312" href="msg00312.shtml">Re: Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00305" href="msg00305.shtml">Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+<li><strong><a name="00308" href="msg00308.shtml">Re: Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+<li><strong><a name="00309" href="msg00309.shtml">Re: Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00310.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00312.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00310.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00312.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00311"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00311"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

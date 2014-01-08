@@ -1,0 +1,130 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Apache2 filter build problems -->
+<!--X-From-R13: Zraaba Rnl&#45;Drlabyqf <yraabaNerrq.rqh> -->
+<!--X-Date: Thu, 20 Oct 2005 19:13:10 &#45;0400 (EDT) -->
+<!--X-Message-Id: 4358242E.9020206@reed.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00588.shtml">Date Prev</a>][<a href="msg00590.shtml">Date Next</a>][<a href="msg00591.shtml">Thread Prev</a>][<a href="msg00592.shtml">Thread Next</a>][<a href="maillist.shtml#00589">Date Index</a>][<a href="threads.shtml#00589">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Apache2 filter build problems</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Apache2 filter build problems</li>
+<li><em>From</em>: Lennon Day-Reynolds &lt;<a href="mailto:lennon@DOMAIN.HIDDEN">lennon@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 20 Oct 2005 16:11:42 -0700</li>
+<li><em>User-agent</em>: Thunderbird 1.4 (Macintosh/20050908)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>All,</tt><br>
+<br>
+<tt>In trying to build the Cosign 1.9.0 Apache2 auth filter, I came across a 
+few apparent errors in the file mod_cosign.c which were fairly 
+straightforward to fix, and thought I'd pass along the changes in case 
+anyone else came up against the same problem.</tt><br>
+<br>
+<tt>I've included a diff below; after applying them, the filter compiles 
+cleanly in my environment (Debian Sarge, GCC 3.3.5).</tt><br>
+<br>
+<pre style="margin: 0em;">=== begin 'mod_cosign.c.diff' ===
+48c48
+&lt; cosign_create_config( apr_pool_t *p )
+---
+&gt; cosign_create_config( pool *p )
+444d443
+&lt; #ifdef KRB
+526,529d524
+&lt;     cosign_host_config  *cfg;
+&lt;     int portarg;
+&lt;     struct connlist *cur;
+&lt;
+=== end ===</pre><br>
+<pre style="margin: 0em;">Lennon Day-Reynolds
+System Support Specialist
+Reed College</pre><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00592" href="msg00592.shtml">Re: Apache2 filter build problems</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00588.shtml">IISCosign v1.1.1 and Windows Server 2003, SP1.</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00590.shtml">RE: IISCosign v1.1.1 and Windows Server 2003, SP1.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00591.shtml">RE: IISCosign v1.1.1 and Windows Server 2003, SP1.</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00592.shtml">Re: Apache2 filter build problems</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00589"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00589"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

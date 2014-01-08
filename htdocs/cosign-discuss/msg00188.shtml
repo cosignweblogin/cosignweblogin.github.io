@@ -1,0 +1,172 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign on a Sub Directory Only -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Thu, 22 Jul 2004 16:02:14 &#45;0400 (EDT) -->
+<!--X-Message-Id: CB55B7DE&#45;DC19&#45;11D8&#45;A558&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: BB0B0BFE&#45;DA5B&#45;11D8&#45;B846&#45;00039312D63C@umich.edu -->
+<!--X-Reference: 7EAD9B8C&#45;DA5E&#45;11D8&#45;A558&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: 40FD360D.70702@psu.edu -->
+<!--X-Reference: AF59F2BA&#45;DA90&#45;11D8&#45;A558&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: Pine.SOL.4.58.0407201748230.6371@mozi.lsait.lsa.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00187.shtml">Date Prev</a>][<a href="msg00189.shtml">Date Next</a>][<a href="msg00185.shtml">Thread Prev</a>][<a href="msg00186.shtml">Thread Next</a>][<a href="maillist.shtml#00188">Date Index</a>][<a href="threads.shtml#00188">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign on a Sub Directory Only</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign on a Sub Directory Only</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 22 Jul 2004 16:00:35 -0400</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00185.shtml">Pine.SOL.4.58.0407201748230.6371@mozi.lsait.lsa.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00177.shtml">BB0B0BFE-DA5B-11D8-B846-00039312D63C@umich.edu</a>&gt; &lt;<a href="msg00178.shtml">7EAD9B8C-DA5E-11D8-A558-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00180.shtml">40FD360D.70702@psu.edu</a>&gt; &lt;<a href="msg00182.shtml">AF59F2BA-DA90-11D8-A558-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00185.shtml">Pine.SOL.4.58.0407201748230.6371@mozi.lsait.lsa.umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Okay, so here's the scoop.</tt><br>
+<br>
+<tt>Traditionally, AuthType mechanisms have been used with Apache and 
+different authentication methods. So that's where we started with 
+Cosign. Alas, without a significant amount of re-writing, the nesting 
+of Cosign on and off ( there's no &quot;AuthType none&quot; to speak of ) proved 
+to be a failure. This is why we bumped cosign back a notch in the 
+module request/response loop ( it's at phase 3, when most mods are in 
+phase 4 ). This allows us to nest CosignProteced Off/On, which is 
+necessary for some of our more complex set ups here at Umich. For 
+instance, we do have cosign off for an image ( so it can load w/ or w/o 
+cosign ) but on for the page in question.</tt><br>
+<br>
+<tt>Keeping this in mind, I don't think we see any reason not to allow 
+CosignProtected Off/On in .htaccess ( people would basically just shoot 
+themselves in their own feet ).</tt><br>
+<br>
+<tt>Unless I hear shouts of terror, we'll be implementing this in our next 
+release :)</tt><br>
+<br>
+<tt>-Johanna</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt>On Jul 20, 2004, at 5:52 PM, Mark Montague wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>On Tue, 20 Jul 2004, johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">This was originally a security thought, but I'm not sure our reasons
+are valid anymore. I think our original logic was not wanting users to
+turn off/on Cosign if an admin had made it on/off for a whole server,
+but that might be spurious. Other members of the core cosign team feel
+free to speak up and correct me if there was a more pressing issue and
+I've just forgotten it. ;)
+</pre></blockquote><pre style="margin: 0em;"><br>I wasn't involved in those discussions, but unless there is a reason
+to have a CosignProtected directive, I'd be more comfortable turning
+cosign on/off with the AuthType directive.  If the server admin doesn't
+want users doing this, then they specify &quot;AllowOverride -AuthConfig&quot;.
+This _does_ mean that the user can't use the &quot;require&quot; directive
+in their .htaccess files anymore, though, which is undesirable.
+Right now does CosignProtected trump AuthType in all cases?  If so,
+I guess this would be a valid reason for keeping CosignProtected
+around but not usable in .htaccess files.</pre><br>
+<pre style="margin: 0em;">                Mark Montague
+                LS&amp;A Information Technology
+                markmont@xxxxxxxxx</pre><br>
+<tt></tt><br>
+<br>
+<tt>!DSPAM:40fd9462236152969210589!
+</tt></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00177" href="msg00177.shtml">Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> Beth Bridson</li></ul></li>
+<li><strong><a name="00178" href="msg00178.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00180" href="msg00180.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+<li><strong><a name="00182" href="msg00182.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00185" href="msg00185.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00187.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00189.shtml">replication</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00185.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00186.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00188"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00188"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

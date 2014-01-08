@@ -1,0 +1,130 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign or IP&#45;based access control -->
+<!--X-From-R13: Xvz Lnwxbjfxv <wnzrfrmNhzvpu.rqh> -->
+<!--X-Date: Wed, 19 Jan 2005 13:19:06 &#45;0500 (EST) -->
+<!--X-Message-Id: 6744E51C&#45;6A46&#45;11D9&#45;9040&#45;000A95DA58FE@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 9615F710&#45;698C&#45;11D9&#45;9072&#45;000A95DA58FE@umich.edu -->
+<!--X-Reference: BE6A3DB2&#45;69CB&#45;11D9&#45;BE5D&#45;000A95A0453E@umich.edu -->
+<!--X-Reference: 420DBD56&#45;69D3&#45;11D9&#45;AF7B&#45;000A95DA58FE@umich.edu -->
+<!--X-Reference: 27A3B94A&#45;6A43&#45;11D9&#45;9040&#45;000A95DA58FE@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00311.shtml">Date Prev</a>][<a href="msg00313.shtml">Date Next</a>][<a href="msg00311.shtml">Thread Prev</a>][<a href="msg00313.shtml">Thread Next</a>][<a href="maillist.shtml#00312">Date Index</a>][<a href="threads.shtml#00312">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign or IP-based access control</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: Cosign or IP-based access control</li>
+<li><em>From</em>: Jim Zajkowski &lt;<a href="mailto:jamesez@DOMAIN.HIDDEN">jamesez@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 19 Jan 2005 13:17:39 -0500</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00311.shtml">27A3B94A-6A43-11D9-9040-000A95DA58FE@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00305.shtml">9615F710-698C-11D9-9072-000A95DA58FE@umich.edu</a>&gt; &lt;<a href="msg00308.shtml">BE6A3DB2-69CB-11D9-BE5D-000A95A0453E@umich.edu</a>&gt; &lt;<a href="msg00309.shtml">420DBD56-69D3-11D9-AF7B-000A95DA58FE@umich.edu</a>&gt; &lt;<a href="msg00311.shtml">27A3B94A-6A43-11D9-9040-000A95DA58FE@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Jan 19, 2005, at 12:54 PM, Jim Zajkowski wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>RewriteRule ^/var/www/html/intranet/(.*)  
+<a  href="http://127.0.0.1:8080/VirtualHostBase/https/intranet.lsi.umich.edu:">http://127.0.0.1:8080/VirtualHostBase/https/intranet.lsi.umich.edu:</a> 
+443/intranet.lsi.umich.edu/VirtualHostRoot/$1 [P]
+</tt></blockquote><tt><br>Typo here: the /var/www/html/intranet/ should be /var/www/html/cosign/</tt><br>
+<br>
+<tt>--Jim</tt><br>
+<br>
+<pre style="margin: 0em;">--
+Jim Zajkowski          OpenPGP 0x21135C3    <a  href="http://www.jimz.net/pgp.asc">http://www.jimz.net/pgp.asc</a>
+System Administrator  8A9E 1DDF 944D 83C3 AEAB  8F74 8697 A823 2113 5C53
+UM Life Sciences Institute</pre><br>
+<tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00305" href="msg00305.shtml">Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+<li><strong><a name="00308" href="msg00308.shtml">Re: Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+<li><strong><a name="00309" href="msg00309.shtml">Re: Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+<li><strong><a name="00311" href="msg00311.shtml">Re: Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00311.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00313.shtml">LOOP_PAGE in cgi.c is hard-coded</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00311.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00313.shtml">LOOP_PAGE in cgi.c is hard-coded</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00312"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00312"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

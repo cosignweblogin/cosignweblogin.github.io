@@ -1,0 +1,153 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Bug in IIS Cosign 1.1.1? -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 9 Mar 2005 22:51:48 &#45;0500 (EST) -->
+<!--X-Message-Id: 20050310035025.264543490F@smtpd.itss.auckland.ac.nz -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Derived: zip00000.zip -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00346.shtml">Date Prev</a>][<a href="msg00348.shtml">Date Next</a>][<a href="msg00350.shtml">Thread Prev</a>][<a href="msg00349.shtml">Thread Next</a>][<a href="maillist.shtml#00347">Date Index</a>][<a href="threads.shtml#00347">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Bug in IIS Cosign 1.1.1?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Jarod Malestein'&quot; &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Bug in IIS Cosign 1.1.1?</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 10 Mar 2005 16:50:26 +1300</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Thread-index</em>: AcUlJEgNhLsaGylLTz6o6x0HA2NVZA==</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<table width="100%"><tr><td style="a:link { color: blue } a:visited { color: purple } ">
+
+
+
+
+
+<div class=Section1>
+
+<p class=MsoNormal><font size=2 face=Arial><span style='font-size:10.0pt;
+font-family:Arial'>Hi Jarod and others,<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span style='font-size:10.0pt;
+font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span style='font-size:10.0pt;
+font-family:Arial'>I think the szProtocol in SetCookieAndRedirect needs to be 6
+bytes, given you are copying in &#8220;https&#8221; in most cases.<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span style='font-size:10.0pt;
+font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span style='font-size:10.0pt;
+font-family:Arial'>Also, when I compile the IIS Cosign module with debugging (the
+debug configuration) and install it and attempt to access a protected area I
+messages on the server like the pic attached. I have looked into a little, but
+cannot find why this happening.<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span style='font-size:10.0pt;
+font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span style='font-size:10.0pt;
+font-family:Arial'>Thanks<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span style='font-size:10.0pt;
+font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span style='font-size:10.0pt;
+font-family:Arial'>Brett<o:p></o:p></span></font></p>
+
+</div>
+
+
+
+
+</td></tr></table><p><strong>Attachment:
+<a href="zip00000.zip" ><tt>ErrorPic.zip</tt></a></strong><br>
+<em>Description:</em> Zip compressed data</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00349" href="msg00349.shtml">Re: Bug in IIS Cosign 1.1.1?</a></strong>
+<ul><li><em>From:</em> Jarod</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00346.shtml">Problems adding the IIS filter</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00348.shtml">Cosign Filter creates unparsable URL on post</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00350.shtml">Re: Problems adding the IIS filter</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00349.shtml">Re: Bug in IIS Cosign 1.1.1?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00347"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00347"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

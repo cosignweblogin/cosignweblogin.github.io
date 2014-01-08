@@ -1,0 +1,120 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign and PS 7.6 -->
+<!--X-From-R13: Irfyrl Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Wed, 11 May 2005 20:26:40 &#45;0400 (EDT) -->
+<!--X-Message-Id: 3C7E54AD&#45;5A98&#45;4FE2&#45;8931&#45;F72589BE24BF@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1115775954.4081.54.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00411.shtml">Date Prev</a>][<a href="msg00413.shtml">Date Next</a>][<a href="msg00411.shtml">Thread Prev</a>][<a href="msg00413.shtml">Thread Next</a>][<a href="maillist.shtml#00412">Date Index</a>][<a href="threads.shtml#00412">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign and PS 7.6</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign and PS 7.6</li>
+<li><em>From</em>: Wesley Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 11 May 2005 20:25:19 -0400</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00411.shtml">1115775954.4081.54.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00411.shtml">1115775954.4081.54.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 10 May 2005, at 21:45, Brett Lomas wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>has anyone for SSO working for PS 7.6 and HTML Access?
+</tt></blockquote><tt><br>We have cosign working with our PeopleSoft.  I'm not about any  
+specifics, but we can probably put you in touch with folks who do.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>We have it like 99% of the way there, except PeopleSoft in its  
+infinate<br>
+wisdom uses Remote Calls or what ever which seems to onle believe the<br>
+user is authenticated if they have the OPERID and password correctly<br>
+set.
+</tt></blockquote><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00411" href="msg00411.shtml">Cosign and PS 7.6</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00411.shtml">Cosign and PS 7.6</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00413.shtml">Event Log Question</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00411.shtml">Cosign and PS 7.6</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00413.shtml">Event Log Question</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00412"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00412"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,152 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: RE: -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Tue, 3 Aug 2004 22:46:32 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040804024212.ED28C34592@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 41103F80.000049.12437@bjapp19 -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00214.shtml">Date Prev</a>][<a href="msg00216.shtml">Date Next</a>][<a href="msg00214.shtml">Thread Prev</a>][<a href="msg00216.shtml">Thread Next</a>][<a href="maillist.shtml#00215">Date Index</a>][<a href="threads.shtml#00215">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: RE:</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'??'&quot; &lt;<a href="mailto:chen_kuang@DOMAIN.HIDDEN">chen_kuang@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: RE:</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 4 Aug 2004 14:42:12 +1200</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;41103F80.000049.12437@bjapp19&gt;</li>
+<li><em>Organization</em>: The University of Auckland</li>
+<li><em>Thread-index</em>: AcR5xJ0hG1/OpDrGSoentK7lmb3i8QAB71uw</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>You will need to make sure Kerberos is setup correctly... and indeed
+installed... but I do not think this is your problem... as I don't think you
+are getting that far....
+
+You need to add twca (of what ever this is - see line 3 in the messages) to
+the cosign configuration. To check the format do a man cosignd. This say who
+is allowed to connect to the cosign services.
+
+
+Brett
+
+-----Original Message-----
+From: ?? [<a  href="mailto:chen_kuang@xxxxxxx">mailto:chen_kuang@xxxxxxx</a>] 
+Sent: Wednesday, 4 August 2004 1:45 p.m.
+To: brett lomas
+Subject: Re: RE:
+
+Brett,
+I rerun the cosignd according to your methods and the result is as follows
+# cosignd -d -h www.weblogin.com -x /var/cosign/certs/CA -y
+/var/cosign/certs/server.pem -z /var/cosign/certs/serverkey.pem
+Enter PEM pass phrase:
+debug: STARTTLS
+&gt;From the /var/log/messages, I see:
+
+Aug  3 18:38:49 localhost cosignd[955]: restart 1.6.1
+Aug  3 18:38:49 localhost cosignd[958]: connect: 192.168.0.243
+Aug  3 18:38:49 localhost cosignd[958]: f_starttls: No access for twca
+Aug  3 18:38:49 localhost cosignd[955]: child 958 exited with 1
+Aug  3 18:38:49 localhost cosignd[957]: pusherdaemon: Success
+Aug  3 18:38:49 localhost cosignd[957]: close_sn: snet_writef failed
+Aug  3 18:38:49 localhost cosignd[957]: pusherdaemon: close_sn: Broken pipe
+Aug  3 18:38:49 localhost cosignd[956]: CHILD 957 exited with 1
+
+what's wrong?
+In addition, the last time you have said that the local users are stored in
+kerberos, how can I create them ? with kerberos tool?
+
+thank you.
+chen
+
+&gt; I assume you did start the cosignd program? It can be useful to start the
+&gt; cosignd program with the -d switch (which prevents it working... and it
+&gt; prints some nice debugging info to the terminal)
+
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00214.shtml">RE:</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00216.shtml">blocking friend accounts?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00214.shtml">RE:</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00216.shtml">blocking friend accounts?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00215"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00215"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

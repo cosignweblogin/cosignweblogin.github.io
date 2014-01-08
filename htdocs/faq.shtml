@@ -1,0 +1,314 @@
+<!--#set var="title" value="faq" -->             
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" --> 
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="y" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#include file="header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="images
+/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            Cosign Frequently Asked Questions
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            Building, Installation, and Administration
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td> 
+    </tr>
+</table>
+
+        <p>
+	    This guide covers downloading, building, configuring, and installing cosign on your web server.  For documentation on the weblogin environment at the University of Michigan, please consult their <a href="http://www.umich.edu/~umweb/how-to/weblogin.html">documentation</a>.
+
+	    <ul class="list-blue">
+        </p>
+
+    <li>How do I test that cosign is installed and running?</li>
+    <p>
+	See the scripts/hello directory in your cosign
+	distribution.  This directory includes helloCosign
+	scripts and programs in various programming languages.
+	Install one of these in your web server's document root
+	to verify that the REMOTE_USER environment variable is
+	being properly set and made available to your
+	deployment environment.
+    </p>
+
+    <li>helloCosign.jsp says "Hello, null!" when I run it.</li>
+    <p>
+	This is happening because Tomcat is not configured to
+	use Apache's authentication.
+    </p>
+    <p>
+	Make sure that your connector description ( ajp13 or
+	Coyote ) includes the parameter
+	"tomcatAuthentication=false" if you are using Tomcat
+	prior to 4.1.18.  Otherwise ( or additionally, your
+	choice ) add the line
+	"request.tomcatAuthentication=false" to your
+	jk2.properties file and restart Tomcat.
+    </p>
+
+    <li>After installing mod_cosign.so, Apache gives the error: <br /> <tt>Cannot load mod_cosign.so into server: (reason unknown)</tt></li>
+    <p>
+	The httpd that ships with MacOS X 10.2 ( Apache 1.3.26 )
+	is compiled in such a way that many third party
+	modules give this error on load ( just ask google ).
+	We have not solved the problem yet, but you can work
+	around it by compiling your module on a previous
+	version of MacOS X ( it will then load under Jaguar )
+	or building your own copy of Apache 1.3.26 from source.
+	<br />
+    </p>
+
+    <li>I'm trying to test a new service.  It doesn't work and Apache logs something like:</li> <br />
+    <blockquote>
+	<tt>\x80g\x01\x03</tt> or<br />
+	<tt>\x80g\x01\x03\x01</tt><br />
+    </blockquote>
+    <p>
+	This is a fairly common mod_ssl error and means that your browser has sent an https request over a non-ssl port.  Look for a line like:  https://servername:80/ elsewhere in the log.  Make sure, if 443 is listening and you were just trying to go to https://servername/ that SSLEngine is On &amp; configured.  <br />
+	&nbsp;<br />
+	We've found all browsers behave differently in response to this error.  e.g.: <br />
+	Mozilla: "weblogin.somewhere.edu has sent an incorrect or unexpected message" <br />
+	Safari: "Could not open the page n.n.n.n because Safari could not establish a secure connection to the server n.n.n.n." <br />
+	I.E.: displays "pretty" error screen <br />
+    </p>
+
+    <li>I'm having certificate issues, help!</li>
+
+    <p>Start by making sure you have your certificate installed correctly,
+    and that it can be used as an SSL client certificate:</p>
+    <blockquote>openssl verify -CApath path_to_CAdir -purpose sslclient server.crt</blockquote>
+
+    <p>
+	This will only work if the root certificate for the CA that signed
+        your client's cert is in your CA directory.
+	<br />
+    </p>
+
+
+    <li>I'm getting vague and unhelpful SSL errors, but my certificate is verified. What else can I do?</li>
+    <p>There's an openssl tool called "s_client" that will behave like an SSL client. Try these options to help with further debugging. You can then discuss further errors on the cosign-discuss mailing list. Note that you should run the s_client command as the same user the webserver will be running as - typically "www" or some such. Do not run this command as root, as it makes it more difficult to catch permission problems.
+    </p>
+    <blockquote>
+    openssl s_client -connect cosign-test.example.edu:6663 
+    -cert /etc/apache/certs/cosign-test.cert 
+    -key /etc/apache/certs/cosign-test.key 
+    -CApath /var/cosign/certs/CA
+    -showcerts -state -debug 
+    -crlf 
+    -starttls smtp
+    </blockquote>
+
+
+    <li>How do I configure Tomcat 4.1.29 to work with mod_cosign?</li>
+    <p>
+	To enable Tomcat to see the Cosign-authenticated user from Apache,
+	it needs a special configuration.  4.1.29 has a new way to do
+	this, which is really an old way that works again.
+    </p>
+
+    <p>
+	you'll want in server.xml: tomcatAuthentication="false"<br />
+	e.g.:
+    </p>
+
+<pre>
+&lt;&#33;&#45;&#45;Define a Coyote/JK2 AJP 1.3 Connector on port 8009&#45;&#45;&gt;
+&lt;Connector className="org.apache.coyote.tomcat4.CoyoteConnector"
+	port="8009" minProcessors="5" maxProcessors="75"
+	enableLookups="true" redirectPort="8443"
+	acceptCount="10" debug="0" connectionTimeout="0"
+	useURIValidationHack="false" tomcatAuthentication="false"
+	protocolHandlerClassName="org.apache.jk.server.JkCoyoteHandler"&#47;&gt;
+</pre>
+
+    <p>
+	It no longer needs anything special (or at all) in the jk2.properties file.
+    </p>
+
+    <li>How can I convert my X509 cert/key pair into pkcs12 format?</li>
+
+    <p>
+    The following openssl command should do the trick:
+    <pre>
+    openssl pkcs12 -in example.cert -inkey example.key \
+    -export -out excert_key.p12
+    </pre>
+    </p>
+
+
+    <li>How do you retrieve the <strong>REMOTE_USER</strong> value set by 
+    the IIS Cosign filter?</li>
+
+    <p>
+    The <em>ISAPI extension</em>
+    <a href = "http://msdn.microsoft.com/library/default.asp?url=/library/en-us/iissdk/iis/extensions_callbackfunctions_getservervariable.asp">GetServerVariable()</a> function
+    </p>
+
+    <p>
+    The <em>ISAPI filter</em>
+    <a href = "http://msdn.microsoft.com/library/default.asp?url=/library/en-us/iissdk/iis/filters_callback_getheader.asp">GetHeader()</a> function
+    </p>
+
+
+    <li>Where can I find more documentation?</li>
+
+    <ul>
+      <li>In the multiple README files and manual pages that ship with the various <a href="./download.shtml">cosign distribtions</a>.
+      <li>In the <a href="http://webapps.itcs.umich.edu/cosign/">cosign wiki</a>.</li>
+    </ul>
+
+    <li>What is to prevent Friend email messages from being intercepted and used by someone else?</li>
+    <p>
+	Not a thing.  Friend account creation works pretty much the
+	same way, you'll notice.  These are email-based accounts,
+	they are as secure as email -- not very.  They are designed
+	to enable collaboration with unaffiliated users, on a casual
+	basis, where authorization is typically managed directly by the
+	affiliated user.  Don't issue access to sensitive information
+	to "friends," e.g., information protected by HIPAA, FERPA, etc.
+	It is possible to have a UMICH.EDU Kerberos principal issued to
+	people who need more than casual access.
+    </p>
+
+    <li>I get an error like this when I build mod_cosign:</li><br/>
+	    <p class="margins">
+	    <tt>usr/bin/ld: ../../common/fbase64.o: relocation
+	    R_X86_64_32S can not be
+	    used when making a shared object; recompile with -fPIC</tt>
+	    </p>
+	    <p class="margins">
+	    This is probably because you are on a 64bit machine with a
+	    very recent version of gcc, and as such, you need to build
+	    shared libraries. We'll be rolling a fix into autoconf for
+	    this issue in a future release, but for now just do the
+	    following.
+	    </p>
+	    <pre>
+	    cd libsnet; ./configure --enabled-shared
+	    </pre>
+	    <p class="margins">
+	    This will build libsnet as a shared library in addition to
+	    the default, which is static.
+	    </p>
+	    <p class="margins">
+	    You also want to add <strong>-fPIC</strong> to the DEFS line
+	    in cosign/common/Makefile.
+	    </p>
+    <li>I get an error like this when I build cosign:</li><br/>
+	    <p class="margins">
+	    <tt>from snet.c:22: /usr/include/openssl/kssl.h:72:18:
+	    krb5.h: No such file or directory</tt>
+	    <br/>or<br/>
+	    <tt>configure: error: header file &lt;openssl/ssl.h&gt; is required for
+	    this software. You may be running RedHat 9.
+	    </tt>
+	    </p>
+
+	    <p class="margins">
+	    You are likely running Redhat 9, or an implementation of ssl
+	    that expects kerberos. On Redhat 9, kerberos is in a
+	    non-standard place, and so, by default, configure may not
+	    find it. Add "env CPPFLAGS=-I/usr/kerberos/include" before
+	    you run configure. So in csh your configure line will look
+	    like this:
+	    </p>
+	    <pre>
+		env CPPFLAGS=-I/usr/kerberos/include ./configure
+	    </pre>
+	    <p class="margins">
+	    and in bash or sh you'd type:
+	    </p>
+	    <pre>
+		CPPFLAGS=-I/usr/kerberos/include ./configure
+	    </pre>
+	    <p class="margins">
+	    The next release of cosign will detect this issue during
+	    configuration, but the fix remains the same. 
+	    </p>
+
+	    <li>How does replication work?</li>
+
+	    <p class="margins">
+	    The cosign servers share user data through two mechanisms.
+	    First, there's a "best effort" replication stream.  This
+	    causes commands like <b>login</b>, <b>register</b>, and
+	    <b>logout</b>, to be repeated to peer cosign servers.  Most
+	    user data thus exists on all available cosign servers.
+	    Second, monster propagates both last-check times and the
+	    logged-out state between servers.  This makes dropping the
+	    <b>logout</b> during replication less of a problem.  The
+	    logout.cgi also sets the login cookie to "null".  This is
+	    another source of logout resilience.
+	    </p>
+
+	    <p class="margins">
+	    Because of the possible delay between <b>check</b>s and the
+	    propagation of last-check times, the server will respond
+	    with a <b>5xx</b> response for a few minutes after the user
+	    has apparently timed out.  Clients interpret <b>5xx</b> to
+	    mean, effectively, "I don't know, ask someone else".  If
+	    all servers respond with <b>5xx</b>, the filter will
+	    consider the user to be logged out.
+	    </p>
+
+	    <p class="margins">
+	    The goal for the filter is to spread it's load across all
+	    cosign servers.  Thus, multiple cosign servers improves both
+	    resilience and capacity.
+	    </p>
+
+	    <li>After I logout I can still access my Cosign Protected
+	    service for a small window of time. Is Cosign broken?
+	    What's wrong?</li>
+
+	    <p class="margins">
+	    Cosign is not broken and you have done nothing wrong. You
+	    merely need to customize and make use of the local logout
+	    script provided in scripts/logout. The filters have a cache
+	    time (default 2 minutes) during which they will not
+	    validate a user's status. As such, when a user returns post
+	    logout, the cache is still valid and the user is still
+	    "logged in" to that one site for a few seconds. To avoid
+	    this, simply call the local logout script which will
+	    re-direct the user to the main logout script.</p>
+
+	    <li>Can I direct a user to a specific location upon logout?</li>
+
+	    <p class="margins">
+	    Simply add a redirect URL to the logout script:</p>
+	    <pre>
+	    /cgi-bin/logout?http://www.google.com/
+	    </pre>
+	    <p class="margins">
+	    This will override any destination set using
+	    --with-cosignlogouturl.</p>
+
+    <li>Using CosignHttpOnly on MacOS X Server redirects me to port
+    16080 - what's up with that?</li>
+
+    <p>
+	That's apparently Performance Caching. Turn off the 'Performance
+	Cache' option in Server Admin for your website.
+    </p>
+
+	    <p class="margins">
+		<em>markmont : 22 April 2009</em>
+		</ul>
+	    </p>
+
+<!--#include file="footer.shtml" -->

@@ -1,0 +1,241 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: replication behind load balancer -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Thu, 24 Mar 2005 18:51:11 &#45;0500 (EST) -->
+<!--X-Message-Id: 1111707874.5508.7.camel@localhost.localdomain -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1903C2857DAD40192421385B@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Reference: 20050323214127.GR4631@ifokr.org -->
+<!--X-Reference: 260EF50AA0A1432810FC6D3C@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Reference: F535BC10&#45;9C7B&#45;11D9&#45;81A3&#45;000A95E48A4E@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00379.shtml">Date Prev</a>][<a href="msg00381.shtml">Date Next</a>][<a href="msg00377.shtml">Thread Prev</a>][<a href="msg00384.shtml">Thread Next</a>][<a href="maillist.shtml#00380">Date Index</a>][<a href="threads.shtml#00380">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: replication behind load balancer</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: replication behind load balancer</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 25 Mar 2005 11:44:35 +1200</li>
+<li><em>Cc</em>: David Alexander &lt;<a href="mailto:alexandd@DOMAIN.HIDDEN">alexandd@xxxxxxxx</a>&gt;,   cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;, Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00376.shtml">F535BC10-9C7B-11D9-81A3-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00372.shtml">1903C2857DAD40192421385B@dhcp-196-004.cns.ohiou.edu</a>&gt;	 &lt;<a href="msg00373.shtml">20050323214127.GR4631@ifokr.org</a>&gt;	 &lt;<a href="msg00374.shtml">260EF50AA0A1432810FC6D3C@dhcp-196-004.cns.ohiou.edu</a>&gt;	 &lt;<a href="msg00376.shtml">F535BC10-9C7B-11D9-81A3-000A95E48A4E@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi all,
+
+we have a current working cosign behind a foundry load balancer. It has
+been tested and is working quite well. I had to change the cosign code a
+little bit to handle this, which are yet to sent back to the umich guys
+(Jo, i will do this ASAP). But the main changes are:
+
+1. The cosign daemon can be told to listen on more than one IP address,
+and be told which certs to associate to which IP. So one (6663) is the
+external facing cert, and the other on 6664 is the internal facing cert.
+
+2. The CGI can be given a number of cosign hosts to talk to and a port
+to talk on.
+
+3. A foundry puts of a lot more pressure on the replication! So to
+combat this I have allowed for what i call a proxy check. If a daemon
+gets a check which it doesn't know about it will go to all its
+replication host and issuse a PROXYCHECK, if the other host has it, it
+will first return the normal CHECK response which can be forward to the
+client and then also any replication events right there and then for the
+ticket to be stored locally.
+
+I am sure there was a number of other tweaks too.
+
+If anyone does want this code noe I can get it for you, but of course it
+would not be support by the umich guys. I am in the process of sending
+these changes back to them and should be done in a few days (we have a 5
+day weekend here in NZ at the moment :) )
+
+
+Thanks
+
+Brett
+
+On Fri, 2005-03-25 at 03:46, johanna bromberg craig wrote:
+&gt; On Mar 23, 2005, at 4:58 PM, David Alexander wrote:
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; I added the opposite blade's IP address to the /etc/hosts file on each 
+&gt; &gt; blade.  Now, communication between cosignd processes is not crossing 
+&gt; &gt; the load balancer, so I think I am just dealing with cosign 
+&gt; &gt; configuration issues at this point.
+&gt; &gt;
+&gt; &gt; The documentation is a little thin on replication.  What should the 
+&gt; &gt; consign.conf file contain on each host?  Now that I can use the host 
+&gt; &gt; names of the individual blades, I created client certs for 'cosign11' 
+&gt; &gt; and 'cosign12'.  I have tried various permutations in the cosign.conf 
+&gt; &gt; file, but I still get the error &quot;f_starttls: No access for 
+&gt; &gt; cosign1[12]&quot; in the log file.  I get a &quot;CHILD xxxxx talking to itself&quot; 
+&gt; &gt; error in the other host's log file.  I was also getting a &quot;cosign[12] 
+&gt; &gt; is not a daemon&quot; error at some point.
+&gt; &gt;
+&gt; &gt; Can someone tell me more about these errors?
+&gt; &gt;
+&gt; 
+&gt; I think from your setup, cosign11 and cosign12 ( or whatever the cert 
+&gt; names are that the daemon is using ) need to both be permitted as cgis. 
+&gt; The &quot;talking to itself&quot; bit is basically so we can use a multiple A 
+&gt; record like weblogin.umich.edu ( which contains a.umich.edu, 
+&gt; b.umich.edu, and c.umich.edu ), and when we get the individual host 
+&gt; records a only replicates to b and c, not itself. That's what the 
+&gt; daemon flag/command is for ( f_daemon ).
+&gt; 
+&gt; In pusherhosts() ( in pusher.c ) we call gethostbyname() which I 
+&gt; believe is aware of /etc/hosts.
+&gt; 
+&gt; The &quot;%s is not a daemon&quot; message comes from the CN of the host trying 
+&gt; to do the replication ( aka the replicator ) not being listed as a cgi 
+&gt; in the cosign.conf of the replicatee. The No access message is probably 
+&gt; the same thing.
+&gt; 
+&gt; Since you have 2 hosts with 2 separate IPs, at least for testing 
+&gt; purposes I'd just start with this do this:
+&gt; 
+&gt; host A:
+&gt; 
+&gt; cosign.conf:
+&gt; 
+&gt; cgi	a.weblogin.ohio.edu ( just needs itself, and this is the CN for the 
+&gt; cert A is running with, not domain name )
+&gt; 
+&gt; %/usr/local/sbin/cosignd -h b.weblogin.ohio.edu
+&gt; 
+&gt; ( you also want to run monster the same way - %/usr/local/sbin/monster 
+&gt; -h b.weblogin.ohio.edu )
+&gt; 
+&gt; 
+&gt; and on host B you should also have &quot;a.weblogin.ohio.edu&quot; permitted in 
+&gt; cosign.conf, and just the regular
+&gt; % /usr/local/sbin/cosignd ( and /usr/local/sbin/monster, too ).
+&gt; 
+&gt; So A should replicate to B, one way. And only A would also house the 
+&gt; CGI.
+&gt; 
+&gt; Once that's up and happy, you can do the exact same thing on B, so now 
+&gt; permit A and B both as CGIs on each cosign.conf, and have A do % 
+&gt; cosignd -h b.weblogin.ohio.edu and B do % cosignd -h 
+&gt; a.weblogin.ohio.edu
+&gt; 
+&gt; I can see why this might need a bit more documentation. :) We're 
+&gt; working on a few small tweaks for 1.8.1 release, so I'll try and add 
+&gt; something to that or just put it up on the website.
+&gt; 
+&gt; Also, as a side note, I'm not sure fail over in the clients will work 
+&gt; right if both cosign servers are behind a load balancer. I haven't 
+&gt; drawn it all out yet, but the basic idea behind client fail over is 
+&gt; that the filters ask every weblogin server they are aware of ( A, B, 
+&gt; and C ) based on the lookup they did at startup. If they are talking to 
+&gt; a load balancer that only had 1 IP/name, they might only get A when in 
+&gt; fact B happen to have the most  up-to-date information. Like I said, I 
+&gt; haven't really thought about this though, so I might be wrong, too.
+&gt; 
+&gt; In any case, let us know if the above suggestions help with replication 
+&gt; and/or what else we can do to help.
+&gt; 
+&gt; -Johanna
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00372" href="msg00372.shtml">replication behind load balancer</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00373" href="msg00373.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+<li><strong><a name="00374" href="msg00374.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00376" href="msg00376.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00379.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00381.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00377.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00384.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00380"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00380"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

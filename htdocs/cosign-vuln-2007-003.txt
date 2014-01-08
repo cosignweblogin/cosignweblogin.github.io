@@ -1,0 +1,37 @@
+VULNERABILITY ALERT
+-------------------
+
+Vulnerability:       COSIGN-VULN-2007-003
+Application:         cosign IIS filter
+Affected Versions:   2.0.2 and previous
+Vulnerability Type:  Transmission of unencrypted cookies
+Severity:            High
+Software Website:    http://weblogin.org/
+Contact:             cosign@umich.edu
+Dates:               2007-10-29 (discovered); 2007-11-08 (public disclosure)
+
+
+DESCRIPTION
+--------
+Cosign is a web single sign-on system.  This vulnerability affects only the
+IIS filter.
+
+The IISCosign filter does not set cookies as secure.  After a user visits a
+cosign-protected portion of an IIS filter, a service cookie that uniquely
+identifies the user is set.  The service cookie is a string of randomly
+generated, base64 characters.  While the cookie itself is sensitive, it does
+not contain any user information within it.  Since the cookie is not flagged
+as secure, any subsequent http requests, including those to http or non-
+cosign-protected parts of a web site, will transmit the service cookie in
+the clear.  This makes the cookie vulnerable to a replay attack.
+
+It is HIGHLY RECOMMENDED that Windows Servers running IISCosign immediately
+are upgraded to version 2.0.3.  The default behavior for the 2.0.3 filter is
+to flag cookies as secure.
+
+
+ACKNOWLEDGMENTS
+---------------
+Thanks to Erik Rose from Penn State University for finding the bug.
+
+--Jarod Malestein 

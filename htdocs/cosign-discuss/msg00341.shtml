@@ -1,0 +1,143 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: REGISTER and a lost login cookie -->
+<!--X-From-R13: Pevna Vngpu <oevNvsbxe.bet> -->
+<!--X-Date: Wed, 9 Mar 2005 03:10:25 &#45;0500 (EST) -->
+<!--X-Message-Id: 20050309080854.GI30886@ifokr.org -->
+<!--X-Content-Type: multipart/signed -->
+<!--X-Reference: 20050309075643.GH30886@ifokr.org -->
+<!--X-Derived: pgp00007.pgp -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00340.shtml">Date Prev</a>][<a href="msg00342.shtml">Date Next</a>][<a href="msg00340.shtml">Thread Prev</a>][<a href="msg00342.shtml">Thread Next</a>][<a href="maillist.shtml#00341">Date Index</a>][<a href="threads.shtml#00341">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: REGISTER and a lost login cookie</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: REGISTER and a lost login cookie</li>
+<li><em>From</em>: Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 9 Mar 2005 00:08:54 -0800</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00340.shtml">20050309075643.GH30886@ifokr.org</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00340.shtml">20050309075643.GH30886@ifokr.org</a>&gt;</li>
+<li><em>User-agent</em>: Mutt/1.5.6+20040907i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+
+&gt; 	* If I get an error from basicosign.cgi, then re-run it
+&gt; 	  without any login cookie - this will cause basicosign.cgi
+&gt; 	  to generate a new one, register it as a login cookie, and
+&gt; 	  pass it back to the browser.
+
+Just to follow up, I added the following to my interceptor and it
+seems to work now, even when I (or monster) delete a login cookie:
+
+	my @output = `$BASICOSIGN`;
+	if ( grep /Error: Register Failed/, @output ) {
+	       delete $ENV{HTTP_COOKIE};
+	       exec $BASICOSIGN;
+	} else {
+	       print @output;
+	       exit;
+	}
+
+Out of curiosity, how many others are using basicosign.cgi out there,
+rather than the kerberized version?  Have you had this problem with
+login cookie deletion causing problems?
+
+
+
+-- 
+Brian Hatch                  &quot;The first casualty of war is
+   Systems and                always the truth.&quot;
+   Security Engineer
+<a  href="http://www.ifokr.org/bri/">http://www.ifokr.org/bri/</a>
+
+Every message PGP signed
+</pre><p><strong>Attachment:
+<a href="pgp00007.pgp" ><tt>signature.asc</tt></a></strong><br>
+<em>Description:</em> Digital signature</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00340" href="msg00340.shtml">REGISTER and a lost login cookie</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00340.shtml">REGISTER and a lost login cookie</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00342.shtml">errors trying to create/read cookie file</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00340.shtml">REGISTER and a lost login cookie</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00342.shtml">errors trying to create/read cookie file</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00341"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00341"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,153 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: runtime requirements for IISCosign -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Mon, 12 Apr 2004 17:56:33 &#45;0400 (EDT) -->
+<!--X-Message-Id: 506695028.1081792561@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 407B0BC9.1060100@psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00054.shtml">Date Prev</a>][<a href="msg00056.shtml">Date Next</a>][<a href="msg00054.shtml">Thread Prev</a>][<a href="msg00058.shtml">Thread Next</a>][<a href="maillist.shtml#00055">Date Index</a>][<a href="threads.shtml#00055">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: runtime requirements for IISCosign</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;,   Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: runtime requirements for IISCosign</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Mon, 12 Apr 2004 17:56:01 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00054.shtml">407B0BC9.1060100@psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00054.shtml">407B0BC9.1060100@psu.edu</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Phil,</tt><br>
+<br>
+<tt>Almost everything you need to run IISCosign is included with the installer. 
+The installer registers the MSXML 4.0 dlls for you.  (If you'd like to make 
+sure, check to see that msxml4.dll and msxmlr4.dll are in your 
+\windows\system32 folder.)</tt><br>
+<br>
+<tt>The extra run-time requirements involves SSL certificates.  You will need a 
+certificate authority file as well as a private key and a signed 
+certificate.  The installer comes with the umweb.CA file which is pretty 
+useless to anyone outside of U-M.  If you'd like to customize the installer 
+for your organization -- anybody -- we can get you the source code and 
+project files for the installer.  It uses Installshield 7.  Also feel free 
+to provide any suggestions to make the installer more institutionally 
+agnostic.  That is something we can certainly provide!</tt><br>
+<br>
+<tt>Were you having trouble getting IISCosign to load?  Did any of this help?</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--ITCS</pre><br>
+<tt>--On Monday, April 12, 2004 5:36 PM -0400 Phil Pishioneri &lt;pgp@xxxxxxx&gt; 
+wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Using the pre-built IISCosignInstaller 1.0.0 on Win2k3, IIS 6:</tt><br>
+<br>
+<pre style="margin: 0em;">I've found the extra registry key, and permissions that need to be set
+for Win 2003, and did those.</pre><br>
+<pre style="margin: 0em;">Also found references to libsnet, OpenSSL, and MSXML at cowboybebop.  Do
+I need to install MSXML and a separate OpenSSL (one appears to be
+included in the installation) just for run-time support?  (libsnet is
+listed as only required if you want to compile IISCosign.)</pre><br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00058" href="msg00058.shtml">cosign certificate.</a></strong>
+<ul><li><em>From:</em> Konstantin Voyk</li></ul></li>
+<li><strong><a name="00062" href="msg00062.shtml">RE: runtime requirements for IISCosign</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00063" href="msg00063.shtml">Re: runtime requirements for IISCosign</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00054" href="msg00054.shtml">runtime requirements for IISCosign</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00054.shtml">runtime requirements for IISCosign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00056.shtml">Excluding a directory from the cosign filter</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00054.shtml">runtime requirements for IISCosign</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00058.shtml">cosign certificate.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00055"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00055"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

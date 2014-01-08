@@ -1,0 +1,144 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Libtool -->
+<!--X-From-R13: [nex [bagnthr <znexzbagNhzvpu.rqh> -->
+<!--X-Date: Wed, 21 Apr 2004 10:25:52 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.SOL.4.58.0404211003190.21383@mozi.lsait.lsa.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040421010636.6762635D3E@smtp1.ec.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00074.shtml">Date Prev</a>][<a href="msg00076.shtml">Date Next</a>][<a href="msg00074.shtml">Thread Prev</a>][<a href="msg00077.shtml">Thread Next</a>][<a href="maillist.shtml#00075">Date Index</a>][<a href="threads.shtml#00075">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Libtool</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Libtool</li>
+<li><em>From</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 21 Apr 2004 10:16:04 -0400 (EDT)</li>
+<li><em>Cc</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00074.shtml">20040421010636.6762635D3E@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00074.shtml">20040421010636.6762635D3E@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Wed, 21 Apr 2004, Brett Lomas wrote:
+
+&gt; just a question, why do you build a libtool in libsnet for the main cosign
+&gt; distro? Is it because libtool is not installed on all OS?
+
+Hi, Brett,
+
+I'm the person that twisted the cosign developers' arms into
+including libtool for libsnet, so let me try to answer your
+question...
+
+libtool indeed does not come standard with all OSs (e.g., Solaris)
+and requiring everyone to install libtool first would be an obstacle to
+installing cosign.  Also, if libtool is installed on the system
+already, it may or may not be a recent enough version for cosign's
+needs.  But, most importantly, building libtool is what just about
+all other open source and GNU packages that use libtool do.  Finally,
+for cosign/libsnet, libtool has been included with cosign and libsnet
+in the manner specified by the libtool manual.  See
+    <a  href="http://www.gnu.org/software/libtool/manual.html#SEC28">http://www.gnu.org/software/libtool/manual.html#SEC28</a>
+and
+    <a  href="http://www.gnu.org/software/libtool/manual.html#SEC26">http://www.gnu.org/software/libtool/manual.html#SEC26</a>
+
+Is the way cosign/libset is using libtool causing a problem for you
+in your environment?  Is there anything we can do to help?
+
+                Mark Montague
+                LS&amp;A Information Technology
+                The University of Michigan
+                markmont@xxxxxxxxx
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00077" href="msg00077.shtml">RE: Libtool</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00074" href="msg00074.shtml">Libtool</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00074.shtml">Libtool</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00076.shtml">Will friend accounts ever expire?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00074.shtml">Libtool</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00077.shtml">RE: Libtool</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00075"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00075"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,251 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: IISCosign &#45; one physical server more than 1	cosign&#45;servicepossible? -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Fri, 12 Aug 2005 16:17:37 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20050812161619.6j79o46p6sk048gs@web.mail.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200508121939.j7CJdndL005746@wanderer.mr.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00504.shtml">Date Prev</a>][<a href="msg00506.shtml">Date Next</a>][<a href="msg00504.shtml">Thread Prev</a>][<a href="msg00507.shtml">Thread Next</a>][<a href="maillist.shtml#00505">Date Index</a>][<a href="threads.shtml#00505">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: IISCosign - one physical server more than 1	cosign-servicepossible?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Konstantin Voyk &lt;<a href="mailto:kvoyk@DOMAIN.HIDDEN">kvoyk@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: IISCosign - one physical server more than 1	cosign-servicepossible?</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Fri, 12 Aug 2005 16:16:19 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00504.shtml">200508121939.j7CJdndL005746@wanderer.mr.itd.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00504.shtml">200508121939.j7CJdndL005746@wanderer.mr.itd.umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Internet Messaging Program (IMP) H3 (4.0.3)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Sorry, yes, I'm referring to the &quot;Host Header Value.&quot;  You do not need 
+to assign<br>
+a specific IP address.  You can also select the &quot;all unassigned&quot; option.</tt><br>
+<br>
+<tt>What's not working?  I thought we had it working just fine?</tt><br>
+<br>
+<tt>--Jarod</tt><br>
+<br>
+<tt>Quoting Konstantin Voyk &lt;kvoyk@xxxxxxxxx&gt;:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">Jarod,
+I want you clarify some definition. When you say host name does it mean the
+same as &quot;Host Header value&quot; in IIS manager? And is binding mean assigning
+this host name to specific IP?
+With this configuration what I described above cosign filter does not work.
+Konstantin.</pre><br>
+<pre style="margin: 0em;"><br>-----Original Message-----
+From: jarod@xxxxxxxxx [<a  href="mailto:jarod@xxxxxxxxx">mailto:jarod@xxxxxxxxx</a>]
+Sent: Friday, August 12, 2005 3:19 PM
+To: cosign-discuss@xxxxxxxxx
+Cc: Konstantin Voyk; 'Townsend, Paul'; 'Asfaw-Kirby, Elias';
+cosign@xxxxxxxxx; 'Lyle Whitney'
+Subject: RE: IISCosign - one physical server more than 1
+cosign-servicepossible?</pre><br>
+<pre style="margin: 0em;"><br>If you are using the XML tag &lt;Service website=&quot;host.institution.edu&quot;&gt;
+you should
+also use the &quot;Advanced Website Identification&quot; settings in IIS Manager
+(right-click on the web site, select Properties, then the Web Site tab, then
+click on the Advanced... button) to locally 'bind' your hostname to your IP
+address.  IIS does NOT do this automatically and, as Paul described,
+leads to a
+major security hole.</pre><br>
+<pre style="margin: 0em;">If you are using &lt;Service IISDescription=&quot;Web site name here&quot;&gt; then the
+above
+does not apply.</pre><br>
+<tt>--Jarod</tt><br>
+<br>
+<tt>Quoting Konstantin Voyk &lt;kvoyk@xxxxxxxxx&gt;:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">Paul,
+Is adding host name to web site in IIS management console covers this
+security hole?
+Konstantin.</pre><br>
+<pre style="margin: 0em;">-----Original Message-----
+From: Townsend, Paul [<a  href="mailto:townsend@xxxxxxxxxxxxx">mailto:townsend@xxxxxxxxxxxxx</a>]
+Sent: Friday, August 12, 2005 2:04 PM
+To: Konstantin Voyk; Asfaw-Kirby, Elias; cosign-discuss@xxxxxxxxx
+Subject: RE: IISCosign - one physical server more than 1 cosign-service
+possible?</pre><br>
+<tt><br>Do NOT use the website=&quot;ws1.umich.edu&quot; syntax.</tt><br>
+<br>
+<pre style="margin: 0em;">Use the IISDescription=&quot;ws1&quot; syntax instead. i.e.
+&lt;Service IISDescription=&quot;ws1&quot;&gt;</pre><br>
+<pre style="margin: 0em;">Reason? Anybody can put your server's ip address into their hosts file
+and hit your site using a different dns.  If you use the website=&quot;&quot;
+syntax, the cosign filter won't recognize that  user-created dns, the
+request sails right through, and the user is in.  BIG BIG security hole.</pre><br>
+<pre style="margin: 0em;">IIRC, the website=&quot;&quot; syntax was supposed to be deprecated.  If you're
+still using it, you should change it immediately.  Your site is
+completely open to anybody who knows how to use a hosts file, or who
+hits your server using the ip address.</pre><br>
+<pre style="margin: 0em;">The rest of what you say is correct.  Make sure you're using a recent
+version of IIS cosign, since early versions didn't play nice with W2k3 &amp;
+multiple sites.  Long since fixed.</pre><br>
+<pre style="margin: 0em;">-Paul Townsend
+Systems Analyst
+Ross School of Business</pre><br>
+<tt>________________________________</tt><br>
+<br>
+<pre style="margin: 0em;">From: Konstantin Voyk [<a  href="mailto:kvoyk@xxxxxxxxx">mailto:kvoyk@xxxxxxxxx</a>]
+Sent: Friday, August 12, 2005 1:45 PM
+To: Asfaw-Kirby, Elias; cosign-discuss@xxxxxxxxx
+Subject: RE: IISCosign - one physical server more than 1 cosign-service
+possible?</pre><br>
+<tt></tt><br>
+<br>
+<tt>Elias,</tt><br>
+<br>
+<pre style="margin: 0em;">1. Apply cosign filter at 'Web Sites' level (where your multiple
+websites are listed)</pre><br>
+<tt>2. Modify your config file to protect multiple web sites</tt><br>
+<br>
+<tt>     &lt;Service website=&quot; ws1.umich.edu &quot;&gt;cosign-SERVICE1</tt><br>
+<br>
+<tt>           &lt;Protected&gt;/ &lt;/Protected&gt;</tt><br>
+<br>
+<tt>     &lt;/Service&gt;</tt><br>
+<br>
+<tt>     &lt;Service website=&quot; ws2.umich.edu &quot;&gt;cosign- SERVICE2</tt><br>
+<br>
+<tt>           &lt;Protected&gt;/application1/page1.aspx&lt;/Protected&gt;</tt><br>
+<br>
+<tt>           &lt;Protected&gt;/application2/page2.aspx&lt;/Protected&gt;</tt><br>
+<br>
+<tt>     &lt;/Service&gt;</tt><br>
+<br>
+<tt>Konstantin.</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt>________________________________</tt><br>
+<br>
+<pre style="margin: 0em;">From: Elias Asfaw-Kirby [<a  href="mailto:eliasak@xxxxxxxxx">mailto:eliasak@xxxxxxxxx</a>]
+Sent: Friday, August 12, 2005 1:28 PM
+To: cosign-discuss@xxxxxxxxx
+Subject: IISCosign - one physical server more than 1 cosign-service
+possible?</pre><br>
+<tt></tt><br>
+<br>
+<pre style="margin: 0em;"><br>Is it possible to have more than one cosign service running off one
+physical server using IIS Cosign.
+(OS - Windows Server 2003)</pre><br>
+<pre style="margin: 0em;">Ex.
+Currently hosting website  ws1.umich.edu on iisserver.umich.edu and
+cosign works great.
+Is it possible to host host ws2.umich.edu on iisserver.umich.edu and use
+cosign there also.</pre><br>
+<pre style="margin: 0em;">Thanks Team,
+--
+Elias Asfaw-Kirby | 734-615-6490
+Web Developer     | eliasak@xxxxxxxxx</pre><br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00507" href="msg00507.shtml">RE: IISCosign - one physical server more than 1cosign-servicepossible?</a></strong>
+<ul><li><em>From:</em> Konstantin Voyk</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00504" href="msg00504.shtml">RE: IISCosign - one physical server more than 1 cosign-servicepossible?</a></strong>
+<ul><li><em>From:</em> Konstantin Voyk</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00504.shtml">RE: IISCosign - one physical server more than 1 cosign-servicepossible?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00506.shtml">Re: Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00504.shtml">RE: IISCosign - one physical server more than 1 cosign-servicepossible?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00507.shtml">RE: IISCosign - one physical server more than 1cosign-servicepossible?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00505"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00505"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

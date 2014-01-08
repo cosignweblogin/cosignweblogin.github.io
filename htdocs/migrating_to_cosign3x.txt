@@ -1,0 +1,129 @@
+25 June 2009
+
+The cosign development team has identified flaws in cosign affecting all versions up to and including cosign 2.1.1. These flaws may allow attackers to pose as legitimate service users within an organization's cosign environment. To address these flaws, the cosign development team has designed, developed and released cosign 3.0. Although we are unaware of any publicly available exploits at this time, all institutions running cosign should upgrade to cosign 3.0 as soon as possible. We are withholding details of the flaws in an effort to give cosign-protected organizations an opportunity to upgrade; an early notification to organizations known to be using cosign went out in the middle of April. Barring any pressing reason to continue withholding the details of the flaws, we intend to disclose the flaws in legacy cosign releases on July 22nd.
+
+The latest cosign 3.x release may be downloaded here:
+
+http://weblogin.org/download.html
+
+Below you will find an overview of migrating to cosign 3.0. The READMEs and manual pages have also been updated. Several institutions have completed the upgrade or are in the process of migrating. The University of Michigan has posted a migration page to assist local web administrators as they make the transition:
+
+http://www.itcs.umich.edu/itcsdocs/s4364/
+
+--
+
+* Changes to cosign.conf for cosign 3.0 *
+
+Eliminating these flaws has required significant modification of the cosign.conf syntax. The "service" keyword has expanded to include service name and validation handler URL:
+
+service cosign-webmail	https://webmail.example.edu/cosign/valid	2 	webmail\.example\.edu
+
+The service name field takes a regular expression, matches of which may be substituted into the validation handler URL. After registering the service cookie, the cosign.cgi will redirect the user to the validation handler URL associated with the service name. The flags field adds a new flag, "2", indicating that the service is still permitted to use the legacy cosign scheme in which service cookies are passed to the cosign.cgi on the query string; this is in place to ease the transition to cosign 3.0. The CN is also regular expression. If the "service" line is made up of only 5 fields, only CNs matching the pattern in field 5 are allowed to talk to cosignd about service cookies matching the pattern in field 2. An optional 6th field is available, primarily in order to continue providing the ability to configure a default service, as follows:
+
+service cosign-(.+)		https://$1/cosign/valid		0	(.+\.example\.edu)	cosign-$1
+
+This default rule permits any web administrator within the organization to cosign-protect their service as long as they have a valid certificate. All they need do is name their service after their CN, and the weblogin administrators never need be involved. With the CN and service name of "webmail.example.edu", the above service entry would expand like this:
+
+service cosign-webmail.example.edu https://webmail.example.edu/cosign/valid  0 webmail.example.edu cosign-webmail.example.edu
+
+If the optional cookie value in the 6th field is available, cosignd will only allow CNs matching the pattern in field 5 to check it.
+
+Other changes to the cosign.conf for cosign 3.0, specifically the new "proxy" and "reauth" keywords, are detailed in the cosign.conf(5) manpage.
+
+
+* New filter directives *
+
+The filters add a couple new directives to handle the changes to the cosign architecture. For the Apache filters, they are:
+
+CosignValidReference: a regular expression matching URLs the service administrator considers safe. This value may be as open or restrictive as the administrator chooses. A good policy is to at least limit valid URLs to the organization domain, as in this example:
+
+CosignValidReference		^https://.+\.example\.edu(/.*)?
+
+CosignValidationErrorRedirect: the URL to which users will be redirected if the validation handler cannot validate either the service cookie or the destination URL. This URL can be anywhere, but a good policy would be to point to a page on the central weblogin servers, as in this example:
+
+CosignValidationErrorRedirect	http://weblogin.example.edu/validation_error.html
+
+In order for the cosign3 Apache filters to intercept requests for /cosign/valid, you must also designate mod_cosign as the handler for that URI:
+
+<Location /cosign/valid>
+	SetHandler		cosign
+	CosignProtected	Off
+	Allow from all
+	Satisfy any
+</Location>
+
+The IISCosign configuration adds two new configuration tags:
+
+<ValidReference>^https://.+\.example\.edu(/.*)?</ValidReference>   <ValidationErrorRedirect>http://weblogin.example.edu/validation_error.html</ValidationErrorRedirect>
+
+The URI "/cosign/valid" does not need to be defined on the IIS server.  IISCosign will intercept and process any requests beginning with "/cosign/valid".
+
+The Java filter adds these configuration tags:
+
+<LocationHandlerRef>/cosign/valid</LocationHandlerRef>
+
+This is equivalent to the Location block in the Apache configuration above.
+
+<RedirectRegex>^https://.+\.example\.edu(/.*)?</RedirectRegex>
+
+More details can be found at the University of Michigan's cosign 3.0 transition page, linked above.
+
+
+* Upgrading a legacy cosign environment to cosign 3.0 *
+
+Cosign 3.0 introduces several significant architectural changes in an effort to address fundamental problems in the legacy scheme. Among other things, those changes require the weblogin administrators to link service names with certificates, and demand updates to all deployed cosign-protected services. Unless the weblogin administrators have (wisely) put into place a system for registering and tracking in-use cosign services within the organization, it can be difficult to track service names and the CNs using them, especially in a decentralized IT environment. As part of the upgrade process at the University of Michigan, we have deployed a patch logging all cookie checks from the filters, allowing us to connect service and CNs. That patch follows the text of this message, and applies to cosign 2.1.0 and cosign 2.1.1. With the information from the additional logging, the weblogin administrators can generate cosign 3.0 cosign.conf service entries as needed.
+
+The cosign 3.0 cosign.cgi supports the legacy cosign scheme. As long as a given service includes the "2" flag, the cgi will permit that service's legacy filter to participate in the weblogin environment. This backward compatibility permits the weblogin administrators to upgrade the central login servers to cosign 3.0 first, then concentrate on getting the cosign 3.0 filters deployed throughout the organization.
+
+--
+
+Index: daemon/command.c
+===================================================================
+RCS file: /cvsroot/cosign/cosign/daemon/command.c,v
+retrieving revision 1.86
+diff -u -r1.86 command.c
+--- daemon/command.c	4 Jun 2007 19:54:37 -0000	1.86
++++ daemon/command.c	19 Mar 2009 19:26:33 -0000
+@@ -105,6 +105,9 @@
+struct rate	checkfail = { 0 };
+struct rate	checkunknown = { 0 };
+
++/* CN of cert presented by client. */
++char		*remote_cn = NULL;
++
+int	replicated = 0; /* we are not talking to ourselves */
+int	protocol = 0;
+int	ncommands = sizeof( unauth_commands ) / sizeof(unauth_commands[ 0 ] );
+@@ -183,9 +186,15 @@
+	snet_writef( sn, "%d No access for %s\r\n", 401, buf );
+	exit( 1 );
+  }
++    if (( remote_cn = strdup( buf )) == NULL ) {
++	syslog( LOG_ERR, "f_starttls: strdup %s: %m", buf );
++	snet_writef( sn, "%d STARTTLS internal server error\r\n", 501 );
++	exit( 1 );
++    }
++    /* remote_cn lasts lifetime of child. */
+
+  syslog( LOG_INFO, "STARTTLS %s %d %s",
+-	    inet_ntoa( cosign_sin.sin_addr ), protocol, buf );
++	    inet_ntoa( cosign_sin.sin_addr ), protocol, remote_cn );
+
+  commands = auth_commands;
+  ncommands = sizeof( auth_commands ) / sizeof( auth_commands[ 0 ] );
+@@ -991,6 +1000,16 @@
+	}
+
+  }
++
++    /* just to log association of service with cert CN. */
++    if ( status == 231 ) {
++	/* this is a service cookie, not a weblogin cookie. */
++	if (( p = strchr( av[ 1 ], '=' )) != NULL ) {
++	    *p = '\0';
++	    syslog( LOG_NOTICE, "CHECK %s %s", av[ 1 ], remote_cn );
++	    *p = '=';
++	}
++    }
+  return( 0 );
+}

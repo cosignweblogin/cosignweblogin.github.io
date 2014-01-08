@@ -1,0 +1,127 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: audit trail -->
+<!--X-From-R13: Irfyrl R Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Thu, 29 Jul 2004 16:59:19 &#45;0400 (EDT) -->
+<!--X-Message-Id: B2D2C384&#45;E1A1&#45;11D8&#45;BE39&#45;000A95A0453E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1091109499.4109027b09c51@krusty.si.umich.edu -->
+<!--X-Reference: F6CCAE0E&#45;E19A&#45;11D8&#45;BE39&#45;000A95A0453E@umich.edu -->
+<!--X-Reference: 1091132078.41095aae5a598@krusty.si.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00209.shtml">Date Prev</a>][<a href="msg00211.shtml">Date Next</a>][<a href="msg00207.shtml">Thread Prev</a>][<a href="msg00212.shtml">Thread Next</a>][<a href="maillist.shtml#00210">Date Index</a>][<a href="threads.shtml#00210">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: audit trail</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:renjutj@DOMAIN.HIDDEN">renjutj@xxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: audit trail</li>
+<li><em>From</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 29 Jul 2004 16:56:01 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00207.shtml">1091132078.41095aae5a598@krusty.si.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00204.shtml">1091109499.4109027b09c51@krusty.si.umich.edu</a>&gt; &lt;<a href="msg00205.shtml">F6CCAE0E-E19A-11D8-BE39-000A95A0453E@umich.edu</a>&gt; &lt;<a href="msg00207.shtml">1091132078.41095aae5a598@krusty.si.umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 29 Jul 2004, at 16:14, renjutj@xxxxxxxxxxxx wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">So, I understand that I don't have to query the Kerberos server to get
+the authentication info, right?
+</pre></blockquote><tt><br>Right.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">btw, how does the data for full
+logging of user interaction look like. Is it similar to the Apache
+Access log?
+</pre></blockquote><tt><br>It is *exactly* the apache access logs.  The REMOTE_USER field is 
+filled in by the cosign filter.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00204" href="msg00204.shtml">audit trail</a></strong>
+<ul><li><em>From:</em> renjutj</li></ul></li>
+<li><strong><a name="00205" href="msg00205.shtml">Re: audit trail</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+<li><strong><a name="00207" href="msg00207.shtml">Re: audit trail</a></strong>
+<ul><li><em>From:</em> renjutj</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00209.shtml">Re: replication</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00211.shtml">Re: Java Cosign Filter</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00207.shtml">Re: audit trail</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00212.shtml">Question about user creating</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00210"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00210"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

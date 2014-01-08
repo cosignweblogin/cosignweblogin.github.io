@@ -1,0 +1,209 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: logout and cosign.cgi question -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 21 Apr 2004 22:47:05 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040422024403.79921354A2@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C907F681&#45;9403&#45;11D8&#45;B8B6&#45;000A95CD7232@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00081.shtml">Date Prev</a>][<a href="msg00083.shtml">Date Next</a>][<a href="msg00081.shtml">Thread Prev</a>][<a href="msg00088.shtml">Thread Next</a>][<a href="maillist.shtml#00082">Date Index</a>][<a href="threads.shtml#00082">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: logout and cosign.cgi question</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'kevin mcgowan'&quot; &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: logout and cosign.cgi question</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 22 Apr 2004 14:44:03 +1200</li>
+<li><em>Cc</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00081.shtml">C907F681-9403-11D8-B8B6-000A95CD7232@umich.edu</a>&gt;</li>
+<li><em>Thread-index</em>: AcQoEJLCzmfwNxizR/ipiWmwm9K0jgAAeyrQ</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Kevin,
+
+I think the cgi-bin/logout with script alias works well, but I am just
+thinking from an installation point of view.
+
+I would like to see CoSign much easier is intall, and this what I am trying
+to for the UoA as a first step to putting CoSign into production here. So
+from my point of view, the least amount of changes needed to the httpd.cond
+and ssl.conf etc etc would be the best, as long as it is (of course) reason
+to have this. Although I am looking at perhaps writing something so the make
+process and alter the httpd.conf etc appropriately for the basic
+configurations and then is can be tweaked if needed. Thoughts?
+
+I am also in the process of making the configure script a little more
+consistent (eg --enable-apache2 and --with-apache-apxs) and configurable
+based on the prefix etc...
+
+I am also thinking of bringing the IISCosign source in the filters directory
+and alter the common code (in the common directory and libsnet) to compile
+on both win32 and linux. I think this makes for a cleaner development
+environment.
+
+What are your thoughts?
+
+Please do not take my suggestions as criticism :) These are things I want to
+do and I would like my work to useful to the wider community also, so
+suggestions would be good :)
+
+Brett
+
+------------
+
+Brett Lomas
+Integration Architect
+Information Technology Systems and Services
+The University of Auckland
+New Zealand
+
+Phone:		+64 9 3737 599 extn 86499
+Mobile:		+64 21 757 096
+
+
+-----Original Message-----
+From: kevin mcgowan [<a  href="mailto:clunis@xxxxxxxxx">mailto:clunis@xxxxxxxxx</a>] 
+Sent: Thursday, 22 April 2004 2:22 p.m.
+To: Brett Lomas
+Cc: 'Cosign Discussion'
+Subject: Re: logout and cosign.cgi question
+
+We install logout in a cgi-bin directory using a ScriptAlias -- so it 
+doesn't need an extension.  We install the login cgi in DocumentRoot 
+with ExecCGI turned on -- so we use the .cgi extension there.  Lot's of 
+our users already knew that appending &quot;/cgi-bin/logout&quot; to the end of a 
+url would cause logout to happen, so we wanted to preserve that 
+behavior.
+
+There's not much more to it than that.  Do you think it would make more 
+sense to move the logout cgi into DocumentRoot/logout/index.cgi or 
+similar?  So a ScriptAlias isn't needed?
+
+Kevin
+
+On Apr 21, 2004, at 9:15 PM, Brett Lomas wrote:
+
+&gt; Hi all,
+&gt;
+&gt; just a simple question, why was logout not called logout.cgi, is it 
+&gt; because you have them in the same directory ( ie / ) on the web server 
+&gt; and you have specified .cgi as a directory index and it will get 
+&gt; confused? If so why not use /logout with the logout.cgi in there??
+&gt;
+&gt; Cheers
+&gt;
+&gt; Brett
+&gt;
+&gt; ------------
+&gt;
+&gt; Brett Lomas
+&gt;
+&gt; Integration Architect
+&gt;
+&gt; Information Technology Systems and Services
+&gt;
+&gt; The University of Auckland
+&gt;
+&gt; New Zealand
+&gt;
+&gt; Phone:&#xA0; &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 9 3737 599 extn 86499
+&gt;
+&gt; Mobile: &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 21 757 096
+&gt;
+&gt;  !DSPAM:40871d16257302389411967!
+
+                   ... being a rock I am without movement ...
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00088" href="msg00088.shtml">Re: logout and cosign.cgi question</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00081" href="msg00081.shtml">Re: logout and cosign.cgi question</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00081.shtml">Re: logout and cosign.cgi question</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00083.shtml">RE: A couple of changes I have made from the CVS source</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00081.shtml">Re: logout and cosign.cgi question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00088.shtml">Re: logout and cosign.cgi question</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00082"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00082"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

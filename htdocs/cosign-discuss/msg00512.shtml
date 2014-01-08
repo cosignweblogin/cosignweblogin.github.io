@@ -1,0 +1,139 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: browser redirection loop -->
+<!--X-From-R13: Yevf Egrvaubss <fgrvaubsNhzvpu.rqh> -->
+<!--X-Date: Mon, 15 Aug 2005 09:37:19 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20050815133600.GA5588@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00511.shtml">Date Prev</a>][<a href="msg00513.shtml">Date Next</a>][<a href="msg00511.shtml">Thread Prev</a>][<a href="msg00513.shtml">Thread Next</a>][<a href="maillist.shtml#00512">Date Index</a>][<a href="threads.shtml#00512">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>browser redirection loop</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: browser redirection loop</li>
+<li><em>From</em>: Kris Steinhoff &lt;<a href="mailto:steinhof@DOMAIN.HIDDEN">steinhof@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 15 Aug 2005 09:36:00 -0400</li>
+<li><em>User-agent</em>: Mutt/1.4.2.1i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi All,
+
+I'm setting up my OS X Server (10.4.2) as a web server with cosign,
+and I've come up against a problem. 
+
+When I visit my server I'm am redirected to weblogin.umich.edu, and
+authenticate normally. But after my browser is sent back to my
+server, the browser is redirected back to weblogin, creating a loop.
+
+With each iteration of the redirection loop, this error is printed to
+my apache error log:
+
+  mod_cosign: netcheck_cookie: snet_writef failed
+
+My browser times-out after a few bounces (Firefox prints an error
+about possible cookie writing trouble). My cookie settings aren't that
+strict and I've tried this with three different browsers, so I don't
+think it's a browser problem. Cookies are set in my browser for both
+my server and weblogin.umich.edu.
+
+Where should I look to fix this? My guess is that it's some where
+towards the end of the process. I'm happy to send along any other
+configuration info.
+
+thanks
+-kris
+
+-- 
+Kris Steinhoff
+University of Michigan Health Service
+Information Technology Services
+
+Electronic mail is not secure, may not be read every day, 
+and should not be used for urgent or sensitive issues.
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00513" href="msg00513.shtml">Re: browser redirection loop</a></strong>
+<ul><li><em>From:</em> Elias Asfaw-Kirby</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00511.shtml">Re[7]: Vanhaute Bakalova Tatarinov Bayer</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00513.shtml">Re: browser redirection loop</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00511.shtml">Re[7]: Vanhaute Bakalova Tatarinov Bayer</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00513.shtml">Re: browser redirection loop</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00512"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00512"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

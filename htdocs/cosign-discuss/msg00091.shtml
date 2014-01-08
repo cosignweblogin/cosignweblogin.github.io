@@ -1,0 +1,144 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: A couple of CoSign design and deployment questions -->
+<!--X-From-R13: [nex [bagnthr <znexzbagNhzvpu.rqh> -->
+<!--X-Date: Thu, 22 Apr 2004 19:49:09 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.SOL.4.58.0404221934150.24785@mozi.lsait.lsa.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040422223300.D15FE34F33@smtp1.ec.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00090.shtml">Date Prev</a>][<a href="msg00092.shtml">Date Next</a>][<a href="msg00090.shtml">Thread Prev</a>][<a href="msg00092.shtml">Thread Next</a>][<a href="maillist.shtml#00091">Date Index</a>][<a href="threads.shtml#00091">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: A couple of CoSign design and deployment questions</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: A couple of CoSign design and deployment questions</li>
+<li><em>From</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 22 Apr 2004 19:47:07 -0400 (EDT)</li>
+<li><em>Cc</em>: &quot;'kevin mcgowan'&quot; &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;, &quot;'Liam Hoekenga'&quot; &lt;<a href="mailto:liamr@DOMAIN.HIDDEN">liamr@xxxxxxxxx</a>&gt;,   <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00090.shtml">20040422223300.D15FE34F33@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00090.shtml">20040422223300.D15FE34F33@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Fri, 23 Apr 2004, Brett Lomas wrote:
+
+&gt; Kevin, or some one else @ UMich :)
+&gt;
+&gt; Can you tell me the approx. number of EFTS (Effective Full-Time
+&gt; Students/Staff) UMich has?
+
+&gt;From the pages linked at <a  href="http://www.umich.edu/~oapainfo/contents.html">http://www.umich.edu/~oapainfo/contents.html</a>
+
+Total students, Fall term, 2003:                 39,031
+Total faculty, Fall term, 2003:                   5,330
+Total staff, Ann Arbor campus, Fall Term, 2003:  23,044
+-------------------------------------------------------
+Grand total:                                     67,405
+
+Note that the University of Michigan Hospitals are separate,
+to a degree, from the rest of campus.  The adjusted grand
+total excluding hospital staff on the basis that many of them
+may not use cosign, is 56,936.
+
+On the other hand, the University of Michigan allows students
+to keep their username for life and many alumni, other non-current
+students, and guests from other institutions utilize University of
+Michigan computing services.  I do not have accurate numbers for
+these, but my best guess at an adjusted total for all students,
+faculty, staff, and guests is 75,000 - 86,000.
+
+Thus, if you want to be conservative, we're accomodating at least
+57,000 users on our cosign servers.  If you want to be liberal, we
+might be accomodating 86,000 or more.
+
+                Mark Montague
+                LS&amp;A Information Technology
+                The University of Michigan
+                markmont@xxxxxxxxx
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00090" href="msg00090.shtml">RE: A couple of CoSign design and deployment questions</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00090.shtml">RE: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00092.shtml">RE: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00090.shtml">RE: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00092.shtml">RE: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00091"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00091"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

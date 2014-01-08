@@ -1,0 +1,154 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: ISAPI Source Code -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Thu, 25 Mar 2004 17:33:21 &#45;0500 (EST) -->
+<!--X-Message-Id: 6B5CA0AB&#45;7EAC&#45;11D8&#45;923F&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00026.shtml">Date Prev</a>][<a href="msg00028.shtml">Date Next</a>][<a href="msg00026.shtml">Thread Prev</a>][<a href="msg00028.shtml">Thread Next</a>][<a href="maillist.shtml#00027">Date Index</a>][<a href="threads.shtml#00027">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: ISAPI Source Code</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>, Mark Allen Earnest &lt;<a href="mailto:mxe20@DOMAIN.HIDDEN">mxe20@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: ISAPI Source Code</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Thu, 25 Mar 2004 16:20:37 -0500</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Mark,</tt><br>
+<br>
+<tt>You can download the source for IISCosign 1.0.2. here:</tt><br>
+<br>
+<tt>&lt;<a  href="http://cowboybebop.staff.itd.umich.edu/iiscosign/">http://cowboybebop.staff.itd.umich.edu/iiscosign/</a>&gt;</tt><br>
+<br>
+<tt>The only difference between 1.0.0 and 1.0.2 is the addition of being 
+able to limit log file sizes.  I use Visual Studio 6.0 to compile 
+IISCosign.  I haven't had time to work out the kinks in getting it to 
+VS.NET.</tt><br>
+<br>
+<tt>There may be some cruft with the libsnet.  It was compiled with Visual 
+Studio.NET.  All you need to do is link to the libsnet.lib file, which 
+is already compiled and included.</tt><br>
+<br>
+<tt>You'll also need to download and compile openssl.org.  Any recent 
+version should work fine, IISCosign isn't doing anything fancy.</tt><br>
+<br>
+<tt>I think that's it.  Please let us know how the compiling goes for you!</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan - ITCS</pre><br>
+<tt>--On Thursday, March 25, 2004 2:02 PM -0500 Mark Allen Earnest 
+&lt;mxe20@xxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1</pre><br>
+<pre style="margin: 0em;"><br>Hello,
+Would it be possible for me to get a zip file of the 1.0.0 ISAPI filter
+source and VisualStudio files?</pre><br>
+<tt>My purpose in this is to build my own version of the filter that 
+requests<br>
+an MIT K5 ticket (like mod_cosign).</tt><br>
+<br>
+<tt>Thank you,</tt><br>
+<br>
+<pre style="margin: 0em;">Mark Earnest
+Lead Systems Programmer
+Emerging Technologies
+The Pennsylvania State University</pre><br>
+<pre style="margin: 0em;">Public Key - <a  href="http://www.personal.psu.edu/mxe20/gpgkey.txt">http://www.personal.psu.edu/mxe20/gpgkey.txt</a>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.3 (GNU/Linux)</pre><br>
+<pre style="margin: 0em;">iD8DBQFAYyy4ooNLpLZfPIMRAirWAJ99eYvpZOQxLLZccIj6MoB/WVWkqQCeMrPp
+DnX2TBNqZID7OtwmbEkls/c=
+=sXpv
+-----END PGP SIGNATURE-----
+</pre></blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00026.shtml">ISAPI Source Code</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00028.shtml">Re: ISAPI Source Code</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00026.shtml">ISAPI Source Code</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00028.shtml">Re: ISAPI Source Code</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00027"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00027"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

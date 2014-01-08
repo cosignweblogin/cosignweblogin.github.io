@@ -1,0 +1,129 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Java Cosign Filter -->
+<!--X-From-R13: Xbua [vgpuryy <wszNzvavbnx.pbz> -->
+<!--X-Date: Fri, 2 Jul 2004 11:11:11 &#45;0400 (EDT) -->
+<!--X-Message-Id: 40E57AB0.3080703@minioak.com -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00156.shtml">Date Prev</a>][<a href="msg00158.shtml">Date Next</a>][<a href="msg00156.shtml">Thread Prev</a>][<a href="msg00211.shtml">Thread Next</a>][<a href="maillist.shtml#00157">Date Index</a>][<a href="threads.shtml#00157">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Java Cosign Filter</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Java Cosign Filter</li>
+<li><em>From</em>: John Mitchell &lt;<a href="mailto:jfm@DOMAIN.HIDDEN">jfm@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 02 Jul 2004 16:09:36 +0100</li>
+<li><em>User-agent</em>: Mozilla/5.0 (X11; U; SunOS sun4u; en-US; rv:1.4) Gecko/20040414</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Hi,</tt><br>
+<br>
+<tt>I'm reading the following in the Java filter README.</tt><br>
+<br>
+<tt>To install jCoSign into an existing web application, perform the following.</tt><br>
+<br>
+<tt>- Create an SSL KeyStore:</tt><br>
+<br>
+<pre style="margin: 0em;">1. Create a keystore using your JDK or JRE's &quot;keytool&quot; utility.
+A description of how to use keytool can be found at
+<a  href="http://java.sun.com/j2se/1.4.2/docs/tooldocs/solaris/keytool.html">http://java.sun.com/j2se/1.4.2/docs/tooldocs/solaris/keytool.html</a></pre><br>
+<pre style="margin: 0em;">2. Place your keystore somewhere that your application server has
+access.</pre><br>
+<tt>It is not clear what the keystore is meant to contain - is it just a 
+public / private key pair for the web application - or is it a self 
+signed certificate for the web application...in which case if there is a 
+&quot;real&quot; certificate available - should this be imported into the above 
+keystore? And what about aliases for the keys / certificates - are there 
+any specific aliases that are expected by the filter?</tt><br>
+<br>
+<tt>Kind Regards</tt><br>
+<br>
+<tt>John Mitchell</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00211" href="msg00211.shtml">Re: Java Cosign Filter</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00156.shtml">RE: Problem with CVS version?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00158.shtml">cosign and MIT Kerberos</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00156.shtml">RE: Problem with CVS version?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00211.shtml">Re: Java Cosign Filter</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00157"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00157"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

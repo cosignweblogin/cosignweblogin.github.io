@@ -1,0 +1,229 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign login on Mac 10.3.6 Server -->
+<!--X-From-R13: Rbht Vrnql <qurnqlNhzvpu.rqh> -->
+<!--X-Date: Mon, 15 Nov 2004 09:28:54 &#45;0500 (EST) -->
+<!--X-Message-Id: E422CD80&#45;3711&#45;11D9&#45;B14A&#45;000393C437E0@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20041111002742.GR27663@tristero.reed.edu -->
+<!--X-Reference: 91C2B1DE&#45;337D&#45;11D9&#45;9BA2&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: 20041111233915.GA10835@tristero.reed.edu -->
+<!--X-Reference: 6A96C7C0&#45;3441&#45;11D9&#45;B8BF&#45;000A95CD7232@umich.edu -->
+<!--X-Reference: 20041112003318.GD10815@tristero.reed.edu -->
+<!--X-Reference: 2EB5EE80&#45;345B&#45;11D9&#45;8FD7&#45;000393853322@umich.edu -->
+<!--X-Reference: 77252BE8&#45;3595&#45;11D9&#45;9BE3&#45;000A95A0453E@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00285.shtml">Date Prev</a>][<a href="msg00287.shtml">Date Next</a>][<a href="msg00285.shtml">Thread Prev</a>][<a href="msg00287.shtml">Thread Next</a>][<a href="maillist.shtml#00286">Date Index</a>][<a href="threads.shtml#00286">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign login on Mac 10.3.6 Server</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign login on Mac 10.3.6 Server</li>
+<li><em>From</em>: Doug Heady &lt;<a href="mailto:dheady@DOMAIN.HIDDEN">dheady@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 15 Nov 2004 09:23:16 -0500</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;,   David Chmura &lt;<a href="mailto:dschmura@DOMAIN.HIDDEN">dschmura@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00284.shtml">77252BE8-3595-11D9-9BE3-000A95A0453E@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00273.shtml">20041111002742.GR27663@tristero.reed.edu</a>&gt; &lt;<a href="msg00274.shtml">91C2B1DE-337D-11D9-9BA2-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00275.shtml">20041111233915.GA10835@tristero.reed.edu</a>&gt; &lt;<a href="msg00276.shtml">6A96C7C0-3441-11D9-B8BF-000A95CD7232@umich.edu</a>&gt; &lt;<a href="msg00277.shtml">20041112003318.GD10815@tristero.reed.edu</a>&gt; &lt;<a href="msg00278.shtml">2EB5EE80-345B-11D9-8FD7-000393853322@umich.edu</a>&gt; &lt;<a href="msg00284.shtml">77252BE8-3595-11D9-9BE3-000A95A0453E@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Wes and David,</tt><br>
+<br>
+<tt>This is my first attempt at building on OS X Server, so some of my 
+problems may be experience related.</tt><br>
+<br>
+<tt>Below is the output of running ./configure. I did try to add options to 
+include the apache binary path (/usr/sbin), kerberos IV-V, and GSS. 
+These didn't help or they weren't in the right combination.</tt><br>
+<br>
+<tt>Thanks for any suggestions,</tt><br>
+<br>
+<tt>Doug</tt><br>
+<br>
+<tt>------------------</tt><br>
+<br>
+<pre style="margin: 0em;">issstasks:/usr/local/bin/cosign-1.7.0 root# ./configure
+checking for gawk... no
+checking for mawk... no
+checking for nawk... no
+checking for awk... awk
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ANSI C... none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for flex... flex
+checking for yywrap in -lfl... yes
+checking lex output file root... lex.yy
+checking whether yytext is a pointer... yes
+checking for bison... bison -y
+checking build system type... powerpc-apple-darwin7.6.0
+checking host system type... powerpc-apple-darwin7.6.0
+checking for inet_ntoa in -lnsl... no
+checking for socket in -lsocket... no
+apache 1.3 not enabled
+apache 2 not enabled
+kerberos not enabled
+BasicAuth cgi will not be built
+mysql not enabled
+kerberos IV not enabled
+GSSAPI not enabled
+checking for ssl... /usr
+checking how to run the C preprocessor... gcc -E
+checking for egrep... grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking openssl/ssl.h usability... yes
+checking openssl/ssl.h presence... yes
+checking for openssl/ssl.h... yes
+configure: error: No web server found
+issstasks:/usr/local/bin/cosign-1.7.0 root# make
+make: *** No targets specified and no makefile found.  Stop.
+issstasks:/usr/local/bin/cosign-1.7.0 root#</pre><br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt>______________________________________<br>
+Doug Heady<br>
+Information Systems Shared Support<br>
+University of Michigan<br>
+503 Thompson St., Fleming Bldg., Room 108<br>
+Ann Arbor,  MI  48109-1340<br>
+Phone: 734-615-3336 Fax: 734-615-3590<br>
+Computing Systems Support for: Presidents Office., Provost Office, VP 
+for Gov't. Relations, VP for Communications, Regents, VP &amp; Sec. of the 
+Univ., OAMI, General Counsel, VP of Research, Budget &amp; Planning, &amp; VP 
+of Student Affairs<br>
+ISSS webpage: <a  href="http://www.umich.edu/~isss">http://www.umich.edu/~isss</a></tt><br>
+<br>
+<tt><br>On Nov 13, 2004, at 12:00 PM, Wesley D Craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>What sort of errors are you getting?  Others have built cosign on Mac 
+OS X Server, probably not 10.3.6 specifically, tho.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<tt>On 11 Nov 2004, at 22:30, Doug Heady wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I've gone through the documentation and have attempted some builds on 
+a test server. I haven't had success getting the ./configure to run 
+without errors.
+</tt></blockquote><tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00287" href="msg00287.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00273" href="msg00273.shtml">multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+<li><strong><a name="00274" href="msg00274.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00275" href="msg00275.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+<li><strong><a name="00276" href="msg00276.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+<li><strong><a name="00277" href="msg00277.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+<li><strong><a name="00278" href="msg00278.shtml">Cosign login on Mac 10.3.6 Server</a></strong>
+<ul><li><em>From:</em> Doug Heady</li></ul></li>
+<li><strong><a name="00284" href="msg00284.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00285.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00287.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00285.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00287.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00286"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00286"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

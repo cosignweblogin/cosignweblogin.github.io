@@ -1,0 +1,135 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Restricting access -->
+<!--X-From-R13: [nex [bagnthr <znexzbagNhzvpu.rqh> -->
+<!--X-Date: Thu, 18 Mar 2004 00:28:24 &#45;0500 (EST) -->
+<!--X-Message-Id: 16752C3E&#45;789D&#45;11D8&#45;9CF0&#45;000A95A0453E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00008.shtml">Date Prev</a>][<a href="msg00010.shtml">Date Next</a>][<a href="msg00008.shtml">Thread Prev</a>][<a href="msg00010.shtml">Thread Next</a>][<a href="maillist.shtml#00009">Date Index</a>][<a href="threads.shtml#00009">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Restricting access</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:memo@DOMAIN.HIDDEN">memo@xxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: Restricting access</li>
+<li><em>From</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 23 Feb 2004 14:59:43 -0500 (EST)</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discussion@DOMAIN.HIDDEN">cosign-discussion@xxxxxxxxx</a></li>
+<li><em>Resent-date</em>: Thu, 18 Mar 2004 00:28:28 -0500</li>
+<li><em>Resent-from</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Resent-message-id</em>: &lt;Pine.SOL.4.58.0402231452180.9221@mozi.lsait.lsa.umich.edu&gt;</li>
+<li><em>Resent-to</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On Mon, 23 Feb 2004 memo@xxxxxxxxxxxx wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Is there a way to restrict access to our cosign server to certain 
+groups<br>
+within UM?  We want to distribute the School of Information's 
+configuration<br>
+of Mulberry via our Cosign enabled web server but we don't want our 
+alumni<br>
+to be able get the software since they aren't covered under the site<br>
+license.  Is this something Cosign can handle?  If not how can we 
+further<br>
+restrict access beyond Cosign?
+</tt></blockquote><tt><br>Just restrict access as you normally would without cosign.</tt><br>
+<br>
+<pre style="margin: 0em;">For example, to have Apache do the authorization for you,
+add a directive to the appropriate Directory context in http.conf,
+or to the appropriate .htaccess file such as
+    require group list-of-people-I-like
+The file containing the definition of the group can be
+defined by AuthDBGroupFile (if you're using mod_auth_db),
+AuthDBMGroupFile (mod_auth_dbm), or AuthGroupFile (mod_auth).</pre><br>
+<pre style="margin: 0em;">Or you can do authorization under apache using LDAP groups
+(mod_ldap) or groups defined in MySQL databases, to name just
+a few possibilities.</pre><br>
+<pre style="margin: 0em;">If you are writing active content (for example, a PHP page),
+cosign puts the name of the user into the REMOTE_USER environment
+variable.  Your page should use this variable when doing its
+authorization checks.</pre><br>
+<pre style="margin: 0em;">                Mark Montague
+                LS&amp;A Information Technology
+                markmont@xxxxxxxxx</pre><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00008.shtml">Re: Cosign install problem</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00010.shtml">error -12281</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00008.shtml">Re: Cosign install problem</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00010.shtml">error -12281</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00009"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00009"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

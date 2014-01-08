@@ -1,0 +1,170 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: the "back" button on the weblogout page -->
+<!--X-From-R13: "Fbjafraq, Bnhy" <gbjafraqNohf.hzvpu.rqh> -->
+<!--X-Date: Wed, 7 Sep 2005 13:19:55 &#45;0400 (EDT) -->
+<!--X-Message-Id: 41E6356038ADF94B9A054B1FA1F0BDAC039AA379@BUS&#45;MAIL01.bus.ads.itcs.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00539.shtml">Date Prev</a>][<a href="msg00541.shtml">Date Next</a>][<a href="msg00542.shtml">Thread Prev</a>][<a href="msg00541.shtml">Thread Next</a>][<a href="maillist.shtml#00540">Date Index</a>][<a href="threads.shtml#00540">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: the &quot;back&quot; button on the weblogout page</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Eadie, Gavin&quot; &lt;<a href="mailto:gavin@DOMAIN.HIDDEN">gavin@xxxxxxxxx</a>&gt;, &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: the &quot;back&quot; button on the weblogout page</li>
+<li><em>From</em>: &quot;Townsend, Paul&quot; &lt;<a href="mailto:townsend@DOMAIN.HIDDEN">townsend@xxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 7 Sep 2005 13:17:46 -0400</li>
+<li><em>Thread-index</em>: AcWzy+7a+GO4oZkMTo+C5dt75ABE3QAAWh0g</li>
+<li><em>Thread-topic</em>: the &quot;back&quot; button on the weblogout page</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+There's a simple way to avoid this messy behavior:  Reverse the order of
+local/global logout.  That is, send the user to the weblogin logout
+first, and do your local cleanup afterwards.
+
+To implement it, just make your logout links look like this:
+
+<a  href="https://weblogin.umich.edu/cgi-bin/logout?http://www.myservice.umich.edu">https://weblogin.umich.edu/cgi-bin/logout?http://www.myservice.umich.edu</a>
+/logout
+
+This will have the effect reversing the logout procedure; instead
+running your local logout script and then sending the user to weblogin,
+it sends the user to weblogin first with an immediate return to do the
+local cleanup.  (You'll need to modify your logout script so that it
+doesn't send the user into a loop, but that's fairly trivial)
+
+We use this approach at the B School, and it works pretty well.  Logout
+is not initiated until the user sees the &quot;Are you sure?&quot; message and
+clicks the &quot;Logout&quot; button.  The Back button works seamlessly, with no
+need to code anything into the app, because nothing has happened yet.
+
+In my view, that's how a confirmation screen should work.  Don't do
+anything until the user clicks OK.  
+
+
+Paul Townsend
+Sr. Applications Programmer
+Ross School of Business
+
+-----Original Message-----
+From: Gavin Eadie [<a  href="mailto:gavin@xxxxxxxxx">mailto:gavin@xxxxxxxxx</a>] 
+Sent: Wednesday, September 07, 2005 12:48 PM
+To: cosign-discuss@xxxxxxxxx
+Subject: the &quot;back&quot; button on the weblogout page
+
+After logging out from an application, the option to log out from the 
+weblogin service is presented on a screen with &quot;Back&quot; and &quot;Logout&quot; 
+buttons.  The &quot;Back&quot; button tries to take the user to the last page 
+they visited.
+
+If this return into the application would be to a &quot;deep&quot; page (one 
+that might represent a half-way point in a process the user abandoned 
+by clicking application logout), things get a little messy.  It's 
+nothing that the application cannot cope with by detecting the 
+attempt to reuse a terminated, or nonexistent, session and then 
+presenting the user with the application's front door, instead of the 
+targeted page.
+
+I also see an Apache cosign directive which looks like it might also be
+useful.
+
+    CosignSiteEntry ... [ the URL to redirect to after login  ]
+
+       If this is set to the URL of the application's front page, will 
+the behavior be to bring a user who clicks &quot;Back,&quot; as in the above 
+scenario, to that front page and obviate the need for the application 
+to catch the &quot;missing session&quot; case?
+
+
+Also, in passing, when the user clicks the weblogin logout, their 
+next presented page can be specified by the &quot;?<a  href="http://...&quot">http://...&quot</a>; which may 
+be passed to weblogin on the logout request.  Would it make sense to 
+have the target of the &quot;Back&quot; button similarly, optionally 
+configurable?
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00541" href="msg00541.shtml">Re: the &quot;back&quot; button on the weblogout page</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00539.shtml">the &quot;back&quot; button on the weblogout page</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00541.shtml">Re: the &quot;back&quot; button on the weblogout page</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00542.shtml">Re: the &quot;back&quot; button on the weblogout page</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00541.shtml">Re: the &quot;back&quot; button on the weblogout page</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00540"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00540"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

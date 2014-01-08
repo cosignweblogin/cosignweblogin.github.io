@@ -1,0 +1,142 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign 1.8.0 Released -->
+<!--X-From-R13: Uenrzr Ibbq <Uenrzr.IbbqNrq.np.hx> -->
+<!--X-Date: Wed, 16 Mar 2005 05:33:02 &#45;0500 (EST) -->
+<!--X-Message-Id: Pine.GSO.4.58.0503161017320.17265@sagittarius.ucs.ed.ac.uk -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: F8DD55A5&#45;95A0&#45;11D9&#45;9551&#45;000A95E48A4E@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00364.shtml">Date Prev</a>][<a href="msg00366.shtml">Date Next</a>][<a href="msg00393.shtml">Thread Prev</a>][<a href="msg00367.shtml">Thread Next</a>][<a href="maillist.shtml#00365">Date Index</a>][<a href="threads.shtml#00365">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign 1.8.0 Released</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign 1.8.0 Released</li>
+<li><em>From</em>: Graeme Wood &lt;<a href="mailto:Graeme.Wood@DOMAIN.HIDDEN">Graeme.Wood@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 16 Mar 2005 10:29:40 +0000 (GMT)</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;F8DD55A5-95A0-11D9-9551-000A95E48A4E@umich.edu&gt;</li>
+<li><em>References</em>: &lt;F8DD55A5-95A0-11D9-9551-000A95E48A4E@umich.edu&gt;</li>
+<li><em>Reply-to</em>: Graeme Wood &lt;<a href="mailto:Graeme.Wood@DOMAIN.HIDDEN">Graeme.Wood@xxxxxxxx</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Tue, 15 Mar 2005, johanna bromberg craig wrote:
+
+&gt; The Cosign Team is pleased to announce the availability of version
+&gt; 1.8.0 of cosign  [ MD5 64a025b4dc1de31a3cd2ff59cf086c1e ]
+&gt;
+&gt; Changelog at <a  href="http://www.umich.edu/~umweb/software/cosign/changelog.txt">http://www.umich.edu/~umweb/software/cosign/changelog.txt</a>
+
+It looks like the daemons won't start (and the CGIs won't run) unless
+there is a third argument to the service lines in the config file. This
+contradicts what it says in the man page and previous behaviour:
+
+    &quot;The third argument, which  is  a
+     flag  [P,T,PT,0] to signify if the host with the listed sub-
+     ject CN can ask for Kerberos tickets (T), proxy cookies (P),
+     both  (PT),  or none (0, or the field may be left blank).&quot;
+
+Is this an error or should the man page and our config files be updated?
+
+I also couldn't get it to compile on solaris with gcc 2.8.1 (I know it is
+ancient) - it complained about bad punctuation in filters/apache/log.h.
+
+There is also a problem when compiling the cgi on Solaris with friend
+support. This error exists in earlier releases too, but the login cgi
+won't compile unless you do not include crypt.h.
+
+-- 
+=============================================================================
+Graeme Wood                                 Email: Graeme.Wood@xxxxxxxx
+Unix Systems Support                        Phone: +44 131 650 5003
+The University of Edinburgh                 Fax:   +44 131 650 6552
+=============================================================================
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00367" href="msg00367.shtml">Re: Cosign 1.8.0 Released</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+<li><strong><a name="00368" href="msg00368.shtml">Re: Cosign 1.8.0 Released</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00364.shtml">Re: new jcosign service produces error message at authn</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00366.shtml">Re: new jcosign service produces error message at authn</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00393.shtml">Re: new jcosign service produces error message at authn</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00367.shtml">Re: Cosign 1.8.0 Released</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00365"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00365"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

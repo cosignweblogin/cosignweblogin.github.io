@@ -1,0 +1,200 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: file not found error -->
+<!--X-From-R13: "Ubyqevpx, Xvz" <wtbyqevpxNwhqfbapbyyrtr.rqh> -->
+<!--X-Date: Wed, 3 Nov 2004 18:19:29 &#45;0500 (EST) -->
+<!--X-Message-Id: D78043473550FC44A6BD0226E6601EAD896EFF@adam.judsoncollege.edu -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00259.shtml">Date Prev</a>][<a href="msg00261.shtml">Date Next</a>][<a href="msg00258.shtml">Thread Prev</a>][<a href="msg00262.shtml">Thread Next</a>][<a href="maillist.shtml#00260">Date Index</a>][<a href="threads.shtml#00260">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>file not found error</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: file not found error</li>
+<li><em>From</em>: &quot;Goldrick, Jim&quot; &lt;<a href="mailto:jgoldrick@DOMAIN.HIDDEN">jgoldrick@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 3 Nov 2004 17:18:20 -0600</li>
+<li><em>Thread-index</em>: AcTB+7jqVyFYxEfnSBSu5yL1mrfaBA==</li>
+<li><em>Thread-topic</em>: file not found error</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+
+
+
+<DIV><FONT face=Arial size=2><SPAN 
+class=759445522-03112004>Hi,</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=759445522-03112004></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=759445522-03112004>Since this is a 
+different issue, I thought I would open a new post.&nbsp; When trying to connect 
+to <A 
+href="https://judsonhp.judsoncollege.edu:444/index.html">https://judsonhp.judsoncollege.edu:444/index.html</A>, 
+which is my doc root that I have set for cosign,</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=759445522-03112004>the browser hangs 
+and I get this in my syslog:</SPAN></FONT></DIV><FONT><SPAN 
+class=759445522-03112004>
+<DIV><BR><FONT face=Arial size=2>Nov&nbsp; 3 16:59:06 judsonhp cosignd[9620]: 
+connect: 10.100.0.142<BR>Nov&nbsp; 3 16:59:06 judsonhp cosignd[9620]: 
+service_to_login: 
+cosign-cosign=4tWOHyU+<BR>IzH9Usx+QfgsVwOCrtO0EHsPFjtUaKPx80TdhemR2ld8yA9rcsX4IDUU15s1sztTyvMOfv50Es7-ML-Z<BR>IY3j1OLCC8SdKdq+7FZJoqRh8wgMjtXC43v9: 
+No such file or directory<BR>Nov&nbsp; 3 16:59:06 judsonhp cosignd[9612]: 
+service_to_login: 
+cosign-cosign=+0QwqH3j<BR>F8DFbplXVjr3gNKIMaDsU0B+W2ArWpBZPGGtnzOKYX0CjuE88QtIoDgsIp6b1lVJJ47o6ZQcGABBt-CY<BR>kpAa-F2EAzejAGJnFicEg11BCz0ifSxK7q8g: 
+No such file or directory<BR>Nov&nbsp; 3 16:59:07 judsonhp cosignd[9613]: 
+service_to_login: 
+cosign-cosign=DGzMJLge<BR>vfaJBAtWQdLx+Yo7QkI6KWF9aFueZ3s1jwXo9Usdk6nkYLfBAaoeUP+eSVgsSnJxLriwYU7owBnKAm4n<BR>xIi3Bs8JwgwAznkK2ZPB-r1P1g6NmOF+uwdh: 
+No such file or directory<BR>syslog.log: END</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV></SPAN></FONT><SPAN class=759445522-03112004><FONT face=Arial size=2>and 
+this in my apache error_log (I assume because the file is not 
+found):</FONT></SPAN></DIV>
+<DIV><SPAN class=759445522-03112004><FONT face=Arial 
+size=2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=759445522-03112004><FONT face=Arial size=2>choose another 
+connection: 533 CHECK: cookie not in db!<BR>choose another connection: 533 
+CHECK: cookie not in db!<BR>choose another connection: 533 CHECK: cookie not in 
+db!<BR>choose another connection: 533 CHECK: cookie not in db!<BR>choose another 
+connection: 533 CHECK: cookie not in db!<BR>choose another connection: 533 
+CHECK: cookie not in db!<BR>choose another connection: 533 CHECK: cookie not in 
+db!<BR></FONT></SPAN></DIV>
+<DIV><SPAN class=759445522-03112004><FONT face=Arial size=2>What file is the 
+error referring to?&nbsp; I have the html and templates directories setup in 
+/opt/apache/cosign.&nbsp; Where should the basicosign.cgi be?&nbsp; In the web 
+root?&nbsp; Here is my Virtual host:</FONT></SPAN></DIV>
+<DIV><SPAN class=759445522-03112004><FONT face=Arial 
+size=2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=759445522-03112004></SPAN><SPAN class=759445522-03112004><FONT 
+face=Arial size=2>VirtualHost 
+judsonhp.judsoncollege.edu:444&gt;<BR>&nbsp;ServerName 
+judsonhp.judsonocollege.edu<BR>DocumentRoot 
+/opt/apache/carsi-test/share/htdocs/<BR>ScriptAlias /cgi-bin/ 
+/opt/apache/carsi-test/share/cgi-bin/<BR>Alias /images/ 
+/opt/apache/images/<BR>SSLEngine on<BR>SSLCertificateFile 
+/opt/apache/xxx/xxxxxx/xxxxxx.xxx<BR>SSLCertificateKeyFile 
+/opt/apache/xxx/xxxxxxx/xxxxx.xxxx<BR>SetEnvIf User-Agent ".*MSIE.*" nokeepalive 
+ssl-unclean-shutdown \<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+downgrade-1.0 force-response-1.0</FONT></SPAN></DIV>
+<DIV>&nbsp;</DIV><SPAN class=759445522-03112004>
+<DIV><FONT face=Arial 
+size=2>CosignProtected&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+On<BR>CosignHostname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+acadinfo.judsoncollege.edu<BR>CosignRedirect&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/weblogin/<BR>CosignPostErrorRedirect 
+/weblogin/post_error.html<BR>CosignService&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+cosign<BR>CosignCrypto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/opt/apache/xxxxxx/xxxxxxx/cakey /opt/apache/xxxxxx/xxxxxx/ca 
+/opt/apache/xxxxxxxx/xxxxxxxx</FONT></DIV>
+<DIV><BR><FONT face=Arial size=2>&lt;/VirtualHost&gt;</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><SPAN class=759445522-03112004></SPAN><FONT face=Arial size=2>H<SPAN 
+class=759445522-03112004>ere is the doc root directory:</SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN class=759445522-03112004></SPAN><BR>#this is 
+so the cosign login will run from / of DocRoot<BR>&lt;Directory 
+/opt/apache/carsi-test/share/htdocs&gt;<BR>DirectoryIndex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+basiccosign.cgi 
+index.html<BR>AddHandler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+cgi-script&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .cgi<BR>AllowOverride None<BR>Options 
+FollowSymLinks ExecCGI<BR>order deny,allow<BR>allow from all<BR>AuthType 
+Basic<BR>AuthName "Faculty Access"<BR>AuthLDAPURL <A 
+href="ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud">ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud</A><BR>son,cn=Authentication 
+Data,o=Cognos,c=CA?cn?<BR>require valid-user<BR>&lt;Files *.css&gt;<BR>order 
+allow,deny<BR>allow from all<BR>&lt;/Files&gt;<BR>&lt;Files *.js&gt;<BR>order 
+allow,deny<BR>allow from all<BR>&lt;/Files&gt;<BR><BR></DIV></FONT>
+<DIV><FONT><SPAN class=759445522-03112004><FONT face=Arial size=2>So I am not 
+quite sure what to do.&nbsp; The acadinfo.judsoncollege.edu hostname is just a 
+virtual ip for the judsonhp host.&nbsp; If I remove the cosign settings in the 
+virtual host, I can get to the index.html after 
+authenticating.</FONT></SPAN></FONT></DIV>
+<DIV><FONT face=Arial size=2><SPAN 
+class=759445522-03112004></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2><SPAN class=759445522-03112004>FYI, I am using 
+a&nbsp;self-signed cert.</SPAN></FONT></DIV>
+<DIV><FONT><SPAN class=759445522-03112004><FONT face=Arial 
+size=2></FONT></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT><SPAN class=759445522-03112004><FONT face=Arial size=2>thanks 
+much!</FONT></SPAN></DIV>
+<DIV><FONT face=Arial><BR><FONT size=2></FONT></FONT></DIV></FONT></SPAN>
+<DIV><FONT face=Arial size=2>Jim Goldrick</FONT> <BR><FONT face=Arial 
+size=2>Judson College</FONT> <BR><FONT face=Arial size=2>573-335-7074</FONT> 
+<BR><FONT face=Arial size=2>jgoldrick@xxxxxxxxxxxxxxxxx</FONT> </DIV>
+<DIV>&nbsp;</DIV>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00259.shtml">RE: access problem</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00261.shtml">Expired Kerberos credentials</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00258.shtml">Recall: access problem</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00262.shtml">RE: file not found error</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00260"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00260"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

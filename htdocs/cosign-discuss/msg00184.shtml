@@ -1,0 +1,157 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Tue, 20 Jul 2004 17:42:25 &#45;0400 (EDT) -->
+<!--X-Message-Id: 9C04DCEE&#45;DA95&#45;11D8&#45;B3AE&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 34A2103EAA952D42A158D34F30AF14CF270A0A@engin&#45;mail5.engin.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00183.shtml">Date Prev</a>][<a href="msg00185.shtml">Date Next</a>][<a href="msg00183.shtml">Thread Prev</a>][<a href="msg00189.shtml">Thread Next</a>][<a href="maillist.shtml#00184">Date Index</a>][<a href="threads.shtml#00184">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re:</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;McHugh, Daniel&quot; &lt;<a href="mailto:dmchugh@DOMAIN.HIDDEN">dmchugh@xxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: </li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 20 Jul 2004 17:41:50 -0400</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00183.shtml">34A2103EAA952D42A158D34F30AF14CF270A0A@engin-mail5.engin.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00183.shtml">34A2103EAA952D42A158D34F30AF14CF270A0A@engin-mail5.engin.umich.edu</a>&gt;</li>
+<li><em>Reply-to</em>: &quot;'<a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>' '<a href="mailto:Cosign@DOMAIN.HIDDEN">Cosign@xxxxxxxxx</a>'&quot; &lt;<a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>how long they last actually depends on when you got it and from whom, 
+but you can tell pretty easily by typing:</tt><br>
+<br>
+<tt>    openssl verify -CApath /path/to/your/CA/directory -purpose any 
+certificate.cert</tt><br>
+<br>
+<tt>should complain if the cert is expired.  You can get the path to your 
+ca directory from your cosign configuration.  If you tell us the CN of 
+your cert we might also just have it on hand to check, if we signed it. 
+ If the cert was commercially signed then you should have gotten a 
+message warning you of impending expiration (where &quot;you&quot; == the e-mail 
+address in the CSR).</tt><br>
+<br>
+<tt>In either case, you'll want to generate a new key, issue a new CSR, and 
+send it somewhere to be signed (either to cosign@xxxxxxxxx or to 
+verisign/thawte/Instantssl/etc.).  Please reply to cosign@xxxxxxxxx 
+(not the whole list, I think) if you have further problems or 
+questions.</tt><br>
+<br>
+<tt>kevin</tt><br>
+<br>
+<tt>On Jul 20, 2004, at 5:21 PM, McHugh, Daniel wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hello,</tt><br>
+<br>
+<tt>I was wondering how long Certificates last?&#xA0; I think ours maybe 
+expired how do I get a new one?&#xA0; Dan McHugh</tt><br>
+<br>
+<tt>&#xA0;</tt><br>
+<br>
+<tt>&#xA0;</tt><br>
+<br>
+<tt> Daniel McHugh</tt><br>
+<br>
+<tt>Biomedical Engineering</tt><br>
+<br>
+<tt>University of Michigan&#xA0; &#xA0;&#xA0;&#xA0;</tt><br>
+<br>
+<tt> 1131 Carl A. Gerstacker Bld</tt><br>
+<br>
+<tt>2200 Bonisteel Blvd.</tt><br>
+<br>
+<tt>Ann Arbor, MI 48109-2099</tt><br>
+<br>
+<pre style="margin: 0em;">&lt;image.tiff&gt;&#xA0;
+ !DSPAM:40fd8d2b43532789925279!
+</pre></blockquote><tt><br>                ... &quot;you can't give yourself a nickname.&quot; ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00183" href="msg00183.shtml">[no subject]</a></strong>
+<ul><li><em>From:</em> McHugh, Daniel</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00183.shtml">[no subject]</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00185.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00183.shtml">[no subject]</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00189.shtml">replication</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00184"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00184"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

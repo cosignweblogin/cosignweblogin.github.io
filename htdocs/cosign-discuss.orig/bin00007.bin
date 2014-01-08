@@ -1,0 +1,17 @@
+aclfile = /usr/local/cosign/etc/cosign.acl
+cosigndb = /var/cosign/daemon
+cadir = /var/cosign/certs/CA/
+certfile = /var/cosign/certs/cert.pem
+keyfile = /var/cosign/certs/key.pem
+
+frienddbhost = localhost
+frienddblogin = friend
+frienddbpasswd = bob
+
+ticketcache = /ticket
+filterdb = /var/cosign/filter
+proxydb = /var/cosign/proxy
+
+cosignhostname = bob.fred.com
+cosignloginurl = /cosign.cgi
+cosignlogouturl = /cosign.cgi

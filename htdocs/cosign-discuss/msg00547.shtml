@@ -1,0 +1,178 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: certificate questions -->
+<!--X-From-R13: Ivyy Xnlarf <wnlarfNhzvpu.rqh> -->
+<!--X-Date: Thu, 15 Sep 2005 08:32:42 &#45;0400 (EDT) -->
+<!--X-Message-Id: 4329698C.20900@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 43286F47.2000909@umich.edu -->
+<!--X-Reference: 20FEFD93&#45;B4FA&#45;4D53&#45;9D02&#45;A9B1D48F2429@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00546.shtml">Date Prev</a>][<a href="msg00548.shtml">Date Next</a>][<a href="msg00546.shtml">Thread Prev</a>][<a href="msg00548.shtml">Thread Next</a>][<a href="maillist.shtml#00547">Date Index</a>][<a href="threads.shtml#00547">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: certificate questions</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: certificate questions</li>
+<li><em>From</em>: Will Jaynes &lt;<a href="mailto:jaynes@DOMAIN.HIDDEN">jaynes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 15 Sep 2005 08:31:08 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00546.shtml">20FEFD93-B4FA-4D53-9D02-A9B1D48F2429@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00545.shtml">43286F47.2000909@umich.edu</a>&gt; &lt;<a href="msg00546.shtml">20FEFD93-B4FA-4D53-9D02-A9B1D48F2429@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla Thunderbird 1.0.6 (Windows/20050716)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Thanks, Johanna,</tt><br>
+<br>
+<tt>I created a cert and sent it off to webmaster for signing, and got the 
+returned certificate. Very fast response time. But now I'm having a 
+problem that perhaps people on this list have seen before. Here's the 
+reply I sent to webmaster after encountering the problem:<br>
+-----<br>
+I am having a problem with importing the certificate that you sent to me 
+yesterday. I'm following the instructions found in the README.txt file 
+with the JavaCosign code. I copied and pasted the certificate you sent 
+to me, and saved it to a file. I then tried to import it into the 
+keystore with the following command:</tt><br>
+<br>
+<tt>keytool -keystore keystore -keyalg &quot;RSA&quot; -import -trustcacerts -file 
+www.umms.med.umich.edu.cer</tt><br>
+<br>
+<tt>The error I get is:</tt><br>
+<br>
+<tt>keytool error: java.lang.Exception: Failed to establish chain from reply</tt><br>
+<br>
+<tt>Do you have an idea what my problem might be?</tt><br>
+<br>
+<tt>Thanks, Will</tt><br>
+<br>
+<tt>johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>since you're at umich, these are our policies//guidelines</tt><br>
+<br>
+<tt>1) you're right, the cn is the domain name/hostname, but they don't  
+*have* to match, it is just preferred. The only requirement is that  
+the cn end in umich.edu, feel free to &quot;make up&quot; a hostname.</tt><br>
+<br>
+<tt>2) in this case it's the umwebCA, so you should it to  
+webmaster@xxxxxxxxx and ask for a umwebCA signed cert.</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<tt>On Sep 14, 2005, at 2:43 PM, Will Jaynes wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I'm taking a look at the JavaCosign filter and would like to set it  
+up on my development workstation. The install section of the  
+README.txt file talks about creating a keystore and a certificate  
+and a signing request, and then &quot;Have your CA sign the CSR&quot;. This  
+brings up a couple questions for me:</tt><br>
+<br>
+<tt>1) The certificate requires a CN. I assume this should be a domain  
+name, and I assume the dn should be that of the machine the  
+certificate will be used on. Are those assumptions correct? My  
+development workstation doesn't have a domain name. It's a DHCP  
+client and only has an IP, and not always the same IP. Is this  going 
+to be a problem with regard to the certificate?</tt><br>
+<br>
+<tt>2) Who is my CA, and where do I send the CSR to have it signed?</tt><br>
+<br>
+<pre style="margin: 0em;">thanks for any info,
+Will</pre><br>
+<tt>!DSPAM:43286f72320518690210016!</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><br>
+</blockquote><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00548" href="msg00548.shtml">Re: certificate questions</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00545" href="msg00545.shtml">certificate questions</a></strong>
+<ul><li><em>From:</em> Will Jaynes</li></ul></li>
+<li><strong><a name="00546" href="msg00546.shtml">Re: certificate questions</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00546.shtml">Re: certificate questions</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00548.shtml">Re: certificate questions</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00546.shtml">Re: certificate questions</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00548.shtml">Re: certificate questions</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00547"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00547"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

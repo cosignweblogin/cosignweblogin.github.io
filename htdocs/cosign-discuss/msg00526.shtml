@@ -1,0 +1,150 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Fwd: IdP v1.3a, CoSign, and Mozilla/Firefox -->
+<!--X-From-R13: Pvyy Rbfgre <Pvyy.RbfgreNhzvpu.rqh> -->
+<!--X-Date: Mon, 22 Aug 2005 17:33:06 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20050822173134.052ngnps0w00wok8@web.mail.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00525.shtml">Date Prev</a>][<a href="msg00527.shtml">Date Next</a>][<a href="msg00525.shtml">Thread Prev</a>][<a href="msg00527.shtml">Thread Next</a>][<a href="maillist.shtml#00526">Date Index</a>][<a href="threads.shtml#00526">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Fwd: IdP v1.3a, CoSign, and Mozilla/Firefox</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Fwd: IdP v1.3a, CoSign, and Mozilla/Firefox</li>
+<li><em>From</em>: Bill Doster &lt;<a href="mailto:Bill.Doster@DOMAIN.HIDDEN">Bill.Doster@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 22 Aug 2005 17:31:34 -0400</li>
+<li><em>User-agent</em>: Internet Messaging Program (IMP) H3 (4.0.3)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Not sure why he didn't post this to cosign-discuss (or perhaps I missed it?),
+but canyone here help him?  sounds like something I've heard others
+mentioning around UM....
+
+----- Forwarded message from max@xxxxxxx -----
+    Date: Mon, 22 Aug 2005 17:07:00 -0400 (EDT)
+    From: &quot;Mark K. Miller&quot; &lt;max@xxxxxxx&gt;
+Reply-To: shibboleth-users@xxxxxxxxxxxxx
+ Subject: IdP v1.3a, CoSign, and Mozilla/Firefox
+      To: shibboleth-users@xxxxxxxxxxxxx
+
+
+Ok, I don't have a whole lot to go on yet, but has anyone seen issues with
+the Mozilla or Firefox browsers accessing shib v1.3a and CoSign filter 1.8.5.
+
+Other browsers (IE, Safari, Opera) seem to be fine.  It appears that with
+Mozilla and Firefox the REMOTE_USER environment variable doesn't always
+get set.  However, sometimes it seems to loop &quot;a lot&quot; and then set the
+REMOTE_USER environment variable.  Also, its worth noting that other
+CoSign protected applications will work with these same Mozilla and
+Firefox sessions.
+
+Actually, I'd rather know if someone knows how to &quot;fix&quot; this!
+
+
+Here's what we're seeing in our shib-error.log:
+
+2005-08-22 17:02:11,475 DEBUG [IdP] -305337799                          -
+Name Identifier format: (urn:mace:shibboleth:1.0:nameIdentifier).
+2005-08-22 17:02:11,476 DEBUG [IdP] -305337799                          -
+The Name Mapping Cache does not contain an entry for this Attribute Query
+Handle.
+2005-08-22 17:02:11,476 ERROR [IdP] -305337799                          -
+Couldnot associate the request's subject with a principal:
+edu.internet2.middleware.s
+hibboleth.common.InvalidNameIdentifierException: The Name Mapping Cache
+does not contain an entry for this Attribute Query Handle.
+2005-08-22 17:02:11,476 ERROR [IdP] -305337799                          -
+Error while processing request: org.opensaml.SAMLException: The supplied
+Subject was unrecognized.
+
+
+
+
+----- End forwarded message -----
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00527" href="msg00527.shtml">Re: Fwd: IdP v1.3a, CoSign, and Mozilla/Firefox</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00525.shtml">BFK Business</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00527.shtml">Re: Fwd: IdP v1.3a, CoSign, and Mozilla/Firefox</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00525.shtml">BFK Business</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00527.shtml">Re: Fwd: IdP v1.3a, CoSign, and Mozilla/Firefox</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00526"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00526"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

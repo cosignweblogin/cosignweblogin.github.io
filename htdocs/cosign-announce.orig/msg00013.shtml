@@ -1,0 +1,153 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Java Cosign 1.0.0 beta 1 released -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Thu, 22 Apr 2004 16:01:55 &#45;0400 (EDT) -->
+<!--X-Message-Id: BCFA82BE&#45;9497&#45;11D8&#45;B762&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="announce" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-announce at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            cosign release and update announcements
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00012.shtml">Date Prev</a>][<a href="msg00014.shtml">Date Next</a>][<a href="msg00012.shtml">Thread Prev</a>][<a href="msg00014.shtml">Thread Next</a>][<a href="maillist.shtml#00013">Date Index</a>][<a href="threads.shtml#00013">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Java Cosign 1.0.0 beta 1 released</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-announce@DOMAIN.HIDDEN">cosign-announce@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Java Cosign 1.0.0 beta 1 released</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 22 Apr 2004 16:00:43 -0400</li>
+<li><em>Cc</em>: <a href="mailto:javacosign.codesign@DOMAIN.HIDDEN">javacosign.codesign@xxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>The Cosign &amp; Java Cosign teams are very pleased to announce the initial 
+beta release of the Java Cosign filter.</tt><br>
+<br>
+<pre style="margin: 0em;">     <a  href="http://www.umich.edu/~umweb/downloads/jcosign-1.0b1.zip">http://www.umich.edu/~umweb/downloads/jcosign-1.0b1.zip</a>
+     [ md5 fbe1e1513256eadcc08c08f57b112f11 ]</pre><br>
+<tt>Features:</tt><br>
+<br>
+<tt>  The Java CoSign class library comes with multiple components to allow 
+for varying<br>
+  degrees of system integration.</tt><br>
+<br>
+<tt>  - A Java Servlet Spec. v2.3 Servlet Filter for JAAS-based 
+authentication<br>
+    filtering (AuthenticationFilter).</tt><br>
+<br>
+<tt>  - A JAAS Login Module for CoSign authentication (CosignLoginModule).</tt><br>
+<br>
+<tt>  - A Jakarta Commons Pool-based framework for pooling connections to a 
+cluster<br>
+    of CoSign servers.</tt><br>
+<br>
+<tt>  - A JSSE-based framework for SSL-based application server/CoSign 
+server<br>
+    communication.</tt><br>
+<br>
+<tt>Requirements:</tt><br>
+<br>
+<pre style="margin: 0em;">  - J2SE v1.4, or later, JDK or JRE
+    (<a  href="http://java.sun.com/j2se">http://java.sun.com/j2se</a>)</pre><br>
+<tt>  OR</tt><br>
+<br>
+<pre style="margin: 0em;">  - J2SE v1.3 JDK or JRE
+    (<a  href="http://java.sun.com/j2se/1.3">http://java.sun.com/j2se/1.3</a>)</pre><br>
+<pre style="margin: 0em;">  - JAAS v1.0
+    (<a  href="http://java.sun.com/products/jaas/index-10.html">http://java.sun.com/products/jaas/index-10.html</a>)</pre><br>
+<pre style="margin: 0em;">  - JSSE v1.0.x
+    (<a  href="http://java.sun.com/products/jsse/index-103.html">http://java.sun.com/products/jsse/index-103.html</a>)</pre><br>
+<tt>  AND</tt><br>
+<br>
+<pre style="margin: 0em;">  - A Servlet Spec. v2.3 or later application server.
+    (Tomcat 4.1, for example; <a  href="http://jakarta.apache.org/tomcat">http://jakarta.apache.org/tomcat</a>)</pre><br>
+<pre style="margin: 0em;">  - Jakarta Commons Pool
+    (<a  href="http://jakarta.apache.org/commons/pool/">http://jakarta.apache.org/commons/pool/</a>)</pre><br>
+<pre style="margin: 0em;">  - Jakarta Commons Collections
+    (<a  href="http://jakarta.apache.org/commons/collections/">http://jakarta.apache.org/commons/collections/</a>)</pre><br>
+<pre style="margin: 0em;">  NOTE: The Jakarta Commons Pool and Collections libraries come with
+        Jakarta Tomcat</pre><br>
+<tt>Cheers!</tt><br>
+<br>
+<tt>-The Cosign team</tt><br>
+<br>
+<tt>                ... &quot;you can't give yourself a nickname.&quot; ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00012.shtml">Cosign 1.5.1 released</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00014.shtml">Cosign 1.6.0 released</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00012.shtml">Cosign 1.5.1 released</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00014.shtml">Cosign 1.6.0 released</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00013"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00013"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

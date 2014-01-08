@@ -1,0 +1,158 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: logout and cosign.cgi question -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Wed, 21 Apr 2004 22:22:41 &#45;0400 (EDT) -->
+<!--X-Message-Id: C907F681&#45;9403&#45;11D8&#45;B8B6&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040422011511.704AE354D2@smtp1.ec.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00080.shtml">Date Prev</a>][<a href="msg00082.shtml">Date Next</a>][<a href="msg00078.shtml">Thread Prev</a>][<a href="msg00082.shtml">Thread Next</a>][<a href="maillist.shtml#00081">Date Index</a>][<a href="threads.shtml#00081">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: logout and cosign.cgi question</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: logout and cosign.cgi question</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 21 Apr 2004 22:21:38 -0400</li>
+<li><em>Cc</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00078.shtml">20040422011511.704AE354D2@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00078.shtml">20040422011511.704AE354D2@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>We install logout in a cgi-bin directory using a ScriptAlias -- so it 
+doesn't need an extension.  We install the login cgi in DocumentRoot 
+with ExecCGI turned on -- so we use the .cgi extension there.  Lot's of 
+our users already knew that appending &quot;/cgi-bin/logout&quot; to the end of a 
+url would cause logout to happen, so we wanted to preserve that 
+behavior.</tt><br>
+<br>
+<tt>There's not much more to it than that.  Do you think it would make more 
+sense to move the logout cgi into DocumentRoot/logout/index.cgi or 
+similar?  So a ScriptAlias isn't needed?</tt><br>
+<br>
+<tt>Kevin</tt><br>
+<br>
+<tt>On Apr 21, 2004, at 9:15 PM, Brett Lomas wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hi all,</tt><br>
+<br>
+<tt>just a simple question, why was logout not called logout.cgi, is it 
+because you have them in the same directory ( ie / ) on the web server 
+and you have specified .cgi as a directory index and it will get 
+confused? If so why not use /logout with the logout.cgi in there??</tt><br>
+<br>
+<tt>Cheers</tt><br>
+<br>
+<tt>Brett</tt><br>
+<br>
+<tt>------------</tt><br>
+<br>
+<tt>Brett Lomas</tt><br>
+<br>
+<tt>Integration Architect</tt><br>
+<br>
+<tt>Information Technology Systems and Services</tt><br>
+<br>
+<tt>The University of Auckland</tt><br>
+<br>
+<tt>New Zealand</tt><br>
+<br>
+<tt>Phone:&#xA0; &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 9 3737 599 extn 86499</tt><br>
+<br>
+<tt>Mobile: &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 21 757 096</tt><br>
+<br>
+<tt> !DSPAM:40871d16257302389411967!
+</tt></blockquote><tt><br>                  ... being a rock I am without movement ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00082" href="msg00082.shtml">RE: logout and cosign.cgi question</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00078" href="msg00078.shtml">logout and cosign.cgi question</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00080.shtml">Re: Will friend accounts ever expire?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00082.shtml">RE: logout and cosign.cgi question</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00078.shtml">logout and cosign.cgi question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00082.shtml">RE: logout and cosign.cgi question</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00081"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00081"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

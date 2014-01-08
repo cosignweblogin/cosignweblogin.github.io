@@ -1,0 +1,131 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: build for 1.9.0 -->
+<!--X-From-R13: "Ubyqevpx, Xvz" <wtbyqevpxNwhqfbapbyyrtr.rqh> -->
+<!--X-Date: Sat, 8 Oct 2005 19:24:32 &#45;0400 (EDT) -->
+<!--X-Message-Id: 960714044BBA8045B489FBDD68C3E36101D1EF@gabriel.judsoncollege.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00568.shtml">Date Prev</a>][<a href="msg00570.shtml">Date Next</a>][<a href="msg00567.shtml">Thread Prev</a>][<a href="msg00570.shtml">Thread Next</a>][<a href="maillist.shtml#00569">Date Index</a>][<a href="threads.shtml#00569">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>build for 1.9.0</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>Subject</em>: build for 1.9.0</li>
+<li><em>From</em>: &quot;Goldrick, Jim&quot; &lt;<a href="mailto:jgoldrick@DOMAIN.HIDDEN">jgoldrick@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 8 Oct 2005 18:18:15 -0500</li>
+<li><em>Cc</em>: &quot;cosign-discuss&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Thread-index</em>: AcXHvREWFx2z7CLaQrqy3fGbcTkxLgEoEFgJ</li>
+<li><em>Thread-topic</em>: build for 1.9.0</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi Folks,
+ 
+Found a couple of errors for cosign-1.9.0.
+ 
+1.  The -fPIC still has to be manually put in the Makefile for libset.
+ 
+2.  Error msg is split by a line feed.
+c cgi.c
+cgi.c: In function `main':
+cgi.c:239: error: missing terminating &quot; character
+cgi.c:240: error: `but' undeclared (first use in this function)
+cgi.c:240: error: (Each undeclared identifier is reported only once
+cgi.c:240: error: for each function it appears in.)
+cgi.c:240: error: parse error before &quot;no&quot;
+cgi.c:240: error: stray '\' in program
+cgi.c:240: error: missing terminating &quot; character
+gmake[1]: *** [cgi.o] Error 1
+gmake[1]: Leaving directory `/opt/apache/cosign-1.9.0/cgi'
+gmake: *** [cgi] Error 2
+#
+ 
+jim
+ 
+ 
+ 
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00570" href="msg00570.shtml">Re: build for 1.9.0</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00568.shtml">Re: authenticated rss</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00570.shtml">Re: build for 1.9.0</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00567.shtml">RE: authenticated rss</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00570.shtml">Re: build for 1.9.0</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00569"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00569"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

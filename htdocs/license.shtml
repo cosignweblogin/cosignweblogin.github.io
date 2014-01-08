@@ -1,0 +1,59 @@
+<!--#set var="title" value="license" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="y" -->
+<!--#include file="header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+	<td width="18" rowspan="2" align="left" valign="middle"><img src="images/chevron_blue_lg.gif" width="12" height="20"></td>
+	<td class="cnt-head1">
+	    Copyright 2002 - 2004 Regents of The University of Michigan.
+	</td>
+    </tr>
+
+    <tr>
+	<td class="cnt-sub-ital">
+	    All Rights Reserved.
+	</td>
+    </tr>
+
+    <tr>
+	<td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;</td> 
+    </tr>
+</table>
+
+<p>
+</p>
+
+<p>
+    Permission to use, copy, modify, and distribute this software and
+    its documentation for any purpose and without fee is hereby granted,
+    provided that the above copyright notice appears in all copies and
+    that both that copyright notice and this permission notice appear
+    in supporting documentation, and that the name of The University
+    of Michigan not be used in advertising or publicity pertaining to
+    distribution of the software without specific, written prior
+    permission. This software is supplied as is without expressed or
+    implied warranties of any kind.
+</p>
+
+<img src="images/cosign_3d_lg.gif" width="181" height="177" align="right">
+<p>
+The University of Michigan<br />
+c/o UM Webmaster Team<br />
+4251 Plymouth Road<br />
+Ann Arbor, MI  48105-2785<br />
+</p>
+
+<p>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+</p>
+
+<!--#include file="footer.shtml" -->

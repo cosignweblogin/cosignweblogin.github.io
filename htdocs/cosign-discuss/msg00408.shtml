@@ -1,0 +1,135 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: logout.pl -->
+<!--X-From-R13: Qbel Eaniryl <pfanirylNhzvpu.rqh> -->
+<!--X-Date: Tue, 26 Apr 2005 08:14:05 &#45;0400 (EDT) -->
+<!--X-Message-Id: 426E2F6C.5030304@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1114478916.4032.15.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Reference: 20050426042226.GC10506@ifokr.org -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00407.shtml">Date Prev</a>][<a href="msg00409.shtml">Date Next</a>][<a href="msg00407.shtml">Thread Prev</a>][<a href="msg00409.shtml">Thread Next</a>][<a href="maillist.shtml#00408">Date Index</a>][<a href="threads.shtml#00408">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: logout.pl</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: logout.pl</li>
+<li><em>From</em>: Cory Snavely &lt;<a href="mailto:csnavely@DOMAIN.HIDDEN">csnavely@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 26 Apr 2005 08:09:16 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00407.shtml">20050426042226.GC10506@ifokr.org</a>&gt;</li>
+<li><em>Organization</em>: UM Library IT Core Services</li>
+<li><em>References</em>: &lt;<a href="msg00406.shtml">1114478916.4032.15.camel@brett.enarc.auckland.ac.nz</a>&gt; &lt;<a href="msg00407.shtml">20050426042226.GC10506@ifokr.org</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.6) Gecko/20050324 Debian/1.7.6-1</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>It worked for me on Linux using Mozilla.</tt><br>
+<br>
+<tt>Note that, out of the box, it depends on the COSIGN_SERVICE environment 
+variable being populated in the CGI environment in order to kill the 
+cookie properly, and it depends on the QUERY_STRING environment variable 
+being populated in order to redirect gracefully.  I don't have 
+experience on IIS but it occurs to me you might have to tweak those.</tt><br>
+<br>
+<pre style="margin: 0em;">Cory Snavely
+Library IT Core Services
+University of Michigan</pre><br>
+<tt>Brian Hatch wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">has anyone verified the logout.pl script supplied with Cosign actually
+works?
+</pre></blockquote><tt></tt><br>
+<br>
+<pre style="margin: 0em;">I tried using it for a few minutes before I found the logout code
+compiled in /cgi/.  IIRC, the .pl didn't work terribly well, but
+it was very late at the time and I may not have been trying it
+correctly.</pre><br>
+<tt></tt><br>
+<br>
+</blockquote><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00406" href="msg00406.shtml">logout.pl</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00407" href="msg00407.shtml">Re: logout.pl</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00407.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00409.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00407.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00409.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00408"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00408"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

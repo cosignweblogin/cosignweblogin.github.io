@@ -1,0 +1,200 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: Using UM certificate for cosign -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Tue, 20 Apr 2004 16:19:20 &#45;0400 (EDT) -->
+<!--X-Message-Id: 1192056947.1082477918@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200404201752.i3KHq9HV021692@wanderer.mr.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00071.shtml">Date Prev</a>][<a href="msg00073.shtml">Date Next</a>][<a href="msg00071.shtml">Thread Prev</a>][<a href="msg00073.shtml">Thread Next</a>][<a href="maillist.shtml#00072">Date Index</a>][<a href="threads.shtml#00072">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: Using UM certificate for cosign</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Konstantin Voyk &lt;<a href="mailto:kvoyk@DOMAIN.HIDDEN">kvoyk@xxxxxxxxx</a>&gt;,   &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: Using UM certificate for cosign</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Tue, 20 Apr 2004 16:18:38 -0400</li>
+<li><em>Cc</em>: <a href="mailto:chassy@DOMAIN.HIDDEN">chassy@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00071.shtml">200404201752.i3KHq9HV021692@wanderer.mr.itd.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00071.shtml">200404201752.i3KHq9HV021692@wanderer.mr.itd.umich.edu</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Konstantin,</tt><br>
+<br>
+<tt>1) Apply the Registry fix.  Have you done this already?<br>
+2) Check your permissions then check them again then ask somebody else to 
+double-check for you.  Restart IIS then try to access your web site.  The 
+permissions are varied and plenty and many have stumbled because of it. :) 
+When you access the web site this will actually cause IISCoSign to load. 
+IIS 6.0 doesn't load the filter until it is needed.<br>
+3) I assure you, people have Windows 2003/IIS6 with IISCosign 
+up-and-running *besides me*!<br>
+4) dbmon.exe is a very useful program that IISCosign uses to report 
+non-log-file-worthy events.  Run this before restarting IIS to see what 
+IISCosign is up to.</tt><br>
+<br>
+<tt>The private and public key is used for RSA public key cryptography.  For an 
+overview of how things work, you can check this out: 
+&lt;<a  href="http://developer.netscape.com/tech/security/ssl/howitworks.html">http://developer.netscape.com/tech/security/ssl/howitworks.html</a>&gt;</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--ITCS</pre><br>
+<tt>--On Tuesday, April 20, 2004 1:52 PM -0400 Konstantin Voyk 
+&lt;kvoyk@xxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">Hi,
+I've tried install cosign filter on IIS 6 with Windows 2003 several times
+in accordance with instructions in README. Cosign filter status is &quot;Up&quot;
+but priority is *Unknown*. I looked with FileMonitor and it looks like
+cosign.dll never accessed. I set up all permissions but there are no any
+records in &quot;Logs&quot; directory.
+Does somebody was able to make cosign work with IIS6 and W2003.
+I don't think that this problems related to certificates but would
+appreciate if you describe how cosign use .key file and .cert file.
+Thank you for any advices.
+Konstantin Voyk.</pre><br>
+<pre style="margin: 0em;">-----Original Message-----
+From: jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[<a  href="mailto:jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx">mailto:jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>] On Behalf Of jarod@xxxxxxxxx
+Sent: Monday, April 19, 2004 4:05 PM
+To: Konstantin Voyk; cosign@xxxxxxxxx; 'Cosign Discussion'
+Subject: Re: Using UM cerfificate for cosign</pre><br>
+<tt><br>Konstantin,</tt><br>
+<br>
+<pre style="margin: 0em;">(This response is assuming you're still working with IISCosign, yes?)  If
+you already have a UM-signed certificate all you need to do is change
+some  settings in your cosign.dll.config file.</pre><br>
+<pre style="margin: 0em;">&lt;CAFilePath&gt; should still point to umwebCA.pem.
+&lt;ChainFilePath&gt; should indicate the folder where your certificate, *.cert
+file, is.
+&lt;PrivateKeyFilePath&gt; points to the location of the private key file.</pre><br>
+<tt>Restart IIS and the new settings will be recognized by IISCosign.</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--ITCS</pre><br>
+<pre style="margin: 0em;">--On Monday, April 19, 2004 10:45 AM -0400 Konstantin Voyk
+&lt;kvoyk@xxxxxxxxx&gt; wrote:</pre><br>
+<pre style="margin: 0em;">&gt;
+&gt;
+&gt; Hi Everybody,
+&gt;
+&gt; I have UM client/server certificate and would like use it for cosign.
+&gt; Could somebody explain me how can I do it or point me to a right source?
+&gt;
+&gt; Thank you,
+&gt;
+&gt;
+&gt;
+&gt; Konstantin Voyk
+&gt;
+&gt; (734) 615-3816
+&gt;
+&gt; kvoyk@xxxxxxxxx
+&gt;
+&gt; Infotech, Law School
+&gt;
+&gt; University of Michigan
+&gt;
+&gt;</pre><br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00073" href="msg00073.shtml">Re: Using UM certificate for cosign</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00071" href="msg00071.shtml">RE: Using UM certificate for cosign</a></strong>
+<ul><li><em>From:</em> Konstantin Voyk</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00071.shtml">RE: Using UM certificate for cosign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00073.shtml">Re: Using UM certificate for cosign</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00071.shtml">RE: Using UM certificate for cosign</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00073.shtml">Re: Using UM certificate for cosign</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00072"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00072"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

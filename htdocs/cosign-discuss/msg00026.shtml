@@ -1,0 +1,124 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: ISAPI Source Code -->
+<!--X-From-R13: [nex Oyyra Snearfg <zkr20Ncfh.rqh> -->
+<!--X-Date: Thu, 25 Mar 2004 17:32:59 &#45;0500 (EST) -->
+<!--X-Message-Id: 5D6CB116&#45;7EAC&#45;11D8&#45;923F&#45;000A95CD7232@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00025.shtml">Date Prev</a>][<a href="msg00027.shtml">Date Next</a>][<a href="msg00025.shtml">Thread Prev</a>][<a href="msg00027.shtml">Thread Next</a>][<a href="maillist.shtml#00026">Date Index</a>][<a href="threads.shtml#00026">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>ISAPI Source Code</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a></li>
+<li><em>Subject</em>: ISAPI Source Code</li>
+<li><em>From</em>: Mark Allen Earnest &lt;<a href="mailto:mxe20@DOMAIN.HIDDEN">mxe20@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 25 Mar 2004 14:02:12 -0500 (EST)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre style="margin: 0em;">-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1</pre><br>
+<pre style="margin: 0em;"><br>Hello,
+Would it be possible for me to get a zip file of the 1.0.0 ISAPI filter
+source and VisualStudio files?</pre><br>
+<tt>My purpose in this is to build my own version of the filter that 
+requests<br>
+an MIT K5 ticket (like mod_cosign).</tt><br>
+<br>
+<tt>Thank you,</tt><br>
+<br>
+<pre style="margin: 0em;">Mark Earnest
+Lead Systems Programmer
+Emerging Technologies
+The Pennsylvania State University</pre><br>
+<pre style="margin: 0em;">Public Key - <a  href="http://www.personal.psu.edu/mxe20/gpgkey.txt">http://www.personal.psu.edu/mxe20/gpgkey.txt</a>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.3 (GNU/Linux)</pre><br>
+<pre style="margin: 0em;">iD8DBQFAYyy4ooNLpLZfPIMRAirWAJ99eYvpZOQxLLZccIj6MoB/WVWkqQCeMrPp
+DnX2TBNqZID7OtwmbEkls/c=
+=sXpv
+-----END PGP SIGNATURE-----</pre><br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00025.shtml">Re: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00027.shtml">Re: ISAPI Source Code</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00025.shtml">Re: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00027.shtml">Re: ISAPI Source Code</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00026"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00026"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

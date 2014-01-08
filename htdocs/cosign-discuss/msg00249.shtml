@@ -1,0 +1,128 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Compilation issues with 1.6.2 and filter/apache2 -->
+<!--X-From-R13: Rna Vlqr <qeuNhzvpu.rqh> -->
+<!--X-Date: Wed, 6 Oct 2004 11:59:53 &#45;0400 (EDT) -->
+<!--X-Message-Id: 16469.1097078023@block.ifs.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20041006153232.GA17058@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00248.shtml">Date Prev</a>][<a href="msg00250.shtml">Date Next</a>][<a href="msg00248.shtml">Thread Prev</a>][<a href="msg00253.shtml">Thread Next</a>][<a href="maillist.shtml#00249">Date Index</a>][<a href="threads.shtml#00249">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Compilation issues with 1.6.2 and filter/apache2</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Steve Simmons &lt;<a href="mailto:scs@DOMAIN.HIDDEN">scs@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Compilation issues with 1.6.2 and filter/apache2 </li>
+<li><em>From</em>: Dan Hyde &lt;<a href="mailto:drh@DOMAIN.HIDDEN">drh@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 06 Oct 2004 11:53:43 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: Your message of Wed, 06 Oct 2004 11:32:32 -0400.	     &lt;<a href="msg00248.shtml">20041006153232.GA17058@umich.edu</a>&gt; </li>
+<li><em>Reply-to</em>: Dan Hyde &lt;<a href="mailto:drh@DOMAIN.HIDDEN">drh@xxxxxxxxx</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:drh@DOMAIN.HIDDEN">drh@xxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>&gt; Two items -
+
+After taking a quick glance at cvs.web.itd.umich.edu, it looks like you
+are building a July version of cosign.  Those two errors have been
+fixed, and other changes have been made.
+
+&gt; Finally, the toplevel Makefile always seems to want to build both
+&gt; apache1 and apache2 filters. [...]
+&gt; 
+&gt; With these fixes the filter compiles, but the last step yields this
+&gt; warning (lines broken by me for readability):
+&gt; 
+&gt; [...]
+&gt; 
+&gt; Given the warning and other surprises I'm not confident about dropping
+&gt; the compiled filter into our apache2 tree; comments from others using
+&gt; this would for apache2 would be appreciated.
+
+I'm going to have to leave the above for others, right now [sorry].
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00248" href="msg00248.shtml">Compilation issues with 1.6.2 and filter/apache2</a></strong>
+<ul><li><em>From:</em> Steve Simmons</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00248.shtml">Compilation issues with 1.6.2 and filter/apache2</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00250.shtml">Re: IIS6 Cosign installer</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00248.shtml">Compilation issues with 1.6.2 and filter/apache2</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00253.shtml">Re: Compilation issues with 1.6.2 and filter/apache2</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00249"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00249"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

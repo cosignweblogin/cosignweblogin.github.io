@@ -1,0 +1,135 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: COSIGN: service name policies? -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Thu, 25 Mar 2004 20:02:11 &#45;0500 (EST) -->
+<!--X-Message-Id: 0882A88A&#45;7EC1&#45;11D8&#45;9B55&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00029.shtml">Date Prev</a>][<a href="msg00031.shtml">Date Next</a>][<a href="msg00029.shtml">Thread Prev</a>][<a href="msg00031.shtml">Thread Next</a>][<a href="maillist.shtml#00030">Date Index</a>][<a href="threads.shtml#00030">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>COSIGN: service name policies?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: COSIGN: service name policies?</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 25 Mar 2004 20:00:54 -0500</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>What sort of policies are other cosign schools using for service names? 
+ So far here at Michigan we've been pretty relaxed about what users 
+should choose as a service name, but in calculating stats the last few 
+days I think this might need to change.</tt><br>
+<br>
+<tt>For example, we currently have things like:</tt><br>
+<br>
+<pre style="margin: 0em;">	cosign-iis
+	cosign-develop
+	cosign-10
+	cosign-intranet1
+	cosign-logo
+	cosign-service
+	cosign-foo</pre><br>
+<tt>none of which, frankly, are all that helpful if we need to debug a 
+problem or even if we just want to generate statistics.  I'm thinking 
+of something like &quot;service name should be your domain name minus the 
+'umich.edu'&quot; so:</tt><br>
+<br>
+<pre style="margin: 0em;">	cosign-mail
+	cosign-intranet.soe
+	cosign-importantlab.physics.lsa
+	cosign-www</pre><br>
+<tt>would all be easy to map to services -- and are guaranteed to be unique.</tt><br>
+<br>
+<tt>Other approaches?</tt><br>
+<br>
+<tt>kevin</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00031" href="msg00031.shtml">Re: COSIGN: service name policies?</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+<li><strong><a name="00032" href="msg00032.shtml">Re: COSIGN: service name policies?</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00029.shtml">Re: ISAPI Source Code</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00031.shtml">Re: COSIGN: service name policies?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00029.shtml">Re: ISAPI Source Code</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00031.shtml">Re: COSIGN: service name policies?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00030"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00030"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

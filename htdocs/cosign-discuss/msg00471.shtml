@@ -1,0 +1,142 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: New Open Source Single Sign&#45;On System: OpenID -->
+<!--X-From-R13: Ylyr [hyxn <zhyxnNhzvpu.rqh> -->
+<!--X-Date: Tue, 2 Aug 2005 23:42:19 &#45;0400 (EDT) -->
+<!--X-Message-Id: 42F03C2C.6090208@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00470.shtml">Date Prev</a>][<a href="msg00472.shtml">Date Next</a>][<a href="msg00470.shtml">Thread Prev</a>][<a href="msg00472.shtml">Thread Next</a>][<a href="maillist.shtml#00471">Date Index</a>][<a href="threads.shtml#00471">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>New Open Source Single Sign-On System: OpenID</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: New Open Source Single Sign-On System: OpenID</li>
+<li><em>From</em>: Kyle Mulka &lt;<a href="mailto:mulka@DOMAIN.HIDDEN">mulka@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 02 Aug 2005 23:38:20 -0400</li>
+<li><em>User-agent</em>: Mozilla Thunderbird 0.7.3 (Windows/20040803)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Just thought I would make you all aware of another open source single 
+sign-on system in development. <a  href="http://www.livejournal.com">http://www.livejournal.com</a> currently uses 
+it.</tt><br>
+<br>
+<pre style="margin: 0em;">It is called OpenID and is explained here:
+<a  href="http://openid.net/">http://openid.net/</a></pre><br>
+<tt>Here's a blub from their site if you don't feel like going there:</tt><br>
+<br>
+<tt>&quot;This is a decentralized identity system, but one that's actually 
+decentralized and doesn't entirely crumble if one company turns evil or 
+goes out of business.</tt><br>
+<br>
+<tt>*An OpenID identity is just a URL*. You can have multiple identities in 
+the same way you can have multiple URLs. All OpenID does is provide a 
+way to *prove that you own a URL (identity)*. And it does this without 
+passing around your password, your email address, or anything you don't 
+want it to. There's no profile exchange component at all: your profiile 
+is your identity URL, but recipients of your identity can then learn 
+more about you from any public, semantically interesting documents 
+linked thereunder (FOAF, RSS, Atom, vCARD, etc.).</tt><br>
+<br>
+<tt>Anybody can run their own site using OpenID, and anybody can be an 
+OpenID server, and they all work with each other without having to 
+register with or pay anybody to &quot;get started&quot;. An owner of a URL can 
+pick which OpenID server to use.</tt><br>
+<br>
+<tt>While nothing in the protocol requires JavaScript or modern browsers, 
+the authentication scheme plays nicely with &quot;AJAX&quot;-style setups, so you 
+can prove your identity to a site without bouncing between pages&quot; - 
+<a  href="http://openid.net">http://openid.net</a></tt><br>
+<br>
+<tt>--</tt><br>
+<br>
+<pre style="margin: 0em;">Kyle Mulka
+Computer Science in Engineering
+University of Michigan
+<a  href="http://www.kylemulka.com/">http://www.kylemulka.com/</a></pre><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00472" href="msg00472.shtml">Re: New Open Source Single Sign-On System: OpenID</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00470.shtml">FLH Development</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00472.shtml">Re: New Open Source Single Sign-On System: OpenID</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00470.shtml">FLH Development</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00472.shtml">Re: New Open Source Single Sign-On System: OpenID</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00471"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00471"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

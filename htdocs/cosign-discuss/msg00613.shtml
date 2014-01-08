@@ -1,0 +1,254 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: logout vbscript -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Wed, 2 Nov 2005 19:25:57 &#45;0500 (EST) -->
+<!--X-Message-Id: 20051102192125.3vildiub4soc0ccs@web.mail.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: AA997F4A72F59E4091BF4451D130B27D0105967A@bf&#45;it&#45;equinox02.bf.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00612.shtml">Date Prev</a>][<a href="msg00614.shtml">Date Next</a>][<a href="msg00608.shtml">Thread Prev</a>][<a href="msg00615.shtml">Thread Next</a>][<a href="maillist.shtml#00613">Date Index</a>][<a href="threads.shtml#00613">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: logout vbscript</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Sweetman, David&quot; &lt;<a href="mailto:dsweetma@DOMAIN.HIDDEN">dsweetma@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: logout vbscript</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Wed, 02 Nov 2005 19:21:25 -0500</li>
+<li><em>Cc</em>: <a href="mailto:chrislafty@DOMAIN.HIDDEN">chrislafty@xxxxxxx</a>, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00608.shtml">AA997F4A72F59E4091BF4451D130B27D0105967A@bf-it-equinox02.bf.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00608.shtml">AA997F4A72F59E4091BF4451D130B27D0105967A@bf-it-equinox02.bf.umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Internet Messaging Program (IMP) H3 (4.0.3)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>The fundamental issue with VBScript is that it helpfully *cough* 
+encodes hyphens<br>
+to %2D.  The following all that needs to be done to delete the service cookie<br>
+before logging out:</tt><br>
+<br>
+<pre style="margin: 0em;">&lt;%
+   Session.Abandon</pre><br>
+<pre style="margin: 0em;">   'get cosign cookie name as string
+   cosignCookie = CStr(Request.ServerVariables(&quot;HTTP_COSIGN_SERVICE&quot;))
+   Response.Cookies(cosignCookie)=&quot;null&quot;</pre><br>
+<pre style="margin: 0em;">   Response.Redirect(
+&quot;<a  href="https://weblogin.umich.edu/cgi-bin/logout?https://www.umich.edu/&quot">https://weblogin.umich.edu/cgi-bin/logout?https://www.umich.edu/&quot</a>; )</pre><br>
+<tt>%&gt;</tt><br>
+<br>
+<tt>You can look at your cookies, Firefox is helpful here, and see that 
+you'll have<br>
+a cookie such as cosign%2dsomeservice set to &quot;null&quot;.</tt><br>
+<br>
+<pre style="margin: 0em;">If anybody out there knows how to tell ASP that a hyphen really is a hyphen,
+please share.</pre><br>
+<pre style="margin: 0em;">I wrote a cosignlogout.dll to handle logging out:
+<a  href="http://www.umich.edu/~umweb/software/cosign/download.html">http://www.umich.edu/~umweb/software/cosign/download.html</a></pre><br>
+<tt>David's approach of deleting the cookie cached on the server works 
+well, too. It also takes care of cleaning up the cached cookies, which 
+is a nice side<br>
+effect. :)</tt><br>
+<br>
+<tt>--Jarod</tt><br>
+<br>
+<tt><br>Quoting &quot;Sweetman, David&quot; &lt;dsweetma@xxxxxxxxxxxx&gt;:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">Chris - What if you also delete the server-side cookie?  Here's a code
+snippet that does that via VBScript:</pre><br>
+<pre style="margin: 0em;">Servicename = &quot;InsertYourCoSignServiceNameHere&quot;
+Servername = &quot;InsertYourServerNameHere&quot;</pre><br>
+<pre style="margin: 0em;">s= request.ServerVariables(2)
+buf = split(s,chr(10))
+ for each b in buf
+   if instr(b,&quot;; &quot; &amp; ServiceName)&gt;0 then
+      ck = Right(b, Len(b) - Instr(b, Servername &amp; &quot;=&quot;) - 10)
+      ck = Left(ck, (Len(ck) - 1))
+   end if
+ next
+set fs = server.CreateObject(&quot;Scripting.FileSystemObject&quot;)
+dirPath = &quot;C:\Program Files\CoSign\CookieDB\&quot;</pre><br>
+<pre style="margin: 0em;">pt = dirPath &amp; ck
+if (fs.fileexists(pt)) then
+  fs.deletefile(pt)
+end if</pre><br>
+<tt></tt><br>
+<br>
+<pre style="margin: 0em;">David Sweetman
+Windows Enterprise Systems Administrator
+Michigan Administrative Information Services
+University of Michigan</pre><br>
+<pre style="margin: 0em;">-----Original Message-----
+From: Christopher Lafty [<a  href="mailto:chl114@xxxxxxx">mailto:chl114@xxxxxxx</a>]
+Sent: Tuesday, November 01, 2005 9:01 PM
+To: Malestein, Jarod Douwe
+Cc: chrislafty@xxxxxxx; cosign-discuss@xxxxxxxxx
+Subject: Re: logout vbscript</pre><br>
+<tt>Yep, it's in the same directory as my cosign protected application...</tt><br>
+<br>
+<tt>-C</tt><br>
+<br>
+<tt>jarod@xxxxxxxxx wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt><br>Chris,</tt><br>
+<br>
+<tt>I haven't had a chance to try out your script yet.  It certainly looks
+</tt></blockquote><br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">like it's
+doing all the right things!  Just to be sure, the logout script is
+behind a
+cosign-protected URL, right?</pre><br>
+<tt>--Jarod</tt><br>
+<br>
+<tt>Quoting Christopher Lafty &lt;chl114@xxxxxxx&gt;:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I'm trying to build a logout script in vbscript, but it doesn't seem
+</tt></blockquote></blockquote><tt>to
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">function.  Here it is:
+&lt;%
+   Session.Abandon</pre><br>
+<pre style="margin: 0em;">   'get cosign cookie name as string
+   cosignCookie =
+</pre></blockquote></blockquote><tt>CStr(Request.ServerVariables(&quot;HTTP_COSIGN_SERVICE&quot;))
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;"><br>   Response.Cookies(cosignCookie)=&quot;null&quot;
+   Response.Cookies(cosignCookie).Expires = Date()-1000
+   Response.Cookies(cosignCookie).Domain =&quot;/&quot;
+   Response.Cookies(cosignCookie).Secure=True</pre><br>
+<pre style="margin: 0em;">   Response.redirect &quot;<a  href="https://webaccess.psu.edu/cgi-bin/logout&quot">https://webaccess.psu.edu/cgi-bin/logout&quot</a>;
+%&gt;</pre><br>
+<tt>Any takers?  I would use php or perl, but don't have the option.</tt><br>
+<br>
+<pre style="margin: 0em;">Thanks,
+Chris</pre><br>
+<tt>--</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<pre style="margin: 0em;">.....................................
+:: Christopher Lafty
+:: Web Site Administrator
+:: Department of Biology
+:: Pennsylvania State University
+:: chrislafty@xxxxxxx
+.....................................</pre><br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><tt><br>--</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<pre style="margin: 0em;">.....................................
+:: Christopher Lafty
+:: Web Site Administrator
+:: Department of Biology
+:: Pennsylvania State University
+:: chrislafty@xxxxxxx
+.....................................</pre><br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00615" href="msg00615.shtml">Re: logout vbscript</a></strong>
+<ul><li><em>From:</em> Christopher Lafty</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00608" href="msg00608.shtml">RE: logout vbscript</a></strong>
+<ul><li><em>From:</em> Sweetman, David</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00612.shtml">Re: flint and dearborn</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00614.shtml">RE: logout vbscript</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00608.shtml">RE: logout vbscript</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00615.shtml">Re: logout vbscript</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00613"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00613"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

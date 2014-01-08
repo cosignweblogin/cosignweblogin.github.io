@@ -1,0 +1,169 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: cosign and MIT Kerberos -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Thu, 8 Jul 2004 11:24:21 &#45;0400 (EDT) -->
+<!--X-Message-Id: ACB7F77F&#45;D0F2&#45;11D8&#45;AB20&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: DACFFABD&#45;CF56&#45;11D8&#45;A0F3&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: Pine.SOL.4.58.0407061109330.23708@mozi.lsait.lsa.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00161.shtml">Date Prev</a>][<a href="msg00163.shtml">Date Next</a>][<a href="msg00159.shtml">Thread Prev</a>][<a href="msg00160.shtml">Thread Next</a>][<a href="maillist.shtml#00162">Date Index</a>][<a href="threads.shtml#00162">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: cosign and MIT Kerberos</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: cosign and MIT Kerberos</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 8 Jul 2004 11:22:50 -0400</li>
+<li><em>Cc</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00159.shtml">Pine.SOL.4.58.0407061109330.23708@mozi.lsait.lsa.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00158.shtml">DACFFABD-CF56-11D8-A0F3-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00159.shtml">Pine.SOL.4.58.0407061109330.23708@mozi.lsait.lsa.umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Well, Mark, we've never been ones to turn down an offer of help, and 
+since you already have a suggestion and all... we'd love for you to 
+implement it. :)</tt><br>
+<br>
+<pre style="margin: 0em;">Thanks,
+Johanna</pre><br>
+<tt><br>On Jul 6, 2004, at 11:44 AM, Mark Montague wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt><br>On Tue, 6 Jul 2004, johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>hey all,</tt><br>
+<br>
+<pre style="margin: 0em;">We've recently discovered a minor conflict between Cosign and MIT
+Kerberos 1.3.4 (tho we think it starts at a minimum, at 1.3.1).
+Basically, MIT Kerberos no longer includes a libkrb524, and all the
+symbols we need are now in either libkrb5 or libkrb4.</pre><br>
+<pre style="margin: 0em;">So, unless anyone has a need to run a legacy version of Kerberos ( we
+we're running 1.2.8, I think ), I'd rather simplify things and require
+a current version.
+</pre></blockquote><tt><br>Hi, Johanna,</tt><br>
+<br>
+<tt>I'd prefer to see cosign's configure script use &quot;krb5-config --version&quot;<br>
+to determine if libkrb524 needs to be added or not.  If krb5-config<br>
+does not exist on the system, configure should assume that it's a<br>
+really old version of 1.2.x that's installed (krb5-config is included<br>
+with the most recent 1.2.x releases -- everything after 1.2.3 maybe?)<br>
+At the same time, I think cosign should use &quot;krb5-config --cflags&quot;<br>
+and &quot;krb5-config --libs&quot; to figure out what compiler and linker<br>
+flags to use instead of guessing itself.  Note that if gssapi support<br>
+is being included, krb5-config will need to be invoked as<br>
+&quot;krb5-config --libs gssapi&quot;, etc. -- &quot;krb5-config --help&quot; for more 
+info.<br>
+Since this is my suggestion, I'm willing to implement it if you'd<br>
+like me to do so (let me know).</tt><br>
+<br>
+<tt>Note that Solaris 9 is still shipping with Kerberos 1.2.x; Sun won't<br>
+be upgrading to 1.3.x until Solaris 10 later this year.  So if you<br>
+require Kerberos 1.3.x for cosign, then anyone using Solaris 9 or<br>
+previous will have to replace (or supplement) the vendor-supplied<br>
+libraries with ones which they download, compile, and install 
+themselves.<br>
+This extra step might wind up discouraging some people who might 
+otherwise<br>
+try cosign.</tt><br>
+<br>
+<pre style="margin: 0em;">Also, I don't know that I'd call Kerberos 1.2.x &quot;legacy&quot;, exactly:
+The incremental-replication and other University of Michigan patches
+for Kerberos were only fully ported and tested recently, and many
+units at the University of Michigan are still running Kerberos 1.2.x
+for this reason.  I don't know if the same thing applies at other
+institutions or not.</pre><br>
+<pre style="margin: 0em;">                Mark Montague
+                LS&amp;A Information Technology
+                markmont@xxxxxxxxx</pre><br>
+<tt></tt><br>
+<br>
+<tt>!DSPAM:40eac9ff110661385015522!
+</tt></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00158" href="msg00158.shtml">cosign and MIT Kerberos</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00159" href="msg00159.shtml">Re: cosign and MIT Kerberos</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00161.shtml">Re: Install Shield project file for IIS Cosign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00163.shtml">questions on post errors</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00159.shtml">Re: cosign and MIT Kerberos</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00160.shtml">Install Shield project file for IIS Cosign</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00162"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00162"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

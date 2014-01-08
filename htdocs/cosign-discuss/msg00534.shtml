@@ -1,0 +1,138 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Java Filter source code -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Fri, 26 Aug 2005 13:50:56 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20050826134929.84g4jhicso44s808@web.mail.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 430F411E.8020406@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00533.shtml">Date Prev</a>][<a href="msg00535.shtml">Date Next</a>][<a href="msg00533.shtml">Thread Prev</a>][<a href="msg00535.shtml">Thread Next</a>][<a href="maillist.shtml#00534">Date Index</a>][<a href="threads.shtml#00534">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Java Filter source code</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Will Jaynes &lt;<a href="mailto:jaynes@DOMAIN.HIDDEN">jaynes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Java Filter source code</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Fri, 26 Aug 2005 13:49:29 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00533.shtml">430F411E.8020406@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00533.shtml">430F411E.8020406@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Internet Messaging Program (IMP) H3 (4.0.3)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>You can find instructions for anonymous CVS here:</tt><br>
+<br>
+<tt><a  href="http://cvs.web.itd.umich.edu/horde/chora/cvs.php">http://cvs.web.itd.umich.edu/horde/chora/cvs.php</a></tt><br>
+<br>
+<tt>specifically,</tt><br>
+<br>
+<pre style="margin: 0em;">Anonymous CVS access is available using pserver. To log in to the server, set
+your CVSROOT environment variable to:</pre><br>
+<tt>   :pserver:anonymous@xxxxxxxxxxxxxxxxxxxxx:/usr/local/UMWEB_SOFTWARE</tt><br>
+<br>
+<tt>and use the password &quot;umweb&quot;</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--Information Technology Central Services</pre><br>
+<tt><br>Quoting Will Jaynes &lt;jaynes@xxxxxxxxx&gt;:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I'd like to take a look at the Java Filter source code, but can't 
+find easy access to it. The CoSign home page has a download, but it's 
+for the 1.0b1 version, and doesn't include the source. One can browse 
+the cvs repository, but I dont' see instructions on how to connect to 
+the repository itself. Is annonymous access available to the cvs?</tt><br>
+<br>
+<pre style="margin: 0em;">thanks for any info
+Will Jaynes</pre><br>
+<tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00533" href="msg00533.shtml">Java Filter source code</a></strong>
+<ul><li><em>From:</em> Will Jaynes</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00533.shtml">Java Filter source code</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00535.shtml">Viagra - wholesale price</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00533.shtml">Java Filter source code</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00535.shtml">Viagra - wholesale price</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00534"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00534"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

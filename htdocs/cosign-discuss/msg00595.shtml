@@ -1,0 +1,167 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: Re: cosign question -->
+<!--X-From-R13: "Fbjafraq, Bnhy" <gbjafraqNohf.hzvpu.rqh> -->
+<!--X-Date: Tue, 25 Oct 2005 16:07:42 &#45;0400 (EDT) -->
+<!--X-Message-Id: 41E6356038ADF94B9A054B1FA1F0BDAC039AA411@BUS&#45;MAIL01.bus.ads.itcs.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00594.shtml">Date Prev</a>][<a href="msg00596.shtml">Date Next</a>][<a href="msg00594.shtml">Thread Prev</a>][<a href="msg00596.shtml">Thread Next</a>][<a href="maillist.shtml#00595">Date Index</a>][<a href="threads.shtml#00595">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: Re: cosign question</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Sweetman, David&quot; &lt;<a href="mailto:dsweetma@DOMAIN.HIDDEN">dsweetma@xxxxxxxxxxxx</a>&gt;,   &quot;Lewis, Amy&quot; &lt;<a href="mailto:aslewis@DOMAIN.HIDDEN">aslewis@xxxxxxxxx</a>&gt;, &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: Re: cosign question</li>
+<li><em>From</em>: &quot;Townsend, Paul&quot; &lt;<a href="mailto:townsend@DOMAIN.HIDDEN">townsend@xxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 25 Oct 2005 16:06:19 -0400</li>
+<li><em>Thread-index</em>: AcXZnOoTk6hi9Fz5R0aWTG5rync30AAANnNAAABKYGA=</li>
+<li><em>Thread-topic</em>: Re: cosign question</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+Are there any side effects of simply deleting all the files in cookiedb?
+
+Since we weren't sure, we wrote  a script that deletes files more than a
+day old.  While we were at it we included code to delete cosign log
+files older than a week.  This is in a VBS file that is kicked off by
+the Scheduled Tasks once a day.
+
+Heres the VBS code:
+
+'This script will delete files in the E:\IISCosign\CookieDB folder that
+are older than 24 hours.
+'Files in the E:\IISCosign\Logs folder will be removed if they are older
+than 7 days
+
+On Error Resume Next
+Const DeleteReadOnly = True
+Yesterday = Now - 1
+LastWeek = Now - 7
+
+Set fso = CreateObject(&quot;Scripting.FileSystemObject&quot;)
+set CookieFolder = fso.GetFolder(&quot;E:\IISCosign\cookiedb&quot;)
+set CosignFolder = fso.GetFolder(&quot;E:\IISCosign\logs&quot;)
+
+Set CookieFiles = CookieFolder.Files
+For Each CookieFile in CookieFiles
+  If CookieFile.DateLastModified &lt; Yesterday Then
+    fso.DeleteFile(CookieFile.Path)
+  End If
+Next
+
+Set CosignFiles = CosignFolder.Files
+For Each CosignFile in CosignFiles
+  If CosignFile.DateLastModified &lt; LastWeek Then
+    fso.DeleteFile(CosignFile.Path)
+  End If
+Next
+
+
+ 
+
+-----Original Message-----
+From: Sweetman, David [<a  href="mailto:dsweetma@xxxxxxxxxxxx">mailto:dsweetma@xxxxxxxxxxxx</a>] 
+Sent: Tuesday, October 25, 2005 3:55 PM
+To: Lewis, Amy; cosign-discuss@xxxxxxxxx
+Subject: RE: Re: cosign question
+
+On way is you can use Windows Task Scheduler to schedule a batch file
+that runs a command like:
+
+del /q c:\program files\cosign\cookiedb\*.*
+
+-----Original Message-----
+From: Amy Lewis [<a  href="mailto:aslewis@xxxxxxxxx">mailto:aslewis@xxxxxxxxx</a>] 
+Sent: Tuesday, October 25, 2005 3:46 PM
+To: cosign-discuss@xxxxxxxxx
+Subject: Fwd: Re: cosign question
+
+Does anyone know how to do this on IIS?
+
+Amy Lewis
+Client Server Operations Manager
+Technology Services
+University of Michigan
+aslewis@xxxxxxxxx
+(734) 647-0271
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00594.shtml">RE: Re: cosign question</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00596.shtml">RE: Re: cosign question</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00594.shtml">RE: Re: cosign question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00596.shtml">RE: Re: cosign question</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00595"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00595"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

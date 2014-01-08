@@ -1,0 +1,117 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign 1.8.0 Released -->
+<!--X-From-R13: Irfyrl R Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Wed, 16 Mar 2005 13:41:44 &#45;0500 (EST) -->
+<!--X-Message-Id: 454EC696&#45;4206&#45;4192&#45;AAC0&#45;8A9914D7F0C9@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: F8DD55A5&#45;95A0&#45;11D9&#45;9551&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: Pine.GSO.4.58.0503161017320.17265@sagittarius.ucs.ed.ac.uk -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00366.shtml">Date Prev</a>][<a href="msg00368.shtml">Date Next</a>][<a href="msg00365.shtml">Thread Prev</a>][<a href="msg00368.shtml">Thread Next</a>][<a href="maillist.shtml#00367">Date Index</a>][<a href="threads.shtml#00367">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign 1.8.0 Released</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Graeme Wood &lt;<a href="mailto:Graeme.Wood@DOMAIN.HIDDEN">Graeme.Wood@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign 1.8.0 Released</li>
+<li><em>From</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 16 Mar 2005 13:38:26 -0500</li>
+<li><em>Cc</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00365.shtml">Pine.GSO.4.58.0503161017320.17265@sagittarius.ucs.ed.ac.uk</a>&gt;</li>
+<li><em>References</em>: &lt;F8DD55A5-95A0-11D9-9551-000A95E48A4E@umich.edu&gt; &lt;<a href="msg00365.shtml">Pine.GSO.4.58.0503161017320.17265@sagittarius.ucs.ed.ac.uk</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 16 Mar 2005, at 05:29, Graeme Wood wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I also couldn't get it to compile on solaris with gcc 2.8.1 (I know 
+it is<br>
+ancient) - it complained about bad punctuation in 
+filters/apache/log.h.
+</tt></blockquote><tt><br>gcc 2.8.1 must not support ISO C 1999 variadic macros.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00365" href="msg00365.shtml">Re: Cosign 1.8.0 Released</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00366.shtml">Re: new jcosign service produces error message at authn</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00368.shtml">Re: Cosign 1.8.0 Released</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00365.shtml">Re: Cosign 1.8.0 Released</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00368.shtml">Re: Cosign 1.8.0 Released</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00367"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00367"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

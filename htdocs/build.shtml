@@ -1,0 +1,258 @@
+<!--#set var="long_title" value="cosign: download" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="y" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#include file="header.shtml" -->
+
+<table cellpadding="6" cellspacing="0" border="0" width="90%">
+    <tr>
+	<td >
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="images
+/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            Cosign Build Notes
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            Apache Filter
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td> 
+    </tr>
+</table>
+	</td>
+    </tr>
+
+    <tr>
+    <td>
+	<blockquote>
+	    <p class="software">
+		To build the Apache filter you need Apache 1.3.X.  Support for Apache 2.x is available.
+		Your web server should have SSL enabled.
+	    </p>
+
+	    <p class="software">
+		You will need OpenSSL 0.9.7a or newer.
+	    </p>
+
+	    <p class="software">
+		You will need a source of entropy for the OpenSSL
+		libraries to work.  If your system has /dev/*random
+		then you're all set, otherwise you should get
+		something like prngd or egd.  Solaris users should
+		refer to document 27606 "Differing /dev/random
+		support requirements within Solaris [TM] Operating
+		Environments" at <a
+		href="http://sunsolve.sun.com/">http://sunsolve.sun.com/</a>.
+		Users of operating systems lacking a built-in
+		source of entropy ( such as AIX ) will want to get
+		prngd.
+	    </p>
+
+	    <p class="software">
+		If your cosign protected service needs Kerberos
+		credentials, you will need MIT krb5-1.2.7 or
+		later.  Kerberos libraries are not required if you
+		do not need access to kerberos credentials.  If you
+		are building a central weblogin server, see
+		README.weblogin in the source distribution.
+	    </p>
+
+	    <p class="software">
+		To build the Apache authentication filter:
+	    </p>
+
+	    <p class="software">
+		NOTE: On Redhat 9, kerberos is in a  non-standard
+		place, and so, by default, configure may not find it.
+		So if you need to use kerberos ticket transfers, you
+		will need to do the following.
+	    </p>
+
+	    <p class="software">
+		Add "env CPPFLAGS=-I/usr/kerberos/include" before you
+		run configure. So in csh your configure line will look
+		like this:
+	    </p>
+
+<pre>
+env CPPFLAGS=-I/usr/kerberos/include ./configure
+</pre>
+
+	    <p class="software">
+		and in bash or sh you'd type:
+	    </p>
+
+<pre>
+CPPFLAGS=-I/usr/kerberos/include ./configure
+</pre>
+
+	    <p class="software">
+		To build:
+	    </p>
+<pre>
+./configure
+make
+make install
+mkdir -p /var/cosign/filter
+chown APACHE_USER /var/cosign/filter
+</pre>
+
+	    <p class="software">
+		'make install' will install the filter using your
+		copy of apxs.  Be sure to change APACHE_USER to the
+		username defined in your httpd.conf file.
+	    </p>
+
+	    <p class="software">
+		Finally, create a CA directory to hold your CA
+		certificates.  Copy the CAs ( see the CAcerts
+		directory in the root of the cosign source
+		distribution ) to your CA dir and issue the
+		c_rehash command ( c_rehash is a perl script that
+		ships with openssl ).  If you choose to store your
+		certs in '/usr/local/etc/apache/certs' then the
+		commands would be:
+	    </p>
+
+<pre>
+    mkdir -p /usr/local/etc/apache/certs
+    cp CAcerts/* /usr/local/etc/apache/certs
+    c_rehash /usr/local/etc/apache/certs
+</pre>
+
+	    <p class="software">
+		output should look like:
+	    </p>
+
+<pre>
+    Doing /usr/local/etc/apache/certs
+    umwebCA.pem => 4700e8dd.0
+    RSA-SSCA.pem => f73e89fd.0
+    entrust.pem => ed524cf5.0
+</pre>
+
+	    <p class="software">
+		Configure Apache ( U of M specific example ):
+	    </p>
+
+	    <p class="software">
+		In the U of M environment, you'll want your
+		directives to look like this:
+	    </p>
+
+	    <p class="software">
+		On your http ( port 80 ) side, and any dirs or
+		locations you want exempt:
+	    </p>
+
+<pre>
+    CosignProtected		Off
+</pre>
+
+	    <p class="software">
+		in :443 ( or otherwise https ) vhost
+	    </p>
+
+<pre>
+    CosignProtected		On
+    CosignHostname		weblogin.umich.edu
+    CosignRedirect		https://weblogin.umich.edu/
+    CosignPostErrorRedirect https://weblogin.umich.edu/post_error.html
+    CosignService		[use what remains after dropping .umich.edu from the ServerName]
+    CosignCrypto		/path/to/key /path/to/cert /path/to/CAdir
+</pre>
+
+	    <p class="software">
+		NOTE: trailing slash is required on CosignRedirect!
+		The redirects won't work correctly without it.
+	    </p>
+
+	    <p class="software">
+		Stop and Start Apache
+	    </p>
+
+	    <p class="software">
+		See README.scripts in the source distribution for a
+		cron job that prunes old cookies from the filter's
+		database and scripts for local logout.
+	    </p>
+
+	    <p class="software">
+		Apache Configuration Options:
+	    </p>
+
+<pre>
+CosignProtected         [ on | off ]
+            governs whether Cosign is invoked or not
+
+        CosignHostname          [ the name of the host running cosignd ]
+        CosignRedirect          [ the URL of the cosign login cgi ]
+        CosignPostErrorRedirect [ the URL to redirect to if the user
+                                would be redirected to the login cgi
+                                during a POST. This screen lets people
+                                know we dropped their data. ]
+        CosignService           [ the name of the cosign service cookie ]
+        CosignSiteEntry         [ the URL to redirect to after login  ]
+        CosignCrypto            [path to key] [path to cert] [path to CA dir]
+        CosignRequireFactor     [ a list of the factors a user must satisfy ]
+        CosignFactorSuffix      [ optional factor suffix when testing
+                                for compliance ]
+        CosignFactorSuffixIgnore         [ on | off ]
+        CosignHttpOnly          [ on | off ]
+                module can be use without SSL - not recommended!
+        CosignTicketPrefix      [ the path to the Kerberos ticket store ]
+        CosignFilterDB          [ the path to the cosign filter DB]
+        CosignFilterHashLength  [ 0 | 1 | 2 ]
+            subdir hash for cosign filter DB
+	CosignCheckIP		[ never | initial | always ]
+	    check browser's IP against cosignd's ip information
+        CosignProxyDB           [ the path to the cosign proxy DB]
+        CosignAllowPublicAccess         [ on | off ]
+            make authentication optional for protected sites
+        CosignGetKerberosTickets        [ on | off ]
+            module asks for tgt from cosignd
+        CosignKerberosSetupGSS          [ on | off ]
+            setup the enviornment so that other apache modules
+            that need GSSAPI/Kerberos work. e.g. IMP running under
+	    mod_php
+        CosignGetProxyCookies   [ on | off ]
+            module asks for proxy cookies from cosignd
+
+</pre>
+
+	    <p class="software">
+		The certificate CN of the weblogin server must
+		match CosignHostname.
+	    </p>
+
+<pre>
+./configure may take the following options:
+
+--enable-krb=path_to_krb                enables Kerberos V
+--enable-apache1=path_to_apxs_1.3       enables Apache 1.3 filter
+--enable-apache2=path_to_apxs_2         enables Apache 2 filter
+--with-GSS                              enables GSSAPI
+--with-filterdb=DIR                     overrides default of /var/cosign/filter
+</pre>
+
+	    </p>
+	</blockquote>
+        <p class="software">&nbsp;</p>
+    </td>
+    </tr>
+</table>
+
+<!--#include file="footer.shtml" -->
+

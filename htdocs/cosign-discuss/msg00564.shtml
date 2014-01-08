@@ -1,0 +1,129 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Cosign 1.9.0 Released -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Tue, 4 Oct 2005 16:24:16 &#45;0400 (EDT) -->
+<!--X-Message-Id: 653AE6DC&#45;DFB3&#45;46C6&#45;A56B&#45;56FBA70C76EC@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00563.shtml">Date Prev</a>][<a href="msg00565.shtml">Date Next</a>][<a href="msg00560.shtml">Thread Prev</a>][<a href="msg00565.shtml">Thread Next</a>][<a href="maillist.shtml#00564">Date Index</a>][<a href="threads.shtml#00564">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Cosign 1.9.0 Released</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-announce@DOMAIN.HIDDEN">cosign-announce@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Cosign 1.9.0 Released</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 4 Oct 2005 16:25:01 -0400</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>The Cosign Team is pleased to announce the availability of version  
+1.9.0 of cosign [ MD5 2ec240c09951b17babe60a06d7941ad6 ]</tt><br>
+<br>
+<tt>Changelog at <a  href="http://www.umich.edu/~umweb/software/cosign/changelog.txt">http://www.umich.edu/~umweb/software/cosign/changelog.txt</a></tt><br>
+<br>
+<tt>    updates to READMES<br>
+    more streamlined single server trial install process.<br>
+    common: added double quote support to argcargv() parsing.<br>
+    cgi: override &quot;found&quot; Kerberos paths.<br>
+    cgi: template directory configurable from cosign.conf.<br>
+    cgi: login and transfer tickets with x509.<br>
+    cgi: added ability to force re-authentication on a  per-service  
+basis.<br>
+    cgi: tgts are transfered on macs again, we just build with MIT  
+kerberos instead of on-board kerberos.<br>
+    cgi: check length of username before copy.<br>
+    cgi/daemon: ticket stores are separable.<br>
+    cgi/daemon: fixed miscellaneous core dump causing bugs.<br>
+    filters: streamlined server/directory directive merge routines.<br>
+    filters: almost all directives can be set on a per directory basis.<br>
+    filters: multiple CosignSiteEntry behavior more consistent.<br>
+    friend: cosign-friend is now its own project, which means it is  
+no longer a part of this distribution.<br>
+    libsnet: updated to current version.<br>
+    templates: default action is now &quot;/cosign-bin/cosign.cgi&quot;  
+instead of &quot;/&quot;. Details on suggested Apache configurations are  
+available in README.weblogin.<br>
+    scripts: fixed syntax error in helloCosign.php</tt><br>
+<br>
+<tt>-Johanna, and the core cosign dev team</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00563.shtml">Re: cosign and kerberos</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00565.shtml">WARNlNG: CONFlRM Y0UR 0NLlNE ACCOUNT</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00560.shtml">FREE V_I_A_G_R_A  sample</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00565.shtml">WARNlNG: CONFlRM Y0UR 0NLlNE ACCOUNT</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00564"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00564"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

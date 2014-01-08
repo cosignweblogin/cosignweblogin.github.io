@@ -1,0 +1,221 @@
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+body {
+	background-color: #FFFFFF;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+a.link-l1:link {
+	text-decoration: none;
+	color: #F3F3F3;
+}
+a.link-l1:visited {
+	text-decoration: none;
+	color: #F3F3F3;
+}
+a.link-l1:hover {
+	text-decoration: underline;
+}
+a.headerlinks:link {
+	text-decoration: none;
+	color: #F3F3F3;
+}
+a.headerlinks:visited {
+	text-decoration: none;
+	color: #F3F3F3;
+}
+a.headerlinks:hover {
+	text-decoration: underline;
+}
+a.link-l1y:link {
+	text-decoration: none;
+	color: #FFBB27;
+}
+a.link-l1y:visited {
+	text-decoration: none;
+	color: #FFBB27;
+}
+a.link-l1y:hover {
+	text-decoration: underline;
+}
+a:link {
+	text-decoration: none;
+	color: #0066FF;
+}
+a:visited {
+	text-decoration: none;
+	color: #0066FF;
+}
+a:hover {
+	text-decoration: underline;
+	color: #FF9900;
+}
+a:active {
+	text-decoration: none;
+	color: #00A4FF;
+}
+
+.hd-ctr-bg {
+	background-color: #6699CC;
+	background-image: url(images/header_skyrepeat.gif);
+	background-repeat: repeat-x;
+	height: 241px;
+}
+.hd-panorama {
+	top: 10px;
+	right: 10px;
+	background-image: url(images/head_panoram.jpg);
+	background-repeat: no-repeat;
+	width: 100%;
+}
+.head_gapspace {
+	height: 29px;
+}
+.hd-imagespace {
+	padding: 15px 0px 0px 10px;
+}
+.hd-lt-bg {
+	background-color: #6699CC;
+	height: 55px;
+}
+.hd-subgray-bg {
+	background-image: url(images/head_graybar.gif);
+	height: 39px;
+}
+.foot-gold {
+	background-image: url(images/foot_goldbar.gif);
+	height: 37px;
+	color: #4B4B4B;
+	text-align: right;
+	vertical-align: middle;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.navzone {
+	background-color: #FFFFFF;
+	height: 100px;
+	border-right-width: 1px;
+	border-right-style: dotted;
+	border-right-color: #999999;
+	width: 250px;
+	padding-top: 5px;
+}
+.foot-text {
+	padding: 10px;
+}
+.contentzone {
+	padding: 5px 20px;
+	width: 100%;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+}
+.foot-gold-abs {
+	background-image: url(images/foot_goldbar.gif);
+	height: 37px;
+	color: #666666;
+	text-align: right;
+	vertical-align: middle;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+}
+.nav-ed-top {
+	background-color: #8C8C8C;
+	background-image: url(images/navcap_top.gif);
+	background-repeat: repeat;
+	background-position: 0px 0px;
+	height: 15px;
+}
+.nav-ed-l {
+	background-color: #8C8C8C;
+	background-image: url(images/navsides.gif);
+	background-repeat: repeat-y;
+}
+.nav-ed-r {
+	background-color: #8C8C8C;
+	background-image: url(images/navedge_r.gif);
+	background-repeat: repeat-y;
+}
+.nav-ed-bot {
+	background-color: #8C8C8C;
+	background-image: url(images/navcap_bot.gif);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.navdivider {
+	background-image: url(images/navdivider_horiz.gif);
+	background-repeat: repeat-x;
+	height: 2px;
+}
+.menu-l1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #E6E6E6;
+	padding: 5px 5px 5px 9px;
+}
+.menu-l2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #E6E6E6;
+	padding: 5px 5px 5px 20px;
+}
+.menu-l1y {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFC527;
+	padding: 5px 5px 5px 9px;
+}
+.link-l1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #F3F3F3;
+}
+.link-l1y {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFBB27;
+}
+.cnt-head1 {
+	font-size: 13px;
+	list-style-type: square;
+	color: #FF9000;
+}
+.list-blue {
+	list-style-position: outside;
+	list-style-image: url(images/bluebullet.gif);
+	line-height: 14px;
+}
+.line-bluedot {
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #509AD9;
+}
+.cnt-sub-ital {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+	font-style: italic;
+}
+.link-ltblue {
+	color: #0066FF;
+}
+.headerlinks {
+	border-left-width: 1px;
+	border-left-style: dotted;
+	border-left-color: #333333;
+	padding: 2px 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #CCCCCC;
+}
+.l2-hd-bg {
+	background-image: url(images/l2_headrepeat.jpg);
+}
+

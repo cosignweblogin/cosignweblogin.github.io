@@ -1,0 +1,197 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: FW: [win2000] IISCosign and Windows 2003/IIS 6.0. -->
+<!--X-From-R13: "Ybafgnagva Hblx" <xiblxNhzvpu.rqh> -->
+<!--X-Date: Wed, 28 Jul 2004 14:35:44 &#45;0400 (EDT) -->
+<!--X-Message-Id: 200407281833.i6SIXoJ2010157@reformers.mr.itd.umich.edu -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00200.shtml">Date Prev</a>][<a href="msg00202.shtml">Date Next</a>][<a href="msg00202.shtml">Thread Prev</a>][<a href="msg00204.shtml">Thread Next</a>][<a href="maillist.shtml#00201">Date Index</a>][<a href="threads.shtml#00201">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>FW: [win2000] IISCosign and Windows 2003/IIS 6.0.</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;, &quot;'Cosign'&quot; &lt;<a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>&gt;,   &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: FW: [win2000] IISCosign and Windows 2003/IIS 6.0.</li>
+<li><em>From</em>: &quot;Konstantin Voyk&quot; &lt;<a href="mailto:kvoyk@DOMAIN.HIDDEN">kvoyk@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 28 Jul 2004 14:33:44 -0400</li>
+<li><em>Thread-index</em>: AcR0nejwGJp3uhpeSEGJYhbRk2FC7AAMmCXg</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<table width="100%"><tr><td style="a:link { color: blue } a:visited { color: blue } ">
+
+
+
+
+
+<div class=Section1>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'>Hi,<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'>Will in the letter bellow mentioned about instability
+issues when running win2003 IIS6 with ASP and .NET applications. I&#8217;m aware
+about problem when applications run in multiple pools. Does somebody discoverer
+something else?<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'>And I would appreciate if you describe
+what kind instability you observed when running ASP and .NET<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'>Thank you,<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'>Konstantin Voyk<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'>Programmer/Analyst<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><st1:place w:st="on"><st1:PlaceName w:st="on"><font size=2
+  color=navy face=Arial><span style='font-size:10.0pt;font-family:Arial;
+  color:navy'>Law</span></font></st1:PlaceName><font size=2 color=navy
+ face=Arial><span style='font-size:10.0pt;font-family:Arial;color:navy'> <st1:PlaceType
+ w:st="on">School</st1:PlaceType></span></font></st1:place><font size=2
+color=navy face=Arial><span style='font-size:10.0pt;font-family:Arial;
+color:navy'>, UofM<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'><o:p>&nbsp;</o:p></span></font></p>
+
+<div>
+
+<div class=MsoNormal align=center style='text-align:center'><font size=3
+face="Times New Roman"><span style='font-size:12.0pt'>
+
+<hr size=2 width="100%" align=center tabindex=-1>
+
+</span></font></div>
+
+</div>
+
+<p class=MsoNormal><font size=3 face="Times New Roman"><span style='font-size:
+12.0pt'><br>
+Hello,<br>
+&nbsp;<br>
+I'd like to solicit descriptions of current solutions that anyone has
+implemented using IIS<st1:PersonName w:st="on">Cosign</st1:PersonName> on a
+Windows Server 2003/IIS 6.0 platform, preferably running in native IIS 6.0 Isolation
+mode.&nbsp; I'm currently in the planning stages of what I hope to be a
+full-scale deployment of IIS<st1:PersonName w:st="on">Cosign</st1:PersonName>
+on the Web servers within the College of LS&amp;A, after some testing on both
+Win2K-AS/IIS 5.0 and Winserver 2003/IIS 6.0 platforms, and have encountered a
+couple of issues.&nbsp; One of which causes Web application instability when
+running both Classic ASP and ASP.NET Web applications on the aforementioned
+platform.&nbsp; The IIS<st1:PersonName w:st="on">Cosign</st1:PersonName> folks
+know about this one and are working diligently to resolve it.&nbsp; Also, I'd like
+to know if anyone is using IIS<st1:PersonName w:st="on">Cosign</st1:PersonName>
+to &quot;protect&quot; any Web sites/applications that utilize IIS' Integrated
+Windows Security method?&nbsp; Currently, pass-thru authentication does not
+occur and multiple logons are necessary.<br>
+&nbsp;<br>
+Much thanks for any info that you can provide :-)<br>
+&nbsp;<br>
+</span></font><i><font face="Courier New"><span style='font-family:"Courier New";
+font-style:italic'>W^<br>
+-------------------------------------------------------------------<br>
+Will Shipman, MCP, Systems Administrator III<br>
+Web/Database Admin and VCMS Systems<br>
+LSAIT - Systems Services Team<br>
+<st1:place w:st="on"><st1:PlaceType w:st="on">University</st1:PlaceType> of <st1:PlaceName
+ w:st="on">Michigan</st1:PlaceName></st1:place><br>
+E-mail: <a href="mailto:wshipman@xxxxxxxxx"><font size=2><span
+style='font-size:10.0pt'>wshipman@xxxxxxxxx</span></font></a><br>
+Phone : (734) 763-5577<br>
+-------------------------------------------------------------------<br>
+</span></font></i>---<br>
+<br>
+<o:p></o:p></p>
+
+</div>
+
+
+
+
+</td></tr></table>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00200.shtml">Re: replication</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00202.shtml">Re: Accessing secure sites</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00202.shtml">Re: Accessing secure sites</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00204.shtml">audit trail</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00201"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00201"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

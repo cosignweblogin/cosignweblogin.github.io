@@ -1,0 +1,160 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign @ uMich and logging out -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Mon, 28 Feb 2005 23:32:55 &#45;0500 (EST) -->
+<!--X-Message-Id: da77e3e2e3d157b9be08b08e4229571a@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1109648592.3971.14.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00324.shtml">Date Prev</a>][<a href="msg00326.shtml">Date Next</a>][<a href="msg00324.shtml">Thread Prev</a>][<a href="msg00326.shtml">Thread Next</a>][<a href="maillist.shtml#00325">Date Index</a>][<a href="threads.shtml#00325">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign @ uMich and logging out</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign @ uMich and logging out</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 28 Feb 2005 23:26:22 -0500</li>
+<li><em>Cc</em>: Murray Tracey &lt;<a href="mailto:m.tracey@DOMAIN.HIDDEN">m.tracey@xxxxxxxxxxxxxx</a>&gt;,   cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;,   Timothy Chaffe &lt;<a href="mailto:t.chaffe@DOMAIN.HIDDEN">t.chaffe@xxxxxxxxxxxxxx</a>&gt;,   jeff kennedy &lt;<a href="mailto:jeff.kennedy@DOMAIN.HIDDEN">jeff.kennedy@xxxxxxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00324.shtml">1109648592.3971.14.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00324.shtml">1109648592.3971.14.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>We use the example perl logout script that comes with the cosign src 
+distribution.  We install it locally on each protected service in 
+/cgi-bin/logout  (wish I'd chosen another URI, but it works).  This 
+script:</tt><br>
+<br>
+<tt>    1. expires the service cookie<br>
+    1a. can be modified to do whatever other clean-up you like (freeing 
+DB sessions, for example).<br>
+    2. redirects the user to our central logout cgi (the one written in 
+C) and that prompts the user to logout.</tt><br>
+<br>
+<tt>We link to /cgi-bin/logout from all of our applications with a visible 
+&quot;logout&quot; link and encourage other application providers to do the same. 
+ We have not published a central &quot;logout&quot; url, but visiting 
+&quot;<a  href="https://weblogin.umich.edu/&quot">https://weblogin.umich.edu/&quot</a>; when already authenticated displays a 
+list of protected services and a link to the central logout CGI.</tt><br>
+<br>
+<tt>Kevin</tt><br>
+<br>
+<tt>On Feb 28, 2005, at 10:43 PM, Brett Lomas wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hi Kevin, and others</tt><br>
+<br>
+<tt>just a quick question I have about how you guys have deployed CoSign.<br>
+How have you handled logouts from applications? The reason I ask is we<br>
+are in the process of converting our top applications to use CoSign and<br>
+are wrestling with the logout idea and are wondering if we should 
+remove<br>
+any idea of logging out of the application etc. Also, how do you get<br>
+students to logout of CoSign in general? do you publish the URL and 
+they<br>
+have to go there manually?</tt><br>
+<br>
+<tt>Thanks heaps.</tt><br>
+<br>
+<tt>Brett</tt><br>
+<br>
+<tt><br>!DSPAM:4223e541214778695923490!</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt><br>                ... &quot;I love being weird, or at least, I've made my 
+peace with it.&quot; ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00326" href="msg00326.shtml">Re: Cosign @ uMich and logging out</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+<li><strong><a name="00328" href="msg00328.shtml">Re: Cosign @ uMich and logging out</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00324" href="msg00324.shtml">Cosign @ uMich and logging out</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00324.shtml">Cosign @ uMich and logging out</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00326.shtml">Re: Cosign @ uMich and logging out</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00324.shtml">Cosign @ uMich and logging out</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00326.shtml">Re: Cosign @ uMich and logging out</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00325"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00325"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

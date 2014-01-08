@@ -1,0 +1,14 @@
+<!-- start footer -->
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" nowrap class="foot-gold">Copyright &copy; 2002 - 2004 Regents of the University of Michigan : &nbsp;Page last updated <!--#echo var="LAST_MODIFIED"--><img src="images/spacer.gif" width="15" height="1"> </td>
+  </tr>
+</table>
+</body>
+</html>
+

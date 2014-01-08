@@ -1,0 +1,127 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: A couple of CoSign design and deployment questions -->
+<!--X-From-R13: Xvz Lnwxbjfxv <wnzrfrmNyfv.hzvpu.rqh> -->
+<!--X-Date: Wed, 24 Mar 2004 10:07:17 &#45;0500 (EST) -->
+<!--X-Message-Id: D8A915E7&#45;7DA4&#45;11D8&#45;846E&#45;000A95DA58FE@lsi.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040324012424.D59D334B9F@smtp1.ec.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00024.shtml">Date Prev</a>][<a href="msg00026.shtml">Date Next</a>][<a href="msg00093.shtml">Thread Prev</a>][<a href="msg00026.shtml">Thread Next</a>][<a href="maillist.shtml#00025">Date Index</a>][<a href="threads.shtml#00025">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: A couple of CoSign design and deployment questions</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: A couple of CoSign design and deployment questions</li>
+<li><em>From</em>: Jim Zajkowski &lt;<a href="mailto:jamesez@DOMAIN.HIDDEN">jamesez@xxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 24 Mar 2004 10:06:37 -0500</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00023.shtml">20040324012424.D59D334B9F@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00023.shtml">20040324012424.D59D334B9F@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Mar 23, 2004, at 8:24 PM, Brett Lomas wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">This in itself wouldn't normally be
+a problem, but because the cosign and cosign service cookies (for the
+daemon) are stored in one directory; this will fill up very quickly.
+</pre></blockquote><tt><br>It would be a fairly trivial change to make the cosign cookies be 
+stored in some set of directories instead of one directory entirely -- 
+say, take the first one or two letters of the cookie to be the first 
+and second directory under ../daemon.  Certainly a lot easier than 
+either switching to shm (and all the proper locking that entails) or a 
+database.  No matter what Oracle says, databases are still 
+substantially slower than filesystems.</tt><br>
+<br>
+<tt>--Jim</tt><br>
+<br>
+<pre style="margin: 0em;">--
+Jim Zajkowski          OpenPGP 0x21135C3    <a  href="http://www.jimz.net/pgp.asc">http://www.jimz.net/pgp.asc</a>
+System Administrator  8A9E 1DDF 944D 83C3 AEAB  8F74 8697 A823 2113 5C53
+UM Life Sciences Institute</pre><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00023" href="msg00023.shtml">A couple of CoSign design and deployment questions</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00024.shtml">Re: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00026.shtml">ISAPI Source Code</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00093.shtml">Re: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00026.shtml">ISAPI Source Code</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00025"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00025"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,206 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: FW: A couple of changes I have made from the CVS source -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 21 Apr 2004 23:20:23 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040422031916.40C72354F3@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00084.shtml">Date Prev</a>][<a href="msg00086.shtml">Date Next</a>][<a href="msg00087.shtml">Thread Prev</a>][<a href="msg00094.shtml">Thread Next</a>][<a href="maillist.shtml#00085">Date Index</a>][<a href="threads.shtml#00085">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>FW: A couple of changes I have made from the CVS source</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: FW: A couple of changes I have made from the CVS source</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 22 Apr 2004 15:19:16 +1200</li>
+<li><em>Thread-index</em>: AcQoF+2rGz21kjFhSHqJvr35X0MkpQAAExvwAAAW0qA=</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+
+------------
+
+Brett Lomas
+Integration Architect
+Information Technology Systems and Services
+The University of Auckland
+New Zealand
+
+Phone:		+64 9 3737 599 extn 86499
+Mobile:		+64 21 757 096
+
+
+-----Original Message-----
+From: Brett Lomas [<a  href="mailto:b.lomas@xxxxxxxxxxxxxx">mailto:b.lomas@xxxxxxxxxxxxxx</a>] 
+Sent: Thursday, 22 April 2004 3:19 p.m.
+To: 'kevin mcgowan'
+Subject: RE: A couple of changes I have made from the CVS source
+
+Kevin,
+
+I have daemon/monster.c, the revision number on it is 1.22
+
+I had no problem with the 1.5.1 tarball... but I wanted the latest from CVS
+for my modifications...
+
+------------
+
+Brett Lomas
+Integration Architect
+Information Technology Systems and Services
+The University of Auckland
+New Zealand
+
+Phone:		+64 9 3737 599 extn 86499
+Mobile:		+64 21 757 096
+
+
+-----Original Message-----
+From: kevin mcgowan [<a  href="mailto:clunis@xxxxxxxxx">mailto:clunis@xxxxxxxxx</a>] 
+Sent: Thursday, 22 April 2004 3:13 p.m.
+To: Brett Lomas
+Cc: 'Cosign Discussion'
+Subject: Re: A couple of changes I have made from the CVS source
+
+Strange... These problems should all be fixed.  You were building CVS 
+head and it had these problems?  The profiled thing is a fairly old bug 
+that should definitely be fixed in releases after 1.1.0.  I just 
+checked out cosign from CVS and it checked out properly for me (and 
+builds properly).
+
+We had branched for a short time so we could continue to do updates on 
+1.0.0 while replication was being written.  Perhaps pserver has somehow 
+given you the head of the cosign-1-0-0-patches branch?  Does the 
+version of the code you're working with include, for example, 
+daemon/monster.c?
+
+Did you have any of these problems building the released 1.5.1 tarball?
+
+Kevin
+
+On Apr 21, 2004, at 9:10 PM, Brett Lomas wrote:
+
+&gt; Hi all,
+&gt;
+&gt; During my UoA customisations I have had to make the following changes 
+&gt; to the source from CVS (I got it on 21/04/04) that I thought you might 
+&gt; want to know:
+&gt;
+&gt; * created libsnet/profiled directory - make failed when it didn't 
+&gt; exist.
+&gt;
+&gt; * added include for sys/params.h in filters/apache/connect.c for 
+&gt; MAXPATHLEN
+&gt;
+&gt; * added libcgi/profiled directory ? make failed when it didn?t exist.
+&gt;
+&gt; I am not sure what the profiled is for? as the Makefile seems to 
+&gt; suggest they are exactly the same as the un-profiled??
+&gt;
+&gt; Cheers
+&gt;
+&gt; Brett
+&gt;
+&gt; ------------
+&gt;
+&gt; Brett Lomas
+&gt;
+&gt; Integration Architect
+&gt;
+&gt; Information Technology Systems and Services
+&gt;
+&gt; The University of Auckland
+&gt;
+&gt; New Zealand
+&gt;
+&gt; Phone:&#xA0; &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 9 3737 599 extn 86499
+&gt;
+&gt; Mobile: &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 21 757 096
+&gt;
+&gt;  !DSPAM:40871d47268231254712028!
+
+                   ... being a rock I am without movement ...
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00084.shtml">Re: A couple of changes I have made from the CVS source</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00086.shtml">RE: A couple of changes I have made from the CVS source</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00087.shtml">Re: A couple of changes I have made from the CVS source</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00094.shtml">Application pooling and cosign filter access sharing violation</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00085"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00085"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

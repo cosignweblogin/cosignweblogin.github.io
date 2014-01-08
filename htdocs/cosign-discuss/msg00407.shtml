@@ -1,0 +1,136 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: logout.pl -->
+<!--X-From-R13: Pevna Vngpu <oevNvsbxe.bet> -->
+<!--X-Date: Tue, 26 Apr 2005 00:24:00 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20050426042226.GC10506@ifokr.org -->
+<!--X-Content-Type: multipart/signed -->
+<!--X-Reference: 1114478916.4032.15.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Derived: pgp00016.pgp -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00406.shtml">Date Prev</a>][<a href="msg00408.shtml">Date Next</a>][<a href="msg00406.shtml">Thread Prev</a>][<a href="msg00408.shtml">Thread Next</a>][<a href="maillist.shtml#00407">Date Index</a>][<a href="threads.shtml#00407">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: logout.pl</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: logout.pl</li>
+<li><em>From</em>: Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 25 Apr 2005 21:22:27 -0700</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00406.shtml">1114478916.4032.15.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00406.shtml">1114478916.4032.15.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>User-agent</em>: Mutt/1.5.6+20040907i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+
+&gt; has anyone verified the logout.pl script supplied with Cosign actually
+&gt; works?
+
+I tried using it for a few minutes before I found the logout code
+compiled in /cgi/.  IIRC, the .pl didn't work terribly well, but
+it was very late at the time and I may not have been trying it
+correctly.
+
+
+
+-- 
+Brian Hatch                  Too many people are unwilling
+   Systems and                to accept responsibility for
+   Security Engineer          their own actions, but are
+<a  href="http://www.ifokr.org/bri/">http://www.ifokr.org/bri/</a>     eager to regulate those of
+                              everyone else.
+Every message PGP signed
+</pre><p><strong>Attachment:
+<a href="pgp00016.pgp" ><tt>signature.asc</tt></a></strong><br>
+<em>Description:</em> Digital signature</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00408" href="msg00408.shtml">Re: logout.pl</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00406" href="msg00406.shtml">logout.pl</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00406.shtml">logout.pl</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00408.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00406.shtml">logout.pl</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00408.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00407"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00407"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

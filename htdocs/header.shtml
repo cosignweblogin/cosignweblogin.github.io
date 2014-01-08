@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!--#if expr="!$trail" -->
+    <!--#set var="trail" value="" -->
+<!--#endif -->
+
+<title>cosign: <!--#echo var="title" --></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</style>
+<link href="<!--#echo var="trail" -->cosign.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    <!--
+    body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+    }
+    body {
+	background-color: #FFFFFF;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+    -->
+</style>
+<script language="JavaScript" type="text/JavaScript">
+    <!--
+    function MM_reloadPage(init) {
+	//reloads the window if Nav4 resized
+	if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+	    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+	else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+	}
+	MM_reloadPage(true);
+    //-->
+</script>
+</head>
+
+<body>
+
+<!--#config timefmt = "%e-%B-%Y" -->
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="l2-hd-bg">
+  <tr>
+    <td width="362"><img src="<!--#echo var="trail" -->images/l2_headmain.jpg" alt="CoSign: Collaborative Single Sign-On" width="362" height="97"></td>
+        <td align="right" valign="top"><!--<img src="<!--#echo var="trail" -->images/head_umichtype.gif" width="343" height="23">--></td>
+    <td>&nbsp;</td>
+      </tr>
+</table>
+
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr align="right" valign="middle">
+    <td colspan="2" class="hd-subgray-bg"><a href="<!--#echo var="trail" -->cosign-announce/" class="headerlinks">Announcements</a><a href="<!--#echo var="trail" -->cosign-discuss/" class="headerlinks">Discussion</a></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" class="navzone"><table width="200" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="nav-ed-top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="nav-ed-l"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="menu-l1"><img src="<!--#echo var="trail" -->images/chevron_gray_sm.gif" width="6" height="10" hspace="4">
+<a href="<!--#echo var="trail" --><!--#if expr="\"$HTTP_HOST\" = \"weblogin.org\"" -->/" <!--#else -->../cosign/"<!--#endif --> class="link-l1">home</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="<!--#echo var="trail" -->images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+            <td class="menu-l1<!--#echo var="download" -->"><!--#if expr="$download = y" --><img src="<!--#echo var="trail" -->images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><!--#else --><img src="<!--#echo var="trail" -->images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><!--#endif --><a href="<!--#echo var="trail" -->download.shtml" class="link-l1<!--#echo var="download" -->">download</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="<!--#echo var="trail" -->images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+            <td class="menu-l1<!--#echo var="build" -->"><!--#if expr="$build = y" --><img src="<!--#echo var="trail" -->images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><!--#else --><img src="<!--#echo var="trail" -->images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><!--#endif --><a href="<!--#echo var="trail" -->build.shtml" class="link-l1<!--#echo var="build" -->">build</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="<!--#echo var="trail" -->images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+            <td class="menu-l1<!--#echo var="overview" -->"><!--#if expr="$overview = y" --><img src="<!--#echo var="trail" -->images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><!--#else --><img src="<!--#echo var="trail" -->images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><!--#endif --><a href="<!--#echo var="trail" -->overview.shtml" class="link-l1<!--#echo var="overview" -->">overview</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="<!--#echo var="trail" -->images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+            <td class="menu-l1"><img src="<!--#echo var="trail" -->images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><a href="<!--#echo var"trail" -->http://webapps.itcs.umich.edu/cosign/" class="link-l1">wiki</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="<!--#echo var="trail" -->images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+            <td class="menu-l1<!--#echo var="faq" -->"><!--#if expr="$faq = y" --><img src="<!--#echo var="trail" -->images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><!--#else --><img src="<!--#echo var="trail" -->images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><!--#endif --><a href="<!--#echo var="trail" -->faq.shtml" class="link-l1<!--#echo var="faq" -->">faq</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="<!--#echo var="trail" -->images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+            <td class="menu-l1<!--#echo var="filter" -->"><!--#if expr="$filter = y" --><img src="<!--#echo var="trail" -->images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><!--#else --><img src="<!--#echo var="trail" -->images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><!--#endif --><a href="<!--#echo var="trail" -->filter.shtml" class="link-l1<!--#echo var="filter" -->">filter</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="<!--#echo var="trail" -->images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+            <td class="menu-l1<!--#echo var="roadmap" -->"><!--#if expr="$roadmap = y" --><img src="<!--#echo var="trail" -->images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><!--#else --><img src="<!--#echo var="trail" -->images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><!--#endif --><a href="<!--#echo var="trail" -->roadmap.shtml" class="link-l1<!--#echo var="roadmap" -->">roadmap</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="<!--#echo var="trail" -->images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+            <td class="menu-l1<!--#echo var="license" -->"><!--#if expr="$license = y" --><img src="<!--#echo var="trail" -->images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><!--#else --><img src="<!--#echo var="trail" -->images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><!--#endif --><a href="<!--#echo var="trail" -->license.shtml" class="link-l1<!--#echo var="license" -->">license</a></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td class="nav-ed-bot"><img src="<!--#echo var="trail" -->images/navcap_bot2.gif" width="200" height="12"></td>
+      </tr>
+    </table>
+    <p></p></td>
+    <td valign="top"> <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top" class="contentzone"><p> 
+<!-- end header -->
+

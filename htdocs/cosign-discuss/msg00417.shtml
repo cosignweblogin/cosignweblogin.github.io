@@ -1,0 +1,125 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: IIS Module and unexpected terminations -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 8 Jun 2005 01:02:19 &#45;0400 (EDT) -->
+<!--X-Message-Id: 1118206789.4294.61.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00416.shtml">Date Prev</a>][<a href="msg00418.shtml">Date Next</a>][<a href="msg00435.shtml">Thread Prev</a>][<a href="msg00418.shtml">Thread Next</a>][<a href="maillist.shtml#00417">Date Index</a>][<a href="threads.shtml#00417">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>IIS Module and unexpected terminations</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: IIS Module and unexpected terminations</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 08 Jun 2005 16:59:50 +1200</li>
+<li><em>Cc</em>: Timothy Chaffe &lt;<a href="mailto:t.chaffe@DOMAIN.HIDDEN">t.chaffe@xxxxxxxxxxxxxx</a>&gt;,   Zidan Zhang &lt;<a href="mailto:z.zhang@DOMAIN.HIDDEN">z.zhang@xxxxxxxxxxxxxx</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>hi guys,
+
+we have just put IIS Cosign module into production and are seeing weird
+errors in the event viewer.
+
+We are getting the WWW Publishing service and the IIS Admin Service
+terminating unepectedly a lot (recently - with ahout a week of running).
+
+Any idea on why this is? has anyone else seen this? We are using the IIS
+Cosign 1.1.1.
+
+We have not seen this before installing the IIS module... and just
+wondering if anyone else is seeing this.
+
+We also have a problem when installing the module, it more often than
+not causes the IIS admin program to freeze, and you must reboot the
+server.
+
+Any help would be greatly appreciated as the machines are in production
+already.
+
+Thanks heaps
+
+Brett
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00416.shtml">Re: Bug in IIS filter?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00418.shtml">Cosign in production at UoA and thanks</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00435.shtml">RE: Bug in IIS filter?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00418.shtml">Cosign in production at UoA and thanks</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00417"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00417"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

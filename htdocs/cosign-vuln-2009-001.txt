@@ -1,0 +1,127 @@
+
+VULNERABILITY ALERT
+-------------------
+
+Vulnerability:       COSIGN-VULN-2009-001
+Application:         cosign
+Affected Versions:   2.1.0 and previous
+Vulnerability Type:  Cross-site scripting (XSS) reflection
+Severity:            Potential attacker modification of login page
+Attack:              Proof-of-concept
+Software Website:    http://weblogin.org/ 
+Contact:             cosign@umich.edu
+Dates:               2009-03-24 (discovered); 2009-03-31 (public disclosure)
+
+
+OVERVIEW
+--------
+
+A cross-site scripting (XSS) reflection vulnerability has been discovered in the
+cosign.cgi that may allow an attacker to modify the login page presented to the
+user by the weblogin server. Organizations running their own central cosign
+weblogin server should upgrade the weblogin server to cosign 2.1.1, or backport
+the patch available at http://weblogin.org/download.html to the version of
+cosign they are running.
+
+Cosign 2.1.1 only modifies the cosign.cgi. The filters are unchanged.
+
+
+BACKGROUND
+----------
+
+cosign is a web single-sign-on system.  Written at the University of Michigan,
+cosign is an open source software project and a part of the National Science
+Foundation Middleware Initiative (NMI) EDIT software release.  cosign is
+deployed extensively at the University of Michigan and at educational
+institutions and other organizations around the world.
+ 
+cosign consists of two primary components:  the central weblogin server and
+cosign-protected web servers.  The central weblogin server consists of a
+cosign CGI (logs users in and out), the cosign daemon (manages information
+about the state of the session for each authenticated user), and various
+administrative scripts.  Each cosign-protected web server runs a filter
+which communicates with the daemon via a text-based protocol to assure that
+users who access protected areas of the web site are authenticated.  Users
+must authenticate to CGI on the central weblogin server before they are
+permitted access to a protected service. 
+
+Both the CGI as well as the filter on each cosign-protected web server set
+their own cookie in users' browsers for the purpose of uniquely identifying
+the user's session.  These cookie values are random strings.
+
+Additional background details are available at
+http://weblogin.org/overview.html
+
+
+TECHNICAL DETAILS
+-----------------
+
+An attacker can trick a user into following a link which submit in an HTTP POST
+a specially crafted user name to the weblogin server's cosign.cgi. The login
+attempt will fail, leading the cosign.cgi to send the browser the login error
+page. The login error page is based on a template containing a handful of
+variables, including one representing the user's login name. The cosign.cgi
+substitutes the real values for these variables before sending the error page to
+the browser. Most fields are escaped, but the cosign.cgi does not escape the
+user name when sending the login error page back to the user's web browser,
+instead treating the specialized user name as valid HTML. The attacker can add
+anything to or replace anything in the weblogin page following the login form
+field, potentially tricking the user into submitting sensitive information
+(SSNs, passwords, bank information) to a location of the attacker's choice.
+
+The attack depends on getting the user to load the central weblogin page first,
+as the user must have a cosign cookie set in their browser before the cosign.cgi
+will accept a login attempt. The proof-of-concept attack uses an iframe which
+loads the weblogin page, thereby setting a valid cosign cookie, before
+submitting the specially crafted HTTP POST to the cosign.cgi. Users who have
+configured their browsers only to accept cookies from the current page are not
+vulnerable, unless they have previously visited the weblogin page and did not
+log in.
+
+NOTE: The information above is intended as a description of the vulnerability
+and not as a test for use in determining whether a weblogin server is
+vulnerable.  The attack described above may require tweaking in order to be
+used against an actual cosign installation.
+
+
+
+ADDITIONAL INFORMATION
+----------------------
+
+cosign 2.1.1 and the patch available at http://weblogin.org/download.html fix
+the vulnerability by escaping the user name before sending it back to the
+browser.
+
+The cosign filters are not affected.
+
+Organizations that have questions regarding cosign, or that need assistance
+with upgrading cosign to a non-vulnerable version or back-porting the patch
+to an older version, can contact the cosign development team at
+cosign@umich.edu.
+
+
+TIMELINE
+--------
+
+2009-03-24  Report from Noah Botimer suggesting the presence of an XSS
+            vulnerability in the cosign.cgi.
+
+2009-03-24  cosign development team informed of vulnerability.
+
+2009-03-24  Patch tested and deployed on University of Michigan weblogin
+            servers.
+
+2009-03-26  Private disclosure to non University of Michigan members of the
+            cosign-announce and cosign-discuss mailing lists, to permit them
+            to address the vulnerability on their weblogin servers before
+            public disclosure of the vulnerability.
+
+2009-03-31  Public disclosure. Release of cosign 2.1.1.
+
+
+ACKNOWLEDGMENTS
+---------------
+
+Thanks to Noah Botimer from the University of Michigan for discovering the
+vulnerability and notifying the cosign development team.
+

@@ -1,0 +1,142 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Cosign Filter creates unparsable URL on post -->
+<!--X-From-R13: Pevna Vngpu <oevNvsbxe.bet> -->
+<!--X-Date: Thu, 10 Mar 2005 01:26:26 &#45;0500 (EST) -->
+<!--X-Message-Id: 20050310062025.GM30886@ifokr.org -->
+<!--X-Content-Type: multipart/signed -->
+<!--X-Derived: pgp00008.pgp -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00347.shtml">Date Prev</a>][<a href="msg00349.shtml">Date Next</a>][<a href="msg00349.shtml">Thread Prev</a>][<a href="msg00360.shtml">Thread Next</a>][<a href="maillist.shtml#00348">Date Index</a>][<a href="threads.shtml#00348">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Cosign Filter creates unparsable URL on post</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Cosign Filter creates unparsable URL on post</li>
+<li><em>From</em>: Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 9 Mar 2005 22:20:25 -0800</li>
+<li><em>User-agent</em>: Mutt/1.5.6+20040907i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Testing out the POST error handling in the case where
+your session may have timed out and you get redirected
+back to the login server.
+
+Looks like the apache filter creates the redirect to
+
+	<a  href="https://weblogin.example.com/login/basicosign.cgi?https://weblogin.example.com/post_error.html=8ntlC3I......A9f4XtYVmg;&amp;https://servicebox.example.com/cgi-bin/someform.cgi">https://weblogin.example.com/login/basicosign.cgi?https://weblogin.example.com/post_error.html=8ntlC3I......A9f4XtYVmg;&amp;https://servicebox.example.com/cgi-bin/someform.cgi</a>
+
+Normally you have ?cosign-servicename=COOKIE;&amp;<a  href="https://originalpage/">https://originalpage/</a>
+
+In this case the service part seems to be replaced by the post_error page, and
+so basicosign.cgi is showing an error with 'Unrecognized Service',
+rather than showing that post_error.html page.
+
+Here's the filter's Apache configuration:
+
+  CosignService           servicebox.example.com
+  CosignCrypto            /var/lib/cosign/ssl/key.pem /var/lib/cosign/ssl/cert.pem /var/lib/cosign/certs
+  
+  CosignHostname          weblogin.example.com
+  CosignRedirect <a  href="https://weblogin.example.com/login/basicosign.cgi">https://weblogin.example.com/login/basicosign.cgi</a>
+  CosignPostErrorRedirect <a  href="https://weblogin.example.com/post_error.html">https://weblogin.example.com/post_error.html</a>
+
+Any clues?
+
+
+
+-- 
+Brian Hatch                  Arkansas: One
+   Systems and                Million People,
+   Security Engineer          Fifteen Last Names
+<a  href="http://www.ifokr.org/bri/">http://www.ifokr.org/bri/</a>
+
+Every message PGP signed
+</pre><p><strong>Attachment:
+<a href="pgp00008.pgp" ><tt>signature.asc</tt></a></strong><br>
+<em>Description:</em> Digital signature</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00360" href="msg00360.shtml">Re: Cosign Filter creates unparsable URL on post</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00347.shtml">Bug in IIS Cosign 1.1.1?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00349.shtml">Re: Bug in IIS Cosign 1.1.1?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00349.shtml">Re: Bug in IIS Cosign 1.1.1?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00360.shtml">Re: Cosign Filter creates unparsable URL on post</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00348"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00348"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

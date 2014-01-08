@@ -1,0 +1,2210 @@
+From cosign.announce-errors@umich.edu  Thu Apr 22 16:01:55 2004
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from truecrime.mr.itd.umich.edu (truecrime.mr.itd.umich.edu [141.211.125.42])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id i3MK1tW26552
+	for <cosign-announce@babbler.web.itd.umich.edu>; Thu, 22 Apr 2004 16:01:55 -0400 (EDT)
+Received: (from daemon@localhost)
+	by truecrime.mr.itd.umich.edu (mail500) with LDAP id i3MK10uN019117;
+	Thu, 22 Apr 2004 16:01:00 -0400 (EDT)
+Received: (from daemon@localhost)
+	by truecrime.mr.itd.umich.edu (mail500) with X.500 id i3MK0jm6018901
+	for cosign.announce-members@umich.edu; Thu, 22 Apr 2004 16:00:45 -0400 (EDT)
+Received: from myhero.mr.itd.umich.edu (myhero.mr.itd.umich.edu [141.211.14.73])
+	by truecrime.mr.itd.umich.edu (mail500) with ESMTP id i3MK0jZ6018885;
+	Thu, 22 Apr 2004 16:00:45 -0400 (EDT)
+Received: from [141.213.234.225] (dynamic234-225.staff.itd.umich.edu [141.213.234.225])
+	(authenticated bits=0)
+	by myhero.mr.itd.umich.edu (smtpauth) with ESMTP id i3MK0iYx020943
+	(version=TLSv1/SSLv3 cipher=RC4-SHA bits=128 verify=NO);
+	Thu, 22 Apr 2004 16:00:45 -0400
+Mime-Version: 1.0 (Apple Message framework v613)
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Message-Id: <BCFA82BE-9497-11D8-B762-000A95CD7232@umich.edu>
+Content-Transfer-Encoding: 7bit
+Cc: javacosign.codesign@umich.edu
+From: kevin mcgowan <clunis@umich.edu>
+Subject: Java Cosign 1.0.0 beta 1 released
+Date: Thu, 22 Apr 2004 16:00:43 -0400
+To: cosign-announce@umich.edu
+X-Mailer: Apple Mail (2.613)
+
+The Cosign & Java Cosign teams are very pleased to announce the initial 
+beta release of the Java Cosign filter.
+
+      http://www.umich.edu/~umweb/downloads/jcosign-1.0b1.zip
+      [ md5 fbe1e1513256eadcc08c08f57b112f11 ]
+
+Features:
+
+   The Java CoSign class library comes with multiple components to allow 
+for varying
+   degrees of system integration.
+
+   - A Java Servlet Spec. v2.3 Servlet Filter for JAAS-based 
+authentication
+     filtering (AuthenticationFilter).
+
+   - A JAAS Login Module for CoSign authentication (CosignLoginModule).
+
+   - A Jakarta Commons Pool-based framework for pooling connections to a 
+cluster
+     of CoSign servers.
+
+   - A JSSE-based framework for SSL-based application server/CoSign 
+server
+     communication.
+
+Requirements:
+
+   - J2SE v1.4, or later, JDK or JRE
+     (http://java.sun.com/j2se)
+
+   OR
+
+   - J2SE v1.3 JDK or JRE
+     (http://java.sun.com/j2se/1.3)
+
+   - JAAS v1.0
+     (http://java.sun.com/products/jaas/index-10.html)
+
+   - JSSE v1.0.x
+     (http://java.sun.com/products/jsse/index-103.html)
+
+   AND
+
+   - A Servlet Spec. v2.3 or later application server.
+     (Tomcat 4.1, for example; http://jakarta.apache.org/tomcat)
+
+   - Jakarta Commons Pool
+     (http://jakarta.apache.org/commons/pool/)
+
+   - Jakarta Commons Collections
+     (http://jakarta.apache.org/commons/collections/)
+
+   NOTE: The Jakarta Commons Pool and Collections libraries come with
+         Jakarta Tomcat
+
+Cheers!
+
+-The Cosign team
+
+                 ... "you can't give yourself a nickname." ...
+
+
+From cosign.announce-errors@umich.edu  Fri May  7 10:56:11 2004
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from unforgiven.mr.itd.umich.edu (unforgiven.mr.itd.umich.edu [141.211.125.45])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id i47EuBW21774
+	for <cosign-announce@babbler.web.itd.umich.edu>; Fri, 7 May 2004 10:56:11 -0400 (EDT)
+Received: (from daemon@localhost)
+	by unforgiven.mr.itd.umich.edu (mail500) with LDAP id i47EtJLN019921;
+	Fri, 7 May 2004 10:55:19 -0400 (EDT)
+Received: (from daemon@localhost)
+	by unforgiven.mr.itd.umich.edu (mail500) with X.500 id i47Et4Ef019795
+	for cosign.announce-members@umich.edu; Fri, 7 May 2004 10:55:04 -0400 (EDT)
+Received: from struggle.mr.itd.umich.edu (struggle.mr.itd.umich.edu [141.211.14.79])
+	by unforgiven.mr.itd.umich.edu (mail500) with ESMTP id i47Et49q019786
+	for <cosign-announce@umich.edu>; Fri, 7 May 2004 10:55:04 -0400 (EDT)
+Received: from [141.213.241.251] (adsl-241-251.ns.itd.umich.edu [141.213.241.251])
+	by struggle.mr.itd.umich.edu (smtp) with ESMTP id i47Et3sm032406
+	for <cosign-announce@umich.edu>; Fri, 7 May 2004 10:55:04 -0400
+Mime-Version: 1.0 (Apple Message framework v613)
+Content-Transfer-Encoding: 7bit
+Message-Id: <859BA992-A036-11D8-82C2-000A95E48A4E@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.6.0 released
+Date: Fri, 7 May 2004 10:55:03 -0400
+X-Mailer: Apple Mail (2.613)
+
+Hey all,
+
+The Cosign Team is pleased to announce the 1.6.0 [ MD5 
+a15eaa528433602e4a8c69c62898b77e ] release of cosign. Changelog at 
+http://www.umich.edu/~umweb/software/cosign/changelog.txt, a brief bit 
+on some key new features follows:
+
+	CosignSiteEntry
+a directive for the apache filter that allows the administrator to 
+force users, upon successful authentication, to return to a specific 
+URL ( this was formerly referred to as Top of Site policy and is now 
+called "site entry".) Thanks to Mark Montague for the design.
+
+	CosignHttpOnly
+a directive that will allow cosign to protect non-SSL encrypted sites. 
+The cookies will thus will no longer be marked secure, will be 
+transmitted over http and will be eminently replay-able, but we have 
+beeen asked for this feature, so it's there. All transactions with the 
+cgi and cosignd will still be encrypted, just the transaction between 
+the browser and the webserver will not.
+
+	Support for n-tier cosign proxy authentication
+The filter can now retrieve pre-registered proxy cookies so one web 
+server can proxy the services of several others. Thanks to the folks at 
+University of Edinburgh for their help on this one.
+
+	Generic ( non UM ) HTML templates:
+LOGIN_ERROR_HTML is now distinct from ERROR_HTML so specific login 
+errors can all include login screen and fatal errors (where login is 
+not possible) will not include a login screen. The files in 
+cosign_src/html/ are login_error.m4 and error.m4 respectively.  This 
+will require a change to your existing html if you are upgrading from a 
+previous version.
+
+Thanks also to Brett Lomas  at University of Auckland for several bug 
+fixes and for helping us to make cosign configuration even more 
+flexible.
+
+As always, questions or comments are welcome to cosign@umich.edu Also, 
+discussion is welcome at cosign-discussion@umich.edu
+
+Cheers!
+
+-The Cosign team
+
+
+
+
+
+From cosign.announce-errors@umich.edu  Wed May 12 00:13:07 2004
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from pinkcadillac.mr.itd.umich.edu (pinkcadillac.mr.itd.umich.edu [141.211.14.45])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id i4C4D6R18872
+	for <cosign-announce@babbler.web.itd.umich.edu>; Wed, 12 May 2004 00:13:06 -0400 (EDT)
+Received: (from daemon@localhost)
+	by pinkcadillac.mr.itd.umich.edu (mail500) with LDAP id i4C4CXtZ008122;
+	Wed, 12 May 2004 00:12:33 -0400 (EDT)
+Received: (from daemon@localhost)
+	by pinkcadillac.mr.itd.umich.edu (mail500) with X.500 id i4C4CNZt008060
+	for cosign.announce-members@umich.edu; Wed, 12 May 2004 00:12:23 -0400 (EDT)
+Received: from heredity.mr.itd.umich.edu (heredity.mr.itd.umich.edu [141.211.93.140])
+	by pinkcadillac.mr.itd.umich.edu (mail500) with ESMTP id i4C4CNZX008056
+	for <cosign-announce@umich.edu>; Wed, 12 May 2004 00:12:23 -0400 (EDT)
+Received: from [141.213.242.0] ([141.213.242.0])
+	(authenticated bits=0)
+	by heredity.mr.itd.umich.edu (smtpauth) with ESMTP id i4C4CL8I002402
+	(version=TLSv1/SSLv3 cipher=RC4-SHA bits=128 verify=NO)
+	for <cosign-announce@umich.edu>; Wed, 12 May 2004 00:12:23 -0400
+Mime-Version: 1.0 (Apple Message framework v613)
+Content-Transfer-Encoding: 7bit
+Message-Id: <8F3E7606-A3CA-11D8-8200-000A95CD7232@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+To: cosign-announce@umich.edu
+From: kevin mcgowan <clunis@umich.edu>
+Subject: Cosign 1.6.1 released
+Date: Wed, 12 May 2004 00:12:18 -0400
+X-Mailer: Apple Mail (2.613)
+
+The Cosign Team is pleased to announce the availability of version 
+1.6.1 of cosign  [ MD5 f0f1c3bead08b923623c7a5fc6148c4e ]. Changelog at 
+  http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+Changes:
+
+	krbpath is now MAXPATHLEN to allow for longer paths
+	common: snprintf() to prevent buffer overruns in krbpath & krb4path
+	html: an extremely rudimentary example services directory is now part 
+of the html distribution
+
+Many thanks to Phil Pishioneri from Penn State University and Brett 
+Lomas from the University of Auckland for their contributions to this 
+release.
+
+Kevin
+
+
+From cosign.announce-errors@umich.edu  Tue Aug  3 16:57:31 2004
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from pinkcadillac.mr.itd.umich.edu (pinkcadillac.mr.itd.umich.edu [141.211.14.45])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id i73KvVK07032
+	for <cosign-announce@babbler.web.itd.umich.edu>; Tue, 3 Aug 2004 16:57:31 -0400 (EDT)
+Received: (from daemon@localhost)
+	by pinkcadillac.mr.itd.umich.edu (mail500) with LDAP id i73KuIdX000121;
+	Tue, 3 Aug 2004 16:56:18 -0400 (EDT)
+Received: (from daemon@localhost)
+	by pinkcadillac.mr.itd.umich.edu (mail500) with X.500 id i73KsU7h029495
+	for cosign.announce-members@umich.edu; Tue, 3 Aug 2004 16:54:30 -0400 (EDT)
+Received: from intolerance.mr.itd.umich.edu (intolerance.mr.itd.umich.edu [141.211.14.78])
+	by pinkcadillac.mr.itd.umich.edu (mail500) with ESMTP id i73KsT4Z029487
+	for <cosign-announce@umich.edu>; Tue, 3 Aug 2004 16:54:29 -0400 (EDT)
+Received: from [141.213.234.100] (viewaskew.staff.itd.umich.edu [141.213.234.100])
+	by intolerance.mr.itd.umich.edu (smtp) with ESMTP id i73KsTZH018477
+	for <cosign-announce@umich.edu>; Tue, 3 Aug 2004 16:54:29 -0400
+Mime-Version: 1.0 (Apple Message framework v618)
+Content-Transfer-Encoding: 7bit
+Message-Id: <5A3157BE-E58F-11D8-823A-000A95E48A4E@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.6.2 released
+Date: Tue, 3 Aug 2004 16:54:46 -0400
+X-Mailer: Apple Mail (2.618)
+
+The Cosign Team is pleased to announce the availability of version 
+1.6.2 of cosign  [ MD5 e312927066f801b9cd7edc969c8945d3] .
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+Changes:
+
+	config: bug fix for specifying apache2 path
+	common: all declarations of port are now unsigned short
+	common: compare of CN to hostname is now case insensitive
+	cgi: check to prevent endless looping - defaults to break loops
+	    after 10 redirects in 30 seconds.
+	cgi: removed error message if logout failed, as long as the cookie
+	    was successfully expired.
+	cgi: kerberos tickets are unlinked after successful transfer to daemon
+	daemon: idle and grey windows can be set on the cmd line
+	daemon: wildcard matches are now case insensitive
+	daemon: we no longer ignore the specified syslog facility
+	daemon: updated docs, explain the various timeouts better
+	filter: support for runtime config of filterDB, proxyDB, and
+		kerberosTicketCache
+
+Many thanks, again, to Phil Pishioneri from Penn State University and 
+Brett Lomas from the University of Auckland for their contributions to 
+this release.
+
+-Johanna, and the core cosign dev team
+
+
+From cosign.announce-errors@umich.edu  Mon Aug 16 17:15:11 2004
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from suddenimpact.mr.itd.umich.edu (suddenimpact.mr.itd.umich.edu [141.211.14.43])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id i7GLFBK25268
+	for <cosign-announce@babbler.web.itd.umich.edu>; Mon, 16 Aug 2004 17:15:11 -0400 (EDT)
+Received: (from daemon@localhost)
+	by suddenimpact.mr.itd.umich.edu (mail500) with LDAP id i7GLDmle007909;
+	Mon, 16 Aug 2004 17:13:48 -0400 (EDT)
+Received: (from daemon@localhost)
+	by suddenimpact.mr.itd.umich.edu (mail500) with X.500 id i7GLD9Yn007711
+	for cosign.announce-members@umich.edu; Mon, 16 Aug 2004 17:13:09 -0400 (EDT)
+Received: from reformers.mr.itd.umich.edu (reformers.mr.itd.umich.edu [141.211.93.147])
+	by suddenimpact.mr.itd.umich.edu (mail500) with ESMTP id i7GLD9t0007703
+	for <cosign-announce@umich.edu>; Mon, 16 Aug 2004 17:13:09 -0400 (EDT)
+Received: from [141.213.234.100] (viewaskew.staff.itd.umich.edu [141.213.234.100])
+	by reformers.mr.itd.umich.edu (smtp) with ESMTP id i7GLD85g007495
+	for <cosign-announce@umich.edu>; Mon, 16 Aug 2004 17:13:08 -0400
+Mime-Version: 1.0 (Apple Message framework v618)
+Content-Transfer-Encoding: 7bit
+Message-Id: <1B1BD2F3-EFC9-11D8-BF62-000A95E48A4E@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Using LDAP for AuthZ with Cosign's AuthN 
+Date: Mon, 16 Aug 2004 17:13:22 -0400
+X-Mailer: Apple Mail (2.618)
+
+Hey all,
+
+So, as you've all probably heard or read, Cosign was meant for 
+Authentication only, and we've tried to isolate that as much as 
+possible. But while Authentication is necessary, it if often not so 
+useful without Authorization. And to that end, the cosign team has gone 
+and appropriated mod_authz_ldap ( http://authzldap.othello.ch/ ) for 
+LDAP group and role authorization. And I'm pleased to say it even 
+works!
+
+ From the download page on weblogin.org, you can now find:
+
+	http://www.umich.edu/~umweb/downloads/mod_authz_ldap-NOTES.txt
+
+[UMICH people - see 
+http://www.umich.edu/~umweb/downloads/mod_authz_ldap-NOTES-UMICH.txt 
+for umich specific settings ]
+
+This is a how-to on building and configuring mod_authz_ldap to work 
+with cosign ( or any other AuthN that populates REMOTE_USER ). These 
+notes include a small patch that we have submitted to the author and 
+will theoretically be included in the next release. So, if you're an 
+early adopter, you're gonna need to patch for now. :)
+
+Feel free to send questions or comments to cosign-discuss list!
+
+-Johanna
+
+
+From cosign.announce-errors@umich.edu  Mon Sep 13 15:57:06 2004
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from enforcer.mr.itd.umich.edu (enforcer.mr.itd.umich.edu [141.211.14.42])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id i8DJv6K04806
+	for <cosign-announce@babbler.web.itd.umich.edu>; Mon, 13 Sep 2004 15:57:06 -0400 (EDT)
+Received: (from daemon@localhost)
+	by enforcer.mr.itd.umich.edu (mail500) with LDAP id i8DJtkw4029098;
+	Mon, 13 Sep 2004 15:55:46 -0400 (EDT)
+Received: (from daemon@localhost)
+	by enforcer.mr.itd.umich.edu (mail500) with X.500 id i8DJtXwT028994
+	for cosign.announce-members@umich.edu; Mon, 13 Sep 2004 15:55:33 -0400 (EDT)
+Received: from reformers.mr.itd.umich.edu (reformers.mr.itd.umich.edu [141.211.93.147])
+	by enforcer.mr.itd.umich.edu (mail500) with ESMTP id i8DJtXLL028990
+	for <cosign-announce@umich.edu>; Mon, 13 Sep 2004 15:55:33 -0400 (EDT)
+Received: from spike.itd.umich.edu (141-213-238-74.umnet.umich.edu [141.213.238.74])
+	by reformers.mr.itd.umich.edu (smtp) with ESMTP id i8DJtW5Y029212
+	for <cosign-announce@umich.edu>; Mon, 13 Sep 2004 15:55:32 -0400
+Date: Mon, 13 Sep 2004 15:55:32 -0400
+From: Jarod Malestein <jarod@umich.edu>
+Sender: jarod@mail.umich.edu
+To: cosign-announce@umich.edu
+Subject: IISCosign 1.1.0 RC1 available for download
+Message-ID: <14272838ECFD00B88D72F514@spike.itd.umich.edu>
+In-Reply-To: <CF9247C0CEB4020395D5A863@spike.itd.umich.edu>
+References:  <CF9247C0CEB4020395D5A863@spike.itd.umich.edu>
+X-Mailer: Mulberry/3.1.5 (Win32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+Release Candidate 1 for IISCosign version 1.1.0 is now available.  We'd 
+like to receive feedback, complaints, test reports, and bugs.  Please give 
+this a spin and let us know what you think!  If there's anything we've left 
+out or a promised or omitted feature you're waiting for, please let us know.
+
+Download here:
+<http://weblogin.org/>
+
+Previous versions available here:
+<http://www.umich.edu/~umweb/software/cosign/download.html>
+
+--Jarod Malestein
+--University of Michigan
+--IT Central Services
+
+Changes in IISCosign 1.1.0:
+
++ You can now specify allowUnauthenticatedAccess to <Protected/> pages.
+Example:
+
+<Protected allowUnauthenticatedAccess="TRUE">/MySweetWebApp</Protected>
+
+What?  Yes, now you can have a folder or web page(s) that can be accessed 
+by both logged in and non-logged in users.  If the user is logged in, the 
+HTTP_REMOTE_USER, HTTP_REMOTE_REALM, and HTTP_COSIGN_SERVICE variables will 
+be available.  If the user is not logged in, he is not redirected
+and only the HTTP_COSIGN_SERVICE variable is available.
+
++ Log file locking issue circumvented.  This prevented multiple instances 
+of the filter from being instantiated in IIS 6.0.  Unfortunately, multiple 
+log files are not created.  This will be corrected.
+
++ <HttpsOnly /> option added. Default is TRUE. Set to FALSE to allow users 
+to access cosign-protected pages without a secure connection. Example:
+
+<HttpsOnly>FALSE</HttpsOnly>
+
++ Corrected bug that would protect something like "/studentsAndStaff" if 
+"/students" was protected.  Then broke it, fixed it, broke it, fixed it. 
+This is something you may want to double-check.
+
++ Extra info put into log file.  Please provide feedback on what you would 
+and wouldn't like to have in the cosign log file.
+
++ Https redirect bug fixed.
+
++ Specifying web sites by their IIS description rather than DNS name is now 
+an option.
+Change your <Service /> tag as follows:
+
+<Service IISDescription="IISCosign web site">cosign-service-name
+...
+</Service>
+
+You can use either the original websitename item to refer to the DNS name 
+or the new IISDescription. If both are present, IISCosign first looks for 
+IISDescription and will ignore websitename.
+
+For the curious parties, the "IISDescription" is compared to the 
+ServerComment for the web site in the IIS metabase.
+
++ You can now limit the log file size. Change your <LogFilePath> to look 
+like this:
+
+<LogFilePath fileSizeInKB="4096">C:\Program 
+Files\CosignFilter\Logs</LogFilePath>
+
+
+What's on the roadmap (in no particular order):
+
+- Creating multiple cosign log files when multiple instances of the filter 
+are loaded.
+- A logging level option.  Something like "normal/debug/trace."
+- Implementing Apache-style on/off cosign protection mechanism.  This
+would allow something like "/foo" to be protected and "/foo/bar" to be
+unprotected.  As IISCosign stands now, "/foo", by default, will also
+protect "/foo/bar".
+- And, of course, rolling in contributions from other organizations.
+
+
+
+From cosign.announce-errors@umich.edu  Mon Sep 13 17:49:40 2004
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from unforgiven.mr.itd.umich.edu (unforgiven.mr.itd.umich.edu [141.211.125.45])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id i8DLneK06729
+	for <cosign-announce@babbler.web.itd.umich.edu>; Mon, 13 Sep 2004 17:49:40 -0400 (EDT)
+Received: (from daemon@localhost)
+	by unforgiven.mr.itd.umich.edu (mail500) with LDAP id i8DLlrQ9003634;
+	Mon, 13 Sep 2004 17:47:53 -0400 (EDT)
+Received: (from daemon@localhost)
+	by unforgiven.mr.itd.umich.edu (mail500) with X.500 id i8DLlfx9003505
+	for cosign.announce-members@umich.edu; Mon, 13 Sep 2004 17:47:41 -0400 (EDT)
+Received: from reformers.mr.itd.umich.edu (reformers.mr.itd.umich.edu [141.211.93.147])
+	by unforgiven.mr.itd.umich.edu (mail500) with ESMTP id i8DLlep6003501
+	for <cosign-announce@umich.edu>; Mon, 13 Sep 2004 17:47:40 -0400 (EDT)
+Received: from spike.itd.umich.edu (141-213-238-74.umnet.umich.edu [141.213.238.74])
+	by reformers.mr.itd.umich.edu (smtp) with ESMTP id i8DLle5Y015139
+	for <cosign-announce@umich.edu>; Mon, 13 Sep 2004 17:47:40 -0400
+Date: Mon, 13 Sep 2004 17:47:40 -0400
+From: Jarod Malestein <jarod@umich.edu>
+Sender: jarod@mail.umich.edu
+To: cosign-announce@umich.edu
+Subject: Re: IISCosign 1.1.0 RC1 available for download
+Message-ID: <DDDA1B6839768ADC247621FC@spike.itd.umich.edu>
+In-Reply-To: <14272838ECFD00B88D72F514@spike.itd.umich.edu>
+References:  <CF9247C0CEB4020395D5A863@spike.itd.umich.edu>
+ <14272838ECFD00B88D72F514@spike.itd.umich.edu>
+X-Mailer: Mulberry/3.1.5 (Win32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+Very important thing I forgot to mention: since this is a release candidate 
+do not forget to backup your IISCosign folder!  In particular, the 
+cosign.dll.config file and the contents of the /SSL folder!
+
+--Jarod Malestein
+--University of Michigan
+--IT Central Services
+
+--On Monday, September 13, 2004 3:55 PM -0400 Jarod Malestein 
+<jarod@umich.edu> wrote:
+
+>
+> Release Candidate 1 for IISCosign version 1.1.0 is now available.  We'd
+> like to receive feedback, complaints, test reports, and bugs.  Please
+> give this a spin and let us know what you think!  If there's anything
+> we've left out or a promised or omitted feature you're waiting for,
+> please let us know.
+>
+> Download here:
+> <http://weblogin.org/>
+>
+> Previous versions available here:
+> <http://www.umich.edu/~umweb/software/cosign/download.html>
+>
+> --Jarod Malestein
+> --University of Michigan
+> --IT Central Services
+>
+> Changes in IISCosign 1.1.0:
+>
+> + You can now specify allowUnauthenticatedAccess to <Protected/> pages.
+> Example:
+>
+> <Protected allowUnauthenticatedAccess="TRUE">/MySweetWebApp</Protected>
+>
+> What?  Yes, now you can have a folder or web page(s) that can be accessed
+> by both logged in and non-logged in users.  If the user is logged in, the
+> HTTP_REMOTE_USER, HTTP_REMOTE_REALM, and HTTP_COSIGN_SERVICE variables
+> will be available.  If the user is not logged in, he is not redirected
+> and only the HTTP_COSIGN_SERVICE variable is available.
+>
+> + Log file locking issue circumvented.  This prevented multiple instances
+> of the filter from being instantiated in IIS 6.0.  Unfortunately,
+> multiple log files are not created.  This will be corrected.
+>
+> + <HttpsOnly /> option added. Default is TRUE. Set to FALSE to allow
+> users to access cosign-protected pages without a secure connection.
+> Example:
+>
+> <HttpsOnly>FALSE</HttpsOnly>
+>
+> + Corrected bug that would protect something like "/studentsAndStaff" if
+> "/students" was protected.  Then broke it, fixed it, broke it, fixed it.
+> This is something you may want to double-check.
+>
+> + Extra info put into log file.  Please provide feedback on what you
+> would and wouldn't like to have in the cosign log file.
+>
+> + Https redirect bug fixed.
+>
+> + Specifying web sites by their IIS description rather than DNS name is
+> now an option.
+> Change your <Service /> tag as follows:
+>
+> <Service IISDescription="IISCosign web site">cosign-service-name
+> ...
+> </Service>
+>
+> You can use either the original websitename item to refer to the DNS name
+> or the new IISDescription. If both are present, IISCosign first looks for
+> IISDescription and will ignore websitename.
+>
+> For the curious parties, the "IISDescription" is compared to the
+> ServerComment for the web site in the IIS metabase.
+>
+> + You can now limit the log file size. Change your <LogFilePath> to look
+> like this:
+>
+> <LogFilePath fileSizeInKB="4096">C:\Program
+> Files\CosignFilter\Logs</LogFilePath>
+>
+>
+> What's on the roadmap (in no particular order):
+>
+> - Creating multiple cosign log files when multiple instances of the
+> filter are loaded.
+> - A logging level option.  Something like "normal/debug/trace."
+> - Implementing Apache-style on/off cosign protection mechanism.  This
+> would allow something like "/foo" to be protected and "/foo/bar" to be
+> unprotected.  As IISCosign stands now, "/foo", by default, will also
+> protect "/foo/bar".
+> - And, of course, rolling in contributions from other organizations.
+>
+>
+>
+>
+
+
+
+
+
+From cosign.announce-errors@umich.edu  Mon Nov  1 15:30:49 2004
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from idoldancer.mr.itd.umich.edu (idoldancer.mr.itd.umich.edu [141.211.14.76])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id iA1KUnD25950
+	for <cosign-announce@babbler.web.itd.umich.edu>; Mon, 1 Nov 2004 15:30:49 -0500 (EST)
+Received: FROM reformers.mr.itd.umich.edu (reformers.mr.itd.umich.edu [141.211.93.147])
+	BY idoldancer.mr.itd.umich.edu ID 41869CBD.4C93F.28551 ; 
+	 1 Nov 2004 15:29:49 -0500
+Received: from [141.213.130.144] (a-adsl-aads-130-144.umnet.umich.edu [141.213.130.144])
+	by reformers.mr.itd.umich.edu (smtp) with ESMTP id iA1KTme5018112
+	for <cosign-announce@umich.edu>; Mon, 1 Nov 2004 15:29:48 -0500
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Transfer-Encoding: 7bit
+Message-Id: <D402CBFC-2C44-11D9-8D91-000A95E48A4E@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.7.0 Released
+Date: Mon, 1 Nov 2004 15:30:11 -0500
+X-Mailer: Apple Mail (2.619)
+
+The Cosign Team is pleased to announce the availability of version 
+1.7.0 of cosign [ MD5 f4cece2c7b8b642c8135e90da7c4d422] .
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+Changes:
+
+	config: must specify path to apxs to build either filter, no default.
+	common: first pass at rate logging, see README and man pages
+	cgi: issue a new login cookie if the one presented is more than
+		24 hours old.
+	cgi: looping page a redirect now instead of just an error.
+	cgi: check for sql injection prior to username query.
+	cgi: less verbose logging, more sumamries.
+	daemon: default log facility now daemon.
+	daemon: more precise logging, supression of common errors.
+	daemon/monster: override syslog facility and level from cmd line.
+	filter: all settings configureable thorough runtime directives.
+	filter: new directive to delimit authN optional, which allows you
+		to push authN deicsions back into the application.
+	filter: issue a new service cookie if the one presented is more than
+		24 hours old.
+	html: new looping page, a redirect from the cgi, will allow you to
+		capture the browser info ( in access logs ) for clients
+		who are looping.
+
+Thanks to Phil Pishioneri from Penn State University for some minor bug 
+fixes.
+
+FYI: Cosign 1.8.0, which will mostly be Brett Lomas' (University of 
+Auckland) changes to allow runtime configuration of the cgi and daemon 
+from a single configuration file, will be released as soon as we get it 
+reviewed and checked in. The only planned filter change is to allow 
+CosignProtected On/Off in .htaccess files. Those of you who do not like 
+to upgrade often and/or really want the runtime configuration for the 
+cgi and daemon are advised to consider waiting.
+
+-Johanna, and the core cosign dev team
+
+
+From cosign.announce-errors@umich.edu  Fri Feb 18 17:36:48 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from escape.mr.itd.umich.edu (escape.mr.itd.umich.edu [141.211.14.71])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j1IMamD08344
+	for <cosign-announce@babbler.web.itd.umich.edu>; Fri, 18 Feb 2005 17:36:48 -0500 (EST)
+Received: FROM intolerance.mr.itd.umich.edu (intolerance.mr.itd.umich.edu [141.211.14.78])
+	BY escape.mr.itd.umich.edu ID 42166BA7.48900.25002 ; 
+	18 Feb 2005 17:26:47 -0500
+Received: from spike.itd.umich.edu (dynamic231-202.staff.itd.umich.edu [141.213.231.202])
+	by intolerance.mr.itd.umich.edu (smtp) with ESMTP id j1IMQkoh008125
+	for <cosign-announce@umich.edu>; Fri, 18 Feb 2005 17:26:46 -0500
+Date: Fri, 18 Feb 2005 17:26:45 -0500
+From: jarod@umich.edu
+Sender: jarod@mail.umich.edu
+To: cosign-announce@umich.edu
+Subject: IISCosign 1.1.1 available for download
+Message-ID: <5B1F8FA740A3BBC0188C8723@spike.itd.umich.edu>
+X-Mailer: Mulberry/3.1.5 (Win32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+IISCosign 1.1.1 is now availble for download from <http://weblogin.org>.
+
+This is being called 1.1.1 instead of 1.1.0 since the versioning with 
+InstallShield was slightly off.  Therefore, to make sure people are given 
+the upgrade option with the installer and to avoid confusion, this one is 
+being labeled 1.1.1.  It is highly recommended you upgrade as soon as 
+possible, especially if you are on a pre-1.1.0 version, due to many useful 
+bug fixes.
+
+We are constantly refining and improving IISCosign and the installer.  If 
+there are any recommendation or questions you have, please send them to 
+cosign@umich.edu.
+
+The next major item on the IISCosign roadmap is adding the Kerberos ticket 
+passing functionality.
+
+A list of the major changes since version 1.0.0 is below.
+
+Happy upgrading!
+
+--Jarod Malestein
+--University of Michigan - ITCS
+
+
+
+Changes in IISCosign 1.1.1:
++ Installer
+
+Various, small fixes.
+
++ Some major IISCosign failures reported to the Event Viewer.
+
+There is now a facility with IISCosign to report events directly to the
+Event Viewer.  This is very useful for diagnosing problems, especially if
+the log files cannot be created.  The events reported are not comprehensive
+and will continue to be tweaked based on administrators' experience and
+input.
+
++ You can now specify allowUnauthenticatedAccess to <Protected/pages.
+Example:
+
+<Protected allowPublicAccess="TRUE">/MySweetWebApp</Protected>
+
+NOTE: this was previously labeled allowUnauthenticatedAccess.  For clarity
+and parity with the Apache version, this has been changed to
+allowPublicAccess.  Both will still work, but the former will, eventually,
+be deprecated.
+
+You can have a folder or web page(s) that can be accessed
+by both logged in and non-logged in users.  If the user is logged in, the
+HTTP_REMOTE_USER, HTTP_REMOTE_REALM, and HTTP_COSIGN_SERVICE variables
+will be available.  If the user is not logged in, he is not redirected
+and only the HTTP_COSIGN_SERVICE variable is available.
+
++ Log file locking issue circumvented.  This prevented multiple instances
+of the filter from being instantiated in IIS 6.0.  Multiple log files are
+created if possible.
+
++ <HttpsOnly /option added. Default is TRUE. Set to FALSE to allow
+users to access cosign-protected pages without a secure connection.
+Example:
+
+<HttpsOnly>FALSE</HttpsOnly>
+
++ Corrected bug that would protect something like "/studentsAndStaff" if
+"/students" was protected.  Then broke it, fixed it, broke it, fixed it.
+This is something you may want to double-check.
+
++ Extra info put into log file.  Please provide feedback on what you
+would and wouldn't like to have in the cosign log file.
+
++ Https redirect bug fixed.
+
++ Specifying web sites by their IIS description rather than DNS name is
+now an option.
+Change your <Service /tag as follows:
+
+<Service IISDescription="IISCosign web site">cosign-service-name
+...
+</Service>
+
+You can use either the original websitename item to refer to the DNS name
+or the new IISDescription. If both are present, IISCosign first looks for
+IISDescription and will ignore websitename.
+
+For the curious parties, the "IISDescription" is compared to the
+ServerComment for the web site in the IIS metabase.
+
++ You can now limit the log file size. Change your <LogFilePathto look
+like this:
+
+<LogFilePath fileSizeInKB="4096">C:\Program
+Files\CosignFilter\Logs</LogFilePath>
+
+
+
+From cosign.announce-errors@umich.edu  Sun Feb 20 22:57:22 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from informer.mr.itd.umich.edu (informer.mr.itd.umich.edu [141.211.14.72])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j1L3vMD04999
+	for <cosign-announce@babbler.web.itd.umich.edu>; Sun, 20 Feb 2005 22:57:22 -0500 (EST)
+Received: FROM smtpc.itss.auckland.ac.nz (harpo.itss.auckland.ac.nz [130.216.190.13])
+	BY informer.mr.itd.umich.edu ID 42195BF8.BB898.31737 ; 
+	20 Feb 2005 22:56:41 -0500
+Received: from localhost (localhost.localdomain [127.0.0.1])
+	by smtpc.itss.auckland.ac.nz (Postfix) with ESMTP id 3E5A034227;
+	Mon, 21 Feb 2005 16:56:38 +1300 (NZDT)
+Received: from smtpc.itss.auckland.ac.nz ([127.0.0.1])
+ by localhost (smtpc.itss.auckland.ac.nz [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 26446-22; Mon, 21 Feb 2005 16:56:38 +1300 (NZDT)
+Received: from brett.enarc.auckland.ac.nz (brett.enarc.auckland.ac.nz [130.216.4.59])
+	(using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by smtpc.itss.auckland.ac.nz (Postfix) with ESMTP id 19B9933FB0;
+	Mon, 21 Feb 2005 16:56:38 +1300 (NZDT)
+Subject: Re: IISCosign 1.1.1 available for download
+From: Brett Lomas <b.lomas@auckland.ac.nz>
+To: jarod@umich.edu
+Cc: cosign-announce@umich.edu
+In-Reply-To: <5B1F8FA740A3BBC0188C8723@spike.itd.umich.edu>
+References: <5B1F8FA740A3BBC0188C8723@spike.itd.umich.edu>
+Content-Type: text/plain
+Message-Id: <1108958197.4269.32.camel@brett.enarc.auckland.ac.nz>
+Mime-Version: 1.0
+X-Mailer: Ximian Evolution 1.4.5 (1.4.5-9) 
+Date: Mon, 21 Feb 2005 16:56:37 +1300
+Content-Transfer-Encoding: 7bit
+X-Virus-Scanned: by amavisd-new at mailhost.auckland.ac.nz
+
+Hey Jarod,
+
+thanks for this, sounds good. We will start deploying this here ;)
+Is the source for this version available at
+http://cowboybebop.staff.itd.umich.edu/iiscosign/ ?? I tried to connect
+before but was timing out.
+
+Also, any idea on the date of the next release, as we would love the
+kerberos stuff. In fact we need it for one of our applications. Is it
+being developed now and in a state for us to test or not that far
+advanced?
+
+Thanks
+
+Brett
+
+On Sat, 2005-02-19 at 11:26, jarod@umich.edu wrote:
+> IISCosign 1.1.1 is now availble for download from <http://weblogin.org>.
+> 
+> This is being called 1.1.1 instead of 1.1.0 since the versioning with 
+> InstallShield was slightly off.  Therefore, to make sure people are given 
+> the upgrade option with the installer and to avoid confusion, this one is 
+> being labeled 1.1.1.  It is highly recommended you upgrade as soon as 
+> possible, especially if you are on a pre-1.1.0 version, due to many useful 
+> bug fixes.
+> 
+> We are constantly refining and improving IISCosign and the installer.  If 
+> there are any recommendation or questions you have, please send them to 
+> cosign@umich.edu.
+> 
+> The next major item on the IISCosign roadmap is adding the Kerberos ticket 
+> passing functionality.
+> 
+> A list of the major changes since version 1.0.0 is below.
+> 
+> Happy upgrading!
+> 
+> --Jarod Malestein
+> --University of Michigan - ITCS
+> 
+> 
+> 
+> Changes in IISCosign 1.1.1:
+> + Installer
+> 
+> Various, small fixes.
+> 
+> + Some major IISCosign failures reported to the Event Viewer.
+> 
+> There is now a facility with IISCosign to report events directly to the
+> Event Viewer.  This is very useful for diagnosing problems, especially if
+> the log files cannot be created.  The events reported are not comprehensive
+> and will continue to be tweaked based on administrators' experience and
+> input.
+> 
+> + You can now specify allowUnauthenticatedAccess to <Protected/pages.
+> Example:
+> 
+> <Protected allowPublicAccess="TRUE">/MySweetWebApp</Protected>
+> 
+> NOTE: this was previously labeled allowUnauthenticatedAccess.  For clarity
+> and parity with the Apache version, this has been changed to
+> allowPublicAccess.  Both will still work, but the former will, eventually,
+> be deprecated.
+> 
+> You can have a folder or web page(s) that can be accessed
+> by both logged in and non-logged in users.  If the user is logged in, the
+> HTTP_REMOTE_USER, HTTP_REMOTE_REALM, and HTTP_COSIGN_SERVICE variables
+> will be available.  If the user is not logged in, he is not redirected
+> and only the HTTP_COSIGN_SERVICE variable is available.
+> 
+> + Log file locking issue circumvented.  This prevented multiple instances
+> of the filter from being instantiated in IIS 6.0.  Multiple log files are
+> created if possible.
+> 
+> + <HttpsOnly /option added. Default is TRUE. Set to FALSE to allow
+> users to access cosign-protected pages without a secure connection.
+> Example:
+> 
+> <HttpsOnly>FALSE</HttpsOnly>
+> 
+> + Corrected bug that would protect something like "/studentsAndStaff" if
+> "/students" was protected.  Then broke it, fixed it, broke it, fixed it.
+> This is something you may want to double-check.
+> 
+> + Extra info put into log file.  Please provide feedback on what you
+> would and wouldn't like to have in the cosign log file.
+> 
+> + Https redirect bug fixed.
+> 
+> + Specifying web sites by their IIS description rather than DNS name is
+> now an option.
+> Change your <Service /tag as follows:
+> 
+> <Service IISDescription="IISCosign web site">cosign-service-name
+> ...
+> </Service>
+> 
+> You can use either the original websitename item to refer to the DNS name
+> or the new IISDescription. If both are present, IISCosign first looks for
+> IISDescription and will ignore websitename.
+> 
+> For the curious parties, the "IISDescription" is compared to the
+> ServerComment for the web site in the IIS metabase.
+> 
+> + You can now limit the log file size. Change your <LogFilePathto look
+> like this:
+> 
+> <LogFilePath fileSizeInKB="4096">C:\Program
+> Files\CosignFilter\Logs</LogFilePath>
+> 
+> 
+
+
+From cosign.announce-errors@umich.edu  Mon Feb 21 17:02:10 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from neartoearth.mr.itd.umich.edu (neartoearth.mr.itd.umich.edu [141.211.93.141])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j1LM2AD24600
+	for <cosign-announce@babbler.web.itd.umich.edu>; Mon, 21 Feb 2005 17:02:10 -0500 (EST)
+Received: FROM struggle.mr.itd.umich.edu (struggle.mr.itd.umich.edu [141.211.14.79])
+	BY neartoearth.mr.itd.umich.edu ID 421A5A34.6107A.5157 ; 
+	21 Feb 2005 17:01:24 -0500
+Received: from spike.itd.umich.edu (dynamic234-220.staff.itd.umich.edu [141.213.234.220])
+	by struggle.mr.itd.umich.edu (smtp) with ESMTP id j1LM1NdW032131
+	for <cosign-announce@umich.edu>; Mon, 21 Feb 2005 17:01:24 -0500
+Date: Mon, 21 Feb 2005 17:01:20 -0500
+From: cosign@umich.edu
+Sender: jarod@mail.umich.edu
+Reply-To: cosign <cosign@umich.edu>
+To: cosign-announce@umich.edu
+Subject: IISCosign 1.1.1 available for download addendum
+Message-ID: <374C75CF22EEB73EDF0F9BC8@spike.itd.umich.edu>
+In-Reply-To: <5B1F8FA740A3BBC0188C8723@spike.itd.umich.edu>
+References:  <5B1F8FA740A3BBC0188C8723@spike.itd.umich.edu>
+X-Mailer: Mulberry/3.1.5 (Win32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+I forgot to add this VERY IMPORTANT item to the announcement.  Certificate 
+authority (CA) files need to be rehashed for IISCosign 1.1.1 to work 
+properly.  The intention was to make this change for 1.1.2 or later to make 
+upgrading more transparent, but... well, I forgot.  So now that 1.1.1 is 
+out there, we can all start rehashing now.  It's very simple and 
+Apache/Unix people have been doing this for years now.  That is, this is 
+the 'right way' to work with CA files.
+
+The main side effect of this is to receive a looping.html error page and to 
+see a line such as error:14090086:lib(20):func(144):reason(134) in a cosign 
+log file.
+
+Here's how to rehash a CA file (umwebCA.pem in this case).  Openssl.exe is 
+placed in your IISCosign directory upon install.
+
+>From a command prompt run:
+
+    openssl x509 -noout -hash -in \path\to\umwebCA.pem
+
+A hash value is displayed.  Copy the contents of the \path\to\umwebCA.pem 
+file into a file called <hash>.0
+
+In your cosign.dll.config file have <CAFilePath> point to the folder where 
+the has is located.  (Whereas in the past it would point directly to the 
+file).
+
+--Jarod Malestein
+
+
+--On Friday, February 18, 2005 5:26 PM -0500 jarod@umich.edu wrote:
+
+>
+> IISCosign 1.1.1 is now availble for download from <http://weblogin.org>.
+>
+> This is being called 1.1.1 instead of 1.1.0 since the versioning with
+> InstallShield was slightly off.  Therefore, to make sure people are given
+> the upgrade option with the installer and to avoid confusion, this one is
+> being labeled 1.1.1.  It is highly recommended you upgrade as soon as
+> possible, especially if you are on a pre-1.1.0 version, due to many
+> useful bug fixes.
+>
+> We are constantly refining and improving IISCosign and the installer.  If
+> there are any recommendation or questions you have, please send them to
+> cosign@umich.edu.
+>
+> The next major item on the IISCosign roadmap is adding the Kerberos
+> ticket passing functionality.
+>
+> A list of the major changes since version 1.0.0 is below.
+>
+> Happy upgrading!
+>
+> --Jarod Malestein
+> --University of Michigan - ITCS
+>
+>
+>
+> Changes in IISCosign 1.1.1:
+> + Installer
+>
+> Various, small fixes.
+>
+> + Some major IISCosign failures reported to the Event Viewer.
+>
+> There is now a facility with IISCosign to report events directly to the
+> Event Viewer.  This is very useful for diagnosing problems, especially if
+> the log files cannot be created.  The events reported are not
+> comprehensive
+> and will continue to be tweaked based on administrators' experience and
+> input.
+>
+> + You can now specify allowUnauthenticatedAccess to <Protected/pages.
+> Example:
+>
+> <Protected allowPublicAccess="TRUE">/MySweetWebApp</Protected>
+>
+> NOTE: this was previously labeled allowUnauthenticatedAccess.  For clarity
+> and parity with the Apache version, this has been changed to
+> allowPublicAccess.  Both will still work, but the former will, eventually,
+> be deprecated.
+>
+> You can have a folder or web page(s) that can be accessed
+> by both logged in and non-logged in users.  If the user is logged in, the
+> HTTP_REMOTE_USER, HTTP_REMOTE_REALM, and HTTP_COSIGN_SERVICE variables
+> will be available.  If the user is not logged in, he is not redirected
+> and only the HTTP_COSIGN_SERVICE variable is available.
+>
+> + Log file locking issue circumvented.  This prevented multiple instances
+> of the filter from being instantiated in IIS 6.0.  Multiple log files are
+> created if possible.
+>
+> + <HttpsOnly /option added. Default is TRUE. Set to FALSE to allow
+> users to access cosign-protected pages without a secure connection.
+> Example:
+>
+> <HttpsOnly>FALSE</HttpsOnly>
+>
+> + Corrected bug that would protect something like "/studentsAndStaff" if
+> "/students" was protected.  Then broke it, fixed it, broke it, fixed it.
+> This is something you may want to double-check.
+>
+> + Extra info put into log file.  Please provide feedback on what you
+> would and wouldn't like to have in the cosign log file.
+>
+> + Https redirect bug fixed.
+>
+> + Specifying web sites by their IIS description rather than DNS name is
+> now an option.
+> Change your <Service /tag as follows:
+>
+> <Service IISDescription="IISCosign web site">cosign-service-name
+> ...
+> </Service>
+>
+> You can use either the original websitename item to refer to the DNS name
+> or the new IISDescription. If both are present, IISCosign first looks for
+> IISDescription and will ignore websitename.
+>
+> For the curious parties, the "IISDescription" is compared to the
+> ServerComment for the web site in the IIS metabase.
+>
+> + You can now limit the log file size. Change your <LogFilePathto look
+> like this:
+>
+> <LogFilePath fileSizeInKB="4096">C:\Program
+> Files\CosignFilter\Logs</LogFilePath>
+>
+>
+>
+>
+
+
+
+
+
+From cosign.announce-errors@umich.edu  Tue Mar  1 16:00:36 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from oilandwater.mr.itd.umich.edu (oilandwater.mr.itd.umich.edu [141.211.93.145])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j21L0aD18921
+	for <cosign-announce@babbler.web.itd.umich.edu>; Tue, 1 Mar 2005 16:00:36 -0500 (EST)
+Received: FROM wanderer.mr.itd.umich.edu (wanderer.mr.itd.umich.edu [141.211.93.146])
+	BY oilandwater.mr.itd.umich.edu ID 4224D7B8.60BE1.18829 ; 
+	 1 Mar 2005 15:59:36 -0500
+Received: from spike.itd.umich.edu (dynamic234-220.staff.itd.umich.edu [141.213.234.220])
+	by wanderer.mr.itd.umich.edu (smtp) with ESMTP id j21KxZrj029978
+	for <cosign-announce@umich.edu>; Tue, 1 Mar 2005 15:59:36 -0500
+Date: Tue, 01 Mar 2005 15:59:30 -0500
+From: Jarod Malestein <jarod@umich.edu>
+Sender: jarod@mail.umich.edu
+To: cosign-announce@umich.edu
+Subject: IISCosign 1.2.0 beta available
+Message-ID: <4F61834597A8E6BFBEB53419@spike.itd.umich.edu>
+X-Mailer: Mulberry/3.1.5 (Win32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+For those interested in the Kerberos 5 ticket-retrieving feature, it is now 
+available for testing.  Many thanks to Mark Earnest at Penn State for 
+writing this part of IISCosign!
+
+<http://www.umich.edu/~umweb/software/cosign/download.html>
+
+This is a dll only.  You will probably want to run the 1.1.1 installer 
+before using 1.2.0 beta.
+
+Add at least the following line to your cosign.dll.config file:
+
+<GetKerberosTickets>FALSE</GetKerberosTickets>
+
+If you want this set to TRUE you'll need:
+
+<GetKerberosTickets>TRUE</GetKerberosTickets>
+<KerberosTicketsPath>c:\Kerb5tkts</KerberosTickets>
+
+With the TRUE setting you'll have a new server variable, HTTP_KRB5CCNAME. 
+The value is set to FILE:[KerberosTicketsPath]\[TicketFile].  Please report 
+any problems, concerns, or successes to cosign@umich.edu.
+
+--Jarod Malestein
+--University of Michigan
+h
+
+From cosign.announce-errors@umich.edu  Tue Mar  1 16:13:03 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from oilandwater.mr.itd.umich.edu (oilandwater.mr.itd.umich.edu [141.211.93.145])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j21LD3D19155
+	for <cosign-announce@babbler.web.itd.umich.edu>; Tue, 1 Mar 2005 16:13:03 -0500 (EST)
+Received: FROM f05n05.cac.psu.edu (f05s05.cac.psu.edu [128.118.141.48])
+	BY oilandwater.mr.itd.umich.edu ID 4224DAB9.B1D01.30036 ; 
+	 1 Mar 2005 16:12:25 -0500
+Received: from [146.186.110.235] (sam.aset.psu.edu [146.186.110.235])
+	(authenticated bits=0)
+	by f05n05.cac.psu.edu (8.13.2/8.13.2) with ESMTP id j21LCOwT022866
+	(version=TLSv1/SSLv3 cipher=RC4-MD5 bits=128 verify=NOT);
+	Tue, 1 Mar 2005 16:12:24 -0500
+Message-ID: <4224DAB8.7070900@psu.edu>
+Date: Tue, 01 Mar 2005 16:12:24 -0500
+From: Mark Allen Earnest <mxe20@psu.edu>
+Reply-To: mxe20@psu.edu
+Organization: The Pennsylvania State University
+User-Agent: Mozilla Thunderbird 1.0 (Macintosh/20041206)
+X-Accept-Language: en-us, en
+MIME-Version: 1.0
+To: jarod@umich.edu, cosign-announce@umich.edu
+Subject: Re: IISCosign 1.2.0 beta available
+References: <4F61834597A8E6BFBEB53419@spike.itd.umich.edu>
+In-Reply-To: <4F61834597A8E6BFBEB53419@spike.itd.umich.edu>
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg=sha1; boundary="------------ms070809080607080607040906"
+
+This is a cryptographically signed message in MIME format.
+
+--------------ms070809080607080607040906
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Jarod Malestein wrote:
+> 
+> For those interested in the Kerberos 5 ticket-retrieving feature, it is 
+> now available for testing.  Many thanks to Mark Earnest at Penn State 
+> for writing this part of IISCosign!
+
+Just a point of clarification, Allen Cheung actually wrote most of it.
+
+-- 
+
+Mark Allen Earnest
+Lead Systems Programmer
+Emerging Technologies
+The Pennsylvania State University
+
+--------------ms070809080607080607040906
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Description: S/MIME Cryptographic Signature
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIIJBzCC
+At4wggJHoAMCAQICAw1wEjANBgkqhkiG9w0BAQQFADBiMQswCQYDVQQGEwJaQTElMCMGA1UE
+ChMcVGhhd3RlIENvbnN1bHRpbmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNv
+bmFsIEZyZWVtYWlsIElzc3VpbmcgQ0EwHhcNMDQxMTE2MTc1OTIyWhcNMDUxMTE2MTc1OTIy
+WjBWMRAwDgYDVQQEEwdFYXJuZXN0MQ0wCwYDVQQqEwRNYXJrMRUwEwYDVQQDEwxNYXJrIEVh
+cm5lc3QxHDAaBgkqhkiG9w0BCQEWDW14ZTIwQHBzdS5lZHUwggEiMA0GCSqGSIb3DQEBAQUA
+A4IBDwAwggEKAoIBAQDKF/gAghi+PQ04m+SJxsm6GFXgh3vOyqvbXJfC9elbMvaW+bu8a+QK
+ZzbVDGioDv0q4G8Y904fk01E5Ka5Yyor/wyuVtrI2cZSbiShbacBfy7zAwH9XjzSOOOnNdTJ
+u9hF1Yb4lkrLOvcxvkTt/mfd5tOUlxGddsn3djr3PpGBt0yLxCiCuHOoOt6lGP4bsnrFwytK
+Zibz7Xk9FFKPuSoDOOSjv1VruK7pYdwXVN91U0FPr40wOvvVtFG3+jOho55sMil2RJrTMIwE
+4z7cAY6d6PQq8ma7oAvCOg9Usg5MEsJ1fRX/ICxUoL4XHyTr74LNENbLH0RF/Oh1firyAC1p
+AgMBAAGjKjAoMBgGA1UdEQQRMA+BDW14ZTIwQHBzdS5lZHUwDAYDVR0TAQH/BAIwADANBgkq
+hkiG9w0BAQQFAAOBgQBx7JN/+/L3thZHn/rA6wR6GTXDizO6tilREgQgCNr6NM8On1u0d0Ea
+Gxa5sso4asTSr1RdlciJbFH0bRB5kn7hXv/+3QqzuzzL5iJTKPKa96mmeJNqODD8isVNnwvk
+bDZY64KAG3qgeaZYjJz7H/YrXvLloMK49ccMWhuBZlCcFjCCAt4wggJHoAMCAQICAw1wEjAN
+BgkqhkiG9w0BAQQFADBiMQswCQYDVQQGEwJaQTElMCMGA1UEChMcVGhhd3RlIENvbnN1bHRp
+bmcgKFB0eSkgTHRkLjEsMCoGA1UEAxMjVGhhd3RlIFBlcnNvbmFsIEZyZWVtYWlsIElzc3Vp
+bmcgQ0EwHhcNMDQxMTE2MTc1OTIyWhcNMDUxMTE2MTc1OTIyWjBWMRAwDgYDVQQEEwdFYXJu
+ZXN0MQ0wCwYDVQQqEwRNYXJrMRUwEwYDVQQDEwxNYXJrIEVhcm5lc3QxHDAaBgkqhkiG9w0B
+CQEWDW14ZTIwQHBzdS5lZHUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDKF/gA
+ghi+PQ04m+SJxsm6GFXgh3vOyqvbXJfC9elbMvaW+bu8a+QKZzbVDGioDv0q4G8Y904fk01E
+5Ka5Yyor/wyuVtrI2cZSbiShbacBfy7zAwH9XjzSOOOnNdTJu9hF1Yb4lkrLOvcxvkTt/mfd
+5tOUlxGddsn3djr3PpGBt0yLxCiCuHOoOt6lGP4bsnrFwytKZibz7Xk9FFKPuSoDOOSjv1Vr
+uK7pYdwXVN91U0FPr40wOvvVtFG3+jOho55sMil2RJrTMIwE4z7cAY6d6PQq8ma7oAvCOg9U
+sg5MEsJ1fRX/ICxUoL4XHyTr74LNENbLH0RF/Oh1firyAC1pAgMBAAGjKjAoMBgGA1UdEQQR
+MA+BDW14ZTIwQHBzdS5lZHUwDAYDVR0TAQH/BAIwADANBgkqhkiG9w0BAQQFAAOBgQBx7JN/
++/L3thZHn/rA6wR6GTXDizO6tilREgQgCNr6NM8On1u0d0EaGxa5sso4asTSr1RdlciJbFH0
+bRB5kn7hXv/+3QqzuzzL5iJTKPKa96mmeJNqODD8isVNnwvkbDZY64KAG3qgeaZYjJz7H/Yr
+XvLloMK49ccMWhuBZlCcFjCCAz8wggKooAMCAQICAQ0wDQYJKoZIhvcNAQEFBQAwgdExCzAJ
+BgNVBAYTAlpBMRUwEwYDVQQIEwxXZXN0ZXJuIENhcGUxEjAQBgNVBAcTCUNhcGUgVG93bjEa
+MBgGA1UEChMRVGhhd3RlIENvbnN1bHRpbmcxKDAmBgNVBAsTH0NlcnRpZmljYXRpb24gU2Vy
+dmljZXMgRGl2aXNpb24xJDAiBgNVBAMTG1RoYXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBDQTEr
+MCkGCSqGSIb3DQEJARYccGVyc29uYWwtZnJlZW1haWxAdGhhd3RlLmNvbTAeFw0wMzA3MTcw
+MDAwMDBaFw0xMzA3MTYyMzU5NTlaMGIxCzAJBgNVBAYTAlpBMSUwIwYDVQQKExxUaGF3dGUg
+Q29uc3VsdGluZyAoUHR5KSBMdGQuMSwwKgYDVQQDEyNUaGF3dGUgUGVyc29uYWwgRnJlZW1h
+aWwgSXNzdWluZyBDQTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAxKY8VXNV+065ypla
+HmjAdQRwnd/p/6Me7L3N9VvyGna9fww6YfK/Uc4B1OVQCjDXAmNaLIkVcI7dyfArhVqqP3FW
+y688Cwfn8R+RNiQqE88r1fOCdz0Dviv+uxg+B79AgAJk16emu59l0cUqVIUPSAR/p7bRPGEE
+QB5kGXJgt/sCAwEAAaOBlDCBkTASBgNVHRMBAf8ECDAGAQH/AgEAMEMGA1UdHwQ8MDowOKA2
+oDSGMmh0dHA6Ly9jcmwudGhhd3RlLmNvbS9UaGF3dGVQZXJzb25hbEZyZWVtYWlsQ0EuY3Js
+MAsGA1UdDwQEAwIBBjApBgNVHREEIjAgpB4wHDEaMBgGA1UEAxMRUHJpdmF0ZUxhYmVsMi0x
+MzgwDQYJKoZIhvcNAQEFBQADgYEASIzRUIPqCy7MDaNmrGcPf6+svsIXoUOWlJ1/TCG4+DYf
+qi2fNi/A9BxQIJNwPP2t4WFiw9k6GX6EsZkbAMUaC4J0niVQlGLH2ydxVyWN3amcOY6MIE9l
+X5Xa9/eH1sYITq726jTlEBpbNU1341YheILcIRk13iSx0x1G/11fZU8xggM7MIIDNwIBATBp
+MGIxCzAJBgNVBAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5KSBMdGQu
+MSwwKgYDVQQDEyNUaGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQIDDXASMAkG
+BSsOAwIaBQCgggGnMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8X
+DTA1MDMwMTIxMTIyNFowIwYJKoZIhvcNAQkEMRYEFGdokLHnmuNThSpx8wqVaKNhdHYSMFIG
+CSqGSIb3DQEJDzFFMEMwCgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMC
+AgFAMAcGBSsOAwIHMA0GCCqGSIb3DQMCAgEoMHgGCSsGAQQBgjcQBDFrMGkwYjELMAkGA1UE
+BhMCWkExJTAjBgNVBAoTHFRoYXd0ZSBDb25zdWx0aW5nIChQdHkpIEx0ZC4xLDAqBgNVBAMT
+I1RoYXd0ZSBQZXJzb25hbCBGcmVlbWFpbCBJc3N1aW5nIENBAgMNcBIwegYLKoZIhvcNAQkQ
+Agsxa6BpMGIxCzAJBgNVBAYTAlpBMSUwIwYDVQQKExxUaGF3dGUgQ29uc3VsdGluZyAoUHR5
+KSBMdGQuMSwwKgYDVQQDEyNUaGF3dGUgUGVyc29uYWwgRnJlZW1haWwgSXNzdWluZyBDQQID
+DXASMA0GCSqGSIb3DQEBAQUABIIBAKjVAKaCzx0h8YBYLeNpxwwvjoHqHd2pY2zzzSJ6Ns0B
+N/C+dp0PEkBROiAxP58iexEuPTbwba3sH5c8VgINQmvLhRoCTyis2434xbZkyap1eys6aIoh
+zaItNeZShzpf78iQmWE62ILJqb2O22PCUxN0LzgcLxFNN7mLt1ibKtOCtTUTmXhMLoU+Y+6v
+Q1c8PTwXjZDGvC6wD9rr04AGB1Z6O/vyEUOcy7sgKZ/fkhwzAI7UkSfgg1dNsIQbznmeECp0
+REojVeM8PEbkWq6c6fnqEmR8/UB9RdA+qjpNu3pcwFxRyPq7PFKposU7S1sryO5dY5KlqCCu
+B5UULyX3sG0AAAAAAAA=
+--------------ms070809080607080607040906--
+
+From cosign.announce-errors@umich.edu  Tue Mar 15 17:24:07 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from informer.mr.itd.umich.edu (informer.mr.itd.umich.edu [141.211.14.72])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j2FMO7D21352
+	for <cosign-announce@babbler.web.itd.umich.edu>; Tue, 15 Mar 2005 17:24:07 -0500 (EST)
+Received: FROM intolerance.mr.itd.umich.edu (intolerance.mr.itd.umich.edu [141.211.14.78])
+	BY informer.mr.itd.umich.edu ID 42376058.7B9F1.6126 ; 
+	15 Mar 2005 17:23:20 -0500
+Received: from [141.213.130.144] (a-adsl-aads-130-144.umnet.umich.edu [141.213.130.144])
+	by intolerance.mr.itd.umich.edu (smtp) with ESMTP id j2FMNKoh007829
+	for <cosign-announce@umich.edu>; Tue, 15 Mar 2005 17:23:20 -0500
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Transfer-Encoding: 7bit
+Message-Id: <F8DD55A5-95A0-11D9-9551-000A95E48A4E@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.8.0 Released
+Date: Tue, 15 Mar 2005 17:24:18 -0500
+X-Mailer: Apple Mail (2.619)
+
+The Cosign Team is pleased to announce the availability of version 
+1.8.0 of cosign  [ MD5 64a025b4dc1de31a3cd2ff59cf086c1e ]
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+Changes:
+	updates to READMES
+	config: make install rule works from top level Makefile for apache 2.
+	common: cgi and daemon can both read several config options from
+                 the cosign.conf file, see README and man pages. Many 
+thanks
+                 to Brett Lomas at University of Auckland.
+	common: TCP_NODELAY on by default in daemon, filters, and cgi,
+                 and off by default in monster. This should cause a
+                 noticeable improvement in replication and a small
+                 improvement in the cgis & filters.
+	cgi: basiccosign.cgi and cosign.cgi are now 1 cgi. BasicAuth support
+                 is now implicitly built-in.
+	cgi: massive code re-structure.
+	cgi: subfile() now shared across both cgis (cosign.cgi and logout)
+	cgi: filters can now optionally include (or not) a semi-colon at
+                 the end of the cookie when they re-direct for a 
+register.
+                 The cgi can parse both ways.
+	cgi: if logout is unable to run, we now tell the user to quit
+                 their browser instead.
+	daemon/monster: code clean-up and small re-organization.
+	daemon/monster: renamed some variables for clarity.
+	daemon: fixed bug where a timed-out child was giving a 4xx,
+                 causing filters to set unnecessary new cookies and 
+re-register.
+	daemon: fixed bug in hup() and child() signal handlers (removed
+		possibly non-reentrant calls)
+	filters: fixed bug with PostErrorRedirect - it works, now.
+	filters: logging now using ap_log_error() so it's more syslog-esque.
+	filters: fixed bug in apache2 where building with krb and then not
+		getting tickets would cause garbage to be written into the
+		cookie file, and the server to core dump.
+	filters: specifically apache2, fixed misc build errors.
+
+Thanks to Brian Hatch for minor bug fixes, and Brett Lomas from U of 
+Auckland for all of the runtime configuration work.
+
+-Johanna, and the core cosign dev team
+
+
+From cosign.announce-errors@umich.edu  Thu May  5 11:34:34 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from threefriends.mr.itd.umich.edu (threefriends.mr.itd.umich.edu [141.211.93.143])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j45FYYD04113
+	for <cosign-announce@babbler.web.itd.umich.edu>; Thu, 5 May 2005 11:34:34 -0400 (EDT)
+Received: FROM wanderer.mr.itd.umich.edu (wanderer.mr.itd.umich.edu [141.211.93.146])
+	BY threefriends.mr.itd.umich.edu ID 427A3CC5.CDD74.9186 ; 
+	 5 May 2005 11:33:25 -0400
+Received: from [141.213.234.100] (viewaskew.staff.itd.umich.edu [141.213.234.100])
+	by wanderer.mr.itd.umich.edu (smtp) with ESMTP id j45FXPrj001452
+	for <cosign-announce@umich.edu>; Thu, 5 May 2005 11:33:25 -0400
+Mime-Version: 1.0 (Apple Message framework v619)
+Content-Transfer-Encoding: 7bit
+Message-Id: <5A56960E-BD7B-11D9-AC45-000A95E48A4E@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.8.5 Released
+Date: Thu, 5 May 2005 11:35:47 -0400
+X-Mailer: Apple Mail (2.619)
+
+The Cosign Team is pleased to announce the availability of version 
+1.8.5 of cosign [  MD5 8dc1d004fa76567d50bc11d737bd31ca ]
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+	updates to READMES
+	common: updated config.sub and config.guess.
+	cgi: looping page can be autoconfed or set within the config file.
+	cgi: MAX_KEYTAB_NAME_LEN defined inline if not already done.
+	cgi: NULL keytab means KDC check won't get run.
+	cgi: On Macs, TGTs won't get passed to the daemon as they don't
+		reside in the filesystem but rather
+		somewhere in memory a la Apple's Kerberos Cache API.
+	cgi/filters: return codes from talking to the daemon are now
+		#defined and simplified, to make the code more readable.
+	cgi/filters: we now deal with a mix of 4xx and 5xx answers correctly
+	daemon: updated man pages to reflect required ticket argument
+		in cosign.conf syntax.
+	filters: CosignProtected On/Off allowed in .htaccess files now.
+	filters: moved around some authN/authZ decisions so "require",
+		"order", and "satisfy" work better. It's still not perfect,
+		but that's an Apache issue, we just work with what we have.
+	filters: We now return PostErrorRedirect earlier.
+
+-Johanna, and the core cosign dev team
+
+
+From cosign.announce-errors@umich.edu  Wed Jun 29 15:26:06 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from threefriends.mr.itd.umich.edu (threefriends.mr.itd.umich.edu [141.211.93.143])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j5TJQ6t16541
+	for <cosign-announce@babbler.web.itd.umich.edu>; Wed, 29 Jun 2005 15:26:06 -0400 (EDT)
+Received: FROM intolerance.mr.itd.umich.edu (intolerance.mr.itd.umich.edu [141.211.14.78])
+	BY threefriends.mr.itd.umich.edu ID 42C2F5B4.E7022.13340 ; 
+	29 Jun 2005 15:25:41 -0400
+Received: from [141.213.234.209] (dynamic234-209.staff.itd.umich.edu [141.213.234.209])
+	by intolerance.mr.itd.umich.edu (smtp) with ESMTP id j5TJPeoh004383;
+	Wed, 29 Jun 2005 15:25:40 -0400
+Mime-Version: 1.0 (Apple Message framework v730)
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+Message-Id: <E4BD48CE-ED5B-489D-A425-1862D692355B@umich.edu>
+Content-Transfer-Encoding: 7bit
+From: kevin mcgowan <clunis@umich.edu>
+Subject: Cosign Announce:  BabyCraig v1.0
+Date: Wed, 29 Jun 2005 15:25:40 -0400
+To: cosign-announce@umich.edu
+X-Mailer: Apple Mail (2.730)
+
+The Cosign team is proud to announce the release early Monday morning  
+of BabyCraig 1.0. This work is a collaboration between Wes and  
+Johanna and the first such release by members of the Cosign team.   
+Features of BabyCraig 1.0 include:
+
+      o Non-specialized, biologicial, autonomous agent
+      o Easily portable (6lbs 2oz, 19.25 inches)
+      o Similar in design to over half the planet (female)
+      o Adorable
+
+We're all terribly proud of Wes and Jo's work and extend them the  
+sincerest congratulations.  Jarod and I will be taking a more active  
+role in shepherding Cosign while they concentrate on overseeing and  
+maintaining their new release during her first few months.
+
+grinning uncontrollably,
+
+Kevin
+
+From cosign.announce-errors@umich.edu  Wed Jun 29 15:31:54 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from idoldancer.mr.itd.umich.edu (idoldancer.mr.itd.umich.edu [141.211.14.76])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j5TJVst17047
+	for <cosign-announce@babbler.web.itd.umich.edu>; Wed, 29 Jun 2005 15:31:54 -0400 (EDT)
+Received: FROM Adam.judsoncollege.edu (st-209-7-59-17.dg58.dupage.k12.il.us [209.7.59.17])
+	BY idoldancer.mr.itd.umich.edu ID 42C2F718.EF8FF.20899 ; 
+	29 Jun 2005 15:31:37 -0400
+X-MimeOLE: Produced By Microsoft Exchange V6.0.6487.1
+Content-Class: urn:content-classes:message
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Subject: RE: Cosign Announce:  BabyCraig v1.0
+Date: Wed, 29 Jun 2005 14:31:28 -0500
+Message-ID: <D78043473550FC44A6BD0226E6601EAD0157E008@adam.judsoncollege.edu>
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Thread-Topic: Cosign Announce:  BabyCraig v1.0
+thread-index: AcV84G9UvbSzEbSbQGqUhSY75Ps3gwAAG0xA
+From: "Goldrick, Jim" <jgoldrick@judsoncollege.edu>
+To: "kevin mcgowan" <clunis@umich.edu>, <cosign-announce@umich.edu>
+Content-Transfer-Encoding: 8bit
+X-MIME-Autoconverted: from quoted-printable to 8bit by babbler.web.itd.umich.edu id j5TJVst17047
+
+Welcome BabyCraig!  Congrats Wes and Johanna.
+
+
+-----Original Message-----
+From: kevin mcgowan [mailto:clunis@umich.edu]
+Sent: Wednesday, June 29, 2005 2:26 PM
+To: cosign-announce@umich.edu
+Subject: Cosign Announce: BabyCraig v1.0
+
+
+The Cosign team is proud to announce the release early Monday morning  
+of BabyCraig 1.0. This work is a collaboration between Wes and  
+Johanna and the first such release by members of the Cosign team.   
+Features of BabyCraig 1.0 include:
+
+      o Non-specialized, biologicial, autonomous agent
+      o Easily portable (6lbs 2oz, 19.25 inches)
+      o Similar in design to over half the planet (female)
+      o Adorable
+
+We're all terribly proud of Wes and Jo's work and extend them the  
+sincerest congratulations.  Jarod and I will be taking a more active  
+role in shepherding Cosign while they concentrate on overseeing and  
+maintaining their new release during her first few months.
+
+grinning uncontrollably,
+
+Kevin
+
+From cosign.announce-errors@umich.edu  Tue Oct  4 16:24:16 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from anniehall.mr.itd.umich.edu (anniehall.mr.itd.umich.edu [141.211.93.141])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id j94KOGU08877
+	for <cosign-announce@babbler.web.itd.umich.edu>; Tue, 4 Oct 2005 16:24:16 -0400 (EDT)
+Received: FROM withoutevidence.mr.itd.umich.edu (withoutevidence.mr.itd.umich.edu [141.211.93.147])
+	BY anniehall.mr.itd.umich.edu ID 4342E4DF.61FAA.21485 ; 
+	 4 Oct 2005 16:23:59 -0400
+Received: from [192.168.1.2] (dsl093-092-059.det1.dsl.speakeasy.net [66.93.92.59])
+	by withoutevidence.mr.itd.umich.edu (smtp) with ESMTP id j94KNwFr012773
+	for <cosign-announce@umich.edu>; Tue, 4 Oct 2005 16:23:58 -0400
+Mime-Version: 1.0 (Apple Message framework v733)
+Content-Transfer-Encoding: 7bit
+Message-Id: <653AE6DC-DFB3-46C6-A56B-56FBA70C76EC@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.9.0 Released
+Date: Tue, 4 Oct 2005 16:25:01 -0400
+X-Mailer: Apple Mail (2.733)
+
+The Cosign Team is pleased to announce the availability of version  
+1.9.0 of cosign [ MD5 2ec240c09951b17babe60a06d7941ad6 ]
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+     updates to READMES
+     more streamlined single server trial install process.
+     common: added double quote support to argcargv() parsing.
+     cgi: override "found" Kerberos paths.
+     cgi: template directory configurable from cosign.conf.
+     cgi: login and transfer tickets with x509.
+     cgi: added ability to force re-authentication on a  per-service  
+basis.
+     cgi: tgts are transfered on macs again, we just build with MIT  
+kerberos instead of on-board kerberos.
+     cgi: check length of username before copy.
+     cgi/daemon: ticket stores are separable.
+     cgi/daemon: fixed miscellaneous core dump causing bugs.
+     filters: streamlined server/directory directive merge routines.
+     filters: almost all directives can be set on a per directory basis.
+     filters: multiple CosignSiteEntry behavior more consistent.
+     friend: cosign-friend is now its own project, which means it is  
+no longer a part of this distribution.
+     libsnet: updated to current version.
+     templates: default action is now "/cosign-bin/cosign.cgi"  
+instead of "/". Details on suggested Apache configurations are  
+available in README.weblogin.
+     scripts: fixed syntax error in helloCosign.php
+
+-Johanna, and the core cosign dev team
+
+From cosign.announce-errors@umich.edu  Tue Nov  1 18:09:56 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from dave.mr.itd.umich.edu (dave.mr.itd.umich.edu [141.211.14.70])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id jA1N9tU06183
+	for <cosign-announce@babbler.web.itd.umich.edu>; Tue, 1 Nov 2005 18:09:55 -0500 (EST)
+Received: FROM fox.web.itd.umich.edu (fox.web.itd.umich.edu [141.211.144.141])
+	BY dave.mr.itd.umich.edu ID 4367F595.89499.20918 ; 
+	 1 Nov 2005 18:09:09 -0500
+Received: (from www@localhost)
+	by fox.web.itd.umich.edu (8.12.10/8.12.9) id jA1N99QE023154
+	for cosign.announce@umich.edu; Tue, 1 Nov 2005 18:09:09 -0500
+Received: from spike.staff.itd.umich.edu (spike.staff.itd.umich.edu
+	[141.213.234.198]) by web.mail.umich.edu (Horde MIME library) with HTTP;
+	Tue, 01 Nov 2005 18:09:09 -0500
+Message-ID: <20051101180909.75tyxi5ny8sgkwc0@web.mail.umich.edu>
+Date: Tue, 01 Nov 2005 18:09:09 -0500
+From: jarod@umich.edu
+To: cosign.announce@umich.edu
+Subject: Candidates for Friend XML-RPC interface?
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset=ISO-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+User-Agent: Internet Messaging Program (IMP) H3 (4.0.3)
+X-Remote-Browser: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US;
+	rv:1.7.10) Gecko/20050716 Firefox/1.0.6
+X-IMP-Server: 141.211.144.110
+X-Originating-IP: 141.213.234.198
+X-Originating-User: jarod
+
+
+For those who don't know yet, U-M has deployed a new version of the Friend guest
+account system.  The two largest additions to the system are the addition of
+user- and web-app-initiated mass invites.  While the end-user interface is
+available -- https://friend.weblogin.umich.edu/friend/invite/ -- we, the CoSign
+team, would like to work closely with a couple (few?) units on campus to create
+pilot XML-RPC-enabled Friend services.
+
+If you are interested in adding this functionality to any of your cosign-enabled
+web apps, please let us know as soon as possible!
+
+Sending invitations to create guest accounts:
+http://www.itd.umich.edu/itcsdocs/s4337/
+
+Friend XML-RPC spec:
+http://www.umich.edu/~umweb/software/cosign/cosign-friend-spec.txt
+
+--Jarod Malestein
+--ITCS
+
+From cosign.announce-errors@umich.edu  Wed Nov 16 16:03:28 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from galaxyquest.mr.itd.umich.edu (galaxyquest.mr.itd.umich.edu [141.211.93.145])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id jAGL3Su29208
+	for <cosign-announce@babbler.web.itd.umich.edu>; Wed, 16 Nov 2005 16:03:28 -0500 (EST)
+Received: FROM gabriel.judsoncollege.edu (st-209-7-59-17.dg58.dupage.k12.il.us [209.7.59.17])
+	BY galaxyquest.mr.itd.umich.edu ID 437B9E7A.6079D.15358 ; 
+	16 Nov 2005 16:02:50 -0500
+X-MimeOLE: Produced By Microsoft Exchange V6.5.7226.0
+Content-class: urn:content-classes:message
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Subject: Java filter logout
+Date: Wed, 16 Nov 2005 14:59:54 -0600
+Message-ID: <960714044BBA8045B489FBDD68C3E36101D321@gabriel.judsoncollege.edu>
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Thread-Topic: Java filter logout
+Thread-Index: AcXJIaHTUaOf6z80QaehLrp0arVoIghzbwC3
+From: "Goldrick, Jim" <jgoldrick@judsoncollege.edu>
+To: <cosign-announce@umich.edu>
+Content-Transfer-Encoding: 8bit
+X-MIME-Autoconverted: from quoted-printable to 8bit by babbler.web.itd.umich.edu id jAGL3Su29208
+
+Hi All,
+ 
+We have setup the java filter on Tomcat with ssl implemented.  I know next to nothing about java or Tomcat.  The filter seems to be working fine, however, the local logout is not expiring the cookie.  The tomcat server uses the same url, just a different port number.
+ 
+Any ideas would be appreciated.
+ 
+thanks
+ 
+jim
+
+From cosign.announce-errors@umich.edu  Wed Nov 16 16:09:55 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from anniehall.mr.itd.umich.edu (anniehall.mr.itd.umich.edu [141.211.93.141])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id jAGL9tu29282
+	for <cosign-announce@babbler.web.itd.umich.edu>; Wed, 16 Nov 2005 16:09:55 -0500 (EST)
+Received: FROM gabriel.judsoncollege.edu (st-209-7-59-17.dg58.dupage.k12.il.us [209.7.59.17])
+	BY anniehall.mr.itd.umich.edu ID 437BA001.F485.9269 ; 
+	16 Nov 2005 16:09:21 -0500
+X-MimeOLE: Produced By Microsoft Exchange V6.5.7226.0
+Content-class: urn:content-classes:message
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Subject: no update on poolMap!
+Date: Wed, 16 Nov 2005 15:03:34 -0600
+Message-ID: <960714044BBA8045B489FBDD68C3E36101D323@gabriel.judsoncollege.edu>
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Thread-Topic: no update on poolMap!
+Thread-Index: AcXJIaHTUaOf6z80QaehLrp0arVoIghzbwC3AAB1yXw=
+From: "Goldrick, Jim" <jgoldrick@judsoncollege.edu>
+To: <cosign-announce@umich.edu>
+Content-Transfer-Encoding: 8bit
+X-MIME-Autoconverted: from quoted-printable to 8bit by babbler.web.itd.umich.edu id jAGL9tu29282
+
+ 
+
+ Hi All,
+
+We have setup the java filter on Tomcat with ssl implemented.  I know next to nothing about java or Tomcat.  The filter seems to be working fine.  But I am getting this message/error in the catalina.log.
+
+Result NOOP[xxx.xxx.xxx:6663:1]: 250 cosign v1.9.0
+CHECK cosign-cosign=AOPq5J6WKokOhYhywSXMOxYtoKRlSlg16FUXPnsMoKAdqAU9Emm2g3yv5TF2
+hrmzvv4n5GsFZlBNg2ShZ4pfmePSUnzmaHTqrmTRVi9LCo9BIedAoguYe+-ltyCWv+9XgEI1dg0tIq87
+FtJDZfPkDhjVr9fQwM6G
+Result CHECK[xxx.xxx.xxx:6663:1]: 231 172.16.1.2 jgoldrick JUDSONCOLLEGE.EDU
+No update on poolMap!
+No update on poolMap!
+No update on poolMap!
+
+again, any ideas would be appreciated.
+
+thanks
+
+jim
+
+
+From cosign.announce-errors@umich.edu  Fri Nov 18 14:26:07 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from jeffrey.mr.itd.umich.edu (jeffrey.mr.itd.umich.edu [141.211.14.71])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id jAIJQ6u13377
+	for <cosign-announce@babbler.web.itd.umich.edu>; Fri, 18 Nov 2005 14:26:06 -0500 (EST)
+Received: FROM beyondborders.mr.itd.umich.edu (beyondborders.mr.itd.umich.edu [141.211.93.146])
+	BY jeffrey.mr.itd.umich.edu ID 437E2AA7.CE66D.16218 ; 
+	18 Nov 2005 14:25:27 -0500
+Received: from [192.168.1.4] (dsl093-092-059.det1.dsl.speakeasy.net [66.93.92.59])
+	by beyondborders.mr.itd.umich.edu (smtp) with ESMTP id jAIJPR9x012388
+	for <cosign-announce@umich.edu>; Fri, 18 Nov 2005 14:25:27 -0500
+Mime-Version: 1.0 (Apple Message framework v746.2)
+Content-Transfer-Encoding: 7bit
+Message-Id: <D3D0C2B5-06DC-4E96-8F9D-58ACA2BA2566@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.9.1 Released 
+Date: Fri, 18 Nov 2005 14:25:28 -0500
+X-Mailer: Apple Mail (2.746.2)
+
+The Cosign Team is pleased to announce the availability of version  
+1.9.1 of cosign [ MD5 93c1bda1839145717b5712ab42b76474 ]
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+	updates to READMES
+	new cosign.conf(5) man page
+	cgi: fixed newline in error string
+	cgi: fixed reauth cookie truncation bug
+	cgi: "friend" login select statement updated for 2.0 release
+	cgi: re-present verify screen for logout if we don't get the post
+	common: fixed bug in rate code output
+	filters: shared code is now in filters/common
+	filters: removed k4 support
+	filters: apache 2 filter now builds :)
+	filters/daemon/monster: added db-hashing support
+	scripts: create and upgrade scripts for db-hashing
+
+-Johanna, and the core cosign dev team
+
+From cosign.announce-errors@umich.edu  Wed Nov 23 11:41:05 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from jeffrey.mr.itd.umich.edu (jeffrey.mr.itd.umich.edu [141.211.14.71])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id jANGf5u08838
+	for <cosign-announce@babbler.web.itd.umich.edu>; Wed, 23 Nov 2005 11:41:05 -0500 (EST)
+Received: FROM playinggod.mr.itd.umich.edu (playinggod.mr.itd.umich.edu [141.211.14.79])
+	BY jeffrey.mr.itd.umich.edu ID 43849B87.8F288.13483 ; 
+	23 Nov 2005 11:40:39 -0500
+Received: from [192.168.1.4] (dsl093-092-059.det1.dsl.speakeasy.net [66.93.92.59])
+	by playinggod.mr.itd.umich.edu (smtp) with ESMTP id jANGecnY028210
+	for <cosign-announce@umich.edu>; Wed, 23 Nov 2005 11:40:39 -0500
+Mime-Version: 1.0 (Apple Message framework v746.2)
+Content-Transfer-Encoding: 7bit
+Message-Id: <4367F6A2-DC31-4878-B8CB-99648B8F7BCA@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.9.2 Released
+Date: Wed, 23 Nov 2005 11:40:38 -0500
+X-Mailer: Apple Mail (2.746.2)
+
+Hey all,
+
+Due to an extremely small but critical misstep in the new filters/ 
+common Makefile(.in), I present you cosign 1.9.2 ( MD5  
+f75856d915e8c518c81b8ab70c48b7d7 )
+
+It's got all the same yummy new goodness as 1.9.1, and will also  
+build an apache filter that will transfer tickets. Thanks to Graeme  
+Wood at University of Edinburgh for catching this. Which also brings  
+me to my next question - anyone willing to test release candidates  
+for us? I prefer to get things right the first time, and an extra  
+pair of eyes is always helpful. Send me mail if you're interested and  
+willing.
+
+Thanks, and have a happy holiday for those of you who are celebrating  
+tomorrow.
+
+-Johanna, and the rest of the Cosign dev team
+
+From cosign.announce-errors@umich.edu  Tue Dec 13 22:53:52 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from galaxyquest.mr.itd.umich.edu (galaxyquest.mr.itd.umich.edu [141.211.93.145])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id jBE3rq117229
+	for <cosign-announce@babbler.web.itd.umich.edu>; Tue, 13 Dec 2005 22:53:52 -0500 (EST)
+Received: FROM pushingtin.mr.itd.umich.edu (pushingtin.mr.itd.umich.edu [141.211.14.78])
+	BY galaxyquest.mr.itd.umich.edu ID 439F9732.D8E8C.31579 ; 
+	13 Dec 2005 22:53:22 -0500
+Received: from [192.168.1.4] (dsl093-092-059.det1.dsl.speakeasy.net [66.93.92.59])
+	by pushingtin.mr.itd.umich.edu (smtp) with ESMTP id jBE3rMJZ021155
+	for <cosign-announce@umich.edu>; Tue, 13 Dec 2005 22:53:22 -0500
+Mime-Version: 1.0 (Apple Message framework v746.2)
+Content-Transfer-Encoding: 7bit
+Message-Id: <2E6AA0C8-BB9F-4DB2-B409-D9B29B13F67A@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.9.3 Released
+Date: Tue, 13 Dec 2005 22:53:30 -0500
+X-Mailer: Apple Mail (2.746.2)
+
+Hey all,
+
+The Cosign Team is pleased to announce the availability of version  
+1.9.3 of cosign [ MD5 f9aa6ffa4af5463495ab3f4ce990c30e ]
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+The main change is a bug fix to the way cosignd ( with replication  
+turned on ) handles the HUP signal.
+
+This is also the last planned release, feature-wise, in the 1.9  
+branch. We are beginning work on the first 2.0 release, which will  
+contain support for multi-factor authentication.
+
+Questions and Comments always welcome.
+
+-Johanna, and the rest of the core cosign dev team
+
+
+
+From cosign.announce-errors@umich.edu  Mon Dec 26 15:52:31 2005
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from guys.mr.itd.umich.edu (guys.mr.itd.umich.edu [141.211.14.76])
+	by babbler.web.itd.umich.edu (3.6w) with ESMTP id jBQKqV118072
+	for <cosign-announce@babbler.web.itd.umich.edu>; Mon, 26 Dec 2005 15:52:31 -0500 (EST)
+Received: FROM pushingtin.mr.itd.umich.edu (pushingtin.mr.itd.umich.edu [141.211.14.78])
+	BY guys.mr.itd.umich.edu ID 43B057EF.29419.31318 ; 
+	26 Dec 2005 15:51:59 -0500
+Received: from [192.168.1.4] (dsl093-092-059.det1.dsl.speakeasy.net [66.93.92.59])
+	by pushingtin.mr.itd.umich.edu (smtp) with ESMTP id jBQKpwJZ031026
+	for <cosign-announce@umich.edu>; Mon, 26 Dec 2005 15:51:58 -0500
+Mime-Version: 1.0 (Apple Message framework v746.2)
+Content-Transfer-Encoding: 7bit
+Message-Id: <79257502-CE69-4249-A9FB-BDC09A31CFBE@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 1.9.4 Released
+Date: Mon, 26 Dec 2005 15:52:13 -0500
+X-Mailer: Apple Mail (2.746.2)
+
+The Cosign Team is pleased to announce the availability of version  
+1.9.4 of cosign [ MD5 2b375ca7acf7b3e6e435e3c47441b7cf ].
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+This is merely a bug fix release, with a small change to the daemon's  
+replication when dbhashing is turned on, and a cosmetic fix to the  
+make install rule for the filters.
+
+-Johanna, and the core cosign dev team
+
+
+From cosign.announce-errors@umich.edu Thu May  4 12:19:20 2006
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from eyewitness.mr.itd.umich.edu (eyewitness.mr.itd.umich.edu [141.211.93.142])
+	by logo.web.itd.umich.edu (8.12.11.20060308/8.12.10) with ESMTP id k44GJKil017657
+	for <cosign-announce@logo.web.itd.umich.edu>; Thu, 4 May 2006 12:19:20 -0400
+Received: FROM tombraider.mr.itd.umich.edu (smtp.mail.umich.edu [141.211.93.161])
+	BY eyewitness.mr.itd.umich.edu ID 445A297A.C9512.13232 ; 
+	 4 May 2006 12:19:06 -0400
+Received: FROM [192.168.1.4] (dsl093-092-059.det1.dsl.speakeasy.net [66.93.92.59])
+	BY tombraider.mr.itd.umich.edu ID 445A293E.37A15.7007 ; 
+	 4 May 2006 12:18:06 -0400
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Content-Transfer-Encoding: 7bit
+Message-Id: <C638A3A5-1CC8-4AB7-9FFC-9D5994AEA938@UMICH.EDU>
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <CANNA@umich.edu>
+Subject: Cosign 2.0.0b1 Released
+Date: Thu, 4 May 2006 12:18:00 -0400
+X-Mailer: Apple Mail (2.749.3)
+
+The Cosign Team is pleased to announce the availability of the first  
+BETA release Cosign 2.0!
+
+Cosign 2.0.0b1 [ MD5 22076feda618edb31a3aeecb9537081c ]
+
+Changes in this release include a new version of the cosign protocol,  
+the addition of Multifactor authentication, and the new external  
+authenticator API for the CGI. A full detail of changes is available at
+http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+Things we have yet to test in depth:
+
+1) replication with multiple factors/the v2 protocol
+2) anything under any sort of load
+3) extensive compatibility tests**
+4) building with no legacy factors ( no krb and no friend ) and using  
+only an external authenticator
+5) upgrading a production server, or any server with existing logged  
+in users
+
+This new release is up for download at http://www.umich.edu/~umweb/ 
+software/cosign/download.html
+
+We're going to keep testing it here at Michigan and plan to be  
+rolling it out within the next month. Feedback is encouraged and  
+welcomed as always.
+
+-Johanna and the Core Cosign Development Team
+
+**it should all just work, and we've tried several old/new combos  
+upgraded server and older filters, upgraded filters and old server,  
+upgraded server and older cgi... but nothing extensive. the 2.0 CGI  
+requires a 2.0 cosignd.
+
+From cosign.announce-errors@umich.edu Fri May 26 18:18:04 2006
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from ghostbusters.mr.itd.umich.edu (ghostbusters.mr.itd.umich.edu [141.211.93.144])
+	by logo.web.itd.umich.edu (8.12.11.20060308/8.12.10) with ESMTP id k4QMI4OQ017457
+	for <cosign-announce@logo.web.itd.umich.edu>; Fri, 26 May 2006 18:18:04 -0400
+Received: FROM skycaptain.mr.itd.umich.edu (smtp.mail.umich.edu [141.211.93.160])
+	BY ghostbusters.mr.itd.umich.edu ID 44777E8B.7BD54.7219 ; 
+	26 May 2006 18:17:47 -0400
+Received: FROM [141.213.234.198] (spike.staff.itd.umich.edu [141.213.234.198])
+	BY skycaptain.mr.itd.umich.edu ID 44777E8B.1ED4.21211 ; 
+	26 May 2006 18:17:47 -0400
+Message-ID: <44777E8A.9090307@umich.edu>
+Date: Fri, 26 May 2006 18:17:46 -0400
+From: Jarod Malestein <jarod@umich.edu>
+User-Agent: Thunderbird 1.5.0.2 (Windows/20060308)
+MIME-Version: 1.0
+To: cosign-announce@umich.edu
+Subject: IISCosign 2.0.0 beta filter available
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+
+A beta of the cosign filter for IIS, version 2.0.0, is now available.
+
+http://www.umich.edu/~umweb/software/cosign/download.html
+MD5 52812510d864f23db92508491ccedb8a
+
+
+Changes:
++ Multi-factor support
++ SiteEntry config option added
++ PostErrorRedirect config option added
++ CheckIPAddress options are now never, intial, or always
++ Apache-style protected/unprotected/protected configuration.  For 
+example, you can have "/subdir" protected and then set 
+"/subdir/notimportant" to unprotected.
++ Updated logging messages.
+
+To use multi-factor, you need a 2.0.0+ Cosign login server.  IISCosign 
+2.0.0 is backwards compatible with earlier versions of cosign.
+
+There are some significant changes to the cosign.dll.config file.   
+Please see the included sample config file!
+
+Please send any questions or comments to cosign@umich.edu.
+
+--Jarod
+
+
+From cosign.announce-errors@umich.edu Tue May 30 17:16:32 2006
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from tadpole.mr.itd.umich.edu (tadpole.mr.itd.umich.edu [141.211.14.72])
+	by logo.web.itd.umich.edu (8.12.11.20060308/8.12.10) with ESMTP id k4ULGWvU032205
+	for <cosign-announce@logo.web.itd.umich.edu>; Tue, 30 May 2006 17:16:32 -0400
+Received: FROM hackers.mr.itd.umich.edu (smtp.mail.umich.edu [141.211.14.81])
+	BY tadpole.mr.itd.umich.edu ID 447CB620.EEA84.28750 ; 
+	30 May 2006 17:16:17 -0400
+Received: FROM [192.168.1.4] (dsl093-092-059.det1.dsl.speakeasy.net [66.93.92.59])
+	BY hackers.mr.itd.umich.edu ID 447CB3C8.765AB.19612 ; 
+	30 May 2006 17:06:16 -0400
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Content-Transfer-Encoding: 7bit
+Message-Id: <AED2ADF3-22A4-4EA0-A838-B4A015DD8913@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 2.0.0b2 Released
+Date: Tue, 30 May 2006 17:06:10 -0400
+X-Mailer: Apple Mail (2.749.3)
+
+Hey all,
+
+The Cosign Team is pleased to announce the availability of version  
+2.0.0b2 of cosign [ MD5 6b2e316c1668c2098b08c4f816d393dd ] This is  
+the next beta of the 2.0 version, with some minor bug fixes and a few  
+improvements.  Changelog is up at http://www.umich.edu/~umweb/ 
+software/cosign/changelog.txt
+
+We plan to roll this out at Michigan in the next two weeks, and will  
+be releasing the final 2.0 version at that time.
+
+Let us know if you have any questions or comments.
+
+-Johanna and the core cosign development team
+
+From cosign.announce-errors@umich.edu Thu Jun 15 11:27:42 2006
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from guys.mr.itd.umich.edu (guys.mr.itd.umich.edu [141.211.14.76])
+	by logo.web.itd.umich.edu (8.12.11.20060308/8.12.10) with ESMTP id k5FFRgOY025657
+	for <cosign-announce@logo.web.itd.umich.edu>; Thu, 15 Jun 2006 11:27:42 -0400
+Received: FROM gabriel.judsoncollege.edu (st-209-7-59-17.dg58.dupage.k12.il.us [209.7.59.17])
+	BY guys.mr.itd.umich.edu ID 44917C58.389AF.21837 ; 
+	15 Jun 2006 11:27:20 -0400
+x-mimeole: Produced By Microsoft Exchange V6.5.7226.0
+Content-class: urn:content-classes:message
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Subject: EntrySite question
+Date: Thu, 15 Jun 2006 10:26:58 -0500
+Message-ID: <574F68F739A9D040A4896931B3D6C3C115FB88@gabriel.judsoncollege.edu>
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Thread-Topic: EntrySite question
+Thread-Index: AcZvlxcGRtkPAty/TUqb4FQli+GuQgg96SGH
+References: <C638A3A5-1CC8-4AB7-9FFC-9D5994AEA938@UMICH.EDU>
+From: "Goldrick, Jim" <jgoldrick@judsoncollege.edu>
+To: <cosign-announce@umich.edu>
+Content-Transfer-Encoding: 8bit
+X-MIME-Autoconverted: from quoted-printable to 8bit by logo.web.itd.umich.edu id k5FFRgOY025657
+
+Hi All,
+ 
+I need to redirect all logins to an entry site.  While I see this option in the Apache filter, I do not see it in the IIS or the Java filter.  Here is the Apache
+ 
+CosignSiteEntry         [ the URL to redirect to after login  ]
+ 
+Is this option available in the java and IIS filters?  If so, could you send me the syntax?  If not, anyone got any ideas?  Also, is the desired location that the user originally was trying to access available to a cgi script?  Some users will be forwarded while others will have to stop at the site entry.
+ 
+I looked at the authentication factor, but this will not help me.  Basically, I have to setup a checkin script for students that comes up first if they don't have certain requirements met.  It also needs to work from IIS, Apache or Java apps.  Cosign seems the perfect place to implement this.
+ 
+Thanks much,
+ 
+jim
+
+
+
+From cosign.announce-errors@umich.edu Thu Jun 15 17:01:25 2006
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from madman.mr.itd.umich.edu (madman.mr.itd.umich.edu [141.211.14.75])
+	by logo.web.itd.umich.edu (8.12.11.20060308/8.12.10) with ESMTP id k5FL1PUH018709
+	for <cosign-announce@logo.web.itd.umich.edu>; Thu, 15 Jun 2006 17:01:25 -0400
+Received: FROM tombraider.mr.itd.umich.edu (smtp.mail.umich.edu [141.211.93.161])
+	BY madman.mr.itd.umich.edu ID 4491CA95.3611F.3596 ; 
+	15 Jun 2006 17:01:09 -0400
+Received: FROM [192.168.1.2] (dsl093-092-059.det1.dsl.speakeasy.net [66.93.92.59])
+	BY tombraider.mr.itd.umich.edu ID 4491CA85.1485D.30804 ; 
+	15 Jun 2006 17:00:53 -0400
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Content-Transfer-Encoding: 7bit
+Message-Id: <62E74CCF-E3F0-40FA-8372-7D2C92BF4186@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 2.0.0 Released 
+Date: Thu, 15 Jun 2006 17:00:53 -0400
+X-Mailer: Apple Mail (2.749.3)
+
+The Cosign Team is pleased to announce the availability of version  
+2.0.0 of cosign [ MD5 3e9bca753b283d9d7685e60a0ed2e115 ]
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+	updates to READMES and docs
+	common: general bug fixes, more helpful logging and error messages
+	common: support for multifactor
+	common: support for factor suffix
+	common: new protocol v2 - STARTTLS, LOGIN and CHECK
+	cgi: some structural reorganization
+	cgi: change of browser IP address on a "REGISTER"
+		causes a re-authentication event
+	cgi: kerberos and friend are now built in legacy factors, though  
+building either is still optional
+	cgi: factors can be primary or secondary
+	cgi: if a keytab is present, it must be used now
+	filters: support to require specific factors
+	filters: CosignCheckIP directive to support browser ip
+		address checking - never, initial or always. This
+		replaces the previous compile-time option. This may not work well  
+or at all with load balancers and reverse NATS.
+	helloCosign: new top level directory with test scripts in several  
+languages
+	html: brand new UI to support multifactor
+	libcgi: upgraded to newer C only cgi library, no more lex/yacc
+
+-Johanna, and the core cosign dev team
+
+
+
+From cosign.announce-errors@umich.edu Mon Jul  3 15:16:16 2006
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from anniehall.mr.itd.umich.edu (anniehall.mr.itd.umich.edu [141.211.93.141])
+	by logo.web.itd.umich.edu (8.12.11.20060308/8.12.10) with ESMTP id k63JGGk3029763
+	for <cosign-announce@logo.web.itd.umich.edu>; Mon, 3 Jul 2006 15:16:16 -0400
+Received: FROM hackers.mr.itd.umich.edu (smtp.mail.umich.edu [141.211.14.81])
+	BY anniehall.mr.itd.umich.edu ID 44A96CEC.36726.2107 ; 
+	 3 Jul 2006 15:15:56 -0400
+Received: FROM [192.168.1.2] (dsl093-092-059.det1.dsl.speakeasy.net [66.93.92.59])
+	BY hackers.mr.itd.umich.edu ID 44A96CAF.962B5.16030 ; 
+	 3 Jul 2006 15:14:55 -0400
+Mime-Version: 1.0 (Apple Message framework v749.3)
+Content-Transfer-Encoding: 7bit
+Message-Id: <58487FE5-C312-4097-865D-04955FDC68F8@umich.edu>
+Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
+To: cosign-announce@umich.edu
+From: johanna bromberg craig <canna@umich.edu>
+Subject: Cosign 2.0.1 Released
+Date: Mon, 3 Jul 2006 15:14:53 -0400
+X-Mailer: Apple Mail (2.749.3)
+
+The Cosign Team is pleased to announce the availability of version  
+2.0.1 of cosign [ MD5 524386d4dbdf1f6064868c221b30996b ]
+
+Changelog at http://www.umich.edu/~umweb/software/cosign/changelog.txt
+
+The changes are pretty minor, but important in our environment -  
+especially the cgi one, as we're going through a big "change your  
+expired password" campaign as part of our kerberos upgrades.
+
+	cgi: preauth failed and expired password are now re-tryable errors
+	daemon: krbtktpath is now maintained upon subsequent logins
+	filters: fixed some typos
+
+-Johanna, and the core cosign dev team
+
+
+From cosign.announce-errors@umich.edu Tue Aug  1 16:52:36 2006
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from eyewitness.mr.itd.umich.edu (eyewitness.mr.itd.umich.edu [141.211.93.142])
+	by logo.web.itd.umich.edu (8.12.11.20060308/8.12.10) with ESMTP id k71KqaXT008772
+	for <cosign-announce@logo.web.itd.umich.edu>; Tue, 1 Aug 2006 16:52:36 -0400
+Received: FROM hackers.mr.itd.umich.edu (smtp.mail.umich.edu [141.211.14.81])
+	BY eyewitness.mr.itd.umich.edu ID 44CFBF03.DFD18.18733 ; 
+	 1 Aug 2006 16:52:19 -0400
+Received: FROM [141.213.234.202] (dynamic234-202.staff.itd.umich.edu [141.213.234.202])
+	BY hackers.mr.itd.umich.edu ID 44CFBF03.6DA84.11179 ; 
+	 1 Aug 2006 16:52:19 -0400
+Message-ID: <44CFBF03.5030001@umich.edu>
+Date: Tue, 01 Aug 2006 16:52:19 -0400
+From: Jarod Malestein <jarod@umich.edu>
+User-Agent: Thunderbird 1.5.0.5 (Windows/20060719)
+MIME-Version: 1.0
+To: cosign-announce@umich.edu
+Subject: IISCoSign 2.0.0 now available
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+
+
+Version 2.0.0 of IISCoSign is now available for download from 
+http://weblogin.org
+
+Besides multi-factor support, the biggest change is the new schema for 
+the cosign.dll.config files.  Included in the zip file is a sample 
+config file with an explanation of the new layout.
+
+Here is a list of changes from the last official release, 1.1.1:
+
+1.2.0
++ Kerberos ticket retrieving -- IISCoSign can now retrieve and store 
+Kerberos 5 tickets (if allowed by the weblogin server).
++ Load failure mode -- If an occurs while IISCoSign is loading or 
+verifying a user, it will prevent the web site from serving content.
+
+1.5.0 -
++ Multi-factor authentication support -- Support for other 
+authentication methods.  The authentication factors are made available 
+through the server variable HTTP_COSIGN_FACTORS.
++ Validating config file independent of loading filter, xml schema for 
+config file. -- The filter now verifies the config file against a schema 
+and reports any misconfiguration information to the Event Viewer.
+
+2.0.0 -
++ Apache style protected/unprotected/protected configuration -- There 
+are now three directives for a URL: <Protected>, <AllowPublicAccess>, 
+and <Unprotected>.  <Unprotected> is used to override an earlier 
+<Protected> or <AllowPublicAccess> tag.  So, for example: /a could be 
+protected, but /a/b could be unprotected.
+
++ SiteEntry support -- When a user logs in for the first time, this 
+option will redirect the user to the specified 'splash' or 'main menu' 
+page of your web app.
++ PostErrorRedirect support -- If a user is redirected to a weblogin 
+server and he was POSTing, the user is redirected to this warning page 
+to let them know there will be lost data.
+
+Finally, thanks to everyone who helped test the 2.0.0 beta!
+
+Please send comments or questions to cosign@umich.edu or 
+cosign.discuss@umich.edu.
+
+--Jarod Malestein
+
+
+From cosign.announce-errors@umich.edu Mon Nov 20 11:48:39 2006
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from tadpole.mr.itd.umich.edu (mx.umich.edu [141.211.14.133])
+	by logo.web.itd.umich.edu (8.12.11.20060308/8.12.10) with ESMTP id kAKGmdSA000930
+	for <cosign-announce@logo.web.itd.umich.edu>; Mon, 20 Nov 2006 11:48:39 -0500
+Received: FROM abenaki.web.itd.umich.edu (abenaki.web.itd.umich.edu [141.211.144.80])
+	BY tadpole.mr.itd.umich.edu ID 4561DC55.D88BB.16274 ; 
+	20 Nov 2006 11:48:22 -0500
+Received: (from www@localhost)
+	by abenaki.web.itd.umich.edu (8.12.10/8.12.9) id kAKGmLi0004686
+	for cosign-announce@umich.edu; Mon, 20 Nov 2006 11:48:21 -0500
+Received: from dynamic231-217.staff.itd.umich.edu
+	(dynamic231-217.staff.itd.umich.edu [141.213.231.217]) by
+	web.mail.umich.edu (Horde MIME library) with HTTP; Mon, 20 Nov 2006
+	11:48:21 -0500
+Message-ID: <20061120114821.w9dmb70hcoos084s@web.mail.umich.edu>
+Date: Mon, 20 Nov 2006 11:48:21 -0500
+From: jarod@umich.edu
+To: cosign-announce@umich.edu
+Subject: IISCosign 2.0.1 available
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset=ISO-8859-1;
+	format="flowed"
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+User-Agent: Internet Messaging Program (IMP) H3 (4.0.5)
+X-Remote-Browser: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1)
+	Gecko/20061010 Firefox/2.0
+X-IMP-Server: 141.211.144.198
+X-Originating-IP: 141.213.231.217
+X-Originating-User: jarod
+
+
+A new version of IISCosign is now available.  It includes a recompiled 
+version of OpenSSL, 0.9.8d.  If you were having trouble getting 2.0.0 
+to work, please give this one a try!
+
+http://www.umich.edu/~umweb/software/cosign/download.html
+
+--Jarod
+
+
+From cosign.announce-errors@umich.edu Wed Nov 22 13:06:45 2006
+Return-Path: <cosign.announce-errors@umich.edu>
+Received: from jeffrey.mr.itd.umich.edu (mx.umich.edu [141.211.14.132])
+	by logo.web.itd.umich.edu (8.12.11.20060308/8.12.10) with ESMTP id kAMI6jfl011543
+	for <cosign-announce@logo.web.itd.umich.edu>; Wed, 22 Nov 2006 13:06:45 -0500
+Received: FROM ojibwe.web.itd.umich.edu (ojibwe.web.itd.umich.edu [141.211.144.146])
+	BY jeffrey.mr.itd.umich.edu ID 456491A3.1E74B.15208 ; 
+	22 Nov 2006 13:06:27 -0500
+Received: (from www@localhost)
+	by ojibwe.web.itd.umich.edu (8.12.10/8.12.9) id kAMI6RKL017035
+	for cosign-announce@umich.edu; Wed, 22 Nov 2006 13:06:27 -0500
+Received: from dynamic234-223.staff.itd.umich.edu
+	(dynamic234-223.staff.itd.umich.edu [141.213.234.223]) by
+	web.mail.umich.edu (Horde MIME library) with HTTP; Wed, 22 Nov 2006
+	13:06:27 -0500
+Message-ID: <20061122130627.r4z4clpmc0cck8gs@web.mail.umich.edu>
+Date: Wed, 22 Nov 2006 13:06:27 -0500
+From: jarod@umich.edu
+To: cosign-announce@umich.edu
+Subject: cosign-announce moving, resubscribe at sf.net
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset=ISO-8859-1;
+	format="flowed"
+Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
+User-Agent: Internet Messaging Program (IMP) H3 (4.0.5)
+X-Remote-Browser: Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-US;
+	rv:1.8.1) Gecko/20061010 Firefox/2.0
+X-IMP-Server: 141.211.144.230
+X-Originating-IP: 141.213.234.223
+X-Originating-User: jarod
+
+
+The cosign-announce e-mail list has moved!  Please subscribe to the new 
+list at:
+https://lists.sourceforge.net/lists/listinfo/cosign-announce
+
+Please do not send any e-mail to the old, umich.edu address.
+
+cosign-discuss will be moving, too.  You should have received separate 
+e-mail about that.
+
+cosign@umich.edu is still available for contacting the core developers and for
+exceedingly umich-specific issues.
+
+--Jarod
+
+

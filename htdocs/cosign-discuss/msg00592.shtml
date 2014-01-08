@@ -1,0 +1,148 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Apache2 filter build problems -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Sun, 23 Oct 2005 22:22:33 &#45;0400 (EDT) -->
+<!--X-Message-Id: 594B74A7&#45;532B&#45;4408&#45;B334&#45;C8F7DD6E3D24@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 4358242E.9020206@reed.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00591.shtml">Date Prev</a>][<a href="msg00593.shtml">Date Next</a>][<a href="msg00589.shtml">Thread Prev</a>][<a href="msg00593.shtml">Thread Next</a>][<a href="maillist.shtml#00592">Date Index</a>][<a href="threads.shtml#00592">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Apache2 filter build problems</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Lennon Day-Reynolds &lt;<a href="mailto:lennon@DOMAIN.HIDDEN">lennon@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Apache2 filter build problems</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sun, 23 Oct 2005 22:21:05 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00589.shtml">4358242E.9020206@reed.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00589.shtml">4358242E.9020206@reed.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Thanks for picking these up. I've added them to CVS head and they  
+will make the 1.9.1 release. Sorry about that, looks like I rushed a  
+bit *too* much to cut the apache 2 version in 1.9.0.</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<tt>On Oct 20, 2005, at 7:11 PM, Lennon Day-Reynolds wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>All,</tt><br>
+<br>
+<tt>In trying to build the Cosign 1.9.0 Apache2 auth filter, I came  
+across a few apparent errors in the file mod_cosign.c which were  
+fairly straightforward to fix, and thought I'd pass along the  
+changes in case anyone else came up against the same problem.</tt><br>
+<br>
+<tt>I've included a diff below; after applying them, the filter  
+compiles cleanly in my environment (Debian Sarge, GCC 3.3.5).</tt><br>
+<br>
+<pre style="margin: 0em;">=== begin 'mod_cosign.c.diff' ===
+48c48
+&lt; cosign_create_config( apr_pool_t *p )
+---
+&gt; cosign_create_config( pool *p )
+444d443
+&lt; #ifdef KRB
+526,529d524
+&lt;     cosign_host_config  *cfg;
+&lt;     int portarg;
+&lt;     struct connlist *cur;
+&lt;
+=== end ===</pre><br>
+<pre style="margin: 0em;">Lennon Day-Reynolds
+System Support Specialist
+Reed College</pre><br>
+<tt>!DSPAM:43582456311251066199100!</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00589" href="msg00589.shtml">Apache2 filter build problems</a></strong>
+<ul><li><em>From:</em> Lennon Day-Reynolds</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00591.shtml">RE: IISCosign v1.1.1 and Windows Server 2003, SP1.</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00593.shtml">Fwd: Re: cosign question</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00589.shtml">Apache2 filter build problems</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00593.shtml">Fwd: Re: cosign question</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00592"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00592"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

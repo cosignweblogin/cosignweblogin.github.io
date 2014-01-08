@@ -1,0 +1,126 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Question -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Mon, 7 Feb 2005 18:34:34 &#45;0500 (EST) -->
+<!--X-Message-Id: 1107818885.4738.4.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00317.shtml">Date Prev</a>][<a href="msg00319.shtml">Date Next</a>][<a href="msg00118.shtml">Thread Prev</a>][<a href="msg00321.shtml">Thread Next</a>][<a href="maillist.shtml#00318">Date Index</a>][<a href="threads.shtml#00318">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Question</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Question</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 08 Feb 2005 12:28:05 +1300</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi all,
+
+as from my previous messages, I have been doing a number of load tests
+on our cosign install.
+
+I have been noticing an alarmingly high amount of time the application
+(the cosign daemon) spends in the system. It can by up to 3 times the
+user time.
+
+I am sure it is no the fork, because i have hacked at the daemon to
+prefork a large number of children and handle the connections like that.
+
+When I do an strace of one of the daemons it give nothing which stands
+out, except for the incredibly large number of getpid calls. I am to
+understand this is the SSL Cyrpto multi-threaded support. I have gotten
+ride of a lot of this because defining callbacks for these, and yet
+still a high amount of system time is spent.
+
+Anyone seen this, or got any ideas?
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00321" href="msg00321.shtml">Re: Question</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00317.shtml">Cosign and windows apache server</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00319.shtml">Re: Cosign and windows apache server</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00118.shtml">Re: question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00321.shtml">Re: Question</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00318"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00318"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,131 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: the "back" button on the weblogout page -->
+<!--X-From-R13: Univa Snqvr <tnivaNhzvpu.rqh> -->
+<!--X-Date: Wed, 7 Sep 2005 12:49:23 &#45;0400 (EDT) -->
+<!--X-Message-Id: p06230916bf44c639f46f@[10.0.1.9] -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00538.shtml">Date Prev</a>][<a href="msg00540.shtml">Date Next</a>][<a href="msg00602.shtml">Thread Prev</a>][<a href="msg00542.shtml">Thread Next</a>][<a href="maillist.shtml#00539">Date Index</a>][<a href="threads.shtml#00539">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>the &quot;back&quot; button on the weblogout page</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: the &quot;back&quot; button on the weblogout page</li>
+<li><em>From</em>: Gavin Eadie &lt;<a href="mailto:gavin@DOMAIN.HIDDEN">gavin@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 7 Sep 2005 12:47:33 -0400</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>After logging out from an application, the option to log out from the 
+weblogin service is presented on a screen with &quot;Back&quot; and &quot;Logout&quot; 
+buttons.  The &quot;Back&quot; button tries to take the user to the last page 
+they visited.</tt><br>
+<br>
+<tt>If this return into the application would be to a &quot;deep&quot; page (one 
+that might represent a half-way point in a process the user abandoned 
+by clicking application logout), things get a little messy.  It's 
+nothing that the application cannot cope with by detecting the 
+attempt to reuse a terminated, or nonexistent, session and then 
+presenting the user with the application's front door, instead of the 
+targeted page.</tt><br>
+<br>
+<tt>I also see an Apache cosign directive which looks like it might also be useful.</tt><br>
+<br>
+<tt>   CosignSiteEntry ... [ the URL to redirect to after login  ]</tt><br>
+<br>
+<tt>      If this is set to the URL of the application's front page, will 
+the behavior be to bring a user who clicks &quot;Back,&quot; as in the above 
+scenario, to that front page and obviate the need for the application 
+to catch the &quot;missing session&quot; case?</tt><br>
+<br>
+<tt><br>Also, in passing, when the user clicks the weblogin logout, their 
+next presented page can be specified by the &quot;?<a  href="http://...&quot">http://...&quot</a>; which may 
+be passed to weblogin on the logout request.  Would it make sense to 
+have the target of the &quot;Back&quot; button similarly, optionally 
+configurable?</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00542" href="msg00542.shtml">Re: the &quot;back&quot; button on the weblogout page</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00538.shtml">mod_cosign / mod_authz_ldap behavior</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00540.shtml">RE: the &quot;back&quot; button on the weblogout page</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00602.shtml">Re: mod_cosign / mod_authz_ldap behavior</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00542.shtml">Re: the &quot;back&quot; button on the weblogout page</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00539"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00539"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

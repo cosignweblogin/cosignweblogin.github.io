@@ -1,0 +1,160 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign install problem -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Thu, 18 Mar 2004 00:26:09 &#45;0500 (EST) -->
+<!--X-Message-Id: C27196E3&#45;789C&#45;11D8&#45;8EFB&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00006.shtml">Date Prev</a>][<a href="msg00008.shtml">Date Next</a>][<a href="msg00006.shtml">Thread Prev</a>][<a href="msg00008.shtml">Thread Next</a>][<a href="maillist.shtml#00007">Date Index</a>][<a href="threads.shtml#00007">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign install problem</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discussion@DOMAIN.HIDDEN">cosign-discussion@xxxxxxxxx</a>, Chassy &lt;<a href="mailto:chassy@DOMAIN.HIDDEN">chassy@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign install problem</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Wed, 04 Feb 2004 16:02:43 -0500</li>
+<li><em>Resent-date</em>: Thu, 18 Mar 2004 00:26:07 -0500</li>
+<li><em>Resent-from</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Resent-message-id</em>: &lt;9357385.1075910563@spike.itd.umich.edu&gt;</li>
+<li><em>Resent-to</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Very sorry these updates aren't part of the installer yet:</tt><br>
+<br>
+<tt>Add the following registry entry:</tt><br>
+<br>
+<tt>HKLM/SOFTWARE/University of Michigan/ITCS/Cosign</tt><br>
+<br>
+<tt>Add a string value called ConfigFile.  Set the value to &quot;C:\Program 
+Files\IISCosign\cosign.dll.config&quot; less the quotes and the path to 
+wherever your config file is located.</tt><br>
+<br>
+<tt><br>The following permissions need to be set for Windows 2003 (this is not 
+necessary for a Win2k/IIS5 setup):</tt><br>
+<br>
+<tt>For your entire /iiscosign/ folder, IIS_WPG needs needs everything 
+selected except for &quot;Special Permissions.&quot;  Be sure to select the 
+option that applies these permissions to the folder contents and 
+sub-folders.</tt><br>
+<br>
+<tt>For the \CosignDB\ folder:<br>
+Internet Guest Account, IUSR_[machine name]- needs Read and Write 
+selected.</tt><br>
+<br>
+<pre style="margin: 0em;">For the \Logs\ folder:
+IUSR_[machine name] - Read &amp; execute, list folder contents, Read, Write.</pre><br>
+<tt><br>Also, make sure MSXML 4.0 is installed.  (The installer placed 
+msxml.msi in your IISCosign folder.)</tt><br>
+<br>
+<tt><br>Finally, don't forget to get your certificate signed by the U-M 
+webmaster.</tt><br>
+<br>
+<tt>Cosign does not show up in a service menu because it is not a service. 
+That is, it is not an independently running executable.</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--ITCS</pre><br>
+<tt><br>--On Wednesday, February 04, 2004 2:58 PM -0500 Chassy 
+&lt;chassy@xxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I'm trying to install Cosign for IIS (version 1 RC3), but something 
+seems<br>
+to be amiss.  It's on Windows 2003 Server / IIS6.</tt><br>
+<br>
+<pre style="margin: 0em;">I've gone though the configuration process described in the README, but
+the filtering won't work.  The two symptoms I see are:</pre><br>
+<tt>- I can't find the cosign service in the machine's service menu</tt><br>
+<br>
+<pre style="margin: 0em;">- The ISAPI Filters tab in the IIS manager shows the cosign filter, but
+  gives its status as 'Not Loaded' and it's Priority as '* Unknown *'.
+  This persists after I stop and restart the site.</pre><br>
+<pre style="margin: 0em;">I've tried uninstalling/reinstalling Cosign, and restarting the server,
+but have had no luck.  Any ideas would be much appreciated.</pre><br>
+<pre style="margin: 0em;">Thanks,
+Chassy
+</pre></blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00006.shtml">Cosign install problem</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00008.shtml">Re: Cosign install problem</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00006.shtml">Cosign install problem</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00008.shtml">Re: Cosign install problem</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00007"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00007"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

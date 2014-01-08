@@ -1,0 +1,139 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Install Shield project file for IIS Cosign -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Wed, 7 Jul 2004 01:30:46 &#45;0400 (EDT) -->
+<!--X-Message-Id: 440585848.1089163606@[192.168.1.101] -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 14A270C0E2F4124AB0B7320BDBEA949F04C48F1E@vxchange.vcr.auckland. ac.nz -->
+<!--X-Reference: 14A270C0E2F4124AB0B7320BDBEA949F04C48F1E@vxchange.vcr.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00160.shtml">Date Prev</a>][<a href="msg00162.shtml">Date Next</a>][<a href="msg00160.shtml">Thread Prev</a>][<a href="msg00163.shtml">Thread Next</a>][<a href="maillist.shtml#00161">Date Index</a>][<a href="threads.shtml#00161">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Install Shield project file for IIS Cosign</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas on vxchange &lt;<a href="mailto:blom001@DOMAIN.HIDDEN">blom001@xxxxxxxxxxxxxxxxxxxxxxxxxxx</a>&gt;,   &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Install Shield project file for IIS Cosign</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Wed, 07 Jul 2004 01:26:46 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00160.shtml">14A270C0E2F4124AB0B7320BDBEA949F04C48F1E@vxchange.vcr.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;14A270C0E2F4124AB0B7320BDBEA949F04C48F1E@vxchange.vcr.auckland. ac.nz&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre style="margin: 0em;"><br>IISCosign InstallShield source available here:
+&lt;<a  href="http://www-personal.umich.edu/~jarod/projects/cosign/">http://www-personal.umich.edu/~jarod/projects/cosign/</a>&gt;</pre><br>
+<tt>IISCoSignInstall-src.zip is the name of the file you want.</tt><br>
+<br>
+<tt>--Jarod</tt><br>
+<br>
+<tt><br>--On Wednesday, July 07, 2004 1:47 PM +1200 Brett Lomas on vxchange 
+&lt;blom001@xxxxxxxxxxxxxxxxxxxxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt></tt><br>
+<br>
+<tt>Hi all,</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<pre style="margin: 0em;">A while back one of you sent me the Install Shield project for the Cosign
+IIS ISAPI module.</pre><br>
+<tt>Could this kind person please resend this to me J</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt>Thanks</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt>Brett
+</tt></blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00160" href="msg00160.shtml">Install Shield project file for IIS Cosign</a></strong>
+<ul><li><em>From:</em> Brett Lomas on vxchange</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00160.shtml">Install Shield project file for IIS Cosign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00162.shtml">Re: cosign and MIT Kerberos</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00160.shtml">Install Shield project file for IIS Cosign</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00163.shtml">questions on post errors</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00161"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00161"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

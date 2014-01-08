@@ -1,0 +1,134 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: cosign and LDAP authentication? -->
+<!--X-From-R13: "Ubyqevpx, Xvz" <wtbyqevpxNwhqfbapbyyrtr.rqh> -->
+<!--X-Date: Thu, 28 Jul 2005 13:46:08 &#45;0400 (EDT) -->
+<!--X-Message-Id: D78043473550FC44A6BD0226E6601EAD0157E169@adam.judsoncollege.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00460.shtml">Date Prev</a>][<a href="msg00462.shtml">Date Next</a>][<a href="msg00464.shtml">Thread Prev</a>][<a href="msg00462.shtml">Thread Next</a>][<a href="maillist.shtml#00461">Date Index</a>][<a href="threads.shtml#00461">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: cosign and LDAP authentication?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Mark Montague&quot; &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;, &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: cosign and LDAP authentication?</li>
+<li><em>From</em>: &quot;Goldrick, Jim&quot; &lt;<a href="mailto:jgoldrick@DOMAIN.HIDDEN">jgoldrick@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 28 Jul 2005 12:39:40 -0500</li>
+<li><em>Cc</em>: &lt;<a href="mailto:maybaum@DOMAIN.HIDDEN">maybaum@xxxxxxxxx</a>&gt;</li>
+<li><em>Thread-index</em>: AcWTl6CoQhfPk/MdTgK7GFU45FKOYwAA5bRQ</li>
+<li><em>Thread-topic</em>: cosign and LDAP authentication?</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi Mark,
+
+I originally had Cosign setup that way using Basic Auth (basiccosign) and the auth_ldap module for apache.  Course, you have no logout capability that way, but you can use it for SSO.
+
+jim
+
+-----Original Message-----
+From: Mark Montague [<a  href="mailto:markmont@xxxxxxxxx">mailto:markmont@xxxxxxxxx</a>]
+Sent: Thursday, July 28, 2005 12:12 PM
+To: cosign-discuss@xxxxxxxxx
+Cc: maybaum@xxxxxxxxx
+Subject: cosign and LDAP authentication?
+
+
+
+Is anyone using cosign to authenticate users via LDAP instead of
+Kerberos?  I'm pretty sure that cosign doesn't support this, but
+I've had an external user ask and I wanted to check.  Note that
+although I'm at the University of Michigan, I'm not an active
+participant of the cosign development group here.
+
+Thanks in advance.
+
+                 Mark Montague
+                 The University of Michigan
+                 markmont@xxxxxxxxx
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00462" href="msg00462.shtml">RE: cosign and LDAP authentication?</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00460.shtml">cosign and LDAP authentication?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00462.shtml">RE: cosign and LDAP authentication?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00464.shtml">Re: cosign and LDAP authentication?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00462.shtml">RE: cosign and LDAP authentication?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00461"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00461"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,516 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: file not found error &#45; now unsupported certificate -->
+<!--X-From-R13: "Ubyqevpx, Xvz" <wtbyqevpxNwhqfbapbyyrtr.rqh> -->
+<!--X-Date: Fri, 19 Nov 2004 18:23:56 &#45;0500 (EST) -->
+<!--X-Message-Id: D78043473550FC44A6BD0226E6601EAD896F1E@adam.judsoncollege.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00291.shtml">Date Prev</a>][<a href="msg00293.shtml">Date Next</a>][<a href="msg00291.shtml">Thread Prev</a>][<a href="msg00293.shtml">Thread Next</a>][<a href="maillist.shtml#00292">Date Index</a>][<a href="threads.shtml#00292">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: file not found error - now unsupported certificate</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>Subject</em>: RE: file not found error - now unsupported certificate</li>
+<li><em>From</em>: &quot;Goldrick, Jim&quot; &lt;<a href="mailto:jgoldrick@DOMAIN.HIDDEN">jgoldrick@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 19 Nov 2004 17:22:39 -0600</li>
+<li><em>Cc</em>: &quot;Cosign Discussion&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Thread-index</em>: AcTI3aXE4ouBj64ZQMi4bEMuoxvdGQFrtf5Q</li>
+<li><em>Thread-topic</em>: file not found error</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi Johanna
+
+I seem to have made some progress.  I tried setting the cosign directives above the directory settings as such:
+
+CosignHostname          judsonhp.judsoncollege.edu
+CosignRedirect          <a  href="https://judsonhp.judsoncollege.edu/">https://judsonhp.judsoncollege.edu/</a>
+CosignPostErrorRedirect <a  href="https://judsonhp.judsoncollege.edu/post_error.html">https://judsonhp.judsoncollege.edu/post_error.html</a>
+CosignService           cosign
+CosignCrypto            /opt/apache/cosign/CA/ca.key /opt/apache/cosign/CA/ca.cr
+t /opt/apache/cosign/CA
+CosignProtected On
+
+&lt;Directory /opt/apache/cosign/html&gt;
+CosignProtected Off
+Options ExecCGI Indexes
+AllowOverride All
+AuthType Basic
+AuthName &quot;Faculty Access&quot;
+AuthLDAPURL <a  href="ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud">ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud</a>
+son,cn=Authentication Data,o=Cognos,c=CA?cn?
+......
+
+this seems to have helped, as I am not getting the errors about CosignHostname, etc.  Also, I am getting redirected to the error page.
+
+But....the error page tells me it is unable to communicate with the cosign server.  In the syslog I have this:
+Nov 19 17:02:58 judsonhp cosignd[8797]: f_starttls: snet_starttls: error:140890B
+2:SSL routines:SSL3_GET_CLIENT_CERTIFICATE:no certificate returned
+Nov 19 17:02:58 judsonhp cosignd[769]: child 8797 died on signal 13
+syslog.log: END
+
+in the apache error_log this:
+choose another connection: 533 CHECK: cookie not in db!
+choose another connection: 533 CHECK: cookie not in db!
+snet_starttls: error:14094413:SSL routines:SSL3_READ_BYTES:sslv3 alert unsupport
+ed certificate
+cosign_choose_conn: no connection to servers.
+/basicosign.cgi: login failed
+
+Which is encouraging, anyway.  I have a self-signed cert.  I have run the verify test (OK) and this one as cosign and the web user:
+cat /dev/null | /usr/local/ssl/bin/openssl s_client -connect judsonhp.judsoncoll
+ege.edu:6663 -CApath /opt/apache/cosign/CA -cert /opt/apache/cosign/CA/ca.crt -k
+ey /opt/apache/cosign/CA/ca.key -starttls smtp
+
+result of above
+
+
+depth=1 /C=US/ST=Illinois/L=Elgin/O=Judson College/OU=Tech Services/CN=Judson College CA/emailAddress=jgoldrick@xxxxxxxxxxxxxxxxx
+verify return:1
+depth=0 /C=US/ST=Illinois/L=Elgin/O=Judson College/OU=Tech Services/CN=judsonhp.judsoncollege.edu/emailAddress=jgoldrick@xxxxxxxxxxxxxxxxx
+verify return:1
+CONNECTED(00000003)
+---
+Certificate chain
+ 0 s:/C=US/ST=Illinois/L=Elgin/O=Judson College/OU=Tech Services/CN=judsonhp.judsoncollege.edu/emailAddress=jgoldrick@xxxxxxxxxxxxxxxxx
+   i:/C=US/ST=Illinois/L=Elgin/O=Judson College/OU=Tech Services/CN=Judson College CA/emailAddress=jgoldrick@xxxxxxxxxxxxxxxxx
+ 1 s:/C=US/ST=Illinois/L=Elgin/O=Judson College/OU=Tech Services/CN=Judson College CA/emailAddress=jgoldrick@xxxxxxxxxxxxxxxxx
+   i:/C=US/ST=Illinois/L=Elgin/O=Judson College/OU=Tech Services/CN=Judson College CA/emailAddress=jgoldrick@xxxxxxxxxxxxxxxxx
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIDVDCCAr2gAwIBAgIJAIwl1Nfoayd6MA0GCSqGSIb3DQEBBAUAMIGpMQswCQYD
+VQQGEwJVUzERMA8GA1UECBMISWxsaW5vaXMxDjAMBgNVBAcTBUVsZ2luMRcwFQYD
+VQQKEw5KdWRzb24gQ29sbGVnZTEWMBQGA1UECxMNVGVjaCBTZXJ2aWNlczEaMBgG
+A1UEAxMRSnVkc29uIENvbGxlZ2UgQ0ExKjAoBgkqhkiG9w0BCQEWG2pnb2xkcmlj
+a0BqdWRzb25jb2xsZWdlLmVkdTAeFw0wNDExMTIxODQ0NTVaFw0wNTExMTIxODQ0
+NTVaMIGyMQswCQYDVQQGEwJVUzERMA8GA1UECBMISWxsaW5vaXMxDjAMBgNVBAcT
+BUVsZ2luMRcwFQYDVQQKEw5KdWRzb24gQ29sbGVnZTEWMBQGA1UECxMNVGVjaCBT
+ZXJ2aWNlczEjMCEGA1UEAxMaanVkc29uaHAuanVkc29uY29sbGVnZS5lZHUxKjAo
+BgkqhkiG9w0BCQEWG2pnb2xkcmlja0BqdWRzb25jb2xsZWdlLmVkdTCBnzANBgkq
+hkiG9w0BAQEFAAOBjQAwgYkCgYEAqcOvpFWlODB3ZaTwjjRB+SGOpAc1qNZtIuPT
+Siq9S9OO+n/rvIsjFlJOr/CEkIJLxucnRKF56Y3BleDj/OjQrMjmIUxYwGIcYjBf
+6gnqlvTAyjB6VceXxSr+ZyGlPYOo5T5elNE7YJn0zMlaAyVdkMjOIz7+hl0c7/K/
+XSG5bPUCAwEAAaN5MHcwJgYDVR0RBB8wHYEbamdvbGRyaWNrQGp1ZHNvbmNvbGxl
+Z2UuZWR1MDoGCWCGSAGG+EIBDQQtFittb2Rfc3NsIGdlbmVyYXRlZCBjdXN0b20g
+c2VydmVyIGNlcnRpZmljYXRlMBEGCWCGSAGG+EIBAQQEAwIGQDANBgkqhkiG9w0B
+AQQFAAOBgQAMF10MWb4llmm8/07xka4GY+Lht6roWAOxOVVe848wvua9jwm6ORx2
+XLoAil8ohoIcteF4lijN5Ja1h9P7zXVc0X9zf8v9Qeo3Q11VIWLOWhmRMkM5wqbC
+zHgadMVUnuP6nKhwUabnhFow9N5KbbovQtvd3A5AjMsj3/tea4OTXQ==
+-----END CERTIFICATE-----
+subject=/C=US/ST=Illinois/L=Elgin/O=Judson College/OU=Tech Services/CN=judsonhp.judsoncollege.edu/emailAddress=jgoldrick@xxxxxxxxxxxxxxxxx
+issuer=/C=US/ST=Illinois/L=Elgin/O=Judson College/OU=Tech Services/CN=Judson College CA/emailAddress=jgoldrick@xxxxxxxxxxxxxxxxx
+---
+No client certificate CA names sent
+---
+SSL handshake has read 1941 bytes and written 1372 bytes
+---
+New, TLSv1/SSLv3, Cipher is AES256-SHA
+Server public key is 1024 bit
+SSL-Session:
+    Protocol  : TLSv1
+    Cipher    : AES256-SHA
+    Session-ID: 96C6EBD413CD6D2CC5C2E8E4C1C57696C46E9325C50C40A8601BAD6380F7A8F9
+    Session-ID-ctx: 
+    Master-Key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    Key-Arg   : None
+    Start Time: 1100906293
+    Timeout   : 300 (sec)
+    Verify return code: 0 (ok)
+---
+220 COokie SIGNer ready
+DONE
+
+
+
+Any ideas would be appreciated.
+
+thanks
+
+jim
+
+
+-----Original Message-----
+From: johanna bromberg craig [<a  href="mailto:canna@xxxxxxxxx">mailto:canna@xxxxxxxxx</a>]
+Sent: Friday, November 12, 2004 11:28 AM
+To: Goldrick, Jim
+Cc: Cosign Discussion
+Subject: Re: file not found error
+
+
+Hey Jim,
+
+couple of things to try:
+
+1) make sure the CosignHostname and all that come before the first  
+&quot;CosignProtected On&quot;, line number wise.
+
+2) for this dir:
+
+&lt;Directory /opt/apache/cosign/html/services&gt;
+CosignProtected On
+Options ExecCGI
+AllowOverride None
+order allow,deny
+allow from all
+&lt;/Directory&gt;
+
+you just want cosignprotected on, i think, unless you're running a cgi.  
+you don't need the allowoveridess and the order bits, i believe.
+
+3) also, i'm not sure about this line:
+
+Alias /weblogin/ /opt/apache/cosign/html/
+
+to make things easier, we put basiccosign.cgi as a DirectoryIndex, like  
+you have, and put it in docroot, so that   
+	<a  href="https://judsonhp.judsoncollege.edu/">https://judsonhp.judsoncollege.edu/</a>
+would just work.
+
+4) also, it might be easier at first to cosign protect a separate  
+directory or location all together ( not one that is under docroot like  
+that ) like a user home dir, so that we don't have to deal with the  
+hested complexity utnil we get the authentication part working. :)
+
+5) When you turn off cosign, your basic auth bit works, right? :)
+
+Keep us posted :)
+
+-J
+
+On Nov 12, 2004, at 11:45 AM, Goldrick, Jim wrote:
+&gt;
+&gt; error_log
+&gt;
+&gt; here is my vhost, which I have tried to set up similar to yours for  
+&gt; now.
+&gt;
+&gt; &lt;VirtualHost judsonhp.judsoncollege.edu:443&gt;
+&gt;  ServerName judsonhp.judsoncollege.edu
+&gt; DocumentRoot /opt/apache/cosign/html
+&gt; AddHandler          cgi-script      .cgi
+&gt; DirectoryIndex      basiccosign.cgi index.html index.php index.htm  
+&gt; index.shtml
+&gt; Alias /images/ /opt/apache/images/
+&gt; SSLEngine on
+&gt; SSLCertificateFile /opt/apache/etc/ssl.crt/server.crt
+&gt; SSLCertificateKeyFile /opt/apache/etc/ssl.key/server.key
+&gt; SetEnvIf User-Agent &quot;.*MSIE.*&quot; nokeepalive ssl-unclean-shutdown \
+&gt;         downgrade-1.0 force-response-1.0
+&gt;
+&gt;
+&gt; &lt;Directory /opt/apache/cosign/html&gt;
+&gt; CosignProtected Off
+&gt; Options ExecCGI
+&gt; AllowOverride None
+&gt; AuthType Basic
+&gt; AuthName &quot;Faculty Access&quot;
+&gt; AuthLDAPURL  
+&gt; <a  href="ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud">ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud</a>
+&gt; son,cn=Authentication Data,o=Cognos,c=CA?cn?
+&gt; require valid-user
+&gt; order allow,deny
+&gt; allow from all
+&gt; &lt;/Directory&gt;
+&gt;
+&gt;
+&gt; &lt;Directory /opt/apache/cosign/html/services&gt;
+&gt; CosignProtected On
+&gt; Options ExecCGI
+&gt; AllowOverride None
+&gt; order allow,deny
+&gt; allow from all
+&gt; &lt;/Directory&gt;
+&gt;
+&gt; Alias /weblogin/ /opt/apache/cosign/html/
+&gt; CosignProtected         On
+&gt; CosignHostname          judsonhp.judsoncollege.edu
+&gt; CosignRedirect          <a  href="https://judsonhp.judsoncollege.edu/weblogin/">https://judsonhp.judsoncollege.edu/weblogin/</a>
+&gt; CosignPostErrorRedirect  
+&gt; <a  href="https://judsonhp.judsoncollege.edu/weblogin/post_error.h">https://judsonhp.judsoncollege.edu/weblogin/post_error.h</a>
+&gt; tml
+&gt; CosignService           cosign
+&gt; CosignCrypto            /opt/apache/cosign/CA/ca.key  
+&gt; /opt/apache/cosign/CA/ca.crt /opt/apache/cosign/CA
+&gt; &lt;/VirtualHost&gt;
+&gt;
+&gt; I was also getting an unknown ca error for awhile, but it went away, I  
+&gt; believe, when I changed the perms on the CA directory to 777.  Either  
+&gt; that or I have somehow taken a step backwards and I will hit that  
+&gt; error again.  Please note I am using the basic auth.  Also, I do not  
+&gt; have a cgi-ssl directory.
+&gt;
+&gt; Any input would be most appreciated!
+&gt;
+&gt; thanks
+&gt;
+&gt; jim
+&gt;
+&gt;
+&gt; -----Original Message-----
+&gt; From: johanna bromberg craig [<a  href="mailto:canna@xxxxxxxxx">mailto:canna@xxxxxxxxx</a>]
+&gt; Sent: Monday, November 08, 2004 2:49 PM
+&gt; To: Goldrick, Jim
+&gt; Subject: Re: file not found error
+&gt;
+&gt;
+&gt; this is with basicauth, right? Here's what i believe to be a working
+&gt; conf :)
+&gt; On the port 80 ( 8080, in my case ) we have merely:
+&gt;
+&gt; CosignProtected Off
+&gt;
+&gt; on the :443 ( :8443 we have )
+&gt;
+&gt; &lt;VirtualHost _default_:8443&gt;
+&gt;
+&gt; DocumentRoot        /usr/local/projects/cosign/html/
+&gt; ScriptAlias         /cosign-bin/ /usr/local/projects/cosign/cgi-ssl/
+&gt; AddHandler          cgi-script      .cgi
+&gt; ErrorDocument       404    <a  href="https://beothuk.web.itd.umich.edu:8443/">https://beothuk.web.itd.umich.edu:8443/</a>
+&gt; DirectoryIndex      basiccosign.cgi index.html index.php index.htm
+&gt; index.shtml
+&gt;
+&gt; &lt;Directory  /usr/local/projects/cosign/html/&gt;
+&gt;      Options ExecCGI
+&gt;      AuthUserFile /usr/local/users/canna/.htpasswd
+&gt;      AuthName &quot;Demasduit's Dream&quot;
+&gt;      AllowOverride All
+&gt;      AuthType Basic
+&gt;      CosignProtected Off
+&gt; &lt;/Directory&gt;
+&gt;
+&gt; CosignHostname weblogin.umich.edu
+&gt; CosignRedirect <a  href="https://weblogin.umich.edu/">https://weblogin.umich.edu/</a>
+&gt; CosignPostErrorRedirect <a  href="http://www.umich.edu/~canna">http://www.umich.edu/~canna</a>
+&gt; CosignService jojo
+&gt; CosignCrypto /usr/local/etc/apache/certs/beothuk.key
+&gt; /usr/local/etc/apache/certs/beothuk.cert /usr/local/etc/apache/certs
+&gt;
+&gt; CosignProtected On
+&gt;
+&gt; something like that.
+&gt;
+&gt; maybe you can send cosign@xxxxxxxxx your httpd.conf and we can check it
+&gt; out
+&gt;
+&gt; -J
+&gt;
+&gt;
+&gt;
+&gt;
+&gt; On Nov 4, 2004, at 6:10 PM, Goldrick, Jim wrote:
+&gt;
+&gt;&gt; I'm still getting the same errors.&#xA0; One thing, I never get prompted
+&gt;&gt; for any type of authentication.&#xA0; Can someone send me an example of
+&gt;&gt; their http.conf/access.conf file that pertains to Cosign (Directory's
+&gt;&gt; and Virtual hosts)?&#xA0; It seems like a configuration problem, but I sure
+&gt;&gt; can't find it.
+&gt;&gt; &#xA0;
+&gt;&gt; thanks!
+&gt;&gt; &#xA0;
+&gt;&gt; jim
+&gt;&gt; &#xA0;
+&gt;&gt; &#xA0;
+&gt;&gt; -----Original Message-----
+&gt;&gt; From: Goldrick, Jim
+&gt;&gt; Sent: Wednesday, November 03, 2004 5:18 PM
+&gt;&gt; To: 'cosign-discuss@xxxxxxxxx'
+&gt;&gt; Subject: file not found error
+&gt;&gt;
+&gt;&gt; Hi,
+&gt;&gt; &#xA0;
+&gt;&gt; Since this is a different issue, I thought I would open a new post.&#xA0;
+&gt;&gt; When trying to connect to
+&gt;&gt; <a  href="https://judsonhp.judsoncollege.edu:444/index.html">https://judsonhp.judsoncollege.edu:444/index.html</a>, which is my doc
+&gt;&gt; root that I have set for cosign,
+&gt;&gt; the browser hangs and I get this in my syslog:
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; Nov&#xA0; 3 16:59:06 judsonhp cosignd[9620]: connect: 10.100.0.142
+&gt;&gt; Nov&#xA0; 3 16:59:06 judsonhp cosignd[9620]: service_to_login:
+&gt;&gt; cosign-cosign=4tWOHyU+
+&gt;&gt; IzH9Usx+QfgsVwOCrtO0EHsPFjtUaKPx80TdhemR2ld8yA9rcsX4IDUU15s1sztTyvMOfv 
+&gt;&gt; 5
+&gt;&gt; 0Es7-ML-Z
+&gt;&gt; IY3j1OLCC8SdKdq+7FZJoqRh8wgMjtXC43v9: No such file or directory
+&gt;&gt; Nov&#xA0; 3 16:59:06 judsonhp cosignd[9612]: service_to_login:
+&gt;&gt; cosign-cosign=+0QwqH3j
+&gt;&gt; F8DFbplXVjr3gNKIMaDsU0B+W2ArWpBZPGGtnzOKYX0CjuE88QtIoDgsIp6b1lVJJ47o6Z 
+&gt;&gt; Q
+&gt;&gt; cGABBt-CY
+&gt;&gt; kpAa-F2EAzejAGJnFicEg11BCz0ifSxK7q8g: No such file or directory
+&gt;&gt; Nov&#xA0; 3 16:59:07 judsonhp cosignd[9613]: service_to_login:
+&gt;&gt; cosign-cosign=DGzMJLge
+&gt;&gt; vfaJBAtWQdLx+Yo7QkI6KWF9aFueZ3s1jwXo9Usdk6nkYLfBAaoeUP+eSVgsSnJxLriwYU 
+&gt;&gt; 7
+&gt;&gt; owBnKAm4n
+&gt;&gt; xIi3Bs8JwgwAznkK2ZPB-r1P1g6NmOF+uwdh: No such file or directory
+&gt;&gt; syslog.log: END
+&gt;&gt; &#xA0;
+&gt;&gt; and this in my apache error_log (I assume because the file is not
+&gt;&gt; found):
+&gt;&gt; &#xA0;
+&gt;&gt; choose another connection: 533 CHECK: cookie not in db!
+&gt;&gt; choose another connection: 533 CHECK: cookie not in db!
+&gt;&gt; choose another connection: 533 CHECK: cookie not in db!
+&gt;&gt; choose another connection: 533 CHECK: cookie not in db!
+&gt;&gt; choose another connection: 533 CHECK: cookie not in db!
+&gt;&gt; choose another connection: 533 CHECK: cookie not in db!
+&gt;&gt; choose another connection: 533 CHECK: cookie not in db!
+&gt;&gt; What file is the error referring to?&#xA0; I have the html and templates
+&gt;&gt; directories setup in /opt/apache/cosign.&#xA0; Where should the
+&gt;&gt; basicosign.cgi be?&#xA0; In the web root?&#xA0; Here is my Virtual host:
+&gt;&gt; &#xA0;
+&gt;&gt; VirtualHost judsonhp.judsoncollege.edu:444&gt;
+&gt;&gt; &#xA0;ServerName judsonhp.judsonocollege.edu
+&gt;&gt; DocumentRoot /opt/apache/carsi-test/share/htdocs/
+&gt;&gt; ScriptAlias /cgi-bin/ /opt/apache/carsi-test/share/cgi-bin/
+&gt;&gt; Alias /images/ /opt/apache/images/
+&gt;&gt; SSLEngine on
+&gt;&gt; SSLCertificateFile /opt/apache/xxx/xxxxxx/xxxxxx.xxx
+&gt;&gt; SSLCertificateKeyFile /opt/apache/xxx/xxxxxxx/xxxxx.xxxx
+&gt;&gt; SetEnvIf User-Agent &quot;.*MSIE.*&quot; nokeepalive ssl-unclean-shutdown \
+&gt;&gt; &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; downgrade-1.0 force-response-1.0
+&gt;&gt; &#xA0;
+&gt;&gt;
+&gt;&gt; CosignProtected&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; On
+&gt;&gt; CosignHostname&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; acadinfo.judsoncollege.edu
+&gt;&gt; CosignRedirect&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; /weblogin/
+&gt;&gt; CosignPostErrorRedirect /weblogin/post_error.html
+&gt;&gt; CosignService&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; cosign
+&gt;&gt; CosignCrypto&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; /opt/apache/xxxxxx/xxxxxxx/cakey
+&gt;&gt; /opt/apache/xxxxxx/xxxxxx/ca /opt/apache/xxxxxxxx/xxxxxxxx
+&gt;&gt;
+&gt;&gt; &lt;/VirtualHost&gt;
+&gt;&gt; &#xA0;
+&gt;&gt; Here is the doc root directory:
+&gt;&gt;
+&gt;&gt; #this is so the cosign login will run from / of DocRoot
+&gt;&gt; &lt;Directory /opt/apache/carsi-test/share/htdocs&gt;
+&gt;&gt; DirectoryIndex&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; basiccosign.cgi index.html
+&gt;&gt; AddHandler&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; cgi-script&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; .cgi
+&gt;&gt; AllowOverride None
+&gt;&gt; Options FollowSymLinks ExecCGI
+&gt;&gt; order deny,allow
+&gt;&gt; allow from all
+&gt;&gt; AuthType Basic
+&gt;&gt; AuthName &quot;Faculty Access&quot;
+&gt;&gt; AuthLDAPURL
+&gt;&gt; <a  href="ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud">ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud</a>
+&gt;&gt; son,cn=Authentication Data,o=Cognos,c=CA?cn?
+&gt;&gt; require valid-user
+&gt;&gt; &lt;Files *.css&gt;
+&gt;&gt; order allow,deny
+&gt;&gt; allow from all
+&gt;&gt; &lt;/Files&gt;
+&gt;&gt; &lt;Files *.js&gt;
+&gt;&gt; order allow,deny
+&gt;&gt; allow from all
+&gt;&gt; &lt;/Files&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; So I am not quite sure what to do.&#xA0; The acadinfo.judsoncollege.edu
+&gt;&gt; hostname is just a virtual ip for the judsonhp host.&#xA0; If I remove the
+&gt;&gt; cosign settings in the virtual host, I can get to the index.html after
+&gt;&gt; authenticating.
+&gt;&gt; &#xA0;
+&gt;&gt; FYI, I am using a&#xA0;self-signed cert.
+&gt;&gt; &#xA0;
+&gt;&gt; thanks much!
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; Jim Goldrick
+&gt;&gt; Judson College
+&gt;&gt; 573-335-7074
+&gt;&gt;  jgoldrick@xxxxxxxxxxxxxxxxx
+&gt;&gt; &#xA0;
+&gt;&gt;
+&gt;
+&gt;
+&gt; !DSPAM:4194e925168611328518187!
+&gt;
+&gt;
+&gt;
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00291.shtml">Cold Fusion and Cosign Variables</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00293.shtml">mod_cosign, mod_authz_ldap and apache2</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00291.shtml">Cold Fusion and Cosign Variables</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00293.shtml">mod_cosign, mod_authz_ldap and apache2</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00292"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00292"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

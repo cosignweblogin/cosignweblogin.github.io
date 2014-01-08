@@ -1,0 +1,135 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Cosign and Squid? -->
+<!--X-From-R13: Pevna Vngpu <oevNvsbxe.bet> -->
+<!--X-Date: Wed, 19 Oct 2005 09:57:10 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20051019135530.GG21767@ifokr.org -->
+<!--X-Content-Type: multipart/signed -->
+<!--X-Derived: pgp00020.pgp -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00585.shtml">Date Prev</a>][<a href="msg00587.shtml">Date Next</a>][<a href="msg00612.shtml">Thread Prev</a>][<a href="msg00597.shtml">Thread Next</a>][<a href="maillist.shtml#00586">Date Index</a>][<a href="threads.shtml#00586">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Cosign and Squid?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Cosign and Squid?</li>
+<li><em>From</em>: Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 19 Oct 2005 06:55:30 -0700</li>
+<li><em>User-agent</em>: Mutt/1.5.9i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Has anyone implemented a cosign-protected squid proxy?
+I'd like to require authentication on my squid box(es),
+and could do that via ldap (which means I'd want the
+squid proxy available only via ssl, which seems like
+significant overhead.
+
+Don't know if cosign-enabling squid would work, but it'd
+be an interesting thing.  You'd need to modify the error
+message to have a link to the weblogin page.  And, now
+that I think of it, I don't know that you'd be able to
+have it follow the redirect to authenticate the cookie,
+since in order to follow the redirect your proxy needs
+to be functioning, and in order for your proxy to function
+you need to have the cookie authenticated....  Squid
+probably has the capability to allow the weblogin server
+to require no authentication, so that could be worked
+around.
+
+Anyone started down this road?
+
+-- 
+Brian Hatch                  R: I'm winning!
+   Systems and               B: What's winning?
+   Security Engineer         R: Meeee!!!
+<a  href="http://www.ifokr.org/bri/">http://www.ifokr.org/bri/</a>
+
+Every message PGP signed
+</pre><p><strong>Attachment:
+<a href="pgp00020.pgp" ><tt>signature.asc</tt></a></strong><br>
+<em>Description:</em> Digital signature</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00597" href="msg00597.shtml">Re: Cosign and Squid?</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00585.shtml">flint and dearborn</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00587.shtml">Account Suspended</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00612.shtml">Re: flint and dearborn</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00597.shtml">Re: Cosign and Squid?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00586"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00586"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

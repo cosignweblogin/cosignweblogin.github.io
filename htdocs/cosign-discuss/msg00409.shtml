@@ -1,0 +1,142 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: logout.pl -->
+<!--X-From-R13: Xnebq [nyrfgrva <wnebqNhzvpu.rqh> -->
+<!--X-Date: Tue, 26 Apr 2005 13:45:35 &#45;0400 (EDT) -->
+<!--X-Message-Id: E4C364CB04E1EB81A44009C0@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1114478916.4032.15.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00408.shtml">Date Prev</a>][<a href="msg00410.shtml">Date Next</a>][<a href="msg00408.shtml">Thread Prev</a>][<a href="msg00411.shtml">Thread Next</a>][<a href="maillist.shtml#00409">Date Index</a>][<a href="threads.shtml#00409">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: logout.pl</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;,   cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: logout.pl</li>
+<li><em>From</em>: Jarod Malestein &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 26 Apr 2005 13:43:49 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00406.shtml">1114478916.4032.15.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00406.shtml">1114478916.4032.15.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>For anyone having trouble deleting service cookies via scripts I wrote a 
+logout dll for IIS.  This is also nice if you don't like writing scripts. 
+:)  You can download it here:</tt><br>
+<br>
+<tt>&lt;<a  href="http://www.umich.edu/~umweb/software/cosign/download.html">http://www.umich.edu/~umweb/software/cosign/download.html</a>&gt;</tt><br>
+<br>
+<tt>Source code to follow.</tt><br>
+<br>
+<tt>--Jarod Malestein</tt><br>
+<br>
+<tt>--On Tuesday, April 26, 2005 1:28 PM +1200 Brett Lomas 
+&lt;b.lomas@xxxxxxxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hi all,</tt><br>
+<br>
+<pre style="margin: 0em;">has anyone verified the logout.pl script supplied with Cosign actually
+works? I have installed on an IIS webserver with ActiveState Perl and it
+is not destroying the ST cookie at all. If get it not to redirect and
+output some meaningless HTML it does indeed reset the cookie in the
+browser.</pre><br>
+<tt>This seem true for FireFox and IE?</tt><br>
+<br>
+<tt>Anyone else seen this?</tt><br>
+<br>
+<tt>Thanks</tt><br>
+<br>
+<tt>Brett</tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00406" href="msg00406.shtml">logout.pl</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00408.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00410.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00408.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00411.shtml">Cosign and PS 7.6</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00409"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00409"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

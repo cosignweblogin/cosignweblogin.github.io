@@ -1,0 +1,121 @@
+{\rtf1\mac\ansicpg10000\cocoartf100
+{\fonttbl\f0\fnil\fcharset77 Georgia-Bold;\f1\fnil\fcharset77 Georgia;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh9000\viewkind0
+\pard\tx0\tx1120\tx2240\tx3360\tx4480\tx5600\tx6720\tx7840\tx8960\tx10080\tx11200\tx12320\tx13440\tx14560\tx15680\tx16800\tx17920\tx19040\tx20160\tx21280\tx22400\tx23520\tx24640\tx25760\tx26880\tx28000\tx29120\tx30240\tx31360\tx32480\tx33600\tx34720\qc
+
+\f0\b\fs42 \cf0 Cosign
+\f1\b0 \
+
+\fs28 Single Sign-On Web Authentication & Proxy System 
+\fs42 \
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\qc
+
+\fs20 \cf0 Kevin McGowan, Johanna Bromberg Craig, & Wes Craig
+\fs26 \
+
+\fs20 Draft August 2002
+\fs26 \
+\pard\tx0\tx1120\tx2240\tx3360\tx4480\tx5600\tx6720\tx7840\tx8960\tx10080\tx11200\tx12320\tx13440\tx14560\tx15680\tx16800\tx17920\tx19040\tx20160\tx21280\tx22400\tx23520\tx24640\tx25760\tx26880\tx28000\tx29120\tx30240\tx31360\tx32480\tx33600\tx34720\ql\qnatural
+\cf0 \
+
+\f0\b\fs24 Abstract
+\f1\b0 \
+\
+We discuss the need, due to evolving campus requirements, for a simpler, more secure, and more maintainable method of web-based Kerberos password authentication at the University of Michigan. The installed solution, "cookieserver," is reviewed in light of these evolving requirements and our replacement system, cosign, is described.\
+\
+Cosign entered production testing in early July of 2002.\
+\
+
+\f0\b Background
+\f1\b0 \
+\
+Since late 1995, the University of Michigan has used various iterations of a cookie-based web authentication system which, for lack of a better name, we will refer to as 'cookieserver' ( this is the name given to it by David Winkel, creator of the version currently used on campus ).\
+\
+The original requirements (Winkel/Kamm at WebDevShare '98) for the cookieserver were:\
+\
+	\'a5  Password Security: Passwords should never go over a wire unencrypted.\
+\
+	\'a5  Content Security: Content such as grades, patient records, and HR information should not be distributed in clear text.\
+\
+	\'a5  Simplicity: The user interface must be very simple, because of the wide variety of expertise among University of Michigan web users. \
+\
+	\'a5  Entirely Web-based: To facilitate as little installation on the client machines as possible. \
+\
+	\'a5  Cross-Platform: Must support Internet Explorer, Netscape Navigator, and preferably Lynx as a text interface. \
+\
+	\'a5  Speed: User expectations for web application performance are higher than for desktop applications.\
+\
+Cookieserver has met these requirements quite well over the years. One's password is never sent across the wire unencrypted. Content is never sent unencrypted. The user interface remains simple and has undergone some cosmetic changes to be more appealing. The system can be entirely web-based, or can support KX-509 with additional software on the client. Periodic updates have kept cookieserver's visual elements browser independent ( the system now works with any HTML 4.0 compatible browser ). The cookieserver is, in fact, quite fast; it has easily handled the load presented by sites designed to work with it such as directory.umich.edu, Wolverine Access, mail.umich.edu, my.umich.edu, Online Voting, Conferencing on the Web ( COW ), and Alumni uniqname creation in addition to controlling access to all user and group web pages.\
+\
+Cookieserver Strengths:\
+\
+	\'a5  Despite having a separate login screen per server, a user's password is sent to only a single central server. \
+\
+	\'a5  Codebase is stable and has been ported to: Solaris, AIX, Linux, Windows NT, and Windows 2000. \
+\
+	\'a5  Support for Apache API, NSAPI (iPlanet), and ISAPI (IIS) \
+\
+	\'a5  Many campus web applications already written to work with it. \
+\
+	\'a5  Has support for X-509 client certificate authentication (rather than sending a password to the web server) which has been used in production. \
+\
+	\'a5  Enforces variable length hard session time-outs (8 or 4 hours depending on the service). \
+\
+	\'a5  Cookie is sent only to the server that set it: cookie contains only a random key that, even if compromised, reveals no sensitive information about the user or service. \
+\
+	\'a5  Supports authentication/authorization for both web servers and application servers ( used in production for Web Objects application servers ). \
+\
+	\'a5  Works with virtually any web browser (including text-only browsers and users with javascript disabled ) with support for cookies enabled. \
+\
+Cookieserver Shortcomings:\
+\
+	\'a5  Each web server has its own login screen, requiring a separate login for each web server. \
+\
+	\'a5  Each web server that will support X-509 client authentication must be configured individually to do so. \
+\
+	\'a5  There are no idle-timeouts. A user is logged-in until he or she chooses to logout or the hard session limit is reached. \
+\
+	\'a5  The code required on a departmental web server is too complex. This makes porting more time consuming and maintenance more difficult. \
+\
+	\'a5  Support for multiple Kerberos realms is hard coded, user has no opportunity to choose realm. \
+\
+
+\f0\b Cosign
+\f1\b0 \
+\
+Given our development & production experience with the cookieserver's code-base we are able to recommend a few enhancements that should better meet the needs of both web users on campus and web server administrators. To this end we recommend an enhanced set of requirements:\
+\
+\'a5  Passord Security: Passwords should never go over a wire unencrypted. A method should be supported by which passwords, even encrypted ones, never go over the wire at all. \
+\
+\'a5  Single Sign-On: A user should be required to authenticate only once per browser session. This user should then have access to any web resources protected by cookieserver. Further, the system should have an idle-timeout that reduces a user's exposure if he or she leaves an authenticated session unattended. \
+\
+\'a5  Content Security: Content such as grades, patient records, and HR information should not be distributed in clear text. \
+\
+\'a5  Simplicity: The user interface must be very simple, because of the widely varying levels of expertise among University of Michigan web users. \
+\
+\'a5  Cross-Platform (client): The system must support any HTML 4.0 compatible browser. Special care must be taken to ensure accessibility for page readers and similar enabling devices. \
+\
+\'a5  Cross-Platform (server): We have learned that support for various web server operating systems and platforms is essential. Cookieserver's client web server software should be simplified to promote this capability. \
+\
+\'a5  Shibboleth compatibility:  Cosign must be in a position to act as a WebISO solution and support inter-institutional sharing of web resources.\
+\
+Where cookieserver displays a separate login screen for each Kerberos password authenticated web service on campus, Cosign presents only a single login-screen per browser session. Campus services check with a central Cosign service to ensure that a user is logged-in. This change has the pleasant side-effect of simplifying the code that needs to be ported to and run on departmental web servers which both improves portability and reduces administration. Using a central server for authentication also tremendously simplifies the configuration needed to support user certificate-based authentication (e.g. KX-509) across campus web services.\
+\
+Unlike other cookie-based web authentication solutions, Cosign does not use a domain or otherwise public cookie to allow cross-server authentication. The Cosign server has its own cookie and departmental web servers have their own cookies. The Cosign cookie is available only to the Cosign server; the departmental service cookies are available only to the departmental servers. The alternative solution, using a domain cookie, would allow any web server on campus (including www-personal.umich.edu and web servers in student dorms) to compromise the authentication cookie. Not using domain cookies also means that Cookieserver and Cosign can work across multiple domains.\
+\
+Cosign leverages its central state database to allow simple, effective user-initiated logout at the end of a session ( users simply follow a 'logout' link from any cosign protected web site ).\
+\
+Addressing Cookieserver Shortcomings with Cosign:\
+\
+	\'a5  Only the Cosign server ever presents a login screen to the user. This is the same login screen that is in use today. \
+\
+	\'a5  The Cosign server supports X-509, departmental web servers use the same interface regardless of authentication type. \
+\
+	\'a5  Transactions with the Cosign service increment a last-used timestamp to enable an idle-timeout. Logging out (or timing out) on the Cosign server ends your session with all departmental web servers. \
+\
+	\'a5  Simplified code on departmental web servers should make porting and maintenance much simpler. A published API makes porting by others possible. \
+\
+	\'a5  User selects authentication type and Kerberos realm. \
+\
+}

@@ -1,0 +1,296 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: CoSign source and configuration changes I have made -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 28 Apr 2004 23:03:05 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040429025959.AD21D34517@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C9CAB07E&#45;9986&#45;11D8&#45;BADB&#45;000A95CD7232@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00097.shtml">Date Prev</a>][<a href="msg00099.shtml">Date Next</a>][<a href="msg00097.shtml">Thread Prev</a>][<a href="msg00099.shtml">Thread Next</a>][<a href="maillist.shtml#00098">Date Index</a>][<a href="threads.shtml#00098">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: CoSign source and configuration changes I have made</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'kevin mcgowan'&quot; &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: CoSign source and configuration changes I have made</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 29 Apr 2004 14:59:59 +1200</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00097.shtml">C9CAB07E-9986-11D8-BADB-000A95CD7232@umich.edu</a>&gt;</li>
+<li><em>Thread-index</em>: AcQtk5I7U8t9eir7Tf+PdiMsJFORmAAAS/BA</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi Kevin,
+
+cool, I am glad you like them :)
+
+The reason for the cosign/cosign.cgi (and of course cosign/cgi-ssl/logout)
+is like you say the development/test environments. I am happy for the
+configure and installation to be changed to install directly into the web
+root by default (for production)... and perhaps have a --enable-development
+which would install the web resources into a cosign directory under the web
+root. What do you think about that?
+
+Also I like the changes made to the Cosign login page... awesome... :)
+
+
+Brett
+
+------------
+
+Brett Lomas
+Integration Architect
+Information Technology Systems and Services
+The University of Auckland
+New Zealand
+
+Phone:		+64 9 3737 599 extn 86499
+Mobile:		+64 21 757 096
+
+
+-----Original Message-----
+From: kevin mcgowan [<a  href="mailto:clunis@xxxxxxxxx">mailto:clunis@xxxxxxxxx</a>] 
+Sent: Thursday, 29 April 2004 2:42 p.m.
+To: Brett Lomas
+Cc: cosign-discuss@xxxxxxxxx
+Subject: Re: CoSign source and configuration changes I have made
+
+Brett,
+
+These are fantastic and timely (as we're wrapping things up now for the 
+1.6 release and should be able to include your changes).  I love the 
+defines.m4 and related changes.  I've been meaning to do something like 
+that for some time now.
+
+The only question I have is about the DOCROOT/cosign/ change.  Do you 
+intend that the recommended installation of cosign would create a 
+weblogin server with a URL like this:
+
+      <a  href="https://cosignserver.school.edu/cosign/cosign.cgi">https://cosignserver.school.edu/cosign/cosign.cgi</a>  or
+      <a  href="https://cosignserver.school.edu/cosign/">https://cosignserver.school.edu/cosign/</a>
+
+rather than:
+
+      <a  href="https://cosignserver.school.edu/">https://cosignserver.school.edu/</a>
+
+Surely this is maximally flexible, but I'm not sure it is the most 
+advisable approach.  Perhaps we could devise a way to make this 
+optional?  Thus making it easy to, for example, test cosign on an 
+otherwise active web server but deploy cosign on a dedicated web 
+server.  I'm not sure how to make this user-understandable, maybe an 
+optional cosign html location that would be appended to the end of 
+DOCROOT/html/ and inserted into the actions of forms, into 
+SERVICE_MENU, etc.
+
+Kevin
+
+On Apr 28, 2004, at 3:10 AM, Brett Lomas wrote:
+
+&gt; Hi all,
+&gt;
+&gt; I have made the changes (and attached patches for them ? diff taken 
+&gt; against the current head on the UM CVS server) details below. I am 
+&gt; asking they be considered for inclusion, after discussion into the CVS 
+&gt; source. Most of the changes have no impact on the way CoSign works or 
+&gt; is configured as a default, they just add options etc.
+&gt;
+&gt; The exceptions are I have change the cgi Makefile to install to the 
+&gt; web document base in a cosign directory: ie ${DOCROOTDIR}/cosign and I 
+&gt; have changed the template and HTML directory to 
+&gt; ${cosigndocroot}/cosign/templates and ${cosigndocroot}/cosign/html 
+&gt; respectively. I have done this to make the cosign install into is own 
+&gt; directory on the web server so that something else, if required can 
+&gt; live on the web server also.
+&gt;
+&gt; Attatched is a list of the changes made:
+&gt;
+&gt; configure.ac
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added ?with-ticketcache=DIR to allow a user to configure the 
+&gt; ticket cache location, defaults to /ticket
+&gt;  2.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added ?with-cosignloginurl=URL to configure the redirection 
+&gt; to the cosign login processes, defaults to /
+&gt;  3.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added ?with-webdocroot=DIR to configure the location of the 
+&gt; web servers document root for the cosign server installation
+&gt;
+&gt; 4.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added html/defines.m4 to the output files
+&gt;
+&gt; Makefile.in
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added html/defines.m4 to the distclean action
+&gt;
+&gt; cgi/Makefile.in
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Remove prefix,exec-prefix,SBINDIR
+&gt; 2.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Replaced CGIDIR, DOCROOTDIR with configured vaules from 
+&gt; autoconf
+&gt;  3.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added TEMPLATEDIR and COSIGNTICKETCACHE with values from 
+&gt; autoconf and dervived
+&gt;  4.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added define for _TEMPLATE_DIR to cgi.o and logout.o actions.
+&gt;  5.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added define for _COSIGN_TICKET_CACHE to cgi.o action.
+&gt;  6.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; commented out the ?mkdir ?p ${exec_prefix} and changed ?mkdir 
+&gt; ?p ${DOCROOTDIR} to ${DOCROOTDIR}/cosign in install action
+&gt;
+&gt; cgi/cgi.c
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Changed ?../templates? in the HTML defines to _TEMPLATE_DIR
+&gt;  2.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Change the SERVICE_MENU define from /services/ to 
+&gt; /cosign/html/services/
+&gt; 3.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Changed TKT_PREFIX from ?/ticket? to _COSIGN_TICKET_CACHE 
+&gt; (defined by configure)
+&gt;
+&gt; cgi/logout.c
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Changed ?../tempates? in the HTML defines to _TEMPLATE_DIR
+&gt;
+&gt; html/Makefile.in
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Removed prefix and exec_prefix.
+&gt;  2.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added cosigndocroot set by configure
+&gt;  3.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Changed TMPLDIR and HTMLDIR to 
+&gt; ${cosigndocroot}/cosign/templates nd ${cosigndocroot}/cosign/html resp
+&gt;  4.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Changed the install action to install to these locations etc.
+&gt;
+&gt; html/login.m4
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added include for defines.m4
+&gt;  2.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Changed form action from ?/? to ?LOGIN_URL? (from defines.m4)
+&gt;
+&gt; html/verify-logout.m4
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added include for defines.m4
+&gt;  2.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; changed form action from ?/cgi-bin/logout? to ?LOGOUT_URL 
+&gt; (from defines.m4)
+&gt;
+&gt; daemon/Makefile.in
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Added COSIGNTICKETCACHE from configure
+&gt;  2.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Changed DEFS to include define for _COSIGN_TICKET_CACHE
+&gt;
+&gt; daemon/command.c
+&gt;
+&gt; 1.&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Changed TKT_PREFIX from ?/ticket? to _COSIGN_TICKET_CACHE
+&gt;
+&gt;
+&gt;
+&gt; I have created html/defines.m4.in which is an input file for 
+&gt; defines.m4, which is included by login.m4 and verify-logout.m4 to use 
+&gt; the configured login and logout locations etc.
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;  &lt;&lt;...&gt;&gt;
+&gt;
+&gt;  ------------
+&gt;
+&gt; Brett Lomas
+&gt;
+&gt; Integration Architect
+&gt;
+&gt; Information Technology Systems and Services
+&gt;
+&gt; The University of Auckland
+&gt;
+&gt; New Zealand
+&gt;
+&gt; Phone:&#xA0; &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 9 3737 599 extn 86499
+&gt;
+&gt; Mobile: &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 21 757 096
+&gt;
+&gt;  !DSPAM:408f597e241301790013946! &lt;cosign_patches.tgz&gt;
+
+                 ... &quot;you can't give yourself a nickname.&quot; ...
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00099" href="msg00099.shtml">Re: CoSign source and configuration changes I have made</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00097" href="msg00097.shtml">Re: CoSign source and configuration changes I have made</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00097.shtml">Re: CoSign source and configuration changes I have made</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00099.shtml">Re: CoSign source and configuration changes I have made</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00097.shtml">Re: CoSign source and configuration changes I have made</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00099.shtml">Re: CoSign source and configuration changes I have made</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00098"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00098"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

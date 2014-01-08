@@ -1,0 +1,124 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Where files are placed -->
+<!--X-From-R13: Xbanguna [nlonhz <znlonhzNhzvpu.rqh> -->
+<!--X-Date: Fri, 12 Aug 2005 12:09:53 &#45;0400 (EDT) -->
+<!--X-Message-Id: AC29D924&#45;9DEA&#45;42D9&#45;AD73&#45;B74155DB096A@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00495.shtml">Date Prev</a>][<a href="msg00497.shtml">Date Next</a>][<a href="msg00506.shtml">Thread Prev</a>][<a href="msg00497.shtml">Thread Next</a>][<a href="maillist.shtml#00496">Date Index</a>][<a href="threads.shtml#00496">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Where files are placed</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Where files are placed</li>
+<li><em>From</em>: Jonathan Maybaum &lt;<a href="mailto:maybaum@DOMAIN.HIDDEN">maybaum@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 12 Aug 2005 12:08:00 -0400</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Cosign-discuss,</tt><br>
+<br>
+<tt>Having hopefully learned somethings, I started more or less from  
+scratch, configuring and making cosign. I now see that cgi was  
+installed in /usr/local/html:</tt><br>
+<br>
+<pre style="margin: 0em;">maybaum:/usr/local maybaum$ ls html
+backbutton.gif          cosign_mainbadge.gif    logout_button.gif
+bracket_left.gif        footercap.gif           looping.html
+bracket_right.gif       grayfooter.gif          password_text.gif
+centerbox.gif           icon_alert.gif          post_error.html
+cosign.cgi              icon_sysmessage.gif     spacer.gif
+cosign.css              index.html              username_graphic.gif
+cosign_logotext.gif     login_anim_fd.gif       yellow_divdots.gif</pre><br>
+<tt>Also, the templates directory was installed in /usr/local, which  
+explains my previous issue with cosign.cgi expecting to find files  
+in ../templates</tt><br>
+<br>
+<tt>It seems odd to me to have the cgi stuck into the html directory Is  
+this how it is usually done?</tt><br>
+<br>
+<tt>What do I have to edit in order to have it build so that the cgi will  
+look for them elsewhere?</tt><br>
+<br>
+<tt>--JM</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00495.shtml">Re: Need to reach conclusion soon</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00497.shtml">IISCosign - one physical server more than 1 cosign-service possible?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00506.shtml">Re: Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00497.shtml">IISCosign - one physical server more than 1 cosign-service possible?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00496"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00496"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

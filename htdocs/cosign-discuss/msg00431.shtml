@@ -1,0 +1,129 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: CoSign and Microsoft Sharepoint Services -->
+<!--X-From-R13: "Rnavry S. Zruzna" <qry3Ncfh.rqh> -->
+<!--X-Date: Tue, 14 Jun 2005 17:02:39 &#45;0400 (EDT) -->
+<!--X-Message-Id: EB268B96DB8C4742B5CF686E40BB44A4B3F0E3@metis.mri.psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00430.shtml">Date Prev</a>][<a href="msg00432.shtml">Date Next</a>][<a href="msg00430.shtml">Thread Prev</a>][<a href="msg00432.shtml">Thread Next</a>][<a href="maillist.shtml#00431">Date Index</a>][<a href="threads.shtml#00431">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>CoSign and Microsoft Sharepoint Services</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;cosign-discuss&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: CoSign and Microsoft Sharepoint Services</li>
+<li><em>From</em>: &quot;Daniel E. Lehman&quot; &lt;<a href="mailto:del3@DOMAIN.HIDDEN">del3@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 14 Jun 2005 17:01:11 -0400</li>
+<li><em>Thread-index</em>: AcVxJDHZ+XCwKtjiTkSira/UKmzQLw==</li>
+<li><em>Thread-topic</em>: CoSign and Microsoft Sharepoint Services</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>This may be the wrong place to ask, but has anyone found a way to use
+CoSign for protection of Microsoft Sharepoint Services?  I reckon I
+could have CoSign simply protect my virtual servers for Sharepoint, but
+what I would really like is to have CoSign act as an authentication
+mechanism and then have the userid available for authorization within
+Sharepoint.  Any thoughts would be appreciated...
+
+-Dan
+
+===================================
+Daniel E. Lehman
+Facilities and Network Coordinator
+Penn State Materials Research Institute
+195 MRI Building
+Innovation Park
+University Park PA 16802
+
+814-865-1516
+del3@xxxxxxx
+<a  href="http://www.mri.psu.edu">http://www.mri.psu.edu</a>
+===================================
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00432" href="msg00432.shtml">Re: CoSign and Microsoft Sharepoint Services</a></strong>
+<ul><li><em>From:</em> Elias Asfaw-Kirby</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00430.shtml">Re: Cosign, Solaris 9, and Sun CC compiler</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00432.shtml">Re: CoSign and Microsoft Sharepoint Services</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00430.shtml">Re: Cosign, Solaris 9, and Sun CC compiler</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00432.shtml">Re: CoSign and Microsoft Sharepoint Services</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00431"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00431"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

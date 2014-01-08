@@ -1,0 +1,207 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: Cosign IIS Question -->
+<!--X-From-R13: Pergg Zbznf ba ikpunatr <oybz001Nikpunatr.ipe.nhpxynaq.np.am> -->
+<!--X-Date: Fri, 5 Nov 2004 18:52:43 &#45;0500 (EST) -->
+<!--X-Message-Id: 14A270C0E2F4124AB0B7320BDBEA949F05ED49F2@vxchange.vcr.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00262.shtml">Date Prev</a>][<a href="msg00264.shtml">Date Next</a>][<a href="msg00261.shtml">Thread Prev</a>][<a href="msg00264.shtml">Thread Next</a>][<a href="maillist.shtml#00263">Date Index</a>][<a href="threads.shtml#00263">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: Cosign IIS Question</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Mark Earnest'&quot; &lt;<a href="mailto:mxe20@DOMAIN.HIDDEN">mxe20@xxxxxxx</a>&gt;, &quot;'Jarod Malestein'&quot; &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: Cosign IIS Question</li>
+<li><em>From</em>: Brett Lomas on vxchange &lt;<a href="mailto:blom001@DOMAIN.HIDDEN">blom001@xxxxxxxxxxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 6 Nov 2004 12:51:39 +1300 </li>
+<li><em>Cc</em>: &quot;'<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Jarod, or Mark (or anyone else for that fact),
+
+Can you guys direct me to where I can find the CosignMsh.h source? I am
+trying to compile the IIS Filter and I cannot find this anywhere yet.
+
+Thanks
+
+Brett
+
+-----Original Message-----
+From: Mark Earnest [<a  href="mailto:mxe20@xxxxxxx">mailto:mxe20@xxxxxxx</a>] 
+Sent: Saturday, 6 November 2004 11:57 a.m.
+To: Jarod Malestein
+Cc: Brett Lomas on vxchange; 'cosign@xxxxxxxxx'
+Subject: Re: Cosign IIS Question
+
+Eh, it probably needs some cleanup but it works. I'll sent it to you 
+guys early next week. Basically there are two new options in the config 
+file, a new directory (tickets) to put in the cosign install directory, 
+and a requirement for MIT's Windows Kerberos dlls. Just note that this 
+is not MS Kerb, and I have not tested this for anything other than 
+converting the tickets to DCE credentials.
+
+Mark Earnest
+Lead Systems Programmer
+Emerging Technologies
+The Pennsylvania State University
+
+On Nov 5, 2004, at 3:28 PM, Jarod Malestein wrote:
+
+&gt;
+&gt; Mark Earnest at Penn State has already done this!
+&gt;
+&gt; Mark, is the code in a shareable state?  Adding in the ability to 
+&gt; request K5 tickets to IISCosign is something we'd be more than happy 
+&gt; to add to the standard distribution.  If the code is not ready, if you 
+&gt; could share your efforts with Brett Lomas I'm sure he'd greatly 
+&gt; appreciate it.  Thank you.
+&gt;
+&gt;
+&gt; --Jarod Malestein
+&gt; --IT Central Services
+&gt; --University of Michigan
+&gt;
+&gt;
+&gt; ---------- Forwarded Message ----------
+&gt; Date: Wednesday, May 12, 2004 11:22 AM -0400
+&gt; From: Mark Allen Earnest &lt;mxe20@xxxxxxx&gt;
+&gt; To: Cosign Discussion &lt;cosign-discuss@xxxxxxxxx&gt;
+&gt; Subject: ISAPI &amp; MIT K5 Tickets
+&gt;
+&gt; -----BEGIN PGP SIGNED MESSAGE-----
+&gt; Hash: SHA1
+&gt;
+&gt;
+&gt; Two of us at PSU have modified the ISAPI to request MIT K5 tickets 
+&gt; (like
+&gt; mod_cosign does) for an application we run that requires this. If 
+&gt; anyone
+&gt; is interested we can post a patch (once it is cleaned up) for this.
+&gt;
+&gt; Mark Earnest
+&gt; Lead Systems Programmer
+&gt; Emerging Technologies
+&gt; The Pennsylvania State University
+&gt;
+&gt; Public Key - <a  href="http://www.personal.psu.edu/mxe20/gpgkey.txt">http://www.personal.psu.edu/mxe20/gpgkey.txt</a>
+&gt; -----BEGIN PGP SIGNATURE-----
+&gt; Version: GnuPG v1.2.3 (GNU/Linux)
+&gt;
+&gt; iD8DBQFAokFCooNLpLZfPIMRAhp+AJ49ACEjuIB617p7SREJ6Uke3MvV1QCeJsM4
+&gt; BzvL98T77ukQl4byM1QVnlg=
+&gt; =tnJB
+&gt; -----END PGP SIGNATURE-----
+&gt;
+&gt; ---------- End Forwarded Message ----------
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt; --On Friday, November 05, 2004 2:08 PM +1300 Brett Lomas on vxchange 
+&gt; &lt;blom001@xxxxxxxxxxxxxxxxxxxxxxxxxxx&gt; wrote:
+&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; Hey Jarod and others,
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; We have an urgent need to have the IIS cosign module to return the
+&gt;&gt; Kerberos tickets. This is something I am willing to do, and I will 
+&gt;&gt; start,
+&gt;&gt; but if this is something you are planning to doing in the near future
+&gt;&gt; then I will stop. Can you give me an indication to this effect?
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; Thanks
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; Brett
+&gt;
+&gt;
+&gt;
+&gt;
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00262.shtml">RE: file not found error</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00264.shtml">Cosign and cyrus imap and IMP</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00261.shtml">Expired Kerberos credentials</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00264.shtml">Cosign and cyrus imap and IMP</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00263"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00263"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

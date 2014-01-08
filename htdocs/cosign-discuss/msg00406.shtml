@@ -1,0 +1,122 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: logout.pl -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Mon, 25 Apr 2005 21:30:04 &#45;0400 (EDT) -->
+<!--X-Message-Id: 1114478916.4032.15.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00405.shtml">Date Prev</a>][<a href="msg00407.shtml">Date Next</a>][<a href="msg00405.shtml">Thread Prev</a>][<a href="msg00407.shtml">Thread Next</a>][<a href="maillist.shtml#00406">Date Index</a>][<a href="threads.shtml#00406">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>logout.pl</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: logout.pl</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 26 Apr 2005 13:28:36 +1200</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi all,
+
+has anyone verified the logout.pl script supplied with Cosign actually
+works? I have installed on an IIS webserver with ActiveState Perl and it
+is not destroying the ST cookie at all. If get it not to redirect and
+output some meaningless HTML it does indeed reset the cookie in the
+browser.
+
+This seem true for FireFox and IE?
+
+Anyone else seen this?
+
+Thanks
+
+Brett
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00407" href="msg00407.shtml">Re: logout.pl</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+<li><strong><a name="00409" href="msg00409.shtml">Re: logout.pl</a></strong>
+<ul><li><em>From:</em> Jarod Malestein</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00405.shtml">Re: IIS Fitler question</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00407.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00405.shtml">Re: IIS Fitler question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00407.shtml">Re: logout.pl</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00406"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00406"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

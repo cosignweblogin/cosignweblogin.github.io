@@ -1,0 +1,1365 @@
+[Mon Jun 21 21:31:44 2004] [info] Loading certificate & private key of SSL-aware server
+[Mon Jun 21 21:31:44 2004] [debug] ssl_engine_pphrase.c(468): unencrypted RSA private key - pass phrase not required
+[Mon Jun 21 21:31:44 2004] [info] Configuring server for SSL protocol
+[Mon Jun 21 21:31:44 2004] [debug] ssl_engine_init.c(402): Creating new SSL context (protocols: SSLv2, SSLv3, TLSv1)
+[Mon Jun 21 21:31:44 2004] [debug] ssl_engine_init.c(705): Configuring RSA server certificate
+[Mon Jun 21 21:31:44 2004] [debug] ssl_engine_init.c(744): Configuring RSA server private key
+[Mon Jun 21 21:31:45 2004] [info] Loading certificate & private key of SSL-aware server
+[Mon Jun 21 21:31:45 2004] [debug] ssl_engine_pphrase.c(468): unencrypted RSA private key - pass phrase not required
+[Mon Jun 21 21:31:45 2004] [info] Configuring server for SSL protocol
+[Mon Jun 21 21:31:45 2004] [debug] ssl_engine_init.c(402): Creating new SSL context (protocols: SSLv2, SSLv3, TLSv1)
+[Mon Jun 21 21:31:45 2004] [debug] ssl_engine_init.c(705): Configuring RSA server certificate
+[Mon Jun 21 21:31:45 2004] [debug] ssl_engine_init.c(744): Configuring RSA server private key
+[Mon Jun 21 21:36:52 2004] [info] Connection to child 1 established (server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:52 2004] [info] Seeding PRNG with 136 bytes of entropy
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_kernel.c(1751): OpenSSL: Handshake: start
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: before/accept initialization
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 11/11 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1636): | 0000: 80 34 01 03 00 00 1b 00-00 00 10                 .4.........      |
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 43/43 bytes from BIO#8220630 [mem: 8227cbb] (BIO dump follows)
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1636): | 0000: 00 00 04 01 00 80 00 00-0a 07 00 c0 00 00 09 06  ................ |
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1636): | 0010: 00 40 00 00 03 02 00 80-00 00 06 5e 70 1d c4 e7  .@.........^p... |
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1636): | 0020: 26 cd 02 93 51 cf ec ec-6c cf 2b                 &...Q...l.+      |
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client hello A
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server hello A
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write certificate A
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server done A
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_io.c(1675): OpenSSL: I/O error, 5 bytes expected to read on BIO#8220630 [mem: 8227cb0]
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_kernel.c(1788): OpenSSL: Exit: error in SSLv3 read client certificate A
+[Mon Jun 21 21:36:52 2004] [debug] ssl_engine_kernel.c(1788): OpenSSL: Exit: error in SSLv3 read client certificate A
+[Mon Jun 21 21:36:52 2004] [info] (104)Connection reset by peer: SSL handshake interrupted by system [Hint: Stop button pressed in browser?!]
+[Mon Jun 21 21:36:52 2004] [info] Connection to child 1 closed with abortive shutdown(server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:53 2004] [info] Connection to child 2 established (server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:53 2004] [info] Seeding PRNG with 136 bytes of entropy
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_kernel.c(1751): OpenSSL: Handshake: start
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: before/accept initialization
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 11/11 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 35 01 00 00-31 03                    ....5...1.       |
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1640): | 0011 - <SPACES/NULS>
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 47/47 bytes from BIO#8220630 [mem: 8227cbb] (BIO dump follows)
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1636): | 0000: c4 81 d3 75 ca 79 63 a9-22 16 48 bd ca 1b 99 10  ...u.yc.".H..... |
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1636): | 0010: 18 4e 52 f7 f8 05 fc 05-96 03 7e f9 f8 05 d7 f4  .NR.......~..... |
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1636): | 0020: 00 00 0a 00 04 00 0a 00-09 00 03 00 06 01        ..............   |
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1640): | 0047 - <SPACES/NULS>
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client hello A
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server hello A
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write certificate A
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server done A
+[Mon Jun 21 21:36:53 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 44                                   ....D            |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 68/68 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 10 00 00 40 7b a6 b4 fc-3b 9d 6f 6b aa ea 38 5a  ...@{...;.ok..8Z |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0010: 98 de 87 a9 5c c7 46 4b-04 eb 4c f0 9d 55 a0 b1  ....\\.FK..L..U.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0020: 1e c9 59 4e 75 1b df 62-64 9c 3a b6 3e c7 0d ee  ..YNu..bd.:.>... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0030: 6d 9d e2 2d 53 c0 bf 49-75 ce d8 79 07 3f 65 b8  m..-S..Iu..y.?e. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0040: 6e 28 d1 db                                      n(..             |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client key exchange A
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 14 03 00 00 01                                   .....            |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 1/1 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 01                                               .                |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 38                                   ....8            |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 56/56 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: aa e1 a8 0e ef ec 81 fc-71 af 55 f5 73 8c 06 e5  ........q.U.s... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0010: 8f 2b fd cb 57 38 fb ac-47 f3 19 bc 34 64 34 44  .+..W8..G...4d4D |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0020: ce 6a 73 68 dd 73 43 d9-db c4 8f b5 25 60 da 06  .jsh.sC.....%`.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0030: 90 e7 ca 08 6a ff 46 fe-                         ....j.F.         |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read finished A
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write change cipher spec A
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write finished A
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(674): inside shmcb_store_session
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(680): session_id[0]=246, masked index=6
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1055): entering shmcb_insert_encoded_session, *queue->pos_count = 0
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(979): entering shmcb_expire_division
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1111): we have 7188 bytes and 66 indexes free - enough
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1140): storing in index 0, at offset 0
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1155): session_id[0]=246, idx->s_id2=57
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1166): leaving now with 148 bytes in the cache and 1 indexes
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1170): leaving shmcb_insert_encoded_session
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(708): leaving shmcb_store successfully
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(403): shmcb_store successful
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1597): Inter-Process Session Cache: request=SET status=OK id=F639E7C4AD7678E001CAD08DD17D7123C01AB5D70A55A15C084D105DB18ACE28 timeout=299s (session caching)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1755): OpenSSL: Handshake: done
+[Mon Jun 21 21:36:54 2004] [info] Connection: Client IP: 204.0.13.28, Protocol: SSLv3, Cipher: RC4-MD5 (128/128 bits)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 01 25                                   ....%            |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 293/293 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: b2 57 34 7b 84 86 66 7e-9f be 9c 61 6e 9b c3 82  .W4{..f~...an... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0010: 2b c3 11 2b 42 38 fd 20-5e 7f 20 e2 eb 37 f6 4c  +..+B8. ^. ..7.L |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0020: a8 e6 f0 41 ba bb da f9-ab 99 b0 05 63 00 e4 c1  ...A........c... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0030: 43 42 3e a5 9f 9a cc 16-da 3e 3b b5 c5 bd 7f 01  CB>......>;..... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0040: 3a 85 49 80 78 47 d7 44-57 2d 0b 3d dd c2 8b e3  :.I.xG.DW-.=.... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0050: 63 6b 0d c6 c7 9d ca 1a-bb 5b 4f 7f 0d 78 f1 da  ck.......[O..x.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0060: bf e5 c5 9d ce 8c 93 7f-30 33 60 54 75 fd bc 5b  ........03`Tu..[ |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0070: 85 b8 63 6d 1d d2 f9 26-62 20 0e 25 8d 7f 57 ee  ..cm...&b .%..W. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0080: a2 13 50 ca df 26 c5 44-ef b7 1a cc 89 06 75 c2  ..P..&.D......u. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0090: 6c 01 44 68 57 45 30 7a-15 21 21 68 d2 12 44 fa  l.DhWE0z.!!h..D. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00a0: 8e 1c 6c 6d 1f 5e ab 17-c0 ef 4d 78 bf 47 9b 44  ..lm.^....Mx.G.D |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00b0: 76 a8 a3 1b d5 dd 82 8b-39 d3 9a ec 63 43 84 5c  v.......9...cC.\\ |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00c0: 7f d4 66 55 56 7f 16 c8-8d 63 c0 b4 bd 76 d1 43  ..fUV....c...v.C |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00d0: 41 32 86 5b 99 a2 1e 9e-50 f7 84 19 9e cb 5b 4d  A2.[....P.....[M |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00e0: fa b0 77 50 c5 a2 d7 04-0b 5a 3d 27 82 8a 79 5a  ..wP.....Z='..yZ |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00f0: 4d c6 e8 fb c6 3f 77 cd-ee 45 d2 6c a1 ad 9e 5d  M....?w..E.l...] |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0100: d5 7c 72 b9 28 4d df 1e-62 1c 2c d0 f1 d4 a0 05  .|r.(M..b.,..... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0110: e1 8b 00 83 4b 39 f3 38-24 d5 ef 56 45 a6 af 8c  ....K9.8$..VE... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0120: 8d 0f 2d d6 f3                                   ..-..            |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [info] Initial (No.1) HTTPS request received for child 2 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:54 2004] [info] Connection to child 3 established (server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:54 2004] [info] Seeding PRNG with 136 bytes of entropy
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1751): OpenSSL: Handshake: start
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: before/accept initialization
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 11/11 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 55 01 00 00-51 03                    ....U...Q.       |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1640): | 0011 - <SPACES/NULS>
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 79/79 bytes from BIO#8220630 [mem: 8227cbb] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: c4 81 d3 76 2e 12 f2 89-43 ab ad c8 3a 65 bf 65  ...v....C...:e.e |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0010: 88 ca f8 cf f4 30 8f 5b-f7 91 e3 ae f8 69 f2 e0  .....0.[.....i.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0020: 20 f6 39 e7 c4 ad 76 78-e0 01 ca d0 8d d1 7d 71   .9...vx......}q |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0030: 23 c0 1a b5 d7 0a 55 a1-5c 08 4d 10 5d b1 8a ce  #.....U.\\.M.]... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0040: 28 00 0a 00 04 00 0a 00-09 00 03 00 06 01        (.............   |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1640): | 0079 - <SPACES/NULS>
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(724): inside shmcb_retrieve_session
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(736): id[0]=246, masked index=6
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1191): entering shmcb_lookup_session_id
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(979): entering shmcb_expire_division
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1201): loop=0, count=1, curr_pos=0
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1205): idx->s_id2=57, id[1]=57, offset=0
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1222): at index 0, found possible session match
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(1241): a match!
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(752): leaving shmcb_retrieve_session
+[Mon Jun 21 21:36:54 2004] [debug] ssl_scache_shmcb.c(423): shmcb_retrieve had a hit
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1597): Inter-Process Session Cache: request=GET status=FOUND id=F639E7C4AD7678E001CAD08DD17D7123C01AB5D70A55A15C084D105DB18ACE28 (session reuse)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client hello A
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server hello A
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write change cipher spec A
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write finished A
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 14 03 00 00 01                                   .....            |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 1/1 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 01                                               .                |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 38                                   ....8            |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 56/56 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 32 5e 7e 4e 20 35 7e a0-04 56 c5 24 03 bd 88 8d  2^~N 5~..V.$.... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0010: 77 48 f8 bf ae 8e 03 47-ac 83 36 7a c0 3e 7b 09  wH.....G..6z.>{. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0020: ad 49 39 c5 66 87 bf 23-ec 5c 68 b2 ae 33 19 0d  .I9.f..#.\\h..3.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0030: cd 64 09 db 33 ad 7c c3-                         .d..3.|.         |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read finished A
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_kernel.c(1755): OpenSSL: Handshake: done
+[Mon Jun 21 21:36:54 2004] [info] Connection: Client IP: 204.0.13.28, Protocol: SSLv3, Cipher: RC4-MD5 (128/128 bits)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 01 bd                                   .....            |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 445/445 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0000: d7 6c 6f 81 dc f8 b4 b6-e6 21 a7 92 57 6f 6c 17  .lo......!..Wol. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0010: ab 54 a7 f7 2e 89 83 91-f8 0a f8 14 fc 43 1d c1  .T...........C.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0020: 21 5e 00 c7 e3 28 9e 71-c6 ef 71 36 61 44 12 17  !^...(.q..q6aD.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0030: e7 40 16 b9 8e 09 48 95-f5 e3 c1 ab 89 fd ae 7e  .@....H........~ |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0040: 82 d6 2e e9 3a 35 16 1b-7a d9 5d 1e ec 18 92 fc  ....:5..z.]..... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0050: 0c 95 9f d6 c9 fe e3 ca-72 70 d9 3e ec 56 11 ff  ........rp.>.V.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0060: 74 e1 38 c8 6b e4 ff 93-a8 77 e8 22 3b 95 bf 81  t.8.k....w.";... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0070: e2 cb e6 fb 9a 57 44 32-e8 d8 a9 54 f3 c9 c2 27  .....WD2...T...' |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0080: 3e 8d a0 eb fd 2a 7e c7-5b 75 ee 35 c4 a6 b8 05  >....*~.[u.5.... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0090: 13 d2 d3 88 88 52 bf 1c-80 6f c0 07 7b 33 c7 8c  .....R...o..{3.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00a0: 8d 7d c2 f8 a7 6b 52 a3-e5 8d e1 5b 60 ae 7b 63  .}...kR....[`.{c |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00b0: 5a 85 c5 00 63 bc 5b ec-87 84 d3 b8 66 61 6c 93  Z...c.[.....fal. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00c0: 5f b2 f5 cf b7 c7 e8 be-6e e5 37 3c 09 dd 2c 5f  _.......n.7<..,_ |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00d0: 6b 10 d3 c1 19 7d 92 7c-77 65 4f 25 2e 9d b7 48  k....}.|weO%...H |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00e0: 25 d0 ed 58 f7 08 ab 06-32 0d 3f 02 ef 89 4e 8b  %..X....2.?...N. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 00f0: 24 8f 65 4c e9 2f 02 26-1e e5 e9 84 11 58 51 44  $.eL./.&.....XQD |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0100: c5 4e 82 66 79 40 19 ba-a3 af 41 35 69 69 89 4f  .N.fy@....A5ii.O |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0110: 89 39 57 89 d1 e6 9e 93-82 84 7c 70 92 10 38 28  .9W.......|p..8( |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0120: 75 ad fe 79 c2 3c 37 bb-89 f1 df 5a 86 45 05 fc  u..y.<7....Z.E.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0130: a1 21 e3 45 59 d6 d9 87-04 c1 0f b2 4a 49 b4 b2  .!.EY.......JI.. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0140: b8 ec 3e 08 9e f7 5a c9-5d dd c4 c8 47 7a 56 bc  ..>...Z.]...GzV. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0150: 31 17 dc 3c d8 62 2f a4-6c 1e 06 7f 3f f4 c6 3c  1..<.b/.l...?..< |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0160: 0b 45 33 5c 64 1c c4 ca-3b 48 35 9d fb bd 6e 7a  .E3\\d...;H5...nz |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0170: 04 7b 5a 66 1c ce 83 cc-47 d1 b1 0d 99 a7 84 da  .{Zf....G....... |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0180: 19 39 cd b6 d3 6b 97 08-28 08 4d 3d 9b 5f 17 5e  .9...k..(.M=._.^ |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 0190: a2 24 29 11 24 4b 52 7e-38 c0 a4 7b 67 ad 38 4b  .$).$KR~8..{g.8K |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 01a0: 94 4b fe 73 6e 99 5e a7-ae 9d c4 a8 2d 1b 42 0f  .K.sn.^.....-.B. |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1636): | 01b0: 8a a3 21 f4 a4 e9 a7 c0-0b 87 f7 72 ac           ..!........r.    |
+[Mon Jun 21 21:36:54 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:54 2004] [info] Initial (No.1) HTTPS request received for child 3 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 26                                   ....&            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 550/550 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 2e ed f6 81 d6 08 a8 23-67 46 a8 49 f8 06 cc dc  .......#gF.I.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: 53 18 27 e4 db 0a 3f a4-60 94 2a 8b a5 6e 4f 66  S.'...?.`.*..nOf |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 94 57 47 fa aa 80 34 71-e6 79 33 2f 05 2e d2 c2  .WG...4q.y3/.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: b1 27 c5 85 0e bd dc 96-76 9e 64 df be cc af d4  .'......v.d..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: e8 09 51 84 80 24 f2 f2-65 45 d8 25 91 bc f4 7a  ..Q..$..eE.%...z |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 49 23 9d 13 f9 e1 ee a1-30 fd 67 ee 22 dd b9 a5  I#......0.g."... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: a3 d4 ab b1 e1 f5 47 23-9f 2b ff 08 85 2b 62 ac  ......G#.+...+b. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 1e 6a 06 9c e6 71 42 f8-62 52 02 11 53 3e 9a 8a  .j...qB.bR..S>.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: e8 1f 14 28 66 df 7d 0e-3d be 07 71 69 56 39 35  ...(f.}.=..qiV95 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: e4 79 d0 f2 aa 28 13 ff-cd b3 2c 82 a8 97 66 a6  .y...(....,...f. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: fd c5 81 af 0a ca e7 8f-e7 a1 02 d5 b7 cb 64 ae  ..............d. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 7a 4b b4 35 77 ef 4f 91-88 c3 21 e4 60 ee 36 f6  zK.5w.O...!.`.6. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: d7 e7 fa ff 49 d6 a5 e9-68 e4 1d 4c 16 43 fc 18  ....I...h..L.C.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: 13 a8 d2 13 8b f5 74 f9-5a 46 83 1d 0d d2 64 3d  ......t.ZF....d= |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: 86 17 44 fe 36 c0 b0 b8-e3 a4 46 14 d9 96 c5 47  ..D.6.....F....G |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: 1b b5 35 2a 11 ca 55 f1-aa c2 a9 21 2e cb 84 17  ..5*..U....!.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: 36 f4 60 89 1d c3 7e f7-d2 d7 65 7e 12 4a d5 77  6.`...~...e~.J.w |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: 01 71 1e 4e 28 4d 80 73-65 02 0e 03 10 16 65 e9  .q.N(M.se.....e. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: 2b 71 2d db 70 dc f0 d3-03 83 b5 7c 84 53 cd 20  +q-.p......|.S.  |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: 03 6f 8b 57 43 c8 9d af-41 51 eb 7e b9 58 ad 80  .o.WC...AQ.~.X.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: 19 87 36 ad 4e a8 c4 f4-34 de 87 f2 ca 0a a4 63  ..6.N...4......c |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: dd e7 3f a1 f1 02 9d df-2c 9c 70 4b f4 ce cc 2f  ..?.....,.pK.../ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: ec 16 a4 a5 2a 97 9d 8e-79 11 fc 9d 27 80 d2 d6  ....*...y...'... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 84 6e 13 2a 42 1d d7 5d-25 b9 21 40 5e ee aa 21  .n.*B..]%.!@^..! |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: 5e 90 08 e6 f1 56 f9 1a-e4 98 0f 7f ec dd 27 85  ^....V........'. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: 47 e8 c9 19 f5 d3 e6 81-d9 54 e7 9d c6 55 a7 fc  G........T...U.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: 70 53 95 24 0d 12 8b 5e-fe ba f8 25 59 24 0f e8  pS.$...^...%Y$.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: 4b 9f 72 4f bd 71 62 33-b7 f8 30 66 d4 53 00 f6  K.rO.qb3..0f.S.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: 37 14 9c c1 0a 27 1d 39-ba c2 69 a9 0d 01 d7 57  7....'.9..i....W |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: 2f 6c 14 15 6f ca d9 d8-87 eb cc ed 30 07 0e ef  /l..o.......0... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: f7 e0 f1 1f fd dc c8 64-cb c6 65 1e 8e a9 4d 37  .......d..e...M7 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: 54 cb 7b 4a 4a 27 5c 3a-ed ac 9a 38 d0 39 93 fe  T.{JJ'\\:...8.9.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: 76 90 a4 f8 d5 3a d4 54-69 1f 68 36 08 c1 0a 98  v....:.Ti.h6.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: 18 2f 9e 6f 3e a8 b2 db-61 c6 97 52 38 24 2e af  ./.o>...a..R8$.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: c4 7a 52 d9 d6 f1                                .zR...           |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Subsequent (No.2) HTTPS request received for child 3 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [info] Connection to child 4 established (server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:55 2004] [info] Seeding PRNG with 136 bytes of entropy
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1751): OpenSSL: Handshake: start
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: before/accept initialization
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 11/11 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 55 01 00 00-51 03                    ....U...Q.       |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1640): | 0011 - <SPACES/NULS>
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 79/79 bytes from BIO#8220630 [mem: 8227cbb] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: c4 81 d3 76 c8 58 40 17-2d cc b9 ba d3 8a 4c 38  ...v.X@.-.....L8 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: b5 1a d1 69 9e 00 d7 c5-76 6f 6f bc d4 9d eb 2b  ...i....voo....+ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 20 f6 39 e7 c4 ad 76 78-e0 01 ca d0 8d d1 7d 71   .9...vx......}q |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 23 c0 1a b5 d7 0a 55 a1-5c 08 4d 10 5d b1 8a ce  #.....U.\\.M.]... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: 28 00 0a 00 04 00 0a 00-09 00 03 00 06 01        (.............   |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1640): | 0079 - <SPACES/NULS>
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(724): inside shmcb_retrieve_session
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(736): id[0]=246, masked index=6
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1191): entering shmcb_lookup_session_id
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(979): entering shmcb_expire_division
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1201): loop=0, count=1, curr_pos=0
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1205): idx->s_id2=57, id[1]=57, offset=0
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1222): at index 0, found possible session match
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1241): a match!
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(752): leaving shmcb_retrieve_session
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(423): shmcb_retrieve had a hit
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1597): Inter-Process Session Cache: request=GET status=FOUND id=F639E7C4AD7678E001CAD08DD17D7123C01AB5D70A55A15C084D105DB18ACE28 (session reuse)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client hello A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server hello A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write change cipher spec A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write finished A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 28                                   ....(            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 552/552 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: b9 9c 5e 6f 48 cc cf 48-9a 14 2a 0d 1e ef a4 12  ..^oH..H..*..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: e1 6d c9 93 ec 94 7c b9-20 dc a4 75 70 c6 bd 4f  .m....|. ..up..O |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 03 f1 66 ef 3a 1d 6f c6-87 ba 51 51 fb 36 f4 56  ..f.:.o...QQ.6.V |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: ce 10 d3 73 ca 97 fc 4c-46 c2 2d 87 a5 4e a5 50  ...s...LF.-..N.P |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: 01 53 e3 26 ed 2e a4 87-00 51 a6 40 b5 72 0e f4  .S.&.....Q.@.r.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 59 b5 6f 47 5f 78 b0 67-3c 9a 5f 66 60 b1 4b b9  Y.oG_x.g<._f`.K. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: 74 ed af 46 09 4c 8f e3-d4 69 10 7c 1d 34 7d 41  t..F.L...i.|.4}A |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: fe 28 18 1b 73 c0 60 84-88 fa db cc 01 86 d4 c9  .(..s.`......... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: 44 a8 76 2b 6d 02 f3 4a-9d 20 bd 64 13 a1 9b d0  D.v+m..J. .d.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: b3 94 58 89 fe 44 3c 71-cd 47 c8 52 b7 db aa 88  ..X..D<q.G.R.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: 0b 65 cb 2f e3 1c 2b 06-4b 0d 86 c0 40 6f aa bd  .e./..+.K...@o.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 0e e3 e3 3e bb a8 c0 d2-b1 5e f2 30 5a 70 a1 44  ...>.....^.0Zp.D |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: c1 af 7c 80 b6 90 2a 2f-ca 9c 25 96 a5 9a bb 68  ..|...*/..%....h |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: 96 7e 42 ca 86 68 18 e1-d4 a3 ef 73 ef 6a 97 70  .~B..h.....s.j.p |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: 5b 81 53 66 3f aa 0f aa-3e e2 dd a7 a6 b6 56 99  [.Sf?...>.....V. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: 9e 3f ef 67 7b 01 d7 36-7e 93 8c 59 25 54 4f e1  .?.g{..6~..Y%TO. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: 06 da bf eb 64 24 1f cd-b0 19 57 64 40 e9 25 fd  ....d$....Wd@.%. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: ad 9a ac 72 5c 86 f3 34-11 6e e7 02 cc 78 44 cc  ...r\\..4.n...xD. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: b4 c0 00 f1 fd 0e 26 1e-ab dc 6b ca ab fc 99 0f  ......&...k..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: a6 8f 22 35 0b 34 16 d8-5e 30 dc ad ed 4b c4 7a  .."5.4..^0...K.z |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: 48 f2 df 5c fb 7e cd ca-86 70 f5 26 df 6f 9c c8  H..\\.~...p.&.o.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: 74 00 54 f4 51 70 aa 84-8b 57 1b 87 12 d3 71 2c  t.T.Qp...W....q, |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: db 70 60 11 18 f6 99 2d-6e 65 ba 94 e0 b2 24 d1  .p`....-ne....$. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 00 a5 3a 13 a9 9a 94 1c-3d 15 87 aa e3 c0 0c 8b  ..:.....=....... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: ad b4 e9 b8 10 7d d7 7e-87 ba 0d 52 1d f6 e1 b8  .....}.~...R.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: 31 c4 8f 4d 20 f1 54 f4-37 34 61 e3 96 8a 69 86  1..M .T.74a...i. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: 9c 0d 14 a9 40 14 34 1e-31 8a 06 8a 1c 99 85 eb  ....@.4.1....... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: 46 ad 47 ff 02 55 c3 e1-b4 af 3c 90 f6 07 52 11  F.G..U....<...R. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: d1 71 57 a6 1f 43 14 7e-6f 77 3e 9a 72 65 81 7e  .qW..C.~ow>.re.~ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: 00 2e b3 64 7c d8 9c 6a-4d 92 44 11 27 a6 99 92  ...d|..jM.D.'... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: da d8 f2 0c ef c5 e1 1c-6b 9b 41 b9 98 d2 f9 c8  ........k.A..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: 2c ac 36 fb 6f b1 d6 16-e4 e8 0e d3 f5 7a 98 74  ,.6.o........z.t |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: 39 cd ae 37 c5 f3 23 5d-b2 00 17 a2 74 7e 73 11  9..7..#]....t~s. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: 7c ae 86 c6 49 f0 9c 42-55 d5 5e ab 1c 34 5b 3b  |...I..BU.^..4[; |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: 25 93 6a 02 bf 8b 77 a3-                         %.j...w.         |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Subsequent (No.3) HTTPS request received for child 3 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 14 03 00 00 01                                   .....            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 1/1 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 01                                               .                |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1675): OpenSSL: I/O error, 5 bytes expected to read on BIO#8220630 [mem: 8227cb0]
+[Mon Jun 21 21:36:55 2004] [info] (104)Connection reset by peer: SSL input filter read failed.
+[Mon Jun 21 21:36:55 2004] [info] (32)Broken pipe: core_output_filter: writing data to the network
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1769): OpenSSL: Write: SSL negotiation finished successfully
+[Mon Jun 21 21:36:55 2004] [info] Connection to child 3 closed with standard shutdown(server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:55 2004] [info] Connection to child 1 established (server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:55 2004] [info] Seeding PRNG with 136 bytes of entropy
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1751): OpenSSL: Handshake: start
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: before/accept initialization
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 38                                   ....8            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 56/56 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 5c d5 f4 a1 c0 aa d5 b6-e3 1f 3f cd b7 2e cc d6  \\.........?..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: c0 f8 38 4b 45 4b 28 cf-35 85 02 15 a7 60 89 d4  ..8KEK(.5....`.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 1c 8f 17 45 b8 05 a4 54-f1 e1 d4 9d a6 65 49 0f  ...E...T.....eI. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 14 7c fd b2 d7 c6 2a 3a-                         .|....*:         |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read finished A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1755): OpenSSL: Handshake: done
+[Mon Jun 21 21:36:55 2004] [info] Connection: Client IP: 204.0.13.28, Protocol: SSLv3, Cipher: RC4-MD5 (128/128 bits)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 27                                   ....'            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 551/551 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 0f 4d fe 9d ad ef 91 6c-e4 e1 d0 d4 83 61 4e d2  .M.....l.....aN. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: 64 b0 57 2f 13 50 13 5b-6a 43 50 fb 92 46 b4 79  d.W/.P.[jCP..F.y |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 64 0b 85 d1 1c 81 50 11-33 ea 2e f8 01 2f 8d dc  d.....P.3..../.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 0d c3 cc 65 d6 c1 6a 9d-3c a2 fc e5 3e 74 cc c9  ...e..j.<...>t.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: 40 21 87 4c 8b 80 de 8a-c5 c8 1c 9b 6f c4 9f eb  @!.L........o... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 05 82 78 3e 31 1c b1 c7-d9 c4 05 1d 1d cd 13 cd  ..x>1........... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: 24 ed 86 95 4a d5 46 21-1a f9 31 04 d0 eb 2c d0  $...J.F!..1...,. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 33 5d 9d 7e b7 4a 41 af-25 c9 4a f2 2e 34 b6 4e  3].~.JA.%.J..4.N |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: 5d 2d c6 a4 86 a6 16 81-3e fe ee 10 f2 39 3e ae  ]-......>....9>. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: 6a f9 b6 b6 7e 48 fc ab-a4 d5 af bd df 58 6c 2c  j...~H.......Xl, |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: 5c ff 66 76 68 72 dc d6-54 a8 d0 0f 9b 31 5a 31  \\.fvhr..T....1Z1 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 23 fc fe e3 75 d0 1d c2-81 c4 3b 19 03 bf 69 8b  #...u.....;...i. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: cb aa 2e 87 7b 56 19 23-73 ec 98 31 5d c2 44 89  ....{V.#s..1].D. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: e7 9b 14 8c 9d 4e 55 89-86 28 25 34 2d df 75 09  .....NU..(%4-.u. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: 09 a8 e9 5d a3 75 b6 ba-e5 d0 9d 31 65 1c ec b4  ...].u.....1e... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: 2c a2 04 24 e7 6c 31 dd-df 2e d9 4d a7 d5 ca 91  ,..$.l1....M.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: 99 63 b7 b1 c9 67 e7 b5-bf 2b ed 54 25 c0 fc b7  .c...g...+.T%... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: 23 2c 5f c0 a7 bc 05 58-00 b8 26 f4 e0 f1 0a f6  #,_....X..&..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: 49 14 c2 fe 3c 52 15 13-82 21 2c 79 dc 3a 06 83  I...<R...!,y.:.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: e6 4b 41 ce a3 15 d8 1d-6e 49 f9 6c 7a 46 b4 69  .KA.....nI.lzF.i |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: 2d 85 0a 64 62 e5 31 44-42 87 76 8b fd 0a 5d 0e  -..db.1DB.v...]. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: e3 53 4d 08 9b c2 7b 2d-f0 20 f1 00 99 38 1e 4e  .SM...{-. ...8.N |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: 58 ce e1 aa 2c b0 4c 3f-67 39 e6 48 29 8b 82 5c  X...,.L?g9.H)..\\ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 9c d2 b1 3c f9 e1 b2 20-eb a2 e2 2c 98 38 74 8d  ...<... ...,.8t. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: 61 91 01 7b d9 e2 d0 ba-0e 9e 1b 4a 7c 76 ae 03  a..{.......J|v.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: 99 d6 8a 6f e9 d0 78 89-8b e8 17 00 6d 8c 4a 7d  ...o..x.....m.J} |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: 0c 6a 0f fd ad 7c 51 8c-58 e3 71 13 4a 5b f6 32  .j...|Q.X.q.J[.2 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: 2a d1 bd 1a 26 2f 6b db-97 e4 86 ee 62 b9 1c 6b  *...&/k.....b..k |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: 99 bf d6 d2 b4 f4 2e 73-cd 3d f7 db 6b 54 2f 93  .......s.=..kT/. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: e3 55 aa a8 99 cd 7a b5-9e 66 47 59 b5 a3 84 c5  .U....z..fGY.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: 6a 8e 9c 1a 42 c6 ec b5-83 7f 69 2d 48 d7 69 92  j...B.....i-H.i. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: 3e 30 d6 c3 09 fe a4 06-dc e0 2e 11 f3 a8 be df  >0.............. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: ac 21 93 b9 f5 f0 9b 26-bb 17 48 fc f7 67 10 78  .!.....&..H..g.x |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: d3 64 40 95 c3 0c cd c5-83 c8 f9 bb dd 09 96 87  .d@............. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: 16 1a b5 8e 33 c4 47                             ....3.G          |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Initial (No.1) HTTPS request received for child 4 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 11/11 bytes from BIO#8236dd8 [mem: 8227be0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 55 01 00 00-51 03                    ....U...Q.       |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1640): | 0011 - <SPACES/NULS>
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 79/79 bytes from BIO#8236dd8 [mem: 8227beb] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: c4 81 d3 77 49 d0 cb be-79 bb a2 31 8c f7 a6 b0  ...wI...y..1.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: f4 47 fa 06 74 05 a6 9b-e2 ac 82 82 d9 15 67 45  .G..t.........gE |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 20 f6 39 e7 c4 ad 76 78-e0 01 ca d0 8d d1 7d 71   .9...vx......}q |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 23 c0 1a b5 d7 0a 55 a1-5c 08 4d 10 5d b1 8a ce  #.....U.\\.M.]... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: 28 00 0a 00 04 00 0a 00-09 00 03 00 06 01        (.............   |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1640): | 0079 - <SPACES/NULS>
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(724): inside shmcb_retrieve_session
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(736): id[0]=246, masked index=6
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1191): entering shmcb_lookup_session_id
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(979): entering shmcb_expire_division
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1201): loop=0, count=1, curr_pos=0
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1205): idx->s_id2=57, id[1]=57, offset=0
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1222): at index 0, found possible session match
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1241): a match!
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(752): leaving shmcb_retrieve_session
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(423): shmcb_retrieve had a hit
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1597): Inter-Process Session Cache: request=GET status=FOUND id=F639E7C4AD7678E001CAD08DD17D7123C01AB5D70A55A15C084D105DB18ACE28 (session reuse)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client hello A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server hello A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write change cipher spec A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write finished A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8227be0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 14 03 00 00 01                                   .....            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 1/1 bytes from BIO#8236dd8 [mem: 8227be5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 01                                               .                |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8227be0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 38                                   ....8            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 56/56 bytes from BIO#8236dd8 [mem: 8227be5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 4e 68 63 0e 88 72 8b f3-ea 19 b2 fe a0 d6 41 e2  Nhc..r........A. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: f2 fb 96 ee 5d f0 da 2c-26 38 e7 db c7 d6 bb 4e  ....]..,&8.....N |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: c9 63 7b 26 aa 59 f2 6f-29 16 b1 29 fa 25 81 c1  .c{&.Y.o)..).%.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 38 2e 7b bd f8 86 a2 4d-                         8.{....M         |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read finished A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1755): OpenSSL: Handshake: done
+[Mon Jun 21 21:36:55 2004] [info] Connection: Client IP: 204.0.13.28, Protocol: SSLv3, Cipher: RC4-MD5 (128/128 bits)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8227be0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 24                                   ....$            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 548/548 bytes from BIO#8236dd8 [mem: 8227be5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 6c c6 6a 0a b3 2b 76 5c-e5 a4 1f fa dd dd 66 85  l.j..+v\\......f. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: 36 dc db 9d 51 68 cc fe-09 7d ca 1a af 0b 62 90  6...Qh...}....b. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 45 45 9e ba 23 95 20 ed-0f 56 0f 7f 71 91 09 f7  EE..#. ..V..q... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 77 d8 04 ec 1d df 32 d4-5c c9 62 04 bb d3 08 3a  w.....2.\\.b....: |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: b5 0e a7 54 94 67 42 30-a3 69 7b 71 c0 33 dc 83  ...T.gB0.i{q.3.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 92 5c ef c3 e5 11 f5 09-7d b4 42 45 f0 db 12 58  .\\......}.BE...X |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: 8f 34 ea 09 73 dc 7b 56-6c d6 3b 6a ed 4b cd 7d  .4..s.{Vl.;j.K.} |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 93 b3 da 46 39 0f 16 19-c9 ec 74 95 59 e7 10 8d  ...F9.....t.Y... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: 95 93 fc df 37 be 32 a3-98 aa 46 cf 5b 46 df e1  ....7.2...F.[F.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: 5b d0 b8 07 b4 f8 4b c4-39 5b 4e 9e e4 ea 61 85  [.....K.9[N...a. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: 1f 70 c4 8e 8f 45 e2 fd-be dd 36 71 dc 58 44 33  .p...E....6q.XD3 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 16 6a 43 67 44 cc ec fb-d3 64 c0 c3 f9 9b fd bf  .jCgD....d...... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: 34 71 3c 28 7c 35 1f 9d-36 ce 44 93 4d a1 1c 24  4q<(|5..6.D.M..$ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: 1c f2 94 a5 05 cd ed 5e-70 60 e1 44 e0 6b 77 85  .......^p`.D.kw. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: 6c 56 f9 14 fd 8a cc 0b-01 6e a7 9c 98 7a 1e e5  lV.......n...z.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: a6 42 37 37 04 ac d3 fa-65 cb ce 4b 1c 52 00 dc  .B77....e..K.R.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: 88 16 d0 51 ee be c9 fa-7a 63 01 87 ab 21 3a 40  ...Q....zc...!:@ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: 30 ee 12 94 d3 29 93 6f-4e 18 04 aa 22 bb 58 dc  0....).oN...".X. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: ea 8f cd 53 98 d3 21 28-7a 74 61 ec 69 c7 5e 6b  ...S..!(zta.i.^k |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: 1e 17 ab d2 ed c0 5f bd-ef 6b d5 14 a5 82 93 b3  ......_..k...... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: 57 08 7d 05 b9 63 c1 52-cc a6 df 78 c1 7a 6b 14  W.}..c.R...x.zk. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: d3 80 b5 ac 2d 8e f7 3c-4d a3 17 5b ed 31 c0 cf  ....-..<M..[.1.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: f5 bf 46 90 63 89 be ce-ee bb 93 ce 88 c5 b3 1b  ..F.c........... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 08 fe 96 38 15 04 bc c2-8e 92 28 12 ba ca 93 e2  ...8......(..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: e8 ca 8d 0e e3 e6 8b 08-de 66 b6 dd ca 51 1c b6  .........f...Q.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: 77 4c da 71 94 24 65 fc-4f a9 4e d7 f3 54 c3 9c  wL.q.$e.O.N..T.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: 6f 80 50 c4 04 c3 04 20-13 ab 84 9d 8e 39 01 e1  o.P.... .....9.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: bf 4e c4 ce 11 5a ae 48-76 93 ca 7b 37 0e cf b3  .N...Z.Hv..{7... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: 27 94 1f 27 53 b1 cb 7b-24 4b 68 7d f4 90 ec 6f  '..'S..{$Kh}...o |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: 20 c6 05 a6 19 d0 f2 09-fe 03 be d1 9c 54 c6 54   ............T.T |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: 96 02 90 ac 1b c3 ef df-ec 64 2c dc 44 d5 6b 2a  .........d,.D.k* |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: 08 27 28 42 5e 19 f9 29-fc d5 ad 42 bd ee 77 0a  .'(B^..)...B..w. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: 81 b1 40 69 5d 69 44 a1-f2 2d 8e ab 6f 59 ec c0  ..@i]iD..-..oY.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: 04 8d ca 29 e1 1c 6e ea-30 08 c3 6b bb 4a 44 20  ...)..n.0..k.JD  |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: dc 9d 90 15                                      ....             |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Initial (No.1) HTTPS request received for child 1 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1675): OpenSSL: I/O error, 5 bytes expected to read on BIO#8220630 [mem: 8227cb0]
+[Mon Jun 21 21:36:55 2004] [info] (104)Connection reset by peer: SSL input filter read failed.
+[Mon Jun 21 21:36:55 2004] [info] (32)Broken pipe: core_output_filter: writing data to the network
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1769): OpenSSL: Write: SSL negotiation finished successfully
+[Mon Jun 21 21:36:55 2004] [info] Connection to child 2 closed with standard shutdown(server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8227be0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 27                                   ....'            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 551/551 bytes from BIO#8236dd8 [mem: 8227be5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: ca 6d 81 64 0f d4 5d c9-29 a4 b8 38 c1 0d 6e 5f  .m.d..].)..8..n_ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: e5 0b d1 78 12 1c 74 ca-02 f8 bf 8b 7a ee 73 6b  ...x..t.....z.sk |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: c0 ed b3 49 55 38 4c e2-88 d5 c6 8e 6e df 7f 9f  ...IU8L.....n... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: dc 44 a7 2a 2f 6f 18 c4-7a 1b c5 4a 33 63 25 55  .D.*/o..z..J3c%U |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: ec d7 0f d1 c8 4e 47 dd-f5 b3 c9 0d c9 15 f4 51  .....NG........Q |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: d8 c8 f4 a0 8a 23 13 e7-0b f4 1b ec f1 c1 55 c9  .....#........U. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: 25 57 e9 ac 96 5d e4 5e-52 a8 57 e7 bb bb 52 68  %W...].^R.W...Rh |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 6d dc 4d 8a 0f 72 7c 5b-92 9a a0 59 87 b3 fe 85  m.M..r|[...Y.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: d6 2a 62 d9 23 7c f7 f4-6c 50 46 85 13 9e fe d5  .*b.#|..lPF..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: f8 59 51 cf cd 57 1e 97-5b 89 40 62 e6 98 c1 03  .YQ..W..[.@b.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: aa 5f b2 56 06 b6 e3 05-37 b0 30 7d 58 29 1e 84  ._.V....7.0}X).. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 05 92 2c 15 0e 91 1c 9f-d9 00 c1 13 12 68 59 fe  ..,..........hY. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: d2 1d 66 90 c1 9f 7d 30-6c 10 e4 32 d6 00 7c a4  ..f...}0l..2..|. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: 52 88 a3 cc d4 bb ac 34-15 b1 ab 0b 77 91 a2 18  R......4....w... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: f2 6d 1a 01 25 c9 cb 59-88 c7 4f 6f fc 88 80 a4  .m..%..Y..Oo.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: 21 99 cb 02 79 f1 d0 0c-54 5a 25 9b 09 cb 0d 10  !...y...TZ%..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: 16 e7 d9 85 3f 0c 7d 80-fe 9e 27 65 56 06 f8 bd  ....?.}...'eV... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: f7 9c 8e 28 a8 c6 b4 12-2b a7 de 40 3e 16 cf 12  ...(....+..@>... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: a8 6e b0 01 2e d1 a3 20-2a 1c f2 d4 b7 ed 79 ac  .n..... *.....y. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: 18 81 6a 08 f4 20 59 2f-48 d2 da ef d0 01 02 ac  ..j.. Y/H....... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: a4 a6 98 23 15 a9 d3 33-f6 8f ba fd 1f 80 dc 09  ...#...3........ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: 8f 4c 6f cd 10 7f ea e5-5e 70 6c 67 c7 03 c5 df  .Lo.....^plg.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: a1 bc ba 28 e3 0f 57 db-ef d7 35 e3 23 86 c7 f4  ...(..W...5.#... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 9e d3 42 85 fb 59 1e 8c-54 85 9a 0f 40 af d1 3e  ..B..Y..T...@..> |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: 2f 65 b3 79 25 6a de fb-be 8a 14 b4 d7 47 00 a0  /e.y%j.......G.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: f5 33 47 38 9a 37 52 ba-07 2c 9f 53 65 3b 74 21  .3G8.7R..,.Se;t! |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: aa 5e f8 c2 ed 06 e5 14-4a bd 2c d5 6b 46 f4 9c  .^......J.,.kF.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: 97 20 1f 23 08 8d 25 a9-e1 b5 20 19 c4 53 60 56  . .#..%... ..S`V |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: 24 e6 9c 7e 6f dd 86 cb-b3 95 0d 2b 1a bc 8b ad  $..~o......+.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: 40 fc 94 21 c6 54 59 f6-82 1d de 3f aa 34 cb 29  @..!.TY....?.4.) |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: d7 74 9b 62 9a e4 92 fa-48 ca 09 4b a0 c2 ad 3b  .t.b....H..K...; |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: 75 96 3b 7c 34 a5 fa 44-99 d3 21 a2 20 d7 66 22  u.;|4..D..!. .f" |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: 9b a4 f7 e5 c8 a6 db 72-2f 20 88 2e 83 41 03 1b  .......r/ ...A.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: 05 91 7e de ff 71 69 7f-e6 ac 66 4d e7 2f fc 0e  ..~..qi...fM./.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: 34 b1 2e d8 51 42 7d                             4...QB}          |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Subsequent (No.2) HTTPS request received for child 1 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 25                                   ....%            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 549/549 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: cd 4f f5 8f 8d dc f4 a7-ff ca 72 2e e9 ff eb e6  .O........r..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: af 34 3e e6 17 42 eb 2c-03 9f 07 f5 d4 72 4f 9b  .4>..B.,.....rO. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 9d 4c 93 eb f3 f2 57 41-cb a1 c3 29 42 e5 28 97  .L....WA...)B.(. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: ff 8c 88 4f c4 00 09 57-66 06 25 09 a3 82 49 67  ...O...Wf.%...Ig |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: d4 64 8a 46 79 86 32 95-2e 88 f5 7c 1f 8a 17 a4  .d.Fy.2....|.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 69 fc 3e f1 ad ea 6d 54-58 e6 d9 2c e4 13 7e 7d  i.>...mTX..,..~} |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: 5c 53 78 d1 23 09 c2 d0-42 ba 93 40 93 de c1 67  \\Sx.#...B..@...g |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 7b bb 56 f7 76 db 2b 68-f2 b9 4a 50 6d ad 31 da  {.V.v.+h..JPm.1. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: 84 15 02 8e 69 9a b8 94-f0 b8 be bf a2 9f c4 05  ....i........... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: 89 13 a0 03 fa aa 33 e9-ff cb 8c 1c 53 4e a6 a2  ......3.....SN.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: b6 87 f6 94 d9 0c f1 ea-57 58 21 48 e8 e8 34 fe  ........WX!H..4. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 3f 15 e6 24 cd 5e d6 b4-56 f2 fa cf 1c 4f 6c 93  ?..$.^..V....Ol. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: dc d2 7c 03 f8 8b cf 82-c1 1a cb ff fa 12 2f 5d  ..|.........../] |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: e3 99 2f d2 eb 60 f3 fc-28 b5 93 19 c1 77 44 b7  ../..`..(....wD. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: 46 c2 62 0e 40 63 ba 87-d6 52 64 2d bb 47 64 06  F.b.@c...Rd-.Gd. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: 67 64 56 ba 6f a6 f6 b8-66 c2 f3 28 21 66 7b 29  gdV.o...f..(!f{) |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: da 87 61 51 2e e3 12 fb-3e 14 af 94 56 19 e6 5a  ..aQ....>...V..Z |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: a3 75 70 b3 b6 20 5b c6-44 db 3a 13 c0 fb 50 87  .up.. [.D.:...P. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: 9d ea 53 66 e6 55 a5 76-b3 c8 bb 5a a9 e0 53 12  ..Sf.U.v...Z..S. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: de c6 74 00 d8 e1 a2 f7-da 1e 1b 04 ad 3d 6b 99  ..t..........=k. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: 64 8b 79 25 f0 45 c4 1e-c8 56 33 49 4f ad 9e d1  d.y%.E...V3IO... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: 24 96 42 94 11 d2 f2 ab-89 bf a3 58 7b cb be 42  $.B........X{..B |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: 35 14 8e bf 68 9b cf 89-1d 28 4c 06 b5 55 ea 16  5...h....(L..U.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 9f a2 55 f3 38 32 4e fa-c0 7b a9 e0 26 70 93 3e  ..U.82N..{..&p.> |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: 77 20 b9 ee e4 29 55 dc-03 1b 58 b7 ea 9a 91 fc  w ...)U...X..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: 5d 37 08 23 3c 18 3d 36-ce 46 22 2a e0 fb 36 25  ]7.#<.=6.F"*..6% |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: 37 2c eb 30 ec b6 43 63-0f f7 fc 90 a6 a5 a8 56  7,.0..Cc.......V |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: a8 c5 0c f2 0a b9 d2 e7-75 45 de 1b ef 15 14 a6  ........uE...... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: 19 59 88 cd 73 c8 0d ec-71 55 27 bb f7 55 73 db  .Y..s...qU'..Us. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: b8 62 e8 f4 f5 1f f1 67-c8 74 ed 56 89 d0 f7 2b  .b.....g.t.V...+ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: 92 cc 55 6b 0b 7a 8d 69-06 b0 91 fb 53 c1 83 d8  ..Uk.z.i....S... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: 49 c7 a2 54 44 a0 03 35-6c a2 fd 90 cb 1f 45 b8  I..TD..5l.....E. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: c0 7a f4 40 d8 48 f9 74-99 08 a6 3a a1 03 56 52  .z.@.H.t...:..VR |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: f7 1e 04 26 ed 76 0c cf-cb 0a 01 ac 28 0a 3b 32  ...&.v......(.;2 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: f3 2b cc 6d 3b                                   .+.m;            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Subsequent (No.2) HTTPS request received for child 4 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8227be0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 25                                   ....%            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 549/549 bytes from BIO#8236dd8 [mem: 8227be5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 00 a2 75 1e ba df 54 15-4c 90 29 43 a9 d0 18 1c  ..u...T.L.)C.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: 48 90 80 d8 71 bc b5 29-62 c3 19 38 e9 bb fb 50  H...q..)b..8...P |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 5c 5e ff 65 9f 27 4d 22-89 cc 43 56 cc ab a7 b3  \\^.e.'M"..CV.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: fd a4 63 26 32 85 a2 0f-29 0d f2 ed 2e ad 85 76  ..c&2...)......v |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: f1 fc 4b 37 bc 03 b7 31-a7 39 bc ff 99 cb 85 39  ..K7...1.9.....9 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 07 5d 0d 14 56 3b 0a 8a-6a 3e 8b 57 e9 49 6a 8d  .]..V;..j>.W.Ij. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: 3f d3 3c 60 ed 1a d9 47-3a 8a 04 e7 7f 71 81 21  ?.<`...G:....q.! |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 28 4d 4f a6 70 c4 35 6a-92 53 32 a1 39 da c5 54  (MO.p.5j.S2.9..T |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: f7 3f c6 af b6 9f 2b 6d-ed 60 f0 c2 99 42 a0 61  .?....+m.`...B.a |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: a4 7a a2 bb 5e d2 e4 9e-49 51 e4 99 1e 66 3e 5b  .z..^...IQ...f>[ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: 71 f3 b3 f9 ef 2b 1a 30-80 15 60 92 36 35 9b 48  q....+.0..`.65.H |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 6c 53 46 96 e1 3e e9 12-35 fc d5 5a 8a ec c0 93  lSF..>..5..Z.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: ec 41 87 ca ee e0 ad c3-e2 87 a1 0c c2 17 8d 32  .A.............2 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: bb 33 e7 fa c2 48 78 00-d7 c7 37 0c d5 4f 23 67  .3...Hx...7..O#g |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: da 5a 65 91 4f e6 b2 f9-39 13 c8 91 1e d5 5c 56  .Ze.O...9.....\\V |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: d5 ad 1b 08 f6 24 db 27-f0 df fb 25 05 8b 2e b1  .....$.'...%.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: b7 eb 19 1b e9 c7 e9 10-55 b1 ac 26 49 4a 30 9b  ........U..&IJ0. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: 7d f0 29 a5 b4 ec 29 09-cf 98 6e 0c b5 4e ea 5b  }.)...)...n..N.[ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: d6 97 e8 a3 2e 29 d2 a9-84 a7 60 f5 0f 5e 8a 3f  .....)....`..^.? |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: d4 9a 5e 64 f4 d6 0c 29-81 56 b6 b2 3d 23 8f 94  ..^d...).V..=#.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: c1 27 78 a4 26 b2 ed 3c-5d 8d 26 68 55 e6 b2 9e  .'x.&..<].&hU... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: f9 30 d6 f4 ea 50 82 7a-ca fd ca b4 9f 0d c0 a5  .0...P.z........ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: 82 ad 17 95 78 d0 f5 95-72 50 38 c3 e5 a5 c5 8d  ....x...rP8..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 63 64 93 54 ab a2 bc d1-78 b4 dd 0c af 7f b7 df  cd.T....x....... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: 15 eb e5 4b 13 03 6c 8b-26 d6 05 5a 35 4b fe b1  ...K..l.&..Z5K.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: 40 cd 3b 90 f1 16 8a 1f-c0 ce 4d da d2 23 55 81  @.;.......M..#U. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: ac 0a 0f 5b a8 47 34 d0-50 92 c3 b6 b0 b9 3e 80  ...[.G4.P.....>. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: 16 e6 6c e8 7c 11 ad ce-2a dc ef ed 97 76 94 c6  ..l.|...*....v.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: 15 54 3f 03 8a 05 e7 b6-b6 9d 5c da 91 49 c2 3f  .T?.......\\..I.? |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: 9d e0 4c f9 ce c5 9a 89-9c 37 59 6a 6a 47 6a ca  ..L......7YjjGj. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: 14 20 99 1b 67 11 aa 09-f7 0b 48 9d b0 bf 82 28  . ..g.....H....( |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: da 04 da 15 5d 47 4f 96-af 54 2c c7 06 ff 0b 49  ....]GO..T,....I |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: 88 92 8a f0 60 09 e1 1b-23 04 eb 7f 66 32 e8 67  ....`...#...f2.g |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: 8e b9 30 a1 e8 77 54 17-01 d4 da b1 dd 67 6e ae  ..0..wT......gn. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: 1d 61 a2 8e 3c                                   .a..<            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Subsequent (No.3) HTTPS request received for child 1 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 22                                   ...."            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 546/546 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 64 68 58 bc 5b c4 3c 38-5a 21 3c af fd aa b7 f1  dhX.[.<8Z!<..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: 32 b2 32 4b 70 a1 f2 35-b4 7a f2 8e 91 a2 f8 60  2.2Kp..5.z.....` |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: c4 cf be 09 be a4 ca 20-69 ae 5f ca 7a d6 6f 7a  ....... i._.z.oz |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: ab d3 e9 b0 8c 8c f5 3e-44 0e 15 e3 74 9e e8 dd  .......>D...t... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: 7f 45 1e 31 7d eb 58 df-87 00 0c 3d ef 57 70 7c  .E.1}.X....=.Wp| |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 47 08 40 17 92 5c 1d 26-a6 1e d9 bc 1b 83 d0 c0  G.@..\\.&........ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: 92 01 51 ea c9 bd 37 e6-bc 31 fa fa 4a 3c 86 cf  ..Q...7..1..J<.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 70 2c a0 d1 fa f0 fe f5-fd b2 67 4a f4 01 23 1c  p,........gJ..#. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: c6 57 5a fc b2 e6 60 16-61 b2 5d ee 2c a0 08 54  .WZ...`.a.].,..T |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: 00 b2 73 ec 98 a6 b1 5d-72 da 8f 1e 7e 34 46 2d  ..s....]r...~4F- |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: b2 85 29 07 4b 63 02 8e-7a 2b 53 ce 89 db 9e 12  ..).Kc..z+S..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 57 50 b0 c0 9a 26 13 bd-d0 13 9c ab da 1c 4c 54  WP...&........LT |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: a4 a3 99 73 e8 d6 19 ad-26 8b dc 20 e9 c6 d4 65  ...s....&.. ...e |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: 61 7d 78 64 f8 5d 4b 05-5e a3 45 50 73 55 e2 36  a}xd.]K.^.EPsU.6 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: d1 06 17 b0 1d f5 22 8e-cd cb 9e 19 00 3a 85 b2  ......"......:.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: 74 ca bd a7 e9 34 57 84-40 bb 60 8c f9 e6 72 ee  t....4W.@.`...r. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: 8f b3 c6 a1 6c 44 58 05-19 2c f4 38 0f 07 3a a2  ....lDX..,.8..:. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: 31 28 08 80 2d f1 00 72-0f 5b d3 2d 60 2f d5 47  1(..-..r.[.-`/.G |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: 57 d5 90 bc 15 ea 94 cd-15 89 f3 8d 32 df b2 ae  W...........2... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: 01 60 c9 59 e8 7e fa 40-55 75 a6 82 28 69 8d dd  .`.Y.~.@Uu..(i.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: b7 d8 96 38 e5 6b bc af-0a 42 15 3f 70 26 b7 d9  ...8.k...B.?p&.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: e5 b8 33 7b 40 91 84 6f-fd fc 2c 57 4e 62 a6 95  ..3{@..o..,WNb.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: a3 82 87 56 d1 1f 6a 7c-02 68 4a 18 4d 95 ea 57  ...V..j|.hJ.M..W |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 51 49 a6 de 73 7f ba fe-57 44 bd 20 3c 2c 66 5a  QI..s...WD. <,fZ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: 88 44 57 b9 8b ca bc 02-d8 f5 cc a9 06 fa 89 07  .DW............. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: 5c 8d c0 89 6d 1e f7 f9-05 96 7f 96 a1 40 68 76  \\...m........@hv |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: cf 22 79 bb 57 26 24 6b-63 fb 10 3a 9d 88 bc 76  ."y.W&$kc..:...v |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: 1b f0 81 f6 b0 53 41 fb-aa 24 cd 7d 91 0a 09 95  .....SA..$.}.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: ca 72 69 92 1c b9 a5 30-d3 27 41 71 4d 0a 96 29  .ri....0.'AqM..) |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: 3d 97 fd 0d bc 94 82 b1-3b 53 4b 68 a1 e7 68 96  =.......;SKh..h. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: 9d 2b 42 f9 92 e8 15 34-99 5a 38 1b eb e7 9e 64  .+B....4.Z8....d |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: a4 ec f7 9a ec 75 aa a5-65 a1 74 70 f5 50 d2 3b  .....u..e.tp.P.; |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: 1e a4 69 74 49 ba 53 0f-26 c9 43 33 e4 77 8b 85  ..itI.S.&.C3.w.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: d6 df ee 26 f6 0c 6c 25-5d d7 0d f7 85 f6 0e 4d  ...&..l%]......M |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: 35 66                                            5f               |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Subsequent (No.3) HTTPS request received for child 4 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8227be0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 21                                   ....!            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 545/545 bytes from BIO#8236dd8 [mem: 8227be5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 93 d2 c9 b8 be ad 4c d2-34 aa 40 2d 36 a5 eb 7a  ......L.4.@-6..z |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: b6 28 54 7c d6 9c 86 9f-52 53 7c b4 f2 a8 1a e9  .(T|....RS|..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: b1 0a 92 45 64 3f 5a e2-0e c1 ef 85 66 68 32 7b  ...Ed?Z.....fh2{ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 02 cc b4 d7 e8 0c 85 8b-5e 2a 12 f5 3c 60 f1 f2  ........^*..<`.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: d2 bd 02 69 82 c7 dc 2a-de 3d 5d e2 4e 39 ff eb  ...i...*.=].N9.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: d4 f7 05 4c cd f6 a4 37-d2 92 fc a4 36 18 47 3b  ...L...7....6.G; |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: 3c d1 0e 25 ac 91 3f 07-77 cf 51 1f de 67 b5 c3  <..%..?.w.Q..g.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: c1 a6 47 f2 0d 7f 3a 38-94 e4 65 0a 95 bb 68 3e  ..G...:8..e...h> |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: 1e 2f 76 88 43 d2 a5 6f-33 e5 df 1b 93 03 9a 06  ./v.C..o3....... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: a2 b4 99 64 c6 81 39 86-61 25 3b d5 af 72 b2 0b  ...d..9.a%;..r.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: 50 97 bf 89 69 a1 4c 60-d7 14 86 78 1d 94 76 71  P...i.L`...x..vq |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 2e fd b2 e4 ea f3 67 b7-f6 e7 6b f5 0c a2 d7 92  ......g...k..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: 33 c1 9e 65 f7 ed 4f 22-b6 a2 33 e9 21 13 7e 72  3..e..O"..3.!.~r |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: 9f 8b 4a 43 45 77 01 31-0e 2f e5 a7 e9 ba f5 da  ..JCEw.1./...... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: cd 1d 13 c1 53 7c b0 78-a7 0d b6 1b 2f 5d 3a da  ....S|.x..../]:. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: ab c3 1d 44 bc fd 03 34-24 e6 97 d6 9f d4 00 c9  ...D...4$....... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: b9 b3 56 e9 2d 0c 46 c6-e8 c5 b9 c2 89 62 07 86  ..V.-.F......b.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: b6 9d 70 00 26 f5 95 61-5d 21 63 0b 79 a5 7e af  ..p.&..a]!c.y.~. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: 18 23 18 39 b2 fb ad 4d-3f 53 38 e7 4c 7c e9 41  .#.9...M?S8.L|.A |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: a4 96 b1 55 ce 4c 5e f3-7b 9a 3d e9 1a ac 7a e4  ...U.L^.{.=...z. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: ec 71 17 99 04 11 68 32-f0 a5 e1 22 14 61 fb 34  .q....h2...".a.4 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: a0 05 57 16 bb 14 d5 ef-41 74 2d 80 f6 f2 80 9e  ..W.....At-..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: 9f 69 24 61 96 ca d2 5b-3f 23 66 e9 3f 33 74 cf  .i$a...[?#f.?3t. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: a5 be d3 82 01 1a bf ea-1c 61 84 8e e1 83 bc 33  .........a.....3 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: a7 a6 29 3a 82 ea 07 4a-f6 2e d1 3b f8 e8 79 fc  ..):...J...;..y. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: 78 2e e8 2f 8c fc 28 ab-51 80 81 ef 7e d4 a7 84  x../..(.Q...~... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: 35 15 fe 2f 4d 6f f9 ee-36 09 7b bf d9 e7 ce 8a  5../Mo..6.{..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: 13 6a e0 47 80 98 c7 20-07 8f b2 b1 18 a6 84 cf  .j.G... ........ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: d2 a8 e9 ce 78 85 37 71-f8 73 3e 29 32 1e 8e 81  ....x.7q.s>)2... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: 7c 07 d5 0e 4e 0b ef 13-8d 28 3f 5b 67 9c 7b 77  |...N....(?[g.{w |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: 82 8d da 6e d1 d6 f6 26-d5 25 fe 0b 3f 71 84 b7  ...n...&.%..?q.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: 1c 51 6d 57 fc b9 45 db-b6 df 6f 6c 37 35 79 77  .QmW..E...ol75yw |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: 18 5c 85 30 e3 bc ed ae-1b 73 03 7d 58 41 32 0a  .\\.0.....s.}XA2. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: 5b 45 85 04 4e 7a 21 0c-46 0f fc 8d c3 d5 0f da  [E..Nz!.F....... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: cf                                               .                |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Subsequent (No.4) HTTPS request received for child 1 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8227be0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 21                                   ....!            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 545/545 bytes from BIO#8236dd8 [mem: 8227be5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 1d 51 84 58 41 6d f2 7b-a3 87 77 0b 14 b1 dc f4  .Q.XAm.{..w..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: 9d 17 85 54 52 8e 5a 34-e0 ff b4 07 0b 0e 05 7a  ...TR.Z4.......z |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: a0 be 77 24 ca 66 93 38-92 ec 7f 00 24 88 0a 9a  ..w$.f.8....$... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: c4 f9 64 bf 9d b6 2c 32-ae be ed 19 6c 33 1b 12  ..d...,2....l3.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: dc 3c 73 0d b5 a5 c3 1f-7d a4 f2 8d 46 7b 89 a6  .<s.....}...F{.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 46 fd 82 1d 2a 0a f8 b8-fd 8a 9a ac 29 e9 8b 2b  F...*.......)..+ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: d7 db 29 ee d9 c2 a4 bd-28 9e a9 ce b9 92 f0 65  ..).....(......e |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 89 c4 63 2c eb cd a5 95-ce 19 70 d9 db b1 f9 9d  ..c,......p..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: ea 92 56 df 52 be 25 d4-db 18 6e 51 b9 dc d0 d9  ..V.R.%...nQ.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: 1b 61 da f0 3b 61 d6 48-e8 ad d0 fc f9 86 96 06  .a..;a.H........ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: c5 ff 5c 36 af f5 b0 a8-fa 20 39 18 58 f4 d4 a9  ..\\6..... 9.X... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: ee 7c 2c 97 e2 d5 76 d5-04 f7 9b 7c 9c 1a 0d be  .|,...v....|.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: 36 b0 90 cb d4 02 33 d6-4c 7c 67 f7 fe 9d 51 10  6.....3.L|g...Q. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: 98 e2 8d 70 fc d1 20 59-94 38 73 71 12 a1 90 7e  ...p.. Y.8sq...~ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: 12 4c d4 ea b5 4a 97 43-a3 87 30 c1 fc 07 da 56  .L...J.C..0....V |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: b0 54 b7 41 1a b3 6c bd-8f e1 43 57 b1 3f 25 56  .T.A..l...CW.?%V |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: ba 6e bc 46 40 cd 77 5e-bb 61 4d 1f 8c 57 b5 29  .n.F@.w^.aM..W.) |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: bb a3 32 15 1c 20 37 53-06 7f 69 04 40 b1 32 93  ..2.. 7S..i.@.2. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: 55 df 32 08 70 0a dd 7c-06 24 28 d2 7b 79 2b 3b  U.2.p..|.$(.{y+; |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: 69 8f 6e c6 8b 0a e4 9c-8a dd 0c 33 49 91 8b cd  i.n........3I... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: 8b cd 66 3a ac 3d fd 17-fd cf 0b c0 a3 a8 bf 71  ..f:.=.........q |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: 67 b9 c8 22 03 b3 7b 0e-e4 07 16 8d 06 c2 e9 90  g.."..{......... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: 4d 5f 43 fb ea 78 cf c6-67 0c 46 a3 0b de 07 fa  M_C..x..g.F..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 93 04 8b 10 60 cc 76 47-e0 06 e1 83 da 3f 9a b0  ....`.vG.....?.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: 71 75 9c 7a 77 04 06 c9-24 15 10 f3 82 41 af 68  qu.zw...$....A.h |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: b4 a8 e9 e9 ad 9c f3 32-82 6a 02 54 29 90 ee cb  .......2.j.T)... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: 7c 39 95 0d 64 d1 b6 08-ed 5a 49 bf 00 12 58 47  |9..d....ZI...XG |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: ca 58 cd 6c 61 ad cf 06-2d e9 33 b2 ff 83 a5 ba  .X.la...-.3..... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: 0d b9 27 89 f3 20 95 15-2e d0 4b 67 0f 8d ae 06  ..'.. ....Kg.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: cb ac e7 74 67 6c 40 24-c7 2f c0 77 9e e7 70 ae  ...tgl@$./.w..p. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: 1e 2a 3b 86 89 4d ae 46-f0 fb 34 65 c1 4b 95 f6  .*;..M.F..4e.K.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: 29 f1 72 2e 6d 73 7b 51-be 29 2d 10 59 1b 2b e6  ).r.ms{Q.)-.Y.+. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: 93 91 1e 71 bd a7 16 8a-65 d5 5e 62 8b a4 2d 8b  ...q....e.^b..-. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: df 1d 1f 45 17 5f 85 ec-2d 65 81 34 d1 06 f8 90  ...E._..-e.4.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: 3d                                               =                |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Subsequent (No.5) HTTPS request received for child 1 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 28                                   ....(            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 552/552 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: e2 66 76 cf 11 98 82 f2-ba 68 d2 b9 4b 5c 59 b8  .fv......h..K\\Y. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: c0 0d d1 4f bf 31 bd e5-03 cf f2 1e 9c 9e a2 93  ...O.1.......... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 4a 4e ae 70 6c 61 8c 47-0c 0d 3c 73 69 6f 37 72  JN.pla.G..<sio7r |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: ee 1f 0e 8c 96 c8 b9 bb-b3 a5 ec d9 a7 97 40 3e  ..............@> |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: 64 07 6d 2d ee d3 b8 df-e0 b4 b1 ff 09 01 cc 8c  d.m-............ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 88 6f a3 97 ae 16 3b 07-3a 2c 37 91 bf 34 ec 55  .o....;.:,7..4.U |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: dd c1 2b de c3 fd 47 50-3e 3d 15 88 f4 70 19 46  ..+...GP>=...p.F |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 61 5d ba a5 26 8e 06 ca-81 46 4b fb d1 e6 36 5e  a]..&....FK...6^ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: 8b 68 ad 7b 89 3a 43 ed-d0 93 0d 72 16 4d 6d bb  .h.{.:C....r.Mm. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: 1a 5b 60 3a 9f 38 0c bd-9f e9 8d 36 22 81 af 15  .[`:.8.....6"... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: 15 44 84 d2 81 3a c9 ef-cf b3 fd 2f 85 a9 8f bd  .D...:...../.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 72 6e f3 6c 80 8d ec 15-c3 e9 e0 a4 e3 df df 27  rn.l...........' |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: 25 27 e5 19 ef 15 04 fc-b4 b0 32 94 9c cb ab 71  %'........2....q |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: 79 ae 20 38 53 c6 82 dc-39 45 63 a1 2d b7 fc 26  y. 8S...9Ec.-..& |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: b0 88 da dd 73 29 a7 27-56 74 fb c9 54 28 13 4f  ....s).'Vt..T(.O |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: e1 9b ed 0e b3 18 02 27-fd ac 1f ca 0b be f9 5d  .......'.......] |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: 8a 65 0e 6e 73 f8 cc 01-ac 8b fe 59 a4 4f e4 07  .e.ns......Y.O.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: 14 49 4d d1 6a bc d4 8a-8b 85 d6 af 5c 6c fa 24  .IM.j.......\\l.$ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: d2 32 fe cc 8c 5c 0b bc-14 ff a9 98 96 2e c8 80  .2...\\.......... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: a8 fa b5 2d 4b 66 24 be-0e f5 2a 46 2c 3a f4 11  ...-Kf$...*F,:.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: 42 3b ad 16 b1 62 4d eb-af 8a c4 f7 3f 8c ba 49  B;...bM.....?..I |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: b4 20 94 91 3c a8 23 eb-92 d7 a6 ca 97 cb eb 50  . ..<.#........P |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: 72 b0 13 76 5a a0 e9 29-71 c7 9c 06 42 04 ca e5  r..vZ..)q...B... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 72 9c a5 d5 ce 78 73 87-9c 09 96 70 86 03 00 d1  r....xs....p.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: 5b 4e 23 31 39 e7 01 15-6c 1d 00 b0 7b 8a 05 1c  [N#19...l...{... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: d6 7c 8e 69 34 7d 9a c0-4c c7 9e 3a 7e 0b 7f 30  .|.i4}..L..:~..0 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: 0d ff 71 36 ab b5 0a 8f-fb a3 bd 1e 78 8c ee 40  ..q6........x..@ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: a6 1b 76 d6 d2 5f 73 b4-2b 3e 55 77 d0 fc f4 cf  ..v.._s.+>Uw.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: 37 f2 2a 64 dd ee 12 60-76 8f f6 5d ae b7 82 8e  7.*d...`v..].... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: de 9e 2b aa 5f 7e 65 3a-c5 e4 2f ef fa 52 f8 74  ..+._~e:../..R.t |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: a1 b0 26 32 03 73 79 61-dd e0 18 85 cd 31 77 4f  ..&2.sya.....1wO |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: c0 1b cc 02 31 52 a6 d3-6f 51 e2 9d 83 95 d9 9a  ....1R..oQ...... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: 28 9a c4 f1 6e 92 fb 5b-8f 8e 14 d8 ef 47 56 c2  (...n..[.....GV. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: b3 39 44 a8 81 9d bc 77-ad 12 68 c8 40 1d e3 2f  .9D....w..h.@../ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0220: ce 6f 4b 33 b4 18 c4 6e-                         .oK3...n         |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Subsequent (No.4) HTTPS request received for child 4 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:55 2004] [info] Connection to child 5 established (server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:55 2004] [info] Seeding PRNG with 136 bytes of entropy
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1751): OpenSSL: Handshake: start
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: before/accept initialization
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 11/11 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 55 01 00 00-51 03                    ....U...Q.       |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1640): | 0011 - <SPACES/NULS>
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 79/79 bytes from BIO#8220630 [mem: 8227cbb] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: c4 81 d3 77 04 02 39 7c-1e c8 d2 8e 7a cb 2f 66  ...w..9|....z./f |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: 98 54 86 df b1 c1 a4 92-5c 2f f8 eb d5 80 7a 28  .T......\\/....z( |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 20 f6 39 e7 c4 ad 76 78-e0 01 ca d0 8d d1 7d 71   .9...vx......}q |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 23 c0 1a b5 d7 0a 55 a1-5c 08 4d 10 5d b1 8a ce  #.....U.\\.M.]... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: 28 00 0a 00 04 00 0a 00-09 00 03 00 06 01        (.............   |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1640): | 0079 - <SPACES/NULS>
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(724): inside shmcb_retrieve_session
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(736): id[0]=246, masked index=6
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1191): entering shmcb_lookup_session_id
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(979): entering shmcb_expire_division
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1201): loop=0, count=1, curr_pos=0
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1205): idx->s_id2=57, id[1]=57, offset=0
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1222): at index 0, found possible session match
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(1241): a match!
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(752): leaving shmcb_retrieve_session
+[Mon Jun 21 21:36:55 2004] [debug] ssl_scache_shmcb.c(423): shmcb_retrieve had a hit
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1597): Inter-Process Session Cache: request=GET status=FOUND id=F639E7C4AD7678E001CAD08DD17D7123C01AB5D70A55A15C084D105DB18ACE28 (session reuse)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client hello A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server hello A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write change cipher spec A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write finished A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 14 03 00 00 01                                   .....            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 1/1 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 01                                               .                |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 38                                   ....8            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 56/56 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: b9 91 df fa 28 21 81 91-41 38 b4 c3 7a 0f 5e ec  ....(!..A8..z.^. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: 20 1d e0 b8 90 f9 1a a7-55 ca f9 99 12 71 61 1b   .......U....qa. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: a4 e7 98 ec 7a cd c6 01-62 21 59 1e be 1a 9b 6b  ....z...b!Y....k |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 44 ea 8d ee ef 66 53 e6-                         D....fS.         |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read finished A
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_kernel.c(1755): OpenSSL: Handshake: done
+[Mon Jun 21 21:36:55 2004] [info] Connection: Client IP: 204.0.13.28, Protocol: SSLv3, Cipher: RC4-MD5 (128/128 bits)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 1e                                   .....            |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 542/542 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0000: d2 6e fd 67 fc 20 ef 42-c1 ae ec 74 4f c1 07 7a  .n.g. .B...tO..z |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0010: 38 2a 62 ac 1a a7 78 d0-91 70 30 32 e0 25 ac 2c  8*b...x..p02.%., |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0020: 92 56 e2 d7 3f 58 b9 92-0e fa 24 37 50 44 db a1  .V..?X....$7PD.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0030: 2f 10 c1 6d f6 ac c6 46-1e a4 d2 ca 55 1c 4a 10  /..m...F....U.J. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0040: a2 de 24 7b 39 58 48 5f-88 06 64 70 78 bf a3 b4  ..${9XH_..dpx... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0050: 90 f7 4b 54 b1 c6 70 e9-5a fd 9e c9 1e 9c 08 52  ..KT..p.Z......R |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0060: b9 93 08 08 e3 8b f6 0f-2c c6 37 38 1d 7b f5 b1  ........,.78.{.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0070: 97 c6 b8 16 86 2c b0 1b-ef 26 cf 37 5a 30 35 db  .....,...&.7Z05. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0080: 2c 1c b0 1e bb 34 5b 8e-5c ee 09 d5 01 de e0 b1  ,....4[.\\....... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0090: bf c4 90 28 91 b1 92 ec-65 67 d0 5d 8a aa e9 71  ...(....eg.]...q |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00a0: 31 18 62 84 6d ea fd 8d-99 28 2a c3 25 a2 66 fa  1.b.m....(*.%.f. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00b0: 56 26 b9 cd c9 a8 25 cf-b6 21 33 24 a8 09 2f ce  V&....%..!3$../. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00c0: e2 fa 8b 43 89 e5 d8 3d-83 08 1e 32 ad 5d 6c 32  ...C...=...2.]l2 |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00d0: cf 99 45 cc ad 89 d5 19-69 0e f3 7f 27 1c 8c d5  ..E.....i...'... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00e0: 17 69 b0 6e 73 ab 6f bd-53 93 57 d9 ae 94 44 3f  .i.ns.o.S.W...D? |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 00f0: e6 9d 85 3a 87 51 b9 ab-2b eb fb d0 27 7a 2a ac  ...:.Q..+...'z*. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0100: b8 d3 dc e7 f0 a7 f1 1c-af 87 dd b4 04 9d a9 8e  ................ |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0110: da e5 74 0f e3 19 89 ba-48 22 dd bc 9e fa ce 8e  ..t.....H"...... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0120: bd 77 cb c2 52 43 74 20-dd 28 f4 81 d4 a9 17 ea  .w..RCt .(...... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0130: e0 a9 71 3a 19 30 3d 45-e8 73 03 40 d8 3a eb 07  ..q:.0=E.s.@.:.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0140: b5 2a 65 31 db 14 0b aa-92 ca 26 93 df a9 5c 54  .*e1......&...\\T |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0150: 0d 54 50 8b c9 c2 b7 46-b4 fa fd f7 13 df 40 d7  .TP....F......@. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0160: a5 91 fd 1b ac 31 81 a8-1c fb a7 e2 a9 38 29 5a  .....1.......8)Z |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0170: 54 b3 a1 d6 38 7f dd 49-63 07 ea fe fd 07 86 66  T...8..Ic......f |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0180: a2 88 ed ad f8 19 52 65-03 78 d9 a9 24 67 67 cb  ......Re.x..$gg. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0190: 69 25 fc cb c9 a9 b7 a9-5b ad 18 1d 7f 02 fc 52  i%......[......R |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01a0: b1 32 5b 91 fb b6 f4 a3-9a 45 4b 3b f8 56 cf 87  .2[......EK;.V.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01b0: a6 f2 7d d2 8d 9b 29 67-ba be 7f 69 16 90 05 ef  ..}...)g...i.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01c0: 21 cc d3 94 9f 8e a9 c3-06 b3 ba 5a c4 e9 53 61  !..........Z..Sa |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01d0: e2 f4 81 c0 81 80 44 5c-14 7b b3 17 85 1f ac 48  ......D\\.{.....H |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01e0: 6d a8 f1 ca ec 3b d5 d6-5c 3f a9 c5 de 48 2d b4  m....;..\\?...H-. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 01f0: 64 4f c4 3d f3 eb ae 79-bc 5e 5a 3b a7 b1 91 84  dO.=...y.^Z;.... |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0200: c4 25 59 b6 3d 97 67 62-7e 31 0f 7f 52 6b d1 12  .%Y.=.gb~1..Rk.. |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1636): | 0210: 90 f3 fb 2a 80 12 22 36-4a 1b f3 90 47 b5        ...*.."6J...G.   |
+[Mon Jun 21 21:36:55 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:55 2004] [info] Initial (No.1) HTTPS request received for child 5 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:36:57 2004] [info] Connection to child 6 established (server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:36:57 2004] [info] Seeding PRNG with 136 bytes of entropy
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1751): OpenSSL: Handshake: start
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: before/accept initialization
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 11/11 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 55 01 00 00-51 03                    ....U...Q.       |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1640): | 0011 - <SPACES/NULS>
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 79/79 bytes from BIO#8220630 [mem: 8227cbb] (BIO dump follows)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0000: c4 81 d3 79 5f dd 4e 68-70 e8 82 78 9f 73 ca 93  ...y_.Nhp..x.s.. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0010: 10 ff 54 35 6d 35 6b f0-0b 75 8a 45 48 c0 9a 9d  ..T5m5k..u.EH... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0020: 20 f6 39 e7 c4 ad 76 78-e0 01 ca d0 8d d1 7d 71   .9...vx......}q |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0030: 23 c0 1a b5 d7 0a 55 a1-5c 08 4d 10 5d b1 8a ce  #.....U.\\.M.]... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0040: 28 00 0a 00 04 00 0a 00-09 00 03 00 06 01        (.............   |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1640): | 0079 - <SPACES/NULS>
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(724): inside shmcb_retrieve_session
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(736): id[0]=246, masked index=6
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(1191): entering shmcb_lookup_session_id
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(979): entering shmcb_expire_division
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(1201): loop=0, count=1, curr_pos=0
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(1205): idx->s_id2=57, id[1]=57, offset=0
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(1222): at index 0, found possible session match
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(1241): a match!
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(752): leaving shmcb_retrieve_session
+[Mon Jun 21 21:36:57 2004] [debug] ssl_scache_shmcb.c(423): shmcb_retrieve had a hit
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1597): Inter-Process Session Cache: request=GET status=FOUND id=F639E7C4AD7678E001CAD08DD17D7123C01AB5D70A55A15C084D105DB18ACE28 (session reuse)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client hello A
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server hello A
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write change cipher spec A
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write finished A
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0000: 14 03 00 00 01                                   .....            |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 1/1 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0000: 01                                               .                |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 38                                   ....8            |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 56/56 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0000: 83 2f 88 1c 6d 3b 78 88-c5 70 9c 99 1f 88 cf c8  ./..m;x..p...... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0010: 56 fa 0c 0e 0e bb 05 b3-1e 2b 9b 38 a4 c6 ae 37  V........+.8...7 |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0020: 1a 4f 82 ea 58 3c e4 9d-90 2c 30 f5 73 fe 1d b9  .O..X<...,0.s... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0030: 89 f0 a0 b1 9f 74 fa 7a-                         .....t.z         |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read finished A
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_kernel.c(1755): OpenSSL: Handshake: done
+[Mon Jun 21 21:36:57 2004] [info] Connection: Client IP: 204.0.13.28, Protocol: SSLv3, Cipher: RC4-MD5 (128/128 bits)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 02 25                                   ....%            |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 549/549 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0000: 79 85 32 ab ce ce 6e f4-c3 1e 86 f0 64 3a ed c7  y.2...n.....d:.. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0010: 65 ed 1a 4b fb bb 37 9d-07 ed 77 91 f6 a1 62 fc  e..K..7...w...b. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0020: f9 c0 12 4b d6 74 4c 58-43 55 15 2a f9 b3 aa bd  ...K.tLXCU.*.... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0030: 9a 48 1b 5d fc 1f db c1-78 d0 be 03 5b 44 bd 82  .H.]....x...[D.. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0040: 0f b1 17 b0 31 27 b5 d3-8f 72 dc cc f4 99 1a 8e  ....1'...r...... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0050: c1 6f e4 ad 20 4f 94 75-31 1d 92 f9 8f 69 5e 42  .o.. O.u1....i^B |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0060: ad d5 bf 16 ce 08 c4 f4-70 6b 29 65 d0 84 23 46  ........pk)e..#F |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0070: 07 98 4f c5 cf 9d 3e 76-cb 36 9c 5a 4a 37 0c 64  ..O...>v.6.ZJ7.d |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0080: 9a 15 17 86 80 27 d7 f4-0c 18 b4 35 d9 e5 4b 9d  .....'.....5..K. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0090: 7f 58 4a 9c 1d 8f 76 78-e8 9b 8e 2a 88 ba 5b 58  .XJ...vx...*..[X |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 00a0: 4e d5 11 82 9a 04 c8 f6-4f 14 2e 72 0b 86 ce e0  N.......O..r.... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 00b0: 2a 03 49 05 72 8a a2 9a-c9 6a 94 b6 bd 07 0c 08  *.I.r....j...... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 00c0: b3 d3 f2 01 4d 90 a8 c4-8b c4 c6 01 22 50 29 bf  ....M......."P). |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 00d0: 20 a0 5d f3 e8 8a de f9-85 85 f4 4c 94 1a bb ad   .]........L.... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 00e0: 77 fa 0c b4 ff 72 ad 7a-59 fa ee 6b a7 da c0 b8  w....r.zY..k.... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 00f0: 2d d3 a4 35 52 23 9c fa-ee aa 02 3a 7a 34 28 f5  -..5R#.....:z4(. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0100: f6 f2 a3 c5 f3 b5 3e a6-67 3e 1d 01 9b 2f 98 7e  ......>.g>.../.~ |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0110: 0e 37 ed 75 82 f0 86 c3-70 6e 13 94 4a 46 ad 56  .7.u....pn..JF.V |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0120: ff 3a 5a b3 ba a8 d1 51-37 03 6d e7 cc 07 b6 82  .:Z....Q7.m..... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0130: 44 ce e0 ee f8 9c 8d 00-76 db 51 b1 0c 9b 88 b2  D.......v.Q..... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0140: f3 23 d9 3e 60 38 9d 89-25 92 b8 de ee 9b 9d f3  .#.>`8..%....... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0150: 0a 84 68 e0 47 b7 14 d5-3e 73 e9 a5 57 fb aa 2c  ..h.G...>s..W.., |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0160: 4b b9 fd c3 b4 cf 15 4b-f9 3b ad 81 31 91 21 92  K......K.;..1.!. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0170: b5 fa ae be 8d ae 6b 11-6a 3d 1b 85 7c a4 cf 27  ......k.j=..|..' |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0180: 4b 80 dc fc 86 7f de 1c-58 f2 9d c3 0c ab 61 99  K.......X.....a. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0190: 0d f2 94 37 26 03 4a 1a-cc b0 7c bf 42 82 ea 1f  ...7&.J...|.B... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 01a0: 29 a2 2e 4c 24 92 f0 37-5a b6 38 e1 c7 85 6a 93  )..L$..7Z.8...j. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 01b0: 49 44 00 95 ab 0b 97 8b-2c 56 39 82 e5 41 17 0e  ID......,V9..A.. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 01c0: a3 86 66 29 7d 15 04 5e-23 f3 8a bc 81 58 94 1b  ..f)}..^#....X.. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 01d0: 1a 01 9a cb 86 91 4f 83-4e ee 8e 4b b4 21 41 00  ......O.N..K.!A. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 01e0: 01 69 d2 20 5b d5 95 5e-ec 0b dd 86 ff 35 f3 fe  .i. [..^.....5.. |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 01f0: 75 70 31 7a 86 82 1e 7a-89 85 2b d3 62 76 e7 5a  up1z...z..+.bv.Z |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0200: 57 f3 f2 ec fa 12 f4 e5-fd 1c 68 28 f9 0f 2a 55  W.........h(..*U |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0210: 44 c8 e1 1d 25 51 41 ed-9e fa 02 5d 89 ed f1 fb  D...%QA....].... |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1636): | 0220: 15 43 5d f4 be                                   .C]..            |
+[Mon Jun 21 21:36:57 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:36:57 2004] [info] Initial (No.1) HTTPS request received for child 6 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:37:10 2004] [debug] ssl_engine_io.c(1675): OpenSSL: I/O error, 5 bytes expected to read on BIO#8236dd8 [mem: 8227be0]
+[Mon Jun 21 21:37:10 2004] [info] (70007)The timeout specified has expired: SSL input filter read failed.
+[Mon Jun 21 21:37:10 2004] [debug] ssl_engine_kernel.c(1769): OpenSSL: Write: SSL negotiation finished successfully
+[Mon Jun 21 21:37:10 2004] [info] Connection to child 1 closed with standard shutdown(server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:37:10 2004] [debug] ssl_engine_io.c(1675): OpenSSL: I/O error, 5 bytes expected to read on BIO#8220630 [mem: 8227cb0]
+[Mon Jun 21 21:37:10 2004] [info] (70007)The timeout specified has expired: SSL input filter read failed.
+[Mon Jun 21 21:37:10 2004] [debug] ssl_engine_kernel.c(1769): OpenSSL: Write: SSL negotiation finished successfully
+[Mon Jun 21 21:37:10 2004] [info] Connection to child 4 closed with standard shutdown(server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:37:10 2004] [debug] ssl_engine_io.c(1675): OpenSSL: I/O error, 5 bytes expected to read on BIO#8220630 [mem: 8227cb0]
+[Mon Jun 21 21:37:10 2004] [info] (70007)The timeout specified has expired: SSL input filter read failed.
+[Mon Jun 21 21:37:10 2004] [debug] ssl_engine_kernel.c(1769): OpenSSL: Write: SSL negotiation finished successfully
+[Mon Jun 21 21:37:10 2004] [info] Connection to child 5 closed with standard shutdown(server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:37:12 2004] [debug] ssl_engine_io.c(1675): OpenSSL: I/O error, 5 bytes expected to read on BIO#8220630 [mem: 8227cb0]
+[Mon Jun 21 21:37:12 2004] [info] (70007)The timeout specified has expired: SSL input filter read failed.
+[Mon Jun 21 21:37:12 2004] [debug] ssl_engine_kernel.c(1769): OpenSSL: Write: SSL negotiation finished successfully
+[Mon Jun 21 21:37:12 2004] [info] Connection to child 6 closed with standard shutdown(server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:37:58 2004] [info] Connection to child 7 established (server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:37:58 2004] [info] Seeding PRNG with 136 bytes of entropy
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1751): OpenSSL: Handshake: start
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: before/accept initialization
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 11/11 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 55 01 00 00-51 03                    ....U...Q.       |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1640): | 0011 - <SPACES/NULS>
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 79/79 bytes from BIO#8220630 [mem: 8227cbb] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: c4 81 d3 b6 d2 85 ca 15-c5 2b 24 d6 4c 74 7d ce  .........+$.Lt}. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0010: 18 ea 94 9f c1 5e a8 e1-b9 c2 6d d3 cf ac 7f 55  .....^....m....U |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0020: 20 f6 39 e7 c4 ad 76 78-e0 01 ca d0 8d d1 7d 71   .9...vx......}q |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0030: 23 c0 1a b5 d7 0a 55 a1-5c 08 4d 10 5d b1 8a ce  #.....U.\\.M.]... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0040: 28 00 0a 00 04 00 0a 00-09 00 03 00 06 01        (.............   |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1640): | 0079 - <SPACES/NULS>
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(724): inside shmcb_retrieve_session
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(736): id[0]=246, masked index=6
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(1191): entering shmcb_lookup_session_id
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(979): entering shmcb_expire_division
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(1201): loop=0, count=1, curr_pos=0
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(1205): idx->s_id2=57, id[1]=57, offset=0
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(1222): at index 0, found possible session match
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(1241): a match!
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(752): leaving shmcb_retrieve_session
+[Mon Jun 21 21:37:58 2004] [debug] ssl_scache_shmcb.c(423): shmcb_retrieve had a hit
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1597): Inter-Process Session Cache: request=GET status=FOUND id=F639E7C4AD7678E001CAD08DD17D7123C01AB5D70A55A15C084D105DB18ACE28 (session reuse)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client hello A
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server hello A
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write change cipher spec A
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write finished A
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: 14 03 00 00 01                                   .....            |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 1/1 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: 01                                               .                |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 38                                   ....8            |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 56/56 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: 3d e3 8e 53 cf 03 2e 00-a2 b8 64 ef 20 89 c3 b0  =..S......d. ... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0010: c4 f0 11 7a 32 1d 4a 2a-23 cd 2f 52 cb 82 94 cb  ...z2.J*#./R.... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0020: a8 2f 1d c0 58 6b 0f 9c-93 32 ac 76 25 6a 93 44  ./..Xk...2.v%j.D |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0030: a6 ce a6 8c 4b db fa 50-                         ....K..P         |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read finished A
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1755): OpenSSL: Handshake: done
+[Mon Jun 21 21:37:58 2004] [info] Connection: Client IP: 204.0.13.28, Protocol: SSLv3, Cipher: RC4-MD5 (128/128 bits)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 01 f5                                   .....            |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 501/501 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: 27 18 5b 93 34 24 0c 55-ed 14 fd d9 78 70 e9 1b  '.[.4$.U....xp.. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0010: ae 97 7a 0e 63 23 3f fa-e0 3b 51 3a 9a 87 d1 a1  ..z.c#?..;Q:.... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0020: 2d 01 5e e8 07 40 97 fc-ef a1 02 b3 c9 9a f8 2d  -.^..@.........- |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0030: 08 03 01 d0 4e fb bd b3-67 4b 73 a2 56 e6 1a 84  ....N...gKs.V... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0040: a5 41 bd 68 dc c9 e1 f0-06 fc 61 f7 8c 8c 7b 9d  .A.h......a...{. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0050: 06 9f fa 1a a3 44 86 39-1e 3f 52 e9 90 34 1b 15  .....D.9.?R..4.. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0060: 6d 2a ef 1e ac 85 1d 1f-e2 fc 01 fc cc 7c ce 25  m*...........|.% |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0070: f3 59 23 e2 66 a9 95 46-14 0f ab 44 ef 8f a3 85  .Y#.f..F...D.... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0080: ec d7 98 61 c9 5e 6f 96-85 0f 94 6c 80 f2 00 04  ...a.^o....l.... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0090: f4 34 07 3d 79 c7 5f ff-68 2d 3b 60 6f 7a 44 5f  .4.=y._.h-;`ozD_ |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 00a0: 8b b4 e6 39 3c d8 fe d5-9a a8 cf 6e 33 72 18 67  ...9<......n3r.g |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 00b0: 40 fd 44 69 ae 3f 7c 07-4f dd df da 4e cd 7f f6  @.Di.?|.O...N... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 00c0: ad 52 ce a6 fa ea e1 d8-40 0c 50 32 c7 91 ec d2  .R......@.P2.... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 00d0: 74 84 a4 15 67 4d 57 da-e0 53 71 41 99 5d c6 17  t...gMW..SqA.].. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 00e0: 08 a4 98 ea 16 ea fe 98-56 6e 93 3a 1c ef 74 a5  ........Vn.:..t. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 00f0: e5 38 e5 28 7d 6b 06 07-0d 42 2a a6 21 a2 0e 3a  .8.(}k...B*.!..: |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0100: 30 e5 7e d0 b0 63 c3 f3-ac 5b fd c7 bd 7a a5 15  0.~..c...[...z.. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0110: 75 85 ee 7b 6f 8f 82 a8-01 5a 10 cc 58 c9 64 0b  u..{o....Z..X.d. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0120: 01 4d 65 b9 bd e7 09 6b-4f ce f8 bd 99 37 0f 58  .Me....kO....7.X |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0130: d2 2f 1d 5f 56 69 10 74-f1 85 11 ea 78 d4 02 63  ./._Vi.t....x..c |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0140: 05 2b 13 8c 96 5f 4f d2-bc 77 ab 70 32 c8 fd b0  .+..._O..w.p2... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0150: 45 0c 83 c9 ec b5 d8 36-36 cd d4 fa cc 18 68 89  E......66.....h. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0160: 57 70 ad 13 76 83 2d ba-55 9d 9b e1 8c d8 8d 04  Wp..v.-.U....... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0170: f7 3c a6 82 b4 2e ac d9-64 2f 63 40 98 0e 2f 58  .<......d/c@../X |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0180: 52 f6 9b be e2 82 5a 99-55 d7 31 99 15 fa 58 1f  R.....Z.U.1...X. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0190: a3 df 73 c4 df ad a3 fd-cc cb 5e 26 4c e0 9b d3  ..s.......^&L... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 01a0: 37 0d ef 96 6b 76 7e c9-f4 0f d2 80 e0 ab 95 b0  7...kv~......... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 01b0: 89 0a c8 75 b9 35 13 a8-d9 2e 9e bc a7 7c 85 28  ...u.5.......|.( |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 01c0: a8 45 ba b6 3f 61 05 31-0a 1c b8 7b 56 ca 4f 91  .E..?a.1...{V.O. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 01d0: 59 3d d4 70 d1 37 da ae-13 e5 53 9a f0 ef f0 78  Y=.p.7....S....x |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 01e0: f0 31 ca bf 34 57 bc 28-d3 df fc ac a8 46 3f b4  .1..4W.(.....F?. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 01f0: b9 85 3e 97 d6                                   ..>..            |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8220630 [mem: 8227cb0] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 00 67                                   ....g            |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 103/103 bytes from BIO#8220630 [mem: 8227cb5] (BIO dump follows)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0000: 5f a9 f4 34 cd ae db ce-eb 8c e1 6f c7 f4 74 81  _..4.......o..t. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0010: a1 40 20 5e ef 82 85 03-52 d0 19 55 5f f1 62 9f  .@ ^....R..U_.b. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0020: 86 a4 90 b1 da 9c 8c 99-62 5b 40 1e f8 dc 1e c1  ........b[@..... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0030: 1a 89 aa 88 80 b6 da 31-3a 40 9c cf 85 9d 52 b8  .......1:@....R. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0040: 82 30 6e 1d 9a ef 3b db-77 40 15 20 61 06 e4 13  .0n...;.w@. a... |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0050: 87 00 0f 41 39 08 7d d0-a7 2b 5d c9 f2 f3 72 1a  ...A9.}..+]...r. |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1636): | 0060: 09 c0 78 6d 92 24 19                             ..xm.$.          |
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:58 2004] [info] Initial (No.1) HTTPS request received for child 7 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_io.c(1675): OpenSSL: I/O error, 5 bytes expected to read on BIO#8220630 [mem: 8227cb0]
+[Mon Jun 21 21:37:58 2004] [info] (104)Connection reset by peer: SSL input filter read failed.
+[Mon Jun 21 21:37:58 2004] [info] (32)Broken pipe: core_output_filter: writing data to the network
+[Mon Jun 21 21:37:58 2004] [debug] ssl_engine_kernel.c(1769): OpenSSL: Write: SSL negotiation finished successfully
+[Mon Jun 21 21:37:58 2004] [info] Connection to child 7 closed with standard shutdown(server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:37:59 2004] [info] Connection to child 3 established (server weblogin.mobilesque.com:443, client 204.0.13.28)
+[Mon Jun 21 21:37:59 2004] [info] Seeding PRNG with 136 bytes of entropy
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1751): OpenSSL: Handshake: start
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: before/accept initialization
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 11/11 bytes from BIO#8236dd8 [mem: 8229be8] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 55 01 00 00-51 03                    ....U...Q.       |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1640): | 0011 - <SPACES/NULS>
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 79/79 bytes from BIO#8236dd8 [mem: 8229bf3] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: c4 81 d3 b6 b6 4a 3f b4-10 fd f2 1a c2 e2 55 08  .....J?.......U. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0010: 36 a4 09 27 3a af c9 55-40 31 13 2a 47 ce 88 2b  6..':..U@1.*G..+ |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0020: 20 f6 39 e7 c4 ad 76 78-e0 01 ca d0 8d d1 7d 71   .9...vx......}q |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0030: 23 c0 1a b5 d7 0a 55 a1-5c 08 4d 10 5d b1 8a ce  #.....U.\\.M.]... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0040: 28 00 0a 00 04 00 0a 00-09 00 03 00 06 01        (.............   |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1640): | 0079 - <SPACES/NULS>
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(724): inside shmcb_retrieve_session
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(736): id[0]=246, masked index=6
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(1191): entering shmcb_lookup_session_id
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(979): entering shmcb_expire_division
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(1201): loop=0, count=1, curr_pos=0
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(1205): idx->s_id2=57, id[1]=57, offset=0
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(1222): at index 0, found possible session match
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(1241): a match!
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(752): leaving shmcb_retrieve_session
+[Mon Jun 21 21:37:59 2004] [debug] ssl_scache_shmcb.c(423): shmcb_retrieve had a hit
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1597): Inter-Process Session Cache: request=GET status=FOUND id=F639E7C4AD7678E001CAD08DD17D7123C01AB5D70A55A15C084D105DB18ACE28 (session reuse)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read client hello A
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write server hello A
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write change cipher spec A
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 write finished A
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 flush data
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8229be8] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: 14 03 00 00 01                                   .....            |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 1/1 bytes from BIO#8236dd8 [mem: 8229bed] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: 01                                               .                |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8229be8] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: 16 03 00 00 38                                   ....8            |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 56/56 bytes from BIO#8236dd8 [mem: 8229bed] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: 5b a0 57 8a 9e eb 05 e2-68 22 a7 0e b2 98 58 c2  [.W.....h"....X. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0010: 1f b7 06 63 c9 31 b6 56-a8 f1 7c 0a 26 9a 63 66  ...c.1.V..|.&.cf |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0020: 86 72 eb be b5 b3 a9 b9-04 73 46 a7 eb 6e f5 dd  .r.......sF..n.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0030: d3 7e 60 57 36 74 2e 92-                         .~`W6t..         |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1759): OpenSSL: Loop: SSLv3 read finished A
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1755): OpenSSL: Handshake: done
+[Mon Jun 21 21:37:59 2004] [info] Connection: Client IP: 204.0.13.28, Protocol: SSLv3, Cipher: RC4-MD5 (128/128 bits)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8229be8] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 01 d6                                   .....            |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 470/470 bytes from BIO#8236dd8 [mem: 8229bed] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: bb 18 15 3e 54 7b 3f df-98 7b 58 00 bc 77 ac 11  ...>T{?..{X..w.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0010: cf 9c 51 b7 80 24 73 65-0d 4d e6 6e 20 cc 81 c7  ..Q..$se.M.n ... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0020: 96 a0 e9 3a 59 ed 8d d1-3a 92 63 b0 b3 23 47 77  ...:Y...:.c..#Gw |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0030: 89 f5 86 91 be 9a 0b 04-4a 2d 7e e2 57 05 7c be  ........J-~.W.|. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0040: 43 11 55 07 83 60 9a 64-79 59 bc 32 13 90 2a f0  C.U..`.dyY.2..*. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0050: a8 f4 31 9a cb 14 c0 e0-52 91 76 61 69 9f 5c d6  ..1.....R.vai.\\. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0060: c0 d7 39 b9 11 0d 06 f2-66 c3 37 2f 22 dc 8a d3  ..9.....f.7/"... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0070: 4e 57 5f ac 72 f7 18 1e-6b 30 8a 1b 2d 5c 7f 4f  NW_.r...k0..-\\.O |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0080: 05 e8 f6 92 1d 28 71 a7-16 84 99 5d 4a 2d 84 a6  .....(q....]J-.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0090: 02 3a 2d 64 b2 8a 01 0c-e9 70 13 d0 da b1 2f 77  .:-d.....p..../w |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00a0: 13 9a 2a 9a 4f 5a 4a 33-84 b6 43 27 f6 9e 29 88  ..*.OZJ3..C'..). |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00b0: 40 46 13 f0 3b 05 ce a2-ba ea af 82 42 b5 87 74  @F..;.......B..t |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00c0: 6d fd 06 c5 44 23 a2 b6-2b 36 97 f5 03 40 22 8f  m...D#..+6...@". |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00d0: de ec 32 db bf a1 67 c1-8c ca 59 71 5c a2 05 c7  ..2...g...Yq\\... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00e0: 94 01 6d b8 75 9c 47 49-c4 7c 3d 21 24 a0 c7 b9  ..m.u.GI.|=!$... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00f0: ea 1f 01 3b 6c ad b9 6f-5e de 45 c4 83 4a 69 6f  ...;l..o^.E..Jio |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0100: 1e e1 52 ed dc f7 e4 fd-d3 c8 f5 5c 96 03 07 b6  ..R........\\.... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0110: ee 59 63 78 94 51 16 6b-b5 e3 41 73 d5 ee 4f 2d  .Ycx.Q.k..As..O- |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0120: bf 36 68 83 eb 8e c9 1c-98 9b ba 1b ac 03 00 7b  .6h............{ |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0130: 42 dd f5 d6 c9 3e 79 11-c8 be ef 4c 59 ad 67 5d  B....>y....LY.g] |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0140: ca 16 00 4f a0 46 3b 5e-12 8a a6 8a 24 73 df 0a  ...O.F;^....$s.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0150: 24 16 3a c0 5d 34 46 95-70 60 85 7b 93 f2 0c a7  $.:.]4F.p`.{.... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0160: de fa bc 88 4e 30 66 c8-e9 01 7f 76 90 7e 1a 96  ....N0f....v.~.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0170: 23 95 ac a0 6a 9f dd 3f-1d 40 b5 05 46 58 e7 1a  #...j..?.@..FX.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0180: f5 72 03 2a 56 b0 c3 2a-6b 1b 00 43 ce ce 31 12  .r.*V..*k..C..1. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0190: 36 6a 78 46 4d 12 45 a6-21 ec be 89 a8 27 99 2f  6jxFM.E.!....'./ |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01a0: cb ec a3 16 74 ae 89 5a-e0 7a db ae 9a db b8 2f  ....t..Z.z...../ |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01b0: f5 05 34 8d e5 6e e1 0d-2e 47 7b 2b 27 43 c6 74  ..4..n...G{+'C.t |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01c0: 54 8d c3 f6 0d 82 02 9a-f1 78 98 b3 0a 0d c1 4a  T........x.....J |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01d0: 26 ef 06 e7 f0 96                                &.....           |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [info] Initial (No.1) HTTPS request received for child 3 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8229be8] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 03 32                                   ....2            |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 818/818 bytes from BIO#8236dd8 [mem: 8229bed] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: 8e d6 71 f0 91 4c 67 19-39 5b ae 44 3d 29 fe 4a  ..q..Lg.9[.D=).J |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0010: bd c2 f0 b1 c7 90 46 b9-36 1d fe 9d 60 80 6c b1  ......F.6...`.l. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0020: 44 df d6 84 fd 16 ca 3b-24 b1 74 40 bc 03 a2 47  D......;$.t@...G |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0030: df 7f fd 2a 9d c0 25 24-17 7f 51 c5 c8 01 c9 ed  ...*..%$..Q..... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0040: 94 ac 91 1f 66 09 04 c8-35 24 3f e8 b0 df bf 73  ....f...5$?....s |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0050: c1 dd 54 13 bc 20 89 ac-a1 e9 b9 2a 92 67 ea e0  ..T.. .....*.g.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0060: fc 1a f2 ea 71 e2 d2 4b-b5 77 07 6a f5 33 66 d7  ....q..K.w.j.3f. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0070: a0 4a 92 c3 f8 13 94 73-5d 20 02 80 6c 19 78 3f  .J.....s] ..l.x? |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0080: e8 9f 19 90 be e5 7b ba-af f1 3b e5 35 f1 99 75  ......{...;.5..u |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0090: 12 a2 c0 23 1a 34 1c 77-06 df 32 5a 1f cc 44 82  ...#.4.w..2Z..D. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00a0: e5 6d 4d 55 c4 16 19 f0-25 d1 3c 34 4c de 56 33  .mMU....%.<4L.V3 |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00b0: ce 2a b1 b3 06 3b ff 5e-da 53 53 41 78 d1 f5 18  .*...;.^.SSAx... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00c0: af e9 8f 4a a9 15 c3 ec-52 36 76 f3 22 46 03 e5  ...J....R6v."F.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00d0: a8 ab 82 6d 38 48 78 3e-bf c5 6d a0 69 7d 96 ef  ...m8Hx>..m.i}.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00e0: 8d 23 c3 52 c4 75 f6 f6-0e 97 53 37 71 2a 81 45  .#.R.u....S7q*.E |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00f0: 21 84 66 e4 f4 72 9f d3-79 49 90 b1 b1 33 20 9f  !.f..r..yI...3 . |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0100: e1 ca dd 31 61 31 0f d1-40 51 08 b3 95 1a 80 a7  ...1a1..@Q...... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0110: 57 29 00 37 64 f4 2a 34-09 8c d9 0e 8f 31 54 8f  W).7d.*4.....1T. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0120: 5b 5f 29 03 8c 2c af 66-bb 29 92 32 24 67 9c fe  [_)..,.f.).2$g.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0130: 39 72 81 4b 31 1e e1 52-79 8f 07 6d 2c fa d9 9c  9r.K1..Ry..m,... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0140: 88 a1 33 7b 74 a7 20 86-0f d9 79 47 1e 50 66 ac  ..3{t. ...yG.Pf. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0150: 52 12 1e bc 15 f0 1a fa-0b 60 3f 3a 7c d3 20 a6  R........`?:|. . |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0160: cf 52 84 a0 41 86 26 05-ad da ac 71 06 88 83 13  .R..A.&....q.... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0170: 5d 92 a3 7e b8 ed 79 6e-c4 ae f3 c4 ad b0 45 9f  ]..~..yn......E. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0180: 3a 1d 94 5f 79 dd fa 9a-71 22 f4 fc f7 ea dc 60  :.._y...q".....` |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0190: ee c4 43 55 03 de bf c1-04 54 c1 23 a2 16 f2 42  ..CU.....T.#...B |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01a0: 51 41 c6 ca 1d 90 b4 70-c1 36 10 be 7d 06 95 31  QA.....p.6..}..1 |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01b0: 3e 1d b5 1a 5e c8 3c 0b-cb 21 44 a8 30 bc 07 8c  >...^.<..!D.0... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01c0: ce 8f 82 a0 1f cb db 83-40 73 f2 ab 9f 5f 8a c2  ........@s..._.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01d0: 47 e8 90 3d f9 e3 c0 03-b3 38 37 f6 75 66 98 78  G..=.....87.uf.x |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01e0: df a8 a7 ff 31 c8 5c e8-5d 7e 9d cd 8e 48 d6 c6  ....1.\\.]~...H.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01f0: 89 02 4d 78 03 e0 ac 49-4c 3a 91 b2 db 7a 8e d5  ..Mx...IL:...z.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0200: 08 57 e2 6c f0 23 6d b0-1c e6 8c 27 66 29 0d 04  .W.l.#m....'f).. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0210: 3f fa be 15 45 fe 2b b1-ea 8d 12 03 fb 84 e5 d9  ?...E.+......... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0220: b3 55 da e9 79 52 c6 ad-df a3 9e 79 76 60 1e 2f  .U..yR.....yv`./ |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0230: 7d 2c 02 71 11 bf 4b 3e-ea 3c be 55 a9 2c ce fe  },.q..K>.<.U.,.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0240: ea fd 8f 2c 2b 74 5e ca-51 c8 39 f4 fa db ec 3c  ...,+t^.Q.9....< |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0250: f8 ad 30 86 60 cf 0c be-93 ec a3 3e 5b 07 35 00  ..0.`......>[.5. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0260: 74 44 45 21 af 3f 93 37-02 eb 96 60 9e 57 9f e3  tDE!.?.7...`.W.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0270: 84 c9 92 c8 73 2e 25 28-05 c4 be c3 2c 95 de 52  ....s.%(....,..R |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0280: 8b ba 7e 90 70 19 53 e0-7f 59 fd d6 33 07 3c b3  ..~.p.S..Y..3.<. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0290: ba f8 04 62 1a e3 ca 72-7b ec 2d 3f 55 d6 80 93  ...b...r{.-?U... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02a0: 72 db 72 ca aa ef cb 66-2c 9a db a0 a0 ad 2f f3  r.r....f,...../. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02b0: e1 8b 7d be ac f3 39 ce-ab 96 83 e7 93 82 95 a8  ..}...9......... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02c0: 0c 66 e3 be e9 da 68 db-3e 9c d3 d7 cc 01 4b 8c  .f....h.>.....K. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02d0: 21 ca 13 41 1a 13 02 55-7d 56 f6 18 74 6e 89 11  !..A...U}V..tn.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02e0: 8b a3 28 d5 6f 0c 58 b0-b6 bf 7a 7e e4 1b c7 f7  ..(.o.X...z~.... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02f0: 23 45 0c 5c b2 a6 58 62-d2 04 35 61 d8 c1 89 56  #E.\\..Xb..5a...V |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0300: 32 a6 86 ad 5d 79 7c 2c-f0 11 93 45 c7 57 50 5e  2...]y|,...E.WP^ |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0310: b6 44 1e f3 80 34 5a 31-93 9e 0e 41 15 1d 75 7e  .D...4Z1...A..u~ |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0320: d3 4b e1 fc 26 6b 84 b1-e2 f5 dc 96 a9 d7 ff 4f  .K..&k.........O |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0330: 02 72                                            .r               |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [info] Subsequent (No.2) HTTPS request received for child 3 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 5/5 bytes from BIO#8236dd8 [mem: 8229be8] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: 17 03 00 03 32                                   ....2            |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1664): OpenSSL: read 818/818 bytes from BIO#8236dd8 [mem: 8229bed] (BIO dump follows)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1611): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0000: d3 5d 9f 05 59 58 19 37-16 d6 6c 85 15 8e b7 bd  .]..YX.7..l..... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0010: 50 72 19 53 c9 2c 8e 36-95 d6 05 4e ed ed 0d c8  Pr.S.,.6...N.... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0020: 38 43 2c 81 e9 89 4a f3-55 97 5f 83 a6 8c b4 de  8C,...J.U._..... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0030: 78 27 f7 ac b8 05 08 b8-be 6f 00 b7 92 04 c8 ef  x'.......o...... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0040: 73 87 16 b6 7b da cf 0a-e4 86 42 ac ef 1f 8d 14  s...{.....B..... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0050: a9 9b fa 47 73 d9 b3 71-62 08 c6 b1 3d 95 11 e8  ...Gs..qb...=... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0060: 97 63 80 4e a5 35 f2 72-b2 86 1a 10 71 8d d0 10  .c.N.5.r....q... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0070: 4e c1 7f 8a ab 81 f6 d2-74 62 f0 9d fd 8b 20 53  N.......tb.... S |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0080: a9 2a 73 cc 87 37 f3 c6-ff 3e 99 11 48 72 0c f5  .*s..7...>..Hr.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0090: e1 e9 1d 39 f1 ba 12 35-04 ea 3f 91 d2 38 0a 91  ...9...5..?..8.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00a0: ee 1a b1 82 17 ae 2d 84-12 98 05 75 94 57 f0 ba  ......-....u.W.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00b0: 5d cd fd 27 9e be ef 42-f1 ae d8 eb 01 7e 46 c6  ]..'...B.....~F. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00c0: 20 19 94 a6 16 5e 70 6f-ba 45 25 86 b4 a0 98 50   ....^po.E%....P |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00d0: be 03 27 69 28 62 d7 06-dc dc 9d 2a ae 90 11 90  ..'i(b.....*.... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00e0: 1e 76 0f b7 84 11 0d 1a-0d f6 c1 a7 62 b5 43 1b  .v..........b.C. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 00f0: 49 a2 cc e3 86 ea 22 98-8c ff 95 de a6 e0 93 52  I....."........R |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0100: ea ed 3c de b6 8f 24 f4-0b 5e 2c f9 3e 5b 12 22  ..<...$..^,.>[." |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0110: dd 23 f0 b6 2e 74 45 14-e7 05 70 de 55 b0 e6 8f  .#...tE...p.U... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0120: a3 85 66 19 6d 95 11 d6-1a 72 57 5f 16 61 65 49  ..f.m....rW_.aeI |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0130: b2 08 a9 bc 55 2f f2 d6-6d 75 79 f7 59 f4 c2 77  ....U/..muy.Y..w |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0140: dc 06 53 5f 21 38 03 da-4b a4 2b bc 7c 4a e2 f0  ..S_!8..K.+.|J.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0150: dd 51 68 40 ce 20 85 73-55 d9 ef 59 89 42 f2 b9  .Qh@. .sU..Y.B.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0160: d8 0e 11 52 fe c3 69 fd-ca 86 2d 5e 25 3b 55 b0  ...R..i...-^%;U. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0170: 06 54 51 43 e2 27 08 e6-ab b6 ae 7a be 7a b2 2e  .TQC.'.....z.z.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0180: 8a 8e fb 4d b5 ae 28 57-f2 96 14 30 56 64 38 8f  ...M..(W...0Vd8. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0190: 0b c2 93 fe 72 27 0a 3f-48 bd 1b 00 6d a6 74 0a  ....r'.?H...m.t. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01a0: c7 df 7a e7 3b 66 64 7e-d5 4c da 02 51 3f 1e 1e  ..z.;fd~.L..Q?.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01b0: fd 39 b1 42 d9 b0 47 a3-6b 35 16 c7 bb f9 29 66  .9.B..G.k5....)f |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01c0: 52 8f 1f 99 c7 a5 b0 52-c9 c8 9c 6b fb 9c 03 4f  R......R...k...O |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01d0: 25 57 29 5d 51 25 5d 21-52 5c 95 86 14 fa 69 94  %W)]Q%]!R\\....i. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01e0: 4b 1c b3 82 ab 12 2e e8-89 74 07 16 f6 42 0d 05  K........t...B.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 01f0: 30 45 cf 2a da 70 b5 05-23 5e ee 43 3b 97 12 5a  0E.*.p..#^.C;..Z |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0200: 3e 6a 94 3e b1 7e 91 81-91 85 88 70 3a 48 44 6f  >j.>.~.....p:HDo |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0210: 5f 4b 70 e4 d6 71 de 32-37 7a 3c 27 fc 92 4a d8  _Kp..q.27z<'..J. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0220: 79 c1 6c ef dd 7d f3 06-59 34 e1 ae fa c4 3b 28  y.l..}..Y4....;( |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0230: 61 9b 9d 2e 0a 30 6e 2c-85 1c 52 a3 72 2a 99 12  a....0n,..R.r*.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0240: 53 3b 09 e2 cf e3 ac 62-39 27 4f c0 42 1b 5b af  S;.....b9'O.B.[. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0250: b4 00 32 63 87 67 1d 0e-28 bc 70 b7 cf ea 66 c4  ..2c.g..(.p...f. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0260: 74 4f cf 42 08 00 b3 78-72 33 41 af db 2e 16 2c  tO.B...xr3A...., |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0270: a1 61 cd 6a 32 4a 66 3c-79 6d 94 c4 c6 c7 31 e9  .a.j2Jf<ym....1. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0280: 1e 09 53 81 8b a2 f1 8c-65 c4 42 2f 93 90 fe b7  ..S.....e.B/.... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0290: 35 5a b6 53 79 72 3e 1c-82 f4 bd 6d c6 79 ee c6  5Z.Syr>....m.y.. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02a0: 53 d5 b0 a9 f7 56 03 10-ba 68 8f ca ef 09 53 bf  S....V...h....S. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02b0: b7 01 1b 02 15 63 14 5a-6c 29 e5 d5 37 05 f5 85  .....c.Zl)..7... |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02c0: 5f e2 0c fc 5e 8c 0d f0-ce ea ba 7f b4 76 51 7a  _...^........vQz |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02d0: 22 b4 6e 67 9a a6 04 b1-c8 27 d3 7c c6 6d 2c b5  ".ng.....'.|.m,. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02e0: dc 1e df 9b c4 30 f1 8c-3d 12 3c 45 e2 46 e4 59  .....0..=.<E.F.Y |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 02f0: 34 e0 5e 5c 33 bd b9 73-5d 07 4d 29 68 5d e6 2d  4.^\\3..s].M)h].- |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0300: c2 fa 5c e2 20 09 dc 15-b6 fa fd c6 65 04 4d 0e  ..\\. .......e.M. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0310: 89 75 d7 75 d9 e6 63 30-45 5c a6 4c f7 56 3f 05  .u.u..c0E\\.L.V?. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0320: e3 1d 51 16 ca 57 f8 61-d7 4a 81 53 06 01 51 db  ..Q..W.a.J.S..Q. |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1636): | 0330: 25 71                                            %q               |
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_io.c(1642): +-------------------------------------------------------------------------+
+[Mon Jun 21 21:37:59 2004] [info] Subsequent (No.3) HTTPS request received for child 3 (server weblogin.mobilesque.com:443)
+[Mon Jun 21 21:37:59 2004] [debug] ssl_engine_kernel.c(1769): OpenSSL: Write: SSL negotiation finished successfully
+[Mon Jun 21 21:37:59 2004] [info] Connection to child 3 closed with standard shutdown(server weblogin.mobilesque.com:443, client 204.0.13.28)

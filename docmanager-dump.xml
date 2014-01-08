@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE docmanager [
+<!ELEMENT docmanager (docgroup+)>
+<!ELEMENT docgroup (doc_group_id,groupname,documents)>
+<!ELEMENT doc_group_id (#PCDATA)>
+<!ELEMENT groupname (#PCDATA)>
+<!ELEMENT documents (document*)>
+<!ELEMENT document (url,docid,title,data,state,updatedate,createdate,description,language,creator)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT docid (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT data (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT updatedate (#PCDATA)>
+<!ELEMENT createdate (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT language (#PCDATA)>
+<!ELEMENT creator (#PCDATA)>
+]>
+<docmanager>
+<docgroup>
+<doc_group_id>127996</doc_group_id>
+<groupname>Uncategorized Submissions</groupname>
+<documents>
+</documents>
+</docgroup>
+</docmanager>

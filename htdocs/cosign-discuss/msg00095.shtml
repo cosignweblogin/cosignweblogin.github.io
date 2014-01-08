@@ -1,0 +1,231 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: CoSign source and configuration changes I have made -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 28 Apr 2004 03:12:33 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040428071037.E56C4343F8@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Derived: bin00000.bin -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00094.shtml">Date Prev</a>][<a href="msg00096.shtml">Date Next</a>][<a href="msg00096.shtml">Thread Prev</a>][<a href="msg00097.shtml">Thread Next</a>][<a href="maillist.shtml#00095">Date Index</a>][<a href="threads.shtml#00095">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>CoSign source and configuration changes I have made</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'kevin mcgowan'&quot; &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: CoSign source and configuration changes I have made</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 28 Apr 2004 19:10:30 +1200</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Thread-index</em>: AcQs7+J7lGbGLDAKT1WOHH0bEwACIw==</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<address>Title: <strong>CoSign source and configuration changes I have made</strong></address>
+
+
+
+
+<!---->
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Hi all,</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">I have made the changes (and</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">attach</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">ed patches for them</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">&#8211;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> diff taken against the current head on the UM CVS server) details below. I am asking they be considered for inclusion, after discussion into the CVS source. Most of the changes have no impact on the way CoSign works or is configured as a default, they just add options etc.</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">The exceptions are I have change the cgi Makefile to install</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">to the web document base</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> in a cosign directory: ie ${DOCROOTDIR}/cosign</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> and I have changed the template and HTML directory to ${cosigndocroot}/cosign/templates and ${cosigndocroot}/cosign/html respectively. I have done this to make the cosign install</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> into is own directory on the web server so that something else, if required can live on the web server also.</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Attatched is a list of the changes</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> made:</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">configure.ac</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Added &#8211;with-ticketcache=DIR to allow a user to configure the ticket cache location, defaults to /ticket</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Added &#8211;with-cosignloginurl=URL to configure the redirection to the cosign login processes, defaults to /</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Added &#8211;with-webdocroot=DIR to configure the location of the web servers document root for the cosign server installation</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Added html/defines.m4 to the output files</FONT></SPAN>
+</P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Makefile.in</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Added html/defines.m4 to the distclean action</FONT></SPAN>
+</P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">cgi/Makefile.in</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Remove prefix,exec-prefix,SBINDIR</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Replaced CGIDIR, DOCROOTDIR with configured vaules from autoconf</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Added TEMPLATEDIR and COSIGNTICKETCACHE with values from autoconf and dervived</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Added define</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> for _TEMPLATE_DIR</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> to cgi.o and logout.o actions.</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Added define for _</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">COSIGN</FONT></SPAN><SPAN LANG="en-nz"><I></I></SPAN><SPAN LANG="en-nz"><I><FONT SIZE=2 FACE="Arial">_</FONT></I></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">TICKET</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">_CACHE to cgi.o action.</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">commented out the &#8211;mkdir &#8211;p ${exec_prefix} and changed &#8211;mkdir &#8211;p ${DOCROOTDIR} to ${DOCROOT</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">DIR</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">}/cosign in install action</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">cgi/cgi.c</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Changed &#8216;../templates&#8217; in the HTML defines to _</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">TEMPLATE</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">_DIR</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Change the SERVICE_MENU define from /services/ to /cosign/html/services/</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Changed TKT_PREFIX from &#8216;/ticket&#8217; to _</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">COSIGN</FONT></SPAN><SPAN LANG="en-nz"><I></I></SPAN><SPAN LANG="en-nz"><I><FONT SIZE=2 FACE="Arial">_</FONT></I></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">TICKET</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">_CACHE (defined by configure)</FONT></SPAN>
+</P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">cgi/logout.c</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Changed &#8216;../tempates&#8217; in the HTML defines to _</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">TEMPLATE</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">_DIR</FONT></SPAN>
+</P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">html/Makefile.in</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Removed prefix and exec_prefix.</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Added cosigndocroot set by configure</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Changed TMPLDIR and HTMLDIR to ${cosigndocroot}/cosign/templates nd ${cosigndocroot}/cosign/html resp</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Changed the install action to install to these locations etc.</FONT></SPAN>
+</P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">html/login.m4</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Added include for defines.m4</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Changed form action from &#8220;/&#8221; to &#8220;LOGIN_URL&#8221; (from defines.m4)</FONT></SPAN>
+</P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">html/verify-logout.m4</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Added include for defines.m4</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">changed form action from &#8220;/cgi-bin/logout&#8221; to &#8220;LOGOUT_URL (from defines.m4)</FONT></SPAN>
+</P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">daemon/Makefile.in</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Added COSIGNTICKETCACHE from configure</FONT></SPAN>
+
+<BR><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT> <FONT SIZE=2 FACE="Arial">Changed DEFS to include define for _</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">COSIGN</FONT></SPAN><SPAN LANG="en-nz"><I></I></SPAN><SPAN LANG="en-nz"><I><FONT SIZE=2 FACE="Arial">_</FONT></I></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">TICKET</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">_CACHE</FONT></SPAN>
+</P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">daemon/command.c</FONT></SPAN></P>
+
+<P><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">Changed TKT_PREFIX from &#8216;/ticket&#8217; to _</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">COSIGN</FONT></SPAN><SPAN LANG="en-nz"><I></I></SPAN><SPAN LANG="en-nz"><I><FONT SIZE=2 FACE="Arial">_</FONT></I></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">TICKET</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">_CACHE</FONT></SPAN>
+</P>
+<BR>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">I have created html/defines.m4.in which is an input file for defines.m4, which is included by login.m4 and verify-logout.m4 to use the configured login and logout locations etc.</FONT></SPAN></P>
+<BR>
+<BR>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT FACE="Arial" SIZE=2 COLOR="#000000"> &lt;&lt;...&gt;&gt; </FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"></SPAN><A NAME=""><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">------------</FONT></SPAN></A></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Brett Lomas</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Integration Architect</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Information Technology Systems and Services</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">The University of Auckland</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">New Zealand</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Phone:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +64 9 3737 599 extn 86499</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Mobile: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +64 21 757 096</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"></SPAN></P>
+
+
+<p><strong>Attachment:
+<a href="bin00000.bin" ><tt>cosign_patches.tgz</tt></a></strong><br>
+<em>Description:</em> application/compressed</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00097" href="msg00097.shtml">Re: CoSign source and configuration changes I have made</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00094.shtml">Application pooling and cosign filter access sharing violation</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00096.shtml">Re: Application pooling and cosign filter access sharing violation</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00096.shtml">Re: Application pooling and cosign filter access sharing violation</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00097.shtml">Re: CoSign source and configuration changes I have made</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00095"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00095"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

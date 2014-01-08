@@ -1,0 +1,222 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: CosignIIS problems -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Fri, 16 Jul 2004 13:23:10 &#45;0400 (EDT) -->
+<!--X-Message-Id: 1260927638.1089983948@[192.168.1.101] -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040715221021.869E1348A4@smtp1.ec.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00175.shtml">Date Prev</a>][<a href="msg00177.shtml">Date Next</a>][<a href="msg00175.shtml">Thread Prev</a>][<a href="msg00173.shtml">Thread Next</a>][<a href="maillist.shtml#00176">Date Index</a>][<a href="threads.shtml#00176">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: CosignIIS problems</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: CosignIIS problems</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Fri, 16 Jul 2004 13:19:08 -0400</li>
+<li><em>Cc</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00172.shtml">20040715221021.869E1348A4@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00172.shtml">20040715221021.869E1348A4@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Yes, these changes would be gladly rolled into the official release! 
+Please let me know when you're done with the updates.</tt><br>
+<br>
+<tt>--Jarod</tt><br>
+<br>
+<tt>--On Friday, July 16, 2004 10:10 AM +1200 Brett Lomas 
+&lt;b.lomas@xxxxxxxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Jarod, and all.</tt><br>
+<br>
+<pre style="margin: 0em;"><br>I am in the process of creating an installer for the UoA for the
+IISCosign. I am attempting to make it so that it will interview the end
+user and create the cosign.dll.config based on answers the user gave and
+also configure the IIS server (ie add the filter to the web servers the
+user selects).</pre><br>
+<pre style="margin: 0em;">Would this be something you guys would be interested in, as I think it
+would be generic enough that it would be able to be used universally?</pre><br>
+<tt>Brett</tt><br>
+<br>
+<pre style="margin: 0em;">-----Original Message-----
+From: Jarod [<a  href="mailto:jarod@xxxxxxxxx">mailto:jarod@xxxxxxxxx</a>]
+Sent: Thursday, 15 July 2004 7:37 p.m.
+To: Brett Lomas
+Cc: 'Cosign Discussion'
+Subject: RE: CosignIIS problems</pre><br>
+<pre style="margin: 0em;"><br>One thing to note with IIS 6.0 is that the filter doesn't usually load
+until necessary.  That is, until a client actually tries to access a
+page on a web site with the IISCosign filter running.</pre><br>
+<pre style="margin: 0em;">|   Jarod Malestein   |
+|   Univ of Michigan  |
+|   ITCS              |</pre><br>
+<tt>On Thu, 15 Jul 2004, Brett Lomas wrote:</tt><br>
+<br>
+<pre style="margin: 0em;">&gt; But wait.. It is getting somewhere. I have cosign logs now. so I will
+&gt; look into these :-) I wasn't logging before - promise!!
+&gt;
+&gt;
+&gt;
+&gt;   _____
+&gt;
+&gt; From: Brett Lomas on vxchange
+&gt; [<a  href="mailto:blom001@xxxxxxxxxxxxxxxxxxxxxxxxxxx">mailto:blom001@xxxxxxxxxxxxxxxxxxxxxxxxxxx</a>] Sent: Thursday, 15 July
+&gt; 2004 2:42 p.m.
+&gt; To: 'Cosign Discussion'
+&gt; Subject: CosignIIS problems
+&gt;
+&gt;
+&gt;
+&gt; Hi all,
+&gt;
+&gt;
+&gt;
+&gt; I am having a problem with the IIS cosign filter. IIS6 reports
+&gt;
+&gt;
+&gt;
+&gt; &quot;The HTTP Filter DLL C:\Program Files\The University of
+&gt; Auckland\UoAWebAuth\cosign.dll failed to load.  The data is the error.
+&gt;
+&gt;
+&gt;
+&gt; For more information, see Help and Support Center at
+&gt; <a  href="http://go.microsoft.com/fwlink/events.asp.&quot">http://go.microsoft.com/fwlink/events.asp.&quot</a>;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt; And the data is just 0x2??
+&gt;
+&gt;
+&gt;
+&gt; I am creating the UoA installer, this is me just setting IIS manually
+&gt; so I can then do it programmatically.
+&gt;
+&gt;
+&gt;
+&gt; The installer installs the cosign.dll etc into \Program Files\The
+University
+&gt; of Auckland\UoAWebAuth.
+&gt;
+&gt; The binaries are from the standard IIS installer.
+&gt;
+&gt; The openssl binaries are different though, as I have included the
+&gt; openssl 0.9.7d (compiled locally - openssl the executable correctly
+&gt; runs on the installed machine)
+&gt;
+&gt;
+&gt;
+&gt; I have done the following to rule out things:
+&gt;
+&gt; 1. Full permissions for everyone on the cosign directory.
+&gt;
+&gt; 2. I didn't install MSXML4 because it is already installed
+&gt;
+&gt; 3. The installer uses the configfile and not configpath as the registry
+key.
+&gt;
+&gt;
+&gt;
+&gt; Any ideas?
+&gt;
+&gt;
+&gt;
+&gt; Thanks
+&gt;
+&gt;</pre><br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00172" href="msg00172.shtml">RE: CosignIIS problems</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00175.shtml">Re: CosignIIS problems</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00177.shtml">Cosign on a Sub Directory Only</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00175.shtml">Re: CosignIIS problems</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00173.shtml">RE: CosignIIS problems</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00176"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00176"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

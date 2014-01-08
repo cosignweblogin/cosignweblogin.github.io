@@ -1,0 +1,135 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Another quick question and possible bug report -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Mon, 29 Mar 2004 11:35:52 &#45;0500 (EST) -->
+<!--X-Message-Id: 0E2987D4&#45;819F&#45;11D8&#45;A2C8&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040329021739.3000133F70@smtp1.ec.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00039.shtml">Date Prev</a>][<a href="msg00041.shtml">Date Next</a>][<a href="msg00039.shtml">Thread Prev</a>][<a href="msg00035.shtml">Thread Next</a>][<a href="maillist.shtml#00040">Date Index</a>][<a href="threads.shtml#00040">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Another quick question and possible bug report</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Another quick question and possible bug report</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 29 Mar 2004 11:35:14 -0500</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00034.shtml">20040329021739.3000133F70@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00034.shtml">20040329021739.3000133F70@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Mar 28, 2004, at 9:17 PM, Brett Lomas wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hi Kevin,</tt><br>
+<br>
+<tt>How are things? I have just one quick question for you if you are able 
+and willing. J
+</tt></blockquote><tt><br>always willing, generally able. :)</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>In your last email you detailed that you have CoSign running on 3 
+linux boxes. How have configured these? More specifically I am really 
+asking if each of these boxes run the CGI and cosignd/monster or have 
+you separated them out? Also how have you configured CoSign web 
+servers to talk to these machine? via DNS round-robin or something 
+else?
+</tt></blockquote><tt><br>Each of the 3 central weblogin servers is running Apache, the CGI, 
+cosignd, and monster.  Additionally, they host /cgi-bin/logout and 
+/services/ (our rudimentary &quot;service menu&quot;).</tt><br>
+<br>
+<tt>The services are configured to use &quot;weblogin.umich.edu&quot; as the weblogin 
+server and they convert this name into all of its A records to 
+establish connections for 'CHECK.'  We do not actually use round-robin 
+at the service level as the goal here is thoroughness.  However, user's 
+are directed to one of the 3 weblogin servers for LOGIN and REGISTER 
+using DNS round robin.</tt><br>
+<br>
+<tt>kevin</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00034" href="msg00034.shtml">Another quick question and possible bug report</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00039.shtml">Re: Another quick question and possible bug report</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00041.shtml">IISCosign install, Registry error</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00039.shtml">Re: Another quick question and possible bug report</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00035.shtml">friend functionality</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00040"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00040"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

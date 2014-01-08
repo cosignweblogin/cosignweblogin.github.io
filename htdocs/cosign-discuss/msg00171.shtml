@@ -1,0 +1,146 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: CosignIIS problems -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Thu, 15 Jul 2004 16:43:36 &#45;0400 (EDT) -->
+<!--X-Message-Id: 1186493557.1089909514@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040715030833.30FE834CF2@smtp1.ec.auckland.ac.nz -->
+<!--X-Reference: Pine.SOL.4.58.0407150334120.4628@rygar.gpcc.itd.umich.edu -->
+<!--X-Reference: 40F69E14.3010606@psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00170.shtml">Date Prev</a>][<a href="msg00172.shtml">Date Next</a>][<a href="msg00170.shtml">Thread Prev</a>][<a href="msg00172.shtml">Thread Next</a>][<a href="maillist.shtml#00171">Date Index</a>][<a href="threads.shtml#00171">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: CosignIIS problems</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;,   &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: CosignIIS problems</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Thu, 15 Jul 2004 16:38:34 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00170.shtml">40F69E14.3010606@psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00168.shtml">20040715030833.30FE834CF2@smtp1.ec.auckland.ac.nz</a>&gt; &lt;<a href="msg00169.shtml">Pine.SOL.4.58.0407150334120.4628@rygar.gpcc.itd.umich.edu</a>&gt; &lt;<a href="msg00170.shtml">40F69E14.3010606@psu.edu</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>With both IIS 5 and 6, restarting IIS will reload the filter as well as 
+pick up any config.dll.config file changes.  In IIS 5.0 stopping and 
+restarting the web site usually unloads then reloads the IISCosign filter, 
+too.  In IIS 6.0, stopping the web site does not unload the filter... at 
+least right away.  (It seems after a certain amount of inactivity that it 
+will, eventually, unload.)  This means the filter still has exclusive write 
+control over the log file keeping it in a 'busy' state.</tt><br>
+<br>
+<tt>Has anyone had a situation where IISCosign wouldn't load until they 
+restarted their server?  Here at U of M there was always another issue 
+preventing the filter from loading.  That is, resetting web servers has not 
+been shown to fix a 'IICosign filter will not load' problem.  Not yet 
+anyway and it'd probably be best if we keep it that way. :)</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--ITCS</pre><br>
+<tt>--On Thursday, July 15, 2004 11:09 AM -0400 Phil Pishioneri &lt;pgp@xxxxxxx&gt; 
+wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>While we're talking about the IIS filter...</tt><br>
+<br>
+<pre style="margin: 0em;">Anyone ever notice that, even after stopping the web server, the
+Cosign.log file is busy?  I.e., Wordpad can't open it (though Edit from a
+cmd window can still get to it).  Would seem to imply that a task didn't
+really quit (which then makes me wonder if restarting the web server will
+really pick up a config change, or if I have to reboot the system).</pre><br>
+<tt>-Phil
+</tt></blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00168" href="msg00168.shtml">RE: CosignIIS problems</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00169" href="msg00169.shtml">RE: CosignIIS problems</a></strong>
+<ul><li><em>From:</em> Jarod</li></ul></li>
+<li><strong><a name="00170" href="msg00170.shtml">Re: CosignIIS problems</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00170.shtml">Re: CosignIIS problems</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00172.shtml">RE: CosignIIS problems</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00170.shtml">Re: CosignIIS problems</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00172.shtml">RE: CosignIIS problems</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00171"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00171"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

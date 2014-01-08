@@ -1,0 +1,134 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Cosign 0.9.4 -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Thu, 18 Mar 2004 00:02:46 &#45;0500 (EST) -->
+<!--X-Message-Id: 7E4C626B&#45;7899&#45;11D8&#45;8EFB&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="announce" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-announce at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            cosign release and update announcements
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00009.shtml">Date Prev</a>][<a href="msg00011.shtml">Date Next</a>][<a href="msg00009.shtml">Thread Prev</a>][<a href="msg00011.shtml">Thread Next</a>][<a href="maillist.shtml#00010">Date Index</a>][<a href="threads.shtml#00010">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Cosign 0.9.4</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign.announce@DOMAIN.HIDDEN">cosign.announce@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Cosign 0.9.4</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 28 Mar 2003 12:15:02 -0500</li>
+<li><em>Resent-date</em>: Thu, 18 Mar 2004 00:02:45 -0500</li>
+<li><em>Resent-from</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Resent-message-id</em>: &lt;D03928BA-6140-11D7-B8BF-000A956A3BDE@umich.edu&gt;</li>
+<li><em>Resent-to</em>: <a href="mailto:cosign-announce@DOMAIN.HIDDEN">cosign-announce@xxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>The Cosign Team is pleased to bring you Cosign 0.9.4!</tt><br>
+<br>
+<tt>	MD5(cosign-0.9.4.tar.gz)= 60c91bb213efa2e3716e36a128d7a291</tt><br>
+<br>
+<tt> What will it give me, you ask? Well...</tt><br>
+<br>
+<tt>	we condensed duplicate code into common/<br>
+        overhaul of the README<br>
+        configure for AIX: CFLAGS from apxs and extra libs for ssl<br>
+        cgi: autoconf hostname of cosignd server<br>
+        cgi: autoconf certs, same args as daemon<br>
+        cgi: autoconf keytabpath<br>
+        cgi: '=' handled correctly on query string<br>
+        cgi: fixed looping bug on idle time out<br>
+        cgi and filter: properly set kerror on every fail<br>
+        cgi and filter: changed the name of secant to scookie<br>
+        common: mkcookie() calls RAND_bytes, not RAND_pseudo_bytes<br>
+        filter: autoconf filter db location<br>
+        filter: all sn's set to NULL when closed<br>
+        filter: suppress spurious connection errors<br>
+        filter: reorder check_cookie so retr is only called when check 
+succeeds<br>
+        filter: COSIGN_SEVICE env variable<br>
+        filter: cookies must be the length of a cookie we'd set</tt><br>
+<br>
+<tt>Download! Test! Feedback to cosign@xxxxxxxxx</tt><br>
+<br>
+<tt>	<a  href="http://weblogin.org">http://weblogin.org</a></tt><br>
+<br>
+<tt>-The Cosign Team</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00009.shtml">weblogin upgrade this afternoon</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00011.shtml">cosign-1.1.0</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00009.shtml">weblogin upgrade this afternoon</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00011.shtml">cosign-1.1.0</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00010"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00010"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

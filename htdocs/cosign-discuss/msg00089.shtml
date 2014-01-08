@@ -1,0 +1,223 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: logout and cosign.cgi question -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Thu, 22 Apr 2004 00:00:56 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040422035938.3ABC1343C3@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 235AB673&#45;9410&#45;11D8&#45;B8B6&#45;000A95CD7232@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00088.shtml">Date Prev</a>][<a href="msg00090.shtml">Date Next</a>][<a href="msg00088.shtml">Thread Prev</a>][<a href="msg00079.shtml">Thread Next</a>][<a href="maillist.shtml#00089">Date Index</a>][<a href="threads.shtml#00089">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: logout and cosign.cgi question</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'kevin mcgowan'&quot; &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: logout and cosign.cgi question</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 22 Apr 2004 15:59:38 +1200</li>
+<li><em>Cc</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00088.shtml">235AB673-9410-11D8-B8B6-000A95CD7232@umich.edu</a>&gt;</li>
+<li><em>Thread-index</em>: AcQoHPBcH71ncH25SMayXd7Wfy7PpQAACk2Q</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>An Apache configuration fragment would be good, which is included by
+
+&lt;IfModule mod_cosign.c&gt;
+ Include conf/cosign.conf
+&lt;/IfModule&gt;
+
+I think it should be --with-apache2 and --with-apache or --enable-apache2
+and --enable-apache, but this is me being pedantic :)
+
+If the common code was correctly cross-platform (from my looking around it
+is pretty close) it would be pretty easy... I have been playing and got
+reasonably far: for example libsnet would have dir layout like:
+libsnet/  &lt;- containing the *nix compile and source files
+libsnet/win32 containing the Visual Studio project files and perhaps an
+ntmakefile
+libsnet/{debug,release}
+
+etc
+etc
+
+This would bring the common code into the one product and help with the bug
+fixing I would think... given you will fix the bug in only one place...
+
+Cheers
+
+
+------------
+
+Brett Lomas
+Integration Architect
+Information Technology Systems and Services
+The University of Auckland
+New Zealand
+
+Phone:		+64 9 3737 599 extn 86499
+Mobile:		+64 21 757 096
+
+
+-----Original Message-----
+From: kevin mcgowan [<a  href="mailto:clunis@xxxxxxxxx">mailto:clunis@xxxxxxxxx</a>] 
+Sent: Thursday, 22 April 2004 3:50 p.m.
+To: Brett Lomas
+Cc: 'Cosign Discussion'
+Subject: Re: logout and cosign.cgi question
+
+
+On Apr 21, 2004, at 10:44 PM, Brett Lomas wrote:
+
+&gt; I think the cgi-bin/logout with script alias works well, but I am just
+&gt; thinking from an installation point of view.
+&gt;
+&gt; I would like to see CoSign much easier is intall, and this what I am 
+&gt; trying
+
+agreed.  One of the upcoming changes that will make configuration, at 
+least, a lot easier is the advent of a more general conf file.  This 
+should eliminate the need for most of the compile-time only options 
+that exist right now.
+
+&gt; to for the UoA as a first step to putting CoSign into production here. 
+&gt; So
+&gt; from my point of view, the least amount of changes needed to the 
+&gt; httpd.cond
+&gt; and ssl.conf etc etc would be the best, as long as it is (of course) 
+&gt; reason
+&gt; to have this.
+
+&gt; Although I am looking at perhaps writing something so the make
+&gt; process and alter the httpd.conf etc appropriately for the basic
+&gt; configurations and then is can be tweaked if needed. Thoughts?
+
+I think this sounds reasonable.  Are you thinking of a perl script or 
+similar?  Parsing every httpd.conf file in the world to install 
+directives in the right place strikes me as too awful a task to take on 
+... even apxs doesn't do it properly. :)
+
+Perhaps it would be sufficient just to build an httpd.conf fragment 
+that includes recommended configuration and examples of all of the 
+various Apache directives based on the user's configure options?  Then 
+we could instruct them to use Include to load it or to copy/paste the 
+parts they want into their own httpd.conf files.
+
+&gt; I am also in the process of making the configure script a little more
+&gt; consistent (eg --enable-apache2 and --with-apache-apxs) and 
+&gt; configurable
+&gt; based on the prefix etc...
+
+what's the inconsistency there?  Are you suggesting it should be: 
+--enable-apache-2?
+
+&gt; I am also thinking of bringing the IISCosign source in the filters 
+&gt; directory
+&gt; and alter the common code (in the common directory and libsnet) to 
+&gt; compile
+&gt; on both win32 and linux. I think this makes for a cleaner development
+&gt; environment.
+
+Would this also include making it possible for windows user's to 
+compile mod_cosign for windows Apache?  I don't know how the visual 
+studio project would like being merged into the main source tree.  
+Perhaps Jarod has an opinion here?
+
+&gt; What are your thoughts?
+&gt;
+&gt; Please do not take my suggestions as criticism :) These are things I 
+&gt; want to
+&gt; do and I would like my work to useful to the wider community also, so
+&gt; suggestions would be good :)
+
+I would never take generous contributions of time, effort, and skill as 
+criticism.  Good to have you on board. :)
+
+Kevin
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00088" href="msg00088.shtml">Re: logout and cosign.cgi question</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00088.shtml">Re: logout and cosign.cgi question</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00090.shtml">RE: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00088.shtml">Re: logout and cosign.cgi question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00079.shtml">A couple of changes I have made from the CVS source</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00089"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00089"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

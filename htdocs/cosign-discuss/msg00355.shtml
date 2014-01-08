@@ -1,0 +1,167 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: cosign with multiple kerberos realms -->
+<!--X-From-R13: Pra Bbyvnxbss <oracNerrq.rqh> -->
+<!--X-Date: Thu, 10 Mar 2005 16:49:59 &#45;0500 (EST) -->
+<!--X-Message-Id: 20050310214836.GR3816@tristero.reed.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20050310194743.GQ3816@tristero.reed.edu -->
+<!--X-Reference: 1110489339.3961.26.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00354.shtml">Date Prev</a>][<a href="msg00356.shtml">Date Next</a>][<a href="msg00354.shtml">Thread Prev</a>][<a href="msg00356.shtml">Thread Next</a>][<a href="maillist.shtml#00355">Date Index</a>][<a href="threads.shtml#00355">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: cosign with multiple kerberos realms</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: cosign with multiple kerberos realms</li>
+<li><em>From</em>: Ben Poliakoff &lt;<a href="mailto:benp@DOMAIN.HIDDEN">benp@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 10 Mar 2005 13:48:36 -0800</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00354.shtml">1110489339.3961.26.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00353.shtml">20050310194743.GQ3816@tristero.reed.edu</a>&gt; &lt;<a href="msg00354.shtml">1110489339.3961.26.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>User-agent</em>: Mutt/1.4.1i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Thanks for the reply Brett,
+
+The underlying krb5 layer should be relatively straight forward I
+would think, given that a krb5.conf file can hold info about lots of
+realms.  But I guess I was specifically wondering whether a single
+cosign weblogin server could be made to do initial authentication from a
+pool of user selectable realms (hence my reference to a drop down menu
+on the login page).  So there would be explicit control over the allowed
+realms (and the weblogin server would need to have service principals in
+its keytab file from all of the participating realms).  
+
+To give a more specific example, we're toying with the idea of enabling
+cosign on some existing web apps that serve two distinct groups: users
+with current accounts and alums.  The two groups can't be merged due
+to namespace (principal name) collisions, but they could &quot;coexist&quot;
+within two distinct krb5 realms.  If our weblogin server could allow
+the user to select the realm to which to authenticate then we could
+use cosign auth for both groups of users.  Our web apps could readily
+distinguish the populations by reading the value of the CGI variable,
+&quot;REMOTE_REALM&quot;.
+
+Has this sort of thing been discussed before?  I know umich maintains
+a collection of different realms.....
+
+Ben
+
+* Brett Lomas &lt;b.lomas@xxxxxxxxxxxxxx&gt; [20050310 13:17]:
+&gt; I don't believe it has.
+&gt; 
+&gt; Having said that most of the code will handle multiple realms already.
+&gt; The only problem i could see with this how you handle an application
+&gt; getting an incorrect kerberos ticket (in a realm it know nothing about).
+&gt; e.g. a user chooses to authenticate to realm A and accesses web service
+&gt; X which is part of realm B and get a kerberos ticket from the cosign
+&gt; server for A. The possibly needs to be a mechanism for the webservers to
+&gt; requests a ticket in a certain realm, and if not there get the user to
+&gt; re-authenticate in that realm?? Unless you can build kerberos trust?
+&gt; (not sure on this)
+&gt; 
+&gt; Brett
+&gt; 
+&gt; On Fri, 2005-03-11 at 08:47, Ben Poliakoff wrote:
+&gt; &gt; I haven't been able to find much info about how cosign might be able to
+&gt; &gt; work with multiple krb5 realms.
+&gt; &gt; 
+&gt; &gt; Has such functionality (login page featuring a drop down menu of
+&gt; &gt; realms) ever been implemented?
+&gt; &gt; 
+&gt; &gt; Ben
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00356" href="msg00356.shtml">Re: cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00359" href="msg00359.shtml">Re: cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00353" href="msg00353.shtml">cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+<li><strong><a name="00354" href="msg00354.shtml">Re: cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00354.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00356.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00354.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00356.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00355"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00355"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

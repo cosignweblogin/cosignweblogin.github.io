@@ -1,0 +1,196 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign Install on IIS6 &#45; Filter not started -->
+<!--X-From-R13: pbfvtaNhzvpu.rqh -->
+<!--X-Date: Tue, 5 Oct 2004 16:52:49 &#45;0400 (EDT) -->
+<!--X-Message-Id: E4EA95A7F5A9354195B0D0E1@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: EB268B96DB8C4742B5CF686E40BB44A438C005@metis.mri.psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00245.shtml">Date Prev</a>][<a href="msg00247.shtml">Date Next</a>][<a href="msg00245.shtml">Thread Prev</a>][<a href="msg00247.shtml">Thread Next</a>][<a href="maillist.shtml#00246">Date Index</a>][<a href="threads.shtml#00246">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign Install on IIS6 - Filter not started</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Daniel E. Lehman&quot; &lt;<a href="mailto:del3@DOMAIN.HIDDEN">del3@xxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: Cosign Install on IIS6 - Filter not started</li>
+<li><em>From</em>: <a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a></li>
+<li><em>Date</em>: Tue, 05 Oct 2004 16:38:48 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00245.shtml">EB268B96DB8C4742B5CF686E40BB44A438C005@metis.mri.psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00245.shtml">EB268B96DB8C4742B5CF686E40BB44A438C005@metis.mri.psu.edu</a>&gt;</li>
+<li><em>Reply-to</em>: cosign &lt;<a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Dan, it looks like it is probably a certificate issue.  Could you send me 
+(either in the e-mail or attached) the log file with the most recent time 
+stamp that IISCosign is generating?  Preferably one where you have 
+everything 'ready to go': certs in place, registry all set, MSXML 4.0 
+installed.  Stop the web site, remove the filter if it's there, then add 
+the filter then restart IIS and see if a log file is generated.</tt><br>
+<br>
+<tt>--Jarod</tt><br>
+<br>
+<tt>--On Tuesday, October 05, 2004 12:50 PM -0400 &quot;Daniel E. Lehman&quot; 
+&lt;del3@xxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">I am trying to get Cosign 1.0.0 installed on our Windows Server 2003 /
+IIS 6 web server, but everything I have tried results in the filter not
+loading and the following entry in the event log:</pre><br>
+<pre style="margin: 0em;">The HTTP Filter DLL C:\Program Files\IISCosign\cosign.dll failed to
+load.  The data is the error.
+For more information, see Help and Support Center at
+<a  href="http://go.microsoft.com/fwlink/events.asp">http://go.microsoft.com/fwlink/events.asp</a>.</pre><br>
+<pre style="margin: 0em;">On the surface this appears to be a similar problem experienced by Brett
+Lomas in the thread
+<a  href="http://www.umich.edu/~umweb/software/cosign/cosign-discuss/msg00167.html">http://www.umich.edu/~umweb/software/cosign/cosign-discuss/msg00167.html</a>
+; however, I tried the recommendations listed in the responses and got
+nowhere.</pre><br>
+<pre style="margin: 0em;">Below are the steps I have taken to install the Cosign filter.
+1) Download and run the install.
+2) Configure the security settings on the folders as per the
+instructions.
+3) Modify the config file.
+4) Edit the registry.
+5) Add the filter and restart IIS.</pre><br>
+<pre style="margin: 0em;">At first I thought my problem may have been related to the
+DefaultAppPool running under Network Service, but Network Service is
+part of the IIS_WPG, so Network Service should have more than enough
+privilege.</pre><br>
+<pre style="margin: 0em;">I then thought it may have something to do with the registry entries.  I
+actually have two keys listed (University of Michigan and University of
+Michigan - ITCS).  In each are the ConfigPath and ConfigFile strings
+which are set to C:\Program Files\IISCosign\cosign.dll.config.</pre><br>
+<pre style="margin: 0em;">My next thought was that MSXML 4.0 was not installed.  No go on that
+front either.</pre><br>
+<pre style="margin: 0em;">I'm wondering if this could be a certificate issue.  I want to use our
+generic SSL cert, but I don't have the key file.  I therefore can only
+export as a pfx file and then run the openssl utility to split out the
+cer and key files as described here:
+<a  href="http://www.pubcookie.org/docs/install-filter-3.0.html#exportkey">http://www.pubcookie.org/docs/install-filter-3.0.html#exportkey</a></pre><br>
+<pre style="margin: 0em;">Once completed, I compared the new cer file to the cer file that was
+used to install the certificate originally and the files are different.
+Furthermore, I tried to install the new cer file as my web site
+certificate and now https requests fail.  Now, I don't know much about
+SSL certificates (I just know how to order them, pay for them and
+install them) so I don't know if this is an issue.</pre><br>
+<pre style="margin: 0em;">I should also mention that I am running another ISAPI filter - ISAPI
+ReWrite, but I tried removing it to see if there was a conflict - no
+change in behavior.</pre><br>
+<tt>Oh, and to be thorough, here's my config file:</tt><br>
+<br>
+<pre style="margin: 0em;">&lt;Cosign&gt;
+	&lt;CAFilePath&gt;C:\Program
+Files\IISCosign\SSL\ThawteServerCA.pem&lt;/CAFilePath&gt;
+	&lt;ChainFilePath&gt;C:\Program
+Files\IISCosign\SSL\www.mri.psu.edu.cert&lt;/ChainFilePath&gt;
+	&lt;PrivateKeyFilePath&gt;C:\Program
+Files\IISCosign\SSL\www.mri.psu.edu.key&lt;/PrivateKeyFilePath&gt;
+	&lt;LogFilePath fileSizeInKB=&quot;4096&quot; &gt;C:\Program
+Files\IISCosign\Logs&lt;/LogFilePath&gt;
+	&lt;CookieDBPath&gt;C:\Program Files\IISCosign\CookieDB&lt;/CookieDBPath&gt;
+	&lt;CosignServer port=&quot;6663&quot;&gt;webaccess.psu.edu&lt;/CosignServer&gt;
+	&lt;RedirectURL&gt;<a  href="https://webaccess.psu.edu/">https://webaccess.psu.edu/</a>?&lt;/RedirectURL&gt;
+	&lt;ConnectionPool size=&quot;4&quot; /&gt;
+	&lt;CookieDBExpireTime seconds=&quot;60&quot; /&gt;
+	&lt;WriteDataToEventViewer&gt;FALSE&lt;/WriteDataToEventViewer&gt;
+	&lt;CheckIPAddress&gt;FALSE&lt;/CheckIPAddress&gt;</pre><br>
+<pre style="margin: 0em;">	&lt;Service website=&quot;www.mri.psu.edu&quot;&gt;cosign-www.mri.psu.edu
+		&lt;Protected&gt;/deltest&lt;/Protected&gt;
+	&lt;/Service&gt;
+&lt;/Cosign&gt;</pre><br>
+<tt>Any thoughts?</tt><br>
+<br>
+<tt>-Dan</tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00245" href="msg00245.shtml">Cosign Install on IIS6 - Filter not started</a></strong>
+<ul><li><em>From:</em> Daniel E. Lehman</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00245.shtml">Cosign Install on IIS6 - Filter not started</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00247.shtml">IIS6 Cosign installer</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00245.shtml">Cosign Install on IIS6 - Filter not started</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00247.shtml">IIS6 Cosign installer</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00246"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00246"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

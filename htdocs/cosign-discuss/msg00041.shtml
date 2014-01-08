@@ -1,0 +1,133 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: IISCosign install, Registry error -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Tue, 30 Mar 2004 15:41:30 &#45;0500 (EST) -->
+<!--X-Message-Id: 694848459.1080661256@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: s0680ead.044@gwmail.univunions.dsa.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00040.shtml">Date Prev</a>][<a href="msg00042.shtml">Date Next</a>][<a href="msg00038.shtml">Thread Prev</a>][<a href="msg00042.shtml">Thread Next</a>][<a href="maillist.shtml#00041">Date Index</a>][<a href="threads.shtml#00041">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>IISCosign install, Registry error</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Amy Lewis &lt;<a href="mailto:aslewis@DOMAIN.HIDDEN">aslewis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: IISCosign install, Registry error</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Tue, 30 Mar 2004 15:40:56 -0500</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discussion@DOMAIN.HIDDEN">cosign-discussion@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;s0680ead.044@gwmail.univunions.dsa.umich.edu&gt;</li>
+<li><em>References</em>: &lt;s0680ead.044@gwmail.univunions.dsa.umich.edu&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Thanks for finding this bug, Amy.  The correct Registry entry will be 
+included in the IISCosign 1.1.0 release.  Windows admins beware!</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--ITCS</pre><br>
+<tt>--On Monday, March 29, 2004 11:54 AM -0500 Amy Lewis &lt;aslewis@xxxxxxxxx&gt; 
+wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Jarod</tt><br>
+<br>
+<pre style="margin: 0em;">I figured it out - I don't know if something is wrong with the install
+package or what - but the problem was the registry - the install puts</pre><br>
+<tt>ConfigPath as c:\program files\IIScosign\cosign.dll.config</tt><br>
+<br>
+<pre style="margin: 0em;">however - when I ran that DBmon.exe - it looked like it was looking for
+ConfigFile (not ConfigPath).  So I manually added the registry key of</pre><br>
+<tt>ConfigFile as c:\program fiels\IIScosign\cosign.dll.config</tt><br>
+<br>
+<tt>and it worked like magic.</tt><br>
+<br>
+<pre style="margin: 0em;">Amy Lewis
+System Administrator III
+University of Michigan
+aslewis@xxxxxxxxx
+(734) 647-0271
+</pre></blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00040.shtml">Re: Another quick question and possible bug report</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00042.shtml">Kerberos Tickets</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00038.shtml">Re: friend functionality</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00042.shtml">Kerberos Tickets</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00041"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00041"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

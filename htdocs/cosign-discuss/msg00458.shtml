@@ -1,0 +1,194 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Cookie Deletion in PHP5 on IIS6 -->
+<!--X-From-R13: Quevfgbcure Znsgl <puy114Ncfh.rqh> -->
+<!--X-Date: Wed, 27 Jul 2005 15:51:39 &#45;0400 (EDT) -->
+<!--X-Message-Id: 42E7E533.203@psu.edu -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00457.shtml">Date Prev</a>][<a href="msg00459.shtml">Date Next</a>][<a href="msg00457.shtml">Thread Prev</a>][<a href="msg00459.shtml">Thread Next</a>][<a href="maillist.shtml#00458">Date Index</a>][<a href="threads.shtml#00458">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Cookie Deletion in PHP5 on IIS6</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Cookie Deletion in PHP5 on IIS6</li>
+<li><em>From</em>: Christopher Lafty &lt;<a href="mailto:chl114@DOMAIN.HIDDEN">chl114@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 27 Jul 2005 15:49:07 -0400</li>
+<li><em>User-agent</em>: Mozilla Thunderbird 1.0.6 (Windows/20050716)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<table width="100%"><tr><td bgcolor="#ffffff" style="background-color: #ffffff; color: #000000; "><font color="#000000">
+
+
+
+Anybody had luck destroying the cosign service cookie with PHP5? I've
+been trying all day long and I can't seem to remove it with a logout
+page.<br>
+<br>
+Using phpinfo(), I see the cookie as _COOKIE["cosign-xxx_xxx_xxx_xxx"],
+but with the web developer toolbar in firefox, the cookie shows up as
+cosign-xxx.xxx.xxx.xxx.&nbsp; I am trying to delete both, but still can't.<br>
+<br>
+&lt;?php<br>
+//get service name, contains "."<br>
+$service = $_SERVER['HTTP_COSIGN_SERVICE'];<br>
+<br>
+//delete the cookie with "."<br>
+setcookie ($service, FALSE, time()-1000);<br>
+<br>
+//put in "_" instead of "."<br>
+$service1 = str_replace(".", "_", $service);<br>
+setcookie ($service1, FALSE, time()-1000);<br>
+<br>
+//output to see if successful<br>
+echo "&lt;/br&gt;cosign-cookie:" . $_COOKIE[$service];<br>
+echo "&lt;/br&gt;cosign-cookie:" . $_COOKIE[$service1];<br>
+?&gt;<br>
+<br>
+browser output:<br>
+<br>
+cosign-cookie:<br>
+cosign-cookie: XXXXXXXXXXXXXXXXXXXXXXXXXXX&nbsp; ("_" contains the cookie?)<br>
+<br>
+web developer cookie information:<br>
+<br>
+<table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <td>cosign-www.bio.psu.edu</td>
+    </tr>
+    <tr class="odd">
+      <th>Value</th>
+      <td>XXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+    </tr>
+    <tr>
+      <th>Host</th>
+      <td>xxx.xxx.xxx.xxx</td>
+    </tr>
+    <tr class="odd">
+      <th>Path</th>
+      <td>/</td>
+    </tr>
+    <tr>
+      <th>Secure</th>
+      <td>No</td>
+    </tr>
+    <tr class="odd">
+      <th>Expires</th>
+      <td>At End Of Session</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+Am I missing something?<br>
+<br>
+Thanks in advance,<br>
+Chris<br>
+<pre class="moz-signature" cols="72">-- 
+
+
+
+
+
+
+
+.....................................
+:: Christopher Lafty
+:: Computer Support/Web Site Administrator
+:: Department of Biology
+:: Pennsylvania State University
+:: 109 Mueller Lab
+:: University Park, PA 16802
+:: Phone: 814-865-6590
+:: <a class="moz-txt-link-abbreviated" href="mailto:chrislafty@xxxxxxx">chrislafty@xxxxxxx</a>
+.....................................
+</pre>
+
+
+</font></td></tr></table>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00459" href="msg00459.shtml">Re: Cookie Deletion in PHP5 on IIS6</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00457.shtml">re: cosign and shibboleth</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00459.shtml">Re: Cookie Deletion in PHP5 on IIS6</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00457.shtml">re: cosign and shibboleth</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00459.shtml">Re: Cookie Deletion in PHP5 on IIS6</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00458"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00458"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

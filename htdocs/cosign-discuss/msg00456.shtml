@@ -1,0 +1,102 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Fw: cosign and shibboleth -->
+<!--X-From-R13: "ienb" <ienbNzvfgrnz.arg> -->
+<!--X-Date: Mon, 25 Jul 2005 16:33:16 &#45;0400 (EDT) -->
+<!--X-Message-Id: 54C0FC81&#45;533D&#45;4D9F&#45;9751&#45;114D7B76CDBD@misteam.net -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00455.shtml">Date Prev</a>][<a href="msg00457.shtml">Date Next</a>][<a href="msg00455.shtml">Thread Prev</a>][<a href="msg00457.shtml">Thread Next</a>][<a href="maillist.shtml#00456">Date Index</a>][<a href="threads.shtml#00456">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Fw: cosign and shibboleth</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Fw: cosign and shibboleth</li>
+<li><em>From</em>: &quot;vrao&quot; &lt;<a href="mailto:vrao@DOMAIN.HIDDEN">vrao@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 23 Jul 2005 23:52:51 -0400</li>
+<li><em>Resent-date</em>: Mon, 25 Jul 2005 16:29:30 -0400</li>
+<li><em>Resent-from</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Resent-message-id</em>: &lt;007c01c59003$2aa03050$6403a8c0@ndi.org&gt;</li>
+<li><em>Resent-to</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<table width="100%"><tr><td style=""><SPAN class="Apple-style-span" style="border-collapse: separate; border-spacing: 0px 0px; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: auto; -khtml-text-decorations-in-effect: none; text-indent: 0px; -apple-text-size-adjust: auto; text-transform: none; orphans: 2; white-space: normal; widows: 2; word-spacing: 0px; "><DIV><FONT face="Arial" size="2"><SPAN class="Apple-style-span" style="font-family: Arial; font-size: 10px; ">Hi, I needed help with installing server/weblogon with the shib/cosign model but it wont let me post to cosign-discuss. Can you forward this question for me?( or answer it if it's simple enough).</SPAN></FONT></DIV><DIV><FONT face="Arial" size="2"></FONT>&#xA0;</DIV><DIV><FONT face="Arial" size="2"><SPAN class="Apple-style-span" style="font-family: Arial; font-size: 10px; ">Thanks,</SPAN></FONT></DIV><DIV><FONT face="Arial" size="2"></FONT>&#xA0;</DIV><DIV><FONT face="Arial" size="2"><SPAN class="Apple-style-span" style="font-family: Arial; font-size: 10px; ">V</SPAN></FONT></DIV><DIV><FONT face="Arial" size="2"></FONT>&#xA0;</DIV><DIV>&#xA0;</DIV><DIV style="FONT: 10pt arial; font-family: arial; font-size: 13.3333px; "><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; ">----- Original Message -----</SPAN><DIV style="BACKGROUND: #e4e4e4; font-color: black; font-family: arial; font-size: 13.3333px; "><B style="font-family: arial; font-size: 13.3333px; font-weight: bold; "><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; font-weight: bold; ">From:</SPAN></B><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; "> </SPAN><A title="vrao@xxxxxxxxxxx" href="mailto:vrao@xxxxxxxxxxx"><SPAN class="Apple-style-span" style="color: rgb(0, 0, 238); font-family: arial; font-size: 13.3333px; -khtml-text-decorations-in-effect: underline; ">vrao</SPAN></A><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; "></SPAN></DIV><DIV style="font-family: arial; font-size: 13.3333px; "><B style="font-family: arial; font-size: 13.3333px; font-weight: bold; "><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; font-weight: bold; ">To:</SPAN></B><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; "> </SPAN><A title="cosign-discuss@xxxxxxxxx" href="mailto:cosign-discuss@xxxxxxxxx"><SPAN class="Apple-style-span" style="color: rgb(0, 0, 238); font-family: arial; font-size: 13.3333px; -khtml-text-decorations-in-effect: underline; ">cosign-discuss@xxxxxxxxx</SPAN></A><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; "></SPAN></DIV><DIV style="font-family: arial; font-size: 13.3333px; "><B style="font-family: arial; font-size: 13.3333px; font-weight: bold; "><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; font-weight: bold; ">Sent:</SPAN></B><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; "> Saturday, July 23, 2005 11:48 PM</SPAN></DIV><DIV style="font-family: arial; font-size: 13.3333px; "><B style="font-family: arial; font-size: 13.3333px; font-weight: bold; "><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; font-weight: bold; ">Subject:</SPAN></B><SPAN class="Apple-style-span" style="font-family: arial; font-size: 13.3333px; "> cosign and shibboleth</SPAN></DIV></DIV><DIV><BR></DIV><DIV><FONT face="Arial" size="2"><SPAN class="Apple-style-span" style="font-family: Arial; font-size: 10px; ">I am trying to install cosign and shibboleth (on the same server, for testing..I'll use html pages as resources), can anyone who has successfully done this(cosign-shib combo)&#xA0;post a summary of steps?</SPAN></FONT></DIV><DIV><FONT face="Arial" size="2"></FONT>&#xA0;</DIV><DIV><FONT face="Arial" size="2"><SPAN class="Apple-style-span" style="font-family: Arial; font-size: 10px; ">Thanks in advance,</SPAN></FONT></DIV><DIV><FONT face="Arial" size="2"></FONT>&#xA0;</DIV><DIV><FONT face="Arial" size="2"><SPAN class="Apple-style-span" style="font-family: Arial; font-size: 10px; ">V</SPAN></FONT></DIV><DIV><FONT face="Arial" size="2"></FONT>&#xA0;</DIV><DIV><FONT face="Arial" size="2"><SPAN class="Apple-style-span" style="font-family: Arial; font-size: 10px; ">I am using Suse 9.3 but it's not important that I get platform specific instructions.</SPAN></FONT></DIV>!DSPAM:42e3109c191463104415523!</SPAN></td></tr></table>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00455.shtml">Tech Forum #21 -- July 20th [TOMORROW] (fwd)</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00457.shtml">re: cosign and shibboleth</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00455.shtml">Tech Forum #21 -- July 20th [TOMORROW] (fwd)</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00457.shtml">re: cosign and shibboleth</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00456"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00456"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

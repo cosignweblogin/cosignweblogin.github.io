@@ -1,0 +1,48 @@
+Cosign Re-Authentication Specification
+August 31, 2005
+Draft 2
+cosign@umich.edu
+
+Setup ( to be done beforehand ):
+
+A specific service name ( cosign-[servicename] ) registers with the
+central cgi/daemon to assert that Re-Auth is required to access said
+service. Other than that, there is no special configuration necessary
+for the filters ( java/apache/iis ).
+
+How it works:
+
+Upon hitting a page protected by a servicename that is registered with
+us as Re-Auth, the user will be redirected to the central cosign server,
+where 1 of 2 things will happen.
+
+1) First Time (not logged in already):
+
+If this is the first CosignProtected service they've visited during
+their session ( aka they ARE NOT logged in ), they will be presented
+with the normal login screen ( https://weblogin.umich.edu ), where they
+will have as many opportunities to type their correct username and
+password as they like. Upon correctly entering in a login/password pair,
+they will be redirected back to the page they were previously trying to
+access ( the one that required re-auth ) and the "time of
+re-authentication" will be when the local copy of the service cookie is
+created.
+
+2) Already logged in somewhere:
+
+If the user has already accessed another CosignProtected service ( aka
+they ARE logged in ), they will be redirected to the Re-Authentication
+Page ( see https://cosign-test.www.umich.edu/reauth.html for a mock-up,
+but don't type your password as this is not a real page! :) where they
+will be prompted for the password of the user who is already
+authenticated ( ie the login name will be a static field, as shown ).
+
+There will also be a "not this user?" option on the Re-authentication
+page, and this will allow someone who is not maliciously trying to gain
+access to another user's session to "do the right thing." When a user
+clicks on "not you" or "not this user" ( text tbd ), the previous user
+will be logged out everywhere. We will do this by POSTing to the logout
+CGI, which will log the previous user out, redirect back to the
+referring service, which ought to send the new user back to weblogin.
+This is necessary in order to allow the service to implement the "Site
+Entry" functionality.

@@ -1,0 +1,152 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Bug in IIS filter? -->
+<!--X-From-R13: Xnebq [nyrfgrva <wnebqNhzvpu.rqh> -->
+<!--X-Date: Fri, 3 Jun 2005 12:16:23 &#45;0400 (EDT) -->
+<!--X-Message-Id: D93A78E3A37D215778EC9239@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1117773163.5e777f343107e@webmail.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00415.shtml">Date Prev</a>][<a href="msg00417.shtml">Date Next</a>][<a href="msg00414.shtml">Thread Prev</a>][<a href="msg00415.shtml">Thread Next</a>][<a href="maillist.shtml#00416">Date Index</a>][<a href="threads.shtml#00416">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Bug in IIS filter?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;,   cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Bug in IIS filter?</li>
+<li><em>From</em>: Jarod Malestein &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 03 Jun 2005 12:14:36 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00414.shtml">1117773163.5e777f343107e@webmail.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00414.shtml">1117773163.5e777f343107e@webmail.auckland.ac.nz</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">Also a quick question, what does the connection pool size and the
+connection pool do? Does the module open that many connections to the
+each of the server or what??
+</pre></blockquote><tt><br>It's the number of sockets created when the filter initializes.  A 
+connection to a central login server isn't made until a CHECK is needed.</tt><br>
+<br>
+<tt>--Jarod</tt><br>
+<br>
+<tt>--On Friday, June 03, 2005 4:32 PM +1200 Brett Lomas 
+&lt;b.lomas@xxxxxxxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt></tt><br>
+<br>
+<tt>Hi all,</tt><br>
+<br>
+<pre style="margin: 0em;">I have noticed a possibly bug in the IIS filter. I have not had to
+actually dig into the code as yet, but thought I would email here to see
+if anyone know about it or has seen it.</pre><br>
+<pre style="margin: 0em;">When the filter does a check for a ticket, which hasn't been registered
+before (i.e. if one goes to the protected content for the first time, and
+then goes to the page again without signing in) the daemon returns a 533
+status (ticket not in DB). The code (the bit i have looked at) return a 0
+and essentially will try to look at other connections, but somewhere
+something is closing that connection for no good reason. (I can see this
+via tcpdump on the machine, as the remote peer port changes when this
+happens).</pre><br>
+<pre style="margin: 0em;">Of course, this mean the next connection then suffers the penalty of the
+connection being established again.</pre><br>
+<pre style="margin: 0em;">Also a quick question, what does the connection pool size and the
+connection pool do? Does the module open that many connections to the
+each of the server or what??</pre><br>
+<tt><br>Thanks heaps.</tt><br>
+<br>
+<tt><br>Brett</tt><br>
+<br>
+<pre style="margin: 0em;">-------------------------------------------------
+This mail sent through University of Auckland
+<a  href="http://www.auckland.ac.nz/">http://www.auckland.ac.nz/</a></pre><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00414" href="msg00414.shtml">Bug in IIS filter?</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00415.shtml">RE: Bug in IIS filter?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00417.shtml">IIS Module and unexpected terminations</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00414.shtml">Bug in IIS filter?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00415.shtml">RE: Bug in IIS filter?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00416"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00416"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

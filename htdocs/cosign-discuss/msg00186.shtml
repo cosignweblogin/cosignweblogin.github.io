@@ -1,0 +1,146 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign on a Sub Directory Only -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Tue, 20 Jul 2004 17:56:33 &#45;0400 (EDT) -->
+<!--X-Message-Id: 40FD94BC.9020804@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: BB0B0BFE&#45;DA5B&#45;11D8&#45;B846&#45;00039312D63C@umich.edu -->
+<!--X-Reference: 7EAD9B8C&#45;DA5E&#45;11D8&#45;A558&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: 40FD360D.70702@psu.edu -->
+<!--X-Reference: AF59F2BA&#45;DA90&#45;11D8&#45;A558&#45;000A95E48A4E@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00185.shtml">Date Prev</a>][<a href="msg00187.shtml">Date Next</a>][<a href="msg00188.shtml">Thread Prev</a>][<a href="msg00187.shtml">Thread Next</a>][<a href="maillist.shtml#00186">Date Index</a>][<a href="threads.shtml#00186">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign on a Sub Directory Only</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: Cosign on a Sub Directory Only</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 20 Jul 2004 17:55:08 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00182.shtml">AF59F2BA-DA90-11D8-A558-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00177.shtml">BB0B0BFE-DA5B-11D8-B846-00039312D63C@umich.edu</a>&gt; &lt;<a href="msg00178.shtml">7EAD9B8C-DA5E-11D8-A558-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00180.shtml">40FD360D.70702@psu.edu</a>&gt; &lt;<a href="msg00182.shtml">AF59F2BA-DA90-11D8-A558-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7) Gecko/20040616</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 7/20/04 5:06 PM, johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>This was originally a security thought, but I'm not sure our reasons 
+are valid anymore. I think our original logic was not wanting users to 
+turn off/on Cosign if an admin had made it on/off for a whole server, 
+but that might be spurious. Other members of the core cosign team feel 
+free to speak up and correct me if there was a more pressing issue and 
+I've just forgotten it. ;)</tt><br>
+<br>
+<tt>Did you want to use it in an .htaccess? </tt><br>
+<br>
+</blockquote><tt><br>We were thinking of .htaccess usage, possibly for personal web pages, 
+though I think we came up with an alternative.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Does anyone? Is this something 
+people would like to see changed? Anyone have security thoughts on this 
+matter?<br>
+ </tt><br>
+<br>
+</blockquote><tt><br>If &quot;CosignProtected&quot; could be classified as an authorization directive 
+(I don't know if that would be possible), then an admin could allow its 
+use by specifying &quot;AllowOverride AuthConfig&quot; as needed.</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00187" href="msg00187.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00177" href="msg00177.shtml">Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> Beth Bridson</li></ul></li>
+<li><strong><a name="00178" href="msg00178.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00180" href="msg00180.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+<li><strong><a name="00182" href="msg00182.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00185.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00187.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00188.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00187.shtml">Re: Cosign on a Sub Directory Only</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00186"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00186"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

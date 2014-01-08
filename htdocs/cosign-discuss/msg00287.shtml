@@ -1,0 +1,164 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign login on Mac 10.3.6 Server -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Mon, 15 Nov 2004 10:15:15 &#45;0500 (EST) -->
+<!--X-Message-Id: 4198C65A.5020206@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20041111002742.GR27663@tristero.reed.edu -->
+<!--X-Reference: 91C2B1DE&#45;337D&#45;11D9&#45;9BA2&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: 20041111233915.GA10835@tristero.reed.edu -->
+<!--X-Reference: 6A96C7C0&#45;3441&#45;11D9&#45;B8BF&#45;000A95CD7232@umich.edu -->
+<!--X-Reference: 20041112003318.GD10815@tristero.reed.edu -->
+<!--X-Reference: 2EB5EE80&#45;345B&#45;11D9&#45;8FD7&#45;000393853322@umich.edu -->
+<!--X-Reference: 77252BE8&#45;3595&#45;11D9&#45;9BE3&#45;000A95A0453E@umich.edu -->
+<!--X-Reference: E422CD80&#45;3711&#45;11D9&#45;B14A&#45;000393C437E0@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00286.shtml">Date Prev</a>][<a href="msg00288.shtml">Date Next</a>][<a href="msg00286.shtml">Thread Prev</a>][<a href="msg00288.shtml">Thread Next</a>][<a href="maillist.shtml#00287">Date Index</a>][<a href="threads.shtml#00287">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign login on Mac 10.3.6 Server</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Doug Heady &lt;<a href="mailto:dheady@DOMAIN.HIDDEN">dheady@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign login on Mac 10.3.6 Server</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 15 Nov 2004 10:08:10 -0500</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;,   David Chmura &lt;<a href="mailto:dschmura@DOMAIN.HIDDEN">dschmura@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00286.shtml">E422CD80-3711-11D9-B14A-000393C437E0@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00273.shtml">20041111002742.GR27663@tristero.reed.edu</a>&gt; &lt;<a href="msg00274.shtml">91C2B1DE-337D-11D9-9BA2-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00275.shtml">20041111233915.GA10835@tristero.reed.edu</a>&gt; &lt;<a href="msg00276.shtml">6A96C7C0-3441-11D9-B8BF-000A95CD7232@umich.edu</a>&gt; &lt;<a href="msg00277.shtml">20041112003318.GD10815@tristero.reed.edu</a>&gt; &lt;<a href="msg00278.shtml">2EB5EE80-345B-11D9-8FD7-000393853322@umich.edu</a>&gt; &lt;<a href="msg00284.shtml">77252BE8-3595-11D9-9BE3-000A95A0453E@umich.edu</a>&gt; &lt;<a href="msg00286.shtml">E422CD80-3711-11D9-B14A-000393C437E0@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla Thunderbird 0.9 (X11/20041103)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 11/15/2004 09:23 AM, Doug Heady wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>This is my first attempt at building on OS X Server, so some of my 
+problems may be experience related.</tt><br>
+<br>
+<tt>Below is the output of running ./configure. I did try to add options 
+to include the apache binary path (/usr/sbin), kerberos IV-V, and GSS. 
+These didn't help or they weren't in the right combination.
+</tt></blockquote><tt></tt><br>
+<br>
+<tt>Doug,</tt><br>
+<br>
+<tt>You didn't tell configure which apache you want to build against:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">...
+apache 1.3 not enabled
+apache 2 not enabled
+</pre></blockquote><tt></tt><br>
+<br>
+<tt>You need one of</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">    --enable-apache1=path_to_apxs_1.3   enables Apache 1.3 filter
+    --enable-apache2=path_to_apxs_2     enables Apache 2 filter
+</pre></blockquote><tt></tt><br>
+<br>
+<tt>Or show us the output from when you did add options (and how you 
+specified them).</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00288" href="msg00288.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+<ul><li><em>From:</em> Doug Heady</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00273" href="msg00273.shtml">multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+<li><strong><a name="00274" href="msg00274.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00275" href="msg00275.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+<li><strong><a name="00276" href="msg00276.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+<li><strong><a name="00277" href="msg00277.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+<li><strong><a name="00278" href="msg00278.shtml">Cosign login on Mac 10.3.6 Server</a></strong>
+<ul><li><em>From:</em> Doug Heady</li></ul></li>
+<li><strong><a name="00284" href="msg00284.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+<li><strong><a name="00286" href="msg00286.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+<ul><li><em>From:</em> Doug Heady</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00286.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00288.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00286.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00288.shtml">Re: Cosign login on Mac 10.3.6 Server</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00287"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00287"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

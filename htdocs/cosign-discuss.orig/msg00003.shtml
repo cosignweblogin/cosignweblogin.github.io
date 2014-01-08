@@ -1,0 +1,159 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: cosign install on rh linux 9 -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Thu, 18 Mar 2004 00:25:02 &#45;0500 (EST) -->
+<!--X-Message-Id: 9ABDA612&#45;789C&#45;11D8&#45;8EFB&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00002.shtml">Date Prev</a>][<a href="msg00004.shtml">Date Next</a>][<a href="msg00002.shtml">Thread Prev</a>][<a href="msg00004.shtml">Thread Next</a>][<a href="maillist.shtml#00003">Date Index</a>][<a href="threads.shtml#00003">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: cosign install on rh linux 9</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Darren Jacobs &lt;<a href="mailto:darren.jacobs@DOMAIN.HIDDEN">darren.jacobs@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: cosign install on rh linux 9</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 20 Feb 2004 16:41:35 -0500</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discussion@DOMAIN.HIDDEN">cosign-discussion@xxxxxxxxx</a></li>
+<li><em>Resent-date</em>: Thu, 18 Mar 2004 00:25:01 -0500</li>
+<li><em>Resent-from</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Resent-message-id</em>: &lt;8E44743C-63ED-11D8-BA7F-000A95E48A4E@umich.edu&gt;</li>
+<li><em>Resent-to</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>ooh, this may be the problem John Maddock ran into, I have a fix for it 
+in 1.5.1 or 1.6. For now give this snap shot a whirl and see if you are 
+still getting this behavior when you run the regular configure command 
+( no mysql ). Also, you may need to preface configure with 
+&quot;CPPFLAGS=-I/usr/kerberos/include ./configure&quot; due to the non-standard 
+location of kerberos on rh 9. This will all be fixed and smooth in the 
+next release :)</tt><br>
+<br>
+<tt><a  href="http://www.umich.edu/~umweb/downloads/cosign-20040202.tar.gz">http://www.umich.edu/~umweb/downloads/cosign-20040202.tar.gz</a></tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<tt><br>On Feb 20, 2004, at 3:11 PM, Darren Jacobs wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hi Johanna,</tt><br>
+<br>
+<tt>I've tried using :</tt><br>
+<br>
+<tt>'configure --enable-krb=/usr/kerberos' and 'configure 
+--enable-krb=/usr/kerberos --enable-mysql=no'</tt><br>
+<br>
+<tt>and I've gotten the same error message about crypt (In function 
+`main': /usr/local/src/cosign-1.5.0/cgi/cgi.c:374: undefined reference 
+to `crypt') as I did with :</tt><br>
+<br>
+<tt>'configure --enable-krb=/usr/kerberos 
+--enable-ssl=/usr/local/src/openssl-0.9.7a 
+--enable-mysql=/usr/bin/mysql --with-cosigndb=yyyy 
+--with-frienddbhost=fake.utoronto.ca --with-frienddblogin=zzzz 
+--with-frienddbpasswd=xxxxxx --with-cosignhost=fake.utoronto.ca 
+--with-apache-apxs=/usr/local/apache/bin/apxs'</tt><br>
+<br>
+<tt>Anything else I can try?</tt><br>
+<br>
+<tt>Regards,</tt><br>
+<br>
+<tt>Darren...</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt>johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>unless you want to use the friend functionality ( which i guess you 
+don't cos you are giving it bogus options ;) there is no need to 
+enable mysql. That said, the code it's dying on would be ifdef'd out. 
+that also said, i wonder why the code is dying. :)</tt><br>
+<br>
+<tt>And with that said I'll take a look at this on our RedHat 9 test box 
+here. :)</tt><br>
+<br>
+<tt>-Johanna</tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00002.shtml">Re: cosign install on rh linux 9</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00004.shtml">how cosign scales</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00002.shtml">Re: cosign install on rh linux 9</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00004.shtml">how cosign scales</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00003"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00003"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

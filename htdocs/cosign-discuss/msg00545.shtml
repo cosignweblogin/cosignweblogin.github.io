@@ -1,0 +1,121 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: certificate questions -->
+<!--X-From-R13: Ivyy Xnlarf <wnlarfNhzvpu.rqh> -->
+<!--X-Date: Wed, 14 Sep 2005 14:45:34 &#45;0400 (EDT) -->
+<!--X-Message-Id: 43286F47.2000909@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00544.shtml">Date Prev</a>][<a href="msg00546.shtml">Date Next</a>][<a href="msg00541.shtml">Thread Prev</a>][<a href="msg00546.shtml">Thread Next</a>][<a href="maillist.shtml#00545">Date Index</a>][<a href="threads.shtml#00545">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>certificate questions</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: certificate questions</li>
+<li><em>From</em>: Will Jaynes &lt;<a href="mailto:jaynes@DOMAIN.HIDDEN">jaynes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 14 Sep 2005 14:43:19 -0400</li>
+<li><em>User-agent</em>: Mozilla Thunderbird 1.0.6 (Windows/20050716)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>I'm taking a look at the JavaCosign filter and would like to set it up 
+on my development workstation. The install section of the README.txt 
+file talks about creating a keystore and a certificate and a signing 
+request, and then &quot;Have your CA sign the CSR&quot;. This brings up a couple 
+questions for me:</tt><br>
+<br>
+<tt>1) The certificate requires a CN. I assume this should be a domain name, 
+and I assume the dn should be that of the machine the certificate will 
+be used on. Are those assumptions correct? My development workstation 
+doesn't have a domain name. It's a DHCP client and only has an IP, and 
+not always the same IP. Is this going to be a problem with regard to the 
+certificate?</tt><br>
+<br>
+<tt>2) Who is my CA, and where do I send the CSR to have it signed?</tt><br>
+<br>
+<pre style="margin: 0em;">thanks for any info,
+Will</pre><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00546" href="msg00546.shtml">Re: certificate questions</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00544.shtml">Restore Your Account Access</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00546.shtml">Re: certificate questions</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00541.shtml">Re: the &quot;back&quot; button on the weblogout page</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00546.shtml">Re: certificate questions</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00545"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00545"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

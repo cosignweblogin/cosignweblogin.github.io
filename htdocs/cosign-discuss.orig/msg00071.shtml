@@ -1,0 +1,179 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: Using UM certificate for cosign -->
+<!--X-From-R13: "Ybafgnagva Hblx" <xiblxNhzvpu.rqh> -->
+<!--X-Date: Tue, 20 Apr 2004 13:55:53 &#45;0400 (EDT) -->
+<!--X-Message-Id: 200404201752.i3KHq9HV021692@wanderer.mr.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1104845764.1082390707@spike.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00070.shtml">Date Prev</a>][<a href="msg00072.shtml">Date Next</a>][<a href="msg00065.shtml">Thread Prev</a>][<a href="msg00072.shtml">Thread Next</a>][<a href="maillist.shtml#00071">Date Index</a>][<a href="threads.shtml#00071">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: Using UM certificate for cosign</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;, &lt;<a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>&gt;,   &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: Using UM certificate for cosign</li>
+<li><em>From</em>: &quot;Konstantin Voyk&quot; &lt;<a href="mailto:kvoyk@DOMAIN.HIDDEN">kvoyk@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 20 Apr 2004 13:52:04 -0400</li>
+<li><em>Cc</em>: &lt;<a href="mailto:chassy@DOMAIN.HIDDEN">chassy@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00065.shtml">1104845764.1082390707@spike.itd.umich.edu</a>&gt;</li>
+<li><em>Thread-index</em>: AcQmSb0VunJsril9R8m0HJ5S8T8CXQAtKMTg</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi,
+I've tried install cosign filter on IIS 6 with Windows 2003 several times in
+accordance with instructions in README. Cosign filter status is &quot;Up&quot; but
+priority is *Unknown*. I looked with FileMonitor and it looks like
+cosign.dll never accessed. I set up all permissions but there are no any
+records in &quot;Logs&quot; directory.
+Does somebody was able to make cosign work with IIS6 and W2003.
+I don't think that this problems related to certificates but would
+appreciate if you describe how cosign use .key file and .cert file.
+Thank you for any advices.
+Konstantin Voyk.
+
+-----Original Message-----
+From: jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[<a  href="mailto:jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx">mailto:jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>] On Behalf Of jarod@xxxxxxxxx
+Sent: Monday, April 19, 2004 4:05 PM
+To: Konstantin Voyk; cosign@xxxxxxxxx; 'Cosign Discussion'
+Subject: Re: Using UM cerfificate for cosign
+
+
+Konstantin,
+
+(This response is assuming you're still working with IISCosign, yes?)  If 
+you already have a UM-signed certificate all you need to do is change some 
+settings in your cosign.dll.config file.
+
+&lt;CAFilePath&gt; should still point to umwebCA.pem.
+&lt;ChainFilePath&gt; should indicate the folder where your certificate, *.cert 
+file, is.
+&lt;PrivateKeyFilePath&gt; points to the location of the private key file.
+
+Restart IIS and the new settings will be recognized by IISCosign.
+
+--Jarod Malestein
+--University of Michigan
+--ITCS
+
+--On Monday, April 19, 2004 10:45 AM -0400 Konstantin Voyk 
+&lt;kvoyk@xxxxxxxxx&gt; wrote:
+
+&gt;
+&gt;
+&gt; Hi Everybody,
+&gt;
+&gt; I have UM client/server certificate and would like use it for cosign.
+&gt; Could somebody explain me how can I do it or point me to a right source?
+&gt;
+&gt; Thank you,
+&gt;
+&gt;
+&gt;
+&gt; Konstantin Voyk
+&gt;
+&gt; (734) 615-3816
+&gt;
+&gt; kvoyk@xxxxxxxxx
+&gt;
+&gt; Infotech, Law School
+&gt;
+&gt; University of Michigan
+&gt;
+&gt;
+
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00072" href="msg00072.shtml">RE: Using UM certificate for cosign</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00065" href="msg00065.shtml">Re: Using UM cerfificate for cosign</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00070.shtml">RE: runtime requirements for IISCosign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00072.shtml">RE: Using UM certificate for cosign</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00065.shtml">Re: Using UM cerfificate for cosign</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00072.shtml">RE: Using UM certificate for cosign</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00071"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00071"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

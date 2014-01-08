@@ -1,0 +1,192 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: Total cost of Ownership -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 7 Apr 2004 23:46:47 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040408033201.9D2D235309@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 13FF31B4&#45;890B&#45;11D8&#45;9A58&#45;000A95CD7232@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00049.shtml">Date Prev</a>][<a href="msg00051.shtml">Date Next</a>][<a href="msg00049.shtml">Thread Prev</a>][<a href="msg00048.shtml">Thread Next</a>][<a href="maillist.shtml#00050">Date Index</a>][<a href="threads.shtml#00050">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: Total cost of Ownership</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'kevin mcgowan'&quot; &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: Total cost of Ownership</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 8 Apr 2004 15:32:00 +1200</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00049.shtml">13FF31B4-890B-11D8-9A58-000A95CD7232@umich.edu</a>&gt;</li>
+<li><em>Thread-index</em>: AcQdGafPnOFUvYJ8R5qXmMo5IC5h0wAAFknQ</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Excellent, thanks for that... much appreciated
+
+------------
+
+Brett Lomas
+Integration Architect
+Information Technology Systems and Services
+The University of Auckland
+New Zealand
+
+Phone:		+64 9 373 599 extn 86499
+Mobile:		+64 21 757 096
+
+
+-----Original Message-----
+From: kevin mcgowan [<a  href="mailto:clunis@xxxxxxxxx">mailto:clunis@xxxxxxxxx</a>] 
+Sent: Thursday, 8 April 2004 3:16 p.m.
+To: Brett Lomas
+Cc: &lt;cosign-discuss@xxxxxxxxx&gt;
+Subject: Re: Total cost of Ownership
+
+Brett,
+
+I'm sorry about the delay replying.  It was difficult to separate 
+cosign development/community support from running the weblogin server &amp; 
+supporting campus.  Running our actual servers is greatly simplified by 
+our use of Radmind &lt;<a  href="http://radmind.org/">http://radmind.org/</a>&gt;.
+
+The time spent running, monitoring, and maintaining the weblogin 
+servers and gathering usage statistics is slightly less than an hour 
+per week.  This is our only fixed cost.
+
+Signing CSRs for CoSign services takes about ten minutes per request.  
+Apache users are basically self-sufficient:  we get an e-mail message 
+from them asking for a service name and that's basically the first we 
+hear from them (and the last).  IIS users have, thus far, required 
+slightly more support, but I believe that has changed since the IIS 
+filter reached 1.0.  There is also time spent per week getting the word 
+out about CoSign on campus.  These costs are approximately linear with 
+the number of users we interact with.  Some users take a couple of 
+minutes to get started, some take a few hours.  We spend between 2 and 
+4 hours per week supporting campus users.  We're pretty big (&gt;100,000 
+users) and decentralized, though, so YMMV.
+
+Kevin
+
+On Apr 5, 2004, at 10:10 PM, Brett Lomas wrote:
+
+&gt; Hi Kevin and others
+&gt;
+&gt; I am just evaluating what the Total Cost of Ownership would be for 
+&gt; CoSign if deployed within the UoA. Can I get an estimate on the number 
+&gt; of hours you all spend doing day-to-day maintenance on the system? 
+&gt; This would include support, patching and upgrades etc but not bug 
+&gt; fixing and development? Just a rough number of person hours per week 
+&gt; would be good.
+&gt;
+&gt;
+&gt;
+&gt; Many thanks
+&gt;
+&gt; Brett
+&gt;
+&gt; ------------
+&gt;
+&gt; Brett Lomas
+&gt;
+&gt; Integration Architect
+&gt;
+&gt; Information Technology Systems and Services
+&gt;
+&gt; The University of Auckland
+&gt;
+&gt; New Zealand
+&gt;
+&gt; Phone:&#xA0; &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 9 373 599 extn 86499
+&gt;
+&gt; Mobile: &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; +64 21 757 096
+&gt;
+&gt;  !DSPAM:407211da211862391026762!
+
+                                       ... &quot;In, as you say, the mud.&quot; ...
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00049" href="msg00049.shtml">Re: Total cost of Ownership</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00049.shtml">Re: Total cost of Ownership</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00051.shtml">Development</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00049.shtml">Re: Total cost of Ownership</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00048.shtml">Logout functionality for IISCosign</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00050"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00050"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

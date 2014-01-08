@@ -1,0 +1,175 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign, Solaris 9, and Sun CC compiler -->
+<!--X-From-R13: [nex [bagnthr <znexzbagNhzvpu.rqh> -->
+<!--X-Date: Tue, 14 Jun 2005 14:33:07 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.SOL.4.58.0506141417210.17299@mozi.lsait.lsa.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 42AEBAA0.8020505@columbia.edu -->
+<!--X-Reference: Pine.SOL.4.58.0506141159550.17299@mozi.lsait.lsa.umich.edu -->
+<!--X-Reference: 42AF0BC9.4090101@columbia.edu -->
+<!--X-Reference: Pine.SOL.4.58.0506141304020.17299@mozi.lsait.lsa.umich.edu -->
+<!--X-Reference: 42AF12F0.4090706@columbia.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00429.shtml">Date Prev</a>][<a href="msg00431.shtml">Date Next</a>][<a href="msg00429.shtml">Thread Prev</a>][<a href="msg00431.shtml">Thread Next</a>][<a href="maillist.shtml#00430">Date Index</a>][<a href="threads.shtml#00430">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign, Solaris 9, and Sun CC compiler</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jeffrey Altman &lt;<a href="mailto:jaltman@DOMAIN.HIDDEN">jaltman@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign, Solaris 9, and Sun CC compiler</li>
+<li><em>From</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 14 Jun 2005 14:26:27 -0400 (EDT)</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00429.shtml">42AF12F0.4090706@columbia.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00422.shtml">42AEBAA0.8020505@columbia.edu</a>&gt; &lt;<a href="msg00426.shtml">Pine.SOL.4.58.0506141159550.17299@mozi.lsait.lsa.umich.edu</a>&gt; &lt;<a href="msg00427.shtml">42AF0BC9.4090101@columbia.edu</a>&gt; &lt;<a href="msg00428.shtml">Pine.SOL.4.58.0506141304020.17299@mozi.lsait.lsa.umich.edu</a>&gt; &lt;<a href="msg00429.shtml">42AF12F0.4090706@columbia.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Tue, 14 Jun 2005, Jeffrey Altman wrote:
+
+&gt; *** Warning: Linking the shared library mod_cosign.la against the
+&gt; non-libtool
+&gt; *** objects  mod_cosign.o connect.o cookiefs.o sparse.o
+&gt; ../../common/argcargv.o
+&gt; ../../common/fbase64.o ../../common/mkcookie.o ../../common/rate.o
+&gt; ../../version
+&gt; .o is not portable!
+&gt; make[1]: Leaving directory `/usr/local/src/cosign-1.8.5/filters/apache2'
+&gt;
+&gt; I have placed the complete output of the cosign make at
+&gt;
+&gt;  /afs/athena.mit.edu/user/j/a/jaltman/Public/cosign.log
+
+Well, I couldn't make a whole lot of sense of this error message
+by looking at the libtool script itself, but the consensus via
+google seems to be that this error means that the .o files you're
+linking are not compiled as position independent code for use
+in a dyanmically loaded module.
+
+Looking at your build of mod_cosign.o for Apache 2 on Solaris 9,
+as done by apxs, I see that you don't have the -KPIC flag:
+
+/usr/bin/cc -DAPXS2 -DTLS -DKRB    -D_PROXY_DB=\&quot;/var/cosign/proxy\&quot; -D_FILTER_D
+B=\&quot;/var/cosign/filter\&quot; -D_COSIGN_TICKET_CACHE=\&quot;/ticket\&quot;  -g   -I/usr/local/i
+nclude -I/usr/local/apache2/include -I../../libsnet   -I../../common/   -c mod_c
+osign.c -o mod_cosign.o
+
+For reference, here's the build of the similar file on my Apache 1.3.29
+system with Solaris 8 (also via apxs):
+
+cc -fast -xtarget=generic -DTLS -DKRB  -DGSS  -D_COSIGN_TICKET_CACHE=\&quot;/ticket\&quot;
+  -v -I/opt/include/mysql -I/opt/krb5/include -I/opt/SUNWconn/crypto/include -I/
+opt/include -DSOLARIS2=280 -DMOD_SSL=208116 -DEAPI -DEAPI_MM -xtarget=generic -v
+ -DDEFAULT_PATH=&quot;/opt/bin:/usr/bin:/usr/sbin:/usr/ccs/bin&quot; -DKRB5 -DKRB5_SAVE_CR
+EDENTIALS -DKRB5_VERIFY_TICKET -DKRB_DEF_REALM=&quot;LSA.UMICH.EDU&quot; -KPIC -DSHARED_MO
+DULE -I/opt/SUNWconn/crypto/include -I/opt/packages/apache-1.3.29/include/apache
+ -I../../libsnet  -I/opt/include -I../../common/  -c  mod_cosign.c
+
+Check to be sure that &quot;apxs -q CFLAGS_SHLIB&quot; returns
+&quot;-KPIC -DSHARED_MODULE&quot; on your system (-KPIC is the
+important part).  If not, that's your problem.  While
+you're at it, also make sure that &quot;apxs -q LDFLAGS_SHLIB&quot;
+returns &quot;-G&quot;.  I'm not sure about Apache 2, but for
+Apache 1, these values can be fixed by editing the
+apxs script directly.  (Then do a &quot;make distclean&quot;
+for cosign and reconfigure and recompile cosign).
+
+I hope this helps.
+
+                Mark Montague
+                The University of Michigan
+                markmont@xxxxxxxxx
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00422" href="msg00422.shtml">Cosign, Solaris 9, and Sun CC compiler</a></strong>
+<ul><li><em>From:</em> Jeffrey Altman</li></ul></li>
+<li><strong><a name="00426" href="msg00426.shtml">Re: Cosign, Solaris 9, and Sun CC compiler</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+<li><strong><a name="00427" href="msg00427.shtml">Re: Cosign, Solaris 9, and Sun CC compiler</a></strong>
+<ul><li><em>From:</em> Jeffrey Altman</li></ul></li>
+<li><strong><a name="00428" href="msg00428.shtml">Re: Cosign, Solaris 9, and Sun CC compiler</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+<li><strong><a name="00429" href="msg00429.shtml">Re: Cosign, Solaris 9, and Sun CC compiler</a></strong>
+<ul><li><em>From:</em> Jeffrey Altman</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00429.shtml">Re: Cosign, Solaris 9, and Sun CC compiler</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00431.shtml">CoSign and Microsoft Sharepoint Services</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00429.shtml">Re: Cosign, Solaris 9, and Sun CC compiler</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00431.shtml">CoSign and Microsoft Sharepoint Services</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00430"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00430"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

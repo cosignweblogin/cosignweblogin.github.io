@@ -1,0 +1,153 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Question about service cookie -->
+<!--X-From-R13: Yriva [pUbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Thu, 16 Sep 2004 09:22:51 &#45;0400 (EDT) -->
+<!--X-Message-Id: 49D9D72B&#45;07E3&#45;11D9&#45;93AC&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 41492F92.0000C7.10032@bjapp18 -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00239.shtml">Date Prev</a>][<a href="msg00241.shtml">Date Next</a>][<a href="msg00239.shtml">Thread Prev</a>][<a href="msg00241.shtml">Thread Next</a>][<a href="maillist.shtml#00240">Date Index</a>][<a href="threads.shtml#00240">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Question about service cookie</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;~{3B?u~}&quot; &lt;<a href="mailto:chen_kuang@DOMAIN.HIDDEN">chen_kuang@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Question about service cookie</li>
+<li><em>From</em>: Kevin McGowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 16 Sep 2004 09:21:16 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00238.shtml">41492F92.0000C7.10032@bjapp18</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00238.shtml">41492F92.0000C7.10032@bjapp18</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On Sep 16, 2004, at 2:15 AM, ~{3B?u~} wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>hi all,<br>
+        I have installed the weblogin server on the host  
+&quot;dev.trust.com&quot;,<br>
+and deployed the cosign filter on the web server--&quot;cosign.trust.com&quot;  
+which<br>
+need to be protected with cosign.<br>
+        When I logged in the cosign.trust.com, as I had thought, my  
+request was<br>
+redirected to the weblogin server--dev.trust.com, and the login form  
+with the<br>
+hint &quot;Authentication Required. You have not yet logged-in&quot; was  
+displayed.<br>
+Then I entered one user name and password and pressed the login  
+button, but<br>
+it returned &quot;Error: Cookies Required.This service requires that  
+cookies be<br>
+enabled.&quot; But my cookie had been enabled.
+</tt></blockquote><tt><br>I think Graeme's right;  one of the two cookies isn't being returned to  
+the web server, and it looks like it is the cosign= or login cookie.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>        In the log file, there is :<br>
+&quot;192.168.0.169 - - [14/Sep/2004:00:55:51 +0800] &quot;GET  
+/?cosign- 
+cosign@xxxxxxxxx=zhL9Tbs2UiFQdqCV5HNHzh24QC+3s4fAJ+q53t6jdNm5ShyQE7+pXv 
+lJiSYMiu5X5cikHRoQd79NzBLDny1Dr8BdEzT6YSueGYXzqeFW4-ry70ij4Gwa4d0- 
+Uq85;&amp;<a  href="https://cosign.trust.com:80/">https://cosign.trust.com:80/</a> HTTP/1.1&quot; 200 4285
+</tt></blockquote><tt><br>This is the request to the weblogin server that resulted in the login  
+screen being displayed.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>192.168.0.169 - - [14/Sep/2004:00:55:57 +0800] &quot;POST / HTTP/1.1&quot; 200  
+1455&quot;
+</tt></blockquote><tt><br>This is you posting the login screen.  Do you have access to the logs  
+on the service ( cosign.trust.com )?</tt><br>
+<br>
+<tt>What kind of web browser are you using?  You should see two cookies  
+during this transaction:  the first one, from cosign.trust.com, is the  
+service cookie and the second one, from the weblogin server,  
+dev.trust.com, is the login cookie.  Did you accept both of these?</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">      What's wrong? And who can give me some advice?
+chen
+</pre></blockquote><tt><br>kevin</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00238" href="msg00238.shtml">Question about service cookie</a></strong>
+<ul><li><em>From:</em> &#x9648;&#x65F7;</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00239.shtml">Re: Question about service cookie</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00241.shtml">Compilation problem with debian sarge</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00239.shtml">Re: Question about service cookie</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00241.shtml">Compilation problem with debian sarge</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00240"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00240"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

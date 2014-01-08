@@ -1,0 +1,139 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RHEL3 Support? -->
+<!--X-From-R13: [nggurj Evzzbaf <zcfvzzbaNhzvpu.rqh> -->
+<!--X-Date: Fri, 14 May 2004 12:49:06 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.SOL.4.58.0405141231170.7679@mspacman.gpcc.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00112.shtml">Date Prev</a>][<a href="msg00114.shtml">Date Next</a>][<a href="msg00112.shtml">Thread Prev</a>][<a href="msg00114.shtml">Thread Next</a>][<a href="maillist.shtml#00113">Date Index</a>][<a href="threads.shtml#00113">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RHEL3 Support?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: RHEL3 Support?</li>
+<li><em>From</em>: Matthew Simmons &lt;<a href="mailto:mpsimmon@DOMAIN.HIDDEN">mpsimmon@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 14 May 2004 12:48:26 -0400 (EDT)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hello all,
+I am having issues installing the cosign filter(
+319838 May 12 00:00 cosign-1.6.1.tar.gz)
+ on Red Hat Enterprise
+Linux v.3 AS. I use the CPPFLAGS=-I/usr/kerberos/include workaround to
+make .configure behave, but I also have to add
+--with-apache-apxs=/usr/sbin/apxs. Configure behaves and seems to complete
+successfully but when I attempt to make, I get a long string of errors and
+the compile fails. I will include a smattering of the errors.
+
+Start of errors:
+mod_cosign.c:41: syntax error before '*' token
+mod_cosign.c: In function `cosign_create_dir_config':
+mod_cosign.c:45: warning: implicit declaration of function `ap_pcalloc'
+mod_cosign.c:45: `p' undeclared (first use in this function)
+mod_cosign.c:45: (Each undeclared identifier is reported only once
+mod_cosign.c:45: for each function it appears in.)
+mod_cosign.c: At top level:
+mod_cosign.c:74: syntax error before '*' token
+mod_cosign.c: In function `cosign_create_server_config':
+mod_cosign.c:78: `p' undeclared (first use in this function)
+
+End of errors (and compile for that matter):
+mod_cosign.c:811: warning: (near initialization for `cosign_module')
+mod_cosign.c:819: warning: excess elements in scalar initializer
+mod_cosign.c:819: warning: (near initialization for `cosign_module')
+mod_cosign.c:819: warning: data definition has no type or storage class
+make[1]: *** [mod_cosign.o] Error 1
+make[1]: Leaving directory `/home/tdr/cosign-1.6.1/filters/apache'
+make: *** [filters/apache] Error 2
+
+I have installed all the *.src.rpms and the *-devel.rpms. I imagine
+something is just in an odd directory, but I'm not sure what that is.
+Any thoughts?
+-Matt-
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00114" href="msg00114.shtml">Re: RHEL3 Support?</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00112.shtml">v1.6.1: krb ticket path length broken in other places</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00114.shtml">Re: RHEL3 Support?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00112.shtml">v1.6.1: krb ticket path length broken in other places</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00114.shtml">Re: RHEL3 Support?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00113"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00113"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

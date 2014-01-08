@@ -1,0 +1,136 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Cosign Loop Breaking -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Thu, 3 Jun 2004 13:35:54 &#45;0400 (EDT) -->
+<!--X-Message-Id: 5DE44794&#45;B584&#45;11D8&#45;AD07&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00118.shtml">Date Prev</a>][<a href="msg00120.shtml">Date Next</a>][<a href="msg00322.shtml">Thread Prev</a>][<a href="msg00120.shtml">Thread Next</a>][<a href="maillist.shtml#00119">Date Index</a>][<a href="threads.shtml#00119">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Cosign Loop Breaking</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Cosign Loop Breaking</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 3 Jun 2004 13:35:12 -0400</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Hey all,</tt><br>
+<br>
+<tt>So we've been kicking this idea around for a while, and wanted to throw 
+it out to the group.</tt><br>
+<br>
+<tt>There are a few misconfigurations that can cause a loop where a service 
+will set a cookie, redirect back to the central cosign server, which 
+will try and register the cookie, succeed, redirect back, where the 
+&quot;check&quot; will fail, set a new cookie, redirect, re-register, etc. This 
+will go on until the browser detects &quot;too many redirects&quot; ( this 
+threshold varies by browser ) at which point a very unhelpful message 
+will be thrown by the browser and the user is &quot;stranded.&quot;</tt><br>
+<br>
+<tt>I propose that we add some code to the cgi that keeps track of the 
+number of REGISTERs in a given time period.  Our current idea is to 
+tack on a time stamp and a count to the end of the login (cosign=) 
+cookie, so we'd have:</tt><br>
+<br>
+<tt>cosign=[random_bits_here]/[time in seconds]/[number of registers since 
+that time]</tt><br>
+<br>
+<tt>If a give login cookie exceeds X registers in N seconds, the cgi can 
+throw a proper error screen giving the user some *actual* information. 
+:) The current defaults I'm thinking of are 10 registers in 30 seconds. 
+This is fairly arbitrary, and just where I'm starting?</tt><br>
+<br>
+<tt>Let the discussion begin!</tt><br>
+<br>
+<pre style="margin: 0em;">Thanks,
+Johanna and the Cosign Dev team</pre><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00120" href="msg00120.shtml">RE: Cosign Loop Breaking</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00125" href="msg00125.shtml">Re: Cosign Loop Breaking</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00118.shtml">Re: question</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00120.shtml">RE: Cosign Loop Breaking</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00322.shtml">Re: Question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00120.shtml">RE: Cosign Loop Breaking</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00119"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00119"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

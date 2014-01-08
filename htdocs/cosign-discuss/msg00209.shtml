@@ -1,0 +1,153 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: replication -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Thu, 29 Jul 2004 16:54:32 &#45;0400 (EDT) -->
+<!--X-Message-Id: 41096304.9060706@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.GSO.4.58.0407261519430.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: 7975C00E&#45;DF4E&#45;11D8&#45;B4BC&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: Pine.GSO.4.58.0407271001140.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: Pine.GSO.4.58.0407281414570.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: 45F6F1D6&#45;E0A1&#45;11D8&#45;A7E9&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: Pine.GSO.4.58.0407281715080.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: EEB0EA75&#45;E0B3&#45;11D8&#45;BE39&#45;000A95A0453E@umich.edu -->
+<!--X-Reference: 291BF6B3&#45;E0B9&#45;11D8&#45;A90D&#45;000A9590A9AE@ed.ac.uk -->
+<!--X-Reference: Pine.GSO.4.58.0407291112350.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: 7F63330D&#45;E19B&#45;11D8&#45;BE39&#45;000A95A0453E@umich.edu -->
+<!--X-Reference: 53E935A4&#45;E19C&#45;11D8&#45;BED8&#45;000A9590A9AE@ed.ac.uk -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00208.shtml">Date Prev</a>][<a href="msg00210.shtml">Date Next</a>][<a href="msg00208.shtml">Thread Prev</a>][<a href="msg00190.shtml">Thread Next</a>][<a href="maillist.shtml#00209">Date Index</a>][<a href="threads.shtml#00209">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: replication</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: replication</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 29 Jul 2004 16:50:12 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00208.shtml">53E935A4-E19C-11D8-BED8-000A9590A9AE@ed.ac.uk</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00189.shtml">Pine.GSO.4.58.0407261519430.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00192.shtml">7975C00E-DF4E-11D8-B4BC-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00193.shtml">Pine.GSO.4.58.0407271001140.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00195.shtml">Pine.GSO.4.58.0407281414570.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00196.shtml">45F6F1D6-E0A1-11D8-A7E9-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00197.shtml">Pine.GSO.4.58.0407281715080.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00199.shtml">EEB0EA75-E0B3-11D8-BE39-000A95A0453E@umich.edu</a>&gt; &lt;<a href="msg00200.shtml">291BF6B3-E0B9-11D8-A90D-000A9590A9AE@ed.ac.uk</a>&gt; &lt;<a href="msg00203.shtml">Pine.GSO.4.58.0407291112350.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00206.shtml">7F63330D-E19B-11D8-BE39-000A95A0453E@umich.edu</a>&gt; &lt;<a href="msg00208.shtml">53E935A4-E19C-11D8-BED8-000A9590A9AE@ed.ac.uk</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7) Gecko/20040616</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 7/29/04 4:17 PM, Graeme Wood wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Well the ticket files seem to end up being owned by the owner of apache  
+and cosignd can then not<br>
+read them when it attempts to transfer them and then dies.<br>
+ </tt><br>
+<br>
+</blockquote><tt><br>When we had the problem of the cgi not cleaning up its tickets, I 
+noticed because both it and the daemon write their tickets to the same 
+directory.</tt><br>
+<br>
+<tt>If permissions/ownership of that directory aren't amenable to using two 
+different uids, that might cause problems.</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00189" href="msg00189.shtml">replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00192" href="msg00192.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00193" href="msg00193.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00195" href="msg00195.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00196" href="msg00196.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00197" href="msg00197.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00199" href="msg00199.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+<li><strong><a name="00200" href="msg00200.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00203" href="msg00203.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00206" href="msg00206.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+<li><strong><a name="00208" href="msg00208.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00208.shtml">Re: replication</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00210.shtml">Re: audit trail</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00208.shtml">Re: replication</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00190.shtml">unknown CA</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00209"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00209"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

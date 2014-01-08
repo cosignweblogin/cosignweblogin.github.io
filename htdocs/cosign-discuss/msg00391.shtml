@@ -1,0 +1,125 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Wanted: somewhat complicated cosign configs for apache 1.3.x -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Mon, 28 Mar 2005 15:42:39 &#45;0500 (EST) -->
+<!--X-Message-Id: D4863C98&#45;9FC9&#45;11D9&#45;953B&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00390.shtml">Date Prev</a>][<a href="msg00392.shtml">Date Next</a>][<a href="msg00389.shtml">Thread Prev</a>][<a href="msg00394.shtml">Thread Next</a>][<a href="maillist.shtml#00391">Date Index</a>][<a href="threads.shtml#00391">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Wanted: somewhat complicated cosign configs for apache 1.3.x</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Wanted: somewhat complicated cosign configs for apache 1.3.x</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 28 Mar 2005 15:41:58 -0500</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Hey All,</tt><br>
+<br>
+<tt>The Cosign Dev team has been playing around with mod_cosign in an 
+effort to make things like &quot;Allow from&quot; and &quot;Satisfy&quot; and all those 
+other native Apache AuthZ type things very cosign compatible. We think 
+we've got a pretty good stab at it for Apache 1.3, and would like to 
+solicit either actually conf files or theoretical situations based on 
+actual usages to test against to make sure, in the meantime, we haven't 
+*lost* any preexisting CosignProtected On/Off functionality. We'll fine 
+tune the integration using these examples as our testing regime, and 
+then ask that the example-bearers, if they have a test environment in 
+which they can try out the CVS version of the module, do so as well.</tt><br>
+<br>
+<tt>I would really like to make this 1.8.1, or maybe 1.8.5, but in order to 
+feel good adding something potentially wacky to a &quot;point&quot; release i 
+want to have it thoroughly vetted, and I don't know the ways you all 
+may be be using any particular directive, Make sense?</tt><br>
+<br>
+<tt>No need to reply to the whole list ( unless you want to ), just send 
+config files/snippets/ideas to cosign@xxxxxxxxxx The Apache 2 version 
+for this should follow shortly, and we won't make whatever release 
+we're gonna make until both filters do this right. :) I just want to 
+get a jump on testing what we do have working.</tt><br>
+<br>
+<pre style="margin: 0em;">Thanks,
+Johanna and the Cosign Dev Team</pre><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00390.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00392.shtml">Re: new jcosign service produces error message at authn</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00389.shtml">Allowing LDAP *or* Cosign authentication</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00394.shtml">IISCosign - Looping problem on Windows 2003</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00391"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00391"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

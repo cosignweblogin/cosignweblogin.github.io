@@ -1,0 +1,160 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Compilation issues with 1.6.2 and filter/apache2 -->
+<!--X-From-R13: Egrir Evzzbaf <fpfNhzvpu.rqh> -->
+<!--X-Date: Wed, 6 Oct 2004 11:35:47 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20041006153232.GA17058@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00247.shtml">Date Prev</a>][<a href="msg00249.shtml">Date Next</a>][<a href="msg00252.shtml">Thread Prev</a>][<a href="msg00249.shtml">Thread Next</a>][<a href="maillist.shtml#00248">Date Index</a>][<a href="threads.shtml#00248">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Compilation issues with 1.6.2 and filter/apache2</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Compilation issues with 1.6.2 and filter/apache2</li>
+<li><em>From</em>: Steve Simmons &lt;<a href="mailto:scs@DOMAIN.HIDDEN">scs@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 6 Oct 2004 11:32:32 -0400</li>
+<li><em>User-agent</em>: Mutt/1.5.6i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Two items -
+
+The download page for cosign says that apache2 is not supported; the
+roadmap page (<a  href="http://www.umich.edu/~umweb/software/cosign/roadmap.html">http://www.umich.edu/~umweb/software/cosign/roadmap.html</a>)
+says it was supported as of v1.5.  Which is correct?
+
+Has anyone out there successfully build 1.6.2 for apache2 'out of the
+box'?  I have encountered three show-stoppers and an interesting warning.
+
+Config:   ./configure --enable-apache2=/usr/local/apache/bin/apxs
+Environment:  CPPFLAGS=&quot;&quot;-I/usr/local/apache/include&quot;, gcc 3.3.2, solaris 8,
+    /usr/local/apache is a symlink to /usr/local/apache-2.0.46
+
+The most serious is a syntax error in filters/apache2/mod_cosign.c,
+lines 780/781, where a string literal is broken into two lines exactly
+on an 80-char boundary.
+
+The Makefile generated also has a problem. filters/apache2/Makefile.in
+is missing a space on line 20, where
+     ..._DB=\&quot;${FILTERDB}\&quot;-D_COSIGN_...
+should be
+     ..._DB=\&quot;${FILTERDB}\&quot; -D_COSIGN_...
+
+Finally, the toplevel Makefile always seems to want to build both
+apache1 and apache2 filters.  That seems clearly wrong, but it's
+hardwired in the Makefile.in.  Apache 1 filters builds failed in
+this configuration, but that would seem to be reasonable given we're
+specifying apache2 include files.  I simply removed all the
+filter/apache dir references from the final Makefile.
+
+With these fixes the filter compiles, but the last step yields this
+warning (lines broken by me for readability):
+
+    /usr/local/apache-2.0.46/build/libtool --silent --mode=link \
+	gcc -o mod_cosign.la  -rpath /usr/local/apache-2.0.46/modules \
+	-module -avoid-version    mod_cosign.o connect.o cookiefs.o \
+	sparse.o ../../common/argcargv.o ../../common/fbase64.o \
+	../../common/mkcookie.o ../../version.o -L../../libsnet/ \
+	-L/usr/pkg/lib -lsnet
+
+    *** Warning: Linking the shared library mod_cosign.la against \
+        the non-libtool
+    *** objects  mod_cosign.o connect.o cookiefs.o sparse.o \
+        ../../common/argcargv.o ../../common/fbase64.o \
+	../../common/mkcookie.o ../../version.o is not portable!
+    make[1]: Leaving directory `/afs/sph.umich.edu/sys/src/apache/cosign-1.6.2/filters/apache2'
+
+
+Given the warning and other surprises I'm not confident about dropping
+the compiled filter into our apache2 tree; comments from others using
+this would for apache2 would be appreciated.
+
+Steve
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00249" href="msg00249.shtml">Re: Compilation issues with 1.6.2 and filter/apache2</a></strong>
+<ul><li><em>From:</em> Dan Hyde</li></ul></li>
+<li><strong><a name="00253" href="msg00253.shtml">Re: Compilation issues with 1.6.2 and filter/apache2</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00247.shtml">IIS6 Cosign installer</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00249.shtml">Re: Compilation issues with 1.6.2 and filter/apache2</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00252.shtml">RE: IIS6 Cosign installer</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00249.shtml">Re: Compilation issues with 1.6.2 and filter/apache2</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00248"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00248"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

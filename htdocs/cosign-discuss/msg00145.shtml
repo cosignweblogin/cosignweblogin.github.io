@@ -1,0 +1,123 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: duplicate k5 tgt's? -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Thu, 24 Jun 2004 09:27:17 &#45;0400 (EDT) -->
+<!--X-Message-Id: 40DAD64A.1070400@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 40D9CAEA.6030103@psu.edu -->
+<!--X-Reference: 719F5A0C&#45;C583&#45;11D8&#45;9362&#45;000A95E48A4E@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00144.shtml">Date Prev</a>][<a href="msg00146.shtml">Date Next</a>][<a href="msg00144.shtml">Thread Prev</a>][<a href="msg00146.shtml">Thread Next</a>][<a href="maillist.shtml#00145">Date Index</a>][<a href="threads.shtml#00145">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: duplicate k5 tgt's?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: duplicate k5 tgt's?</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 24 Jun 2004 09:25:30 -0400</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00144.shtml">719F5A0C-C583-11D8-9362-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00141.shtml">40D9CAEA.6030103@psu.edu</a>&gt; &lt;<a href="msg00144.shtml">719F5A0C-C583-11D8-9362-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7) Gecko/20040616</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 6/23/04 10:08 PM, johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hmm, perhaps a call to unlink() is in order? I could have sworn we 
+caught this before, but maybe we never checked it in. The cgi 
+transfers the ticket to the daemon, which in your case is probably the 
+same machine.
+</tt></blockquote><tt></tt><br>
+<br>
+<tt>Yes, cgi and daemon are on the same machine.</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00141" href="msg00141.shtml">duplicate k5 tgt's?</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+<li><strong><a name="00144" href="msg00144.shtml">Re: duplicate k5 tgt's?</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00144.shtml">Re: duplicate k5 tgt's?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00146.shtml">a couple of patches</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00144.shtml">Re: duplicate k5 tgt's?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00146.shtml">a couple of patches</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00145"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00145"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

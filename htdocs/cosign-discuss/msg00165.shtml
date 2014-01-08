@@ -1,0 +1,142 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: questions on post errors -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Mon, 12 Jul 2004 15:42:03 &#45;0400 (EDT) -->
+<!--X-Message-Id: 40F2E923.8030704@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 40F2D3BE.80206@psu.edu -->
+<!--X-Reference: 93946410&#45;D435&#45;11D8&#45;B51A&#45;000A95E48A4E@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00164.shtml">Date Prev</a>][<a href="msg00166.shtml">Date Next</a>][<a href="msg00164.shtml">Thread Prev</a>][<a href="msg00166.shtml">Thread Next</a>][<a href="maillist.shtml#00165">Date Index</a>][<a href="threads.shtml#00165">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: questions on post errors</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: questions on post errors</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 12 Jul 2004 15:40:19 -0400</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00164.shtml">93946410-D435-11D8-B51A-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00163.shtml">40F2D3BE.80206@psu.edu</a>&gt; &lt;<a href="msg00164.shtml">93946410-D435-11D8-B51A-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7) Gecko/20040616</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 7/12/04 2:59 PM, johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>is the post_error page CosignProtected Off?<br>
+ </tt><br>
+<br>
+</blockquote><tt><br>Cosign is not active on that server (cosign.psu.edu in the example -- 
+not real name), just the cgi.  No config directives.</tt><br>
+<br>
+<tt>I can manually browse to &lt;<a  href="https://cosign.psu.edu/post_error.html">https://cosign.psu.edu/post_error.html</a>&gt; on a 
+fresh browser and see the page (not rendered as a template, though).</tt><br>
+<br>
+<tt>I can get the same error to happen with your production system:</tt><br>
+<br>
+<pre style="margin: 0em;">  1. window-A: to &lt;<a  href="http://www.umich.edu/~umweb/software/cosign/">http://www.umich.edu/~umweb/software/cosign/</a>&gt;
+  2. win-A: select &quot;Join cosign-discuss&quot; near bottom
+  3. win-A: get weblogin screen, login w/ friend account
+  4. win-A: get directory page
+  5. window-B: to &lt;<a  href="https://weblogin.umich.edu/">https://weblogin.umich.edu/</a>&gt;, get services page
+  6. win-B: logout, confirm logout, back to login page.
+  7. wait for filter database cache to time out
+  8. win-A: enter text in search box, select &quot;Search&quot;
+  9. win-A: gets bad page at
+     &lt;<a  href="https://weblogin.umich.edu/?http://www.umich.edu/post_error.html=[cookie">https://weblogin.umich.edu/?http://www.umich.edu/post_error.html=[cookie</a>]...&gt;</pre><br>
+<tt><br>-Phil</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00166" href="msg00166.shtml">Re: questions on post errors</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00163" href="msg00163.shtml">questions on post errors</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+<li><strong><a name="00164" href="msg00164.shtml">Re: questions on post errors</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00164.shtml">Re: questions on post errors</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00166.shtml">Re: questions on post errors</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00164.shtml">Re: questions on post errors</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00166.shtml">Re: questions on post errors</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00165"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00165"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,142 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: IISCosign v1.1.1 and Windows Server 2003, SP1. -->
+<!--X-From-R13: "Ejrrgzna, Rnivq" <qfjrrgznNos.hzvpu.rqh> -->
+<!--X-Date: Fri, 21 Oct 2005 09:32:00 &#45;0400 (EDT) -->
+<!--X-Message-Id: AA997F4A72F59E4091BF4451D130B27D0105958A@bf&#45;it&#45;equinox02.bf.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00589.shtml">Date Prev</a>][<a href="msg00591.shtml">Date Next</a>][<a href="msg00588.shtml">Thread Prev</a>][<a href="msg00591.shtml">Thread Next</a>][<a href="maillist.shtml#00590">Date Index</a>][<a href="threads.shtml#00590">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: IISCosign v1.1.1 and Windows Server 2003, SP1.</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Shipman, William John&quot; &lt;<a href="mailto:wshipman@DOMAIN.HIDDEN">wshipman@xxxxxxxxx</a>&gt;, &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: IISCosign v1.1.1 and Windows Server 2003, SP1.</li>
+<li><em>From</em>: &quot;Sweetman, David&quot; &lt;<a href="mailto:dsweetma@DOMAIN.HIDDEN">dsweetma@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 21 Oct 2005 09:30:42 -0400</li>
+<li><em>Thread-index</em>: AcXVjOr1SaPCIOlOQySFyitPdWUDDwAthqvA</li>
+<li><em>Thread-topic</em>: IISCosign v1.1.1 and Windows Server 2003, SP1.</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I have upgraded to SP1 on 4 servers running Win2003 &amp; IISCoSign 1.1.1
+--- IISCoSign continued to function without issue in all cases.
+
+David
+
+-----Original Message-----
+From: Shipman, William [<a  href="mailto:wshipman@xxxxxxxxx">mailto:wshipman@xxxxxxxxx</a>] 
+Sent: Thursday, October 20, 2005 11:43 AM
+To: cosign-discuss@xxxxxxxxx
+Subject: IISCosign v1.1.1 and Windows Server 2003, SP1.
+
+Hello,
+
+I'm currently running IISCosign v1.1.1 on Windows Server 2003 -
+Enterprise Edition and am looking to upgrade the OS to Service Pack 1
+soon.  I'm curious as whether or not anyone else out there has performed
+such an installation on a server in a Production environment and if so,
+what if any issue(s) have you experienced?
+
+Thanks for any info that you can provide. 
+
+
+Will
+
+------------------------------------------------------------------------
+----
+William Shipman, MCP                            University of Michigan
+Systems Administrator Senior                    LSA Information
+Technology
+Web/Database Administrator, and CMS Systems
+wshipman@xxxxxxxxx                              SST - Windows Team
+Phone: 734.763.5577                           	Fax: 734.647.8333
+------------------------------------------------------------------------
+----
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00591" href="msg00591.shtml">RE: IISCosign v1.1.1 and Windows Server 2003, SP1.</a></strong>
+<ul><li><em>From:</em> Shipman, William</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00589.shtml">Apache2 filter build problems</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00591.shtml">RE: IISCosign v1.1.1 and Windows Server 2003, SP1.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00588.shtml">IISCosign v1.1.1 and Windows Server 2003, SP1.</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00591.shtml">RE: IISCosign v1.1.1 and Windows Server 2003, SP1.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00590"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00590"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

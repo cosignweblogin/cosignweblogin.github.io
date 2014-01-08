@@ -1,0 +1,142 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: IIS authZ (was Re: Using LDAP for AuthZ with Cosign's AuthN) -->
+<!--X-From-R13: "Ejrrgzna, Rnivq" <qfjrrgznNhzvpu.rqh> -->
+<!--X-Date: Thu, 19 Aug 2004 18:53:53 &#45;0400 (EDT) -->
+<!--X-Message-Id: FDBF99099FFC83469048C4A143453F5840F95E@maismx.mais.bf.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00227.shtml">Date Prev</a>][<a href="msg00229.shtml">Date Next</a>][<a href="msg00226.shtml">Thread Prev</a>][<a href="msg00227.shtml">Thread Next</a>][<a href="maillist.shtml#00228">Date Index</a>][<a href="threads.shtml#00228">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: IIS authZ (was Re: Using LDAP for AuthZ with Cosign's AuthN)</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Phil Pishioneri'&quot; &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;,   Cosign Discussion	 &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: IIS authZ (was Re: Using LDAP for AuthZ with Cosign's AuthN)</li>
+<li><em>From</em>: &quot;Sweetman, David&quot; &lt;<a href="mailto:dsweetma@DOMAIN.HIDDEN">dsweetma@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 19 Aug 2004 18:52:10 -0400</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Phil,
+
+	I've done some extensive work to integrate IISCosign with Win2003
+URL Authorization to provide authZ on static files based on CoSign AuthN.
+For further details and some sample code, check here:
+
+<a  href="http://www-personal.umich.edu/~dsweetma/URLAuth/">http://www-personal.umich.edu/~dsweetma/URLAuth/</a>
+
+
+
+
+
+David Sweetman, MCSE
+Application System Administrator
+Michigan Administrative Information Services (MAIS)
+University of Michigan
+
+-----Original Message-----
+From: Phil Pishioneri [<a  href="mailto:pgp@xxxxxxx">mailto:pgp@xxxxxxx</a>] 
+Sent: Thursday, August 19, 2004 6:11 PM
+To: Cosign Discussion
+Subject: IIS authZ (was Re: Using LDAP for AuthZ with Cosign's AuthN)
+
+On 8/16/04 5:13 PM, johanna bromberg craig wrote:
+
+&gt;And to that end, the cosign team has gone 
+&gt;and appropriated mod_authz_ldap ( <a  href="http://authzldap.othello.ch/">http://authzldap.othello.ch/</a> ) for 
+&gt;LDAP group and role authorization.
+&gt;...
+&gt;Feel free to send questions or comments to cosign-discuss list!
+&gt;  
+&gt;
+
+My big question: what's available for IIS that performs a similar 
+function (and/or provides something like Apache's require directive)?  
+Anyone have sample code/docs?  (This would be for static content, since 
+dynamic content can just keep whatever authZ it was using.)
+
+I found a paper which talks about CoSign and IIS authZ, which makes 
+reference to the Authorization Manager (URLAuth.dll) in Windows 2003, 
+but nothing with specifics.
+
+-Phil
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00227.shtml">small updates for apache filter and cgi</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00229.shtml">Re: small updates for apache filter and cgi</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00226.shtml">IIS authZ (was Re: Using LDAP for AuthZ with Cosign's AuthN)</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00227.shtml">small updates for apache filter and cgi</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00228"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00228"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

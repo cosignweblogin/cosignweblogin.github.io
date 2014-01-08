@@ -1,0 +1,175 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: Cosign and cyrus imap and IMP -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Sat, 6 Nov 2004 16:09:04 &#45;0500 (EST) -->
+<!--X-Message-Id: 20041106210755.03C91349F9@smtpc.itss.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: D23D660B&#45;3011&#45;11D9&#45;B535&#45;000A95A0453E@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00266.shtml">Date Prev</a>][<a href="msg00268.shtml">Date Next</a>][<a href="msg00265.shtml">Thread Prev</a>][<a href="msg00268.shtml">Thread Next</a>][<a href="maillist.shtml#00267">Date Index</a>][<a href="threads.shtml#00267">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: Cosign and cyrus imap and IMP</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Wesley D Craig'&quot; &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: Cosign and cyrus imap and IMP</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sun, 7 Nov 2004 10:01:05 +1300</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00265.shtml">D23D660B-3011-11D9-B535-000A95A0453E@umich.edu</a>&gt;</li>
+<li><em>Thread-index</em>: AcTEHscATPz37e2tS5+5IZ5WIUzbcQAJD9mA</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Wes,
+
+
+Thanks for that, really cool, as we will be moving our student mail systems
+to this in the near future and it is good to know how you guys have done it.
+
+But, the problem I am having is mainly with Kerberos, in reality, because
+the tickets are tied to the cosign server, and thus will not work on the web
+server with my IMP and IMAP proof of concept (more of a kinda it-can-be-done
+than POC). I cannot see how you guys get around it, other than perhaps your
+Kerberos server gives out address-less tickets by default???
+
+I will need to wander through the PHP stuff to try to figure out why it is
+attempting to proxy me to the apache user.
+
+Thanks
+
+Brett
+
+-----Original Message-----
+From: Wesley D Craig [<a  href="mailto:wes@xxxxxxxxx">mailto:wes@xxxxxxxxx</a>] 
+Sent: Sunday, 7 November 2004 5:35 a.m.
+To: Brett Lomas on vxchange
+Cc: 'cosign-discuss@xxxxxxxxx'
+Subject: Re: Cosign and cyrus imap and IMP
+
+On 06 Nov 2004, at 06:12, Brett Lomas on vxchange wrote:
+&gt; Has anyone gotten cosign working Cyrus IMAP through IMP?
+
+This is exactly what we're running at UMich today, tho we're using  
+Cyrus Murder, so maybe it's more complex than you require.  We're also  
+using up-imapproxy:
+
+	<a  href="http://www.imapproxy.org/">http://www.imapproxy.org/</a>
+
+(which appears to be down just now) to cache IMAP connections, thus  
+reducing load on the IMAP servers.  /etc/imapproxy.conf has these  
+lines:
+
+	server_hostname 127.0.0.1
+	listen_address 127.0.0.1
+	listen_port 8143
+
+to tell it to just talk to the local proxyd and to listen on the  
+loopback on an alternate port.
+
+We also made a small change to proxyd:
+
+	<a  href="http://asg.web.cmu.edu/archive/message.php?mailbox=archive.cyrus-">http://asg.web.cmu.edu/archive/message.php?mailbox=archive.cyrus-</a> 
+devel&amp;msg=755
+
+which has been accepted into the cyrus imap CVS.  Cyrus proxyd is  
+running locally on the IMP machines, with the above -N option.  IMP has  
+been modified to authenticate to port 8143 using the REMOTE_USER as  
+provided by Cosign for both ID &amp; password.
+
+I've attached a picture.  This set up works much better than our old  
+setup, which used the Cosign provided TGT to make a new connection for  
+each HTTP transaction.
+
+:wes
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00268" href="msg00268.shtml">Re: Cosign and cyrus imap and IMP</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00265" href="msg00265.shtml">Re: Cosign and cyrus imap and IMP</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00266.shtml">Re: Cosign and cyrus imap and IMP</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00268.shtml">Re: Cosign and cyrus imap and IMP</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00265.shtml">Re: Cosign and cyrus imap and IMP</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00268.shtml">Re: Cosign and cyrus imap and IMP</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00267"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00267"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

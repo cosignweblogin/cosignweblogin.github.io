@@ -1,0 +1,44 @@
+Index: aclocal.m4
+===================================================================
+RCS file: /cvsrep/prog/uoa.itss.enarc.CoSign/aclocal.m4,v
+retrieving revision 1.1.1.1
+diff -c -r1.1.1.1 aclocal.m4
+*** aclocal.m4	10 May 2004 08:50:55 -0000	1.1.1.1
+--- aclocal.m4	25 Jun 2004 03:40:45 -0000
+***************
+*** 78,91 ****
+      AC_MSG_CHECKING(for apache 2)
+      apxs2dirs="/usr/local/apache2/bin /usr/apache2/bin /usr/pkg/bin \
+      /usr/local/bin /usr/local/httpd/bin"
+!     AC_CACHE_VAL(ac_cv_path_apxs2,[
+!         for i in $apxs2dirs; do
+! 	    if test -f "$i/apxs"; then
+! 		ac_cv_path_apxs2="$i/apxs"
+!                 break;
+!             fi
+!         done
+!     ])
+      APXS2="$ac_cv_path_apxs2"
+  
+      if test ! -e "$ac_cv_path_apxs2" ; then
+--- 78,97 ----
+      AC_MSG_CHECKING(for apache 2)
+      apxs2dirs="/usr/local/apache2/bin /usr/apache2/bin /usr/pkg/bin \
+      /usr/local/bin /usr/local/httpd/bin"
+! 
+!     if test -f "$enableval"; then
+! 		echo "using apxs2 as '$enableval"
+! 		ac_cv_path_apxs2="$enableval"
+! 	else
+!     	AC_CACHE_VAL(ac_cv_path_apxs2,[
+!         	for i in $apxs2dirs; do
+! 	    	if test -f "$i/apxs"; then
+! 			ac_cv_path_apxs2="$i/apxs"
+!                 	break;
+!             	fi
+!         	done
+!     	])
+! 	fi
+      APXS2="$ac_cv_path_apxs2"
+  
+      if test ! -e "$ac_cv_path_apxs2" ; then

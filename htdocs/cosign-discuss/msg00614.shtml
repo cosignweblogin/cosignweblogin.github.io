@@ -1,0 +1,267 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: logout vbscript -->
+<!--X-From-R13: "Ybafgnagva Hblx" <xiblxNhzvpu.rqh> -->
+<!--X-Date: Fri, 4 Nov 2005 08:10:15 &#45;0500 (EST) -->
+<!--X-Message-Id: 019101c5e13f$f33d5780$4d2cd38d@LAW27S9K21 -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: AA997F4A72F59E4091BF4451D130B27D0105967A@bf&#45;it&#45;equinox02.bf.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00613.shtml">Date Prev</a>][<a href="msg00615.shtml">Date Next</a>][<a href="msg00615.shtml">Thread Prev</a>][<a href="msg00600.shtml">Thread Next</a>][<a href="maillist.shtml#00614">Date Index</a>][<a href="threads.shtml#00614">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: logout vbscript</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Sweetman, David'&quot; &lt;<a href="mailto:dsweetma@DOMAIN.HIDDEN">dsweetma@xxxxxxxxxxxx</a>&gt;, &lt;<a href="mailto:chrislafty@DOMAIN.HIDDEN">chrislafty@xxxxxxx</a>&gt;,   &quot;'Malestein, Jarod Douwe'&quot; &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: logout vbscript</li>
+<li><em>From</em>: &quot;Konstantin Voyk&quot; &lt;<a href="mailto:kvoyk@DOMAIN.HIDDEN">kvoyk@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 4 Nov 2005 08:02:02 -0500</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00608.shtml">AA997F4A72F59E4091BF4451D130B27D0105967A@bf-it-equinox02.bf.umich.edu</a>&gt;</li>
+<li><em>Thread-index</em>: AcXfUSaJlYrfX+c+TVW6G5VtoOKI8gAcjAngAF8GSCA=</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I delete all cookies older that one day with script below.
+Konstantin.
+
+'kvoyk -- this script scheduled to run with 'Scheduled Tasks' 
+strComputer = &quot;.&quot;
+Set objWMIService = GetObject(&quot;winmgmts:&quot; _
+    &amp; &quot;{impersonationLevel=impersonate}!\\&quot; &amp; strComputer &amp; &quot;\root\cimv2&quot;)
+Set colFiles = objWMIService. _
+    ExecQuery(&quot;Select * from CIM_DataFile where Path = '\\Program
+Files\\IISCosign\\CookieDB\\'&quot;)
+For Each objFile in colFiles
+    CreationDate = WMIDateStringToDate(objFile.CreationDate)
+    'numberofHours shows how old cookie I want to delete. I delete cookie
+older that 24 hours.
+    NumberOfHours=24
+    if DateDiff(&quot;h&quot;,  Cdate(CreationDate),Now)&gt;=NumberOfHours then
+       Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)
+       objFSO.DeleteFile(&quot;C:&quot; &amp; objFile.Path &amp; &quot;\&quot; &amp; objFile.FileName)
+    end if
+Next
+
+'convert WMI date to Time value
+Function WMIDateStringToDate(dtmInstallDate)
+    WMIDateStringToDate = CDate(Mid(dtmInstallDate, 5, 2) &amp; &quot;/&quot; &amp; _
+        Mid(dtmInstallDate, 7, 2) &amp; &quot;/&quot; &amp; Left(dtmInstallDate, 4) _
+            &amp; &quot; &quot; &amp; Mid (dtmInstallDate, 9, 2) &amp; &quot;:&quot; &amp; _
+                Mid(dtmInstallDate, 11, 2) &amp; &quot;:&quot; &amp; Mid(dtmInstallDate, _
+                    13, 2))
+End Function
+
+-----Original Message-----
+From: Sweetman, David [<a  href="mailto:dsweetma@xxxxxxxxxxxx">mailto:dsweetma@xxxxxxxxxxxx</a>] 
+Sent: Wednesday, November 02, 2005 10:43 AM
+To: chrislafty@xxxxxxx; Malestein, Jarod Douwe
+Cc: cosign-discuss@xxxxxxxxx
+Subject: RE: logout vbscript
+
+Chris - What if you also delete the server-side cookie?  Here's a code
+snippet that does that via VBScript:
+
+Servicename = &quot;InsertYourCoSignServiceNameHere&quot;
+Servername = &quot;InsertYourServerNameHere&quot;
+
+s= request.ServerVariables(2)
+buf = split(s,chr(10))
+  for each b in buf
+    if instr(b,&quot;; &quot; &amp; ServiceName)&gt;0 then
+       ck = Right(b, Len(b) - Instr(b, Servername &amp; &quot;=&quot;) - 10)
+       ck = Left(ck, (Len(ck) - 1))
+    end if
+  next
+ set fs = server.CreateObject(&quot;Scripting.FileSystemObject&quot;)
+ dirPath = &quot;C:\Program Files\CoSign\CookieDB\&quot;
+
+pt = dirPath &amp; ck
+if (fs.fileexists(pt)) then
+   fs.deletefile(pt) 
+end if
+
+
+
+David Sweetman
+Windows Enterprise Systems Administrator
+Michigan Administrative Information Services
+University of Michigan
+
+-----Original Message-----
+From: Christopher Lafty [<a  href="mailto:chl114@xxxxxxx">mailto:chl114@xxxxxxx</a>] 
+Sent: Tuesday, November 01, 2005 9:01 PM
+To: Malestein, Jarod Douwe
+Cc: chrislafty@xxxxxxx; cosign-discuss@xxxxxxxxx
+Subject: Re: logout vbscript
+
+Yep, it's in the same directory as my cosign protected application...
+
+-C
+
+jarod@xxxxxxxxx wrote:
+
+&gt;
+&gt; Chris,
+&gt;
+&gt; I haven't had a chance to try out your script yet.  It certainly looks
+
+&gt; like it's
+&gt; doing all the right things!  Just to be sure, the logout script is 
+&gt; behind a
+&gt; cosign-protected URL, right?
+&gt;
+&gt; --Jarod
+&gt;
+&gt; Quoting Christopher Lafty &lt;chl114@xxxxxxx&gt;:
+&gt;
+&gt;&gt; I'm trying to build a logout script in vbscript, but it doesn't seem
+to
+&gt;&gt; function.  Here it is:
+&gt;&gt; &lt;%
+&gt;&gt;    Session.Abandon
+&gt;&gt;
+&gt;&gt;    'get cosign cookie name as string
+&gt;&gt;    cosignCookie =
+CStr(Request.ServerVariables(&quot;HTTP_COSIGN_SERVICE&quot;))
+&gt;&gt;
+&gt;&gt;    Response.Cookies(cosignCookie)=&quot;null&quot;
+&gt;&gt;    Response.Cookies(cosignCookie).Expires = Date()-1000
+&gt;&gt;    Response.Cookies(cosignCookie).Domain =&quot;/&quot;
+&gt;&gt;    Response.Cookies(cosignCookie).Secure=True
+&gt;&gt;
+&gt;&gt;    Response.redirect &quot;<a  href="https://webaccess.psu.edu/cgi-bin/logout&quot">https://webaccess.psu.edu/cgi-bin/logout&quot</a>;
+&gt;&gt; %&gt;
+&gt;&gt;
+&gt;&gt; Any takers?  I would use php or perl, but don't have the option.
+&gt;&gt;
+&gt;&gt; Thanks,
+&gt;&gt; Chris
+&gt;&gt;
+&gt;&gt; -- 
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; .....................................
+&gt;&gt; :: Christopher Lafty
+&gt;&gt; :: Web Site Administrator
+&gt;&gt; :: Department of Biology
+&gt;&gt; :: Pennsylvania State University
+&gt;&gt; :: chrislafty@xxxxxxx
+&gt;&gt; .....................................
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;&gt;
+&gt;
+&gt;
+&gt;
+&gt;
+
+-- 
+
+
+
+
+
+
+
+.....................................
+:: Christopher Lafty
+:: Web Site Administrator
+:: Department of Biology
+:: Pennsylvania State University
+:: chrislafty@xxxxxxx
+.....................................
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00608" href="msg00608.shtml">RE: logout vbscript</a></strong>
+<ul><li><em>From:</em> Sweetman, David</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00613.shtml">RE: logout vbscript</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00615.shtml">Re: logout vbscript</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00615.shtml">Re: logout vbscript</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00600.shtml">mod_authz_ldap for CoSign</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00614"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00614"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

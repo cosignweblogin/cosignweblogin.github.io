@@ -1,0 +1,183 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Too many redirects -->
+<!--X-From-R13: Xbanguna [nlonhz <znlonhzNhzvpu.rqh> -->
+<!--X-Date: Thu, 11 Aug 2005 08:42:41 &#45;0400 (EDT) -->
+<!--X-Message-Id: 5C5BC42E&#45;C55F&#45;4FCA&#45;A808&#45;9381B83B9758@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00485.shtml">Date Prev</a>][<a href="msg00487.shtml">Date Next</a>][<a href="msg00587.shtml">Thread Prev</a>][<a href="msg00488.shtml">Thread Next</a>][<a href="maillist.shtml#00486">Date Index</a>][<a href="threads.shtml#00486">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Too many redirects</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Too many redirects</li>
+<li><em>From</em>: Jonathan Maybaum &lt;<a href="mailto:maybaum@DOMAIN.HIDDEN">maybaum@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 11 Aug 2005 08:39:06 -0400</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Cosign-discuss,<br>
+Continuing the epic saga of establishing a test-only cosign service  
+on OS X 10.4.2...</tt><br>
+<br>
+<tt>Cosign is built and installed<br>
+Created my own CA, signed a cert, installed it and its key, and the  
+CA cert. Ran c_rehash on the CA cert.<br>
+Passed openssl verify for sslclient and sslserver<br>
+Added cosign to /etc/services on 6663/tcp<br>
+Created /etc/cosign.conf (below)<br>
+Added directives to httpd.conf (below)</tt><br>
+<br>
+<tt>Now the problem is that I get a browser error for &quot;Too many  
+redirects, last redirect from...&quot; followed by a URL that looks like  
+several cosigin-xxx URLs concatenated together.</tt><br>
+<br>
+<tt>Suggestions? How to debug?</tt><br>
+<br>
+<pre style="margin: 0em;">Thanks,
+--Jon Maybaum</pre><br>
+<tt>/etc/cosign.conf:</tt><br>
+<br>
+<pre style="margin: 0em;">#
+# keyword           subject cn           tickets/proxy proxyfile
+#
+  cgi        maybaum.med.umich.edu
+  service    maybaum.med.umich.edu        T
+  set   cosigncert          /var/cosign/certs/cosigncert.pem
+  set   cosignkey           /var/cosign/certs/cosignkey.pem
+  set   cosignhost          maybaum.med.umich.edu
+#  set    cosigndb        /var/somewhere/cosign
+  set    cosigncadir        /var/cosign/certs/CA
+  set    cosignticketcache    /var/cosign/ticket
+#  set    cosignkeytab        /etc/keytab.cosign
+  set    cosignlogouturl        <a  href="http://maybaum.med.umich.edu">http://maybaum.med.umich.edu</a>
+#  set    cosignloopurl        <a  href="http://cosign.edu/looping.html">http://cosign.edu/looping.html</a>
+#  set    cosignnettimeout    300 (time in seconds for net connections)
+  set    cosignport        6663</pre><br>
+<tt>httpd_443.conf:</tt><br>
+<br>
+<tt><br>&lt;VirtualHost *:443&gt;<br>
+    ServerAdmin admin@xxxxxxxxxxx<br>
+    DocumentRoot &quot;/Library/WebServer/Documents&quot;<br>
+    DirectoryIndex &quot;index.html&quot; &quot;index.php&quot;<br>
+    CustomLog &quot;/var/log/httpd/access_log&quot; &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot;<br>
+    ErrorLog &quot;/var/log/httpd/error_log&quot;<br>
+    ErrorDocument 404 /error.html<br>
+    CosignProtected On<br>
+    CosignHostname maybaum.med.umich.edu<br>
+    CosignService maybaum.med.umich.edu<br>
+    CosignRedirect <a  href="https://maybaum.med.umich.edu:6663/">https://maybaum.med.umich.edu:6663/</a><br>
+    CosignPostErrorRedirect <a  href="https://maybaum.med.umich.edu/error.html">https://maybaum.med.umich.edu/error.html</a><br>
+    CosignCrypto /var/cosign/certs/cosignkey.pem /var/cosign/certs/ 
+cosigncert.pem /var/cosign/certs/CA<br>
+    &lt;IfModule mod_ssl.c&gt;<br>
+        SSLEngine On<br>
+        SSLLog &quot;/var/log/httpd/ssl_engine_log&quot;<br>
+        SSLCertificateFile &quot;/etc/certificates/Default.crt&quot;<br>
+        SSLCertificateKeyFile &quot;/etc/certificates/Default.key&quot;<br>
+        SSLCipherSuite &quot;ALL:!ADH:RC4+RSA:+HIGH:+MEDIUM:+LOW:!SSLv2: 
++EXP:+eNULL&quot;<br>
+    &lt;/IfModule&gt;<br>
+    &lt;IfModule mod_dav.c&gt;<br>
+        DAVLockDB &quot;/var/run/davlocks/.davlockany_80_default&quot;<br>
+        DAVMinTimeout 600<br>
+    &lt;/IfModule&gt;<br>
+    &lt;Directory &quot;/Library/WebServer/Documents&quot;&gt;<br>
+        Options All -Indexes -ExecCGI -Includes +MultiViews<br>
+        AllowOverride None<br>
+        &lt;IfModule mod_dav.c&gt;<br>
+            DAV Off<br>
+        &lt;/IfModule&gt;<br>
+    &lt;/Directory&gt;<br>
+    &lt;IfModule mod_rewrite.c&gt;<br>
+        RewriteEngine On<br>
+        RewriteCond %{REQUEST_METHOD} ^TRACE<br>
+        RewriteRule .* - [F]<br>
+    &lt;/IfModule&gt;<br>
+    &lt;IfModule mod_alias.c&gt;<br>
+    &lt;/IfModule&gt;<br>
+    ServerAlias *<br>
+    LogLevel warn<br>
+&lt;/VirtualHost&gt;</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00485.shtml">Account Suspended</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00487.shtml">Account Suspended</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00587.shtml">Account Suspended</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00488.shtml">Next 2 errors...</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00486"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00486"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

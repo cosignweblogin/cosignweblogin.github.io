@@ -1,0 +1,132 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Kerberos Tickets -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Tue, 30 Mar 2004 22:21:32 &#45;0500 (EST) -->
+<!--X-Message-Id: 20040331032042.D3B973472F@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00041.shtml">Date Prev</a>][<a href="msg00043.shtml">Date Next</a>][<a href="msg00041.shtml">Thread Prev</a>][<a href="msg00043.shtml">Thread Next</a>][<a href="maillist.shtml#00042">Date Index</a>][<a href="threads.shtml#00042">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Kerberos Tickets</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'kevin mcgowan'&quot; &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Kerberos Tickets</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 31 Mar 2004 15:20:42 +1200</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Thread-index</em>: AcQWzyW3X8lscmqGRWqsOO9Ct/kX0A==</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi Kevin,
+
+Thanks for the reply on the hardware and all, very helpful.
+
+CoSign and Kerberos question. When an application requests a Kerberos ticket
+(the RETRIEVE command to cosignd) it appears to be allowed to specify the
+ticket name (eg imap/imap.auckland.ac.nz@xxxxxxxxxxxxxx). This looks to be a
+service account (in the examples I have seen), does this mean that a service
+ticket is passed back to the application, and not a/the TGT the cosign CGI
+obtained to authenticate the user?
+
+Cheers
+
+Brett
+
+------------
+
+Brett Lomas
+Integration Architect
+Information Technology Systems and Services
+The University of Auckland
+New Zealand
+
+Phone:		+64 9 373 599 extn 86499
+Mobile:		+64 21 757 096
+
+
+</pre><p><tt>&lt;&lt;attachment: winmail.dat&gt;&gt;</tt></p>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00043" href="msg00043.shtml">Re: Kerberos Tickets</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00041.shtml">IISCosign install, Registry error</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00043.shtml">Re: Kerberos Tickets</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00041.shtml">IISCosign install, Registry error</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00043.shtml">Re: Kerberos Tickets</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00042"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00042"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,141 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: questions on post errors -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Mon, 12 Jul 2004 15:00:33 &#45;0400 (EDT) -->
+<!--X-Message-Id: 93946410&#45;D435&#45;11D8&#45;B51A&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 40F2D3BE.80206@psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00163.shtml">Date Prev</a>][<a href="msg00165.shtml">Date Next</a>][<a href="msg00163.shtml">Thread Prev</a>][<a href="msg00165.shtml">Thread Next</a>][<a href="maillist.shtml#00164">Date Index</a>][<a href="threads.shtml#00164">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: questions on post errors</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: questions on post errors</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 12 Jul 2004 14:59:18 -0400</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00163.shtml">40F2D3BE.80206@psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00163.shtml">40F2D3BE.80206@psu.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>is the post_error page CosignProtected Off?</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<tt><br>On Jul 12, 2004, at 2:09 PM, Phil Pishioneri wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Couple of questions/problems about post errors:</tt><br>
+<br>
+<tt>There are two copies of the file being installed, both in html and the 
+template directory.  It's formatted like a template, but I can't see 
+how the substitution would happen given the URL (see next item).</tt><br>
+<br>
+<tt>My test web server has this for the post error directive (based on 
+sample):</tt><br>
+<br>
+<tt>   CosignPostErrorRedirect   <a  href="https://cosign.psu.edu/post_error.html">https://cosign.psu.edu/post_error.html</a></tt><br>
+<br>
+<tt>but if I try to test it with a sample page, by logging out through 
+another window, when I submit the form the browser ends up at a 
+malformed url like so (probably wrapped in transit)</tt><br>
+<br>
+<tt>&lt;<a  href="https://cosign.psu.edu/?https://cosign.psu.edu/post_error.html=[long">https://cosign.psu.edu/?https://cosign.psu.edu/post_error.html=[long</a> 
+cookie string];&amp;<a  href="https://testsys.psu.edu/cgi-bin/helloCosign.pl">https://testsys.psu.edu/cgi-bin/helloCosign.pl</a>&gt;</tt><br>
+<br>
+<tt><br>-Phil</tt><br>
+<br>
+<tt><br>!DSPAM:40f2d4f61598748839292!
+</tt></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00165" href="msg00165.shtml">Re: questions on post errors</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00163" href="msg00163.shtml">questions on post errors</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00163.shtml">questions on post errors</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00165.shtml">Re: questions on post errors</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00163.shtml">questions on post errors</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00165.shtml">Re: questions on post errors</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00164"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00164"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

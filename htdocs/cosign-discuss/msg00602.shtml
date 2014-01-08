@@ -1,0 +1,253 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: mod_cosign / mod_authz_ldap behavior -->
+<!--X-From-R13: Yevf Egrvaubss <fgrvaubsNhzvpu.rqh> -->
+<!--X-Date: Tue, 1 Nov 2005 16:49:00 &#45;0500 (EST) -->
+<!--X-Message-Id: b8e41e6e78b7e3d86b40ac9eaef79993@umich.edu -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: 20050907132944.GB727@umich.edu -->
+<!--X-Reference: 81B00AF9&#45;1CEA&#45;43B0&#45;9EF2&#45;C7E1E9666B3B@umich.edu -->
+<!--X-Derived: zip00001.zip -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00601.shtml">Date Prev</a>][<a href="msg00603.shtml">Date Next</a>][<a href="msg00543.shtml">Thread Prev</a>][<a href="msg00539.shtml">Thread Next</a>][<a href="maillist.shtml#00602">Date Index</a>][<a href="threads.shtml#00602">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: mod_cosign / mod_authz_ldap behavior</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: mod_cosign / mod_authz_ldap behavior</li>
+<li><em>From</em>: Kris Steinhoff &lt;<a href="mailto:steinhof@DOMAIN.HIDDEN">steinhof@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 1 Nov 2005 16:46:24 -0500</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00543.shtml">81B00AF9-1CEA-43B0-9EF2-C7E1E9666B3B@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00538.shtml">20050907132944.GB727@umich.edu</a>&gt; &lt;<a href="msg00543.shtml">81B00AF9-1CEA-43B0-9EF2-C7E1E9666B3B@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>To work around the mod_cosign / mod_authz_ldap problem I've written a 
+PHP application that produces a list of tools that the user is 
+authorized to use. And by modifying the 401 error my server produces to 
+give the user a link the list of tools, I can effectively get around 
+the problem.</tt><br>
+<br>
+<tt>The scripts find all the .htaccess files in your document root then 
+parses each file looking for the &quot;Require group&quot; directive, adding the 
+groups to an array. Additionally the .htaccess file is parsed for what 
+I'll call pseudo-directives, basically an Apache configuration comment 
+that only has meaning to the tools_list scripts. The .htaccess file, 
+might look like this:</tt><br>
+<br>
+<pre style="margin: 0em;">Require group mygroup othergroup
+#tools_list url <a  href="https://myserver.umich.edu/service">https://myserver.umich.edu/service</a>
+#tools_list title Service Name</pre><br>
+<tt>The first word that follows &quot;#tools_list&quot; will be the key in the 
+tools_list array, and the rest of the line will be the value. This is a 
+method to provide nice looking links to the end user.</tt><br>
+<br>
+<tt>The scripts query the LDAP server to check for the user's 
+($_SERVER['REMOTE_USER']) group membership (modify the LDAP server 
+connection variables on lines 39, 41, and 43 of www/index.php to match 
+your setup). If the user is a member of one of the groups listed by the 
+&quot;Require group&quot; directive, then the array of information about that 
+directory (the url and title, etc), is added to the list of links to be 
+displayed. The scripts call a rudimentary template system to display 
+the links.</tt><br>
+<br>
+<tt>If you drop these scripts into your document root, and modify the 
+$get_tools-&gt;doc_root property to fit your setup (line 30 of 
+www/index.php), the scripts should just work. You can also keep the 
+classes and templates directories out of the document root and just add 
+the index.php file, in this case you will need to modify the 
+$class_file variable (line 18 in index.php) in the __autoload function 
+and the $template-&gt;dir property (line 50 in index.php).</tt><br>
+<br>
+<tt>There are some things I'd like to update in these scripts to make them 
+easier to use and modify, but I'm using this version on my server now 
+and it works well. Please let me know if this is useful to you.</tt><br>
+<br>
+<pre style="margin: 0em;">thanks
+-kris</pre><br>
+<p><strong>Attachment:
+<a href="zip00001.zip" ><tt>tools_list.zip</tt></a></strong><br>
+<em>Description:</em> Zip archive</p>
+<tt></tt><br>
+<br>
+<tt>On Sep 7, 2005, at 3:53 PM, johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hey Kris,</tt><br>
+<br>
+<tt>1) Not sure why the patch failed, I'll double check it. If group 
+checking is working at all, then your manual implementation of the 
+patch worked :)</tt><br>
+<br>
+<tt>2) The behavior that you are seeing is in fact the way things work at 
+present. mod_authz_ldap is not perfect, and there are several changes 
+we'd like to make to have it integrate more smoothly with our 
+environment ( or other cosign deploys ), but until we have the 
+resources to do such a development effort, things stand as is.</tt><br>
+<br>
+<tt>My suggestion, though admittedly hackish and ugly, would be to have a 
+splash page that would force authentication ( with no AuthZ 
+requirements ) and set a SiteEntry policy (CosignSiteEntry) that'll 
+redirect back to /broken instead of the splash page. Or you could just 
+publish a link, but SiteEntry is less hackish and ugly.</tt><br>
+<br>
+<tt>We can talk further about workarounds off-list and summarize the 
+discussion for on-list if you'd like - that's just a jumping off 
+point. :)</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<tt>On Sep 7, 2005, at 9:29 AM, Kris Steinhoff wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">I have mod_cosign setup and working nicely on my OS X Server (10.4.2),
+and I've followed the directions for setting up mod_authz_ldap to work
+with cosign:
+  <a  href="http://www.umich.edu/~umweb/downloads/mod_authz_ldap-NOTES-UMICH.txt">http://www.umich.edu/~umweb/downloads/mod_authz_ldap-NOTES-UMICH.txt</a></pre><br>
+<tt>However using that file to patch mod_authz_ldap fails in two places:</tt><br>
+<br>
+<pre style="margin: 0em;">  patching file module/auth.c
+  patching file module/mod_authz_ldap.h
+  Hunk #1 FAILED at 52.
+  Hunk #2 FAILED at 61.
+  2 out of 2 hunks FAILED -- saving rejects to file
+  module/mod_authz_ldap.h.rej
+  patching file module/modconf.c</pre><br>
+<pre style="margin: 0em;">I've applied the changes in those two hunks by hand and compiled
+mod_authz_ldap.</pre><br>
+<pre style="margin: 0em;">Things seem to work pretty well, but there is a problem with my server
+not redirecting to the weblogin server when the browser requests a
+directory which has a &quot;Require group ...&quot; directive associated with
+it. But it works just fine if the browser already has the cosign
+cookies set.</pre><br>
+<pre style="margin: 0em;">For example, take two directories &quot;/broken&quot; and &quot;/ok.&quot; The directory
+entries in httpd.conf are the same for both, but &quot;/broken&quot; includes a
+&quot;Require group ... &quot; directive. If I visit &quot;/broken&quot; the browser gets
+a 401 error and</pre><br>
+<tt>  basic LDAP authentication of user '(null)' failed</tt><br>
+<br>
+<pre style="margin: 0em;">is printed to my server's error log. But if I then visit &quot;/ok&quot; the
+browser is redirected normally to the weblogin server. After I
+authenticate at the weblogin server and the cosign cookies are set I
+can visit &quot;/broken&quot; without any trouble.</pre><br>
+<pre style="margin: 0em;">It seems like mod_authz_ldap is doing its thing before mod_cosign gets
+a chance to, but I've double checked to make sure that mod_cosign is
+loaded before mod_authz_ldap, so I'm not sure if that the problem.</pre><br>
+<pre style="margin: 0em;">Any suggesting about where I might start looking to fix this? Could it
+be the problem I had with the patch? Something else?</pre><br>
+<pre style="margin: 0em;">thanks
+-kris</pre><br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<pre style="margin: 0em;">--
+Kris Steinhoff
+University of Michigan Health Service
+Information Technology Services</pre><br>
+<pre style="margin: 0em;">Electronic mail is not secure, may not be read every day,
+and should not be used for urgent or sensitive issues.</pre><br>
+<tt>!DSPAM:431eeb7c39884308470059!</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><pre style="margin: 0em;"><br>--
+Kris Steinhoff
+University of Michigan Health Service
+Information Technology Services</pre><br>
+<pre style="margin: 0em;">Electronic mail is not secure, may not be read every day,
+and should not be used for urgent or sensitive issues.</pre><br>
+<pre style="margin: 0em;"><br>--
+Kris Steinhoff
+University of Michigan Health Service
+Information Technology Services</pre><br>
+<pre style="margin: 0em;">Electronic mail is not secure, may not be read every day,
+and should not be used for urgent or sensitive issues.</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00538" href="msg00538.shtml">mod_cosign / mod_authz_ldap behavior</a></strong>
+<ul><li><em>From:</em> Kris Steinhoff</li></ul></li>
+<li><strong><a name="00543" href="msg00543.shtml">Re: mod_cosign / mod_authz_ldap behavior</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00601.shtml">Re: mod_authz_ldap for CoSign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00603.shtml">Candidates for Friend XML-RPC interface?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00543.shtml">Re: mod_cosign / mod_authz_ldap behavior</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00539.shtml">the &quot;back&quot; button on the weblogout page</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00602"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00602"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

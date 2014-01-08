@@ -1,0 +1,160 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: IISCosign &#45; one physical server more than 1 cosign&#45;service possible? -->
+<!--X-From-R13: "Fbjafraq, Bnhy" <gbjafraqNohf.hzvpu.rqh> -->
+<!--X-Date: Fri, 12 Aug 2005 13:45:35 &#45;0400 (EDT) -->
+<!--X-Message-Id: 41E6356038ADF94B9A054B1FA1F0BDAC039AA350@BUS&#45;MAIL01.bus.ads.itcs.umich.edu -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00497.shtml">Date Prev</a>][<a href="msg00499.shtml">Date Next</a>][<a href="msg00500.shtml">Thread Prev</a>][<a href="msg00501.shtml">Thread Next</a>][<a href="maillist.shtml#00498">Date Index</a>][<a href="threads.shtml#00498">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: IISCosign - one physical server more than 1 cosign-service possible?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Asfaw-Kirby, Elias&quot; &lt;<a href="mailto:eliasak@DOMAIN.HIDDEN">eliasak@xxxxxxxxx</a>&gt;, &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: IISCosign - one physical server more than 1 cosign-service possible?</li>
+<li><em>From</em>: &quot;Townsend, Paul&quot; &lt;<a href="mailto:townsend@DOMAIN.HIDDEN">townsend@xxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 12 Aug 2005 13:44:14 -0400</li>
+<li><em>Thread-index</em>: AcWfY0GgIhAGdNFqToCVoeUuD6suOgAARxag</li>
+<li><em>Thread-topic</em>: IISCosign - one physical server more than 1 cosign-service possible?</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<address>Title: <strong>IISCosign - one physical server more than 1 cosign-service possible?</strong></address>
+
+
+
+<DIV dir=ltr align=left><SPAN class=213273617-12082005><FONT face="Courier New" 
+size=2>Yes.&nbsp; Just put each site into the config file:</FONT></SPAN></DIV>
+<DIV dir=ltr align=left><SPAN class=213273617-12082005><FONT face="Courier New" 
+size=2></FONT></SPAN>&nbsp;</DIV>
+<DIV dir=ltr align=left><SPAN class=213273617-12082005><FONT face="Courier New" 
+size=2>&lt;Service IISDescription="ws1"&gt;cosign-impact<BR>&nbsp; 
+&lt;Protected&gt;/&lt;/Protected&gt;<BR>&lt;/Service&gt;</FONT></SPAN></DIV>
+<DIV><SPAN class=213273617-12082005><FONT face="Courier New" 
+size=2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=213273617-12082005><FONT face="Courier New" size=2><SPAN 
+class=213273617-12082005><FONT face="Courier New" size=2>&lt;Service 
+IISDescription="ws2"&gt;cosign-impact<BR>&nbsp; 
+&lt;Protected&gt;/&lt;/Protected&gt;<BR>&lt;/Service&gt;<BR></FONT></SPAN></FONT></SPAN></DIV>
+<DIV><SPAN class=213273617-12082005><FONT face="Courier New" size=2><SPAN 
+class=213273617-12082005><FONT face="Courier New" 
+size=2></FONT></SPAN></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=213273617-12082005><FONT face="Courier New"><SPAN 
+class=213273617-12082005><FONT face="Courier New"><FONT size=2>Make sure you use 
+the correct IISDescription for each.&nbsp;( Do NOT use the syntax for the DNS 
+entry - it's easily spoofed. <SPAN class=213273617-12082005><FONT 
+face="Courier New">&lt;Service forget_exact_syntax="ws1.umich.edu"&gt; 
+)</FONT></SPAN></FONT></FONT></SPAN></FONT></SPAN></DIV>
+<DIV><SPAN class=213273617-12082005><FONT face="Courier New"><SPAN 
+class=213273617-12082005><FONT face="Courier New"><FONT size=2><SPAN 
+class=213273617-12082005></SPAN></FONT></FONT></SPAN></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=213273617-12082005><FONT><SPAN 
+class=213273617-12082005><FONT><FONT face="Courier New" size=2><SPAN 
+class=213273617-12082005>Also, make sure you're using a fairly recent version of 
+IIS Cosign. Early versions crapped out in W2k3 when you tried to host two 
+sites.&nbsp; This was fixed sometime last 
+spring(?).</SPAN></FONT></DIV></FONT></SPAN>
+<DIV dir=ltr align=left><FONT size=2><BR><FONT 
+face="Courier New"></FONT></FONT></DIV>
+<DIV></FONT></SPAN><SPAN class=213273617-12082005></SPAN><FONT 
+face="Courier New"><FONT size=2>Paul&nbsp;Townsend</FONT></FONT></DIV>
+<DIV><SPAN class=213273617-12082005><FONT face="Courier New" size=2>Systems 
+Analyst</FONT></SPAN></DIV>
+<DIV><FONT><FONT size=2><SPAN 
+class=213273617-12082005></SPAN></FONT></FONT><SPAN 
+class=213273617-12082005></SPAN><FONT face="Courier New"><FONT size=2>R<SPAN 
+class=213273617-12082005>oss School of Business at the Univ. of 
+Mich.</SPAN></FONT></FONT><BR></DIV>
+<DIV class=OutlookMessageHeader lang=en-us dir=ltr align=left>
+<HR tabIndex=-1>
+<FONT face=Tahoma size=2><B>From:</B> Elias Asfaw-Kirby 
+[mailto:eliasak@xxxxxxxxx] <BR><B>Sent:</B> Friday, August 12, 2005 1:28 
+PM<BR><B>To:</B> cosign-discuss@xxxxxxxxx<BR><B>Subject:</B> IISCosign - one 
+physical server more than 1 cosign-service possible?<BR></FONT><BR></DIV>
+<DIV></DIV><FONT face="Verdana, Helvetica, Arial"><SPAN 
+style="FONT-SIZE: 12px"><BR>&nbsp;Is it possible to have more than one cosign 
+service running off one physical server using IIS Cosign.<BR>(OS &#8211; Windows 
+Server 2003)<BR><BR>Ex.<BR>&nbsp;Currently hosting website &nbsp;ws1.umich.edu 
+on iisserver.umich.edu and cosign works great.<BR>Is it possible to host host 
+ws2.umich.edu on iisserver.umich.edu and use cosign there also.<BR><BR>Thanks 
+Team,<BR>-- <BR>Elias Asfaw-Kirby | 734-615-6490<BR>Web Developer 
+&nbsp;&nbsp;&nbsp;&nbsp;| eliasak@xxxxxxxxx<BR></SPAN></FONT>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00497.shtml">IISCosign - one physical server more than 1 cosign-service possible?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00499.shtml">RE: IISCosign - one physical server more than 1 cosign-service possible?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00500.shtml">Re: IISCosign - one physical server more than 1 cosign-service	possible?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00501.shtml">RE: IISCosign - one physical server more than 1 cosign-service possible?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00498"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00498"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

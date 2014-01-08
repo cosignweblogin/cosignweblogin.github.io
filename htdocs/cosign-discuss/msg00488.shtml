@@ -1,0 +1,115 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Next 2 errors... -->
+<!--X-From-R13: Xbanguna [nlonhz <znlonhzNhzvpu.rqh> -->
+<!--X-Date: Thu, 11 Aug 2005 18:00:16 &#45;0400 (EDT) -->
+<!--X-Message-Id: F0188AA5&#45;54B3&#45;4C54&#45;B43C&#45;2015A2A61B2D@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00487.shtml">Date Prev</a>][<a href="msg00489.shtml">Date Next</a>][<a href="msg00486.shtml">Thread Prev</a>][<a href="msg00489.shtml">Thread Next</a>][<a href="maillist.shtml#00488">Date Index</a>][<a href="threads.shtml#00488">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Next 2 errors...</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Next 2 errors...</li>
+<li><em>From</em>: Jonathan Maybaum &lt;<a href="mailto:maybaum@DOMAIN.HIDDEN">maybaum@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 11 Aug 2005 17:53:13 -0400</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Cosign-discuss,</tt><br>
+<br>
+<tt>These errors appear in the 443 apache log:</tt><br>
+<br>
+<pre style="margin: 0em;">../templates/login.html: No such file or directory
+cosign_choose_conn: all servers returned UNKNOWN
+../templates/login.html: No such file or directory</pre><br>
+<tt>I don't know what the templates directory is about - I didn't see  
+that it came with the distribution, or was made during builds.</tt><br>
+<br>
+<pre style="margin: 0em;">Any clues?
+--JM</pre><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00489" href="msg00489.shtml">Re: Next 2 errors...</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00487.shtml">Account Suspended</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00489.shtml">Re: Next 2 errors...</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00486.shtml">Too many redirects</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00489.shtml">Re: Next 2 errors...</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00488"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00488"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

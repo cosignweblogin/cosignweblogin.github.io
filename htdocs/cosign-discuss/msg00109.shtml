@@ -1,0 +1,120 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: ISAPI &#38; MIT K5 Tickets -->
+<!--X-From-R13: [nex Oyyra Snearfg <zkr20Ncfh.rqh> -->
+<!--X-Date: Wed, 12 May 2004 11:23:32 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.LNX.4.58.0405121120370.24856@slashet.aset.psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00108.shtml">Date Prev</a>][<a href="msg00110.shtml">Date Next</a>][<a href="msg00108.shtml">Thread Prev</a>][<a href="msg00110.shtml">Thread Next</a>][<a href="maillist.shtml#00109">Date Index</a>][<a href="threads.shtml#00109">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>ISAPI &amp; MIT K5 Tickets</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: ISAPI &amp; MIT K5 Tickets</li>
+<li><em>From</em>: Mark Allen Earnest &lt;<a href="mailto:mxe20@DOMAIN.HIDDEN">mxe20@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 12 May 2004 11:22:39 -0400 (EDT)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+
+Two of us at PSU have modified the ISAPI to request MIT K5 tickets (like 
+mod_cosign does) for an application we run that requires this. If anyone 
+is interested we can post a patch (once it is cleaned up) for this.  
+
+Mark Earnest
+Lead Systems Programmer
+Emerging Technologies
+The Pennsylvania State University
+
+Public Key - <a  href="http://www.personal.psu.edu/mxe20/gpgkey.txt">http://www.personal.psu.edu/mxe20/gpgkey.txt</a>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.3 (GNU/Linux)
+
+iD8DBQFAokFCooNLpLZfPIMRAhp+AJ49ACEjuIB617p7SREJ6Uke3MvV1QCeJsM4
+BzvL98T77ukQl4byM1QVnlg=
+=tnJB
+-----END PGP SIGNATURE-----
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00108.shtml">Re: v1.6.0: install error, short array</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00110.shtml">url for services should be secure?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00108.shtml">Re: v1.6.0: install error, short array</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00110.shtml">url for services should be secure?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00109"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00109"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

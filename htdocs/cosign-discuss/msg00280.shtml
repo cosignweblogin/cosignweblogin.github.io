@@ -1,0 +1,306 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: file not found error -->
+<!--X-From-R13: [negva Qnzcoryy <znegva.pnzcoryyNrq.np.hx> -->
+<!--X-Date: Fri, 12 Nov 2004 11:59:51 &#45;0500 (EST) -->
+<!--X-Message-Id: 1100278719.26261.703.camel@royksopp -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: D78043473550FC44A6BD0226E6601EAD896F07@adam.judsoncollege.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00279.shtml">Date Prev</a>][<a href="msg00281.shtml">Date Next</a>][<a href="msg00279.shtml">Thread Prev</a>][<a href="msg00281.shtml">Thread Next</a>][<a href="maillist.shtml#00280">Date Index</a>][<a href="threads.shtml#00280">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: file not found error</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Goldrick, Jim&quot; &lt;<a href="mailto:jgoldrick@DOMAIN.HIDDEN">jgoldrick@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: file not found error</li>
+<li><em>From</em>: Martin Campbell &lt;<a href="mailto:martin.campbell@DOMAIN.HIDDEN">martin.campbell@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 12 Nov 2004 16:58:39 +0000</li>
+<li><em>Cc</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00279.shtml">D78043473550FC44A6BD0226E6601EAD896F07@adam.judsoncollege.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00279.shtml">D78043473550FC44A6BD0226E6601EAD896F07@adam.judsoncollege.edu</a>&gt;</li>
+<li><em>Reply-to</em>: <a href="mailto:martin.campbell@DOMAIN.HIDDEN">martin.campbell@xxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Fri, 2004-11-12 at 16:45, Goldrick, Jim wrote:
+&gt; I was also getting an unknown ca error for awhile, but it went away, I believe, when I changed the perms on the CA directory to 777.  Either that or I have somehow taken a step backwards and I will hit that error again.  Please note I am using the basic auth.  Also, I do not have a cgi-ssl directory.
+
+your CA certificates should only need to be 644 in a directory which has
+755 permissions. (assuming root:other ownership)
+
+hth
+
+ta
+martin. 
+
+
+&gt; Any input would be most appreciated!
+&gt; 
+&gt; thanks
+&gt; 
+&gt; jim
+&gt; 
+&gt; 
+&gt; -----Original Message-----
+&gt; From: johanna bromberg craig [<a  href="mailto:canna@xxxxxxxxx">mailto:canna@xxxxxxxxx</a>]
+&gt; Sent: Monday, November 08, 2004 2:49 PM
+&gt; To: Goldrick, Jim
+&gt; Subject: Re: file not found error
+&gt; 
+&gt; 
+&gt; this is with basicauth, right? Here's what i believe to be a working  
+&gt; conf :)
+&gt; On the port 80 ( 8080, in my case ) we have merely:
+&gt; 
+&gt; CosignProtected Off
+&gt; 
+&gt; on the :443 ( :8443 we have )
+&gt; 
+&gt; &lt;VirtualHost _default_:8443&gt;
+&gt; 
+&gt; DocumentRoot        /usr/local/projects/cosign/html/
+&gt; ScriptAlias         /cosign-bin/ /usr/local/projects/cosign/cgi-ssl/
+&gt; AddHandler          cgi-script      .cgi
+&gt; ErrorDocument       404    <a  href="https://beothuk.web.itd.umich.edu:8443/">https://beothuk.web.itd.umich.edu:8443/</a>
+&gt; DirectoryIndex      basiccosign.cgi index.html index.php index.htm  
+&gt; index.shtml
+&gt; 
+&gt; &lt;Directory  /usr/local/projects/cosign/html/&gt;
+&gt;      Options ExecCGI
+&gt;      AuthUserFile /usr/local/users/canna/.htpasswd
+&gt;      AuthName &quot;Demasduit's Dream&quot;
+&gt;      AllowOverride All
+&gt;      AuthType Basic
+&gt;      CosignProtected Off
+&gt; &lt;/Directory&gt;
+&gt; 
+&gt; CosignHostname weblogin.umich.edu
+&gt; CosignRedirect <a  href="https://weblogin.umich.edu/">https://weblogin.umich.edu/</a>
+&gt; CosignPostErrorRedirect <a  href="http://www.umich.edu/~canna">http://www.umich.edu/~canna</a>
+&gt; CosignService jojo
+&gt; CosignCrypto /usr/local/etc/apache/certs/beothuk.key  
+&gt; /usr/local/etc/apache/certs/beothuk.cert /usr/local/etc/apache/certs
+&gt; 
+&gt; CosignProtected On
+&gt; 
+&gt; something like that.
+&gt; 
+&gt; maybe you can send cosign@xxxxxxxxx your httpd.conf and we can check it  
+&gt; out
+&gt; 
+&gt; -J
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; On Nov 4, 2004, at 6:10 PM, Goldrick, Jim wrote:
+&gt; 
+&gt; &gt; I'm still getting the same errors.  One thing, I never get prompted  
+&gt; &gt; for any type of authentication.  Can someone send me an example of  
+&gt; &gt; their http.conf/access.conf file that pertains to Cosign (Directory's  
+&gt; &gt; and Virtual hosts)?  It seems like a configuration problem, but I sure  
+&gt; &gt; can't find it.
+&gt; &gt;  
+&gt; &gt; thanks!
+&gt; &gt;  
+&gt; &gt; jim
+&gt; &gt;  
+&gt; &gt;  
+&gt; &gt; -----Original Message-----
+&gt; &gt; From: Goldrick, Jim
+&gt; &gt; Sent: Wednesday, November 03, 2004 5:18 PM
+&gt; &gt; To: 'cosign-discuss@xxxxxxxxx'
+&gt; &gt; Subject: file not found error
+&gt; &gt;
+&gt; &gt; Hi,
+&gt; &gt;  
+&gt; &gt; Since this is a different issue, I thought I would open a new post.   
+&gt; &gt; When trying to connect to  
+&gt; &gt; <a  href="https://judsonhp.judsoncollege.edu:444/index.html">https://judsonhp.judsoncollege.edu:444/index.html</a>, which is my doc  
+&gt; &gt; root that I have set for cosign,
+&gt; &gt; the browser hangs and I get this in my syslog:
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; Nov  3 16:59:06 judsonhp cosignd[9620]: connect: 10.100.0.142
+&gt; &gt; Nov  3 16:59:06 judsonhp cosignd[9620]: service_to_login:  
+&gt; &gt; cosign-cosign=4tWOHyU+
+&gt; &gt; IzH9Usx+QfgsVwOCrtO0EHsPFjtUaKPx80TdhemR2ld8yA9rcsX4IDUU15s1sztTyvMOfv5 
+&gt; &gt; 0Es7-ML-Z
+&gt; &gt; IY3j1OLCC8SdKdq+7FZJoqRh8wgMjtXC43v9: No such file or directory
+&gt; &gt; Nov  3 16:59:06 judsonhp cosignd[9612]: service_to_login:  
+&gt; &gt; cosign-cosign=+0QwqH3j
+&gt; &gt; F8DFbplXVjr3gNKIMaDsU0B+W2ArWpBZPGGtnzOKYX0CjuE88QtIoDgsIp6b1lVJJ47o6ZQ 
+&gt; &gt; cGABBt-CY
+&gt; &gt; kpAa-F2EAzejAGJnFicEg11BCz0ifSxK7q8g: No such file or directory
+&gt; &gt; Nov  3 16:59:07 judsonhp cosignd[9613]: service_to_login:  
+&gt; &gt; cosign-cosign=DGzMJLge
+&gt; &gt; vfaJBAtWQdLx+Yo7QkI6KWF9aFueZ3s1jwXo9Usdk6nkYLfBAaoeUP+eSVgsSnJxLriwYU7 
+&gt; &gt; owBnKAm4n
+&gt; &gt; xIi3Bs8JwgwAznkK2ZPB-r1P1g6NmOF+uwdh: No such file or directory
+&gt; &gt; syslog.log: END
+&gt; &gt;  
+&gt; &gt; and this in my apache error_log (I assume because the file is not  
+&gt; &gt; found):
+&gt; &gt;  
+&gt; &gt; choose another connection: 533 CHECK: cookie not in db!
+&gt; &gt; choose another connection: 533 CHECK: cookie not in db!
+&gt; &gt; choose another connection: 533 CHECK: cookie not in db!
+&gt; &gt; choose another connection: 533 CHECK: cookie not in db!
+&gt; &gt; choose another connection: 533 CHECK: cookie not in db!
+&gt; &gt; choose another connection: 533 CHECK: cookie not in db!
+&gt; &gt; choose another connection: 533 CHECK: cookie not in db!
+&gt; &gt; What file is the error referring to?  I have the html and templates  
+&gt; &gt; directories setup in /opt/apache/cosign.  Where should the  
+&gt; &gt; basicosign.cgi be?  In the web root?  Here is my Virtual host:
+&gt; &gt;  
+&gt; &gt; VirtualHost judsonhp.judsoncollege.edu:444&gt;
+&gt; &gt;  ServerName judsonhp.judsonocollege.edu
+&gt; &gt; DocumentRoot /opt/apache/carsi-test/share/htdocs/
+&gt; &gt; ScriptAlias /cgi-bin/ /opt/apache/carsi-test/share/cgi-bin/
+&gt; &gt; Alias /images/ /opt/apache/images/
+&gt; &gt; SSLEngine on
+&gt; &gt; SSLCertificateFile /opt/apache/xxx/xxxxxx/xxxxxx.xxx
+&gt; &gt; SSLCertificateKeyFile /opt/apache/xxx/xxxxxxx/xxxxx.xxxx
+&gt; &gt; SetEnvIf User-Agent &quot;.*MSIE.*&quot; nokeepalive ssl-unclean-shutdown \
+&gt; &gt;         downgrade-1.0 force-response-1.0
+&gt; &gt;  
+&gt; &gt;
+&gt; &gt; CosignProtected         On
+&gt; &gt; CosignHostname          acadinfo.judsoncollege.edu
+&gt; &gt; CosignRedirect          /weblogin/
+&gt; &gt; CosignPostErrorRedirect /weblogin/post_error.html
+&gt; &gt; CosignService           cosign
+&gt; &gt; CosignCrypto            /opt/apache/xxxxxx/xxxxxxx/cakey  
+&gt; &gt; /opt/apache/xxxxxx/xxxxxx/ca /opt/apache/xxxxxxxx/xxxxxxxx
+&gt; &gt;
+&gt; &gt; &lt;/VirtualHost&gt;
+&gt; &gt;  
+&gt; &gt; Here is the doc root directory:
+&gt; &gt;
+&gt; &gt; #this is so the cosign login will run from / of DocRoot
+&gt; &gt; &lt;Directory /opt/apache/carsi-test/share/htdocs&gt;
+&gt; &gt; DirectoryIndex      basiccosign.cgi index.html
+&gt; &gt; AddHandler          cgi-script      .cgi
+&gt; &gt; AllowOverride None
+&gt; &gt; Options FollowSymLinks ExecCGI
+&gt; &gt; order deny,allow
+&gt; &gt; allow from all
+&gt; &gt; AuthType Basic
+&gt; &gt; AuthName &quot;Faculty Access&quot;
+&gt; &gt; AuthLDAPURL  
+&gt; &gt; <a  href="ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud">ldap://judsonhp.judsoncollege.edu:1389/cn=basic,cn=camSignons,cn=Jud</a>
+&gt; &gt; son,cn=Authentication Data,o=Cognos,c=CA?cn?
+&gt; &gt; require valid-user
+&gt; &gt; &lt;Files *.css&gt;
+&gt; &gt; order allow,deny
+&gt; &gt; allow from all
+&gt; &gt; &lt;/Files&gt;
+&gt; &gt; &lt;Files *.js&gt;
+&gt; &gt; order allow,deny
+&gt; &gt; allow from all
+&gt; &gt; &lt;/Files&gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; So I am not quite sure what to do.  The acadinfo.judsoncollege.edu  
+&gt; &gt; hostname is just a virtual ip for the judsonhp host.  If I remove the  
+&gt; &gt; cosign settings in the virtual host, I can get to the index.html after  
+&gt; &gt; authenticating.
+&gt; &gt;  
+&gt; &gt; FYI, I am using a self-signed cert.
+&gt; &gt;  
+&gt; &gt; thanks much!
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; Jim Goldrick
+&gt; &gt; Judson College
+&gt; &gt; 573-335-7074
+&gt; &gt;  jgoldrick@xxxxxxxxxxxxxxxxx
+&gt; &gt;  
+&gt; &gt;  !DSPAM:418ab7759298977415678!
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00279" href="msg00279.shtml">RE: file not found error</a></strong>
+<ul><li><em>From:</em> Goldrick, Jim</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00279.shtml">RE: file not found error</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00281.shtml">Re: file not found error</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00279.shtml">RE: file not found error</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00281.shtml">Re: file not found error</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00280"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00280"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

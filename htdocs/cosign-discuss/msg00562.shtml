@@ -1,0 +1,200 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: cosign and kerberos -->
+<!--X-From-R13: "Ubyqevpx, Xvz" <wtbyqevpxNwhqfbapbyyrtr.rqh> -->
+<!--X-Date: Fri, 30 Sep 2005 20:23:00 &#45;0400 (EDT) -->
+<!--X-Message-Id: 960714044BBA8045B489FBDD68C3E3610D2985@gabriel.judsoncollege.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00561.shtml">Date Prev</a>][<a href="msg00563.shtml">Date Next</a>][<a href="msg00561.shtml">Thread Prev</a>][<a href="msg00563.shtml">Thread Next</a>][<a href="maillist.shtml#00562">Date Index</a>][<a href="threads.shtml#00562">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: cosign and kerberos</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Wesley Craig&quot; &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: cosign and kerberos</li>
+<li><em>From</em>: &quot;Goldrick, Jim&quot; &lt;<a href="mailto:jgoldrick@DOMAIN.HIDDEN">jgoldrick@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 30 Sep 2005 19:21:28 -0500</li>
+<li><em>Cc</em>: &quot;cosign-discuss&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Thread-index</em>: AcXGDrG9gFXDkjXNRgO5fkxX7rmWSgAD3b+w</li>
+<li><em>Thread-topic</em>: cosign and kerberos</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Something else I was thinking about and forgot to ask (my son was bugging me to take him somewhere).
+
+Anyway, is the REMOTE_REALM env variable set by cosign the kerberos realm?  If so, would it be extremely difficult to modify the filter to do some authz by putting in a 
+
+CosignRealm REALM1.EDU
+
+directive into the directory section of the apache conf files?  How about a separate module?
+
+thanks much!
+
+jim
+
+-----Original Message-----
+From: Wesley Craig [<a  href="mailto:wes@xxxxxxxxx">mailto:wes@xxxxxxxxx</a>]
+Sent: Friday, September 30, 2005 5:30 PM
+To: Goldrick, Jim
+Cc: cosign-discuss
+Subject: Re: cosign and kerberos
+
+
+On 30 Sep 2005, at 09:22, Goldrick, Jim wrote:
+&gt; Ok, after researching some more, I have come to the conclusion that  
+&gt; cross-realm authentication in itself won't do the trick.
+
+Why does cross-realm authN not help you?
+
+&gt; 1.  Add COSIGNKRB5REALMS to config.h
+&gt; 2.  modify login.c to get the COSINGKRB5REALMS, my thinking is a  
+&gt; comma-delimited list.  Also modify it that if there is a list,  
+&gt; process in cosign_login_krb by setting the default realm n number  
+&gt; of times.
+
+The CGI would need to know which realm the user had selected.   
+There's no form element currently for that field.  You could have the  
+user type user@REALM, but the CGI currently interprets anything with  
+an @ symbol as a Friend account.  If you wanted a drop down list,  
+you'd need to add that to the list of fields the CGI pays attention to.
+
+cosign_login_krb5() always selects the default realm.  If you accept  
+a realm from the form, you'll need to pass it to cosign_login_krb5 
+().  You don't necessarily need to modify config.h for realm  
+support.  You can build kerberos so that only realms configured in / 
+etc/krb5.conf work.
+
+&gt; A question is can I just process the if block in cosign_login_krb5  
+&gt; multiple times without having to do anything else?
+&gt;
+&gt;  if (( kerror = krb5_get_init_creds_password( kcontext, &amp;kcreds,
+&gt;             kprinc, passwd, NULL, NULL, 0, NULL /*keytab */,  
+&gt; &amp;kopts ))) {
+
+kprinc is created by parsing the ID from the form.  You'll either  
+need create a different kprinc for each time you call this routine.   
+Other than that, the answer is &quot;probably&quot;. :)
+
+&gt; 3.  If this works possibly check the COSIGNKRB5REALMS for inclusion  
+&gt; in krb5_get_host_realm?
+
+Not sure what you mean.
+
+&gt;     CosignTicketPrefix    [ the path to the Kerberos ticket store ]
+
+This is the directory where the CGI &amp; daemon store the user's  
+kerberos tickets.
+
+&gt;     CosignGetKerberosTickets    [ on | off ]
+&gt;         module asks for tgt from cosignd
+
+This causes the filter to request a user's kerberos ticket.
+
+&gt;     CosignKerberos524        [ on | off ]
+&gt;         whether you want K5 tgt converted to K4 tgt
+
+This seems pretty self-explanatory to me.  You're probably not  
+running Kerberos 4, so it doesn't really matter.  Do you have a  
+specific question?
+
+&gt;     CosignKerberosSetupGSS        [ on | off ]
+&gt;         setup the enviornment so that other apache modules
+&gt;         that need GSSAPI/Kerberos work. e.g. IMP running under mod_php
+
+Specific question?
+
+&gt;     CosignGetProxyCookies    [ on | off ]
+&gt;         module asks for proxy cookies from cosignd
+
+These are like Kerberos proxy tickets, only they are good for cosign  
+protected services.  An application that proxies another cosign  
+protected service might request these proxy cookies.  We added this  
+option for people interested in a portal that would proxy cosign  
+protected applications.
+
+:wes
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00563" href="msg00563.shtml">Re: cosign and kerberos</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00561.shtml">Re: cosign and kerberos</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00563.shtml">Re: cosign and kerberos</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00561.shtml">Re: cosign and kerberos</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00563.shtml">Re: cosign and kerberos</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00562"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00562"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

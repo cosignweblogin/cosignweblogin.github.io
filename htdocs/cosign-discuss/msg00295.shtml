@@ -1,0 +1,177 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: FW: Apache, Cosign, PHP, Oracle client and PostgreSQL (fwd) -->
+<!--X-From-R13: ZO@S IWZZWO[ VAK <ynarjublNhzvpu.rqh> -->
+<!--X-Date: Thu, 16 Dec 2004 14:15:38 &#45;0500 (EST) -->
+<!--X-Message-Id: Pine.LNX.4.61.0412161406560.5182@gravitar.gpcc.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00294.shtml">Date Prev</a>][<a href="msg00296.shtml">Date Next</a>][<a href="msg00294.shtml">Thread Prev</a>][<a href="msg00296.shtml">Thread Next</a>][<a href="maillist.shtml#00295">Date Index</a>][<a href="threads.shtml#00295">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: FW: Apache, Cosign, PHP, Oracle client and PostgreSQL (fwd)</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: FW: Apache, Cosign, PHP, Oracle client and PostgreSQL (fwd)</li>
+<li><em>From</em>: LANE WILLIAM HOY &lt;<a href="mailto:lanewhoy@DOMAIN.HIDDEN">lanewhoy@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 16 Dec 2004 14:13:53 -0500 (EST)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Can someone on this list aid us in working through this issue?  We are 
+trying to use apache 2.0.52, php 5.0.2 to access an oracle database.  We 
+are using the apache2 filter from cosign-1.6.2 for authentication.  The 
+base operating system is Redhat Enterprise with the apache and php rpm's 
+removed and the packages above compiled from source.</tt><br>
+<br>
+<tt>The webserver tends to be unstable and will start to throw 'service 
+unavailable' errors after operating some time.  Has anyone else had any 
+similiar issues, or can anyone shed any light on this issue?  Apache seems 
+to run fine without the cosign activated.  Thanks.</tt><br>
+<br>
+<pre style="margin: 0em;">Lane Hoy
+School of Dentistry Programming Services</pre><br>
+<pre style="margin: 0em;">---------- Forwarded message ----------
+Date: Wed, 15 Dec 2004 14:47:37 -0500 (EST)
+From: LANE WILLIAM HOY &lt;lanewhoy@xxxxxxxxx&gt;
+To: Rick Getchell &lt;rgetchel@xxxxxxxxx&gt;
+Subject: Re: FW: Apache, Cosign, PHP, Oracle client and PostgreSQL</pre><br>
+<tt>Rick,</tt><br>
+<br>
+<tt>We are using Apache 2.0.52, php 5.0.2, and cosign 1.6.2 (with the apache2 
+filter), and Oracle 10g for the client libraries.  Everything except the Oracle 
+software was compiled from source, and php was compiled with the --with-oci8 
+flag (among others).</tt><br>
+<br>
+<tt>The cosign will work for a while after apache is started, but will eventually 
+start giving 'server not available' errors after a while.  Http requests are 
+forcibly redirected to the TLS/cosign-enabled virtual site via mod_rewrite.</tt><br>
+<br>
+<tt>Lane</tt><br>
+<br>
+<tt>On Wed, 15 Dec 2004, Rick Getchell wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt></tt><br>
+<br>
+<pre style="margin: 0em;">-----Original Message-----
+From: Willie Northway [<a  href="mailto:willn@xxxxxxxxx">mailto:willn@xxxxxxxxx</a>]
+Sent: Wednesday, December 15, 2004 1:24 PM
+To: Rick Getchell
+Subject: Re: Apache, Cosign, PHP, Oracle client and PostgreSQL</pre><br>
+<tt><br>On Dec 15, 2004, at 11:38 AM, Rick Getchell wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">Anybody gotten Apache, Cosign, PHP, Oracle client and PostgreSQL to
+play together nicely on Redhat? If not Redhat, a different
+distribution?
+</pre></blockquote><tt><br>The SPG site:</tt><br>
+<br>
+<tt>	<a  href="http://spg.umich.edu/">http://spg.umich.edu/</a></tt><br>
+<br>
+<pre style="margin: 0em;">was run on apache / php / oracle client talking to an oracle server on
+Solaris protected by cosign for about 2 years. A few months ago, we
+transferred it to UMCE Linux. How are they not playing nicely together?
+What's happening, or what error messages are you seeing?</pre><br>
+<pre style="margin: 0em;">Have you found that some packages will play together well, but when you
+add something else into the mix, that it breaks? This shouldn't
+necessarily be an issue with redhat.</pre><br>
+<pre style="margin: 0em;">If you feel it's specifically a cosign issue, you can send email to
+cosign-discuss@xxxxxxxxx</pre><br>
+<tt>- Willie</tt><br>
+<br>
+<pre style="margin: 0em;">--
+Willie Northway                  University of Michigan Webmaster Team
+<a  href="http://willienorthway.com/">http://willienorthway.com/</a>       <a  href="http://www.umich.edu/~umweb/">http://www.umich.edu/~umweb/</a></pre><br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt><br>!DSPAM:41c0872663254934614583!</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00296" href="msg00296.shtml">Re: Apache, Cosign, PHP, Oracle client and PostgreSQL (fwd)</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00294.shtml">Java filter and Weblogic</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00296.shtml">Re: Apache, Cosign, PHP, Oracle client and PostgreSQL (fwd)</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00294.shtml">Java filter and Weblogic</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00296.shtml">Re: Apache, Cosign, PHP, Oracle client and PostgreSQL (fwd)</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00295"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00295"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

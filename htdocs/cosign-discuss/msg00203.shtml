@@ -1,0 +1,222 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: replication -->
+<!--X-From-R13: Uenrzr Ibbq <Uenrzr.IbbqNrq.np.hx> -->
+<!--X-Date: Thu, 29 Jul 2004 06:15:49 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.GSO.4.58.0407291112350.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.GSO.4.58.0407261519430.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: 7975C00E&#45;DF4E&#45;11D8&#45;B4BC&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: Pine.GSO.4.58.0407271001140.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: Pine.GSO.4.58.0407281414570.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: 45F6F1D6&#45;E0A1&#45;11D8&#45;A7E9&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: Pine.GSO.4.58.0407281715080.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: EEB0EA75&#45;E0B3&#45;11D8&#45;BE39&#45;000A95A0453E@umich.edu -->
+<!--X-Reference: 291BF6B3&#45;E0B9&#45;11D8&#45;A90D&#45;000A9590A9AE@ed.ac.uk -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00202.shtml">Date Prev</a>][<a href="msg00204.shtml">Date Next</a>][<a href="msg00200.shtml">Thread Prev</a>][<a href="msg00206.shtml">Thread Next</a>][<a href="maillist.shtml#00203">Date Index</a>][<a href="threads.shtml#00203">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: replication</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: replication</li>
+<li><em>From</em>: Graeme Wood &lt;<a href="mailto:Graeme.Wood@DOMAIN.HIDDEN">Graeme.Wood@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 29 Jul 2004 11:14:01 +0100 (BST)</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00200.shtml">291BF6B3-E0B9-11D8-A90D-000A9590A9AE@ed.ac.uk</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00189.shtml">Pine.GSO.4.58.0407261519430.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00192.shtml">7975C00E-DF4E-11D8-B4BC-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00193.shtml">Pine.GSO.4.58.0407271001140.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00195.shtml">Pine.GSO.4.58.0407281414570.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00196.shtml">45F6F1D6-E0A1-11D8-A7E9-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00197.shtml">Pine.GSO.4.58.0407281715080.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00199.shtml">EEB0EA75-E0B3-11D8-BE39-000A95A0453E@umich.edu</a>&gt; &lt;<a href="msg00200.shtml">291BF6B3-E0B9-11D8-A90D-000A9590A9AE@ed.ac.uk</a>&gt;</li>
+<li><em>Reply-to</em>: Graeme Wood &lt;<a href="mailto:Graeme.Wood@DOMAIN.HIDDEN">Graeme.Wood@xxxxxxxx</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I've solved the problem. It was to do with permissions. The cosign daemon
+runs as user cosign and the web server was running as nobody. The ticket
+and cookie files created by the web filter weren't accessible by cosignd
+and so it would die. I've now changed the web server to run as cosign and
+all seems to be working.
+
+On Wed, 28 Jul 2004, Graeme Wood wrote:
+
+&gt;
+&gt; On 28 Jul 2004, at 17:34, Wesley D Craig wrote:
+&gt;
+&gt; &gt; On 28 Jul 2004, at 12:15, Graeme Wood wrote:
+&gt; &gt;&gt; I'm afraid it hasn't helped. I'm still not getting anything, though I
+&gt; &gt;&gt; do
+&gt; &gt;&gt; see periodic connections being made between the servers.
+&gt; &gt;
+&gt; &gt; Are you still getting this:
+&gt; &gt;
+&gt; &gt;&gt; Jul 26 16:08:44 app cosignd[1050]: [ID 801519 daemon.info] connect:
+&gt; &gt;&gt; 129.215.16.88
+&gt; &gt;&gt; Jul 26 16:08:44 app cosignd[1051]: [ID 801513 daemon.error] connect:
+&gt; &gt;&gt; Cannot assign requested address
+&gt; &gt;&gt; Jul 26 16:08:44 app cosignd[1051]: [ID 767929 daemon.error] pusher:
+&gt; &gt;
+&gt; &gt; It's pretty indicative of the PSU port problem.
+&gt;
+&gt; No I am not seeing that any more:
+&gt;
+&gt; Jul 28 16:42:23 app cosignd[15778]: [ID 159427 local7.info] restart
+&gt; 20040707
+&gt; Jul 28 16:42:23 app cosignd[15783]: [ID 801519 local7.info] connect:
+&gt; 129.215.16.88
+&gt; Jul 28 16:42:23 app monster[15784]: [ID 159427 local7.info] restart
+&gt; 20040707
+&gt; Jul 28 16:42:23 app cosignd[15779]: [ID 827450 local7.error] CHILD
+&gt; 15780 talking to itself
+&gt; Jul 28 16:44:23 app cosignd[15810]: [ID 801519 local7.info] connect:
+&gt; 129.215.16.88
+&gt; Jul 28 16:44:23 app monster[15784]: [ID 801513 local7.error] connect:
+&gt; Connection refused
+&gt; Jul 28 16:44:30 app cosignd[15811]: [ID 801519 local7.info] connect:
+&gt; 129.215.13.193
+&gt; Jul 28 16:46:31 app cosignd[15820]: [ID 801519 local7.info] connect:
+&gt; 129.215.13.193
+&gt; Jul 28 16:56:30 app cosignd[15830]: [ID 801519 local7.info] connect:
+&gt; 129.215.16.88
+&gt; Jul 28 16:56:30 app cosignd[15830]: [ID 536247 local7.debug] f_check:
+&gt; cosign=QyLMJL3f2WeO1P8qyv2PQ9B+zT601evp3qMZ2+CowWbtC
+&gt; -8sR2OU7aQKfjWeXMJ4T01N5v3T2fotYyVWvFg0uGgfZddB9iqucviTqD9t0powJD5wNH7LS
+&gt; SFePL91
+&gt;
+&gt; and
+&gt;
+&gt; Jul 28 16:44:30 beat.ease.ed.ac.uk cosignd[14951]: [ID 159427
+&gt; local7.info] restart 20040707
+&gt; Jul 28 16:44:30 beat.ease.ed.ac.uk cosignd[14955]: [ID 801519
+&gt; local7.info] connect: 129.215.13.193
+&gt; Jul 28 16:44:31 beat.ease.ed.ac.uk cosignd[14952]: [ID 827450
+&gt; local7.error] CHILD 14953 talking to itself
+&gt; Jul 28 16:44:31 beat.ease.ed.ac.uk monster[14957]: [ID 159427
+&gt; local7.info] restart 20040707
+&gt; Jul 28 16:46:23 beat.ease.ed.ac.uk cosignd[14989]: [ID 801519
+&gt; local7.info] connect: 129.215.16.88
+&gt; Jul 28 16:46:23 beat.ease.ed.ac.uk cosignd[14989]: [ID 230735
+&gt; local7.debug] f_time:
+&gt; cosign=NryhT5I4qlx33CbO0+5IvawqOx3vRat0yC-
+&gt; l4+FAPCP0YiFpKgugKYZxEtDOfoSYJq6OeASICp0zgx612tKfWFKHVIm1TZcJ2lMh39x2XRl
+&gt; -e3gqGmlpeBafOc+w: No such file or directory
+&gt; Jul 28 16:46:31 beat.ease.ed.ac.uk cosignd[14990]: [ID 801519
+&gt; local7.info] connect: 129.215.13.193
+&gt; Jul 28 16:56:30 beat.ease.ed.ac.uk cosignd[14997]: [ID 801519
+&gt; local7.info] connect: 129.215.16.88
+&gt; Jul 28 16:56:30 beat.ease.ed.ac.uk cosignd[14997]: [ID 536247
+&gt; local7.debug] f_check:
+&gt; cosign=QyLMJL3f2WeO1P8qyv2PQ9B+zT601evp3qMZ2+CowWbtC
+&gt; -8sR2OU7aQKfjWeXMJ4T01N5v3T2fotYyVWvFg0uGgfZddB9iqucviTqD9t0powJD5wNH7LS
+&gt; SFePL91
+&gt;
+&gt;
+&gt;
+
+-- 
+=============================================================================
+Graeme Wood                                 Email: Graeme.Wood@xxxxxxxx
+Unix Systems Support                        Phone: +44 131 650 5003
+The University of Edinburgh                 Fax:   +44 131 650 6552
+=============================================================================
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00206" href="msg00206.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00189" href="msg00189.shtml">replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00192" href="msg00192.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00193" href="msg00193.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00195" href="msg00195.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00196" href="msg00196.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00197" href="msg00197.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00199" href="msg00199.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+<li><strong><a name="00200" href="msg00200.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00202.shtml">Re: Accessing secure sites</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00204.shtml">audit trail</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00200.shtml">Re: replication</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00206.shtml">Re: replication</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00203"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00203"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

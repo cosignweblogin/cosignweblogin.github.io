@@ -1,0 +1,154 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Transferring a Session -->
+<!--X-From-R13: Ivyyvr @begujnl <jvyyaNhzvpu.rqh> -->
+<!--X-Date: Wed, 5 May 2004 12:06:51 &#45;0400 (EDT) -->
+<!--X-Message-Id: 15ED998F&#45;9EAE&#45;11D8&#45;9EB4&#45;000A95E87E7C@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: NEBBKODEMFFOKFIMGOLHAEJKFAAA.drobert@djinnsoft.com -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00103.shtml">Date Prev</a>][<a href="msg00105.shtml">Date Next</a>][<a href="msg00103.shtml">Thread Prev</a>][<a href="msg00105.shtml">Thread Next</a>][<a href="maillist.shtml#00104">Date Index</a>][<a href="threads.shtml#00104">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Transferring a Session</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;David Robert&quot; &lt;<a href="mailto:drobert@DOMAIN.HIDDEN">drobert@xxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Transferring a Session</li>
+<li><em>From</em>: Willie Northway &lt;<a href="mailto:willn@DOMAIN.HIDDEN">willn@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 5 May 2004 12:05:53 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discussion@DOMAIN.HIDDEN">cosign-discussion@xxxxxxxxx</a>,   &quot;&lt;<a href="mailto:webappsec@DOMAIN.HIDDEN">webappsec@xxxxxxxxxxxxxxxxx</a>&gt;&quot; &lt;<a href="mailto:webappsec@DOMAIN.HIDDEN">webappsec@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;NEBBKODEMFFOKFIMGOLHAEJKFAAA.drobert@djinnsoft.com&gt;</li>
+<li><em>References</em>: &lt;NEBBKODEMFFOKFIMGOLHAEJKFAAA.drobert@djinnsoft.com&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On May 3, 2004, at 6:33 PM, David Robert wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I have a problem I would like some input on. I need to implement a  
+solution<br>
+that allows one website to securely transfer 'logged in' state to  
+another<br>
+website.
+</tt></blockquote><tt><br>You may find that the cosign project fulfills your needs:</tt><br>
+<br>
+<tt>	<a  href="http://weblogin.org/">http://weblogin.org/</a></tt><br>
+<br>
+<tt>Cosign is an open source single sign-on solution which manages user  
+logins through a central server. Once registered with the central  
+server, users can freely visit any cosign protected sites for which  
+they have authorization. These protected sites connect to the central  
+cosign server through a back-side SSL connection to verify  
+authentication, and then create a service cookie for ease of subsequent  
+service visits.</tt><br>
+<br>
+<tt>This software is currently being used by the University of Michigan to  
+manage several hundred thousand logins a day:</tt><br>
+<br>
+<tt>	<a  href="http://www.umich.edu/~umweb/software/cosign/cosign-discuss/">http://www.umich.edu/~umweb/software/cosign/cosign-discuss/</a> 
+msg00005.html</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>3) System B is written in Java and uses SSL, form based,  
+username/password authentication.
+</tt></blockquote><tt><br>The cosign filters are put in place on the protected sites, and have  
+been written for apache and IIS, and the java filter beta has recently  
+been released.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>The 'time dependent' nature of the last two are at the request of the<br>
+client. They are concerned that the link can be read from the browser's<br>
+cache by an attacker. Is this really a problem if the page on system A  
+is<br>
+set to not be cached?
+</tt></blockquote><tt><br>The idle and hard-limit timeouts of the cosign session are both  
+configurable. Once a cosign session has ended either through a timeout,  
+or a user-action logout, the service cookie becomes worthless.</tt><br>
+<br>
+<tt>Below is a link to a description that Penn State has written about  
+cosign:</tt><br>
+<br>
+<tt>	<a  href="http://et.aset.psu.edu/initiatives/credential/publications/">http://et.aset.psu.edu/initiatives/credential/publications/</a></tt><br>
+<br>
+<tt>Feel free to contact cosign@xxxxxxxxx if you have further questions.</tt><br>
+<br>
+<tt>- Willie</tt><br>
+<br>
+<pre style="margin: 0em;">--
+Willie Northway                  University of Michigan Webmaster Team
+<a  href="http://willienorthway.com/">http://willienorthway.com/</a>       <a  href="http://www.umich.edu/~umweb/">http://www.umich.edu/~umweb/</a></pre><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00103.shtml">Re: Cosign beginner questions</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00105.shtml">IISCosign 1.0.0 Installer bug</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00103.shtml">Re: Cosign beginner questions</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00105.shtml">IISCosign 1.0.0 Installer bug</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00104"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00104"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

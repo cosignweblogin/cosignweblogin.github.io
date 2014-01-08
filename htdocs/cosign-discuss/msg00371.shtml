@@ -1,0 +1,167 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: CoSign 1.8.0 Compile Problem -->
+<!--X-From-R13: Irfyrl R Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Tue, 22 Mar 2005 16:25:02 &#45;0500 (EST) -->
+<!--X-Message-Id: 835799D9&#45;ED93&#45;4722&#45;821B&#45;4ADA9119EF7A@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 325F46FDC9A60242846F2DCBFB4D0927020B994C@ORNLEXCHANGE.ornl.gov -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00370.shtml">Date Prev</a>][<a href="msg00372.shtml">Date Next</a>][<a href="msg00370.shtml">Thread Prev</a>][<a href="msg00372.shtml">Thread Next</a>][<a href="maillist.shtml#00371">Date Index</a>][<a href="threads.shtml#00371">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: CoSign 1.8.0 Compile Problem</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Wallace, Brian S.&quot; &lt;<a href="mailto:wallacebs@DOMAIN.HIDDEN">wallacebs@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: CoSign 1.8.0 Compile Problem</li>
+<li><em>From</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 22 Mar 2005 16:23:54 -0500</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00370.shtml">325F46FDC9A60242846F2DCBFB4D0927020B994C@ORNLEXCHANGE.ornl.gov</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00370.shtml">325F46FDC9A60242846F2DCBFB4D0927020B994C@ORNLEXCHANGE.ornl.gov</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Not being a Solaris user, but Google being my friend:</tt><br>
+<br>
+<tt>    <a  href="http://svn.haxx.se/users/archive-2004-02/0596.shtml">http://svn.haxx.se/users/archive-2004-02/0596.shtml</a></tt><br>
+<br>
+<tt>I'd guess the problem is that openssl (or some other lib) is  
+statically linked?</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<tt>On 22 Mar 2005, at 08:34, Wallace, Brian S. wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">I'm trying to compile CoSign 1.8.0 on a SPARC Solaris 9 system with
+Apache 2.0.53/OpenSSL 0.9.7e. and GCC 3.4.2.  The configure command
+worked:</pre><br>
+<tt>./configure --enable-apache2=/usr/local/apache-2.0.53/bin/apxs</tt><br>
+<br>
+<tt>The &quot;make everything&quot; command gives the following error:</tt><br>
+<br>
+<pre style="margin: 0em;">make[1]: Entering directory
+`/usr/local/src/cosign/cosign-1.8.0/filters/apache2'
+/usr/local/apache-2.0.53/bin/apxs -c mod_cosign.o connect.o cookiefs.o
+sparse.o ../../common/argcargv.o ../../common/fbase64.o
+../../common/mkcookie.o ../../common/rate.o ../../version.o
+-L../../libsnet/     -L/usr/local/ssl/lib -lsnet
+/usr/local/apache-2.0.53/build/libtool --silent --mode=link gcc -o
+mod_cosign.la  -rpath /usr/local/apache-2.0.53/modules -module
+-avoid-version    mod_cosign.o connect.o cookiefs.o sparse.o
+../../common/argcargv.o ../../common/fbase64.o ../../common/mkcookie.o
+../../common/rate.o ../../version.o -L../../libsnet/
+-L/usr/local/ssl/lib -lsnet</pre><br>
+<pre style="margin: 0em;">*** Warning: Linking the shared library mod_cosign.la against the
+non-libtool
+*** objects  mod_cosign.o connect.o cookiefs.o sparse.o
+../../common/argcargv.o ../../common/fbase64.o ../../common/mkcookie.o
+../../common/rate.o ../../version.o is not portable!
+Text relocation remains                         referenced
+    against symbol                  offset      in file
+&lt;unknown&gt;                           0xcdc
+/usr/local/src/cosign/cosign-1.8.0/libsnet/.libs/libsnet.a(snet.o)
+.
+.
+.
+SSL_set_fd                          0x298
+/usr/local/src/cosign/cosign-1.8.0/libsnet/.libs/libsnet.a(snet.o)
+read                                0x1084
+/usr/local/src/cosign/cosign-1.8.0/libsnet/.libs/libsnet.a(snet.o)
+ld: fatal: relocations remain against allocatable but non-writable
+sections
+collect2: ld returned 1 exit status
+apxs:Error: Command failed with rc=65536
+.
+make[1]: *** [mod_cosign.la] Error 1
+make[1]: Leaving directory
+`/usr/local/src/cosign/cosign-1.8.0/filters/apache2'
+make: *** [filters/apache2] Error 2</pre><br>
+<tt>I have removed the rather long function list in the middle.  The  
+problem<br>
+appears to be with the apxs command.  Any ideas?</tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00370" href="msg00370.shtml">CoSign 1.8.0 Compile Problem</a></strong>
+<ul><li><em>From:</em> Wallace, Brian S.</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00370.shtml">CoSign 1.8.0 Compile Problem</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00372.shtml">replication behind load balancer</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00370.shtml">CoSign 1.8.0 Compile Problem</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00372.shtml">replication behind load balancer</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00371"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00371"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,47 @@
+<!--#set var="long_title" value="cosign: contributors" -->
+<!--#set var="title" value="contrib" -->
+<!--#set var="grand_parent" value="software" -->
+<!--#set var="parent" value="cosign" -->
+<!--#set var="too_deep" value="true" -->
+<!--#set var="trail" value="../.." -->
+<!--#include virtual="$trail/pieces/template-top.shtml" -->
+
+<table cellpadding="6" cellspacing="0" border="0" width="90%">
+    <tr>
+    <td bgcolor="<!--#echo var="flavor_color" -->">
+        <p class="hedr">
+	    contrib
+        </p>
+    </td>
+    </tr>
+
+    <tr>
+    <td>
+	<blockquote>
+	    <p class="software">
+		Andrew Mortensen, core developer <br />
+		Johanna Bromberg Craig, core developer <br />
+		Jarod Malestein, core developer <br />
+		Kevin B. McGowan, core developer <br />
+		Simon Wilkinson, core developer <br />
+		Wesley Craig, senior architect <br />
+	    </p>
+
+	    <p class="software">
+		Kevin Coffman <br />
+		Bill Doster <br />
+		Larry Greenfield, Carnegie Mellon University <br />
+		Dan Hyde <br />
+		Hugh C Kennedy <br />
+		Mark Montague <br />
+		Paul Saxman <br />
+		Cory Snavely <br />
+		Kris Steinhoff <br />
+	    </p>
+	</blockquote>
+        <p class="software">&nbsp;</p>
+    </td>
+    </tr>
+</table>
+<!--#include virtual="$trail/pieces/template-bottom.shtml" -->
+

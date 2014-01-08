@@ -1,0 +1,176 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Qualifications for end of Session -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Thu, 18 Aug 2005 14:17:40 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20050818141556.4vb23maqkgkksssw@web.mail.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C1F34134634A8442AA7E93A1C300C97101EACCED@avalanche.vprsrch.psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00521.shtml">Date Prev</a>][<a href="msg00523.shtml">Date Next</a>][<a href="msg00521.shtml">Thread Prev</a>][<a href="msg00524.shtml">Thread Next</a>][<a href="maillist.shtml#00522">Date Index</a>][<a href="threads.shtml#00522">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Qualifications for end of Session</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Whyte, Michael&quot; &lt;<a href="mailto:mjw20@DOMAIN.HIDDEN">mjw20@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Qualifications for end of Session</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Thu, 18 Aug 2005 14:15:56 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00521.shtml">C1F34134634A8442AA7E93A1C300C97101EACCED@avalanche.vprsrch.psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00521.shtml">C1F34134634A8442AA7E93A1C300C97101EACCED@avalanche.vprsrch.psu.edu</a>&gt;</li>
+<li><em>User-agent</em>: Internet Messaging Program (IMP) H3 (4.0.3)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>An end of session is usually caused by the web browser being closed.</tt><br>
+<br>
+<pre style="margin: 0em;">&lt;CookieDBExpireTime&gt; does not set the expire time for the cookie in the user's
+browser.  It tells IISCosign how long the locally cached copies of the service
+cookies -- the files located in [c:\path\to]\iiscosign\cookiedb -- are good on
+your cosign-protected web server before it asks the central login server if a
+service cookie is still good.</pre><br>
+<tt>As far as the 'central login session' cookie, this value is set on the login<br>
+server.  I believe the default is around 8 hours, but take that with a 
+grain of<br>
+salt as it is customizable for each login server.  Note that even if your<br>
+service cookie 'expires' every couple of minutes (the default value) if the<br>
+user is still logged in, a new service cookie is issued.</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--Information Technology Central Services</pre><br>
+<tt>Quoting &quot;Whyte, Michael&quot; &lt;mjw20@xxxxxxx&gt;:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hello,</tt><br>
+<br>
+<pre style="margin: 0em;">The cookie in my browser says it expires at end of session. What
+initiates an end of session?  The cookie DB setting in the
+cosign.dll.config is set to about 10 hours.</pre><br>
+<pre style="margin: 0em;">Just want to know what signifies so that we can create user warnings and
+or auto state saving of information on a web form, when page is idle.</pre><br>
+<tt>Just to save time and email exchanges, below is a copy of the config.</tt><br>
+<br>
+<pre style="margin: 0em;">&lt;Cosign&gt;
+	&lt;CAFilePath&gt;c:\Program Files\IISCosign\SSL&lt;/CAFilePath&gt;
+	&lt;ChainFilePath&gt;c:\Program
+Files\IISCosign\SSL\simscert.pem&lt;/ChainFilePath&gt;
+	&lt;PrivateKeyFilePath&gt;c:\Program
+Files\IISCosign\SSL\simsserver.key&lt;/PrivateKeyFilePath&gt;
+	&lt;LogFilePath fileSizeInKB=&quot;4096&quot; &gt;C:\Program
+Files\IISCosign\Logs&lt;/LogFilePath&gt;
+	&lt;CookieDBPath&gt;C:\Program Files\IISCosign\CookieDB&lt;/CookieDBPath&gt;
+	&lt;CosignServer port=&quot;6663&quot;&gt;webaccess.psu.edu&lt;/CosignServer&gt;
+	&lt;RedirectURL&gt;<a  href="https://webaccess.psu.edu/">https://webaccess.psu.edu/</a>?&lt;/RedirectURL&gt;
+	&lt;ConnectionPool size=&quot;4&quot; /&gt;&lt;!--4--&gt;
+	&lt;CookieDBExpireTime seconds=&quot;36000&quot; /&gt;
+	&lt;WriteDataToEventViewer&gt;FALSE&lt;/WriteDataToEventViewer&gt;
+	&lt;CheckIPAddress&gt;FALSE&lt;/CheckIPAddress&gt;
+	&lt;Service IISDescription=&quot;sims
+development&quot;&gt;cosign-dev.sims.psu.edu
+		&lt;Protected&gt;/&lt;/Protected&gt;
+	&lt;/Service&gt;
+	&lt;Service IISDescription=&quot;prams
+developement&quot;&gt;cosign-dev.prams.psu.edu
+		&lt;Protected&gt;/&lt;/Protected&gt;
+	&lt;/Service&gt;
+	&lt;Service IISDescription=&quot;SIMSBudgets&quot;&gt;cosign-devbud.sims.psu.edu</pre><br>
+<pre style="margin: 0em;">		&lt;Protected&gt;/&lt;/Protected&gt;
+	&lt;/Service&gt;
+&lt;/Cosign&gt;</pre><br>
+<tt></tt><br>
+<br>
+<tt>Thanks</tt><br>
+<br>
+<pre style="margin: 0em;">Michael Whyte
+Penn State University
+Office of Research Information Systems</pre><br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00521" href="msg00521.shtml">Qualifications for end of Session</a></strong>
+<ul><li><em>From:</em> Whyte, Michael</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00521.shtml">Qualifications for end of Session</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00523.shtml">Restore Your Account Access</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00521.shtml">Qualifications for end of Session</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00524.shtml">PayPal Inc: confirm your details to avoid service cancellation [Wed, 17 Aug 2005 08:28:05 -0200]</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00522"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00522"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

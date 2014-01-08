@@ -1,0 +1,148 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: A couple of changes I have made from the CVS source -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 21 Apr 2004 21:18:00 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040422011043.62CBC33F4D@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00078.shtml">Date Prev</a>][<a href="msg00080.shtml">Date Next</a>][<a href="msg00089.shtml">Thread Prev</a>][<a href="msg00083.shtml">Thread Next</a>][<a href="maillist.shtml#00079">Date Index</a>][<a href="threads.shtml#00079">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>A couple of changes I have made from the CVS source</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: A couple of changes I have made from the CVS source</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 22 Apr 2004 13:10:43 +1200</li>
+<li><em>Thread-index</em>: AcQoBqJRkiOMDSf2SFmvgfXulnRe5g==</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<address>Title: <strong>A couple of changes I have made from the CVS source</strong></address>
+
+
+
+
+<!---->
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Hi all,</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">During my UoA customisations I have had to make the following changes to the source from CVS (I got it on 21/04/04)</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> that I thought you might want to know</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">:</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">* created libsnet/profiled directory - make failed when it didn't exist.</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">* added include for sys/params.h in filters/apache/connect.c for MAXPATHLEN</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">* added libcgi/profiled directory</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"></FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"> <FONT SIZE=2 FACE="Arial">&#8211;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> make failed when it didn</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">&#8217;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">t exist.</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">I am not sure what the profiled is for</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">&#8230;</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial"> as the Makefile seems to suggest they are exactly the same as the un-profiled??</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Cheers</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Brett</FONT></SPAN><SPAN LANG="en-nz"></SPAN><SPAN LANG="en-nz"></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"></SPAN><A NAME=""><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">------------</FONT></SPAN></A></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Brett Lomas</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Integration Architect</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Information Technology Systems and Services</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">The University of Auckland</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">New Zealand</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Phone:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +64 9 3737 599 extn 86499</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"><FONT SIZE=2 FACE="Arial">Mobile: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +64 21 757 096</FONT></SPAN></P>
+
+<P ALIGN=LEFT><SPAN LANG="en-nz"></SPAN></P>
+
+
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00083" href="msg00083.shtml">RE: A couple of changes I have made from the CVS source</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00084" href="msg00084.shtml">Re: A couple of changes I have made from the CVS source</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00078.shtml">logout and cosign.cgi question</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00080.shtml">Re: Will friend accounts ever expire?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00089.shtml">RE: logout and cosign.cgi question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00083.shtml">RE: A couple of changes I have made from the CVS source</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00079"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00079"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

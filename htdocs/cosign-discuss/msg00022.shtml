@@ -1,0 +1,135 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: COSIGN: implement cosign cgis as php? -->
+<!--X-From-R13: [nex [bagnthr <znexzbagNhzvpu.rqh> -->
+<!--X-Date: Tue, 23 Mar 2004 12:06:05 &#45;0500 (EST) -->
+<!--X-Message-Id: Pine.SOL.4.58.0403231159180.26407@mozi.lsait.lsa.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7D8718A&#45;7CD6&#45;11D8&#45;9342&#45;000A95CD7232@umich.edu -->
+<!--X-Reference: Pine.SOL.4.58.0403230937440.26407@mozi.lsait.lsa.umich.edu -->
+<!--X-Reference: CEEA2AEF&#45;7CDF&#45;11D8&#45;9676&#45;000A95DA58FE@lsi.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00021.shtml">Date Prev</a>][<a href="msg00023.shtml">Date Next</a>][<a href="msg00021.shtml">Thread Prev</a>][<a href="msg00023.shtml">Thread Next</a>][<a href="maillist.shtml#00022">Date Index</a>][<a href="threads.shtml#00022">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: COSIGN: implement cosign cgis as php?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jim Zajkowski &lt;<a href="mailto:jamesez@DOMAIN.HIDDEN">jamesez@xxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: COSIGN: implement cosign cgis as php?</li>
+<li><em>From</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 23 Mar 2004 12:05:08 -0500 (EST)</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00021.shtml">CEEA2AEF-7CDF-11D8-9676-000A95DA58FE@lsi.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00017.shtml">C7D8718A-7CD6-11D8-9342-000A95CD7232@umich.edu</a>&gt; &lt;<a href="msg00020.shtml">Pine.SOL.4.58.0403230937440.26407@mozi.lsait.lsa.umich.edu</a>&gt; &lt;<a href="msg00021.shtml">CEEA2AEF-7CDF-11D8-9676-000A95DA58FE@lsi.umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Tue, 23 Mar 2004, Jim Zajkowski wrote:
+
+&gt; &gt; how about writing (or finding) an web server module that uses IPC to
+&gt; &gt; hand of the request to a separately running threaded daemon?
+&gt;
+&gt; You mean, fastcgi?  :-)
+
+Thanks, Jim -- I was misunderstanding what FastCGI was and how
+it operated.  Please discard my out-in-left-field idea.  After
+reading docs on the FastCGI home page, I'm thinking that FastCGI
+would be preferable to a PHP or mod_perl based solutions in
+terms of size, speed, security.  If we could port the existing
+code for the CGIs to FastCGI in such as way that they would
+still compile and run as normal CGIs for people who did not
+have FastCGI installed (as the FastCGI manuals indicate can be
+done) this would be even better.
+
+                Mark Montague
+                LS&amp;A Information Technology
+                markmont@xxxxxxxxx
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00017" href="msg00017.shtml">COSIGN: implement cosign cgis as php?</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+<li><strong><a name="00020" href="msg00020.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+<li><strong><a name="00021" href="msg00021.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00021.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00023.shtml">A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00021.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00023.shtml">A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00022"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00022"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

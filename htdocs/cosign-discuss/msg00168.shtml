@@ -1,0 +1,252 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: CosignIIS problems -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 14 Jul 2004 23:11:40 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040715030833.30FE834CF2@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Reference: 14A270C0E2F4124AB0B7320BDBEA949F04D6ED0D@vxchange.vcr.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00167.shtml">Date Prev</a>][<a href="msg00169.shtml">Date Next</a>][<a href="msg00167.shtml">Thread Prev</a>][<a href="msg00169.shtml">Thread Next</a>][<a href="maillist.shtml#00168">Date Index</a>][<a href="threads.shtml#00168">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: CosignIIS problems</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: CosignIIS problems</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 15 Jul 2004 15:08:31 +1200</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00167.shtml">14A270C0E2F4124AB0B7320BDBEA949F04D6ED0D@vxchange.vcr.auckland.ac.nz</a>&gt;</li>
+<li><em>Organization</em>: The University of Auckland</li>
+<li><em>Thread-index</em>: AcRqFait8vibnXRiRAuMsQr4ElFwagAAz5TA</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<table width="100%"><tr><td style="a:link { color: blue } a:visited { color: purple } ">
+
+
+
+
+
+<div class=Section1>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'>But wait&#8230;. It is getting somewhere&#8230;
+I have cosign logs now&#8230; so I will look into these </span></font><font
+size=2 color=navy face=Wingdings><span style='font-size:10.0pt;font-family:
+Wingdings;color:navy'>J</span></font><font size=2 color=navy face=Arial><span
+style='font-size:10.0pt;font-family:Arial;color:navy'> I wasn&#8217;t logging
+before &#8211; promise!!<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 color=navy face=Arial><span style='font-size:
+10.0pt;font-family:Arial;color:navy'><o:p>&nbsp;</o:p></span></font></p>
+
+<div>
+
+<div class=MsoNormal align=center style='text-align:center'><font size=3
+face="Times New Roman"><span style='font-size:12.0pt'>
+
+<hr size=2 width="100%" align=center tabindex=-1>
+
+</span></font></div>
+
+<p class=MsoNormal><b><font size=2 face=Tahoma><span style='font-size:10.0pt;
+font-family:Tahoma;font-weight:bold'>From:</span></font></b><font size=2
+face=Tahoma><span style='font-size:10.0pt;font-family:Tahoma'> <st1:PersonName
+w:st="on">Brett Lomas</st1:PersonName> on vxchange
+[mailto:blom001@xxxxxxxxxxxxxxxxxxxxxxxxxxx] <br>
+<b><span style='font-weight:bold'>Sent:</span></b> Thursday, 15 July 2004 2:42
+p.m.<br>
+<b><span style='font-weight:bold'>To:</span></b> 'Cosign Discussion'<br>
+<b><span style='font-weight:bold'>Subject:</span></b> CosignIIS problems</span></font><o:p></o:p></p>
+
+</div>
+
+<p class=MsoNormal><font size=3 face="Times New Roman"><span style='font-size:
+12.0pt'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>Hi all,<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>I am having a problem with the IIS cosign filter.
+IIS6 reports<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal style='text-autospace:none'><font size=2 face=Arial><span
+lang=EN-NZ style='font-size:10.0pt;font-family:Arial'>&#8220;</span></font><font
+size=1 face="MS Shell Dlg"><span style='font-size:8.5pt;font-family:"MS Shell Dlg"'>The
+HTTP Filter DLL C:\Program Files\The University of
+Auckland\UoAWebAuth\cosign.dll failed to load.&nbsp; The data is the error.<o:p></o:p></span></font></p>
+
+<p class=MsoNormal style='text-autospace:none'><font size=1 face="MS Shell Dlg"><span
+style='font-size:8.5pt;font-family:"MS Shell Dlg"'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=1 face="MS Shell Dlg"><span style='font-size:
+8.5pt;font-family:"MS Shell Dlg"'>For more information, see Help and <st1:place
+w:st="on"><st1:PlaceName w:st="on">Support</st1:PlaceName> <st1:PlaceType
+ w:st="on">Center</st1:PlaceType></st1:place> at <a
+href="http://go.microsoft.com/fwlink/events.asp">http://go.microsoft.com/fwlink/events.asp</a>.&#8221;<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=1 face="MS Shell Dlg"><span style='font-size:
+8.5pt;font-family:"MS Shell Dlg"'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=1 face="MS Shell Dlg"><span style='font-size:
+8.5pt;font-family:"MS Shell Dlg"'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=1 face="MS Shell Dlg"><span style='font-size:
+8.5pt;font-family:"MS Shell Dlg"'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>And the data is just 0x2??<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>I am creating the UoA installer, this is me just
+setting IIS manually so I can then do it programmatically.<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>The installer installs the cosign.dll etc into
+\Program Files\The University of Auckland\UoAWebAuth.<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>The binaries are from the standard IIS installer.<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>The openssl binaries are different though, as I have
+included the openssl 0.9.7d (compiled locally &#8211; openssl the executable
+correctly runs on the installed machine)<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>I have done the following to rule out things:<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>1. Full permissions for everyone on the cosign
+directory.<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>2. I didn&#8217;t install MSXML4 because it is
+already installed<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>3. The installer uses the configfile and not configpath
+as the registry key.<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>Any ideas?<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>Thanks<o:p></o:p></span></font></p>
+
+</div>
+
+
+
+
+</td></tr></table>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00169" href="msg00169.shtml">RE: CosignIIS problems</a></strong>
+<ul><li><em>From:</em> Jarod</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00167" href="msg00167.shtml">CosignIIS problems</a></strong>
+<ul><li><em>From:</em> Brett Lomas on vxchange</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00167.shtml">CosignIIS problems</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00169.shtml">RE: CosignIIS problems</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00167.shtml">CosignIIS problems</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00169.shtml">RE: CosignIIS problems</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00168"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00168"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,426 @@
+<!--#set var="title" value="download" -->
+<!--#set var="download" value="y" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#include file="header.shtml" -->
+<!--#set var="trail" value="../.." -->
+
+<!--#if expr="\"$HTTP_HOST\" = \"weblogin.org\"" -->
+<!--#set var="download_prefix" value="http://www.umich.edu/~umweb" -->
+<!--#else -->
+<!--#set var="download_prefix" value="$trail" -->
+<!--#endif -->
+
+<table cellpadding="6" cellspacing="0" border="0" width="90%">
+    <tr>
+    <td >
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="images
+/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+		Older cosign Source Code and Installers
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+		to verify checksum: openssl md5 filename
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td> 
+    </tr>
+</table>
+	</td>
+    </tr>
+
+    <tr>
+    <td>
+
+        <p class="software">&nbsp;</p>
+	    <h3>Older Versions:</h3>
+	    <p class="software">
+	    <ul>
+		<li>
+		    <h4>Apache Filter &amp; Weblogin Server:</h4>
+		    <p class="software">
+			<b>WARNING:</b> Versions of cosign older than 3.0 have an architectural flaw (detailed <a href="http://weblogin.org/cosign-vuln-2009-002.txt" target="_blank">here</a>). New users of cosign should select the latest cosign 3 release for download. Existing legacy cosign installations should upgrade to cosign 3 as soon as possible. An overview of that process may be found <a href="http://sourceforge.net/mailarchive/message.php?msg_name=D377407D-BD11-4561-87EF-5EC5007B09AD%40umich.edu" target="_blank">here</a>.
+		    </p>
+		    <p class="software">
+		      <b>WARNING:</b> Versions of the cosign weblogin server
+		      prior to 2.0.2a (excluding 1.9.4b) contain remotely
+		      exploitable security vulnerabilities.  The cosign
+		      development team strongly recommends that only newer
+		      versions of the cosign weblogin server be used.
+		    </p>
+		</li>
+		<li>
+		<b><a href="https://sourceforge.net/projects/cosign/files/cosign/cosign-3.1.4/cosign-3.1.4.tar.gz/download">cosign-3.1.4.tar.gz</a></b><br />
+		[ SHA256 516ece58d20fa292c1f349ccb1020e3333dabf4e33c5f13c297e9fb8cae5fe68 ]<br />
+		[ SHA1 94ef12d0da631ba7e0d310b072a4bee63a5c38b0 ]<br />
+		[ RIPEMD160 f2e07462dcffa8487a22441498f9714a9c7a7449 ]<br />
+		<a href="http://cosign.git.sourceforge.net/">browse git source repository</a></b> <br /><br />
+		</li>
+		<li>
+		<b><a href="https://sourceforge.net/projects/cosign/files/cosign/cosign-3.1.1/cosign-3.1.1.tar.gz/download">cosign-3.1.1.tar.gz</a></b><br />
+		[ SHA256 9ae6ad4560d744050673e0a0714e25421e948154cd27edfe6ed938bb9c635b30 ]<br />
+		[ SHA1 631f89fb3be33d4133ae30b2fd410575dfc0ff8a ]<br />
+		[ RIPEMD160 5c76dd9cbb3e8136d6e36ae19f74d53486496668 ]<br />
+		<a href="http://cosign.git.sourceforge.net/">browse git source repository</a></b> <br /><br />
+		</li>
+		<b><a href="http://prdownloads.sourceforge.net/cosign/cosign-3.0.1.tar.gz?download">cosign-3.0.1.tar.gz</a></b><br />
+		[ RIPEMD160 598c2d623fca0a860006680824462724fd8f679b ]<br />
+		[ SHA1 268e5c4ece9b723ac2ed87c527095eaa338609b6 ]<br />
+		[ MD5 84d4cc19eba18f0c978b2b6c3e9e167a ]<br />
+		<a href="http://cosign.git.sourceforge.net/">browse git source repository</a></b> <br /><br />
+		</li>
+		<li>
+		<b><a href="http://prdownloads.sourceforge.net/cosign/cosign-3.0.0.tar.gz?download">cosign-3.0.0.tar.gz</a></b><br />
+		[ RIPEMD160 aa9df5a608ae7971e9b98a12b0bbe6037d282257 ]<br />
+		[ SHA1 ea21c46a99ddc2adb97f3a82758e31edf87876c2 ]<br />
+		[ MD5 585241ddac1d5d50857fbbe1c876d5de ]<br />
+		<a href="http://cosign.git.sourceforge.net/">browse git source repository</a></b> <br /><br />
+		</li>
+		<li>
+		<b><a href="http://prdownloads.sourceforge.net/cosign/cosign-3.0.0rc2.tar.gz?download">cosign-3.0.0rc2.tar.gz</a></b><br />
+		[ RIPEMD160 8542e81e57efd2a5f05aee47d702532a354bb01d ]<br />
+		[ SHA1 fcff5789687bae90220f5c8c1f7a393f05eaff73 ]<br />
+		[ MD5 9bb8906b7ffca4a8f35b1f771e3e00e9 ]<br />
+		<a href="http://cosign.git.sourceforge.net/">browse git source repository</a></b> <br /><br />
+		</li>
+		<li>
+		<b><a href="http://prdownloads.sourceforge.net/cosign/cosign-3.0.0rc0.tar.gz?download">cosign-3.0.0rc0.tar.gz</a></b><br />
+		[ MD5 0372520deb8b43a11e8c0d64332897c9 ]<br />
+		[ SHA1 d2aab140ebc06dd24815d5bc6e36e2541a093971 ]<br />
+		[ RIPEMD160 40fe78e927b586d96a18c8b4c818297c3d296b88 ]<br />
+		<a href="http://cosign.cvs.sourceforge.net/">browse cvs source repository</a></b> <br /><br />
+		</li>
+		<b><a href="http://prdownloads.sourceforge.net/cosign/cosign-2.1.0.tar.gz?download">cosign-2.1.0.tar.gz</a></b><br />
+		[ MD5 e2ca61f2605e810a8ea1de08e60a4605 ]<br />
+		[ SHA1 882eb04a8d35eaad776a1e593a37475942384559 ]<br />
+		[ RIPEMD60 b10e481b4593934bb6660310ef29e86d122c9d6d ]<br />
+		<a href="http://cosign.cvs.sourceforge.net/">browse cvs source repository</a></b> <br /><br />
+                <b><a href="http://prdownloads.sourceforge.net/cosign/cosign-2.1.0rc1.tar.gz?download">cosign-2.1.0rc1.tar.gz</a></b><br />
+                [ MD5 c64fc0cdd19ec14b75480143edd12eb4 ]<br />
+                [ SHA1 d14e5715289a205243da36552ab95a351d8d70db ]<br />
+                [ RIPEMD60 ac3e0af25e0382d4e15872512e0d6188d35bd967 ]<br />
+                </li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-2.0.2a.tar.gz">cosign-2.0.2a.tar.gz</a></b> <br />
+		[ MD5 81883521562d15ddd3262009927da741 ] <br />
+	    </li>
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.9.4b.tar.gz">cosign-1.9.4b.tar.gz</a></b> <br />
+		[ MD5 25e8b43e02fc7175ec9ac77fb7d341bb ] <br /><br />
+	    </li>
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.9.4-vuln-patch.txt">Patch to fix <code>COSIGN-VULN-2007-001</code> and <code>COSIGN-VULN-2007-002</code></a></b><br />
+		[ MD5 6c76cd4db0ce8f894bc9f42034379aad ] <br />
+                This patch is against cosign-1.9.4; the changes in it should be made by hand to other versions of the Apache Filter &amp; Weblogin Server code.<br />
+	    </li>
+
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-2.0.2.tar.gz">cosign-2.0.2.tar.gz</a></b> <br />
+		[ MD5 b84b25dd1b1da7f1b67e776e7eeaf63c ] <br / >
+	    </li>
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-2.0.1.tar.gz">cosign-2.0.1.tar.gz</a></b> <br />
+		[ MD5 524386d4dbdf1f6064868c221b30996b ] <br / >
+	    </li>
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-2.0.0.tar.gz">cosign-2.0.0.tar.gz</a></b> <br />
+		[ MD5 3e9bca753b283d9d7685e60a0ed2e115 ] <br / >
+	    </li>
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.9.4a.tar.gz">cosign-1.9.4a.tar.gz</a></b> <br />
+		[ MD5 c2697d92c1ce61cedebc87417c956193 ] <br / >
+	    </li>
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.9.4.tar.gz">cosign-1.9.4.tar.gz</a></b> <br />
+		[ MD5 2b375ca7acf7b3e6e435e3c47441b7cf ] <br / >
+	    </li>
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.9.2.tar.gz">cosign-1.9.2.tar.gz</a></b> <br />
+		[ MD5 f75856d915e8c518c81b8ab70c48b7d7 ] <br / >
+	    </li>
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.9.0.tar.gz">cosign-1.9.0.tar.gz</a></b> <br />
+		[ MD5 2ec240c09951b17babe60a06d7941ad6 ] <br / >
+	    </li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.8.5.tar.gz">cosign-1.8.5.tar.gz</a></b> <br />
+		[ MD5 8dc1d004fa76567d50bc11d737bd31ca ] <br / >
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.8.0.tar.gz">cosign-1.8.0.tar.gz</a></b> <br />
+		[ MD5 64a025b4dc1de31a3cd2ff59cf086c1e ] <br / >
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.7.0.tar.gz">cosign-1.7.0.tar.gz</a></b> <br />
+		[ MD5 f4cece2c7b8b642c8135e90da7c4d422 ] <br />
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.6.2.tar.gz">cosign-1.6.2.tar.gz</a></b> <br />
+	       [ MD5 e312927066f801b9cd7edc969c8945d3] <br />
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.6.1.tar.gz">cosign-1.6.1.tar.gz</a></b> <br />
+	       [ MD5 f0f1c3bead08b923623c7a5fc6148c4e ] <br />
+	       </li>
+	       <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.6.0.tar.gz">cosign-1.6.0.tar.gz</a></b> <br />
+	       [ MD5 a15eaa528433602e4a8c69c62898b77e ] <br />
+	       </li>
+	       <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.5.1.tar.gz">cosign-1.5.1.tar.gz</a></b> <br />
+	       [ MD5 40a54be2b7002395a03b26689e468467 ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.5.0.tar.gz">cosign-1.5.0.tar.gz</a></b> <br />
+		   [ MD5 a18ca126d49f18bf9b36e1b086585990 ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.1.3.tar.gz">cosign-1.1.3.tar.gz</a></b> <br />
+		    [ MD5 b87bd71fb33cd28a1dfaa59bc080c447 ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.1.2.tar.gz">cosign-1.1.2.tar.gz</a></b> <br />
+		    [ MD5 ebbb082bdc1fa96f586623cdcc2480be ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.1.1.tar.gz">cosign-1.1.1.tar.gz</a></b> <br />
+		    [ MD5 f9e0db6554ea5ff1e79c8a4677dd255a ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.1.0.tar.gz">cosign-1.1.0.tar.gz</a></b> <br />
+		    [ MD5 7315246f32665c8c5d5d47a62825ef23 ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.0.1.tar.gz">cosign-1.0.1.tar.gz</a></b> <br />
+		    [ MD5 4716c37f33c4fb05188f724f75bcf407 ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.0.0.tar.gz">cosign-1.0.0.tar.gz</a></b> <br />
+		    [ MD5 37cc9de8be21142b5ccedbbb3b259dd9 ]<br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-0.9.4.tar.gz">cosign-0.9.4.tar.gz</a></b> <br/>
+		    [ MD5 60c91bb213efa2e3716e36a128d7a291 ]<br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-0.9.3.tar.gz">cosign-0.9.3.tar.gz</a></b> <br />
+		    [ MD5 adf6d03daeb95f71def3f3a11829209c ]<br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-0.9.2.tar.gz">cosign-0.9.2.tar.gz</a></b> <br />
+		    [ MD5 bb5b4ff78195d9e7fc1d6ff41d75febe ]<br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-0.9.1.tar.gz">cosign-0.9.1.tar.gz</a></b> <br />
+		    [ MD5 cd9682cf45f02ed7faa88ef740480638 ]<br />
+		</li>
+
+            <li><h4>MacOS X package - Filter and Weblogin Server:</h4></li>
+            <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.8.5-OSX.pkg.zip">cosign 1.8.5 Package for MacOS X</a></b> <br />
+		[ MD5 6eb65e492fda95e07ac2b03402037412 ] <br />
+	    </li>
+
+                <li>
+                    <h4>Friend guest account system:</h4>
+                </li>
+                <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/friend-2.0.1.tar.gz">friend-2.0.1.tar.gz</></a></b><br />
+	[ MD5 a92f97e077a21b061d02625e28c047a5 ]
+                </li>
+
+                <li>
+		    <h4>Windows:</h4>
+		</li>
+ 		<li>
+                <b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosignlogout.
+zip">IISCosign Logout DLL</a></b> <br />
+                [ MD5 e592458d0f32b149cfe467e25bf441b2 ]
+                </li>
+	<li><b><a href="http://sourceforge.net/projects/cosign/files/cosign-windows/cosignmodule-3.0.2/cosignmodule-3.0.2.zip/download">Cosign module 3.0.2</a></b><br />
+	[ SHA256 aebd75724a4d512147a23e0cabe88df04d4b3dfe3abf6880841e11d0b8ac115f ] <br />
+	[ SHA1 32566ab75fc657328757c2cbc000abfa33a62a0b ]<br />
+	[ RIPEMD160 f81f7fb642925bd5533cff66025c5b28575b2bc0 ]<br />
+	</li>
+<li><b><a href="http://prdownloads.sourceforge.net/cosign/cosignmodule-3.0.0beta1.zip?download">Cosign module 3.0.0 beta 1</a></b><br />
+[ MD5 1aa4b2518d3a5b8daeb4f8ed5867b395 ]<br />
+[ SHA1  f7657af1d2b48e432da4c1c48d802c4145adce25 ]<br />
+[ RIPEMD160 19a01b276e0353eece0fb07f9860747bcc8a43e6 ]<br />
+</li>
+    <li><b><a href="http://prdownloads.sourceforge.net/cosign/CosignModule-1.0.0b
+eta2.zip?download">Cosign module 1.0.0 beta 2</a></b><br />
+[ MD5 b9f2f4b8c7a9731655dd9cfe44e31d30 ]<br />
+[ SHA1  0673ab0a84ef055a3eaf2cb4af27fb278cd56b01 ]<br />
+[ RIPEMD160 b2a7f5f83254057cc5fbc35227ca8de1a391004 ]<br />
+    </li>
+    <li><b><a href="http://prdownloads.sourceforge.net/cosign/CosignModule-1.0.0b
+eta1.zip?download">Cosign module 1.0.0 beta 1</a></b><br />
+[ MD5 56d7bc7b2cd68316aa003fe9ccc4c6f0 ]<br />
+[ SHA1 75b0c7abc79d7ffe52b6198150455a27e214001a ]<br />
+[ RIPEMD160 561d2fd577480609e89daa658e286a5d663f3679 ]<br />
+    </li>
+	<li><b><a href="http://prdownloads.sourceforge.net/cosign/iiscosign-2.1.0-rc2.zip?download">IISCosign 2.1.0 RC2</a></b><br />
+		[ MD5 fb2379bfc39ec35c36d6b6a6d558ad59 ]<br />
+		[ SHA1 928a1fc6a8a77b89556e7c35aa2b6aab79fd714c ]<br />
+		[ RIPEMD60 4e58545e2920b51a60c67ebd412a62f8939d0546 ]<br />
+		<li><b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.3.msi">IISCosign 2.0.3 (msi)</a></b><br />
+		[ MD5 439281ed476dd5a4437dfb9acdc3df7c ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.3.zip">IISCosign 2.0.3 (zipped)</a></b><br />
+		[ MD5 075f159e1a35e49c41679e7f95ec9113 ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosignlogout-1.0.0a.zip">IISCosign Logout 1.0.0a DLL</a></b> <br />
+		[ MD5 ce126f5c7f06718076f7acbc8cf0b994 ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.3-src.zip">IISCosign 2.0.3 source</a></b> <br />
+		[ MD5 045e5192376d63e4e857f30592438fd1 ]<br />
+		</li>
+
+		<li>
+        <b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.2.zip">IISCosign 2.0.2 (zipped)</a></b><br />
+        [ MD5 50bb4432a4b0b9812058b9b2f4b6356a ]
+        </li>
+        <li><b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosignSetup-2.0.2.msi">IISCosign 2.0.2 (msi)</a></b><br />
+        [ MD5 9caedce23eb48e55ea3d9878abb19716 ]
+        </li>    <b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.2-beta36.z
+ip">IISCosign 2.0.2 beta 36 (no installer)</a></b><br />
+        [ MD5 f78251660bdcaa8072c255093708f320 ]
+        </li>
+        <li>
+        <b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.2-beta36.m
+si.zip">IISCosign 2.0.2 beta 36 (msi)</a></b><br />
+        [ MD5 7cb633f93b0f9cf6dc467cfb0752e330 ]
+        <li>
+        <b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.1.zip">IIS
+Cosign 2.0.1 (no installer)</a></b><br />
+        [ MD5 d47eb2b438a4f978c16d62f196b3dd92 ]
+        </li>
+		<li>
+<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.1-src.zip">IISCosign 2.0.1 source</a></b> <br />
+        [ MD5  5d8da3ee2a99189a40a5ed49900de057 ]<br />
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.2-beta.zip">IISCosign 2.0.2 beta (no installer)</a></b><br />
+		[ MD5 63f3e5fa30c130148f9f93d080735f3a ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.0.zip">IISCosign 2.0.0 (no installer)</a></b><br />
+		[ MD5 2b260a1520a32301912e8234ec86a8cd ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.0.zip">IISCosign 2.0.0 source</a></b> <br />
+		[ MD5 47bc7d254bb888b4e3ef5e9d9cfac702 ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.0-b1.zip">IISCosign 2.0.0 beta 1</a></b><br />
+		[ MD5 52812510d864f23db92508491ccedb8a ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-1.1.1.zip">IISCosign Installer 1.1.1</a></b> <br/>
+		[ MD5 576597d9b1ed3c65091656e6b8d1074c ]
+		</li>
+        <li>
+        <b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-1.2.0-beta-b60.zip">IISCosign 1.2.0 beta build 60 (dll only)</a></b><br />
+        [ MD5 7d74764ff5eade787bf6d34104931c33 ]
+        </li>
+               
+	 	<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-1.2.0-beta-b8.zip">IISCosign 1.2.0 beta build 8 (dll only)</a></b><br />
+		[ MD5 f30ce3ff4f3361216289331ce12eb7f3 ]
+		</li>	
+		<li>
+        	<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-1.1.0-rc2.zip">IISCosignInstaller 1.1.0 RC2</a></b> <br />
+        	[ MD5 0e231f96d5fc049d6681b75114739d91 ] <br />
+        	</li>
+        	<li>
+        <b><a href="<!--#echo var="download_prefix" -->/downloads/cosign-1.1.0-rc2b40.dll">IISCosign 1.1.0 rc2 build 40 (dll only)</a></b><br />
+        [ MD5 02b1b8077e8d3249a1179754678217a3 ]<br />
+        </li>
+
+            <li>
+                <b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-1.1.0-rc2b4.zip">IISCosign 1.1.0 RC2 build 4</a></b><br />
+	        DLLs only, does not have installer. <br />	
+                [ MD5  095f23529a0963707b59960085a9eff6 ]<br />
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-1.1.0-rc1.zip">IISCosignInstaller 1.1.0 RC1</a></b> <br />
+		[ MD5 dbff7a62989301ad04435cc96adbaa1e ] <br />
+	    </li>
+
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosignInstaller-1.0.0.zip">IISCosignInstaller 1.0.0</a></b> <br />
+		    [ MD5 9569c6a3c1789c8f5d378dbd430d1a07 ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosignInstaller-1.0.0rc3.zip">IISCosignInstaller 1.0.0 rc3</a></b> <br />
+		    [ MD5 546f54fcf9ca7c64d591b0faf5022054 ] <br />
+		</li>
+
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosignInstaller-1.0.0rc2.zip">IISCosignInstaller 1.0.0 rc2</a></b> <br />
+		    [ MD5 d6164f12638bb1a99ae10f389d085c38 ] <br />
+		</li>
+
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosignSetup-1.0.0rc1.zip">IISCosignSetup 1.0.0 rc1</a></b> <br />
+		    [ MD5 ac68f57660247d741c17c7e883b68696 ] <br />
+		</li>
+
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosign-0.9.2.zip">IISCosign-0.9.2.zip</a></b> <br />
+		    [ MD5 224eca11cab03b4a0c5b27a43ef2d7e7 ] <br />
+		</li>
+
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosign-0.9.1.zip">IISCosign-0.9.1.zip</a></b> <br />
+		    [ MD5 c988134e6972fef0834bb163cbd5ae43 ] <br />
+		</li>
+
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosign-0.9.0.zip">IISCosign-0.9.0.zip</a></b> <br />
+		    [ MD5 9947cb3ec91a5e133e4efc38f0ce4efe ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosign-0.8.2.zip">IISCosign-0.8.2.zip</a></b> <br />
+		    [ MD5 261e086198564012662708c3d2e7a6ba ] <br />
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/IISCosign-0.8.1.zip">IISCosign-0.8.1.zip</a></b> <br />
+		    [ MD5 f634c4862223940659cc06821f4ff43b ] <br />
+		</li>
+            <li><h4>Java Cosign:</h4></li>
+	    <li><b><a href="<!--#echo var="download_prefix" -->/downloads/jcosign-2.0.jar">JavaCosign 2.0</a></b></br><br />
+		[ MD5 3f9754073992daa645ab92fd773d40e3 ] <br />
+	    <a href="http://cosign.cvs.sourceforge.net/cosign/javacosign/">browse cvs source repository</a></b> <br/><br />
+	    </li>
+            <li><b><a href="<!--#echo var="download_prefix" -->/downloads/jcosign-1.5.b1.jar">JavaCosign 1.5 beta 1</a></b><br />
+                [ MD5 d5e175ef087e2d583956e727da3da435 ] <br />
+            </li>
+            <li><b><a href="<!--#echo var="download_prefix" -->/downloads/jcosign-1.1.jar">JavaCosign 1.1</a></b><br />
+		[ MD5 66c209119e0e8b8b4c9a1940b24caaec ] <br />
+		</li>
+	    <li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/jcosign-1.0b1.zip">JavaCosign 1.0.0 (beta 1)</a></b> <br />
+		[ MD5 fbe1e1513256eadcc08c08f57b112f11 ] <br />
+	    </li>
+	    </ul>
+
+    </td>
+    </tr>
+</table>
+
+<!--#include file="footer.shtml" -->
+

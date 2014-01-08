@@ -1,0 +1,143 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: question -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Thu, 27 May 2004 20:49:08 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20040528004358.4300333E99@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00116.shtml">Date Prev</a>][<a href="msg00118.shtml">Date Next</a>][<a href="msg00116.shtml">Thread Prev</a>][<a href="msg00118.shtml">Thread Next</a>][<a href="maillist.shtml#00117">Date Index</a>][<a href="threads.shtml#00117">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>question</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: question</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 28 May 2004 12:43:58 +1200</li>
+<li><em>Organization</em>: The University of Auckland</li>
+<li><em>Thread-index</em>: AcRETNxyzDoIvcWVQZ263qRLIrfDaA==</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<table width="100%"><tr><td style="a:link { color: blue } a:visited { color: purple } ">
+
+
+
+
+
+<div class=Section1>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>Hi all,<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>In the cosign cookie store on disk, you have a line
+starting with s, from looking around the code it look like this used to be the
+logged in/logged out status. But it appears to be legacy now, and you are using
+the set group id on exec bit. Why was this&#8230; was it to save having to
+re-write the file again?<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>Cheers<o:p></o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=MsoNormal><font size=2 face=Arial><span lang=EN-NZ style='font-size:
+10.0pt;font-family:Arial'>Brett<o:p></o:p></span></font></p>
+
+</div>
+
+
+
+
+</td></tr></table>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00118" href="msg00118.shtml">Re: question</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00116.shtml">Re: customizing web pages</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00118.shtml">Re: question</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00116.shtml">Re: customizing web pages</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00118.shtml">Re: question</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00117"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00117"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

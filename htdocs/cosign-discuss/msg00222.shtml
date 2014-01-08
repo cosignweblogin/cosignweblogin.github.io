@@ -1,0 +1,297 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: unknown CA -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Mon, 9 Aug 2004 23:21:24 &#45;0400 (EDT) -->
+<!--X-Message-Id: 0E09B163&#45;EA7C&#45;11D8&#45;8A6E&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040726104148.A28529@rogue.shadow.org -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00221.shtml">Date Prev</a>][<a href="msg00223.shtml">Date Next</a>][<a href="msg00191.shtml">Thread Prev</a>][<a href="msg00194.shtml">Thread Next</a>][<a href="maillist.shtml#00222">Date Index</a>][<a href="threads.shtml#00222">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: unknown CA</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Sam Noble &lt;<a href="mailto:nobles@DOMAIN.HIDDEN">nobles@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: unknown CA</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 9 Aug 2004 23:19:13 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00190.shtml">20040726104148.A28529@rogue.shadow.org</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00190.shtml">20040726104148.A28529@rogue.shadow.org</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Sorry for the late reply, but Graeme was absolutely correct, this  
+problem is caused by using a self-signed cert when trying to connect to  
+cosignd.  The quick and easy solution (for testing purposes) would be  
+to also put a copy of the self-signed cert into cosignd's CA directory.  
+ That way cosign will be able to 'verify' the signer of the cert your  
+service is presenting (because the cert is the signer, see?)</tt><br>
+<br>
+<tt>In response to another problem this evening, though, Mark Montague  
+provided some stunningly thorough suggestions that would have made this  
+easier to diagnose for you and really belong in our archive.  First of  
+all, as Mark has reminded us many times, start by verifying your cert:</tt><br>
+<br>
+<tt>     openssl verify -CApath /var/cosign/CA -purpose sslclient  
+/var/cosign/certs/mycert.cert</tt><br>
+<br>
+<tt>*but* verification will succeed on a self-signed cert even though  
+mod_cosign won't like it at all (as you so aptly discovered for us,  
+Sam).  We can figure out why this is by going the next step:</tt><br>
+<br>
+<tt>( from here on in I'm simply quoting Mark )</tt><br>
+<br>
+<pre style="margin: 0em;">Looking at the OpenSSL source code, error 144 reason 134 is
+SSL_F_SSL3_GET_SERVER_CERTIFICATE: SSL_R_CERTIFICATE_VERIFY_FAILED
+(see ssl/s3_clnt.c from OpenSSL if you're really interested).</pre><br>
+<pre style="margin: 0em;">So perhaps you don't have the necessary certs on your machine
+to verify the server certificates used by the cosign server?
+Let's try connecting to the cosign server without using mod_cosign
+and see if the openssl program gives any better diagnostic messages.</pre><br>
+<tt>First make sure you have OpenSSL version 0.9.7 or later:</tt><br>
+<br>
+<pre style="margin: 0em;">    aegis# openssl version
+    OpenSSL 0.9.7c 30 Sep 2003
+    aegis#</pre><br>
+<tt>If you do, run this command:</tt><br>
+<br>
+<tt>    cat /dev/null | openssl s_client \<br>
+      -connect weblogin.umich.edu:6663 \<br>
+      -CApath /opt/certs/CA \<br>
+      -cert /etc/httpd/ssl.crt/cosign.newwest.global-village.net.crt \<br>
+      -key /etc/httpd/ssl.key/cosign.newwest.global-village.net.pem.key  
+\<br>
+      -starttls smtp</tt><br>
+<br>
+<tt>Between the lines of dashes below, I've included the output I get when  
+I run<br>
+this command so you can compare it to what you get.  I've XXXXX'ed out<br>
+the key, of course.  Note that I've elected to use a UMWebCA cert<br>
+for my cosign-enabled web server instead of an InstantSSL or other<br>
+commercial cert.  Not that this should matter as long as your<br>
+commercially-signed certificate has the &quot;sslclient&quot; purpose enabled<br>
+(see the openssl verify command above).</tt><br>
+<br>
+<tt>Read through your output and compare it to this.  In Sam's case, there  
+will be a line<br>
+that says:</tt><br>
+<br>
+<tt>    verify error:num=19:self signed certificate in certificate chain</tt><br>
+<br>
+<tt>but you may very well see other errors, and those might help us figure  
+out what is<br>
+happening.</tt><br>
+<br>
+<tt>------------------------------------------------------------------------ 
+-----</tt><br>
+<br>
+<tt>cat /dev/null | /opt/SUNWconn/crypto/bin/openssl s_client -connect  
+weblogin.umich.edu:6663 -CApath /opt/certs/CA -cert  
+/opt/www/etc/cosign/certs/cosign-client-cert.pem -key  
+/opt/www/etc/ssl.key/server.key -starttls smtp<br>
+depth=1 /C=US/ST=Michigan/L=Ann Arbor/O=University of  
+Michigan/OU=ITCS/CN=UM Web CA/emailAddress=webmaster@xxxxxxxxx<br>
+verify return:1<br>
+depth=0 /C=US/ST=Michigan/L=Ann Arbor/O=University of  
+Michigan/OU=ITCS/CN=weblogin.umich.edu/emailAddress=webmaster@xxxxxxxxx<br>
+verify return:1<br>
+CONNECTED(00000006)<br>
+---<br>
+Certificate chain<br>
+ 0 s:/C=US/ST=Michigan/L=Ann Arbor/O=University of  
+Michigan/OU=ITCS/CN=weblogin.umich.edu/emailAddress=webmaster@xxxxxxxxx<br>
+   i:/C=US/ST=Michigan/L=Ann Arbor/O=University of  
+Michigan/OU=ITCS/CN=UM Web CA/emailAddress=webmaster@xxxxxxxxx<br>
+ 1 s:/C=US/ST=Michigan/L=Ann Arbor/O=University of  
+Michigan/OU=ITCS/CN=UM Web CA/emailAddress=webmaster@xxxxxxxxx<br>
+   i:/C=US/ST=Michigan/L=Ann Arbor/O=University of  
+Michigan/OU=ITCS/CN=UM Web CA/emailAddress=webmaster@xxxxxxxxx<br>
+---<br>
+Server certificate<br>
+-----BEGIN CERTIFICATE-----<br>
+MIICszCCAhwCAgDzMA0GCSqGSIb3DQEBBAUAMIGcMQswCQYDVQQGEwJVUzERMA8G<br>
+LJJEKNMDLSKJAhLsJhsdjHLDHLD823287HKJWEWJHowEWHWLlJDLHSLDJHWLhJhwjw<br>
+ZXJzaXR5IG9mIE1pY2hpZ2FuMQ0wCwYDVQQLEwRJVENTMRswGQYDVQQDExJ3ZWJs<br>
+A1UECBMITWljaGlnYW4xEjAQBgNVBAcTCUFubiBBcmJvcjEfMB0GA1UEChMWVW5p<br>
+dmVyc2l0eSBvZiBNaWNoaWdhbjENMAsGA1UECxMESVRDUzESMBAGA1UEAxMJVU0g<br>
+V2ViIENBMSIwIAYJKoZIhvcNAQkBFhN3ZWJtYXN0ZXJAdW1pY2guZWR1MB4XDTAz<br>
+MTAxMjAxMTEzMloXDTA4MTAxMDAxMTEzMlowgaUxCzAJBgNVBAYTAlVTMREwDwYD<br>
+VQQIEwhNaWNoaWdhbjESMBAGA1UEBxMJQW5uIEFyYm9yMR8wHQYDVQQKExZVbml2<br>
+ZHUwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAOB9xDh+7N+mL1zO3KzycVej<br>
+0yhR1fLP+B/qLgZjq4daOoCMhmOuEIkYWmglUuttmcdF9/eWU6699q7GHOZcdgf+<br>
+cSzsZnC2pVLgB4g=<br>
+-----END CERTIFICATE-----<br>
+subject=/C=US/ST=Michigan/L=Ann Arbor/O=University of  
+Michigan/OU=ITCS/CN=weblogin.umich.edu/emailAddress=webmaster@xxxxxxxxx<br>
+issuer=/C=US/ST=Michigan/L=Ann Arbor/O=University of  
+Michigan/OU=ITCS/CN=UM Web CA/emailAddress=webmaster@xxxxxxxxx<br>
+---<br>
+No client certificate CA names sent<br>
+---<br>
+SSL handshake has read 1863 bytes and written 2536 bytes<br>
+---<br>
+New, TLSv1/SSLv3, Cipher is AES256-SHA<br>
+Server public key is 1024 bit<br>
+SSL-Session:<br>
+    Protocol  : TLSv1<br>
+    Cipher    : AES256-SHA<br>
+    Session-ID:  
+AA5B7F3E856566F841AC00A4F45399900378DE554ECD4385787274E04A8911F9<br>
+    Session-ID-ctx:<br>
+    Master-Key:  
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+XXXXXXXXXXXXXXXXXXXXXXXX<br>
+    Key-Arg   : None<br>
+    Start Time: 1092091691<br>
+    Timeout   : 300 (sec)<br>
+    Verify return code: 0 (ok)<br>
+---<br>
+220 COokie SIGNer ready<br>
+DONE<br>
+aegis#</tt><br>
+<br>
+<tt>------------------------------------------------------------------------ 
+-----</tt><br>
+<br>
+<tt>I hope this is helpful,</tt><br>
+<br>
+<tt>Kevin</tt><br>
+<br>
+<tt>On Jul 26, 2004, at 1:41 PM, Sam Noble wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I suspect that the majority of my problem stems from my lack of  
+experience<br>
+with OpenSSL.</tt><br>
+<br>
+<tt>The following error is plaguing me and hopefully somebody here will  
+have<br>
+some insight:</tt><br>
+<br>
+<tt>Jul 21 14:23:50 machine cosignd[25423]: f_starttls: snet_starttls:  
+error:14094418:SSL routines:SSL3_READ_BYTES:tlsv1 alert unknown ca<br>
+Jul 21 14:23:50 machine cosignd[25423]: snet_getline: Connection reset  
+by peer</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt>I have configured cosignd with:</tt><br>
+<br>
+<tt>COSIGNCERT=/usr/local/cosign/certs/weblogin-bundle.pem</tt><br>
+<br>
+<tt>where weblogin-bundle.pem was generated by</tt><br>
+<br>
+<tt>cat weblogin.crt thawte.pem &gt; weblogin-bundle.pem</tt><br>
+<br>
+<pre style="margin: 0em;">Note that I saw the same thing when thawte.pem was in my CADIR (and
+properly hashed) and I was using COSIGNCERT=/path/to/weblogin.crt</pre><br>
+<tt><br>It is my belief that thawte.pem has the appropriate data inside  
+because in<br>
+either case, using</tt><br>
+<br>
+<tt>openssl verify -purpose sslclient/sslserver -capath &lt;proper path&gt;  
+weblogin.crt (or weblogin-bundle.pem with the *wrong* capath/cafile)</tt><br>
+<br>
+<tt>succeeds.</tt><br>
+<br>
+<tt><br>The apache2 cosign filter reports the following when configured with  
+the<br>
+same parameters (and the same cert) on the same machine:</tt><br>
+<br>
+<tt>[Wed Jul 21 13:41:59 2004] [error] [client 134.X.X.X] snet_starttls:  
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate  
+verify failed</tt><br>
+<br>
+<tt><br>I don't really understand why I'm having MORE trouble using  
+certificates<br>
+that I've paid for than I did with certificates that I signed myself.</tt><br>
+<br>
+<tt><br>!DSPAM:410542b5259671687724392!</tt><br>
+<br>
+</blockquote><tt><br>                                      ... &quot;In, as you say, the mud.&quot; ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00190" href="msg00190.shtml">unknown CA</a></strong>
+<ul><li><em>From:</em> Sam Noble</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00221.shtml">Re: blocking friend accounts?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00223.shtml">Cosign/Shibboleth</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00191.shtml">Re: unknown CA</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00194.shtml">Accessing secure sites</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00222"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00222"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

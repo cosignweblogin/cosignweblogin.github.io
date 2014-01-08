@@ -1,0 +1,157 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Replication Problems -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Wed, 2 Feb 2005 17:16:20 &#45;0500 (EST) -->
+<!--X-Message-Id: 46f21d3c3740f2822cc833cbad423ee4@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1107376433.4669.16.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Reference: 33dfdc95918ce3975fd6d7ffeff94084@umich.edu -->
+<!--X-Reference: 1107379718.4669.20.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00315.shtml">Date Prev</a>][<a href="msg00317.shtml">Date Next</a>][<a href="msg00315.shtml">Thread Prev</a>][<a href="msg00317.shtml">Thread Next</a>][<a href="maillist.shtml#00316">Date Index</a>][<a href="threads.shtml#00316">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Replication Problems</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Replication Problems</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 2 Feb 2005 17:15:10 -0500</li>
+<li><em>Cc</em>: Timothy Chaffe &lt;<a href="mailto:t.chaffe@DOMAIN.HIDDEN">t.chaffe@xxxxxxxxxxxxxx</a>&gt;,   cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00315.shtml">1107379718.4669.20.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00314.shtml">1107376433.4669.16.camel@brett.enarc.auckland.ac.nz</a>&gt; &lt;33dfdc95918ce3975fd6d7ffeff94084@umich.edu&gt; &lt;<a href="msg00315.shtml">1107379718.4669.20.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>replication errors don't surprise me at all.  I'd be very surprised if 
+an application were getting errors, though.  Replication is 
+intentionally lossy.  We designed it to drop replication events under 
+load rather than block on user requests.  The filters are designed to 
+query all available cosign servers so a replication failure is not a 
+problem.</tt><br>
+<br>
+<tt>From the application user's perspective even a 100% loss rate for 
+replication should not cause a problem (whatever is causing the 100% 
+loss rate might cause a problem, but replication is never absolutely 
+necessary, it just makes everything more efficient).</tt><br>
+<br>
+<tt>We have about 39,533 students (graduate, undergraduate, professional), 
+5,330 faculty, 10,287 hospital staff, 12,757 non-hospital staff, and 
+about 26,000 Friend guest accounts.  We had 172,395 login events across 
+our three weblogin servers yesterday.  We saw roughly 259,035 distinct 
+REGISTER requests yesterday divided among 95 services (interestingly, 
+the distribution of users per service roughly follows Zipf's law).  We 
+don't log CHECK at all anymore unless you're running with debugging 
+turned on so I'm not sure how to get you that information.  Our 
+server's cosign databases are normally 90 - 95% in sync with each 
+other.  I hope this is helpful.</tt><br>
+<br>
+<tt>Our heaviest usage period is in the late afternoon.  Between 3 and 4 
+o'clock yesterday we saw about 10,551 LOGIN events and 17,397 distinct 
+REGISTER events.</tt><br>
+<br>
+<tt>Kevin</tt><br>
+<br>
+<tt>On Feb 2, 2005, at 4:28 PM, Brett Lomas wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>That's fine, thanks heaps for that Kevin</tt><br>
+<br>
+<tt>I am not surpirsed about the replication error though, because if the<br>
+machine is under high load, and has like 1000 processes most of which<br>
+are cosign daemons servicing requests, then the replication process 
+will<br>
+only get a small amount of CPU time to actually process the events. At<br>
+least that is my understanding of things. That is why I am worndering 
+if<br>
+I am putting an unreasonable load on it.</tt><br>
+<br>
+<tt><br>Brett
+</tt></blockquote><tt><br>                ... &quot;you can't give yourself a nickname.&quot; ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00314" href="msg00314.shtml">Replication Problems</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00315" href="msg00315.shtml">Re: Replication Problems</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00315.shtml">Re: Replication Problems</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00317.shtml">Cosign and windows apache server</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00315.shtml">Re: Replication Problems</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00317.shtml">Cosign and windows apache server</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00316"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00316"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

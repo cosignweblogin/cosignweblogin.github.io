@@ -1,0 +1,197 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: multiple cosign configuration and runtime issues -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Wed, 10 Nov 2004 20:05:46 &#45;0500 (EST) -->
+<!--X-Message-Id: 91C2B1DE&#45;337D&#45;11D9&#45;9BA2&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20041111002742.GR27663@tristero.reed.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00273.shtml">Date Prev</a>][<a href="msg00275.shtml">Date Next</a>][<a href="msg00273.shtml">Thread Prev</a>][<a href="msg00275.shtml">Thread Next</a>][<a href="maillist.shtml#00274">Date Index</a>][<a href="threads.shtml#00274">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: multiple cosign configuration and runtime issues</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Ben Poliakoff &lt;<a href="mailto:benp@DOMAIN.HIDDEN">benp@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: multiple cosign configuration and runtime issues</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 10 Nov 2004 20:03:59 -0500</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00273.shtml">20041111002742.GR27663@tristero.reed.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00273.shtml">20041111002742.GR27663@tristero.reed.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Hey Ben,</tt><br>
+<br>
+<tt>On Nov 10, 2004, at 7:27 PM, Ben Poliakoff wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Issue #1</tt><br>
+<br>
+<pre style="margin: 0em;">When I try to logout something funny happens, apache give me an
+&quot;internal error page&quot; and I in my apache errorlog I see:</pre><br>
+<tt>/usr/local/cosign/certs/weblogin.reed.edu.key: No such file or 
+directory
+</tt></blockquote><tt><br>Are mod_cosign and the cgi/daemon running on the same host? That error 
+could be from the logout cgi. and not mod_cosign.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>My CosignCrypto looks like this:</tt><br>
+<br>
+<tt>CosignCrypto    /var/cosign/certs/key.pem /var/cosign/certs/cert.pem 
+/var/cosign/certs/CA</tt><br>
+<br>
+<tt>Shouldn't mod_cosign be looking for /var/cosign/certs/key.pem?
+</tt></blockquote><tt><br>yes, you are 100% correct. This is why i think it's the logout cgi. :)</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt><br>Issue #2</tt><br>
+<br>
+<pre style="margin: 0em;">So I tried playing along and started making some symlinks so that
+/var/cosign/certs/key.pem was linked to
+/usr/local/cosign/certs/weblogin.reed.edu.key (ditto with the cert).</pre><br>
+<tt>This get's me a little further, but then I hit the next issue.<br>
+My cert isn't verifying.  Stracing httpd I find that it thinks<br>
+the CAdir is /usr/share/ssl/cert.pem! (i.e. it's looking for<br>
+/usr/share/ssl/cert.pem/ddc328ff.0 and naturally not finding it).  I<br>
+don't find the string &quot;/usr/share/ssl/cert.pem&quot; anywhere in cosign, but<br>
+I do see it in in OpenSSL's &quot;libcrypto.so&quot;, presumably it's a hard 
+coded<br>
+default that's not getting overridden by any other setting.
+</tt></blockquote><tt><br>once again this kinda depends on your setup of the cgi, the daemon, and 
+the module. The cgi and daemon's cert/key/CAPath are built at compile 
+time (tho you can override daemon's option on the cmd line) based on 
+the options you give configure. mod_cosign's come from the CosignCrypto 
+directive. I have no idea where &quot; /usr/share/ssl/cert.pem&quot; comes from, 
+it is not a hardcoded default of ours at all. Maybe it's an OpenSSL 
+conf thing? All part of cosign should be using their respective CApaths 
+and nothing from openssl itself.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt><br>Issue #3</tt><br>
+<br>
+<tt>Playing along again I make /usr/share/ssl/cert.pem a link to<br>
+/var/cosign/certs/CA/ (a directory that contains my cacerts and the 
+hash<br>
+links to each of them).  This gets me just a little further.  But 
+logout<br>
+still fails with</tt><br>
+<br>
+<tt>apache's errorlog reporting:</tt><br>
+<br>
+<tt>    net_logout: 511 LOGOUT: Invalid cookie name.</tt><br>
+<br>
+<tt>and cosignd reporting to syslog:</tt><br>
+<br>
+<tt>    cosignd[15584]: f_logout: cookie name contains '/'</tt><br>
+<br>
+<pre style="margin: 0em;">And indeed the cookie name *does* include a / (two of them actually).
+Here's the debug (slightly edited) output from cosignd:</pre><br>
+<pre style="margin: 0em;">    debug: LOGOUT
+    cosign=FtSw0jUie..snip..8cAizQWFY/1100124532/2 xxx.xxx.xxx.xxx</pre><br>
+<tt>So I'm not sure if there are many problems here or just a single one.
+</tt></blockquote><tt><br>this is 1.7.0? I have it running on our cosign-test and I am able to 
+logout ok. There was a bug a while back when i first added the / bits 
+that cosign.cgi knew about the /s and logout.cgi did not, but this has 
+been fixed for a while. :)</tt><br>
+<br>
+<tt>put 2 fprintfs like this by this bit of code in logout.cgi (line 191):</tt><br>
+<br>
+<pre style="margin: 0em;">    /* only the cosign= cookie and not the loop breaking info */
+fprintf( stderr, &quot;cookie with slash: %s\n&quot;, cookie );
+    (void)strtok( cookie, &quot;/&quot; );
+fprintf( stderr, &quot;cookie NO slash: %s\n&quot;, cookie );</pre><br>
+<tt>and in my logout cgi i get ( cookie truncated so as not to wrap too 
+much):</tt><br>
+<br>
+<tt>cookie with slash: 
+cosign=5EhvIA76oYEfHw8+EsRvK2iByG2rZSPagaytZpdSKPC9/1100134223/1<br>
+cookie NO slash: cosign=5EhvIA76oYEfHw8T+EsRvK2iByG2rZSPagaytZpdSKPC9</tt><br>
+<br>
+<pre style="margin: 0em;">I'd like to see what you get. :)
+-J</pre><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00275" href="msg00275.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00273" href="msg00273.shtml">multiple cosign configuration and runtime issues</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00273.shtml">multiple cosign configuration and runtime issues</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00275.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00273.shtml">multiple cosign configuration and runtime issues</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00275.shtml">Re: multiple cosign configuration and runtime issues</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00274"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00274"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

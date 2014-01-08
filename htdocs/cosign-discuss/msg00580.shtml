@@ -1,0 +1,208 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: FW: Central authentication service survey -->
+<!--X-From-R13: "Rehzz, Rnavry" <qtqehzzNos.hzvpu.rqh> -->
+<!--X-Date: Wed, 12 Oct 2005 08:35:10 &#45;0400 (EDT) -->
+<!--X-Message-Id: 27AE62311E924149926D0A0B86ED548701110AAE@bf&#45;it&#45;equinox02.bf.umich.edu -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00579.shtml">Date Prev</a>][<a href="msg00581.shtml">Date Next</a>][<a href="msg00581.shtml">Thread Prev</a>][<a href="msg00582.shtml">Thread Next</a>][<a href="maillist.shtml#00580">Date Index</a>][<a href="threads.shtml#00580">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>FW: Central authentication service survey</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;cosign-discuss Discussion&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: FW: Central authentication service survey</li>
+<li><em>From</em>: &quot;Drumm, Daniel&quot; &lt;<a href="mailto:dgdrumm@DOMAIN.HIDDEN">dgdrumm@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 12 Oct 2005 08:33:34 -0400</li>
+<li><em>Thread-index</em>: AcXO0VKp9IGEnzxqSn24YSi9UV+naQAV6sWg</li>
+<li><em>Thread-topic</em>: Central authentication service survey</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+
+
+
+<DIV dir=ltr align=left><SPAN class=331213212-12102005><FONT face=Arial 
+color=#0000ff size=2>FYI -</FONT></SPAN></DIV>
+<DIV dir=ltr align=left><SPAN class=331213212-12102005><FONT face=Arial 
+color=#0000ff size=2></FONT></SPAN>&nbsp;</DIV>
+<DIV dir=ltr align=left><SPAN class=331213212-12102005><FONT face=Arial 
+color=#0000ff size=2>This is from MIT. They state they are looking at Pubcookie 
+and Yale's CAS. Now might be a good time to remind them of CoSign. 
+:-)</FONT></SPAN></DIV><BR>
+<DIV class=OutlookMessageHeader lang=en-us dir=ltr align=left>
+<HR tabIndex=-1>
+<FONT face=Tahoma size=2><B>From:</B> owner-stonesoup@xxxxxxxxxxxxxx 
+[mailto:owner-stonesoup@xxxxxxxxxxxxxx] <B>On Behalf Of </B>Christine 
+Cavanna<BR><B>Sent:</B> Tuesday, October 11, 2005 10:04 PM<BR><B>To:</B> 
+amb3@xxxxxxxxxxx<BR><B>Cc:</B> virtnet@xxxxxxxxxxxxx<BR><B>Subject:</B> Central 
+authentication service survey<BR></FONT><BR></DIV>
+<DIV></DIV>
+<DL>
+  <DD>&nbsp;MIT's response is below: </DD></DL>
+<OL>
+  <LI><FONT face=arial color=#000080 size=2>&nbsp;</FONT><FONT 
+  face="Times New Roman, Times">What do you use for your central password store 
+  (e.g. LDAP, Kerberos)? </FONT></LI></OL><FONT face=arial color=#000080 
+size=2>MIT Kerberos is our primary authentication method and our primary 
+password store.<BR><BR></FONT>
+<OL>
+  <LI><FONT face="Times New Roman, Times">Have you considered the replacement of 
+  your central authentication service, including the central store, with a 
+  different technology (e.g. from Kerberos to LDAP)? Why or why not? 
+</FONT></LI></OL><FONT face=arial color=#000080 size=2>No. We have been able to 
+leverage many different usage scenarios from our use of single primary Kerberos 
+realm.<BR><BR></FONT>
+<OL>
+  <LI><FONT face="Times New Roman, Times">What mechanisms do you provide for 
+  campus application developers to integrate with the central service when the 
+  application cannot interface directly with the chosen technology (e.g. LDAP 
+  proxy for Kerberos, Active Directory integration with MIT Kerberos, web single 
+  sign-on solution, proprietary client solution)? </FONT></LI></OL><FONT 
+face=arial color=#000080 size=2>We use a variety of techniques and 
+methods.<BR><BR>For example, by using Kerberos and a web application users are 
+able to obtain a user X.509 certificate. The user certificates are then used for 
+web authentication in a variety of circumstances including purchasing with 
+external vendors, access to commercial software, administrative tasks, and 
+student services. This technology is used by both central services and 
+departmental applications.<BR><BR>We also have some systems that rely on LDAP 
+authentication. In this case the LDAP server(s) use a module to validate the 
+supplied username/password with the central KDC. This technique is not approved 
+for departmental applications. It is only approved when the LDAP server is run 
+by the same group that is responsible for the KDC operations. <BR><BR>In the 
+case of Active Directory we primarily rely on the cross realm authentication 
+provided by the Kerberos protocol. Most users in the central Windows domain do 
+not know their Windows password. The users initially authenticate to the MIT KDC 
+to obtain their native Windows tgt and service tickets. We also provide the 
+ability for the users to set their own native Windows password. This is done so 
+that applications that only support NTLM can be used by the small population 
+that uses those limited applications. <BR><BR>We also have some RADIUS based 
+systems that validate the username/password using the KDC. These systems are 
+also operated by the same group that is responsible for KDC 
+operations.<BR><BR>There has also been some small scale work done around the use 
+of HTTP/SPNEGO, which really means that Kerberos is being used for web 
+authentication.</FONT> 
+<OL>
+  <LI><FONT face="Times New Roman, Times">If you are using either LDAP 
+  authentication or an LDAP proxy for Kerberos, how are you mitigating the risk 
+  of password exposure at the application server? </FONT></LI></OL><FONT 
+face=arial color=#000080 size=2>As stated in item 3 above, the use of LDAP 
+authentication is only approved when the application server and LDAP server is 
+run by the same group that is responsible for the operation of the KDC. We feel 
+that this substantially mitigates the risk.</FONT> 
+<OL>
+  <LI><FONT face="Times New Roman, Times">What are the current gaps in your 
+  authentication service offering and how do you plan to address them?</FONT> 
+  </LI></OL><FONT face=arial color=#000080 size=2>This topic is undergoing active 
+debate within our organization. We expect that we will expand our web 
+authentication options in the future. We will likely provide a web loginserver 
+along the lines of Pubcookie or Yales CAS and use this to support a Shibboleth 
+deployment.</FONT> 
+<OL>
+  <LI><FONT face="Times New Roman, Times">Do you use a password synchronization 
+  service or an enterprise single sign-on solution? Why or why not? 
+</FONT></LI></OL><FONT face=arial color=#000080 size=2>No. We have found no need 
+of one since Kerberos supports cross realm operations.</FONT> 
+<OL>
+  <LI><FONT face="Times New Roman, Times">Have you deployed or are you planning 
+  to deploy a dual-factor authentication service? If so, what technology have 
+  you chosen?</FONT> </LI></OL><FONT face=arial color=#000080 size=2>We are not 
+planning to widely deploy such a service at this time. </FONT>
+<OL>
+  <LI><FONT face="Times New Roman, Times">If you have recently completed a 
+  project to eliminate reliance on Kerberos 4, are there any lessons learned you 
+  can share? </FONT></LI></OL><FONT face=arial color=#000080 size=2>We have not 
+yet completed our elimination of Kerberos 4 on our 
+campus.<BR><BR>&nbsp;<BR><BR></FONT><X-SIGSEP>
+<P></X-SIGSEP>=============================================================================<BR>Christine 
+Cavanna 
+Fitzgerald&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>Special Asst to the VP and Strategic Communications<BR><BR>Information 
+Services and Technology<BR>Massachusetts Institute of Technology<BR>77 
+Massachusetts Avenue&nbsp; Room 10-219<BR>Cambridge, MA 
+02139-4307<BR>cavanna@xxxxxxx<BR>617.253.9814&nbsp;&nbsp;&nbsp; 
+Voice<BR>617.253.0750&nbsp;&nbsp;&nbsp; 
+Fax<BR>=============================================================================&nbsp;&nbsp; 
+--- <BR>You are currently subscribed to stonesoup@xxxxxxxxx as: 
+dgdrumm@xxxxxxxxx <BR>To unsubscribe send an email to 
+stonesoup-request@xxxxxxxxx <BR>with the word UNSUBSCRIBE as the SUBJECT of the 
+message. </P>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00579.shtml">Re: Cosign Multi-factor Authentication Spec</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00581.shtml">RE: Cosign Multi-factor Authentication Spec</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00581.shtml">RE: Cosign Multi-factor Authentication Spec</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00582.shtml">Update your Online Banking Records</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00580"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00580"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

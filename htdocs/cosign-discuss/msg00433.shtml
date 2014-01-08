@@ -1,0 +1,197 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: replication behind load balancer -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Tue, 21 Jun 2005 19:39:45 &#45;0400 (EDT) -->
+<!--X-Message-Id: 1119397082.3990.19.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1903C2857DAD40192421385B@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Reference: 20050323214127.GR4631@ifokr.org -->
+<!--X-Reference: 260EF50AA0A1432810FC6D3C@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Reference: F535BC10&#45;9C7B&#45;11D9&#45;81A3&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: 1743EAC7&#45;5F2B&#45;44BF&#45;8371&#45;815067CD67C2@umich.edu -->
+<!--X-Reference: 308EBAEE04D2C28390F99111@OHIO&#45;LZ8JRIPC1D -->
+<!--X-Reference: A35D485B&#45;AFD1&#45;4B56&#45;BC7F&#45;B1E847B6C6EE@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00432.shtml">Date Prev</a>][<a href="msg00434.shtml">Date Next</a>][<a href="msg00397.shtml">Thread Prev</a>][<a href="msg00378.shtml">Thread Next</a>][<a href="maillist.shtml#00433">Date Index</a>][<a href="threads.shtml#00433">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: replication behind load balancer</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: replication behind load balancer</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 22 Jun 2005 11:38:02 +1200</li>
+<li><em>Cc</em>: David Alexander &lt;<a href="mailto:alexandd@DOMAIN.HIDDEN">alexandd@xxxxxxxx</a>&gt;,   cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00397.shtml">A35D485B-AFD1-4B56-BC7F-B1E847B6C6EE@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00372.shtml">1903C2857DAD40192421385B@dhcp-196-004.cns.ohiou.edu</a>&gt;	 &lt;<a href="msg00373.shtml">20050323214127.GR4631@ifokr.org</a>&gt;	 &lt;<a href="msg00374.shtml">260EF50AA0A1432810FC6D3C@dhcp-196-004.cns.ohiou.edu</a>&gt;	 &lt;<a href="msg00376.shtml">F535BC10-9C7B-11D9-81A3-000A95E48A4E@umich.edu</a>&gt;	 &lt;<a href="msg00384.shtml">1743EAC7-5F2B-44BF-8371-815067CD67C2@umich.edu</a>&gt;	 &lt;<a href="msg00396.shtml">308EBAEE04D2C28390F99111@OHIO-LZ8JRIPC1D</a>&gt;	 &lt;<a href="msg00397.shtml">A35D485B-AFD1-4B56-BC7F-B1E847B6C6EE@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Thu, 2005-03-31 at 09:40, Wesley Craig wrote:
+&gt; On 30 Mar 2005, at 14:38, David Alexander wrote:
+&gt; &gt; I want to understand more about how cosign replication works.  In  
+&gt; &gt; the scenario described above, it does not seem like cosignd  
+&gt; &gt; replication has a high-availability architecture.  If cosignd on  
+&gt; &gt; host b has up-to-date info that is not propagated to other  
+&gt; &gt; cosignds, and host b dies, then the information is lost.
+&gt; 
+&gt; High-availability  can mean a lot of things.  In all high- 
+&gt; availability  systems, replicating the data is not instantaneous.   
+&gt; The delay can *either* happen before the transaction completes, a la  
+&gt; 3-phase commit, or *after* the transaction appears to have completed,  
+&gt; in the background.  CoSign does the latter, for superior end-user  
+&gt; performance.  However, that means there is a window during which  
+&gt; state information is only on one machine, having not yet replicated  
+&gt; to other hosts -- typically less than a second, but that's not  
+&gt; guaranteed.  During that window, should a CoSign server be lost, the  
+&gt; users that were only logged in on the lost machine would all be  
+&gt; logged out.
+&gt; 
+&gt; &gt; Our intention was to load balance https and port 6663 traffic.  
+&gt; &gt; Communication between the cosignd processes would occur on the  
+&gt; &gt; private network and would not be load balanced.  If cosignd indeed  
+&gt; &gt; has replication capabilities, it's not clear to me why this  
+&gt; &gt; wouldn't work.
+&gt; 
+&gt; I don't think that a load balancer is necessary for CoSign at all.   
+&gt; Load balancing can occur on https, but should not be used on 6663.   
+&gt; The CoSign filters (and CGI) perform connection caching and  
+&gt; failover.  This failover allows the filters to function correctly,  
+&gt; even with the potential replication delay mentioned above.
+&gt; 
+&gt; &gt; Has anyone done any work to replace file read/writes with database  
+&gt; &gt; calls? It seems like this would provide a high-availability  
+&gt; &gt; architecture that would be reliable and easy to deploy.
+&gt; 
+&gt; Brett Lomas at University of Auckland has done work to replace the  
+&gt; CoSign server's cookie cache with DB calls.  He can speak more about  
+&gt; his experience with that.
+&gt; 
+
+I modified the code in cosign to abstract from the data source. The
+cosign daemon and monster just use an interface, and either the
+filesystem or oracle implementation is compiled in.
+
+This worked really well until we tried to get the database stuff to use
+oracle session pooling (because the connections were homogenous), but to
+do that would havee required a large change to the cosign daemon, as I
+could not verify if the session pooling would work over forks, and a
+little testing suggested it did not, as I got very weird oracle errors.
+
+Basically what I had done worked very well, but we moved away from it
+because of the VERY slow disks we had internally and are using the
+filesystem on a RAM disk.
+
+If you are sufficiently interested I can give you the code. I have tried
+to uMich to put this in, but since interest in thee community was small
+they felt it was not a bing requirement (and, rightly so).
+
+&gt; I would not describe any system that requires a high-availability  
+&gt; database as &quot;easy to deploy&quot;.  If you've already done the work to  
+&gt; create a high-availability database, then perhaps layering above it  
+&gt; might be easier than building it from scratch.  But that's a pretty  
+&gt; big &quot;if&quot;, and if you don't already have a high-availability database,  
+&gt; it will be very costly to build.  CoSign's high-availability features  
+&gt; meet the UMich WebISO requirements.  And these high-availability  
+&gt; features work very well, as can be seen from the real-life  
+&gt; availability and performance of CoSign at UMich and other sites.
+&gt; 
+&gt; :wes
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00372" href="msg00372.shtml">replication behind load balancer</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00373" href="msg00373.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+<li><strong><a name="00374" href="msg00374.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00376" href="msg00376.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00384" href="msg00384.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+<li><strong><a name="00396" href="msg00396.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00397" href="msg00397.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00432.shtml">Re: CoSign and Microsoft Sharepoint Services</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00434.shtml">RE: Bug in IIS filter?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00397.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00378.shtml">Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00433"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00433"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

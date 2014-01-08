@@ -1,0 +1,134 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: cosign and kerberos -->
+<!--X-From-R13: "Ubyqevpx, Xvz" <wtbyqevpxNwhqfbapbyyrtr.rqh> -->
+<!--X-Date: Wed, 28 Sep 2005 11:50:15 &#45;0400 (EDT) -->
+<!--X-Message-Id: 960714044BBA8045B489FBDD68C3E3610D2946@gabriel.judsoncollege.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00557.shtml">Date Prev</a>][<a href="msg00559.shtml">Date Next</a>][<a href="msg00557.shtml">Thread Prev</a>][<a href="msg00559.shtml">Thread Next</a>][<a href="maillist.shtml#00558">Date Index</a>][<a href="threads.shtml#00558">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>cosign and kerberos</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;cosign-discuss&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: cosign and kerberos</li>
+<li><em>From</em>: &quot;Goldrick, Jim&quot; &lt;<a href="mailto:jgoldrick@DOMAIN.HIDDEN">jgoldrick@xxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 28 Sep 2005 10:42:13 -0500</li>
+<li><em>Thread-index</em>: AcVKh5Fo3SMFe95YTrmh573TTOwp/x5umovA</li>
+<li><em>Thread-topic</em>: logout.pl</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi all,
+
+Ok, we have cosign running and authenticating to Active Directory, which does not require a kerberos server to authenticate to (other than the AD).  Now, I need to authenticate to another KDC that has different users than in AD.  So, i have some questions.
+
+Can I use 2 kdc's in my default realm that don't share the same users or can I setup a cross-realm mapping for 2 kdc's?  Any examples would be welcome.
+
+I have a KDC setup on our test machine and can kinit from our cosign machine with myself/admin.  However, I cannot kinit cosign.  I get a invalid password.  Here is how I added cosign from the cosign machine.
+kadmin
+addprinc cosign/FQDN_cosign_server
+add password and verify
+ktadd -k /etc/keytab.cosign
+
+
+As I said, though, I get an invalid password error whenever I try to kinit it from the cosign server.  Am I not setting it properly?  I've deleted the cosign and re-added, but no use. Also, do I need to add the /etc/krb5.keytab file to the cosign configuration/Apache configuration?  Or will it default there?  How about the keytab.cosign?
+
+What do the apache configs for kerberos do?  I've somewhat confused.
+
+	CosignTicketPrefix	[ the path to the Kerberos ticket store ]
+	CosignGetKerberosTickets	[ on | off ]
+	    module asks for tgt from cosignd
+
+	CosignKerberos524		[ on | off ]	
+	    whether you want K5 tgt converted to K4 tgt
+
+	CosignKerberosSetupGSS		[ on | off ]
+	    setup the enviornment so that other apache modules
+	    that need GSSAPI/Kerberos work. e.g. IMP running under mod_php
+	CosignGetProxyCookies	[ on | off ]
+	    module asks for proxy cookies from cosignd
+
+Thanks much,
+
+jim
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00557.shtml">Adobe Acrobat 6.0 - very low price</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00559.shtml">RE: cosign and kerberos</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00557.shtml">Adobe Acrobat 6.0 - very low price</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00559.shtml">RE: cosign and kerberos</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00558"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00558"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

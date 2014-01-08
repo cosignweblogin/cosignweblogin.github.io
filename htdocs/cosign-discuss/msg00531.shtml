@@ -1,0 +1,284 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Fwd: Re: IdP v1.3a, CoSign, and Mozilla/Firefox -->
+<!--X-From-R13: Pvyy Rbfgre <Pvyy.RbfgreNhzvpu.rqh> -->
+<!--X-Date: Tue, 23 Aug 2005 15:47:00 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20050823154532.c2kck7yr8gc0k4gc@web.mail.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00530.shtml">Date Prev</a>][<a href="msg00532.shtml">Date Next</a>][<a href="msg00530.shtml">Thread Prev</a>][<a href="msg00532.shtml">Thread Next</a>][<a href="maillist.shtml#00531">Date Index</a>][<a href="threads.shtml#00531">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Fwd: Re: IdP v1.3a, CoSign, and Mozilla/Firefox</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Fwd: Re: IdP v1.3a, CoSign, and Mozilla/Firefox</li>
+<li><em>From</em>: Bill Doster &lt;<a href="mailto:Bill.Doster@DOMAIN.HIDDEN">Bill.Doster@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 23 Aug 2005 15:45:32 -0400</li>
+<li><em>User-agent</em>: Internet Messaging Program (IMP) H3 (4.0.3)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>As Phil suspected, *not* a cosign problem.
+
+----- Forwarded message from max@xxxxxxx -----
+    Date: Tue, 23 Aug 2005 15:05:22 -0400 (EDT)
+    From: &quot;Mark K. Miller&quot; &lt;max@xxxxxxx&gt;
+Reply-To: shibboleth-users@xxxxxxxxxxxxx
+ Subject: Re: IdP v1.3a, CoSign, and Mozilla/Firefox
+      To: shibboleth-users@xxxxxxxxxxxxx
+
+
+Chad's guess is correct!
+
+Somehow the important step of configuring the cryptohandle got left out of
+setting up our new v1.3a IdP environment (yeah, we had done that in our
+old v1.1 setup.)  Rats!
+
+Well, cryptohandle is configured now and the Mozilla/Firefox browser types
+are happy with our loadbalanced blades.
+
+Thank you, Chad!
+
+On Tue, 23 Aug 2005, Chad La Joie wrote:
+
+&gt; I can take a guess.
+&gt;
+&gt; Assuming you're using the normal, in-memory, name identifier mapper and not
+&gt; the cryptohandle.  I suspect the user was authenticating to one IdP, getting
+&gt; a handle and hitting the SP.  It then queried the OTHER IdP with the handle.
+&gt; The second IdP did not have the given handle in it's in-memory cache and so
+&gt; could not resolve the handle to the appropriate principal name (the user's
+&gt; ID).
+&gt;
+&gt; At this point to do load balancing with 1.3 you need to use something other
+&gt; than the in-memory name identifier mapper (use something like the
+&gt; cryptohandle or develop something like a database backed implementation).
+&gt; Also you will NOT be able to use Artifacts unless you develop your own
+&gt; artifact mapper that uses an external store.
+&gt;
+&gt; That said, I'm currently working on an IdP extension that uses in-memory
+&gt; name identifier and artifact mapping mechanisms but replicates state across
+&gt; IdP nodes, but it's not done yet and I'm currently working on other things.
+&gt; I hope to be able to come back to it in a week or so.
+&gt;
+&gt; I also need to take some time and write all this up on the Wiki.  :)
+&gt;
+&gt; Mark K. Miller wrote:
+&gt;&gt;
+&gt;&gt; Ok, ignore all &quot;trouble shooting&quot; previously mentioned for this thread.
+&gt;&gt;
+&gt;&gt; Our IdP environment actually runs on 2 blades behind an SLB service on a
+&gt;&gt; Cisco IOS switch.  We've been using this setup all along since we
+&gt;&gt; originally setup shib v1.1.
+&gt;&gt;
+&gt;&gt; Just to make trouble shooting this problem a little simpler, I took one of
+&gt;&gt; the shib blades out of the Server Load Balancer rotation.
+&gt;&gt;
+&gt;&gt; Well, it all works now.  Even when I switched the SLB to only use the
+&gt;&gt; 'other' blade; it still all works.
+&gt;&gt;
+&gt;&gt; ?!?!?!?!?!?!?!?
+&gt;&gt;
+&gt;&gt;
+&gt;&gt; On Tue, 23 Aug 2005, Mark K. Miller wrote:
+&gt;&gt;
+&gt;&gt;&gt; On Mon, 22 Aug 2005, Scott Cantor wrote:
+&gt;&gt;&gt;
+&gt;&gt;&gt;&gt;&gt; Other browsers (IE, Safari, Opera) seem to be fine.  It appears that
+&gt;&gt;&gt;&gt;&gt; with
+&gt;&gt;&gt;&gt;&gt; Mozilla and Firefox the REMOTE_USER environment variable doesn't always
+&gt;&gt;&gt;&gt;&gt; get set.  However, sometimes it seems to loop &quot;a lot&quot; and then set the
+&gt;&gt;&gt;&gt;&gt; REMOTE_USER environment variable.  Also, its worth noting that other
+&gt;&gt;&gt;&gt;&gt; CoSign protected applications will work with these same Mozilla and
+&gt;&gt;&gt;&gt;&gt; Firefox sessions.
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; When you're talking about REMOTE_USER, I take it you mean on the IdP? As
+&gt;&gt;&gt;&gt; in,
+&gt;&gt;&gt;&gt; the servlet is cosign-protected, and sometimes REMOTE_USER isn't being
+&gt;&gt;&gt;&gt; set?
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; Yup, that's what I mean.
+&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; I'm a little surprised that's even physically possible.
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; Imagine our surprise.
+&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; A mod_shib-protected URL that had requireSession set, for example, can't
+&gt;&gt;&gt;&gt; physically execute to completion unless a session is there (the Shib
+&gt;&gt;&gt;&gt; equiv.
+&gt;&gt;&gt;&gt; of REMOTE_USER).
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; And, of course, looping should be an infinite problem.
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; Of course.
+&gt;&gt;&gt;
+&gt;&gt;&gt;&gt;                                                        Either you loop or
+&gt;&gt;&gt;&gt; you don't.
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; Yeah, that's what I've always thought too.
+&gt;&gt;&gt;
+&gt;&gt;&gt;&gt;            The only exception I could think of would be some kind of
+&gt;&gt;&gt;&gt; clock
+&gt;&gt;&gt;&gt; skew where it was floating on the edge.
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; I don't see how this would just be isolated to Mozilla/Firefox browsers,
+&gt;&gt;&gt; but not affect other browsers?
+&gt;&gt;&gt;
+&gt;&gt;&gt;&gt;&gt; Here's what we're seeing in our shib-error.log:
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; If I'm accurately describing this above, I don't think the shib log is
+&gt;&gt;&gt;&gt; even
+&gt;&gt;&gt;&gt; relevant.
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; We didn't think it was relevant, either.  But we thought we should include
+&gt;&gt;&gt; something.  So, this time I'll include the log entries of the attributes
+&gt;&gt;&gt; trying to be released:
+&gt;&gt;&gt;
+&gt;&gt;&gt; First, the correct release from an IE session:
+&gt;&gt;&gt;
+&gt;&gt;&gt; 2005-08-23 10:24:47,462 DEBUG [IdP] 464830406                           -
+&gt;&gt;&gt; Attribute Query Handle recognized.
+&gt;&gt;&gt; 2005-08-23 10:24:47,462 INFO  [IdP] 464830406                           -
+&gt;&gt;&gt; Request is for principal (max).
+&gt;&gt;&gt;
+&gt;&gt;&gt; Now, when I do the same thing with Mozilla, I get:
+&gt;&gt;&gt;
+&gt;&gt;&gt; 2005-08-23 10:28:01,198 DEBUG [IdP] 714274627                           -
+&gt;&gt;&gt; Request from Shibboleth version: 1.2.1a
+&gt;&gt;&gt; 2005-08-23 10:28:01,198 DEBUG [IdP] 714274627                           -
+&gt;&gt;&gt; Name Identifier format: (urn:mace:shibboleth:1.0:nameIdentifier).
+&gt;&gt;&gt; 2005-08-23 10:28:01,198 DEBUG [IdP] 714274627                           -
+&gt;&gt;&gt; The Name Mapping Cache does not contain an entry for this Attribute Query
+&gt;&gt;&gt; Handle.
+&gt;&gt;&gt; 2005-08-23 10:28:01,198 ERROR [IdP] 714274627                           -
+&gt;&gt;&gt; Could not associate the request's subject with a principal:
+&gt;&gt;&gt; edu.internet2.middleware.shibboleth.common.InvalidNameIdentifierException:
+&gt;&gt;&gt; The Name Mapping Cache does not contain an entry for this Attribute Query
+&gt;&gt;&gt; Handle.
+&gt;&gt;&gt; 2005-08-23 10:28:01,198 ERROR [IdP] 714274627                           -
+&gt;&gt;&gt; Error while processing request: org.opensaml.SAMLException: The supplied
+&gt;&gt;&gt; Subject was unrecognized.
+&gt;&gt;&gt; 2005-08-23 10:28:01,199 DEBUG [IdP] 714274627                           -
+&gt;&gt;&gt; Dumping generated SAML Error Response:
+&gt;&gt;&gt; &lt;Response xmlns=&quot;urn:oasis:names:tc:SAML:1.0:protocol&quot;
+&gt;&gt;&gt; xmlns:saml=&quot;urn:oasis:names:tc:SAML:1.0:assertion&quot;
+&gt;&gt;&gt; xmlns:samlp=&quot;urn:oasis:names:tc:SAML:1.0:protocol&quot;
+&gt;&gt;&gt; xmlns:xsd=&quot;<a  href="http://www.w3.org/2001/XMLSchema&quot">http://www.w3.org/2001/XMLSchema&quot</a>;
+&gt;&gt;&gt; xmlns:xsi=&quot;<a  href="http://www.w3.org/2001/XMLSchema-instance&quot">http://www.w3.org/2001/XMLSchema-instance&quot</a>;
+&gt;&gt;&gt; InResponseTo=&quot;b0b40bd0d698e4e0d8fe8a0b67905de4&quot;
+&gt;&gt;&gt; IssueInstant=&quot;2005-08-23T14:28:01.198Z&quot; MajorVersion=&quot;1&quot; MinorVersion=&quot;1&quot;
+&gt;&gt;&gt; ResponseID=&quot;_ad1855cb1f6fd1bd310239af42821811&quot;&gt;&lt;Status&gt;&lt;StatusCode
+&gt;&gt;&gt; Value=&quot;samlp:Requester&quot;&gt;&lt;StatusCode xmlns:code=&quot;urn:mace:shibboleth:1.0&quot;
+&gt;&gt;&gt; Value=&quot;code:InvalidHandle&quot;&gt;&lt;/StatusCode&gt;&lt;/StatusCode&gt;&lt;StatusMessage&gt;The
+&gt;&gt;&gt; supplied Subject was unrecognized.&lt;/StatusMessage&gt;&lt;/Status&gt;&lt;/Response&gt;
+&gt;&gt;&gt; 2005-08-23 10:28:01,199 DEBUG [IdP] 714274627                           -
+&gt;&gt;&gt; Returning SAML Error Response.
+&gt;&gt;&gt;
+&gt;&gt;&gt;&gt; That's not unusual if your handleTTL is short and the attributes expire
+&gt;&gt;&gt;&gt; too
+&gt;&gt;&gt;&gt; quickly, which is unfortunately more or less the default until 1.3. I
+&gt;&gt;&gt;&gt; don't
+&gt;&gt;&gt;&gt; see the connection with how the servlet is protected.
+&gt;&gt;&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; Well, logically, I'm making the connection this way.  Changing the
+&gt;&gt;&gt; protection from CoSign to basic auth makes this strange behavior go away.
+&gt;&gt;&gt;
+&gt;
+&gt; --
+&gt; Chad La Joie             315Q St. Mary's Hall
+&gt; Project Sentinel         202.687.0124
+&gt;
+
+
+
+
+----- End forwarded message -----
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00530.shtml">Re: Fwd: IdP v1.3a, CoSign, and Mozilla/Firefox</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00532.shtml">Problems retrieving proxy tickets (fwd)</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00530.shtml">Re: Fwd: IdP v1.3a, CoSign, and Mozilla/Firefox</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00532.shtml">Problems retrieving proxy tickets (fwd)</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00531"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00531"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

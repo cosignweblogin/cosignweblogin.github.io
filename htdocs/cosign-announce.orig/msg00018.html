@@ -1,0 +1,182 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: IISCosign 1.1.0 RC1 available for download -->
+<!--X-From-R13: Xnebq [nyrfgrva <wnebqNhzvpu.rqh> -->
+<!--X-Date: Mon, 13 Sep 2004 15:57:06 &#45;0400 (EDT) -->
+<!--X-Message-Id: 14272838ECFD00B88D72F514@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: CF9247C0CEB4020395D5A863@spike.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="announce" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.html" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-announce at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            cosign release and update announcements
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00017.html">Date Prev</a>][<a href="msg00019.html">Date Next</a>][<a href="msg00017.html">Thread Prev</a>][<a href="msg00019.html">Thread Next</a>][<a href="maillist.html#00018">Date Index</a>][<a href="threads.html#00018">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>IISCosign 1.1.0 RC1 available for download</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-announce@DOMAIN.HIDDEN">cosign-announce@xxxxxxxxx</a></li>
+<li><em>Subject</em>: IISCosign 1.1.0 RC1 available for download</li>
+<li><em>From</em>: Jarod Malestein &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 13 Sep 2004 15:55:32 -0400</li>
+<li><em>In-reply-to</em>: &lt;CF9247C0CEB4020395D5A863@spike.itd.umich.edu&gt;</li>
+<li><em>References</em>: &lt;CF9247C0CEB4020395D5A863@spike.itd.umich.edu&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Release Candidate 1 for IISCosign version 1.1.0 is now available.  We'd 
+like to receive feedback, complaints, test reports, and bugs.  Please give 
+this a spin and let us know what you think!  If there's anything we've left 
+out or a promised or omitted feature you're waiting for, please let us know.</tt><br>
+<br>
+<pre style="margin: 0em;">Download here:
+&lt;<a  href="http://weblogin.org/">http://weblogin.org/</a>&gt;</pre><br>
+<pre style="margin: 0em;">Previous versions available here:
+&lt;<a  href="http://www.umich.edu/~umweb/software/cosign/download.html">http://www.umich.edu/~umweb/software/cosign/download.html</a>&gt;</pre><br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--IT Central Services</pre><br>
+<tt>Changes in IISCosign 1.1.0:</tt><br>
+<br>
+<pre style="margin: 0em;">+ You can now specify allowUnauthenticatedAccess to &lt;Protected/&gt; pages.
+Example:</pre><br>
+<tt>&lt;Protected allowUnauthenticatedAccess=&quot;TRUE&quot;&gt;/MySweetWebApp&lt;/Protected&gt;</tt><br>
+<br>
+<tt>What?  Yes, now you can have a folder or web page(s) that can be accessed 
+by both logged in and non-logged in users.  If the user is logged in, the 
+HTTP_REMOTE_USER, HTTP_REMOTE_REALM, and HTTP_COSIGN_SERVICE variables will 
+be available.  If the user is not logged in, he is not redirected<br>
+and only the HTTP_COSIGN_SERVICE variable is available.</tt><br>
+<br>
+<tt>+ Log file locking issue circumvented.  This prevented multiple instances 
+of the filter from being instantiated in IIS 6.0.  Unfortunately, multiple 
+log files are not created.  This will be corrected.</tt><br>
+<br>
+<tt>+ &lt;HttpsOnly /&gt; option added. Default is TRUE. Set to FALSE to allow users 
+to access cosign-protected pages without a secure connection. Example:</tt><br>
+<br>
+<tt>&lt;HttpsOnly&gt;FALSE&lt;/HttpsOnly&gt;</tt><br>
+<br>
+<tt>+ Corrected bug that would protect something like &quot;/studentsAndStaff&quot; if 
+&quot;/students&quot; was protected.  Then broke it, fixed it, broke it, fixed it. 
+This is something you may want to double-check.</tt><br>
+<br>
+<tt>+ Extra info put into log file.  Please provide feedback on what you would 
+and wouldn't like to have in the cosign log file.</tt><br>
+<br>
+<tt>+ Https redirect bug fixed.</tt><br>
+<br>
+<tt>+ Specifying web sites by their IIS description rather than DNS name is now 
+an option.<br>
+Change your &lt;Service /&gt; tag as follows:</tt><br>
+<br>
+<pre style="margin: 0em;">&lt;Service IISDescription=&quot;IISCosign web site&quot;&gt;cosign-service-name
+...
+&lt;/Service&gt;</pre><br>
+<tt>You can use either the original websitename item to refer to the DNS name 
+or the new IISDescription. If both are present, IISCosign first looks for 
+IISDescription and will ignore websitename.</tt><br>
+<br>
+<tt>For the curious parties, the &quot;IISDescription&quot; is compared to the 
+ServerComment for the web site in the IIS metabase.</tt><br>
+<br>
+<tt>+ You can now limit the log file size. Change your &lt;LogFilePath&gt; to look 
+like this:</tt><br>
+<br>
+<tt>&lt;LogFilePath fileSizeInKB=&quot;4096&quot;&gt;C:\Program 
+Files\CosignFilter\Logs&lt;/LogFilePath&gt;</tt><br>
+<br>
+<tt><br>What's on the roadmap (in no particular order):</tt><br>
+<br>
+<tt>- Creating multiple cosign log files when multiple instances of the filter 
+are loaded.<br>
+- A logging level option.  Something like &quot;normal/debug/trace.&quot;<br>
+- Implementing Apache-style on/off cosign protection mechanism.  This<br>
+would allow something like &quot;/foo&quot; to be protected and &quot;/foo/bar&quot; to be<br>
+unprotected.  As IISCosign stands now, &quot;/foo&quot;, by default, will also<br>
+protect &quot;/foo/bar&quot;.<br>
+- And, of course, rolling in contributions from other organizations.</tt><br>
+<br>
+<tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00019" href="msg00019.html">Re: IISCosign 1.1.0 RC1 available for download</a></strong>
+<ul><li><em>From:</em> Jarod Malestein</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00017.html">Using LDAP for AuthZ with Cosign's AuthN</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00019.html">Re: IISCosign 1.1.0 RC1 available for download</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00017.html">Using LDAP for AuthZ with Cosign's AuthN</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00019.html">Re: IISCosign 1.1.0 RC1 available for download</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00018"><strong>Date</strong></a></li>
+<li><a href="threads.html#00018"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.html" -->
+

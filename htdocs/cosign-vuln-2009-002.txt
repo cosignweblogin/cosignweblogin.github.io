@@ -1,0 +1,130 @@
+VULNERABILITY ALERT
+-------------------
+
+Vulnerability:       COSIGN-VULN-2009-002
+Application:         cosign
+Affected Versions:   2.1.1 and previous
+Vulnerability Type:  Session fixation
+Severity:            Simplified phishing attacks
+Attack:              Proof-of-concept
+Software Website:    http://weblogin.org/ 
+Contact:             cosign@umich.edu
+Dates:               2009-04-12 (private announcement)
+                     2009-06-25 (public announcement)
+                     2009-07-22 (public disclosure)
+
+
+OVERVIEW
+--------
+
+A flaw in legacy releases of cosign makes it possible for an attacker to trick
+a victim into registering a service cookie with the victim's weblogin cookie on
+behalf of the attacker, allowing the attacker to pose as the victim for that
+particular service. cosign 3.0 was released to address this flaw. Organizations
+running cosign should upgrade to the latest release of cosign 3.0 as soon as
+possible.
+
+
+BACKGROUND
+----------
+
+cosign is a web single-sign-on system.  Written at the University of Michigan,
+cosign is an open source software project and a part of the National Science
+Foundation Middleware Initiative (NMI) EDIT software release.  cosign is
+deployed extensively at the University of Michigan and at educational
+institutions and other organizations around the world.
+ 
+cosign consists of two primary components:  the central weblogin server and
+cosign-protected web servers.  The central weblogin server consists of a
+cosign CGI (logs users in and out), the cosign daemon (manages information
+about the state of the session for each authenticated user), and various
+administrative scripts.  Each cosign-protected web server runs a filter
+which communicates with the daemon via a text-based protocol to assure that
+users who access protected areas of the web site are authenticated.  Users
+must authenticate to CGI on the central weblogin server before they are
+permitted access to a protected service. 
+
+Both the CGI as well as the filter on each cosign-protected web server set
+their own cookie in users' browsers for the purpose of uniquely identifying
+the user's session.  These cookie values are random strings.
+
+Additional background details are available at
+http://weblogin.org/overview.html
+
+
+TECHNICAL DETAILS
+-----------------
+
+In releases of cosign 2.1.1 and earlier, mod_cosign is responsible for
+generating the service cookie and setting it in the user's browser. When an
+unauthenticated user visits a cosign-protected site, mod_cosign intercepts the
+request, generates a new service cookie, sets the cookie in the user's browser,
+and redirects to the CGI, appending on the query the service cookie set in the
+user's browser and the protected page the user requested:
+
+https://weblogin.example.edu/?cosign-webmail=sy2380085sdf...&https://webmail.example.edu
+
+If the user does not already have a weblogin cookie, the CGI sets the weblogin
+cookie in the user's browser. After authentication, the CGI registers the
+service cookie value with the weblogin cookie identifying the user. The user is
+then redirected back to the protected page, where mod_cosign again intercepts
+the request, validating the service cookie with the weblogin servers through
+the SSL-encrypted backchannel. Once the service cookie is validated, mod_cosign
+grants the user access to the protected resource.
+
+The flaw in legacy cosign releases stems from the dependency on mod_cosign for
+generation of the service cookie. At the time mod_cosign sets the service
+cookie in the user's browser, the service cookie is not associated with any
+user. The CGI therefore has no way of certifying the provenance of the service
+cookie, and will register any service cookie value with the user's weblogin
+cookie once the user has logged in. Taking advantage of this gap between the
+time the service cookie is set and the time it is registered, an attacker can
+trick victims into registering arbitrary service cookies that have previously
+been set in the attacker's browser, thus permitting the attacker to pose as
+the user.
+
+In a trivial attack, an unauthenticated attacker visits a cosign-protected
+resource, such as webmail. mod_cosign sets a new service cookie in the
+attacker's browser, and redirects the attacker to the weblogin page, with a URL
+looking something like this:
+
+https://weblogin.example.edu/?cosign-webmail=xyz...&https://webmail.example.edu/
+
+Rather than attempt to log in, the attacker simply saves the URL. If the
+attacker can convince a victim to follow that URL and log in, the attacker has
+won: the CGI registers the attacker's service cookie with the victim's weblogin
+cookie, and the attacker can now view the cosign-protected resource with the
+rights of the victim. If a victim is already authenticated, the CGI will
+silently register the attacker's service cookie, and the victim will be
+redirected to the protected service page none the wiser.
+
+Organizations using cosign can limit their exposure to this vulnerability by
+enabling IP checking in mod_cosign, but IP checking becomes problematic for
+any environment depending on NAT. cosign 3.0 addresses the flaw by moving all
+cookie generation to the CGI.
+
+NOTE: The information above is intended as a description of the vulnerability
+and not as a test for use in determining whether a weblogin server is
+vulnerable.  The attack described above may require tweaking in order to be
+used against an actual cosign installation.
+
+
+ADDITIONAL INFORMATION
+----------------------
+
+cosign 3.0 was written specifically to address this flaw. The latest release of
+cosign 3.0 may be downloaded from http://weblogin.org/download.html . 
+
+
+TIMELINE
+--------
+
+2009-04-08  cosign 3.0 released.
+
+2009-04-12  Early notification of vulnerabilty sent to known cosign-protected
+            organzations.
+            
+2009-06-25  Public notification of vulnerability.
+
+2009-07-22  Public disclosure of vulnerability details.
+

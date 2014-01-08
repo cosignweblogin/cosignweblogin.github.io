@@ -1,0 +1,151 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: Cosign Multi&#45;factor Authentication Spec -->
+<!--X-From-R13: "[rlre, Ergu" <fzrlreNos.hzvpu.rqh> -->
+<!--X-Date: Tue, 11 Oct 2005 11:39:27 &#45;0400 (EDT) -->
+<!--X-Message-Id: CDCCB470181546488E5DA5795BE6738CD083C0@bf&#45;it&#45;equinox02.bf.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00573.shtml">Date Prev</a>][<a href="msg00575.shtml">Date Next</a>][<a href="msg00573.shtml">Thread Prev</a>][<a href="msg00575.shtml">Thread Next</a>][<a href="maillist.shtml#00574">Date Index</a>][<a href="threads.shtml#00574">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: Cosign Multi-factor Authentication Spec</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Craig, Wesley D&quot; &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;,   &quot;Linderman, Mark&quot; &lt;<a href="mailto:mlinderm@DOMAIN.HIDDEN">mlinderm@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: Cosign Multi-factor Authentication Spec</li>
+<li><em>From</em>: &quot;Meyer, Seth&quot; &lt;<a href="mailto:smeyer@DOMAIN.HIDDEN">smeyer@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 11 Oct 2005 11:35:01 -0400</li>
+<li><em>Cc</em>: &quot;cosign-discuss Discussion&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;,   &lt;<a href="mailto:mais.twofact.tech@DOMAIN.HIDDEN">mais.twofact.tech@xxxxxxxxx</a>&gt;, &quot;Dandamudi, Bindu&quot; &lt;<a href="mailto:bdandamu@DOMAIN.HIDDEN">bdandamu@xxxxxxxxxxxx</a>&gt;,   &quot;Thomas, Katarina&quot; &lt;<a href="mailto:kkit@DOMAIN.HIDDEN">kkit@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>Thread-index</em>: AcXOd8OVDk2aQ0ySQ9WOzgUzovAKZwAAVaTw</li>
+<li><em>Thread-topic</em>: Cosign Multi-factor Authentication Spec</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>There is a URL containing /heprodnonop/ which we want to be single
+factor protected. Conversely, there is a URL containing /heprodop/ which
+we want to be two-factor protected. Each of these is hosted by wolverine
+access web servers.
+
+Seth 
+
+-----Original Message-----
+From: Wesley Craig [<a  href="mailto:wes@xxxxxxxxx">mailto:wes@xxxxxxxxx</a>] 
+Sent: Tuesday, October 11, 2005 11:23 AM
+To: Linderman, Mark
+Cc: cosign-discuss Discussion; mais.twofact.tech@xxxxxxxxx; Dandamudi,
+Bindu; Thomas, Katarina
+Subject: Re: Cosign Multi-factor Authentication Spec
+
+On 11 Oct 2005, at 09:22, Linderman, Mark wrote:
+&gt; I'm not finding anything in the spec about the ability to selectively 
+&gt; multi-factor protect individual url-patterns within a single filtered 
+&gt; resource.  For example, we use a single instance of the Java cosign 
+&gt; filter to protect a suite of Peoplesoft applications, only some of 
+&gt; which we'd like to multi-factor protect.  The rest would continue to 
+&gt; require only a single factor.  Should I assume this would require as 
+&gt; many filter instances as there are url-patterns with different 
+&gt; security requirements?
+
+No.  I think you're referring to the possible bug in the Java filter
+that you have previously reported?  If so, I don't think that's germane
+to the multi-factor discussion.
+
+&gt; It would be nice to see the multi-factor capability extended to re- 
+&gt; auth.
+&gt; Our re-authenticated resources are not really distinct from the rest 
+&gt; of our application content.  As mentioned above, we'll turn on multi- 
+&gt; factor for some of that content and would like to be able to 
+&gt; re-authenticate for certain sub-components with the same factors used 
+&gt; to authenticate.
+
+It's not currently spec'd that way because re-auth must be configured
+centrally, while multi-factor is configured in the filters.  It's not
+possible to mix central &amp; filter configurations in the way that you
+describe.  Instead, the capability you describe would require much more
+to be configured centrally.
+
+:wes
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00575" href="msg00575.shtml">Re: Cosign Multi-factor Authentication Spec</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00573.shtml">Re: Cosign Multi-factor Authentication Spec</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00575.shtml">Re: Cosign Multi-factor Authentication Spec</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00573.shtml">Re: Cosign Multi-factor Authentication Spec</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00575.shtml">Re: Cosign Multi-factor Authentication Spec</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00574"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00574"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,127 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: 503 service unavailable error -->
+<!--X-From-R13: Rnivq Oyrknaqre <nyrknaqqNbuvb.rqh> -->
+<!--X-Date: Thu, 4 Aug 2005 13:28:07 &#45;0400 (EDT) -->
+<!--X-Message-Id: AAA87E4C52D096E7460C0BB7@OHIO&#45;LZ8JRIPC1D.ohio.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00473.shtml">Date Prev</a>][<a href="msg00475.shtml">Date Next</a>][<a href="msg00473.shtml">Thread Prev</a>][<a href="msg00475.shtml">Thread Next</a>][<a href="maillist.shtml#00474">Date Index</a>][<a href="threads.shtml#00474">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>503 service unavailable error</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: 503 service unavailable error</li>
+<li><em>From</em>: David Alexander &lt;<a href="mailto:alexandd@DOMAIN.HIDDEN">alexandd@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 04 Aug 2005 13:11:25 -0400</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>What are the possible causes of 503 service unavailable?</tt><br>
+<br>
+<tt>I have the correct owner on the filter directory.  The only clue that I 
+have is in syslog.</tt><br>
+<br>
+<tt>failure:</tt><br>
+<br>
+<tt>[root@cosign11 root]# tail -f /var/log/cosignd.log<br>
+Aug  4 12:41:57 cosign11 cosignd[6286]: connect: 132.235.xxx.xxx<br>
+Aug  4 12:41:57 cosign11 cosignd[6286]: LOGIN user xxx_cell 132.235.yyy.yyy<br>
+Aug  4 12:41:57 cosign11 cosignd[6286]: REGISTER user xxx_cell 
+132.235.yyy.yyy cosign-shibboleth</tt><br>
+<br>
+<tt>success:</tt><br>
+<br>
+<tt>[root@cosign11 root]# tail -f /var/log/cosignd.log<br>
+Aug  4 12:43:00 cosign11 cosignd[6404]: connect: 132.235.xxx.xxx<br>
+Aug  4 12:43:00 cosign11 cosignd[6404]: LOGIN user xxx_cell 132.235.yyy.yyy<br>
+Aug  4 12:43:00 cosign11 cosignd[6404]: REGISTER user xxx_cell 
+132.235.yyy.yyy cosign-shibboleth<br>
+Aug  4 12:43:00 cosign11 cosignd[6405]: connect: 132.235.xxx.xxx</tt><br>
+<br>
+<tt><br>--Dave</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00475" href="msg00475.shtml">Re: 503 service unavailable error</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00473.shtml">Re[8]: discussion about our tabs</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00475.shtml">Re: 503 service unavailable error</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00473.shtml">Re[8]: discussion about our tabs</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00475.shtml">Re: 503 service unavailable error</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00474"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00474"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

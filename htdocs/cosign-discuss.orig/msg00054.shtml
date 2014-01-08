@@ -1,0 +1,115 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: runtime requirements for IISCosign -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Mon, 12 Apr 2004 17:36:50 &#45;0400 (EDT) -->
+<!--X-Message-Id: 407B0BC9.1060100@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00053.shtml">Date Prev</a>][<a href="msg00055.shtml">Date Next</a>][<a href="msg00053.shtml">Thread Prev</a>][<a href="msg00055.shtml">Thread Next</a>][<a href="maillist.shtml#00054">Date Index</a>][<a href="threads.shtml#00054">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>runtime requirements for IISCosign</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: runtime requirements for IISCosign</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 12 Apr 2004 17:36:09 -0400</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7b) Gecko/20040316</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Using the pre-built IISCosignInstaller 1.0.0 on Win2k3, IIS 6:</tt><br>
+<br>
+<tt>I've found the extra registry key, and permissions that need to be set 
+for Win 2003, and did those.</tt><br>
+<br>
+<tt>Also found references to libsnet, OpenSSL, and MSXML at cowboybebop.  Do 
+I need to install MSXML and a separate OpenSSL (one appears to be 
+included in the installation) just for run-time support?  (libsnet is 
+listed as only required if you want to compile IISCosign.)</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00055" href="msg00055.shtml">Re: runtime requirements for IISCosign</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00053.shtml">RE: Development</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00055.shtml">Re: runtime requirements for IISCosign</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00053.shtml">RE: Development</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00055.shtml">Re: runtime requirements for IISCosign</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00054"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00054"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

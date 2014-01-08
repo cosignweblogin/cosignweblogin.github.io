@@ -1,0 +1,162 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: authenticated rss -->
+<!--X-From-R13: [nex Oyyra Snearfg <zkr20Ncfh.rqh> -->
+<!--X-Date: Fri, 7 Oct 2005 15:11:35 &#45;0400 (EDT) -->
+<!--X-Message-Id: 5F3B8EFB&#45;6C37&#45;423D&#45;9603&#45;5A2BF28A0CC3@psu.edu -->
+<!--X-Content-Type: multipart/signed -->
+<!--X-Reference: 4346C2EF.3010009@umich.edu -->
+<!--X-Derived: p7s00004.p7s -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00567.shtml">Date Prev</a>][<a href="msg00569.shtml">Date Next</a>][<a href="msg00566.shtml">Thread Prev</a>][<a href="msg00567.shtml">Thread Next</a>][<a href="maillist.shtml#00568">Date Index</a>][<a href="threads.shtml#00568">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: authenticated rss</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cory Snavely &lt;<a href="mailto:csnavely@DOMAIN.HIDDEN">csnavely@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: authenticated rss</li>
+<li><em>From</em>: Mark Allen Earnest &lt;<a href="mailto:mxe20@DOMAIN.HIDDEN">mxe20@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 7 Oct 2005 15:10:00 -0400</li>
+<li><em>Cc</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00566.shtml">4346C2EF.3010009@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00566.shtml">4346C2EF.3010009@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>I've actually pushed back on this for the reasons you describe. RSS  
+was not designed from the beginning to handle authentication (like  
+the rest of the web) , and few readers can handle anything more than  
+basic-auth, fewer of which will deal with SSL.<br>
+My suggestion is generally to protect the content, and publish an  
+unprotected RSS feed which reveals just the information that can be  
+public (for example, just time stamp and author, or that plus title)  
+and a link to the protected content. The constant re-authentication  
+would be a pain but fortunately we have a really cool single sign on  
+tool ;)</tt><br>
+<br>
+<tt>Lots of people are talking about it, but in the world of RSS they are  
+the minority. It will be some time before enough readers can handle  
+authentication robustly (and by that time they will also be  
+supporting podcasts, videocasts, and effectively be indistinguishable  
+from web browsers) Another issue is that RSS readers in many cases  
+are not desktop applications, but websites that act as aggregators of  
+various feeds which would not be able to deal with this in any  
+immediately obvious way (three tiered credential passing on the web  
+is still very much in it's infancy, but SAML 2.0 shows some promise  
+in this area).</tt><br>
+<br>
+<tt>Having said that, Thunderbird (being so closely tied to a browser)  
+seems to deal with protected content the best of what I have tried.</tt><br>
+<br>
+<tt>Mark Earnest</tt><br>
+<br>
+<tt>On Oct 7, 2005, at 2:48 PM, Cory Snavely wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>We're starting to see more applications in the library for RSS, and  
+the<br>
+topic has come up about authenticating for RSS feeds that carry<br>
+non-public information.</tt><br>
+<br>
+<tt>Obviously we would envision this relating to other authentication<br>
+strategies, particularly CoSign, but this (RSS) seems really  
+limited by<br>
+tools at this stage. A few can do HTTP Basic Authentication over SSL.<br>
+Woo. One nice solution from my perspective would be an RSS reader that<br>
+can piggyback on browser cookies, but I haven't heard of any such  
+thing.</tt><br>
+<br>
+<pre style="margin: 0em;">It's a little like when we were waiting for good cookie support across
+the board...oh boy, Netscape 3 (or whatever). Remember that?</pre><br>
+<tt>Given the state of the technology, we'd be really interested in  
+hearing<br>
+what other folks doing or thinking about authentication for RSS.</tt><br>
+<br>
+<pre style="margin: 0em;">Cory Snavely
+UM Library IT Core Services</pre><br>
+</blockquote><br>
+<p><strong>Attachment:
+<a href="p7s00004.p7s" ><tt>smime.p7s</tt></a></strong><br>
+<em>Description:</em> S/MIME cryptographic signature</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00566" href="msg00566.shtml">authenticated rss</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00567.shtml">RE: authenticated rss</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00569.shtml">build for 1.9.0</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00566.shtml">authenticated rss</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00567.shtml">RE: authenticated rss</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00568"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00568"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

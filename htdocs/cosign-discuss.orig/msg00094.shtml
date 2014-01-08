@@ -1,0 +1,127 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Application pooling and cosign filter access sharing violation -->
+<!--X-From-R13: "Ybafgnagva Hblx" <xiblxNhzvpu.rqh> -->
+<!--X-Date: Fri, 23 Apr 2004 15:13:01 &#45;0400 (EDT) -->
+<!--X-Message-Id: 200404231909.i3NJ9okC026040@reformers.mr.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1279941548.1082565795@spike.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00093.shtml">Date Prev</a>][<a href="msg00095.shtml">Date Next</a>][<a href="msg00085.shtml">Thread Prev</a>][<a href="msg00096.shtml">Thread Next</a>][<a href="maillist.shtml#00094">Date Index</a>][<a href="threads.shtml#00094">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Application pooling and cosign filter access sharing violation</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Cosign'&quot; &lt;<a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>&gt;,   &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;,   &quot;'Jarod'&quot; &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Application pooling and cosign filter access sharing violation</li>
+<li><em>From</em>: &quot;Konstantin Voyk&quot; &lt;<a href="mailto:kvoyk@DOMAIN.HIDDEN">kvoyk@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 23 Apr 2004 15:09:44 -0400</li>
+<li><em>Cc</em>: &quot;'Daniel L. McKown'&quot; &lt;<a href="mailto:mckownd@DOMAIN.HIDDEN">mckownd@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;1279941548.1082565795@spike.itd.umich.edu&gt;</li>
+<li><em>Thread-index</em>: AcQn4UmmrhqbcchhSYmEclu3bj/BXgBfb8kg</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi everybody,
+We have installed the cosign filter in our IIS6 web server running Windows
+2003. One of the major features in IIS6 is application pooling. If all
+applications run in the same application pool (like IIS5 does) then there
+are no problems with the cosign filter. As soon as we put applications into
+separate pools on a web site protected with the cosign filter then we start
+getting access sharing violations for Logs\CosignLog.csl. From our
+understanding, IIS6 is starting a process for each application pool and this
+process is starting an instance of the cosign filter. Cosign filter opens
+CosignLog.csl in his turn. When another application starts in a separate
+pool on the same web site then a new instance of cosign filter tries to open
+CosignLog.csl. Here a sharing violation happens. 
+Does it work the way I described? Has somebody run applications in different
+pools on IIS6 on a web site protected with the cosign filter??
+Or does anybody have an idea how to fix it?
+Thank you,
+Konstantin Voyk
+ 
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00096" href="msg00096.shtml">Re: Application pooling and cosign filter access sharing violation</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00093.shtml">Re: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00095.shtml">CoSign source and configuration changes I have made</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00085.shtml">FW: A couple of changes I have made from the CVS source</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00096.shtml">Re: Application pooling and cosign filter access sharing violation</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00094"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00094"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

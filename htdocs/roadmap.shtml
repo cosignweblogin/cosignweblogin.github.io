@@ -1,0 +1,302 @@
+<!--#set var="title" value="roadmap" -->             
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" --> 
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="y" -->
+<!--#set var="license" value="" -->
+<!--#include file="header.shtml" -->
+
+<table cellpadding="6" cellspacing="0" border="0" width="90%">
+    <tr>
+    <td>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="images
+/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            Cosign: Development Roadmap
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            including UM weblogin service rollout.
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td> 
+    </tr>
+</table>
+    </td>
+    </tr>
+
+    <tr>
+    <td>
+        <blockquote>
+            <dl>
+	    <dt>2.1 and beyond</dt>
+	    <dd>
+		<ul>
+		    <li>New service registration mechanism</li>
+		    <li>SPNEGO support</li>
+		    <li>tokencache API for filesystem or oracle backend (?)</li>
+		</ul>
+	    </dd>
+
+	    <dt>2.0.2 - <em> <b>Current Release</b> </em></dt>
+	    <dd>
+		<ul>
+		    <li>External authenticators in the CGI</li>
+		    <li>Multifactor authentication in the CGI</li>
+		    <li>New Cosign v2 protocol</li>
+		    <li>New version of libcgi, no more lex/yacc!</li>
+		    <li>IP changes trigger re-auth events</li>
+		</ul>
+	    </dd>
+
+	    <dt>1.9 - <em>December 2005</em></dt>
+	    <dd>
+		<ul>
+		    <li>dbhash support for filter and daemons</li>
+		    <li>removal of k4 support for filters</li>
+		    <li>bug fixes</li>
+		</ul>
+	    </dd>
+	    <dt>1.9 - <em>October 2005</em></dt>
+	    <dd>
+		<ul>
+		    <li>kx.509 & kct integration</li>
+		    <li>cgi Re-Auth</li>
+		    <li>greater configuration flexibilty in filters</li>
+		    <li>friend enhancements - separate release</li>
+		</ul>
+	    </dd>
+
+            <dt>1.8.5 - <em>May 2005</em></dt>
+	    <dd>
+		<ul>
+		    <li>better integration with apache filters and
+			    native authZ</li>
+		    <li>minor bug fixes/feature enhancements</li>
+		</ul>
+	    </dd>
+            <dt>1.8 - <em>March 2005</em></dt>
+            <dd>
+		<ul>
+		    <li>runtime config for cgi and daemon</li>
+		    <li>major code review and some restructure</li>
+		    <li>improvements to replication</li>
+		</ul>
+            </dd>
+
+            <dt>1.7 - <em>November 2004</em></dt>
+            <dd>
+		<ul>
+		    <li>unified rate logging paradigm</li>
+		    <li>new cookies issued after 24 hours to address long lived browsers</li>
+		    <li>authN optional mode, cedes authN decisions to application</li>
+		</ul>
+            </dd>
+
+            <dt>1.6 - <em>August 2004</em></dt>
+	    <dd>
+		<ul>
+		    <li>n-tier cosign proxy authentication</li>
+		    <li>cosign protection for http/https</li>
+		    <li>arbitrary site entry policy</li>
+		</ul>
+	    </dd>
+
+            <dt>1.5 - <em>March 2004</em></dt>
+	    <dd>
+		<ul>
+		    <li>Friend</li>
+		    <li>Replication</li>
+		    <li>Apache 2.0 support</li>
+		</ul>
+	    </dd>
+
+            <dt>1.1 - <em>September 2003</em></dt>
+	    <dd>
+		<ul>
+		    <li>BasicAuth capabilities in the cgi</li>
+		    <li>Cookie and ticket clean up program</li>
+		</ul>
+	    </dd>
+
+            <dt>1.0 - <em>June 2003</em></dt>
+	    <dd>
+		<ul>
+		    <li>docs</li>
+		    <li>improved http compatibility</li>
+		</ul>
+	    </dd>
+
+            <dt>0.9.0 - <em>April 2003</em> </dt>
+            <dd>
+		<ul>
+		    <li>kerberos ticket passing</li>
+		    <li>portability enhancements</li>
+		    <li>various bug fixes</li>
+		</ul>
+            </dd>
+
+            <dt>0.8.0 - <em>mid November 2002</em> </dt>
+            <dd>
+		<ul>
+		    <li>autoconf</li>
+		    <li>improved cgi & html</li>
+		    <li>first release of isapi authentication filter</li>
+		</ul>
+            </dd>
+
+            <dt>0.7.0 - <em>early October 2002</em></dt> 
+            <dd>
+		<ul>
+		    <li>basic functionality</li>
+		    <li>kerberos/gssapi authentication</li>
+		    <li>Apache 1.3.x authentication filter</li>
+		    <li>ssl encrypted connections with cosignd</li>
+		    <li>universal logout</li>
+		</ul>
+            </dd>
+            </dl>
+        </blockquote>
+        <p class="software">&nbsp;</p>
+    </td>
+    </tr>
+
+    <tr>
+	<td>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="cnt-head1">
+            Weblogin: UM Rollout Roadmap
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>       
+</table>
+	</td>
+    </tr>
+
+    <tr>
+    <td>
+        <p class="software">
+        <blockquote>
+            <dl>
+            <dt>cosign 0.7.0 - <em>early October 2002</em></dt>
+            <dd>
+                <ul>
+                <li>
+                    first pass at service menu <br />
+                    ( finished 10/05/2002 )
+                </li>
+
+                <li>
+                    create weblogin.umich.edu <br />
+                    ( finished 10/12/2002 )
+                </li>
+                </ul>
+            </dd>
+
+            <dt>cosign 0.8.0 - <em>October 2002</em> </dt>
+            <dd>
+                <ul>
+                    <li>
+                    isapi filter to windows clients for
+                    testing <br />
+                    ( distributed:  10/18/2002 )
+                </li>
+
+                <li>
+                    move service to weblogin.umich.edu <br />
+                    ( finished 10/14/2002 )
+                </li>
+
+                <li>
+                    enable 24x7 monitoring via nefu <br />
+                    ( finished 10/14/2002 )
+                </li>
+                </ul>
+            </dd>
+
+            <dt>cosign 0.9.0 </dt>
+            <dd>
+                <ul>
+                <li>
+                    refined service menu available for
+                    testing and comment by campus
+                    community <br />
+                    ( released 12/11/2002 )
+                </li>
+
+                <li>
+                    rollout for services that do not
+                    require pts authorization or
+                    kerberos tickets ( e.g. cow,
+                    www.umce, development, mprint, etc. ) <br />
+                    ( finished 1/22/2003 )
+                </li>
+
+		<li>
+                    investigate pts authorization <br />
+                    ( solution prepared 11/12/2002 )
+                </li>
+
+                </ul>
+            </dd>
+
+            <dt>cosign 1.0.0 - <em> <b>Current Release</b> </em></dt>
+            <dd>
+                <ul>
+                <li>
+                    full campus rollout ( directory,
+                    mail, etc. ) <br />
+                </li>
+
+                <li>
+                    deployed replicated servers
+                </li>
+
+                <li>
+                    full user documentation available.
+                </li>
+
+                <li>
+                    moved kpasswd.cgi and hint
+                    functionality to weblogin.umich.edu <br />
+                </li>
+
+                </ul>
+            </dd>
+
+            <dt>post 1.0</dt>
+            <dd>
+                <ul>
+                <li>
+                    complete/merge-in kx.509 changes
+                </li>
+
+                <li>
+                    maintenance, bug fixes, feature
+                    enhancements.
+                </li>
+                </ul>
+            </dd>
+            </dl>
+        </blockquote>
+        <p class="software">&nbsp;</p>
+        </p>
+    </td>
+    </tr>
+
+</table>
+
+<!--#include file="footer.shtml" -->

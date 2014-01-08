@@ -1,0 +1,157 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: customizing web pages -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Wed, 26 May 2004 10:59:13 &#45;0400 (EDT) -->
+<!--X-Message-Id: 16B5A6B0&#45;AF25&#45;11D8&#45;9AAA&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 40B49FE3.1040905@psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00115.shtml">Date Prev</a>][<a href="msg00117.shtml">Date Next</a>][<a href="msg00115.shtml">Thread Prev</a>][<a href="msg00117.shtml">Thread Next</a>][<a href="maillist.shtml#00116">Date Index</a>][<a href="threads.shtml#00116">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: customizing web pages</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: customizing web pages</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 26 May 2004 10:58:03 -0400</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00115.shtml">40B49FE3.1040905@psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00115.shtml">40B49FE3.1040905@psu.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On May 26, 2004, at 9:47 AM, Phil Pishioneri wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I have a few questions related to the web pages distributed with 
+CoSign:</tt><br>
+<br>
+<tt>  1. A site is allowed to alter the pages as much as they see fit,<br>
+     right?  I'm basing this on the license and the change log entry<br>
+     (&quot;html: new example login/logout pages, no longer UM specific&quot;).  
+    (In any changes, we'd certainly make a reference to CoSign &amp; UM,<br>
+     and not just because it's in the license. :-)
+</tt></blockquote><tt><br>You should be able to change the HTML any way you like, yes.  There are 
+some things that need to be the way they are (form field names, submit 
+button names, etc.), but I'm trying to get rid of as many of these as 
+we can and/or document their existence.  If you run into anything in 
+particular that causes a problem I'd love to hear about it.</tt><br>
+<br>
+<tt>In theory, you should be able to change the header and css files, leave 
+all the other template pieces the same, and get a custom look.  In 
+practice I don't think this is true, and one of my ongoing goals is to 
+make it as true as possible.  At the same time, I know that any change 
+we make to the display portion of the system has the potential to cause 
+problems for deployers.</tt><br>
+<br>
+<tt>I don't think the license is intended to say that you need to mention 
+either CoSign or UM on your pages.  It just says you need to include 
+the license with the code if you, for example, make changes and start 
+your own version.  Please don't do that last bit, btw. :)</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">  2. Are any sites (UM included) looking to use the new look/feel
+     (possibly with only minimal adjustments)?  Or are you going with a
+     more &quot;traditional&quot; page (ala the current UM production login page,
+     which was the former distributed page) that reflects the
+     organization running the system?
+</pre></blockquote><tt><br>I don't think UM will be switching to the new page; though everyone 
+here thinks it is very cool and I'll definitely be stealing some ideas 
+from it.  I actually want to be certain that our production page and 
+the html we distribute aren't the same so that any pain I might 
+accidentally inflict on others by changing HTML will be felt by us 
+first during testing/development.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">  3. (For the UM developers)  In developing the new pages, were you
+     hoping that sites would adopt them (mostly) as-is, going for a
+     common look in the community of CoSign implementors?
+</pre></blockquote><tt><br>we definitely hoped people would like them and that, if someone didn't 
+have the time, energy, interest, or whatever to create a new look then 
+they could reasonably run the default and look good.</tt><br>
+<br>
+<tt>k</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00115" href="msg00115.shtml">customizing web pages</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00115.shtml">customizing web pages</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00117.shtml">question</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00115.shtml">customizing web pages</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00117.shtml">question</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00116"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00116"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

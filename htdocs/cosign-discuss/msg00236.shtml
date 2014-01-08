@@ -1,0 +1,121 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: upcoming features in IIS filter? -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Thu, 9 Sep 2004 12:17:09 &#45;0400 (EDT) -->
+<!--X-Message-Id: 41408050.2060709@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 414075D2.7010903@psu.edu -->
+<!--X-Reference: 6E129320589F38F42B554C6D@[192.168.1.101] -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00235.shtml">Date Prev</a>][<a href="msg00237.shtml">Date Next</a>][<a href="msg00235.shtml">Thread Prev</a>][<a href="msg00237.shtml">Thread Next</a>][<a href="maillist.shtml#00236">Date Index</a>][<a href="threads.shtml#00236">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: upcoming features in IIS filter?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: upcoming features in IIS filter?</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 09 Sep 2004 12:09:52 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00235.shtml">6E129320589F38F42B554C6D@[192.168.1.101]</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00234.shtml">414075D2.7010903@psu.edu</a>&gt; &lt;<a href="msg00235.shtml">6E129320589F38F42B554C6D@[192.168.1.101]</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.8a3) Gecko/20040817</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 9/9/04 11:46 AM, Jarod Malestein wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>AllowUnauthenticatedAccess is in the current build of IISCosign and will be 
+included in the 1.1.0 release.  I should be able to get a release candidate 
+out for testing by tomorrow.<br>
+ </tt><br>
+<br>
+</blockquote><tt><br>Thanks for the info!</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00234" href="msg00234.shtml">upcoming features in IIS filter?</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+<li><strong><a name="00235" href="msg00235.shtml">Re: upcoming features in IIS filter?</a></strong>
+<ul><li><em>From:</em> Jarod Malestein</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00235.shtml">Re: upcoming features in IIS filter?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00237.shtml">cosign and blackboard</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00235.shtml">Re: upcoming features in IIS filter?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00237.shtml">cosign and blackboard</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00236"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00236"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

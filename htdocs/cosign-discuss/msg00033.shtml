@@ -1,0 +1,132 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: COSIGN: service name policies? -->
+<!--X-From-R13: [nex [bagnthr <znexzbagNhzvpu.rqh> -->
+<!--X-Date: Fri, 26 Mar 2004 09:14:10 &#45;0500 (EST) -->
+<!--X-Message-Id: Pine.SOL.4.58.0403260908280.6004@mozi.lsait.lsa.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 0882A88A&#45;7EC1&#45;11D8&#45;9B55&#45;000A95CD7232@umich.edu -->
+<!--X-Reference: 8E2A2109&#45;7ED1&#45;11D8&#45;96C1&#45;000A95DA58FE@lsi.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00032.shtml">Date Prev</a>][<a href="msg00034.shtml">Date Next</a>][<a href="msg00031.shtml">Thread Prev</a>][<a href="msg00032.shtml">Thread Next</a>][<a href="maillist.shtml#00033">Date Index</a>][<a href="threads.shtml#00033">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: COSIGN: service name policies?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jim Zajkowski &lt;<a href="mailto:jamesez@DOMAIN.HIDDEN">jamesez@xxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: COSIGN: service name policies?</li>
+<li><em>From</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 26 Mar 2004 09:12:47 -0500 (EST)</li>
+<li><em>Cc</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00031.shtml">8E2A2109-7ED1-11D8-96C1-000A95DA58FE@lsi.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00030.shtml">0882A88A-7EC1-11D8-9B55-000A95CD7232@umich.edu</a>&gt; &lt;<a href="msg00031.shtml">8E2A2109-7ED1-11D8-96C1-000A95DA58FE@lsi.umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Thu, 25 Mar 2004, Jim Zajkowski wrote:
+
+&gt; &gt; Other approaches?
+&gt;
+&gt; We've named ours (where necessary) lsi-something, like lsi-nagios,
+&gt; lsi-intranet, etc.
+
+I think the &quot;cosign-&quot; at the start of each service name is unnecessary
+filler.  We've been naming cosign services similar to how LSI has,
+but I'd rather than having a lot of domain info, I've been envisioning
+&quot;UNIT-SERVICE&quot;.  For example lsa-footprints (for a College-run service)
+math-www (for www.math.lsa.umich.edu), math-instruct or math-egrade
+(for instruct.math.lsa.umich.edu, which runs the eGrade software), etc.
+I think this is easier than cosign-instruct.math.lsa (assuming that
+serice names won't be used for anything other than cosign services
+and that there is only one Math department at the UofM, of course).
+
+                Mark Montague
+                LS&amp;A Information Technology
+                markmont@xxxxxxxxx
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00030" href="msg00030.shtml">COSIGN: service name policies?</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+<li><strong><a name="00031" href="msg00031.shtml">Re: COSIGN: service name policies?</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00032.shtml">Re: COSIGN: service name policies?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00034.shtml">Another quick question and possible bug report</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00031.shtml">Re: COSIGN: service name policies?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00032.shtml">Re: COSIGN: service name policies?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00033"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00033"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

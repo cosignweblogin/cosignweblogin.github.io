@@ -1,0 +1,206 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: IIS6 Cosign installer -->
+<!--X-From-R13: Xnebq [nyrfgrva <wnebqNhzvpu.rqh> -->
+<!--X-Date: Thu, 7 Oct 2004 14:05:37 &#45;0400 (EDT) -->
+<!--X-Message-Id: 8C8E6E7712DE956E4E750497@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200410071041.i97AfrP7028221@wanderer.mr.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00251.shtml">Date Prev</a>][<a href="msg00253.shtml">Date Next</a>][<a href="msg00251.shtml">Thread Prev</a>][<a href="msg00248.shtml">Thread Next</a>][<a href="maillist.shtml#00252">Date Index</a>][<a href="threads.shtml#00252">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: IIS6 Cosign installer</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Konstantin Voyk &lt;<a href="mailto:kvoyk@DOMAIN.HIDDEN">kvoyk@xxxxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: RE: IIS6 Cosign installer</li>
+<li><em>From</em>: Jarod Malestein &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 07 Oct 2004 14:04:25 -0400</li>
+<li><em>Cc</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxx</a>, <a href="mailto:lwhitney@DOMAIN.HIDDEN">lwhitney@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00251.shtml">200410071041.i97AfrP7028221@wanderer.mr.itd.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00251.shtml">200410071041.i97AfrP7028221@wanderer.mr.itd.umich.edu</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>If anybody else notices that the installer doesn't create a private key and 
+certificate signing request, please let me know.  I went through a fresh 
+install process and was unable to create this behavior.</tt><br>
+<br>
+<tt>However, if the installer happens to fail to create your key and csr, all 
+is not lost.  You can still do it manually and it's pretty straightforward.</tt><br>
+<br>
+<tt>An addendum to the instructions below (found in the readme.txt file): you 
+will need to edit the umconfig.cfg before generating the csr!  After 
+opening umconfig.cfg it should be pretty clear what to change.  (For 
+example: replace INSERTSTATE with Michigan or Pennsylvania. :)  Since 
+umconfig.cfg will be edited directly you will not be prompted to enter this 
+info as described in step 3.  Also, replace all references below to U-M and 
+umich.edu with your organization.  Sorry this hasn't been generic-ified yet.</tt><br>
+<br>
+<tt>--Jarod</tt><br>
+<br>
+<tt>+--== Using Openssl.exe to create certificates ==--+</tt><br>
+<br>
+<pre style="margin: 0em;">If you skipped the auto-generating cert feature of the installer you can
+still use the openssl utility to do this.</pre><br>
+<pre style="margin: 0em;">1) Open a command prompt and cd to your IISCosign folder.  Assuming you
+  opted to install the openssl component you should see the openssl
+  executable in this folder.</pre><br>
+<tt>2) Run the following commands:</tt><br>
+<br>
+<tt>openssl genrsa 1024 &gt; [server.name.umich.edu].key</tt><br>
+<br>
+<tt>openssl req -new -config umconfig.cfg -key [server.name.umich.edu].key -out 
+[server.name.umich.edu].csr</tt><br>
+<br>
+<pre style="margin: 0em;">3) When prompted for information, please provide the appropriate data. The
+  common name will be the name of your server and the contact e-mail
+  should be the e-mail of the person to be notified when the certificate
+  is about to expire.</pre><br>
+<pre style="margin: 0em;">4) Send an e-mail to webmaster@xxxxxxxxxx Cut-and-paste the contents of the
+  *.csr file into your e-mail.</pre><br>
+<tt>5)  Place the UmWebCA.pem file, *.key file you generated, and the *.cert 
+file<br>
+   you receive from the webmaster into your C:\[cosign path]\SSL\ folder.</tt><br>
+<br>
+<tt>6)  Update your XML configuration file to point to these files.</tt><br>
+<br>
+<tt>   The CAFilePath item points to the umwebca.pem file.</tt><br>
+<br>
+<pre style="margin: 0em;">   The ChainFilePath item specifies the [yourservername].cert file that you
+   received from the U-M webmaster.</pre><br>
+<pre style="margin: 0em;">   The PrivateKeyFilePath item points to the [yourservername].key private
+   key file that you generated. Be sure to include the full path such as
+    C:\Program Files\CosignFilter\SSL\servername.key.</pre><br>
+<tt>7)  See +What to do next+ section of this readme.</tt><br>
+<br>
+<tt><br>--On Thursday, October 07, 2004 6:41 AM -0400 Konstantin Voyk 
+&lt;kvoyk@xxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;"><br>Jarod,
+This is new installation and I ran certificate creation wizard but I
+dind't get any *.key or *.csr files in installation IISCosign folder and
+appropriate subfolders. I did it twice.
+Konstantin.</pre><br>
+<pre style="margin: 0em;">-----Original Message-----
+From: jarod@xxxxxxxxxxxxxx [<a  href="mailto:jarod@xxxxxxxxxxxxxx">mailto:jarod@xxxxxxxxxxxxxx</a>] On Behalf Of
+Jarod Malestein
+Sent: Wednesday, October 06, 2004 4:43 PM
+To: Konstantin Voyk; cosign-discuss@xxxxxxxxx
+Subject: Re: IIS6 Cosign installer</pre><br>
+<pre style="margin: 0em;"><br>Were you upgrading from a previous version of IISCosign or were you
+installing on a machine that did not have an earlier version of IISCosign?</pre><br>
+<pre style="margin: 0em;">The files that should be created by the installer, assuming you go
+through  the automatic cert creation, are a certificate signing request
+(*.csr) and  a private key (*.key).</pre><br>
+<tt>--Jarod</tt><br>
+<br>
+<pre style="margin: 0em;">--On Wednesday, October 06, 2004 7:48 AM -0400 Konstantin Voyk
+&lt;kvoyk@xxxxxxxxx&gt; wrote:</pre><br>
+<pre style="margin: 0em;">&gt; Hi everybody,
+&gt; I downloaded and ran new installer IISCosignInstaller 1.1.0 RC1. I
+&gt; passed installation    and creation certificate request part but didn't
+&gt; find any .cer file in IISCosing folders. Is it bug there in
+&gt; installation package or I did something wrong?
+&gt; Thank you,
+&gt; Konstantin Voyk.
+&gt; LawIT
+&gt;
+&gt;
+&gt;</pre><br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00251" href="msg00251.shtml">RE: IIS6 Cosign installer</a></strong>
+<ul><li><em>From:</em> Konstantin Voyk</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00251.shtml">RE: IIS6 Cosign installer</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00253.shtml">Re: Compilation issues with 1.6.2 and filter/apache2</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00251.shtml">RE: IIS6 Cosign installer</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00248.shtml">Compilation issues with 1.6.2 and filter/apache2</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00252"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00252"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

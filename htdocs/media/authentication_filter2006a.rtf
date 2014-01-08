@@ -1,0 +1,252 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf330
+{\fonttbl\f0\froman\fcharset77 Times-Bold;\f1\froman\fcharset77 Times-Roman;\f2\froman\fcharset77 Times-Italic;
+}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww13560\viewh12260\viewkind1\viewscale100
+\pard\tx0\tx1120\tx2240\tx3360\tx4480\tx5600\tx6720\tx7840\tx8960\tx10080\tx11200\tx12320\tx13440\tx14560\tx15680\tx16800\tx17920\tx19040\tx20160\tx21280\tx22400\tx23520\tx24640\tx25760\tx26880\tx28000\tx29120\tx30240\tx31360\qc
+
+\f0\b\fs42 \cf0 Cosign
+\f1\b0\fs28 \
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\qc
+\cf0 Authentication Filter Specification
+\fs26 \
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\qc
+
+\fs20 \cf0 Johanna Bromberg Craig, Kevin McGowan, Wesley Craig
+\fs24 \
+
+\fs20 Draft XII, April 2006
+\fs24 \
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+\cf0 \
+\
+This document provides a description of the Apache API implementation of a Cosign authentication filter.  The authentication filter is installed on any web server that will use the central Cosign servers for authentication ( see diagram of Cosign for basic information ).  This filter need not be installed on the central servers and does not accept user passwords.\
+\
+Implementations of this filter exist for Apache 1.3.X, Apache 2.X, ISAPI, and J2EE 1.3 and 1.4.\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f0\b \cf0 Module Layer
+\f1\b0 \
+\
+Upon receipt of a request, the Apache API cosign authentication filter ( mod_cosign ) checks for the presence of a valid service cookie.  If a cookie is presented by the user that matches a cookie in mod_cosign's local cookie db, then mod_cosign will communicate with cosignd to verify it.  After these tests the seven possible states are:\
+	\
+	\ul cookie valid\ulnone : service cookie presented is valid, ip address is correct (only if \
+	enabled, will not work with firewalls/NAT), username matches 	username associated with this cookie, and the user is not logged out.\
+\
+	\ul no cookie\ulnone : user has presented no cookie for this service\
+	\ul bad cookie\ulnone : service cookie presented is not in service's cookie db\
+	\ul wrong ip\ulnone : user's IP address does not match the IP associated with this cookie\
+	( this check is optional. There should be a configuration option to disable this check 	for use behind firewalls or load balancers )\
+	\ul wrong user\ulnone : username does not match username associated with this cookie\
+	\ul logged out\ulnone : user has logged out of central Cosign server\
+	\ul unknown\ulnone : an unexpected error has occured\
+\
+In response to the first state, "cookie valid," mod_cosign updates the "time" field in the cookie db and returns DECLINED (meaning that the module has declined to do anything with the request because all checks have been passed).  "DECLINED" causes the request to be passed normally through the remainder of the request/response loop and, assuming no other modules encounter problems, the requested resource will be delivered normally.  Before returning DECLINED, mod_cosign must make the following environment variables available to the remainder of the request/response loop (this includes child processes such as CGI scripts and embedded interpreters such as mod_perl of php):\
+\
+	\ul AUTHYPE\ulnone :  "Cosign"\
+	\ul COSIGN_SERVICE\ulnone :  the cosign service name that governs this directory or 	location\
+	\ul REMOTE_USER\ulnone :  username of authenticated user.\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+\cf0 \ul \ulc0 	COSIGN_FACTOR\ulnone : All of the factors the authenticated user has satisfied.\
+	\ul REMOTE_REALM\ulnone : for backwards compatibility, this is now defined as the user's 	first (initial) authenticated factor.\
+\ul 	KRB5CCNAME\ulnone : If using Kerberos, path to user's Kerberos 5 credentials.\
+	\
+In response to the remaining six cookie states, mod_cosign generates a new service cookie, prints a set-cookie header with the service cookie, and returns REDIRECT.  The user is redirected to the central CosignRedirect url (see the configuration section below) with the service cookie appended to the query string.\
+\
+"Generates a new service cookie," above, means that mod_cosign generates a new, random cookie value and formulates the service cookie name by prepending "cosign-" to the service name defined by the CosignService directive.  New cookie values are 128 character strings of random bytes.  These strings are generated using OpenSSL.  An example service cookie, (where CosignService has been set to "example") will look like this:\
+\
+	cosign-example=oFxNMqPjNuSraSYoO8i+lIqDA9ZrzU1UDfsbp2JaHvm6mRP5jhRoIR...\
+\
+In addition to the 128 character string, the current time in seconds is appended to the end of the cookie when it is sent in the header, but not as it appears on the query string for redirect. Upon retrieving a cookie from the browser, this time stamp is checked against the cookie expire time, and if the cookie is older than said time ( default 24 hours ), a new cookie is set regardless.\
+\
+cosign-example=oFxNMqPjNuSraSYo....RP5jhR/1111088339\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f0\b \cf0 Data Storage Layer
+\f1\b0 \
+\
+The cookie db is implemented as a portion of the UNIX server's filesystem.  A 'record' is actually a normal file.  It's lookup key (filename) is the random value issued as the user's service cookie value (see module layer above).  Data stored in each record are:\
+\
+	\ul username\ulnone : username of authenticated user ( same as REMOTE_USER environment variable )\
+	\ul realm\ulnone : first factor with which the user has authenticated\
+	\ul factor\ulnone : all factors with which the user has authenticated\
+	\ul ip\ulnone  \ul address\ulnone : ip address of user's browser\
+	\ul k5 ticket\ulnone : path to k5 ticket, if any.\
+	\ul time\ulnone : last used validated ( actually stored in file's mtime value ).\
+\
+\
+\
+\
+\
+
+\f0\b Network Layer
+\f1\b0 \
+\
+The network layer of mod_cosign is responsible for establishing and maintaining SSL-encrypted connections to the central cosignd server, keeping status on connections, implementing failover from one cosignd to another, load balancing (by randomizing IP addresses of available cosign servers before beginning to establish new connections), and doing the actual protocol interaction with cosignd.\
+\
+Protocol note to be re-visited at a later date: ( wes and dillaman )\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 To further distinguish between re-tryable errors, we'd need to make cosignd return yet-another-class of return code, say 6xx or 1xx.  In the 6xx case, the cosign clients should 1) retry other servers, but 2) if all fail it's a real error.  This protects from the case where the server is inappropriately returning 6xx *and* the case where the client is causing the server to appropriately return 6xx. \
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+\cf0 \
+The filter must implement CHECK. RETRIEVE can be used to retrieve proxy credentials ( RETRIEVE service_cookie "cookies" ) or Kerberos tickets ( RETRIEVE service_cookie "tgt" ).\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+
+\f0\b \cf0 Note
+\f1\b0 : If the filter cannot open a connection to 
+\f0\b all
+\f1\b0  cosignd servers, or if it fails in the negotiation of an SSL encrypted session with 
+\f0\b all 
+\f1\b0 cosignd servers, then the filter must return "HTTP_SERVICE_UNAVAILABLE" ( 503 ).
+\f0\b \
+\
+Protocol
+\f1\b0 \
+	CHECK service_cookie\
+	RETRIEVE service_cookie "tgt" | "cookies"\
+	STARTTLS [ 2 ]\
+	NOOP: no op.\
+	QUIT: quit\
+\
+
+\f0\b Apache Configuration
+\f1\b0 \
+\
+mod_cosign recognizes the following configuration directives:\
+\
+	Syntax: CosignHostname 
+\f2\i fully-qualified-domain-name
+\f1\i0 \
+	Default: cosign.example.edu ( name to be decided later )\
+	Context: server config, virtual host, location, directory\
+	\
+	Syntax: CosignPort 
+\f2\i number
+\f1\i0 \
+	Default: 6663\
+	Context: server config, virtual host, location, directory\
+	\
+	Syntax: CosignService 
+\f2\i service-name
+\f1\i0 \
+	Default: none\
+	Context: server config, virtual host, location, directory\
+	\
+	Syntax: CosignRedirect 
+\f2\i URL
+\f1\i0 \
+	Default: none\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignPostErrorRedirect 
+\f2\i URL
+\f1\i0 \
+	Default: none\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignRequireFactor 
+\f2\i Factor1[Factor2 FactorN]
+\f1\i0 \
+	Default: none\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignFactorSuffix 
+\f2\i FactorSuffix
+\f1\i0 \
+	Default: none\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignFactorSuffixIgnore 
+\f2\i On|Off
+\f1\i0 \
+	Default: Off\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignFilterDB 
+\f2\i Path
+\f1\i0 \
+	Default: /var/cosign/filter\
+	Context: server config, virtual host\
+\
+	Syntax: CosignProxyDB 
+\f2\i Path
+\f1\i0 \
+	Default: /var/cosign/proxy\
+	Context: server config, virtual host\
+\
+	Syntax: CosignFilterHashLength 
+\f2\i 0|1|2
+\f1\i0 \
+	Default: 0\
+	Context: server config, virtual host\
+\
+	Syntax: CosignTicketPrefixt 
+\f2\i Path
+\f1\i0 \
+	Default: /ticket\
+	Context: server config, virtual host\
+\
+	Syntax: CosignProtected 
+\f2\i On|Off
+\f1\i0 \
+	Default: On\
+	Context: server config, virtual host, location, directory, .htaccess\
+\
+	Syntax: CosignSiteEntry 
+\f2\i URL
+\f1\i0 \
+	Default: none\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignAllowPublicAccess 
+\f2\i On|Off
+\f1\i0 \
+	Default: Off\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignHttpOnly 
+\f2\i On|Off
+\f1\i0 \
+	Default: Off\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignCrypto 
+\f2\i <key file> <cert file> <ca directory>
+\f1\i0 \
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\li1440\ql\qnatural
+\cf0 Default: /var/cosign/certs/key.pem /var/cosign/certs/cert.pem /var/cosign/certs/CA\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+\cf0 	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignCookieExpireTime <time in seconds>\
+	Default: 86400 ( 24 hours )\
+	Context: server config, virtual host\
+   \
+	Syntax: CosignGetProxyCookies 
+\f2\i On|Off
+\f1\i0 \
+	Default: Off\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignGetKerberosTickets 
+\f2\i On|Off
+\f1\i0 \
+	Default: Off\
+	Context: server config, virtual host, location, directory\
+\
+	Syntax: CosignKerberosSetupGSS 
+\f2\i On|Off
+\f1\i0 \
+	Default: Off\
+	Context: server config, virtual host, location, directory\
+\
+\pard\tx1440\tx2880\tx4320\tx5760\tx7200\ql\qnatural
+\cf0 	Syntax: CosignCheckIP 
+\f2\i never|initial|always
+\f1\i0 \
+	Default: initial\
+	Context: server config, virtual host\
+}

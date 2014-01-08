@@ -1,0 +1,145 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: apache filter version 1.8.5 -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Fri, 8 Jul 2005 10:52:25 &#45;0400 (EDT) -->
+<!--X-Message-Id: 2CC1F467&#45;2409&#45;4A58&#45;912B&#45;047EB08CC1B7@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.GSO.4.58.0507081444200.26676@sagittarius.ucs.ed.ac.uk -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00446.shtml">Date Prev</a>][<a href="msg00448.shtml">Date Next</a>][<a href="msg00446.shtml">Thread Prev</a>][<a href="msg00449.shtml">Thread Next</a>][<a href="maillist.shtml#00447">Date Index</a>][<a href="threads.shtml#00447">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: apache filter version 1.8.5</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Graeme Wood &lt;<a href="mailto:Graeme.Wood@DOMAIN.HIDDEN">Graeme.Wood@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: apache filter version 1.8.5</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 8 Jul 2005 10:39:48 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00446.shtml">Pine.GSO.4.58.0507081444200.26676@sagittarius.ucs.ed.ac.uk</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00446.shtml">Pine.GSO.4.58.0507081444200.26676@sagittarius.ucs.ed.ac.uk</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Is this Apache 1.x or 2.x?  Have you compiled with Krb4 support?   
+What level logging do you have enabled in httpd.conf?</tt><br>
+<br>
+<tt>It could be that the filter is being told to retry its kerberos  
+ticket request on another cosign server (it looks like we're not  
+differentiating between logged out, retry, error, etc. on the call to  
+retrieve the ticket).  Are you seeing any log output from  
+netretr_ticket?</tt><br>
+<br>
+<tt>Kevin</tt><br>
+<br>
+<tt>On Jul 8, 2005, at 9:45 AM, Graeme Wood wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I am seeing errors in my apache1 log file that say:</tt><br>
+<br>
+<tt>mod_cosign: choose_conn: can't retrieve kerberos ticket</tt><br>
+<br>
+<pre style="margin: 0em;">Yet the filter is retrieving tickets.  I am not sure what is going on.
+Does anyone have any clues?</pre><br>
+<tt>Cheers</tt><br>
+<br>
+<tt>--<br>
+====================================================================== 
+=======<br>
+Graeme Wood                                 Email:  
+Graeme.Wood@xxxxxxxx<br>
+Unix Systems Support                        Phone: +44 131 650 5003<br>
+The University of Edinburgh                 Fax:   +44 131 650 6552<br>
+====================================================================== 
+=======</tt><br>
+<br>
+<tt>!DSPAM:42ce83e441071820410386!</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00446" href="msg00446.shtml">apache filter version 1.8.5</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00446.shtml">apache filter version 1.8.5</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00448.shtml">Re: cosgin &amp; apache on windows</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00446.shtml">apache filter version 1.8.5</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00449.shtml">IIS 6 fails to start with cosign.dll</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00447"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00447"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

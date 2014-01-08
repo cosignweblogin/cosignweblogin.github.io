@@ -1,0 +1,137 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Need to reach conclusion soon -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Fri, 12 Aug 2005 11:07:06 &#45;0400 (EDT) -->
+<!--X-Message-Id: 6D3FE0FF&#45;D59A&#45;41AF&#45;81AE&#45;B6C15A5A717D@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: F0188AA5&#45;54B3&#45;4C54&#45;B43C&#45;2015A2A61B2D@umich.edu -->
+<!--X-Reference: 50C1C6E3&#45;B07B&#45;4956&#45;A7BA&#45;9F2F1D3B5E6C@umich.edu -->
+<!--X-Reference: E6A7C328&#45;D8E0&#45;4051&#45;95F7&#45;A723C819AD86@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00494.shtml">Date Prev</a>][<a href="msg00496.shtml">Date Next</a>][<a href="msg00493.shtml">Thread Prev</a>][<a href="msg00490.shtml">Thread Next</a>][<a href="maillist.shtml#00495">Date Index</a>][<a href="threads.shtml#00495">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Need to reach conclusion soon</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jonathan Maybaum &lt;<a href="mailto:maybaum@DOMAIN.HIDDEN">maybaum@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Need to reach conclusion soon</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 12 Aug 2005 11:05:30 -0400</li>
+<li><em>Cc</em>: Wesley Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00493.shtml">E6A7C328-D8E0-4051-95F7-A723C819AD86@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00488.shtml">F0188AA5-54B3-4C54-B43C-2015A2A61B2D@umich.edu</a>&gt; &lt;<a href="msg00489.shtml">50C1C6E3-B07B-4956-A7BA-9F2F1D3B5E6C@umich.edu</a>&gt; &lt;<a href="msg00493.shtml">E6A7C328-D8E0-4051-95F7-A723C819AD86@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Aug 12, 2005, at 9:59 AM, Jonathan Maybaum wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Perhaps I am assumed to know this, but should I be editing the  
+target directories in the makefiles?</tt><br>
+<br>
+<tt>BTW, having spent a good chunk of this week, I am almost out of  
+time to accomplish this or conclude that I can't get it done. Has  
+anyone actually set up a working system with KDC, cosign service  
+and web server all on the same OS X server?
+</tt></blockquote><tt><br>Yes, Patrick McNeal and I set this up for submission to WWDC Apple  
+Design Awards. We had it working for demo purposes only, but it worked.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt><br>Assuming that you are starting with an OS X server that is already  
+set up as a KDC, and that you have certs in place, how long would  
+it take one of you experienced people to install cosign and verify  
+that it is working?
+</tt></blockquote><tt><br>Probably an hour or 2, but like I've said, I've done this once  
+before. The hardest part for me is actually Apple's httpd setup -  
+it's a bit different from the standard *nix setup, plus there's the  
+whole &quot;modify it from the cmd line vs. modify it from the GUI.&quot;</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00488" href="msg00488.shtml">Next 2 errors...</a></strong>
+<ul><li><em>From:</em> Jonathan Maybaum</li></ul></li>
+<li><strong><a name="00489" href="msg00489.shtml">Re: Next 2 errors...</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+<li><strong><a name="00493" href="msg00493.shtml">Need to reach conclusion soon</a></strong>
+<ul><li><em>From:</em> Jonathan Maybaum</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00494.shtml">Re: Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00496.shtml">Where files are placed</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00493.shtml">Need to reach conclusion soon</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00490.shtml">Update and Verify Your PayPal account</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00495"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00495"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,6092 @@
+Index: Makefile.in
+===================================================================
+--- Makefile.in	(revision 18)
++++ Makefile.in	(working copy)
+@@ -15,6 +15,9 @@
+ 
+ FRC:
+ 
++tags:
++	ctags -R
++
+ clean:
+ 	rm -f version.o
+ 	for i in ${ALL}; \
+Index: scripts/oracle/cosign.sql
+===================================================================
+--- scripts/oracle/cosign.sql	(revision 0)
++++ scripts/oracle/cosign.sql	(revision 41)
+@@ -0,0 +1,309 @@
++/*
++ * A Tablespace named COSIGN must already exist before running this script
++ */
++
++/*DROP user cosignd cascade;*/
++/*DROP user cosign cascade;*/
++DROP role cosigndev;
++DROP role cosignprog;
++
++CREATE role cosigndev not identified;
++CREATE role cosignprog not identified;
++CREATE role cosigndbmonitor not identified;
++
++CREATE USER "COSIGN" PROFILE "DEFAULT" IDENTIFIED BY "freddy00" DEFAULT TABLESPACE "COSIGN" QUOTA UNLIMITED
++	ON "COSIGN" ACCOUNT UNLOCK;
++CREATE USER "COSIGND" PROFILE "DEFAULT" IDENTIFIED BY "freddy00" DEFAULT TABLESPACE "COSIGN" ACCOUNT UNLOCK;
++CREATE USER "COSIGNMON" PROFILE "DEFAULT" IDENTIFIED BY "sillysaus" ACCOUNT UNLOCK;
++
++GRANT CREATE SESSION TO "COSIGND";
++GRANT CREATE SESSION TO "COSIGN";
++GRANT CREATE SESSION TO "COSIGNMON";
++GRANT cosigndev to cosign with admin option;
++GRANT cosignprog to cosignd;
++GRANT cosigndbmonitor to cosignmon;
++
++/*
++ * setup all of the select permission and synonyms needed for the nagious
++ * monitor script
++ */
++GRANT SELECT on SYS.v_$sysstat to cosigndbmonitor;
++CREATE synonym COSIGNMON.v$sysstat for SYS.v_$sysstat;
++GRANT SELECT on SYS.v_$librarycache to cosigndbmonitor;
++CREATE synonym COSIGNMON.v$librarycache for SYS.v_$librarycache;
++GRANT SELECT on SYS.v_$lock to cosigndbmonitor;
++CREATE synonym COSIGNMON.v$lock for SYS.v_$lock;
++GRANT SELECT on SYS.v_$session to cosigndbmonitor;
++CREATE synonym COSIGNMON.v$session for SYS.v_$session;
++GRANT SELECT on SYS.dba_data_files to cosigndbmonitor;
++CREATE synonym COSIGNMON.dba_data_files for SYS.dba_data_files;
++GRANT SELECT on SYS.dba_Free_space to cosigndbmonitor;
++CREATE synonym COSIGNMON.dba_Free_space for SYS.dba_Free_space;
++/*
++ * Create a congifuration table
++ */
++create table cosign.config (
++	configuration	varchar(255) primary key,
++	strval		varchar(255),
++	numval		number
++) tablespace cosign;
++grant all on cosign.config to cosigndev;
++grant select on cosign.config to cosignprog;
++
++insert into cosign.config values('IdleTimeout',NULL,4);
++insert into cosign.config values('ExpungeTimeout',NULL,8);
++
++/*
++ * Create the TGT cache table
++ */
++create table cosign.tgtcache (
++	ticketID	varchar(128) primary key,
++	version		number(2),
++	state		number(1),
++	ipaddr		char(15),
++	princ		varchar(255),
++	realm		varchar(255),
++	lastActivity	timestamp(0),
++	createdOn	timestamp(0) default CURRENT_TIMESTAMP
++) tablespace cosign;
++grant all on cosign.TGTCache to cosigndev;
++grant insert,update,delete,select on cosign.TGTCache to cosignprog;
++create synonym COSIGND.TGTCache for cosign.TGTCache;
++
++/*
++ * create the idle view on the tgt cache
++ * NOTE: All of these work 
++ */
++create view cosign.idleLoggedOuttgts as
++	select ticketID,princ,realm,ipaddr,lastActivity from tgtcache where
++	lastActivity < CURRENT_TIMESTAMP -
++	(
++		select numval/24 from config where configuration='ExpungeTimeout'
++	) and state=0;
++
++create view cosign.idletgts as
++	select ticketID,princ,realm,ipaddr,lastActivity from tgtcache where
++	lastActivity < CURRENT_TIMESTAMP -
++	(
++		select numval/24 from config where configuration='IdleTimeout'
++	) and state=1;	
++
++/*
++ * Create the ST Cache table
++ */
++create table cosign.stcache (
++	ticketID	varchar(128) primary key,
++	TGTID		constraint stcache_fk_ticketid references cosign.TGTCache(ticketID),
++	serviceName	varchar(255),
++	createdOn	timestamp(0) default CURRENT_TIMESTAMP
++) tablespace cosign;
++grant all on cosign.STCache to cosigndev;
++grant insert,update,delete,select on cosign.STCache to cosignprog;
++create synonym COSIGND.STCache for cosign.STCache;
++
++create table cosign.krbcache (
++	TGTID		constraint krbcache_fk_ticketid references cosign.TGTCache(ticketID),
++	krbversion	number,
++	ticketsize	number,
++	ticket		blob
++) tablespace cosign;
++grant all on cosign.krbCache to cosigndev;
++grant insert,update,delete,select on cosign.krbCache to cosignprog;
++create synonym COSIGND.krbCache for cosign.krbCache;
++
++/*
++ * Create the logging table
++ */
++create table cosign.eventLog (
++	eventTime	timestamp default CURRENT_TIMESTAMP,
++	princ		varchar(255),
++	ticketID	varchar(128),
++	ipaddr		char(15),
++	descr		varchar(255)
++) tablespace cosign;
++grant all on cosign.eventLog to cosigndev;
++
++/*
++ * create the login log procedure
++ */
++create or replace procedure cosign.CoSignLoginEvent(
++	princ_in in string,
++	tgtID_in in string,
++	ipaddr_in in string
++) as
++begin
++	insert into cosign.eventLog( princ, ticketID, ipaddr, descr )
++		values( princ_in, tgtID_in, ipaddr_in, 'LOGIN' );
++end;
++/
++grant all on cosign.CosignLoginEvent to cosigndev;
++
++
++/*
++ * create the logout log procedure
++ */
++create or replace procedure cosign.CosignLogoutEvent(
++	princ_in in string,
++	tgtID_in in string,
++	ipaddr_in in string
++	
++) as
++begin
++	insert into cosign.eventLog( princ, ticketID, ipaddr, descr )
++		values( princ_in, tgtID_in, ipaddr_in, 'LOGOUT' );
++end;
++/
++grant all on cosign.CosignLogoutevent to cosigndev;
++
++/*
++ * The the procedure to handle service authentication
++ */
++create or replace procedure cosign.CosignServiceAuth(
++	tgt in string,
++	servicename in string
++) as
++	myprinc varchar( 512 );
++	myipaddr char(15);
++	numrows integer;
++begin
++	select count(*) into numrows from TGTCache where ticketID=tgt;
++	if numrows = 1 then
++		select princ || '@' || realm, ipaddr into myprinc, myipaddr
++			from TGTCache where ticketID=tgt;
++		insert into cosign.eventLog(princ,ticketID,ipaddr,descr)
++			values( myprinc, tgt, myipaddr, 'AUTH for "' || servicename || '"' );
++	end if;
++end;
++/
++grant all on cosign.CosignServiceAuth to cosigndev;
++
++/*
++ * The procedure to logout on idle.
++ */
++create or replace procedure cosign.LogoutOnIdle
++as
++begin
++	FOR tgt IN
++	(
++		select * from idletgts
++	)
++	LOOP
++		insert into cosign.eventLog( princ, ticketID, ipaddr, descr )
++			values( tgt.princ || '@' || tgt.realm, tgt.ticketID, tgt.ipaddr, 'IDLE LOGOUT' );
++		update cosign.tgtcache set state = 0 where ticketID=tgt.ticketID;
++		commit;
++	END LOOP;
++end;
++/
++
++/*
++ * purge the old TGT and associated crap
++ */
++ create or replace procedure cosign.purgeOldTicketsFromCache
++ as
++ begin
++	FOR tgt IN
++	(
++		select * from idleLoggedOuttgts
++	)
++	LOOP
++		delete from krbcache where TGTID = tgt.ticketID;
++		delete from stcache where TGTID = tgt.ticketID;
++		delete from tgtcache where ticketID = tgt.ticketID;
++		insert into cosign.eventLog( princ, ticketID, ipaddr, descr )
++			values( tgt.princ || '@' || tgt.realm, tgt.ticketID, tgt.ipaddr, 'PURGED' );
++		commit;
++	END LOOP;
++ end;
++/ 
++/*
++ * create the triggers on the TGT and ST cache tables to handle the logging
++ */
++create or replace trigger cosign.TAIU_TGTCache
++after insert or update of state on cosign.TGTCache
++for each row
++declare
++	myprinc string(255);
++begin
++	myprinc := concat( :new.princ, concat( '@', :new.realm ) );
++	if inserting then
++		  CosignLoginEvent( myprinc, :new.ticketID, :new.ipaddr );
++	else
++		if updating and :old.state != :new.state and :new.state = 0 then
++			CosignLogoutEvent( myprinc, :old.ticketID, :old.ipaddr );
++		end if;
++	end if;
++end;
++/
++
++create or replace trigger cosign.TAI_STCache
++after insert on cosign.STCache
++for each row
++declare
++begin
++	CosignServiceAuth( :new.TGTID, :new.serviceName );
++end;
++/
++
++/*
++ * Create the cosign hourly schedule
++ */
++BEGIN
++	sys.dbms_scheduler.create_schedule
++	( 
++		repeat_interval => 'FREQ=HOURLY',
++		start_date => systimestamp at time zone '+12:00',
++		comments => 'cosign hourly maintainence',
++		schedule_name => '"COSIGN"."COSIGNHOURLY"'
++	);
++END;
++/
++
++/*
++ * Create the job to loggout users on idle
++ */
++BEGIN
++	sys.dbms_scheduler.create_job
++	( 
++		job_name => '"COSIGN"."LOGOUTIDLECOSIGNTICKETS"',
++		job_type => 'PLSQL_BLOCK',
++		job_action => 'begin
++			cosign.LogoutOnIdle();
++			end;',
++		schedule_name => 'COSIGN.COSIGNHOURLY',
++		job_class => 'DEFAULT_JOB_CLASS',
++		comments => 'Purge all tg,st and krb tickets for logged out users',
++		auto_drop => FALSE,
++		enabled => FALSE
++	);
++	sys.dbms_scheduler.set_attribute(
++		name => '"COSIGN"."LOGOUTIDLECOSIGNTICKETS"',
++		attribute => 'restartable', value => TRUE
++	); 
++	sys.dbms_scheduler.enable( '"COSIGN"."LOGOUTIDLECOSIGNTICKETS"' ); 
++END;
++/
++/*
++ * Create the job to purge all tickets associated with logouts
++ */ 
++BEGIN
++	sys.dbms_scheduler.create_job
++	( 
++		job_name => '"COSIGN"."PURGELOGGEDOUTCOSIGNTICKETS"',
++		job_type => 'PLSQL_BLOCK',
++		job_action => 'begin
++			cosign.purgeOldTicketsFromCache();
++			end;',
++		schedule_name => 'COSIGN.COSIGNHOURLY',
++		job_class => 'DEFAULT_JOB_CLASS',
++		comments => 'Purge all tg,st and krb tickets for logged out users',
++		auto_drop => FALSE,
++		enabled => FALSE
++	);
++	sys.dbms_scheduler.set_attribute(
++		name => '"COSIGN"."PURGELOGGEDOUTCOSIGNTICKETS"',
++		attribute => 'restartable', value => TRUE
++	); 
++	sys.dbms_scheduler.enable( '"COSIGN"."PURGELOGGEDOUTCOSIGNTICKETS"' ); 
++END;
++/
+Index: common/Makefile.in
+===================================================================
+--- common/Makefile.in	(revision 18)
++++ common/Makefile.in	(working copy)
+@@ -8,10 +8,14 @@
+ ################ Nothing below should need editing ###################
+ 
+ SRC= argcargv.c fbase64.c mkcookie.c rate.c
+-COMMONOBJ= argcargv.o fbase64.o mkcookie.o rate.o
++COMMONOBJ= argcargv.o fbase64.o mkcookie.o rate.o tokens.o
+ 
+-all : ${COMMONOBJ}
++all : ${COMMONOBJ} tokenCache
+ 
++tokenCache:
++	( cd tokencache; make )
++
+ clean :
+ 	rm -f a.out core* *.o *.bak *[Ee]rrs tags
++	( cd tokencache; make clean )
+ 
+Index: common/tokens.c
+===================================================================
+--- common/tokens.c	(revision 0)
++++ common/tokens.c	(revision 41)
+@@ -0,0 +1,38 @@
++/*
++ * This file contains the CoSign token functions
++ *
++ * Author:	Brett Lomas (b.lomas@auckland.ac.nz)
++ *		The University of Auckland (www.auckland.ac.nz)
++ * 07/05/04
++ */
++
++#include <stdio.h>
++#include "tokens.h"
++
++void
++printTGT( FILE *out, CoSignTGT *tgt )
++{
++	fprintf( out, "TGT ID: %s, user: %s\n", tgt->id, tgt->user );
++}
++
++void
++printTGT_long( FILE *out, CoSignTGT *tgt )
++{
++	fprintf( out, 	"CoSign TGT\n"
++					"----------\n"
++					"id: %s\n"
++					"version: %d\n"
++					"state: %d\n"
++					"ip address: '%s'\n"
++					"user: '%s'\n"
++					"realm: '%s'\n",
++					tgt -> id, tgt->version, tgt->state, inet_ntoa( tgt->addr ),
++					tgt->user, tgt->realm );
++
++}
++
++void
++printST( FILE *out, CoSignST *tgt )
++{
++	fprintf( out, "TGT ID: %s, service name: %s\n", tgt->id, tgt->serviceName );
++}
+Index: common/tokencache/Makefile.in
+===================================================================
+--- common/tokencache/Makefile.in	(revision 0)
++++ common/tokencache/Makefile.in	(revision 41)
+@@ -0,0 +1,25 @@
++################## Some of this may need to be edited ##################
++
++INCPATH=        @CPPFLAGS@
++CC=             @CC@
++LIBS=		@LIBS@
++LIBPATH=	@LDFLAGS@
++
++CFLAGS=         @CFLAGS@ ${INCPATH} -I../ @ORACPPFLAGS@
++TESTCFLAGS=	$(CFLAGS) ${LIBPATH} @ORALDFLAGS@ ${LIBS} @ORALIBS@
++
++############### Nothing below should need editing ###################
++
++TOKENCACHE=@TOKENCACHE@
++ORACLE_HOME=@ORACLE_HOME@
++
++all : ${TOKENCACHE}.o tokenCache.o
++
++${TOKENCACHE}_debug.o:
++	${CC} ${CFLAGS} -DDEBUGTOKCACHE -c -o ${TOKENCACHE}_debug.o ${TOKENCACHE}.c
++
++test: ${TOKENCACHE}_debug.o
++	${CC} ${TESTCFLAGS} -I../ -o testTokenCache testTokenCache.c ${TOKENCACHE}_debug.o tokenCache.o ../fbase64.o ../tokens.o -lssl
++
++clean :
++	rm -f a.out core* *.o *.bak *[Ee]rrs tags testTokenCache
+Index: common/tokencache/tokenCache.c
+===================================================================
+--- common/tokencache/tokenCache.c	(revision 0)
++++ common/tokencache/tokenCache.c	(revision 41)
+@@ -0,0 +1,72 @@
++/*
++ * Token Cache is a mechanism is caching CoSign tokens in
++ * generic way.
++ * This file implements the common and helper functions for the token
++ * cache implementation and its users.
++ *
++ *  Author: 	Brett Lomas (b.lomas@auckland.ac.nz)
++ *  			The University of Auckland (www.auckland.ac.nz)
++ *  28/05/04
++ */
++
++#include "tokens.h"
++#include "tokenCache.h"
++
++#include <string.h>
++
++int
++cosignCNameToTicketID( const char *buf, CoSignTicketID id )
++{
++	if( strncmp( buf, "cosign=", 7 ) )
++		return 1; /* doesn't appear to the cookie we want!! */
++
++	if( strlen( buf + 7 ) > MAX_TICKET_ID_LENGTH )
++		return 2; /* too long!!! */
++
++	strcpy( id, buf + 7 );
++	return 0;
++}
++
++int
++cosignSTToTicketIDServName( const char *buf, CoSignServiceName sName, CoSignTicketID id )
++{
++	char *eqlPtr;
++	int len = 0;
++
++	if( strncmp( buf, "cosign-", 7 ) || !( eqlPtr = strchr( buf, '=' ) ) )
++		return 1; /* doesn't appear to be a service ticket */
++
++	if( ( len = eqlPtr - buf - 7 ) > MAX_SERVICE_LENGTH )
++		return 2; /* service name too long */
++
++	memset( sName, '\0', sizeof( CoSignServiceName ) );
++	strncpy( sName, buf + 7, len );
++
++	if( strlen( eqlPtr + 1 ) > MAX_TICKET_ID_LENGTH )
++		return 3; /* ticket ID too long!! */
++
++	strcpy( id, eqlPtr + 1 );
++	return 0;
++}
++
++int
++addSTDetailsToCache( TokenCacheTConf *tconf, CoSignTGT *tgt,
++	CoSignTicketID stid, CoSignServiceName srvName, CoSignST *ret )
++{
++	CoSignST *st = createCoSignST();
++	int s;
++
++	if( !st )
++		return 1;
++
++	strcpy( st->id, stid );
++	strcpy( st->serviceName, srvName );
++
++	s = addSTToCache( tconf, tgt, st );
++	if( !s )
++		ret = st;
++	else
++		releaseCoSignST( &st );
++
++	return s;
++}
+Index: common/tokencache/testTokenCache.c
+===================================================================
+--- common/tokencache/testTokenCache.c	(revision 0)
++++ common/tokencache/testTokenCache.c	(revision 41)
+@@ -0,0 +1,308 @@
++#include <sys/time.h>
++
++#include "tokens.h"
++#include "tokenCache.h"
++#include "fbase64.h"
++
++#include <openssl/rand.h>
++
++TokenCacheGConf *tgc = NULL;
++TokenCacheTConf *ttc = NULL;
++
++/*
++ * This function will return a new randomly generated
++ * token ID string.
++ */
++static int
++generateTokenID( CoSignTicketID id )
++{
++	unsigned int size = MAX_TICKET_ID_LENGTH;
++	char *buf;
++	int randbytes;
++
++	size -= 3; /* For some reason - from mkcookie.c*/
++	randbytes = SZ_FBASE64_D( size );
++	if( !( buf = ( char * )malloc( randbytes ) ) )
++		return 0;
++
++	if( RAND_bytes( buf, randbytes ) < 0 )
++		return 0;
++
++	fbase64_e( buf, randbytes, id );
++	free( buf );
++	return 1;
++}
++
++static char
++randomCharAToZ()
++{
++	return 'a';
++}
++
++static char
++randomCharZeroToNine()
++{
++	return '0';
++}
++
++static int
++generateRandomUser( CoSignTGT *tgt )
++{
++	int i = 0;
++
++	for( i = 0 ; i < 7 ; i++ )
++	{
++		if( i < 4 )
++			tgt->user[ i ] = randomCharAToZ();
++		else
++			tgt->user[ i ] = randomCharZeroToNine();
++	}
++	return 1;
++}
++
++static int
++generateRandomIPAddress( CoSignTGT *tgt )
++{
++	unsigned int rand_num = 0;
++
++	srand( time( NULL ) );
++	rand_num = rand() << 16 | rand();
++
++	memcpy( &tgt->addr, &rand_num, sizeof( struct in_addr ) );
++	return 1;
++}
++
++static CoSignTGT *
++generateRandomTicket()
++{
++	CoSignTGT *ret;
++
++	if( !( ret = createCoSignTGT() ) )
++		return NULL;
++
++	ret->version = 5;
++	ret->state = LoggedIn;
++	strcpy( ret->realm, "ENARC.AUCKLAND.AC.NZ" );
++	//strcpy( ret->krbTicket, "/var/cosign/ticket/someticket" );
++
++	if( !generateTokenID( ret->id ) )
++	{
++		fprintf( stderr, "*** Failed to generate random ticket ID\n" );
++		free( ret );
++		return NULL;
++	}
++
++	if( !generateRandomUser( ret ) )
++	{
++		fprintf( stderr, "*** Failed to generate random user\n" );
++		free( ret );
++		return NULL;
++	}
++
++	if( !generateRandomIPAddress( ret ) )
++	{
++		fprintf( stderr, "*** Failed to generate random IP address\n" );
++		free( ret );
++		return NULL;
++	}
++
++	return ret;
++}
++
++void
++initialise()
++{
++	//char *FSKeys[] = { "TGTTokDir", "STTokDir", "KRBTokDir" };
++	//char *FSVals[] = { "/var/cosign/daemon", "/var/cosign/daemon", "/var/cosign/ticket" };
++	char *FSKeys[] = { "ORASID", "ORAUser", "ORAPasswd" };
++	char *FSVals[] = { "AUSSDEV", "cosignd", "freddy00" };
++
++	printf( "********************************\n"
++			"Test Program for the Token Cache\n"
++			"********************************\n\n" );
++
++	if( !( tgc = globalInitialiseCache( 3, FSKeys, FSVals ) ) )
++	{
++		fprintf( stderr, "Failed to initialise the file system cache\n" );
++		exit( 1 );
++	}
++
++	if( !( ttc =
++			initialiseCache( tgc, 0, NULL, NULL ) ) )
++	{
++		fprintf( stderr, "Failed to initialise the file system cache\n" );
++		exit( 1 );
++	}
++}
++
++
++#if 0
++int
++main( int argc, char **argv )
++{
++	CoSignTicketID 	id;
++	CoSignTGT		*tgt;
++
++	initialise();
++
++	if( argc != 2 )
++	{
++		printf( "USAGE: %s TGTID\n", argv[ 0 ] );
++		exit( 1 );
++	}
++
++	strncpy( id, argv[ 1 ], sizeof( id ) );
++	if( !( tgt = getTGTFromCache( ttc, id ) ) )
++		printf( "Failed to get TGT with ID '%s'\n", id );
++	else
++	{
++		printTGT_long( stdout, tgt );
++		releaseCoSignTGT( &tgt );
++	}
++}
++#endif
++
++int
++main( int argc, char **argv )
++{
++	CoSignTGT *tgt, *tgt1;
++	CoSignST *st;
++	CoSignTicketID id;
++	unsigned int krbSize = 1024;
++	char krbBuf[ 1024 ];
++	time_t t;
++	int i;
++
++	initialise();
++
++	printf( ">>> Generating Random CoSign TGT\n" );
++	if( !( tgt = generateRandomTicket() ) )
++	{
++		fprintf( stderr, "*** failed to generate random TGT\n" );
++	closeCache( &ttc );
++	globalCloseCache( &tgc );
++		exit( 1 );
++	}
++	printTGT_long( stdout, tgt );
++
++	printf( ">>> Adding TGT to cache\n" );
++	if( addTGTToCache( ttc, tgt ) )
++	{
++		printf( "	Failed to add!\n" );
++	}
++
++	printf( ">>> Adding Kerberos ticket to TGT\n" );
++	if( addKerberosTicketToTGT( ttc, tgt, 5, "hello" ) )
++	{
++		printf( "	Failed to add kerberos ticket\n" );
++	}
++
++	printf( ">>> Attempting to get the TGT back from the cache\n" );
++	if( !( tgt1 = getTGTFromCache( ttc, tgt->id ) ) )
++	{
++		printf( "	Failed to find the TGT with id '%s' in cache\n", tgt->id );
++		releaseCoSignTGT( &tgt );
++		closeCache( &ttc );
++		globalCloseCache( &tgc );
++		exit( 1 );
++	}
++	printTGT_long( stdout, tgt1 );
++
++	memset( krbBuf, '\0', 1024 );
++	printf( ">>> Attempting to get the kerberos ticket from TGT\n" );
++	getKerberosTicketFromTGT( ttc, tgt1, &krbSize, krbBuf );
++	printf( "Got the kerberos ticket as (%d)'%s'\n", krbSize, krbBuf );
++
++	printf( "Look at the ticket, then I will update the time on it\n" );
++	sleep( 61 );
++	time( &t );
++	updateAccessTime( ttc, tgt, t );
++
++	printf( "Adding a ST to the cache on this TGT\n" );
++	if( !generateTokenID( id ) )
++	{
++		fprintf( stderr, "*** failed to generate random ST ID\n" );
++		closeCache( &ttc );
++		globalCloseCache( &tgc );
++		exit( 1 );
++	}
++	if( addSTDetailsToCache( ttc, tgt, id, "brettsService", NULL ) )
++	{
++		printf( "	Failed to add ST to cache!!\n" );
++	}
++	printf( "Attempting to get the tgt back from the st\n" );
++	releaseCoSignTGT( &tgt1 );
++	if(!(tgt1=getTGTForSTID(ttc,"brettsService",id)))
++	{
++		printf( "	Failed to get the TGT back from ST!!\n");
++		exit(1);
++	}
++	printf("->success - got %s@%s as user\n",tgt1->user,tgt1->realm);
++	
++
++	printf( "Done - check, and I will set the logout to true also\n" );
++	sleep( 10 );
++	logUserOut( ttc, tgt );
++
++	printTGT_long( stdout, tgt );
++	printf( "Finished!!! -> waiting then I will remove the tgts\n" );
++	sleep( 10 );
++
++	removeTGTFromCache( ttc, tgt );
++	releaseCoSignTGT( &tgt );
++	if(tgt1) releaseCoSignTGT( &tgt1 );
++#if 0
++	printf( "Testing the TGT and ST lists - generating a few TGT and ST\n");
++	
++	for(i=0;i<5;i++)
++	{
++		if( !( tgt = generateRandomTicket() ) )
++		{
++			fprintf( stderr, "*** failed to generate random TGT\n" );
++			closeCache( &ttc );
++			globalCloseCache( &tgc );
++			exit( 1 );
++		}
++
++		if( addTGTToCache( ttc, tgt ) )
++		{
++			printf( "	Failed to add!\n" );
++			closeCache( &ttc );
++			globalCloseCache( &tgc );
++			exit( 1 );
++		}
++
++		if( !generateTokenID( id ) )
++		{
++			fprintf( stderr, "*** failed to generate random ST ID\n" );
++			closeCache( &ttc );
++			globalCloseCache( &tgc );
++			exit( 1 );
++		}
++
++		if( addSTDetailsToCache( ttc, tgt, id, "brettsService2", NULL ) )
++		{
++			printf( "	Failed to add ST!!\n");
++			closeCache( &ttc );
++			globalCloseCache( &tgc );
++			exit( 1 );
++		}
++	}
++
++	tgt=getAllTGTs(ttc,&i);
++	printf(">Got %d TGTs, which follow:\n",i);
++	for( ; i>0;i--,tgt=tgt->next)
++	{
++		printTGT( stdout, tgt );
++		logUserOut(ttc,tgt);
++	}
++
++	st=getAllSTs(ttc,&i);
++	printf("\n\n>Got %d STs, which follow:\n",i);
++	for( ;i>0;i--,st=st->next)
++		printST(stdout,st);
++#endif
++
++	closeCache( &ttc );
++	globalCloseCache( &tgc );
++}
+Index: common/tokencache/fileSystemCache.c
+===================================================================
+--- common/tokencache/fileSystemCache.c	(revision 0)
++++ common/tokencache/fileSystemCache.c	(revision 41)
+@@ -0,0 +1,1172 @@
++/*
++ * This token cache implements the original CoSign token cache.
++ * This cache was implemented by creating files in a cache directory
++ * with the name as the cosign cookie name and the value.
++ *
++ *  Author: 	Brett Lomas (b.lomas@auckland.ac.nz)
++ *  			The University of Auckland (www.auckland.ac.nz)
++ *  07/05/04
++ */
++
++#include <stdio.h>
++#include <stdarg.h>
++#include <stdlib.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++#include <fcntl.h>
++#include <dirent.h>
++#include <sys/param.h>
++#include <sys/time.h>
++#include <utime.h>
++#include <syslog.h>
++#include <errno.h>
++#include <string.h>
++
++#include "tokenCache.h"
++
++
++typedef struct {
++	char	krbPath[ MAXPATHLEN ];
++	struct	stat	fStats;
++} FSCacheData;
++
++typedef struct {
++	char *TGTTokenDirectory;
++	char *STTokenDirectory;
++	char *KRBTokenDirectory;
++} FSGConfData;
++
++#define GCONFDATA_GCONF(x) ( ( FSGConfData * )(x)->implData )
++#define GCONFDATA_TCONF(x) ( ( FSGConfData * )(x)->globalConf->implData )
++
++#ifdef DEBUGTOKCACHE
++#define DEBUG(out, fmt, ... )	debug( out, __LINE__, fmt, ##__VA_ARGS__)
++void
++debug( FILE *out, int line, char *fmt, ... )
++{
++	va_list ap;
++
++	va_start( ap, fmt );
++	fprintf( out, "%s(%d): ", __FILE__, line );
++	vfprintf( out, fmt, ap );
++	va_end( ap );
++}
++#else
++#define DEBUG(out,fmt, ... )	
++#endif
++
++
++#define TGTTokDir	"TGTTokDir"
++#define STTokDir	"STTokDir"
++#define KRBTokDir	"KRBTokDir"
++
++static int
++checkDir( const char *dir )
++{
++	if(access(dir,W_OK|R_OK))
++		return 0;
++	return 1;
++}
++
++/*
++ * This function will check this cache directories are all good.
++ * return of 0 means good otherwise bad
++ */
++static int
++checkDirs( FSGConfData *data )
++{
++	if( data->TGTTokenDirectory && !checkDir( data->TGTTokenDirectory ) )
++		return 1;
++	if( data->STTokenDirectory && !checkDir( data->STTokenDirectory ) )
++		return 1;
++	if( data->KRBTokenDirectory && !checkDir( data->KRBTokenDirectory ) )
++		return 1;
++
++	return 0;
++}
++
++static TokenCacheGConf *
++allocateGConf()
++{
++	TokenCacheGConf *ret;
++
++	if( !( ret = ( TokenCacheGConf * )malloc( sizeof( *ret ) ) ) )
++		return NULL;
++	memset(ret,0,sizeof(*ret));
++	if( !( ret->implData = malloc( sizeof( FSGConfData ) ) ) )
++	{
++		free( ret );
++		return NULL;
++	}
++
++	memset( ret ->implData, 0, sizeof( FSGConfData ) );
++	return ret;
++}
++
++static void
++releaseGConf( TokenCacheGConf *gconf )
++{
++	FSGConfData *data;
++
++	if( !gconf )
++		return;
++
++	data = GCONFDATA_GCONF(gconf);
++
++	if( data )
++	{
++		if( data->TGTTokenDirectory )
++			free( data->TGTTokenDirectory );
++		if( data->STTokenDirectory )
++			free( data->STTokenDirectory );
++		if( data->KRBTokenDirectory )
++			free( data->KRBTokenDirectory );
++		free( data );
++	}
++	free( gconf );
++}
++
++/*
++ * This will initialise the FileBasedTokenCache
++ *
++ * Valid keys:
++ *	TGTTokDir	The Directory for storage of all TGT tokens
++ *	STTokDir	The Directory for storage of all ST tokens
++ *	KRBTokDir	The Directory for stoarga of all Kerberos tickets
++ */
++TokenCacheGConf *
++globalInitialiseCache( unsigned int numArgs, char **keys, char **val )
++{
++	int i = 0;
++	TokenCacheGConf *ret;
++	FSGConfData *fsgdata;
++	DEBUG( stderr, "Entering initialiseCache\n" );
++
++	if( numArgs != 3 )
++	{
++		DEBUG( stderr, "Wrong number of arguments passed\n" );
++		syslog( LOG_ERR, "Wrong numer of argument passed to global intialise for file system cache" );
++		return NULL;
++	}
++
++	if( !( ret = allocateGConf() ) )
++	{
++		DEBUG( stderr, "Failed to allocate GConf struct\n" );
++		syslog( LOG_ERR, "Failed to initialise - Internal error allocating memory" );
++		return NULL;
++	}
++	fsgdata=GCONFDATA_GCONF(ret);
++
++	for( i = 0 ; i < numArgs ; i++ )
++	{
++		if( !strcasecmp( keys[ i ], TGTTokDir ) )
++		{
++			DEBUG( stderr, "Setting the TGT Token directory to \"%s\"\n", val[ i ] );
++			if( !( fsgdata->TGTTokenDirectory = malloc( strlen( val[ i ]  + 1 ) ) ) )
++			{
++				DEBUG( stderr, "Failed to allocate memory for TGT Token Directory\n" );
++				continue;
++			}
++			strcpy( fsgdata->TGTTokenDirectory, val[ i ] );
++		}
++
++		if( !strcasecmp( keys[ i ], STTokDir ) )
++		{
++			DEBUG( stderr, "Setting the ST Token directory to \"%s\"\n", val[ i ] );
++			if( !( fsgdata->STTokenDirectory = malloc( strlen( val[ i ]  + 1 ) ) ) )
++			{
++				DEBUG( stderr, "Failed to allocate memory for ST Token Directory\n" );
++				continue;
++			}
++			strcpy( fsgdata->STTokenDirectory, val[ i ] );
++		}
++
++		if( !strcasecmp( keys[ i ], KRBTokDir ) )
++		{
++			DEBUG( stderr, "Setting the KRB Token directory to \"%s\"\n", val[ i ] );
++			if( !( fsgdata->KRBTokenDirectory = malloc( strlen( val[ i ] + 1 ) ) ) )
++			{
++				DEBUG( stderr, "Failed to allocate memory for Kerberos Token Directory\n" );
++				continue;
++			}
++			strcpy( fsgdata->KRBTokenDirectory, val[ i ] );
++		}
++		syslog(LOG_WARNING,"file system cache ignoring invalid argument '%s'",keys[i]);
++	}
++
++
++	if( checkDirs( fsgdata ) )
++	{
++		DEBUG( stderr, "ERROR - Not initialised correctly - invalid directory!\n" );
++		syslog(LOG_ERR, "Not initialised correctly - configured with invalid directory!\n" );
++		releaseGConf( ret );
++		return NULL;
++	}
++
++	DEBUG( stderr, "Exiting initialiseCache normally (%s,%s)\n",
++			fsgdata->TGTTokenDirectory, fsgdata->STTokenDirectory );
++	return ret;
++}
++
++static TokenCacheTConf *
++allocateTConf( TokenCacheGConf *gconf )
++{
++	TokenCacheTConf *ret;
++
++	if( !( ret = ( TokenCacheTConf * )malloc( sizeof( *ret ) ) ) )
++		return NULL;
++	memset( ret, 0, sizeof( *ret ) );
++	ret->globalConf = gconf;
++
++	return ret;
++}
++
++static void
++releaseTConf( TokenCacheTConf *tconf )
++{
++	if( tconf )
++		free( tconf );
++}
++
++TokenCacheTConf *
++initialiseCache( TokenCacheGConf *gconf, unsigned int numArgs, char **keys, char **vals )
++{
++	TokenCacheTConf *ret;
++
++	if( !( ret = allocateTConf( gconf ) ) )
++		return NULL;
++
++	return ret;
++}
++
++void
++globalCloseCache( TokenCacheGConf **gconf )
++{
++	DEBUG( stderr, "Entering globalCloseCache\n" );
++
++	releaseGConf( *gconf );
++	*gconf = NULL;
++	DEBUG( stderr, "Exiting globalCloseCache normally\n" );
++}
++
++void
++closeCache( TokenCacheTConf **tconf )
++{
++	DEBUG( stderr, "Entering closeCache\n" );
++	releaseTConf( *tconf );
++	*tconf = NULL;
++	DEBUG( stderr, "Exiting closeCache normally\n" );
++}
++
++#define TEMP_FILE_TEMPLATE "CoSignTMP_XXXXXX"
++#define COSIGN_KRB_FILE "CoSignKRB_XXXXXX"
++
++/*
++ * This function will create a temporary file in the directory dir.
++ * On success the tmpNameBuf will be filled with the full path of the temp
++ * file created, if it is big enough, otherwise an error is raised.
++ * Return is the FILE buffer of the the temp file, or NULL on error
++ */
++static FILE *
++createTempFile_( const char *dir, unsigned int bufSz, char *tmpNameBuf, char *template )
++{
++	char buf[ MAXPATHLEN ];
++	int fd = -1;
++
++	memset( buf, 0, MAXPATHLEN );
++	snprintf( buf, MAXPATHLEN - 1, "%s/%s", dir, template );
++
++	if( ( fd = mkstemp( buf ) ) == -1 )
++	{
++		DEBUG( stderr, "Failed to generate temp file name for directory \"%s\"\n", dir );
++		return NULL;
++	}
++	DEBUG( stderr, "Create temp file name of \"%s\"\n", buf );
++
++	if( strlen( buf ) >= bufSz )
++	{
++		DEBUG( stderr, "Buffer size too small!!\n" );
++		close(fd);
++		unlink(buf);
++		return NULL;
++	}
++	strcpy( tmpNameBuf, buf );
++
++	return fdopen( fd, "w" );
++}
++
++static FILE *
++createTempFile( const char *dir, unsigned int bufSz, char *tmpNameBuf )
++{
++	return createTempFile_( dir, bufSz, tmpNameBuf, TEMP_FILE_TEMPLATE );
++}
++
++static FILE *
++createKRBFile( const char *dir, unsigned int bufSz, char *tmpNameBuf )
++{
++	return createTempFile_( dir, bufSz, tmpNameBuf, COSIGN_KRB_FILE );
++}
++
++static void
++writeTGTOut( FILE *out, CoSignTGT *t )
++{
++	FSCacheData *d = ( FSCacheData *)t->implData;
++
++	fprintf( out, "v%d\n", t->version );
++	fprintf( out, "s%d\n", t->state );
++	fprintf( out, "i%s\n", inet_ntoa( t->addr ) ); /* NOT THREAD SAFE!!! */
++	fprintf( out, "p%s\n", t->user );
++	fprintf( out, "r%s\n", t->realm );
++	fprintf( out, "t0\n");
++	if( strlen( d->krbPath ) )
++		fprintf( out, "k%s\n", d->krbPath );
++}
++
++/*
++ * This will check the path for any nasties
++ * Return of 0 means not OK.
++ * Return of 1 means the path is OK
++ */
++static int
++checkCoSignIDOK( CoSignTicketID id )
++{
++	static char *naughties = "/;&,|<>`";
++	int i = 0;
++
++	for( ; i < strlen( naughties ) ; i++ )
++		if( strchr( id, naughties[ i ] ) )
++			return 0;
++
++	return 1;
++}
++
++static void
++getTGTFilePath( TokenCacheGConf *gconf, CoSignTicketID id, char *buf, unsigned int bufsz )
++{
++	snprintf( buf, bufsz, "%s/cosign=%s", GCONFDATA_GCONF(gconf)->TGTTokenDirectory, id );
++}
++
++static void
++getSTFilePath( TokenCacheGConf *gconf, CoSignTicketID id, CoSignServiceName sname, char *buf, unsigned int bufsz )
++{
++	snprintf( buf, bufsz, "%s/cosign-%s=%s", GCONFDATA_GCONF(gconf)->STTokenDirectory, sname, id );
++}
++
++/*
++ * This function will get the cache file with CoSignTicketID id.
++ * It is will open the file with the mode (fopen (3)).
++ * Return of the file or NULL on error
++ */
++static FILE *
++getTGTFile( TokenCacheGConf *gconf, CoSignTicketID id, char *mode )
++{
++	char cacheFilePath[ MAXPATHLEN ];
++	FILE *cacheFile = NULL;
++
++	getTGTFilePath( gconf, id, cacheFilePath,MAXPATHLEN );
++
++	if( !checkCoSignIDOK( id ) )
++	{
++		DEBUG( stderr, "The cacheFilePath contains invalid characters\n" );
++		return NULL;
++	}
++
++	DEBUG( stderr, "Getting the TGT cache file '%s'\n", cacheFilePath ); //BRETT
++	if( !( cacheFile = fopen( cacheFilePath, mode ) ) )
++	{
++		DEBUG( stderr, "Failed to open cache file '%s'\n", cacheFilePath );
++		return NULL;
++	}
++
++	return cacheFile;
++
++}
++
++static int
++updateTGTInCache( TokenCacheTConf *tconf, CoSignTGT *ticket )
++{
++	char tgtFilePath[ MAXPATHLEN ];
++	FILE *cacheFile = NULL;
++	DEBUG( stderr, "Entering updateTGTInCache\n" );
++	FSCacheData *data = ( FSCacheData * )ticket->implData;
++
++	if( !( cacheFile = getTGTFile( tconf->globalConf, ticket -> id, "w" ) ) )
++	{
++		DEBUG( stderr, "ERROR: cache file not found in update\n" );
++		syslog(LOG_ERR,"Failed to locate TGT with id '%s' in cache fo update", ticket->id);
++		return 1;
++	}
++
++	writeTGTOut( cacheFile, ticket );
++	fclose( cacheFile );
++
++	getTGTFilePath( tconf->globalConf, ticket->id, tgtFilePath,MAXPATHLEN );
++	data = ( FSCacheData * )ticket->implData;
++	if( stat( tgtFilePath, & data->fStats ) )
++	{
++		DEBUG( stderr, "Failed to stat the TGT file '%s'\n", tgtFilePath );
++		syslog(LOG_ERR, "Failed to stat the TGT file '%s'\n", tgtFilePath );
++		return 2;
++	}
++
++	DEBUG( stderr, "Exiting updateTGTInCache normally\n" );
++	return 0;
++}
++
++void
++logUserOut( TokenCacheTConf *tconf, CoSignTGT *tgt )
++{
++	FSCacheData *data = ( FSCacheData * )tgt->implData;
++	char tgtFilePath[ MAXPATHLEN ];
++
++	if(!checkCoSignIDOK(tgt->id))
++	{
++		DEBUG(stderr,"TGT ID (%s) contains nasties\n",tgt->id);
++		syslog(LOG_ERR,"TGT ID (%s) contains nasties in logout",tgt->id);
++		return;
++	}
++
++	getTGTFilePath( tconf->globalConf, tgt->id, tgtFilePath,MAXPATHLEN );
++	if( chmod( tgtFilePath, S_ISGID | S_IRUSR ) )
++	{
++		syslog(LOG_ERR,"Failed to chmod the TGT file '%s' in logout",tgtFilePath);
++		DEBUG( stderr, "Failed to log the user out!\n" );
++		return;
++	}
++	tgt->state = LoggedOut;
++	utime( tgtFilePath, NULL );
++
++	if( stat( tgtFilePath, &data->fStats ) )
++	{
++		DEBUG( stderr, "Failed to stat the TGT file '%s'\n", tgtFilePath );
++		syslog(LOG_ERR,"Failed to stat the TGT file '%s' in logout",tgtFilePath);
++	}
++}
++
++time_t
++getLastAccessTime( TokenCacheTConf *tconf, CoSignTGT *tgt )
++{
++	return ( ( FSCacheData * )( tgt->implData ) )->fStats.st_mtime;
++}
++
++time_t
++getCreationTime( TokenCacheTConf *tconf, CoSignTGT *tgt )
++{
++	return ( ( FSCacheData * )( tgt->implData))->fStats.st_ctime;
++}
++
++void
++updateAccessTime( TokenCacheTConf *tconf, CoSignTGT *tgt, time_t t )
++{
++	struct utimbuf tbuf;
++
++	char tgtFilePath[ MAXPATHLEN ];
++	FSCacheData *data = ( FSCacheData * )tgt->implData;
++
++	if(!checkCoSignIDOK(tgt->id))
++	{
++		DEBUG(stderr,"TGT ID (%s) contains nasties\n",tgt->id);
++		syslog(LOG_ERR,"TGT ID (%s) contains nasties in updateAccessTime",tgt->id);
++		return;
++	}
++
++	getTGTFilePath( tconf->globalConf, tgt->id, tgtFilePath,MAXPATHLEN );
++	tbuf.actime = t;
++	tbuf.modtime = t;
++	utime( tgtFilePath, &tbuf );
++
++	if( stat( tgtFilePath, &data->fStats ) )
++	{
++		syslog(LOG_ERR,"Failed to stat TGT file '%s' in updateAccessTime",tgtFilePath);
++		DEBUG( stderr, "Failed to stat the TGT file '%s'\n", tgtFilePath );
++	}
++}
++
++static void
++processSTCacheLine( CoSignST *st, char *line )
++{
++    const char flag = *line;
++    const char *val = line+1;
++
++	switch(flag)
++	{
++		case 'l':
++			if(strlen(val) < MAX_TICKET_ID_LENGTH )
++				strncpy(st->tgtid,val,strlen(val)-1);
++			else
++			{
++				DEBUG(stderr,"ERROR: l flag in ST cache file has length too long\n" );
++				syslog(LOG_ERR,"l flag in ST cache file for id '%s' has length too long",st->id );
++			}
++			break;
++		default:
++			DEBUG( stderr, "Unknown entry key in cache file '%c'\n", flag );
++			syslog(LOG_ERR, "Unknown entry key in cache file '%c' for id '%s'\n", flag,st->id );
++	}
++}
++
++static CoSignST *
++getSTFromCache( TokenCacheTConf *tconf, CoSignServiceName name, CoSignTicketID stid )
++{
++	char stFilePath[MAXPATHLEN];
++	FILE *stFile;
++	CoSignST *ret = NULL;
++	char lineBuf[2048];
++
++	if(!checkCoSignIDOK(stid))
++	{
++		DEBUG(stderr,"The ST ID '%s' contain nasties!\n");
++		syslog(LOG_ERR,"The ST ID '%s' contain nasties!\n");
++		return ret;
++	}
++
++	getSTFilePath(tconf->globalConf,stid,name,stFilePath,MAXPATHLEN);
++	if(!(stFile=fopen(stFilePath,"r")))
++	{
++		DEBUG(stderr,"Failed to open the ST file '%s': %s\n",stFilePath,strerror(errno));
++		syslog(LOG_ERR,"Failed to open the ST file '%s': %s",stFilePath,strerror(errno));
++		return ret;
++}
++
++	if(!(ret=createCoSignST()))
++	{
++		DEBUG(stderr,"Failed to create the Cosign ST\n");
++		syslog(LOG_ERR,"Failed to create the Cosign ST");
++		fclose(stFile);
++		return ret;
++	}
++
++	strcpy(ret->id,stid);
++	strcpy(ret->serviceName,name);
++
++	memset( lineBuf, '\0', 2048 );
++	while( fgets( lineBuf, 2048, stFile ) != NULL && strlen( lineBuf ) != 0 )
++	{
++		processSTCacheLine( ret, lineBuf );
++		memset( lineBuf, '\0', 2048 );
++	}
++	fclose(stFile);
++
++	if(!strlen(ret->tgtid))
++	{
++		DEBUG(stderr,"Failed to process the ST file '%s': Didn't contain valid TGT line\n",stFilePath);
++		syslog(LOG_ERR,"Failed to process the ST file '%s': Didn't contain valid TGT line",stFilePath);
++		releaseCoSignST(&ret);
++		return NULL;
++	}
++
++	return ret;
++}
++
++CoSignTGT *
++getTGTForSTID( TokenCacheTConf *tconf, CoSignServiceName name, CoSignTicketID stid )
++{
++	CoSignST *st;
++	CoSignTGT *tgt;
++
++	if(!(st=getSTFromCache(tconf,name,stid)))
++	{
++		DEBUG(stderr,"Failed to locate the ST (%s,%s) in the cache\n",name,stid);
++		syslog(LOG_ERR,"Failed to locate the ST (%s,%s) in the cache",name,stid);
++		return NULL;
++	}
++
++	if(!(tgt=getTGTFromCache(tconf,st->tgtid)))
++	{
++		DEBUG(stderr,"Failed to locate the TGT '%s' associcated to ST '%s'\n",
++					st->tgtid,stid);
++		syslog(LOG_ERR,"Failed to locate the TGT '%s' associcated to ST '%s'",
++					st->tgtid,stid);
++		releaseCoSignST(&st);
++		return NULL;
++	}
++
++	releaseCoSignST(&st);
++	return tgt;
++}
++
++CoSignTGT *
++getTGTForST( TokenCacheTConf *tconf, CoSignServiceName name, CoSignST *st )
++{
++	return getTGTForSTID( tconf, name, st->id );
++}
++
++void
++writeSTOut( FILE *stfile, CoSignST *st)
++{
++	fprintf(stfile,"l%s\n",st->tgtid);
++}
++
++int
++addSTToCache( TokenCacheTConf *tconf, CoSignTGT *tgt, CoSignST *st )
++{
++	FILE *tempFile;
++	char tempName[ MAXPATHLEN ];
++	char cacheName[ MAXPATHLEN ];
++	CoSignTGT *tgt1;
++
++
++	DEBUG( stderr, "Entering addSTToCache\n" );
++
++	if( !GCONFDATA_TCONF(tconf)->STTokenDirectory )
++	{
++		DEBUG( stderr, "FS Cache not initialised to handle STs\n" );
++		syslog(LOG_ERR, "FS Cache not initialised to handle STs" );
++		return 1;
++	}
++
++	if(!checkCoSignIDOK(st->id))
++	{
++		DEBUG(stderr,"ST ID (%s) contains nasties\n",st->id);
++		syslog(LOG_ERR,"ST ID (%s) contains nasties in addSTToCache",st->id);
++		return 1;
++	}
++
++	if((tgt1=getTGTForSTID(tconf,st->serviceName,st->id)))
++	{
++		/* appears to already be registered!! */
++		if(strcmp(tgt1->user,tgt->user) || strcmp(tgt1->realm,tgt->realm))
++		{
++			/*appear to be for different people too!!!*/
++			DEBUG(stderr,"Error the ST '%s' for service '%s' is already registered to %s@%s\n",
++					st->id,st->serviceName,tgt1->user,tgt1->realm);
++			syslog(LOG_ERR,"The ST '%s' for service '%s' is already registered to %s@%s\n",
++					st->id,st->serviceName,tgt1->user,tgt1->realm);
++			releaseCoSignTGT(&tgt1);
++			return 1;
++		}
++
++		/*appear the same person hase the ST already registered
++		 *quietly tell them all is good! */
++		releaseCoSignTGT(&tgt1);
++		return 0;
++	}
++
++	if( !( tempFile = createTempFile( GCONFDATA_TCONF(tconf)->STTokenDirectory, MAXPATHLEN, tempName ) ) )
++	{
++		DEBUG( stderr, "Failed to create the temp file for the ST\n" );
++		syslog(LOG_ERR,"Failed to create the temp file for the ST!");
++		return 1;
++	}
++
++	strncpy(st->tgtid,tgt->id,MAX_TICKET_ID_LENGTH);
++	writeSTOut(tempFile,st);
++	fclose( tempFile );
++
++	/* Link the temp file to the correct name */
++	getSTFilePath(tconf->globalConf,st->id,st->serviceName,cacheName,MAXPATHLEN);
++	if( link( tempName, cacheName ) == -1 )
++	{
++		DEBUG( stderr, "Failed to link temp file to cache file\n" );
++		syslog(LOG_ERR,"Failed to link the temp file(%s) to the ST file(%s)",
++				tempName,cacheName );
++		unlink( tempName );
++		return 2;
++	}
++	unlink( tempName );
++
++	DEBUG( stderr, "Exiting addSTToCache normally (cache file '%s')\n", cacheName );
++	return 0;
++}
++
++int
++addTGTToCache( TokenCacheTConf *tconf, CoSignTGT *ticket )
++{
++	FILE *tempFile;
++	char tempName[ MAXPATHLEN ];
++	char cacheName[ MAXPATHLEN ];
++
++	DEBUG( stderr, "Entering addTGTToCache\n" );
++
++	if( !GCONFDATA_TCONF(tconf)->TGTTokenDirectory )
++	{
++		DEBUG( stderr, "FS Cache not initialised to handle TGTs\n" );
++		syslog(LOG_ERR, "FS Cache not initialised to handle TGTs" );
++		return 1;
++	}
++
++	if( !ticket || !strlen( ticket->id ) )
++	{
++		DEBUG( stderr, "Ticket not supplied or the ticket ID length is 0\n" );
++		syslog(LOG_ERR, "Ticket not supplied or ID length is 0" );
++		return 1;
++	}
++
++	if(!checkCoSignIDOK(ticket->id))
++	{
++		DEBUG(stderr,"TGT ID (%s) contains nasties\n",ticket->id);
++		syslog(LOG_ERR,"TGT ID (%s) contains nasties in addTGTToCache",ticket->id);
++		return 1;
++	}
++
++	if( !( tempFile = createTempFile( GCONFDATA_TCONF(tconf)->TGTTokenDirectory, MAXPATHLEN, tempName ) ) )
++	{
++		DEBUG( stderr, "Failed to create the temp file for the TGT\n" );
++		syslog(LOG_ERR,"Failed to create the temp file for the TGT!");
++		return 1;
++	}
++
++	writeTGTOut( tempFile, ticket );
++	fclose( tempFile );
++
++	/* Link the temp file to the correct name */
++	getTGTFilePath(tconf->globalConf,ticket->id,cacheName,MAXPATHLEN);
++	if( link( tempName, cacheName ) == -1 )
++	{
++		DEBUG( stderr, "Failed to link temp file to cache file\n" );
++		syslog(LOG_ERR,"Failed to link the temp file(%s) to the TGT file(%s)",
++				tempName,cacheName );
++		unlink( tempName );
++		return 2;
++	}
++	unlink( tempName );
++
++	DEBUG( stderr, "Exiting addTGTToCache normally (cache file '%s')\n", cacheName );
++	return 0;
++}
++
++void
++removeTGTFromCache( TokenCacheTConf *tconf, CoSignTGT *tgt )
++{
++	char buf[ MAXPATHLEN ];
++	FSCacheData *d = ( FSCacheData * )tgt->implData;
++
++	if( !GCONFDATA_TCONF(tconf)->TGTTokenDirectory )
++	{
++		DEBUG( stderr, "FS Cache not initialised to handle TGTs\n" );
++		syslog(LOG_ERR, "FS Cache not initialised to handle TGTs" );
++		return;
++	}
++
++	if( !checkCoSignIDOK( tgt->id ) )
++	{
++		DEBUG( stderr, "The file path contains invalid characters\n" );
++		syslog(LOG_ERR, "The tgt id contains invalid characters in removeTGTFromCache" );
++		return;
++	}
++
++	getTGTFilePath(tconf->globalConf,tgt->id,buf,MAXPATHLEN);
++	if(unlink( buf ))
++	{
++		DEBUG(stderr,"Failed to unlink the TGT file '%s': %s\n",buf,strerror(errno));
++		syslog(LOG_ERR,"Failed to unlink the TGT file '%s': %s",buf,strerror(errno));
++	}
++	if(strlen( d->krbPath ) && unlink( d->krbPath ))
++	{
++		DEBUG(stderr,"Failed to unlink the krb file '%s': %s\n",d->krbPath,strerror(errno));
++		syslog(LOG_ERR,"Failed to unlink the krb file '%s': %s",d->krbPath,strerror(errno));
++	}
++
++	/* Should really remove the ST, but this could be quite expensive given that
++	 * a search of all existing ST is the only this could be done in the current
++	 * format of the tickets */
++}
++
++void
++removeTGTFromCache_id( TokenCacheTConf *tconf, CoSignTicketID id )
++{
++	CoSignTGT *tgt;
++
++	if( ( tgt = getTGTFromCache( tconf, id ) ) )
++	{
++		DEBUG( stderr, "Failed to get the CoSignTGT from cache for removal\n" );
++		return;
++	}
++
++	removeTGTFromCache( tconf, tgt );
++	releaseCoSignTGT( &tgt );
++}
++
++void
++removeSTFromCache( TokenCacheTConf *tconf, CoSignST *st )
++{
++	removeSTFromCache_id(tconf,st->serviceName,st->id);
++}
++
++void
++removeSTFromCache_id( TokenCacheTConf *tconf, CoSignServiceName name, CoSignTicketID id )
++{
++	char stPath[MAXPATHLEN];
++
++	if(!checkCoSignIDOK(id))
++	{
++		DEBUG(stderr,"ST ID contains nasties\n");
++		syslog(LOG_ERR,"ST ID '%s' contains nasties",id);
++		return;
++	}
++
++	getSTFilePath(tconf->globalConf,id,name,stPath,MAXPATHLEN);
++	if(unlink(stPath))
++	{
++		DEBUG(stderr,"Failed to remove the ST file '%s'\n",stPath);
++		syslog(LOG_ERR,"Failed to remove the ST file '%s'\n",stPath);
++	}
++}
++void
++getKerberosTicketFromTGT( TokenCacheTConf *tconf, CoSignTGT *ticket, unsigned int *size, char *krbBuf )
++{
++	FSCacheData *fsdata = ( FSCacheData * )ticket->implData;
++	FILE *krbFile = NULL;
++	size_t nread = 0, aread = 0;
++
++	*size=0;
++	DEBUG( stderr, "Entering getKerberosTickeFromTGT\n" );	
++	if( !( krbFile = fopen( fsdata->krbPath, "r" ) ) )
++	{
++		DEBUG( stderr, "Failed to open the kerberos file '%s'\n", fsdata->krbPath );
++		syslog(LOG_ERR, "Failed to open the kerberos file '%s' for tgt '%s'\n",
++				fsdata->krbPath,ticket->id );
++		return;
++	}
++
++	while( ( aread = fread( krbBuf + nread, sizeof( char ), *size - nread - 1, krbFile ) ) > 0 &&
++		( nread < *size ) )
++		nread+=aread;
++
++	fclose( krbFile );
++	DEBUG( stderr, "Exiting getKerberosTickeFromTGT normally\n" );	
++	*size = nread;
++}
++
++int
++addKerberosTicketToTGT( TokenCacheTConf *tconf, CoSignTGT *ticket, unsigned int size, char *krbTicketBuf )
++{
++	FSCacheData *fsdata = NULL;
++	FILE *tmpKrbTicket;
++	char tempName[ MAXPATHLEN ];
++	int ret = 0;
++
++	DEBUG( stderr, "Entering addKerberosTicketToTGT" );	
++
++	if( !GCONFDATA_TCONF(tconf)->KRBTokenDirectory )
++	{
++		DEBUG( stderr, "FS Cache not initialise to handle kerberos tickets\n" );
++		syslog(LOG_ERR, "FS Cache not initialise to handle kerberos tickets" );
++		return 1;
++	}
++
++	fsdata = ( FSCacheData * )ticket->implData;
++
++	if( strlen( fsdata -> krbPath ) )
++	{
++		DEBUG( stderr, "A kerberos ticket appears to be already stored against this TGT\n" );
++		syslog(LOG_ERR, "A kerberos ticket appears to be already stored against the TGT '%s'",
++			ticket->id );
++		return 2;
++	}
++
++	if( !( tmpKrbTicket = createKRBFile( GCONFDATA_TCONF(tconf)->KRBTokenDirectory,
++							sizeof( tempName ), tempName ) ) )
++	{
++		DEBUG( stderr, "Failed to create a temporary kerberos ticket path\n" );
++		syslog(LOG_ERR, "Failed to create a temporary kerberos ticket path for tgt '%s'",
++				ticket->id );
++		return 3;
++	}
++	DEBUG( stderr, "**KRB Ticket file is '%s'\n", tempName ); //BRETT
++
++	if( fwrite( krbTicketBuf, sizeof( char ), size, tmpKrbTicket ) != size )
++	{
++		DEBUG( stderr, "Failed to write the Kerberos Ticket out to disk\n" );
++		syslog(LOG_ERR, "Failed to write the Kerberos Ticket out to disk for tgt '%s'",
++			ticket->id );
++		fclose( tmpKrbTicket );
++		unlink( tempName );
++		return 4;
++	}
++	fclose( tmpKrbTicket );
++
++	strcpy( fsdata -> krbPath, tempName );
++
++	ret = updateTGTInCache( tconf, ticket );
++	DEBUG( stderr, "Exiting addKerberosTicketToTGT normally\n" );	
++	return ret;
++}
++
++static void
++processTGTCacheLine( CoSignTGT *tgt, const char *line )
++{
++	const char flag = *line;
++	const char *val = line+1;
++	FSCacheData *d = NULL;
++
++	switch( flag )
++	{
++		case 'v':
++			tgt->version = atoi( val );
++			break;
++		case 's':
++			/*tgt->state = atoi( val );*/ /* IGNORED - appears to be legacy code */
++			break;
++		case 'i':
++			inet_aton( val, &tgt->addr );
++			break;
++		case 'p':
++			if( strlen( val ) < MAX_USER_LENGTH )
++				strncpy( tgt->user, val, strlen( val ) - 1 );
++			else
++			{
++				DEBUG( stderr, "ERROR: p flag in TGT cache file has username too long\n" );
++				syslog(LOG_ERR, "p flag in TGT cache file for id '%s' has username too long",tgt->id );
++			}
++			break;
++		case 'r':
++			if( strlen( val ) < MAX_REALM_LENGTH )
++				strncpy( tgt->realm, val, strlen( val ) - 1 );
++			else
++			{
++				DEBUG( stderr, "ERROR: r flag in TGT cache file has realm too long\n" );
++				syslog(LOG_ERR, "r flag in TGT cache file for id '%s' has realm too long\n",tgt->id );
++			}
++			break;
++		case 't':
++			break;
++		case 'k':
++			d = ( FSCacheData * )tgt->implData;
++			if( !d )
++				break;
++			if( strlen( val ) < MAXPATHLEN )
++				strncpy( d->krbPath, val, strlen( val ) - 1 );
++			else
++			{
++				DEBUG( stderr, "ERROR: k flags in TGT cache file has krb ticket path too long\n" );
++				syslog(LOG_ERR, "k flag in TGT cache file for id '%s' has krb ticket path too long\n",tgt->id );
++			}
++			break;
++		default:
++			DEBUG( stderr, "Unknown entry key in cache file '%c'\n", flag );
++			syslog(LOG_ERR, "Unknown entry key in cache file '%c' for id '%s'\n", flag,tgt->id );
++	}
++}
++
++CoSignTGT *
++getTGTFromCache( TokenCacheTConf *tconf, CoSignTicketID id )
++{
++	char lineBuf[ 2048 ];
++	char tgtFilePath[ MAXPATHLEN ];
++	FILE *cacheFile = NULL;
++	CoSignTGT *tgt = NULL;
++	FSCacheData *data;
++
++	DEBUG( stderr, "Entering getTGTFromCache\n" );
++
++	if( !GCONFDATA_TCONF(tconf)->TGTTokenDirectory )
++	{
++		DEBUG( stderr, "FS Cache not initialised to handle TGTs\n" );
++		syslog(LOG_ERR, "FS Cache not initialised to handle TGTs" );
++		return NULL;
++	}
++
++	if( !( tgt = createCoSignTGT(tconf) ) )
++	{
++		DEBUG( stderr, "Failed to allocate memory for TGT\n" );
++		syslog(LOG_ERR, "Failed to allocate memory for TGT" );
++		fclose( cacheFile );
++		return NULL;
++	}
++
++	if( !( cacheFile = getTGTFile( tconf->globalConf, id, "r" ) ) )
++	{
++		DEBUG( stderr, "Failed to get TGT with id '%s' from cache\n", id );
++		syslog(LOG_ERR, "Failed to get TGT with id '%s' from cache", id );
++		return NULL;
++	}
++
++	strcpy( tgt->id, id );
++	memset( lineBuf, '\0', 2048 );
++	while( fgets( lineBuf, 2048, cacheFile ) != NULL && strlen( lineBuf ) != 0 )
++	{
++		processTGTCacheLine( tgt, lineBuf );
++		memset( lineBuf, '\0', 2048 );
++	}
++	fclose( cacheFile );
++
++	/* set the logout status etc from the file */
++	getTGTFilePath( tconf->globalConf, id, tgtFilePath,MAXPATHLEN );
++	data = ( FSCacheData * )tgt->implData;
++	if( stat( tgtFilePath, & data->fStats ) )
++	{
++		DEBUG( stderr, "Failed to stat the TGT file '%s'\n", tgtFilePath );
++		syslog(LOG_ERR, "Failed to stat the TGT file '%s'", tgtFilePath );
++		releaseCoSignTGT( &tgt );
++		return NULL;
++	}
++	if( data->fStats.st_mode & S_ISGID )
++		tgt->state = LoggedOut;
++	else
++		tgt->state = LoggedIn;
++	
++	DEBUG( stderr, "Exiting getTGTFromCache normally\n" );
++	return tgt;
++}
++
++CoSignTGT *
++getAllTGTs(TokenCacheTConf *tconf, unsigned int *nTGTs)
++{
++	CoSignTGT *ret=NULL, *tail=NULL;
++	DIR *dir;
++	struct dirent *dent;
++	CoSignTicketID id;
++
++	*nTGTs=0;
++	if(!(dir=opendir(GCONFDATA_TCONF(tconf)->TGTTokenDirectory)))
++	{
++		DEBUG(stderr,"Failed to open the TGT directory '%s': %s\n",
++			GCONFDATA_TCONF(tconf)->TGTTokenDirectory,strerror(errno));
++		syslog(LOG_ERR,"Failed to open the TGT directory '%s': %s\n",
++			GCONFDATA_TCONF(tconf)->TGTTokenDirectory,strerror(errno));
++	}
++
++	while((dent=readdir(dir)))
++	{
++		CoSignTGT *temp;
++		if(strncmp(dent->d_name,"cosign=",7))
++			continue; /* not interested */
++		strncpy(id,dent->d_name+7,MAX_TICKET_ID_LENGTH);
++		if(!ret)
++		{
++			ret=tail=getTGTFromCache(tconf,id);
++			if(!ret)
++			{
++				DEBUG(stderr,"Failed to get TGT for id '%s' for TGT list\n", id);
++				syslog(LOG_ERR,"Failed to get TGT for id '%s' for TGT list", id);
++				continue;
++			}
++		}
++		else
++		{
++			tail->next=getTGTFromCache(tconf,id);
++			if(!tail->next)
++			{
++				DEBUG(stderr,"Failed to get TGT for id '%s' for TGT list\n", id);
++				syslog(LOG_ERR,"Failed to get TGT for id '%s' for TGT list", id);
++				continue;
++			}
++			tail=tail->next;
++		}
++		(*nTGTs)++;
++	}
++	closedir(dir);
++	return ret;
++}
++
++CoSignST *
++getAllSTs(TokenCacheTConf *tconf, unsigned int *nSTs)
++{
++	CoSignST *ret=NULL, *tail=NULL;
++	DIR *dir;
++	struct dirent *dent;
++	CoSignTicketID id;
++	CoSignServiceName name;
++
++	*nSTs=0;
++	if(!(dir=opendir(GCONFDATA_TCONF(tconf)->STTokenDirectory)))
++	{
++		DEBUG(stderr,"Failed to open the ST directory '%s': %s\n",
++			GCONFDATA_TCONF(tconf)->STTokenDirectory,strerror(errno));
++		syslog(LOG_ERR,"Failed to open the ST directory '%s': %s\n",
++			GCONFDATA_TCONF(tconf)->STTokenDirectory,strerror(errno));
++	}
++
++	while((dent=readdir(dir)))
++	{
++		CoSignTGT *temp;
++		char *eptr;
++		if(strncmp(dent->d_name,"cosign-",7))
++			continue; /* not interested */
++		eptr=strchr(dent->d_name,'=');
++		*eptr='\0';
++		strncpy(name,dent->d_name+7,MAX_SERVICE_LENGTH);
++		strncpy(id,eptr+1,MAX_TICKET_ID_LENGTH);
++		if(!ret)
++		{
++			ret=tail=getSTFromCache(tconf,name,id);
++			if(!ret)
++			{
++				DEBUG(stderr,"Failed to get ST for id '%s' for ST list\n", id);
++				syslog(LOG_ERR,"Failed to get ST for id '%s' for ST list", id);
++				continue;
++			}
++		}
++		else
++		{
++			tail->next=getSTFromCache(tconf,name,id);
++			if(!tail->next)
++			{
++				DEBUG(stderr,"Failed to get ST for id '%s' for ST list\n", id);
++				syslog(LOG_ERR,"Failed to get ST for id '%s' for ST list", id);
++				continue;
++			}
++			tail=tail->next;
++		}
++		(*nSTs)++;
++	}
++	closedir(dir);
++	return ret;
++}
++
++CoSignTGT *
++createCoSignTGT( )
++{
++	CoSignTGT *ret;
++
++	DEBUG( stderr, "Entering createCoSignTGT for fileSystem cache\n" );
++	if( !( ret = ( CoSignTGT * )malloc( sizeof( *ret ) ) ) )
++	{
++		DEBUG( stderr, "Failed to allocate memory for the CoSignTGT\n" );
++		return NULL;
++	}
++	memset( ret, 0, sizeof( *ret ) );
++
++	if( !( ret->implData = malloc( sizeof( FSCacheData ) ) ) )
++	{
++		DEBUG( stderr, "Failed to allocate memory for the CoSignTGT filesystem cache opaque data\n" );
++		free( ret );
++		return NULL;
++	}
++	memset( ret->implData, 0, sizeof( FSCacheData ) );
++
++	DEBUG( stderr, "Exiting createCoSignTGT for fileSystem cache normally\n" );
++	return ret;
++}
++
++void
++releaseCoSignTGT( CoSignTGT **tgt )
++{
++	CoSignTGT *val = *tgt;
++	if( val )
++	{
++		if( val->implData )
++			free( val->implData );
++		free( val );
++		*tgt = NULL;
++	}
++}
++
++CoSignST *
++createCoSignST( )
++{
++	CoSignST *ret;
++
++	DEBUG( stderr, "Entering createCoSignST for fileSystem cache\n" );
++	if( !( ret = malloc( sizeof( *ret ) ) ) )
++	{
++		DEBUG( stderr, "Failed to allocate memory for the CoSignST\n" );
++		return NULL;
++	}
++	memset( ret, 0, sizeof( *ret ) );
++
++	DEBUG( stderr, "Exiting createCoSignST for fileSystem cache normally\n" );
++	return ret;
++}
++
++void
++releaseCoSignST(  CoSignST **st )
++{
++	if( st && *st )
++	{
++		free( *st );
++		*st = NULL;
++	}
++}
+Index: common/tokencache/oracleCache.c
+===================================================================
+--- common/tokencache/oracleCache.c	(revision 0)
++++ common/tokencache/oracleCache.c	(revision 41)
+@@ -0,0 +1,1604 @@
++/*
++ * This token cache implements the original CoSign token cache.
++ * This cache was implemented by creating files in a cache directory
++ * with the name as the cosign cookie name and the value.
++ *
++ *  Author: 	Brett Lomas (b.lomas@auckland.ac.nz)
++ *  			The University of Auckland (www.auckland.ac.nz)
++ *  07/05/04
++ */
++
++#include <stdio.h>
++#include <stdarg.h>
++#include <stdlib.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++#include <fcntl.h>
++#include <dirent.h>
++#include <sys/param.h>
++#include <sys/time.h>
++#include <syslog.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <arpa/inet.h>
++
++#define _XOPEN_SOURCE
++#include <time.h>
++
++#include <oci.h>
++#include "tokenCache.h"
++
++typedef struct {
++	char		*orasid;
++	char		*orauser;
++	char		*orapasswd;
++
++	OCIEnv		*ocienv;
++} ORAGConfData;
++
++typedef struct {
++	OCIError	*ocierr;
++	OCISvcCtx	*ocisvc;
++} ORATConfData;
++
++typedef struct {
++	time_t		lastaccess;
++	time_t		createdon;
++	char		lastaccess_oracle[ 256 ];
++} ORACacheData;
++
++#define ORACACHEDATA(x) ( ( ORACacheData * )(x)->implData )
++#define GCONFDATA_GCONF(x) ( ( ORAGConfData * )(x)->implData )
++#define GCONFDATA_TCONF(x) ( ( ORAGConfData * )(x)->globalConf->implData )
++#define TCONF(x) ( ( ORATConfData * )(x)->implData )
++
++#define TGTCACHETABLE	"tgtCache"
++#define STCACHETABLE	"stCache"
++#define KRBCACHETABLE	"krbCache"
++
++#ifdef DEBUGTOKCACHE
++#define DEBUG(out, fmt, ... )	debug( out, __LINE__, fmt, ##__VA_ARGS__)
++void
++debug( FILE *out, int line, char *fmt, ... )
++{
++	va_list ap;
++
++	va_start( ap, fmt );
++	fprintf( out, "%s(%d): ", __FILE__, line );
++	vfprintf( out, fmt, ap );
++	va_end( ap );
++	fflush(out);
++}
++#else
++#define DEBUG(out,fmt, ... )	
++#endif
++
++/*
++ * This function will log an error in an appropriate way.
++ * If oraerr is not NULL, the oracle error details will
++ * be appended to the fmt.
++ */
++static void
++logError( OCIError *oraerr, char *fmt, ... )
++{
++	va_list ap;
++
++	va_start( ap, fmt );
++	if( oraerr )
++	{
++		int errorCode;
++		char oraErrBuf[ 2048 ];
++
++		memset( oraErrBuf, 0, sizeof( oraErrBuf ) );
++		OCIErrorGet( oraerr, 1, NULL, &errorCode, oraErrBuf,
++			sizeof( oraErrBuf ), OCI_HTYPE_ERROR );
++
++		if( strlen( oraErrBuf ) )
++		{
++			char *nfmt;
++
++			if( !( nfmt = ( char * )malloc( strlen( fmt ) + strlen( oraErrBuf ) +
++					3 ) ) )
++				vsyslog( LOG_ERR, fmt, ap );
++			else
++			{
++				sprintf( nfmt, "%s: %s", fmt, oraErrBuf );
++				vsyslog( LOG_ERR, nfmt, ap );
++				free( nfmt );
++			}
++		}
++		else
++			vsyslog( LOG_ERR, fmt, ap );
++	}
++	else
++		vsyslog( LOG_ERR, fmt, ap );
++	va_end( ap );
++}
++
++static TokenCacheGConf *
++allocateGConf()
++{
++	TokenCacheGConf *ret;
++
++	if( !( ret = ( TokenCacheGConf * )malloc( sizeof( *ret ) ) ) )
++		return NULL;
++	if( !( ret->implData = malloc( sizeof( ORAGConfData ) ) ) )
++	{
++		free( ret );
++		return NULL;
++	}
++
++	memset( ret ->implData, 0, sizeof( ORAGConfData ) );
++	return ret;
++}
++
++static void
++releaseGConf( TokenCacheGConf *gconf )
++{
++	ORAGConfData *data = NULL;
++
++	if( !gconf )
++		return;
++
++	data = GCONFDATA_GCONF(gconf);
++	if( data->orasid )
++		free(data->orasid);
++	if( data->orauser)
++		free(data->orauser);
++	if( data->orapasswd)
++		free(data->orapasswd);
++
++	free(data);
++	free(gconf);
++}
++
++#define ORASID		"ORASID"
++#define ORAUSER		"ORAUser"
++#define ORAPASSWD	"ORAPasswd"
++
++/*
++ * This will initialise the OracleBasedTokenCache
++ *
++ * Valid keys:
++ *	ORASID		The ORACLE SID of the database to connect to.
++ *	ORAUser		The username of the user to connect as.
++ *	ORAPasswd	The password of the user to connect as.
++ */
++TokenCacheGConf *
++globalInitialiseCache( unsigned int numArgs, char **keys, char **val )
++{
++	int i = 0, rc = 0;
++	TokenCacheGConf *ret;
++	ORAGConfData *oragdata;
++	DEBUG( stderr, "Entering initialiseCache\n" );
++
++	if( numArgs != 3 )
++	{
++		DEBUG( stderr, "Wrong number of arguments passed\n" );
++		logError( NULL, "Wrong number of arguments passed to global initialise for oracle token cache" );
++		return NULL;
++	}
++
++	if( !( ret = allocateGConf() ) )
++	{
++		DEBUG( stderr, "Failed to allocate GConf struct\n" );
++		logError( NULL, "Failed to allocate the global configuration" );
++		return NULL;
++	}
++	oragdata=GCONFDATA_GCONF(ret);
++
++	for( i = 0 ; i < numArgs ; i++ )
++	{
++		if( !strcasecmp( keys[ i ], ORASID ) )
++		{
++			syslog( LOG_INFO, "Setting the oracle SID to '%s'", val[ i ] );
++			DEBUG( stderr, "Setting the ORA SID to \"%s\"\n", val[ i ] );
++			if( !( oragdata->orasid = malloc( strlen( val[ i ]  + 1 ) ) ) )
++			{
++				DEBUG( stderr, "Failed to allocate memory for ora sid\n" );
++				continue;
++			}
++			strcpy( oragdata->orasid, val[ i ] );
++		}
++
++		if( !strcasecmp( keys[ i ], ORAUSER ) )
++		{
++			syslog( LOG_INFO, "Setting the oracle user to '%s'", val[ i ] );
++			DEBUG( stderr, "Setting the ora user to \"%s\"\n", val[ i ] );
++			if( !( oragdata->orauser = malloc( strlen( val[ i ]  + 1 ) ) ) )
++			{
++				DEBUG( stderr, "Failed to allocate memory for ora user\n" );
++				continue;
++			}
++			strcpy( oragdata->orauser, val[ i ] );
++		}
++
++		if( !strcasecmp( keys[ i ], ORAPASSWD ) )
++		{
++			syslog( LOG_INFO, "Setting the oracle password", val[ i ] );
++			DEBUG( stderr, "Setting the ora password\n" );
++			if( !( oragdata->orapasswd = malloc( strlen( val[ i ] + 1 ) ) ) )
++			{
++				DEBUG( stderr, "Failed to allocate memory for ora password\n" );
++				continue;
++			}
++			strcpy( oragdata->orapasswd, val[ i ] );
++		}
++
++		syslog(LOG_WARNING, "Oracle token cache ignoring unknown config option '%s'",keys[i]);
++	}
++
++	if( !oragdata->orasid || !oragdata->orauser || !oragdata->orapasswd )
++	{
++		DEBUG( stderr, "Failed to initialise -> not all valid arguments passed\n" );
++		logError( NULL, "Failed to correctly initialise the oracle token cache - parameters missing" );
++		releaseGConf( ret );
++		return NULL;
++	}
++
++	if( ( rc = OCIInitialize( OCI_DEFAULT, NULL, NULL, NULL, NULL ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "failed to initialise oracle OCI\n" );
++		logError( NULL, "Failed to initialise the Oracle Call Interface" );
++		releaseGConf( ret );
++		return NULL;
++	}
++
++	if( ( rc = OCIEnvInit( &oragdata->ocienv, OCI_DEFAULT, 0 , NULL ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to allocate the OCI Environment\n" );
++		logError( NULL, "Failed to initialise the Oracle Call Interface environment" );
++		releaseGConf( ret );
++		return NULL;
++	}
++
++	DEBUG( stderr, "Exiting initialiseCache normally (%s,%s)\n",
++			oragdata->orasid, oragdata->orauser);
++	return ret;
++}
++
++static TokenCacheTConf *
++allocateTConf( TokenCacheGConf *gconf )
++{
++	TokenCacheTConf *ret;
++
++	if( !( ret = ( TokenCacheTConf * )malloc( sizeof( *ret ) ) ) )
++		return NULL;
++	memset( ret, 0, sizeof( *ret ) );
++	ret->globalConf = gconf;
++
++	if( !( ret->implData = ( ORATConfData * )malloc( sizeof( ORATConfData ) ) ) )
++	{
++		DEBUG( stderr, "Failed to allocate implementation data\n" );
++		logError( NULL, "Failed to allocate the oracle token cache data" );
++		free( ret );
++		return NULL;
++	}
++	memset(ret->implData,0,sizeof(ORATConfData));
++	return ret;
++}
++
++static void
++releaseTConf( TokenCacheTConf *tconf )
++{
++	if( !tconf )
++		return;
++
++	if( tconf -> implData )
++	{
++		ORATConfData *oradata = TCONF(tconf);
++		if(oradata->ocierr)
++			OCIHandleFree(oradata->ocierr, OCI_HTYPE_ERROR);
++		if(oradata->ocisvc)
++			OCIHandleFree(oradata->ocisvc, OCI_HTYPE_SVCCTX);
++		free( tconf->implData );
++	}
++	free( tconf );
++}
++
++TokenCacheTConf *
++initialiseCache( TokenCacheGConf *gconf, unsigned int numArgs, char **keys, char **vals )
++{
++	TokenCacheTConf *ret;
++	ORATConfData *oratdata;
++	ORAGConfData *oragdata;
++	int r;
++
++	if( !( ret = allocateTConf( gconf ) ) )
++		return NULL;
++
++
++	oratdata = TCONF(ret);
++	oragdata = GCONFDATA_GCONF(gconf);
++
++	if( ( r = OCIHandleAlloc( oragdata->ocienv, ( dvoid ** )&oratdata->ocierr,
++						OCI_HTYPE_ERROR, 0, 0 ) ) )
++	{
++		DEBUG( stderr, "FAILED to allocate the OCI error handle\n" );
++		logError( NULL, "Failed to allocate the OCI error handle" );
++		free( ret->implData );
++		free( ret );
++		return NULL;
++	}
++
++	if( ( r = OCIHandleAlloc( oragdata->ocienv, ( dvoid ** )&oratdata->ocisvc,
++						OCI_HTYPE_SVCCTX, 0, 0 ) ) )
++	{
++		DEBUG( stderr, "FAILED to allocate the oracle service context\n" );
++		logError( NULL, "Failed to allocate the OCI service context handle" );
++		releaseTConf(ret);
++		return NULL;
++	}
++
++	if( ( r = OCILogon(oragdata->ocienv, oratdata->ocierr, &oratdata->ocisvc,
++						oragdata->orauser, strlen( oragdata->orauser ),
++						oragdata->orapasswd, strlen( oragdata->orapasswd ),
++						oragdata->orasid, strlen( oragdata->orasid ) ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to login to the database!\n" );
++		logError( oratdata->ocierr, "Failed to connect to the database sid '%s' as '%s'",
++			oragdata->orasid, oragdata->orauser );
++		releaseTConf( ret );
++		return NULL;
++	}
++	return ret;
++}
++
++void
++globalCloseCache( TokenCacheGConf **gconf )
++{
++	DEBUG( stderr, "Entering globalCloseCache\n" );
++
++	releaseGConf( *gconf );
++	*gconf = NULL;
++	OCITerminate( OCI_DEFAULT );
++	DEBUG( stderr, "Exiting globalCloseCache normally\n" );
++}
++
++void
++closeCache( TokenCacheTConf **tconf )
++{
++	ORATConfData *data = TCONF( *tconf );
++	DEBUG( stderr, "Entering closeCache\n" );
++	if( data->ocisvc )
++	{
++		DEBUG( stderr, "Logging off from oracle database\n" );
++		OCILogoff( data->ocisvc, data->ocierr );
++	}
++	releaseTConf( *tconf );
++	tconf = NULL;
++	DEBUG( stderr, "Exiting closeCache normally\n" );
++}
++
++/*
++ * Will bind the TGT details to the stmt. Doesn't bind 'createdOn' field
++ */
++static int
++bindTGT( ORAGConfData *gconfdata, ORATConfData *tconfdata, OCIStmt *stmt, CoSignTGT *ticket )
++{
++	int rc;
++	OCIBind *ticketBind, *versionBind, *stateBind, *ipaddrBind, *princBind, *realmBind, *actBind;
++	ORACacheData *cdata = ORACACHEDATA(ticket);
++	struct tm tm;
++
++	/* setup the oracle timestamp from the unix time_t */
++	sprintf( cdata->lastaccess_oracle, "%d", cdata->lastaccess );
++	strptime( cdata->lastaccess_oracle, "%s", &tm );
++	memset( cdata->lastaccess_oracle, '\0', sizeof( cdata->lastaccess_oracle ) );
++	strftime( cdata->lastaccess_oracle, sizeof( cdata->lastaccess_oracle) - 1, "%d-%b-%y %I.%M.%S %p", &tm );
++	
++/* Bind the ticket ID */
++	if( ( rc = OCIBindByName( stmt, &ticketBind, tconfdata->ocierr, ( text * )":1", -1,
++			( dvoid * )ticket->id, sizeof(ticket->id), SQLT_STR, NULL, NULL, NULL, 0, NULL, OCI_DEFAULT ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticketID to tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind the ticket id to TGT cache insert statement" );
++		return 1;
++	}
++
++/* Bind the version number */
++	if( ( rc = OCIBindByName( stmt, &versionBind, tconfdata->ocierr, ( text * )":2", -1,
++			( dvoid * )&ticket->version, sizeof( ticket->version), SQLT_INT, NULL, NULL, NULL, 0,
++			NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket version to tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind the ticket version to TGT cache insert statement" );
++		return 2;
++	}
++
++/* Bind the state */
++	if( ( rc = OCIBindByName( stmt, &stateBind, tconfdata->ocierr, ( text * )":3", -1,
++			( dvoid * )&ticket->state, sizeof( ticket->state), SQLT_INT, NULL, NULL, NULL, 0,
++			NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket state to tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind the ticket state to TGT cache insert statement" );
++		return 3;
++	}
++
++/* Bind the ipaddr */
++	if( ( rc = OCIBindByName( stmt, &ipaddrBind, tconfdata->ocierr, ( text * )":4", -1,
++			( dvoid * )inet_ntoa(ticket->addr), strlen(inet_ntoa(ticket->addr))+1, SQLT_STR, NULL,
++			NULL, NULL, 0, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket ip address to tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind the ticket ip address to TGT cache insert statement" );
++		return 4;
++	}
++
++/* Bind the princ */
++	if( ( rc = OCIBindByName( stmt, &princBind, tconfdata->ocierr, ( text * )":5", -1,
++			( dvoid * )ticket->user, sizeof(ticket->user), SQLT_STR, NULL,
++			NULL, NULL, 0, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket principle to tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind the ticket principle to TGT cache insert statement" );
++		return 5;
++	}
++
++/* Bind the realm */
++	if( ( rc = OCIBindByName( stmt, &realmBind, tconfdata->ocierr, ( text * )":6", -1,
++			( dvoid * )ticket->realm, sizeof(ticket->realm), SQLT_STR, NULL,
++			NULL, NULL, 0, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket realm to tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind the ticket realm to TGT cache insert statement" );
++		return 6;
++	}
++
++/* Bind the lastactivity */
++	if( ( rc = OCIBindByName( stmt, &actBind, tconfdata->ocierr, ( text * )":7", -1,
++			( dvoid * )cdata->lastaccess_oracle, sizeof(cdata->lastaccess_oracle), SQLT_STR, NULL,
++			NULL, NULL, 0, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind last activity to tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind the last activity to TGT cache insert statement" );
++		return 7;
++	}
++
++	return 0;
++}
++
++int
++updateTGTInCache( TokenCacheTConf *tconf, CoSignTGT *ticket )
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	const char *stmtText = "update " TGTCACHETABLE
++				" set version=:2, state=:3, ipaddr=:4, "
++				"princ=:5, realm=:6, lastactivity=:7 where ticketID=:1";
++	int rc;
++	char lastActBuf[ 256 ];
++
++	DEBUG( stderr, "Entering updateTGTInCache\n" );
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for update into TGT cache\n" );
++		logError( NULL, "Failed to create the statement handle for update into TGT cache" );
++		return 1;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText, strlen( stmtText )+1,
++				OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for tgt update\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for tgt update" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 2;
++	}
++
++	if( bindTGT( gconfdata, tconfdata, oraStmt, ticket ) )
++	{
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 3;
++	}
++
++	if( ( rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL,
++				OCI_DEFAULT | OCI_COMMIT_ON_SUCCESS ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to execute tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to execute TGT cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 3;
++	}
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++
++	DEBUG( stderr, "Exiting updateTGTInCache normally\n" );
++	return 0;
++}
++
++void
++logUserOut( TokenCacheTConf *tconf, CoSignTGT *tgt )
++{
++	if(tgt->state != LoggedOut)
++	{
++		tgt->state = LoggedOut;
++		updateTGTInCache( tconf, tgt );
++	}
++}
++
++time_t
++getLastAccessTime( TokenCacheTConf *tconf, CoSignTGT *tgt )
++{
++	ORACacheData *cdata = ORACACHEDATA(tgt);
++	return cdata->lastaccess;
++}
++
++time_t
++getCreationTime( TokenCacheTConf *tconf, CoSignTGT *tgt )
++{
++	ORACacheData *cdata = ORACACHEDATA(tgt);
++	return cdata->createdon;
++}
++
++void
++updateAccessTime( TokenCacheTConf *tconf, CoSignTGT *tgt, time_t t )
++{
++	ORACacheData *cdata = ORACACHEDATA(tgt);
++	cdata->lastaccess = t;
++	updateTGTInCache( tconf, tgt );
++}
++
++CoSignTGT *
++getTGTForST( TokenCacheTConf *tconf, CoSignServiceName name, CoSignST *st )
++{
++	return getTGTForSTID( tconf, name, st->id );
++}
++
++static int
++insertTGTIntoDB( TokenCacheTConf *tconf, CoSignTGT *ticket )
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	const char *insertStmtText = "insert into " TGTCACHETABLE
++				"(ticketid,version,state,ipaddr,princ,realm,lastactivity) "
++				"values( :1, :2, :3, :4, :5, :6, :7 )";
++	int rc;
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for insert into TGT cache\n" );
++		logError( NULL, "Failed to create the statement handle for insert into TGT cache" );
++		return 1;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, insertStmtText, strlen( insertStmtText )+1,
++				OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for tgt insert" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 2;
++	}
++
++	if( bindTGT( gconfdata, tconfdata, oraStmt, ticket ) )
++	{
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 3;
++	}
++
++	if( ( rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL,
++			OCI_DEFAULT | OCI_COMMIT_ON_SUCCESS ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to execute tgt insert\n" );
++		logError( tconfdata->ocierr, "Failed to execute TGT cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 3;
++	}
++
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++	return 0;
++}
++
++int
++addTGTToCache( TokenCacheTConf *tconf, CoSignTGT *ticket )
++{
++	ORACacheData *cdata = ORACACHEDATA(ticket);
++	DEBUG( stderr, "Entering addTGTToCache\n" );
++
++
++	time( &cdata->lastaccess );
++	if( insertTGTIntoDB( tconf, ticket ) )
++	{
++		DEBUG( stderr, "Failed to add ticket to TGT cache\n" );
++		logError( NULL, "Failed to add the ticket with id '%s' to TGT cache for %s@%s",
++				ticket->id, ticket->user,ticket->realm );
++		return 1;
++	}
++
++	DEBUG( stderr, "Exiting addTGTToCache normally\n" );
++	return 0;
++}
++
++static CoSignST *
++getSTsFromDB( TokenCacheTConf *tconf, CoSignTicketID stid, CoSignServiceName srvName, unsigned int *nTickets)
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	OCIBind *stIDBind, *srvNameBind;
++	OCIDefine *idDefn,*tgtidDefn,*srvDefn;
++	char *stmtText;
++	int rc;
++	CoSignST ret;
++	CoSignST *head=NULL, *tail=NULL;
++
++	DEBUG(stderr,"Entering getSTsFromDB(%s,%s)\n",stid,srvName);
++
++	*nTickets=0;
++	if(strlen(stid))
++		stmtText = "select ticketid,TGTID,servicename from " STCACHETABLE
++				" where ticketID=:1 and serviceName=:2";
++	else
++		stmtText = "select ticketid,TGTID,servicename from " STCACHETABLE;
++
++	DEBUG(stderr,"%s\n",stmtText);
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for select from ST cache\n" );
++		logError( NULL, "Failed to create the statement handle for select from ST cache" );
++		return NULL;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText,
++				strlen( stmtText )+1, OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for st select\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for st select" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Bind the ST ID */
++	if( strlen(stid) && ( ( rc = OCIBindByName( oraStmt, &stIDBind, tconfdata->ocierr, ( text * )":1", -1,
++			( dvoid * )stid, strlen(stid)+1, SQLT_STR, NULL, NULL, NULL, 0, NULL,
++			OCI_DEFAULT ) ) != OCI_SUCCESS ))
++	{
++		DEBUG( stderr, "Failed to bind ST ticketID to st cache select\n" );
++		logError( tconfdata->ocierr, "Failed to bind the ST ticket id to ST cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Bind the service name */
++	if( strlen(stid) && (( rc = OCIBindByName( oraStmt, &srvNameBind, tconfdata->ocierr, ( text * )":2", -1,
++			( dvoid * )srvName, strlen(srvName)+1, SQLT_STR, NULL, NULL, NULL, 0, NULL,
++			OCI_DEFAULT ) ) != OCI_SUCCESS ))
++	{
++		DEBUG( stderr, "Failed to bind service name to st cache select\n" );
++		logError( tconfdata->ocierr, "Failed to bind the service name to ST cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++	/* define the ID */
++	if( ( rc = OCIDefineByPos( oraStmt, &idDefn, tconfdata->ocierr, 1, ( dvoid * )&ret.id,
++				sizeof(ret.id), SQLT_STR, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define ID for st cache select\n" );
++		logError( tconfdata->ocierr, "Failed to define id for ST cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++	/* define the TGTID */
++	if( ( rc = OCIDefineByPos( oraStmt, &tgtidDefn, tconfdata->ocierr, 2, ( dvoid * )&ret.tgtid,
++				sizeof(ret.tgtid), SQLT_STR, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define tgt ID for st cache select\n" );
++		logError( tconfdata->ocierr, "Failed to define tgt id for ST cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++	/* define the servicename */
++	if( ( rc = OCIDefineByPos( oraStmt, &srvDefn, tconfdata->ocierr, 3, ( dvoid * )&ret.serviceName,
++				sizeof(ret.serviceName), SQLT_STR, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define service name for st cache select\n" );
++		logError( tconfdata->ocierr, "Failed to define service name for ST cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++	rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL, OCI_DEFAULT );
++
++	while(rc==OCI_SUCCESS)
++	{
++		if(!head)
++		{
++			if(!(head=tail=createCoSignST()))
++			{
++				DEBUG( stderr, "Failed to allocate the ST\n" );
++				logError( NULL, "Failed to allocate the ST" );
++				OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++				return NULL;
++			}
++		}
++		else
++		{
++			if(!(tail->next=createCoSignST()))
++			{
++				DEBUG( stderr, "Failed to allocate the ST\n" );
++				logError( NULL, "Failed to allocate the ST" );
++				for( ;*nTickets>0; (*nTickets)--)
++				{
++					CoSignST *temp=head->next;
++					releaseCoSignST(&head);
++					head=temp;
++				}
++				*nTickets=0;
++				OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++				return NULL;
++			}
++			tail=tail->next;
++		}
++		(*nTickets)++;
++
++		memcpy(tail,&ret,sizeof(CoSignST));
++		rc = OCIStmtFetch(oraStmt,tconfdata->ocierr,1,OCI_DEFAULT,OCI_DEFAULT);
++	}
++
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++	if((rc!=OCI_SUCCESS) && (rc!=OCI_NO_DATA))
++	{
++		DEBUG( stderr, "Failed to exec st cache select\n" );
++		logError( tconfdata->ocierr, "Failed to exec ST cache select statement" );
++		for( ;*nTickets >0; (*nTickets)--)
++		{
++			CoSignST *temp=head->next;
++			releaseCoSignST(&head);
++			head=temp;
++		}
++		return NULL;
++	}
++
++	return head;
++}
++
++static CoSignST *
++getSTFromCache( TokenCacheTConf *tconf, CoSignTicketID stid, CoSignServiceName srvName )
++{
++	unsigned int nTickets=0;
++	CoSignST *ret = getSTsFromDB( tconf,stid,srvName,&nTickets);
++
++	if(ret && nTickets>1)
++	{
++		syslog(LOG_ERR,"I got back %d tickets for the stid:servicename pair (%s:%s)\n",
++				stid,srvName);
++        for( ;nTickets>0; nTickets--)
++        {
++            CoSignST *temp=ret->next;
++            releaseCoSignST(&ret);
++            ret=temp;
++        }
++	}
++}
++
++CoSignTGT *
++getTGTForSTID( TokenCacheTConf *tconf, CoSignServiceName name, CoSignTicketID stid )
++{
++	CoSignST *st = getSTFromCache( tconf, stid, name );
++	CoSignTGT *ret;
++
++	if( !st )
++		return NULL; /* Failed to get it!! */
++
++	if( !( ret = getTGTFromCache( tconf, st->tgtid ) ) )
++	{
++		logError( NULL, "Failed to find TGT but ST still in DB (st='%s')", stid );
++		releaseCoSignST( &st );
++		return NULL;
++	}
++
++	releaseCoSignST( &st );
++	return ret;
++}
++
++
++int
++addSTToCache( TokenCacheTConf *tconf, CoSignTGT *tgt, CoSignST *st )
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	OCIBind *stIDBind, *tgtIDBind, *srvNameBind;
++	CoSignTGT *tgttemp;
++	const char *stmtText = "insert into " STCACHETABLE "(ticketID,TGTID,serviceName)"
++				" values( :1, :2, :3 )";
++	int rc;
++
++	DEBUG( stderr, "Entering addSTToCache\n" );
++
++	if( ( tgttemp = getTGTForST( tconf, st->serviceName, st) ) )
++	{
++		/* it appears the st has been registered already!!! */
++		if( !strcasecmp(tgttemp->user,tgt->user) &&
++			!strcasecmp(tgttemp->realm,tgt->realm ) )
++			return 0; /* the tgt are the same -> success! */
++		logError(NULL, "ST reistration failed, 2 st with the same ID exist for different users: "
++					"existing %s@%s, attempted: %s@%s", tgttemp->user, tgttemp->realm,
++					tgt->user, tgt->realm );
++		return 1;
++	}
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for insert into TGT cache\n" );
++		logError( NULL, "Failed to create the statement handle for insert into TGT cache" );
++		return 1;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText,
++				strlen( stmtText )+1, OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for st insert\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for st insert" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 2;
++	}
++
++/* Bind the ST ID */
++	if( ( rc = OCIBindByName( oraStmt, &stIDBind, tconfdata->ocierr, ( text * )":1", -1,
++			( dvoid * )st->id, sizeof(st->id), SQLT_STR, NULL, NULL, NULL, 0, NULL,
++			OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ST ticketID to st cache insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind the ST ticket id to ST cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 1;
++	}
++
++/* Bind the TGT ID */
++	if( ( rc = OCIBindByName( oraStmt, &tgtIDBind, tconfdata->ocierr, ( text * )":2", -1,
++			( dvoid * )tgt->id, sizeof(tgt->id), SQLT_STR, NULL, NULL, NULL, 0, NULL,
++			OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind TGT ID to st cache insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind the TGT id to ST cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 2;
++	}
++
++/* Bind the service name*/
++	if( ( rc = OCIBindByName( oraStmt, &srvNameBind, tconfdata->ocierr, ( text * )":3", -1,
++			( dvoid * )st->serviceName, sizeof(st->serviceName), SQLT_STR, NULL, NULL, NULL, 0,
++			NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind service name to st cache insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind service name to ST cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 3;
++	}
++
++	if( ( rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL,
++			OCI_DEFAULT | OCI_COMMIT_ON_SUCCESS ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to execute st insert\n" );
++		logError( tconfdata->ocierr, "Failed to execute ST cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 3;
++	}
++
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++	DEBUG( stderr, "Exiting addSTToCache normally\n" );
++	return 0;
++}
++
++/*
++ * doesn't commit on success
++ */
++static int
++removeAssocSTs( TokenCacheTConf *tconf, CoSignTicketID tgtid )
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	OCIBind *tgtIDBind;
++	const char *stmtText = "delete from " STCACHETABLE
++				" where TGTID=:1";
++	int rc;
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for delete from ST cache\n" );
++		logError( NULL, "Failed to create the statement handle for delete from ST cache" );
++		return 1;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText,
++				strlen( stmtText )+1, OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for st delete\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for st delete" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 2;
++	}
++
++/* Bind the TGT ID */
++	if( ( rc = OCIBindByName( oraStmt, &tgtIDBind, tconfdata->ocierr, ( text * )":1", -1,
++			( dvoid * )tgtid, strlen(tgtid)+1, SQLT_STR, NULL, NULL, NULL, 0, NULL,
++			OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind TGT ID to st cache delete\n" );
++		logError( tconfdata->ocierr, "Failed to bind the TGT id to ST cache delete statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 3;
++	}
++
++	if( ( rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL,
++			OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to execute st delete\n" );
++		logError( tconfdata->ocierr, "Failed to execute ST cache delete statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 4;
++	}
++
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++	return 0;
++}
++
++void
++removeSTFromCache( TokenCacheTConf *tconf, CoSignST *st )
++{
++	removeSTFromCache_id(tconf,st->serviceName,st->id);
++}
++
++void
++removeSTFromCache_id( TokenCacheTConf *tconf, CoSignServiceName name,CoSignTicketID id )
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	OCIBind *idBind;
++	const char *stmtText = "delete from " STCACHETABLE
++				" where TICKETID=:1";
++	int rc;
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for delete from ST cache\n" );
++		logError( NULL, "Failed to create the statement handle for delete from ST cache" );
++		return;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText,
++				strlen( stmtText )+1, OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for st delete\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for st delete" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return;
++	}
++
++/* Bind the ID */
++	if( ( rc = OCIBindByName( oraStmt, &idBind, tconfdata->ocierr, ( text * )":1", -1,
++			( dvoid * )id, strlen(id)+1, SQLT_STR, NULL, NULL, NULL, 0, NULL,
++			OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ST ID to st cache delete\n" );
++		logError( tconfdata->ocierr, "Failed to bind the ST id to ST cache delete statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return;
++	}
++
++	if( ( rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL,
++			OCI_DEFAULT|OCI_COMMIT_ON_SUCCESS ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to execute st delete\n" );
++		logError( tconfdata->ocierr, "Failed to execute ST cache delete statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return;
++	}
++
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++}
++
++/*
++ * doesn't commit on success
++ */
++static int
++removeKerberosTicketFromTGT( TokenCacheTConf *tconf, CoSignTicketID id )
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	OCIBind *idBind;
++	const char *stmtText = "delete from " KRBCACHETABLE
++				" where TGTID=:1";
++	int rc;
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for select from krb cache\n" );
++		logError( NULL, "Failed to create the statement handle for select from krb cache" );
++		return 1;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText, strlen( stmtText )+1,
++				OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for krb select\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for krb select" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 2;
++	}
++
++	if( ( rc = OCIBindByName( oraStmt, &idBind, tconfdata->ocierr, ( text * )":1",
++				-1, ( dvoid * )id, strlen(id)+1, SQLT_STR, NULL, NULL, NULL, 0 , NULL,
++				OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket id in krb select\n" );
++		logError( tconfdata->ocierr, "Failed to bind ticket id in krb cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 3;
++	}
++
++	if( ( rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL,
++				OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to exec krb select\n" );
++		logError( tconfdata->ocierr, "Failed to exec krb cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 4;
++	}
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++	return 0;
++}
++void
++removeTGTFromCache_id( TokenCacheTConf *tconf, CoSignTicketID id )
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIBind *ticketBind;
++	OCIStmt *oraStmt;
++	const char *stmtText = "delete from " TGTCACHETABLE
++				" where ticketID=:1";
++	int rc;
++
++	
++	/* First MUST remove all dependant ST's and kerberos tickets from the database */
++	if(removeKerberosTicketFromTGT( tconf, id ) || removeAssocSTs( tconf, id ))
++	{
++		syslog(LOG_ERR,"Failed to remore the kerberos ticket or associated ST for TGT '%s'",
++				id);
++		OCITransRollback( tconfdata->ocisvc, tconfdata->ocierr, OCI_DEFAULT );
++		return;
++	}
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for delete from TGT cache\n" );
++		logError( NULL, "Failed to create the statement handle for delete from TGT cache" );
++		OCITransRollback( tconfdata->ocisvc, tconfdata->ocierr, OCI_DEFAULT );
++		return;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText, strlen( stmtText )+1,
++				OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for tgt delete\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for tgt delete" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		OCITransRollback( tconfdata->ocisvc, tconfdata->ocierr, OCI_DEFAULT );
++		return;
++	}
++
++	if( ( rc = OCIBindByName( oraStmt, &ticketBind, tconfdata->ocierr, ( text * )":1",
++				-1, ( dvoid * )id, strlen(id)+1, SQLT_STR, NULL, NULL, NULL, 0 , NULL,
++				OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket id in tgt delete\n" );
++		logError( tconfdata->ocierr, "Failed to bind ticket id in TGT cache delete statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		OCITransRollback( tconfdata->ocisvc, tconfdata->ocierr, OCI_DEFAULT );
++		return;
++	}
++
++	if( ( rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL,
++				OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to execute tgt delete\n" );
++		logError( tconfdata->ocierr, "Failed to execute TGT cache delete statement" );
++		OCITransRollback( tconfdata->ocisvc, tconfdata->ocierr, OCI_DEFAULT );
++	}
++
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++	OCITransCommit( tconfdata->ocisvc, tconfdata->ocierr, OCI_DEFAULT );
++}
++
++void
++removeTGTFromCache( TokenCacheTConf *tconf, CoSignTGT *tgt )
++{
++	removeTGTFromCache_id( tconf, tgt->id );
++}
++
++
++void
++getKerberosTicketFromTGT( TokenCacheTConf *tconf, CoSignTGT *ticket, unsigned int *size,
++		char *krbBuf )
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	OCIBind *idBind;
++	OCIDefine *tickSzDfn, *tickDfn;
++	const char *stmtText = "select ticketsize,ticket from " KRBCACHETABLE
++				" where TGTID=:1";
++	int rc;
++	unsigned int tickSz = 0;
++
++	DEBUG( stderr, "Entering getKerberosTickeFromTGT\n" );	
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for select from krb cache\n" );
++		logError( NULL, "Failed to create the statement handle for select from krb cache" );
++		*size=0;
++		return;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText, strlen( stmtText )+1,
++				OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for krb select\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for krb select" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		*size=0;
++		return;
++	}
++
++	if( ( rc = OCIBindByName( oraStmt, &idBind, tconfdata->ocierr, ( text * )":1",
++				-1, ( dvoid * )ticket->id, strlen(ticket->id)+1, SQLT_STR, NULL, NULL, NULL, 0 , NULL,
++				OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket id in krb select\n" );
++		logError( tconfdata->ocierr, "Failed to bind ticket id in krb cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		*size=0;
++		return;
++	}
++
++	if( ( rc = OCIDefineByPos( oraStmt, &tickSzDfn, tconfdata->ocierr, 1, ( dvoid * )&tickSz,
++				sizeof(tickSz), SQLT_UIN, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define ticket in krb select\n" );
++		logError( tconfdata->ocierr, "Failed to define ticket in krb cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		*size=0;
++		return;
++	}
++
++	if( ( rc = OCIDefineByPos( oraStmt, &tickDfn, tconfdata->ocierr, 2, ( dvoid * )krbBuf,
++				*size, SQLT_BIN, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define ticket in krb select\n" );
++		logError( tconfdata->ocierr, "Failed to define ticket in krb cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		*size=0;
++		return;
++	}
++
++	if( ( rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL, OCI_DEFAULT ) )
++				!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to exec krb select\n" );
++		logError( tconfdata->ocierr, "Failed to exec krb cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		*size=0;
++		return;
++	}
++
++	*size = tickSz;
++	DEBUG( stderr, "Exiting getKerberosTickeFromTGT normally\n" );	
++}
++
++int
++addKerberosTicketToTGT( TokenCacheTConf *tconf, CoSignTGT *ticket, unsigned int size,
++		char *krbTicketBuf )
++{
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	OCIBind *idBind, *tickSzBind, *tickBind;
++	const char *stmtText = "insert into " KRBCACHETABLE
++				"(TGTID,krbversion,ticketsize,ticket) values(:1,5,:2,:3)";
++	int rc;
++
++	DEBUG( stderr, "Entering addKerberosTicketToTGT\n" );
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for insert into krb cache\n" );
++		logError( NULL, "Failed to create the statement handle for insert into krb cache" );
++		return 1;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText, strlen( stmtText )+1,
++				OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for krb insert\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for krb insert" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 2;
++	}
++
++	if( ( rc = OCIBindByName( oraStmt, &idBind, tconfdata->ocierr, ( text * )":1",
++				-1, ( dvoid * )ticket->id, strlen(ticket->id)+1, SQLT_STR, NULL, NULL, NULL, 0 , NULL,
++				OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket id in krb insert\n" );
++		logError( tconfdata->ocierr, "Failed to bind ticket id in krb cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 3;
++	}
++
++	if( ( rc = OCIBindByName( oraStmt, &tickSzBind, tconfdata->ocierr, ( text * )":2",
++				-1, ( dvoid * )&size, sizeof(size), SQLT_UIN, NULL, NULL, NULL, 0 , NULL,
++				OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind kerberos ticket size in krb delete\n" );
++		logError( tconfdata->ocierr, "Failed to bind kerberos ticket size in krb cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 4;
++	}
++
++	if( ( rc = OCIBindByName( oraStmt, &tickBind, tconfdata->ocierr, ( text * )":3",
++				-1, ( dvoid * )krbTicketBuf, size, SQLT_BIN, NULL, NULL, NULL, 0 , NULL,
++				OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind kerberos ticket in krb delete\n" );
++		logError( tconfdata->ocierr, "Failed to bind kerberos ticket in krb cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 4;
++	}
++
++	if( ( rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0, NULL, NULL,
++				OCI_DEFAULT | OCI_COMMIT_ON_SUCCESS ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to execute krb insert\n" );
++		logError( tconfdata->ocierr, "Failed to execute krb cache insert statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return 5;
++	}
++
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++	DEBUG( stderr, "Exiting addKerberosTicketToTGT normally\n" );	
++	return 0;
++}
++
++static CoSignTGT *
++getTGTsFromDB( TokenCacheTConf *tconf, CoSignTicketID id, unsigned int *nTickets )
++{
++	CoSignTGT ret;
++	CoSignTGT *head=NULL,*tail=NULL;
++	ORAGConfData *gconfdata = GCONFDATA_TCONF(tconf);
++	ORATConfData *tconfdata = TCONF(tconf);
++	OCIStmt *oraStmt;
++	OCIBind *ticketBind;
++	OCIDefine	*idDef = NULL,
++				*versionDef = NULL,
++				*stateDef = NULL,
++				*ipaddrDef = NULL,
++				*princDef = NULL,
++				*realmDef = NULL,
++				*lastActDef = NULL,
++				*createdOnDef = NULL;
++	const char *stmtText;
++
++	int rc;
++	char addr[ 16 ], lastActBuf[ 256 ], createdOnBuf[256];
++	struct tm tm;
++
++	if(strlen(id))
++	 	stmtText = "select ticketid,version,state,ipaddr,princ,realm,lastactivity,createdon"
++				" from " TGTCACHETABLE
++				" where ticketID=:1";
++	else
++	 	stmtText = "select ticketid,version,state,ipaddr,princ,realm,lastactivity,createdon"
++				" from " TGTCACHETABLE;
++	*nTickets=0;
++		
++	DEBUG( stderr, "Entering getTGTFromCache(%s)\n",id);
++	DEBUG( stderr, "'%s'\n", stmtText );
++
++	if( ( rc = OCIHandleAlloc( gconfdata->ocienv, ( dvoid ** )&oraStmt, OCI_HTYPE_STMT, 0, NULL ) )
++			!= OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to create the statement handle for select from TGT cache\n" );
++		logError( NULL, "Failed to create the statement handle for select from TGT cache" );
++		return NULL;
++	}
++
++	if( ( rc = OCIStmtPrepare( oraStmt, tconfdata->ocierr, stmtText, strlen( stmtText ),
++				OCI_NTV_SYNTAX, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to prepare the SQL statement for tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to prepare the SQL statement for tgt select" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Bind the ticketID */
++	if( strlen(id) && ( rc = OCIBindByName( oraStmt, &ticketBind, tconfdata->ocierr, ( text * )":1",
++				-1, ( dvoid * )id, strlen(id)+1, SQLT_STR, NULL, NULL, NULL, 0 , NULL,
++				OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to bind ticket id in tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to bind ticket id in TGT cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Set up the id define */
++	if( ( rc = OCIDefineByPos( oraStmt, &idDef, tconfdata->ocierr, 1, ( dvoid * )&ret.id,
++				sizeof(ret.id), SQLT_STR, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define in tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to define in TGT cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Set up the version define */
++	if( ( rc = OCIDefineByPos( oraStmt, &versionDef, tconfdata->ocierr, 2, ( dvoid * )&ret.version,
++				sizeof(ret.version), SQLT_INT, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define in tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to define in TGT cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Set up the state define */
++	if( ( rc = OCIDefineByPos( oraStmt, &stateDef, tconfdata->ocierr, 3, ( dvoid * )&ret.state,
++				sizeof(ret.state), SQLT_INT, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define in tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to define in TGT cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Set up the ipaddr define */
++	if( ( rc = OCIDefineByPos( oraStmt, &ipaddrDef, tconfdata->ocierr, 4, ( dvoid * )addr,
++				sizeof( addr ), SQLT_STR, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define in tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to define in TGT cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Set up the princ define */
++	if( ( rc = OCIDefineByPos( oraStmt, &princDef, tconfdata->ocierr, 5, ( dvoid * )ret.user,
++				sizeof( ret.user ), SQLT_STR, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define in tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to define in TGT cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Set up the realm define */
++	if( ( rc = OCIDefineByPos( oraStmt, &realmDef, tconfdata->ocierr, 6, ( dvoid * )ret.realm,
++				sizeof( ret.realm ), SQLT_STR, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define in tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to define in TGT cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Set up the lastactivity define */
++	if( ( rc = OCIDefineByPos( oraStmt, &lastActDef, tconfdata->ocierr, 7,
++				( dvoid * )lastActBuf, sizeof( lastActBuf ),
++				SQLT_STR, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define in tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to define in TGT cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++/* Set up the created on define */
++	if( ( rc = OCIDefineByPos( oraStmt, &createdOnDef, tconfdata->ocierr, 8,
++				( dvoid * )createdOnBuf, sizeof( createdOnBuf),
++				SQLT_STR, NULL, NULL, NULL, OCI_DEFAULT ) ) != OCI_SUCCESS )
++	{
++		DEBUG( stderr, "Failed to define in tgt select\n" );
++		logError( tconfdata->ocierr, "Failed to define in TGT cache select statement" );
++		OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++		return NULL;
++	}
++
++	rc = OCIStmtExecute( tconfdata->ocisvc, oraStmt, tconfdata->ocierr, 1, 0,
++				NULL, NULL, OCI_DEFAULT );
++	while( rc == OCI_SUCCESS )
++	{
++		ORACacheData *temp;
++		if(!head)
++		{
++			if(!(head=tail=createCoSignTGT()))
++			{
++				DEBUG( stderr, "Failed to allocate the TGT\n" );
++				logError( NULL, "Failed to allocate the TGT" );
++				OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++				return NULL;
++			}
++		}
++		else
++		{
++			if(!(tail->next=createCoSignTGT()))
++			{
++				DEBUG( stderr, "Failed to allocate the TGT\n" );
++				logError( NULL, "Failed to allocate the TGT" );
++				for( ;*nTickets>0; (*nTickets)--)
++				{
++					CoSignTGT *temp=head->next;
++					releaseCoSignTGT(&head);
++					head=temp;
++				}
++				*nTickets=0;
++				OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++				return NULL;
++			}
++			tail=tail->next;
++		}
++		(*nTickets)++;
++
++		temp=ORACACHEDATA(tail);
++		memcpy(tail,&ret,sizeof(CoSignTGT));
++		ORACACHEDATA(tail)=temp;
++
++		/* Fill in the fields that oracle didn't set automatically */
++		inet_aton( addr, &tail->addr );
++
++		/* Fiddle the oracle timestamp into a time_t appropriate for general consumption */
++		strptime( lastActBuf, "%d-%b-%y %I.%M.%S %p", &tm ); /* Get the TM struct back */
++		memset( lastActBuf, '\0', sizeof( lastActBuf ) );
++		strftime( lastActBuf, sizeof( lastActBuf )-1, "%s", &tm ); /* Get the # of seconds since epoch out */
++		ORACACHEDATA(tail)->lastaccess = atoi( lastActBuf );
++
++		strptime( createdOnBuf, "%d-%b-%y %I.%M.%S %p", &tm ); /* Get the TM struct back */
++		memset( createdOnBuf, '\0', sizeof( createdOnBuf ) );
++		strftime( createdOnBuf, sizeof(createdOnBuf)-1, "%s", &tm );
++		ORACACHEDATA(tail)->createdon = atoi(createdOnBuf);
++
++		rc = OCIStmtFetch(oraStmt,tconfdata->ocierr,1,OCI_DEFAULT,OCI_DEFAULT);
++	}
++
++	OCIHandleFree( oraStmt, OCI_HTYPE_STMT );
++	if(rc!=OCI_SUCCESS && rc!=OCI_NO_DATA)
++	{
++		DEBUG( stderr, "Failed to execute tgt select:%d\n",rc );
++		logError( tconfdata->ocierr, "Failed to execute TGT cache select statement" );
++		for( ;*nTickets >0; (*nTickets)--)
++		{
++			CoSignTGT *temp=head;
++			releaseCoSignTGT(&head);
++			head=temp->next;
++		}
++		*nTickets=0;
++		return NULL;
++	}
++
++	DEBUG( stderr, "Exiting getTGTFromCache normally\n" );
++	return head;
++}
++
++CoSignTGT *
++getTGTFromCache( TokenCacheTConf *tconf, CoSignTicketID id )
++{
++	unsigned int nTickets=0;
++	CoSignTGT *ret = getTGTsFromDB(tconf, id, &nTickets);
++
++	if(ret && nTickets>1)
++	{
++		syslog(LOG_ERR,"I got back %d tickets for the tgtid %s", id);
++        for( ;nTickets>0; nTickets--)
++        {
++            CoSignTGT *temp=ret->next;
++            releaseCoSignTGT(&ret);
++            ret=temp;
++        }
++	}
++}
++
++/*
++ * This will return all know TGTs
++ */
++CoSignTGT *
++getAllTGTs(TokenCacheTConf *tconf, unsigned int *nTGTs)
++{
++	return getTGTsFromDB(tconf,"",nTGTs);
++}
++
++/*
++ * This will return all of the known STs
++ */
++CoSignST *
++getAllSTs(TokenCacheTConf *tconf, unsigned int *nSTs)
++{
++	return getSTsFromDB(tconf,"","",nSTs);
++}
++
++
++CoSignTGT *
++createCoSignTGT( )
++{
++	CoSignTGT *ret;
++
++	DEBUG( stderr, "Entering createCoSignTGT for fileSystem cache\n" );
++	if( !( ret = ( CoSignTGT * )malloc( sizeof( *ret ) ) ) )
++	{
++		DEBUG( stderr, "Failed to allocate memory for the CoSignTGT\n" );
++		return NULL;
++	}
++	memset( ret, 0, sizeof( *ret ) );
++
++	if( !( ret -> implData = malloc( sizeof( ORACacheData ) ) ) )
++	{
++		DEBUG( stderr, "Failed to allocate memory for the CoSignTGT\n" );
++		free( ret );
++		return NULL;
++	}
++
++	DEBUG( stderr, "Exiting createCoSignTGT for fileSystem cache normally\n" );
++	return ret;
++}
++
++void
++releaseCoSignTGT( CoSignTGT **tgt )
++{
++	CoSignTGT *val = *tgt;
++	if( val )
++	{
++		if( val->implData )
++			free( val->implData );
++		free( val );
++	}
++}
++
++CoSignST *
++createCoSignST( )
++{
++	CoSignST *ret;
++
++	DEBUG( stderr, "Entering createCoSignST for oracle cache\n" );
++	if( !( ret = malloc( sizeof( *ret ) ) ) )
++	{
++		DEBUG( stderr, "Failed to allocate memory for the CoSignST\n" );
++		return NULL;
++	}
++	memset( ret, 0, sizeof( *ret ) );
++
++	DEBUG( stderr, "Exiting createCoSignST for oracle cache normally\n" );
++	return ret;
++}
++
++void
++releaseCoSignST(  CoSignST **st )
++{
++	if( st && *st )
++	{
++		free( *st );
++		*st = NULL;
++	}
++}
+Index: common/tokencache/tokenCache.h
+===================================================================
+--- common/tokencache/tokenCache.h	(revision 0)
++++ common/tokencache/tokenCache.h	(revision 41)
+@@ -0,0 +1,194 @@
++/*
++ * Token Cache is a mechanism is caching CoSign tokens in
++ * generic way
++ *
++ *  Author: 	Brett Lomas (b.lomas@auckland.ac.nz)
++ *  			The University of Auckland (www.auckland.ac.nz)
++ *  07/05/04
++ */
++#ifndef __TOKEN_CACHE_H__
++#define __TOKEN_CACHE_H__
++
++#include <sys/time.h>
++
++#include "tokens.h"
++
++
++typedef struct {
++	void *implData;
++} TokenCacheGConf;
++
++typedef struct {
++	TokenCacheGConf *globalConf;
++	void *implData;
++} TokenCacheTConf;
++
++/*
++ * This function will initialise the underlying TokenCache
++ * implementation. This is the global initialisation, and must
++ * be done once. It is used to provide global parameters to the
++ * cache, like directory locations or database hostnames etc.
++ * These arguments are specific to the implementation.
++ *
++ * Return of 0 on success.
++ */
++TokenCacheGConf *
++globalInitialiseCache( unsigned int numArgs, char **key, char **val );
++
++/*
++ * This function will initialise a thread for access to the cache.
++ * This function will return an opaque value whcih must passed back to
++ * all cache functions, as the provider will need this.
++ * The arguments are specific to the implementation.
++ */
++TokenCacheTConf *
++initialiseCache( TokenCacheGConf *gconf, unsigned int numArgs, char **key, char **val );
++
++/*
++ * This function will release any resources created for the underlying
++ * cache implementation
++ */
++void
++globalCloseCache( TokenCacheGConf **conf );
++
++/*
++ * This will release the thread specific data for the cache.
++ */
++void
++closeCache( TokenCacheTConf **tconf );
++
++/*
++ * This function will add the CoSignTGT to the ticket cache.
++ * The TGT is mapped to the id field - ie this must be used to
++ * get the ticket back from getTGTFromCache()
++ *
++ * Return of 0 on success.
++ *
++ * List Errors etc.
++ */
++int
++addTGTToCache( TokenCacheTConf *tconf, CoSignTGT *ticket );
++
++/*
++ * This function will add the CoSignST to the ST cache. This
++ * in effect associates the two.
++ *
++ * Return of 0 on success.
++ */
++int
++addSTToCache( TokenCacheTConf *tconf, CoSignTGT *tgt, CoSignST *st );
++
++/*
++ * This function esentially is the same as addSTToCache, except it
++ * takes the service ticket id and service name instead of the struct.
++ * If ret is not NULL, the the CoSignST created will be returned, and must
++ * be released by the caller.
++ * 
++ * Returns as addTGTToCache
++ */
++int
++addSTDetailsToCache( TokenCacheTConf *tconf, CoSignTGT *tgt,
++	CoSignTicketID stid, CoSignServiceName srvName, CoSignST *ret );
++
++
++/*
++ * This function will add a kerberos ticket to the TGT.
++ * The ticket must already be in the cache.
++ * krbBuffer is the Kerberos ticket to be stored.
++ */
++int
++addKerberosTicketToTGT( TokenCacheTConf *tconf, CoSignTGT *ticket, unsigned int ticketSize, char *krbBuffer );
++
++/*
++ * This function will get the corresponding CoSignTGT
++ */
++CoSignTGT *
++getTGTFromCache( TokenCacheTConf *tconf, CoSignTicketID id );
++
++/*
++ * This function will return the TGT associated with the ST
++ */
++CoSignTGT *
++getTGTForST( TokenCacheTConf *tconf, CoSignServiceName serv, CoSignST *st );
++
++/*
++ * This function is the same as getTGTForST, except only the ID is required
++ */
++CoSignTGT *
++getTGTForSTID( TokenCacheTConf *tconf, CoSignServiceName serv, CoSignTicketID stid );
++
++/*
++ * This function will remove the CoSignTGT with id from the token cache.
++ */
++void
++removeTGTFromCache( TokenCacheTConf *tconf, CoSignTGT *tgt );
++void
++removeTGTFromCache_id( TokenCacheTConf *tconf, CoSignTicketID id );
++
++void
++removeSTFromCache( TokenCacheTConf *tconf, CoSignST *st );
++void
++removeSTFromCache_id( TokenCacheTConf *tconf, CoSignServiceName name,CoSignTicketID id );
++/*
++ * Get Kerberos ticket for this CoSignTGT.
++ * This will copy the kerberos ticket into krbBuffer upto bufSize bytes.
++ * bufSize will be the size of kerberos ticket, or 0 on error.
++ */
++void
++getKerberosTicketFromTGT( TokenCacheTConf *tconf, CoSignTGT *ticket, unsigned int *bufSize, char *krbBuffer );
++
++/*
++ * This will log the user out
++ */
++void
++logUserOut( TokenCacheTConf *tconf, CoSignTGT *tgt );
++
++/*
++ * Return the last access time for the tgt
++ */
++time_t
++getLastAccessTime( TokenCacheTConf *tconf, CoSignTGT *tgt );
++
++time_t
++getCreationTime( TokenCacheTConf *tconf, CoSignTGT *tgt );
++
++/*
++ * Update the access time for the tgt to t
++ */
++void
++updateAccessTime( TokenCacheTConf *tconf, CoSignTGT *tgt, time_t t );
++
++
++/*
++ * This will return all know TGTs
++ */
++CoSignTGT *
++getAllTGTs(TokenCacheTConf *tconf, unsigned int *nTGTs);
++
++/*
++ * This will return all of the known STs
++ */
++CoSignST *
++getAllSTs(TokenCacheTConf *tconf, unsigned int *nSTs);
++
++/*
++ * ******************** All implemented in tokenCache.c *******************
++ * Common helper functions
++ */
++
++/*
++ * This will fill in id with the TGT id from buf.
++ * buf is a buffer in the form 'cosign=[ticketid]'
++ * Return of 0 on success, otherwise error
++ */
++int cosignCNameToTicketID( const char *buf, CoSignTicketID id );
++
++/*
++ * This function will fill in the service name and id from the buffer.
++ * buf is in the form 'cosign-[servicename]=[ticketid]'
++ * Return of 0 on success, otherwise error
++ */
++int cosignSTToTicketIDServName( const char *buf, CoSignServiceName sName, CoSignTicketID id );
++
++
++#endif
+Index: common/tokens.h
+===================================================================
+--- common/tokens.h	(revision 0)
++++ common/tokens.h	(revision 41)
+@@ -0,0 +1,82 @@
++/*
++ * This header descibes the CoSign token structures
++ *
++ * Author:	Brett Lomas (b.lomas@auckland.ac.nz)
++ *		The University of Auckland (www.auckland.ac.nz)
++ * 07/05/04
++ */
++
++#ifndef __COSIGN_TOKENS_H__
++#define __COSIGN_TOKENS_H__
++
++#include <stdio.h>
++#include <sys/param.h>
++
++/*
++ * This is the number of characters the TGT and ST can
++ * have to uniquely identify them from others
++ */
++
++#include <netinet/in.h>
++
++typedef enum {
++        LoggedOut = 0,
++        LoggedIn,
++        Invalid = 999
++} CoSignState;
++
++#define MAX_TICKET_ID_LENGTH 	128
++typedef char    CoSignTicketID[ MAX_TICKET_ID_LENGTH + 1 ];
++
++#define MAX_SERVICE_LENGTH	255
++typedef char    CoSignServiceName[ MAX_SERVICE_LENGTH + 1 ];
++
++#define MAX_USER_LENGTH		255
++typedef char	CoSignUser[ MAX_USER_LENGTH + 1 ];
++
++#define MAX_REALM_LENGTH	255
++typedef char	CoSignRealm[ MAX_REALM_LENGTH + 1 ];
++
++typedef char	CoSignKRBTicket[ MAXPATHLEN + 1 ];
++
++#define nextST(st) ( (st)->next )
++#define moreST(st) ( (st)->next != NULL )
++#define forEachST(tgt,st,i) for(i=0,(st)=(tgt)->serviceTickets ; moreST((st)) ; (st)=nextST((st)))
++
++typedef struct _CoSignST{
++    CoSignTicketID      id;     
++	CoSignTicketID		tgtid;
++    CoSignServiceName   serviceName;
++
++    struct _CoSignST   *next;  
++} CoSignST;
++
++typedef struct _CoSignTGT {
++    CoSignTicketID  id;                 /* The unique Id of this TGT */
++    unsigned char   version;            /* The version number of Ticket??? */ 
++    CoSignState     state;              /* The state of the TGT */ 
++    struct in_addr	addr;				/* The address the authenticated from */
++    CoSignUser		user;              /* The user who authenticzated - NUL terminated string */
++	CoSignRealm     realm;             /* The realm the user authenticated to */
++    //struct timeval  timeOfAuth;         /* The time this user authenticated to CoSign */
++
++    unsigned int    numServiceTickets;  /* The number of STs assoc to this TGT */
++    CoSignST        *serviceTickets;    /* All of the known ST for this TGT */
++
++	struct _CoSignTGT	*next;
++	void			*implData;			/* Opaque pointer to cache implementation data */
++} CoSignTGT;
++
++/*
++ * The following function implementations are in token cache implementation
++ * this is because the cache may need to allocate memory for the oraque data etc
++ */
++CoSignTGT *createCoSignTGT();
++CoSignST	*createCoSignST();
++void releaseCoSignTGT( CoSignTGT **tgt );
++void releaseCoSignST( CoSignST **st );
++
++void printTGT( FILE *out, CoSignTGT *tgt );
++void printTGT_long( FILE *out, CoSignTGT *tgt );
++void printST( FILE *out, CoSignST *st );
++#endif
+Index: configure.ac
+===================================================================
+--- configure.ac	(revision 18)
++++ configure.ac	(working copy)
+@@ -32,6 +32,11 @@
+ 
+ AC_ARG_ENABLE(mysql, AC_HELP_STRING([--enable-mysql=path_to_mysql], [enable mysql for guest login support in the cgi]), CHECK_LIBMYSQL, AC_MSG_RESULT( mysql not enabled))
+ 
++AC_ARG_WITH(tokencache, AC_HELP_STRING([--with-tokencache=implementation], [choose the cosign token cach
++e implementation, default to the file system]), COSIGN_TOKENCACHE, AC_MSG_RESULT(using file system cache
++);TOKENCACHE=fileSystemCache)
++AC_SUBST(TOKENCACHE)
++
+ AC_ARG_WITH(krb4, AC_HELP_STRING([--with-krb4], [enable apache filter
+ to get Kerberos IV tickets]), CHECK_KRB4, AC_MSG_RESULT( kerberos IV not enabled))
+ 
+@@ -125,6 +130,7 @@
+ AC_CONFIG_FILES([Makefile
+                  cgi/Makefile
+ 		 common/Makefile
++		 common/tokencache/Makefile
+                  html/Makefile
+                  daemon/Makefile
+                  $FILTER_CONFIG_FILES
+Index: daemon/Makefile.in
+===================================================================
+--- daemon/Makefile.in	(revision 18)
++++ daemon/Makefile.in	(working copy)
+@@ -12,29 +12,31 @@
+ COSIGNKEY=@cosignkey@
+ COSIGNHOST = @cosignhost@
+ COSIGNTICKETCACHE=@ticketcache@
++COSIGNTOKENCACHEIMPL=@TOKENCACHE@
+ 
+ COSIGNSYSLOG=LOG_DAEMON
+ 
+-INCPATH=        @CPPFLAGS@ -I../libsnet -I../common
++INCPATH=        @CPPFLAGS@ -I../libsnet -I../common @ORACPPFLAGS@
+ OPTOPTS=        @OPTOPTS@
+ CC=             @CC@
+-DEFS=           @TLSDEFS@ -D_COSIGN_TICKET_CACHE=\"${COSIGNTICKETCACHE}\"
+-LIBS=           -lsnet @LIBS@
+-LDFLAGS=        -L../libsnet/.libs @LDFLAGS@ ${LIBS}
++DEFS=           @TLSDEFS@ -D_COSIGNTOKENCACHEIMPL=\"${COSIGNTOKENCACHEIMPL}\" -D_COSIGN_TICKET_CACHE=\"${COSIGNTICKETCACHE}\"
++LIBS=           -lsnet @LIBS@ @ORALIBS@
++LDFLAGS=        -L../libsnet/.libs @LDFLAGS@ @ORALDFLAGS@ ${LIBS}
+ INSTALL=        @INSTALL@
+ 
+ CFLAGS=         ${DEFS} ${OPTOPTS} @CFLAGS@ ${INCPATH}
+ 
+ ################ Nothing below should need editing ###################
+ 
+-SRC= daemon.c command.c cparse.c config.c wildcard.c logname.c pusher.c \
++SRC= daemon.c command.c config.c wildcard.c logname.c pusher.c \
+     mnet.c
+-MONSTER = monster.c cparse.c logname.c mnet.c
+-MOBJ = monster.o cparse.o config.o wildcard.o logname.o mnet.o ../common/argcargv.o ../version.o
+-COSIGNOBJ= daemon.o command.o cparse.o config.o wildcard.o logname.o \
++MONSTER = monster.c logname.c mnet.c
++MOBJ = monster.o config.o wildcard.o logname.o mnet.o ../common/argcargv.o ../version.o
++COSIGNOBJ= daemon.o command.o config.o wildcard.o logname.o \
+ 	pusher.o mnet.o ../common/argcargv.o ../common/fbase64.o \
+ 	../common/mkcookie.o ../common/rate.o ../version.o
+ 
++TOKENCACHEOBJS=../common/tokencache/${COSIGNTOKENCACHEIMPL}.o ../common/tokencache/tokenCache.o
+ TARGETS=	cosignd monster
+ MANTARGETS=	cosignd.8 monster.8
+ 
+@@ -53,7 +55,7 @@
+ 	-c monster.c
+ 
+ monster: ${MOBJ} Makefile
+-	${CC} ${CFLAGS} ${LDFLAGS} -o monster ${MOBJ} ${LIBPATH} ${LIBS}
++	${CC} ${CFLAGS} ${LDFLAGS} -o monster ${MOBJ} ${TOKENCACHEOBJS} ${LIBPATH} ${LIBS}
+ 
+ daemon.o : daemon.c
+ 	${CC} ${CFLAGS} \
+@@ -66,7 +68,7 @@
+ 	-c daemon.c
+ 
+ cosignd : ../libsnet/libsnet.la ${COSIGNOBJ} Makefile
+-	${CC} ${CFLAGS} ${LDFLAGS} -o cosignd ${COSIGNOBJ} ${LIBPATH} ${LIBS}
++	${CC} ${CFLAGS} ${LDFLAGS} -o cosignd ${COSIGNOBJ} ${TOKENCACHEOBJS} ${LIBPATH} ${LIBS}
+ 
+ man : FRC
+ 	-mkdir tmp
+Index: daemon/daemon.c
+===================================================================
+--- daemon/daemon.c	(revision 18)
++++ daemon/daemon.c	(working copy)
+@@ -31,6 +31,7 @@
+ #include "rate.h"
+ #include "monster.h"
+ #include "pusher.h"
++#include "../common/tokencache/tokenCache.h"
+ 
+ 
+ int		debug = 0;
+@@ -55,11 +56,15 @@
+ void		chld( int );
+ int		main( int, char *av[] );
+ 
++char	**tckeys=NULL,**tcvals=NULL;
++unsigned int ntckeys=0;
+ 
+ static void
+ configure()
+ {
+ 	char *val;
++	char **vals;
++	unsigned int nVals=0;
+ 
+ 	if((val=getConfigValue(COSIGNDBKEY)))
+ 	{
+@@ -85,6 +90,32 @@
+ 				cryptofile,val);
+ 		cryptofile=val;
+ 	}
++	if((vals=getAllConfigValues(COSIGNTOKCACHEKEY,&nVals)))
++	{
++		if(vals && nVals)
++		{
++			int i = 0;
++			if(!(tckeys=(char **)calloc(nVals,sizeof(char *))))
++				return;
++			if(!(tcvals=(char **)calloc(nVals,sizeof(char *))))
++			{
++				free(tckeys);
++				return;
++			}
++			for(;i<nVals;i++)
++			{
++				char *ptr = strchr(vals[i],'=');
++				if(ptr)
++				{
++					*ptr='\0';
++					tckeys[i]=strdup(vals[i]);
++					tcvals[i]=strdup(ptr+1);
++					*ptr='=';
++				}
++			}
++			ntckeys=nVals;
++		}
++	}
+ }
+ 
+ 
+@@ -156,18 +187,16 @@
+     int			level = LOG_INFO;
+     extern int		optind;
+     extern char		*optarg;
++    TokenCacheGConf *tgf = NULL;    /* Set by the parent cosignd before fork */
++    TokenCacheTConf *ttc = NULL;    /* Set by the child cosignd after fork from parent */
+ 
++
+     if (( prog = strrchr( av[ 0 ], '/' )) == NULL ) {
+ 	prog = av[ 0 ];
+     } else {
+ 	prog++;
+     }
+ 
+-    /*
+-     * Read config file before chdir(), in case config file is relative path.
+-	 * We read configuration this early so command line options can override
+-	 * any configuration in the conf file.
+-     */
+     if ( parseConfig( cosign_conf ) < 0 ) {
+ 	exit( 1 );
+     }
+@@ -362,9 +391,12 @@
+ 	exit( 1 );
+     }
+ 
+-    if ( chdir( cosign_dir ) < 0 ) {
+-	perror( cosign_dir );
+-	exit( 1 );
++    // Setup the tokencache
++    if( !( tgf = globalInitialiseCache( ntckeys,
++            tckeys, tcvals ) ) )
++    {
++        fprintf( stderr, "Failed is initialise the token cache " _COSIGNTOKENCACHEIMPL "\n" );
++        exit( 1 );
+     }
+ 
+     if ( replhost != NULL ) {
+@@ -415,7 +447,7 @@
+ #endif /* ultrix */
+     setlogmask( LOG_UPTO( level ));
+ 
+-    syslog( LOG_INFO, "restart %s", cosign_version );
++    syslog( LOG_INFO, "restart %s with " _COSIGNTOKENCACHEIMPL " token cache", cosign_version );
+ 
+ 	if ( replhost != NULL ) {
+     if ( pipe( fds ) < 0 ) {
+@@ -429,7 +461,7 @@
+ 	    syslog( LOG_ERR, "pusher parent pipe: %m" );
+ 	    exit( 1 );
+ 	}
+-	pusherparent( fds[ 0 ] );
++	pusherparent( fds[ 0 ],tgf );
+ 	exit( 0 );
+ 
+     case -1 :
+@@ -500,8 +532,20 @@
+ 		exit( 1 );
+ 	    }
+ 
+-	    exit( command( fd, pushersn ));
++        if( !( ttc = initialiseCache( tgf, 0, NULL, NULL ) ) )
++        {
++            syslog( LOG_ERR, "Failed to initialise cache for child" );
++            write( fd, "500: Failed to initialise", 25 );
++            exit( 1 );
++        }
++        {
++            int ret;
+ 
++            ret = command( ttc, fd, pushersn );
++            closeCache( &ttc );
++            exit( ret );
++        }
++
+ 	case -1 :
+ 	    close( fd );
+ 	    syslog( LOG_ERR, "fork: %m" );
+@@ -512,4 +556,5 @@
+ 	    break;
+ 	}
+     }
++	globalCloseCache(&tgf);
+ }
+Index: daemon/pusher.c
+===================================================================
+--- daemon/pusher.c	(revision 18)
++++ daemon/pusher.c	(working copy)
+@@ -21,8 +21,9 @@
+ #include "argcargv.h"
+ #include "rate.h"
+ #include "monster.h"
+-#include "cparse.h"
+ 
++#include "../common/tokencache/tokenCache.h"
++
+ extern char		*cosign_version;
+ extern char		*replhost;
+ extern unsigned short	port;
+@@ -34,9 +35,9 @@
+ 
+ static void	pusherhup( int );
+ static void	pusherchld( int );
+-static void	mkpushers( int );
+-int		pusherparent( int );
+-int		pusher( int, struct cl * );
++static void	mkpushers( int,TokenCacheGConf * );
++int		pusherparent( int, TokenCacheGConf *);
++int		pusher( int, struct cl *,TokenCacheTConf * );
+ int		pusherhosts( void );
+ void		pusherdaemon( struct cl * );
+ 
+@@ -195,11 +196,12 @@
+ }
+ 
+     void
+-mkpushers( int ppipe )
++mkpushers( int ppipe, TokenCacheGConf *gconf )
+ {
+     struct cl		*cur, *yacur;
+     int			fds[ 2 ];
+     struct sigaction	sa;
++	TokenCacheTConf *tconf;
+ 
+     for ( cur = replhead; cur != NULL; cur = cur->cl_next ) {
+ 	if ( cur->cl_pid != 0 ) {
+@@ -244,7 +246,13 @@
+ 	    }
+ 	    cur->cl_pushpass.r_count = 0;
+ 	    cur->cl_pushfail.r_count = 0;
+-	    pusher( fds[ 0 ], cur );
++		if(!(tconf=initialiseCache(gconf,0,NULL,NULL)))
++		{
++			syslog(LOG_ERR,"mkpushers: failed to initialise the token cache");
++			exit(1);
++		}
++	    pusher( fds[ 0 ], cur,tconf );
++		closeCache(&tconf);
+ 	    exit( 0 );
+ 
+ 	case -1 :
+@@ -267,7 +275,7 @@
+ }
+ 
+     int
+-pusherparent( int ppipe )
++pusherparent( int ppipe, TokenCacheGConf *gconf )
+ {
+     struct sigaction	sa;
+     sigset_t 		signalset;
+@@ -312,7 +320,7 @@
+     }
+ 
+     sigprocmask( SIG_BLOCK, &signalset, NULL );
+-    mkpushers( ppipe );
++    mkpushers( ppipe, gconf );
+     sigprocmask( SIG_UNBLOCK, &signalset, NULL );
+ 
+     for ( ;; ) {
+@@ -323,7 +331,7 @@
+ 
+ 
+ 	sigprocmask( SIG_BLOCK, &signalset, NULL );
+-	mkpushers( ppipe );
++	mkpushers( ppipe, gconf );
+ 	sigprocmask( SIG_UNBLOCK, &signalset, NULL );
+ 
+ 	sigprocmask( SIG_BLOCK, &signalset, NULL );
+@@ -367,16 +375,16 @@
+ }
+ 
+     int
+-pusher( int cpipe, struct cl *cur )
++pusher( int cpipe, struct cl *cur, TokenCacheTConf *tconf )
+ {
+     SNET		*csn;
+     unsigned char	buf[ 8192 ];
+     char		*line, **av;
+-    int			rc, ac, krb = 0, fd = 0;
++    int			rc, ac, krb = 0;
+     ssize_t             rr, size = 0;
+     struct timeval	tv;
+-    struct stat         st;
+-    struct cinfo	ci;
++	CoSignTGT	*tgt;
++	CoSignTicketID	tgtid;
+ 
+     if (( csn = snet_attach( cpipe, 1024 * 1024 )) == NULL ) {
+         syslog( LOG_ERR, "pusherchild: snet_attach: %m" );
+@@ -445,51 +453,39 @@
+         goto done;
+     }
+ 
+-    if (( rc = read_cookie( av[ 1 ], &ci )) < 0 ) {
+-	syslog( LOG_ERR, "read_cookie error: %s", av[ 1 ] );
+-	continue;
+-    }
++	if(cosignCNameToTicketID(av[1],tgtid))
++	{
++		syslog(LOG_ERR,"pusherchild: Failed to get tgt!");
++		goto done;
++	}
+ 
+-    if (( fd = open( ci.ci_krbtkt, O_RDONLY, 0 )) < 0 ) {
+-        syslog( LOG_ERR, "pusherchld: %m" );
+-        goto done;
+-    }
++	if(!(tgt=getTGTFromCache(tconf,tgtid)))
++	{
++		syslog(LOG_ERR,"pusherchild: Failed to get tgt!");
++		goto done;
++	}
+ 
+-    if ( fstat( fd, &st) < 0 ) {
+-        syslog( LOG_ERR, "pusherchld: %m" );
+-        goto done;
+-    }
++	size=sizeof(buf);
++	getKerberosTicketFromTGT(tconf,tgt,&size,buf);
++	if(!size)
++	{
++		syslog(LOG_ERR,"pusherchild: Failed to get the kerberos ticket!");
++		releaseCoSignTGT(&tgt);
++		goto done;
++	}
++	releaseCoSignTGT(&tgt);
+ 
+-    size = st.st_size;
+-    if ( snet_writef( cur->cl_sn, "%d\r\n", (int)st.st_size ) < 0 ) {
++    if ( snet_writef( cur->cl_sn, "%d\r\n", size ) < 0 ) {
+         syslog( LOG_ERR, "login %s failed: %m", av[ 2 ] );
+         goto done;
+     }
+ 
+-    while (( rr = read( fd, buf, sizeof( buf ))) > 0 ) {
+-        tv = timeout;
+-        if ( snet_write( cur->cl_sn, buf, (int)rr, &tv ) != rr ) {
+-	    syslog( LOG_ERR, "login %s failed: %m", av[ 2 ] );
+-	    close( fd );
+-            goto done;
+-        }
+-        size -= rr;
+-    }
+-
+-    close( fd );
+-
+-    if ( rr < 0 ) {
+-        syslog( LOG_ERR, "pusherchld: %m" );
++    tv = timeout;
++    if ( snet_write( cur->cl_sn, buf, (int)rr, &tv ) != rr ) {
++		syslog( LOG_ERR, "login %s failed: %m", av[ 2 ] );
+         goto done;
+     }
+ 
+-    /* Check number of bytes sent to server */
+-    if ( size != 0 ) {
+-        syslog( LOG_ERR,
+-            "login %s failed: Wrong number of bytes sent", av[ 2 ] );
+-        goto done;
+-    }
+-
+     /* End transaction with server */
+     if ( snet_writef( cur->cl_sn, ".\r\n" ) < 0 ) {
+ 	syslog( LOG_ERR, "login %s failed: %m", av[ 2 ] );
+Index: daemon/config.h
+===================================================================
+--- daemon/config.h	(revision 18)
++++ daemon/config.h	(working copy)
+@@ -29,6 +29,7 @@
+ #define COSIGNHOSTKEY	"cosignhost"
+ #define COSIGNKEYTABKEY	"cosignkeytab"
+ #define	COSIGNLOGOUTURLKEY	"cosignlogouturl"
++#define COSIGNTOKCACHEKEY	"cosigntokencacheparams"
+ 
+ #ifdef SQL_FRIEND
+ #define MYSQLDBKEY		"mysqldb"
+Index: daemon/pusher.h
+===================================================================
+--- daemon/pusher.h	(revision 18)
++++ daemon/pusher.h	(working copy)
+@@ -1,2 +1,2 @@
+-int pusherparent ( int );
++int pusherparent ( int, TokenCacheGConf * );
+ int pusherhosts ( void );
+Index: daemon/cparse.c
+===================================================================
+--- daemon/cparse.c	(revision 18)
++++ daemon/cparse.c	(working copy)
+@@ -1,214 +0,0 @@
+-/*
+- * Copyright (c) 1998 Regents of The University of Michigan.
+- * All Rights Reserved.  See LICENSE.
+- */
+-
+-#include <sys/types.h>
+-#include <sys/stat.h>
+-#include <sys/param.h>
+-#include <unistd.h>
+-#include <syslog.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <fcntl.h>
+-#include <errno.h>
+-#include <utime.h>
+-
+-#include "cparse.h"
+-
+-#define MAXLEN 256
+-
+-    int
+-do_logout( char *path )
+-{
+-    if ( chmod( path, (  S_ISGID | S_IRUSR  )) < 0 ) {
+-	syslog( LOG_ERR, "do_logout: %s: %m", path  );
+-	return( -1 ) ;
+-    }
+-    utime( path, NULL );
+-
+-    return( 0 );
+-}
+-
+-    int
+-service_to_login( char *service, char *login )
+-{
+-    FILE	*scf;
+-    char	buf[ MAXCOOKIELEN + 2 ];
+-    char	*p;
+-    int		len;
+-    extern int	errno;
+-
+-    if (( scf = fopen( service, "r" )) == NULL ) {
+-	if ( errno == ENOENT ) {
+-	     return( 1 );
+-	 }
+-	syslog( LOG_ERR, "service_to_login: %s: %m", service  );
+-	return( -1 );
+-    }
+-
+-    if ( fgets( buf, sizeof( buf ), scf ) == NULL ) {
+-	(void)fclose( scf );
+-	syslog( LOG_ERR, "service_to_login: fgets: %m"  );
+-	return( -1 );
+-    }
+-
+-    len = strlen( buf );
+-    if ( buf[ len - 1 ] != '\n' ) {
+-	(void)fclose( scf );
+-	syslog( LOG_ERR, "service_to_login: line too long" );
+-	return( -1 );
+-    }
+-    buf[ len -1 ] = '\0';
+-
+-    if ( *buf != 'l' ) {
+-	(void)fclose( scf );
+-	syslog( LOG_ERR,
+-		"service_to_login: file format error in %s", service );
+-	return( -1 );
+-    }
+-    p = buf + 1;
+-
+-    strcpy( login, p );
+-
+-    if ( fclose( scf ) != 0 ) {
+-	syslog( LOG_ERR, "service_to_login: %s: %m", service );
+-	return( -1 );
+-    }
+-    return( 0 );
+-}
+-
+-    int
+-read_cookie( char *path, struct cinfo *ci )
+-{
+-    FILE		*cf;
+-    struct stat		st;
+-    char		buf[ MAXLEN ];
+-    char		*p;
+-    int			len;
+-    extern int          errno;
+-
+-
+-    if (( cf = fopen( path, "r" )) == NULL ) {
+-	if ( errno == ENOENT ) {
+-	    return( 1 );
+-	}
+-	syslog( LOG_ERR, "read_cookie: %s: %m", path  );
+-	return( -1 );
+-    }
+-
+-    if ( fstat( fileno( cf ), &st ) != 0 ) {
+-	(void)fclose( cf );
+-	syslog( LOG_ERR, "read_cookie: %s: %m", path );
+-	return( -1 );
+-    }
+-
+-    ci->ci_itime = st.st_mtime;
+-
+-    /* file ordering matters for version and state, after we don't care */
+-    if ( fgets( buf, sizeof( ci->ci_version ), cf ) == NULL ) {
+-	(void)fclose( cf );
+-	syslog( LOG_ERR, "read_cookie: ci_version: %m"  );
+-	return( -1 );
+-    }
+-
+-    len = strlen( buf );
+-    if ( buf[ len - 1 ] != '\n' ) {
+-	(void)fclose( cf );
+-	syslog( LOG_ERR, "read_cookie: line too long" );
+-	return( -1 );
+-    }
+-    buf[ len -1 ] = '\0';
+-
+-    if ( *buf != 'v' ) {
+-	(void)fclose( cf );
+-	syslog( LOG_ERR, "read_cookie: file format error" );
+-	return( -1 );
+-    }
+-    p = buf + 1;
+-
+-    ci->ci_version = atoi( p );
+-
+-    if ( ci->ci_version != 0 ) {
+-	(void)fclose( cf );
+-	syslog( LOG_ERR, "read_cookie: file version mismatch" );
+-	return( -1 );
+-    }
+-
+-    /* legacy logout code, skip the s0/1 line */
+-    if ( fgets( buf, sizeof( ci->ci_state ), cf ) == NULL ) {
+-	(void)fclose( cf );
+-	syslog( LOG_ERR, "read_cookie: ci_state: %m"  );
+-	return( -1 );
+-    }
+-
+-#ifdef notdef
+-    len = strlen( buf );
+-    if ( buf[ len - 1 ] != '\n' ) {
+-	(void)fclose( cf );
+-	syslog( LOG_ERR, "read_cookie: line too long" );
+-    }
+-    buf[ len -1 ] = '\0';
+-
+-    if ( *buf != 's' ) {
+-	syslog( LOG_ERR, "read_cookie: file format error" );
+-	(void)fclose( cf );
+-	return( -1 );
+-    }
+-    p = buf + 1;
+-    ci->ci_state = atoi( p );
+-#endif
+-
+-    /* new logout code */
+-    if ( st.st_mode & S_ISGID ) {
+-	ci->ci_state = 0;
+-    } else {
+-	ci->ci_state = 1;
+-    }
+-
+-    while( fgets( buf, MAXLEN, cf ) != NULL ) {
+-	len = strlen( buf );
+-	if ( buf[ len - 1 ] != '\n' ) {
+-	    (void)fclose( cf );
+-	    syslog( LOG_ERR, "read_cookie: line too long");
+-	}
+-	buf[ len - 1 ] = '\0';
+-	p = buf + 1;
+-
+-	switch( *buf ) {
+-
+-	case 'i':
+-	    strcpy( ci->ci_ipaddr, p );
+-	    break;
+-
+-	case 'p':
+-	    strcpy( ci->ci_user, p );
+-	    break;
+-
+-	case 'r':
+-	    strcpy( ci->ci_realm, p );
+-	    break;
+-
+-	case 't':
+-	    strcpy( ci->ci_ctime, p );
+-	    break;
+-
+-	case 'k':
+-	    strcpy( ci->ci_krbtkt, p );
+-	    break;
+-
+-	default:
+-	    syslog( LOG_ERR, "read_cookie: unknown keyword %c", *buf );
+-	    (void)fclose( cf );
+-	    return( -1 );
+-	}
+-    }
+-
+-    if ( fclose( cf ) != 0 ) {
+-	syslog( LOG_ERR, "read_cookie: %s: %m", path );
+-	return( -1 );
+-    }
+-    return( 0 );
+-}
+-
+Index: daemon/command.c
+===================================================================
+--- daemon/command.c	(revision 18)
++++ daemon/command.c	(working copy)
+@@ -7,6 +7,7 @@
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include <sys/param.h>
++#include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ #include <errno.h>
+@@ -34,33 +35,31 @@
+ #define MIN(a,b)        ((a)<(b)?(a):(b))
+ #define MAX(a,b)        ((a)>(b)?(a):(b))
+ 
+-#define TKT_PREFIX	_COSIGN_TICKET_CACHE
+ 
+ extern int			idle_out;
+ extern int			grey;
+ extern struct sockaddr_in	cosign_sin;
+ 
+ 
+-static int	f_noop( SNET *, int, char *[], SNET * );
+-static int	f_quit( SNET *, int, char *[], SNET * );
+-static int	f_help( SNET *, int, char *[], SNET * );
+-static int	f_notauth( SNET *, int, char *[], SNET * );
+-static int	f_login( SNET *, int, char *[], SNET * );
+-static int	f_logout( SNET *, int, char *[], SNET * );
+-static int	f_register( SNET *, int, char *[], SNET * );
+-static int	f_check( SNET *, int, char *[], SNET * );
+-static int	f_retr( SNET *, int, char *[], SNET * );
+-static int	f_time( SNET *, int, char *[], SNET * );
+-static int	f_daemon( SNET *, int, char *[], SNET * );
+-static int	f_starttls( SNET *, int, char *[], SNET * );
++static int	f_noop( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_quit( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_help( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_notauth( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_login( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_logout( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_register( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_check( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_retr( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_time( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_daemon( TokenCacheTConf *,SNET *, int, char *[], SNET * );
++static int	f_starttls( TokenCacheTConf *,SNET *, int, char *[], SNET * );
+ 
+-static int	do_register( char *, char * );
+-static int	retr_ticket( SNET *, struct cinfo * );
+-static int	retr_proxy( SNET *, char *, SNET * );
++static int	retr_ticket( TokenCacheTConf *,SNET *, CoSignTGT * );
++static int	retr_proxy( TokenCacheTConf *,SNET *, CoSignTGT *,SNET * );
+ 
+ struct command {
+     char	*c_name;
+-    int		(*c_func)( SNET *, int, char *[], SNET * );
++    int		(*c_func)( TokenCacheTConf *,SNET *, int, char *[], SNET * );
+ };
+ 
+ struct command	unauth_commands[] = {
+@@ -104,35 +103,35 @@
+ int	ncommands = sizeof( unauth_commands ) / sizeof(unauth_commands[ 0 ] );
+ 
+     int
+-f_quit( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_quit( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+     snet_writef( sn, "%d Service closing transmission channel\r\n", 221 );
+     exit( 0 );
+ }
+ 
+     int
+-f_noop( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_noop( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+     snet_writef( sn, "%d cosign v%s\r\n", 250, cosign_version );
+     return( 0 );
+ }
+ 
+     int
+-f_help( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_help( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+     snet_writef( sn, "%d Slainte Mhath!\r\n", 203 );
+     return( 0 );
+ }
+ 
+     int
+-f_notauth( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_notauth( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+     snet_writef( sn, "%d You must call STARTTLS first!\r\n", 550 );
+     return( 0 );
+ }
+ 
+     int
+-f_starttls( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_starttls( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+ 
+     int				rc;
+@@ -178,19 +177,19 @@
+ 
+ 
+     int
+-f_login( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_login( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+-    FILE		*tmpfile;
+-    char		tmppath[ MAXCOOKIELEN ];
+-    char		tmpkrb[ 16 ], krbpath [ MAXPATHLEN ];
+     char                *sizebuf, *line;
+-    char                buf[ 8192 ];
+-    int			fd, krb = 0;
++    int			krb = 0;
+     struct timeval	tv;
+-    struct cinfo	ci;
+-    unsigned int        len, rc;
++    unsigned int        len;
+     extern int		errno;
+ 
++    CoSignTGT       *tgt = NULL;
++    int             nread = 0, aread = 0;
++    char            *krbBuf;
++
++
+     /* LOGIN login_cookie ip principal realm [tgt] */
+ 
+     if ( ch->ch_key != CGI ) {
+@@ -208,27 +207,12 @@
+     if ( ac == 6 ) {
+ 	if ( strcmp( av[ 5 ], "kerberos" ) == 0 ) {
+ 	    krb = 1;
+-	    if ( mkcookie( sizeof( tmpkrb ), tmpkrb ) != 0 ) {
+-		syslog( LOG_ERR, "f_login: mkcookie error." );
+-		return( -1 );
+-	    }
+-	    if ( snprintf( krbpath, sizeof( krbpath ), "%s/%s",
+-		    TKT_PREFIX, tmpkrb ) >= sizeof( krbpath )) {
+-		syslog( LOG_ERR, "f_login: krbpath too long." );
+-		return( -1 );
+-	    }
+ 	} else {
+ 	    snet_writef( sn, "%d LOGIN: Ticket type not supported.\r\n", 507 );
+ 	    return( 1 );
+ 	}
+     }
+ 
+-    if ( strchr( av[ 1 ], '/' ) != NULL ) {
+-	syslog( LOG_ERR, "f_login: cookie name contains '/'" );
+-	snet_writef( sn, "%d LOGIN: Invalid cookie name.\r\n", 501 );
+-	return( 1 );
+-    }
+-
+     if ( strlen( av[ 1 ] ) >= MAXCOOKIELEN ) {
+ 	syslog( LOG_ERR, "f_login: cookie too long" );
+ 	snet_writef( sn, "%d LOGIN: Cookie too long.\r\n", 502 );
+@@ -240,89 +224,33 @@
+ 	return( -1 );
+     }
+ 
+-    if ( snprintf( tmppath, sizeof( tmppath ), "%x%x.%i",
+-	    tv.tv_sec, tv.tv_usec, (int)getpid()) >= sizeof( tmppath )) {
+-	syslog( LOG_ERR, "f_login: tmppath too long" );
+-	return( -1 );
++    if( !( tgt = createCoSignTGT() ) )
++    {
++            syslog( LOG_ERR, "f_login: Failed to create the CoSignTGT\n" );
++            snet_writef( sn, "505 LOGIN: Failed, system problem\r\n" );
+     }
+-
+-    if (( fd = open( tmppath, O_CREAT|O_EXCL|O_WRONLY, 0644 )) < 0 ) {
+-	syslog( LOG_ERR, "f_login: open: %m" );
+-	return( -1 );
++    tgt->version=0;
++    tgt->state=LoggedIn;
++    strncpy( tgt->realm, av[ 4 ], MAX_REALM_LENGTH );
++    if( !inet_aton( av[ 2 ], &tgt->addr ) )
++    {
++            syslog( LOG_ERR, "f_login: Failed to convert ip addess to inet_addr\n" );
++            snet_writef( sn, "505 LOGIN: Failed, system problem\r\n" );
++            releaseCoSignTGT( &tgt );
++            return -1;
+     }
++    strncpy( tgt->user, av[3], MAX_USER_LENGTH );
++    strncpy( tgt->id, av[ 1 ] + 7, MAX_TICKET_ID_LENGTH );
+ 
+-    if (( tmpfile = fdopen( fd, "w" )) == NULL ) {
+-	/* close */
+-	if ( unlink( tmppath ) != 0 ) {
+-	    syslog( LOG_ERR, "f_login: unlink: %m" );
+-	}
+-	syslog( LOG_ERR, "f_login: fdopen: %m" );
+-	return( -1 );
++    // add the TGT to the cache
++    if( addTGTToCache( tconf, tgt ) )
++    {
++            syslog( LOG_ERR, "f_login: Failed to add TGT to the cache\n" );
++            snet_writef( sn, "505 LOGIN: Failed to add the token to the cache\r\n" );
++            releaseCoSignTGT( &tgt );
++			return -1;
+     }
+ 
+-    fprintf( tmpfile, "v0\n" );
+-    fprintf( tmpfile, "s1\n" );	 /* 1 is logged in, 0 is logged out */
+-    if ( strlen( av[ 2 ] ) >= sizeof( ci.ci_ipaddr )) {
+-	goto file_err;
+-    }
+-    fprintf( tmpfile, "i%s\n", av[ 2 ] );
+-    if ( strlen( av[ 3 ] ) >= sizeof( ci.ci_user )) {
+-	goto file_err;
+-    }
+-    fprintf( tmpfile, "p%s\n", av[ 3 ] );
+-    if ( strlen( av[ 4 ] ) >= sizeof( ci.ci_realm )) {
+-	goto file_err;
+-    }
+-    fprintf( tmpfile, "r%s\n", av[ 4 ] );
+-    fprintf( tmpfile, "t%lu\n", tv.tv_sec );
+-    if ( krb ) {
+-	fprintf( tmpfile, "k%s\n", krbpath );
+-    }
+-
+-    if ( fclose ( tmpfile ) != 0 ) {
+-	if ( unlink( tmppath ) != 0 ) {
+-	    syslog( LOG_ERR, "f_login: unlink: %m" );
+-	}
+-	syslog( LOG_ERR, "f_login: fclose: %m" );
+-	return( -1 );
+-    }
+-
+-    if ( link( tmppath, av[ 1 ] ) != 0 ) {
+-	if ( unlink( tmppath ) != 0 ) {
+-	    syslog( LOG_ERR, "f_login: unlink: %m" );
+-	}
+-	if ( errno == EEXIST ) {
+-	    syslog( LOG_ERR, "f_login: file already exists: %s", av[ 1 ]);
+-	    if ( read_cookie( av[ 1 ], &ci ) != 0 ) {
+-		syslog( LOG_ERR, "f_login: read_cookie" );
+-		snet_writef( sn, "%d LOGIN error: Sorry\r\n", 503 );
+-		return( 1 );
+-	    }
+-	    if ( ci.ci_state == 0 ) {
+-		syslog( LOG_ERR,
+-			"f_login: %s already logged out", av[ 1 ] );
+-		snet_writef( sn, "%d LOGIN: Already logged out\r\n", 505 );
+-		return( 1 );
+-	    }
+-	    if ( strcmp( av[ 3 ], ci.ci_user ) != 0 ) {
+-		syslog( LOG_ERR, "%s in cookie %s does not match %s",
+-			ci.ci_user, av[ 1 ], av[ 3 ] );
+-		snet_writef( sn,
+-			"%d user name given does not match cookie\r\n", 402 );
+-		return( 1 );
+-	    }
+-	    snet_writef( sn,
+-		    "%d LOGIN: Cookie already exists\r\n", 201 );
+-	    return( 1 );
+-	}
+-	syslog( LOG_ERR, "f_login: link: %m" );
+-	return( -1 );
+-    }
+-
+-    if ( unlink( tmppath ) != 0 ) {
+-	syslog( LOG_ERR, "f_login: unlink: %m" );
+-    }
+-
+     if ( !krb ) {
+ 	snet_writef( sn, "%d LOGIN successful: Cookie Stored.\r\n", 200 );
+ 	if (( pushersn != NULL ) && ( replicate )) {
+@@ -337,59 +265,60 @@
+ 
+     snet_writef( sn, "%d LOGIN: Send length then file.\r\n", 300 );
+ 
+-    if (( fd = open( krbpath, O_CREAT|O_EXCL|O_WRONLY, 0644 )) < 0 ) {
+-	syslog( LOG_ERR, "f_login: open: %s: %m", krbpath );
+-	return( -1 );
+-    }
+-
+     tv.tv_sec = 60 * 2;
+     tv.tv_usec = 0;
+     if (( sizebuf = snet_getline( sn, &tv )) == NULL ) {
+         syslog( LOG_ERR, "f_login: snet_getline: %m" );
++		removeTGTFromCache(tconf,tgt);
++        releaseCoSignTGT( &tgt );
+         return( -1 );
+     }
+     /* Will there be a limit? */
+     len = atoi( sizebuf );
++    if( !( krbBuf = ( char * )malloc( len ) ) )
++    {
++            syslog( LOG_ERR, "f_login: Failed to allocate memory for kerberos ticket" );
++            removeTGTFromCache( tconf, tgt );
++            releaseCoSignTGT( &tgt );
++            return -1;
++    }
++    memset( krbBuf, 0, len );
+ 
+-    for ( ; len > 0; len -= rc ) {
+-        tv.tv_sec = 60 * 2;
+-        tv.tv_usec = 0;
+-        if (( rc = snet_read(
+-                sn, buf, (int)MIN( len, sizeof( buf )), &tv )) <= 0 ) {
+-            syslog( LOG_ERR, "f_login: snet_read: %m" );
+-            return( -1 );
+-        }
++    nread = 0;
++    while( nread < len )
++    {
++            tv.tv_sec = 120;
++            tv.tv_usec = 0;         /* Is this needed in this loop?? */
+ 
+-        if ( write( fd, buf, rc ) != rc ) {
+-            snet_writef( sn, "%d %s: %s\r\n", 504, krbpath, strerror( errno ));
+-            return( 1 );
+-        }
++            if( ( aread = snet_read(
++                            sn, krbBuf + nread, len - nread, &tv ) ) <= 0 )
++            {
++                    syslog( LOG_ERR, "f_login: snet_read: %m" );
++                    snet_writef( sn, "%d LOGIN Failed: error reading!\n", 504 );
++                    free( krbBuf );
++                    removeTGTFromCache( tconf, tgt );
++                    releaseCoSignTGT( &tgt );
++                    return -1;
++            }
++            nread += aread;
+     }
+ 
+-    if ( close( fd ) < 0 ) {
+-        snet_writef( sn, "%d %s: %s\r\n", 504, krbpath, strerror( errno ));
+-        return( 1 );
+-    }
+-
+-
+     tv.tv_sec = 60 * 2;
+     tv.tv_usec = 0;
+     if (( line = snet_getline( sn, &tv )) == NULL ) {
+         syslog( LOG_ERR, "f_login: snet_getline: %m" );
++        removeTGTFromCache( tconf, tgt );
++        releaseCoSignTGT( &tgt );
+         return( -1 );
+     }
+ 
+     /* make sure client agrees we're at the end */
+     if ( strcmp( line, "." ) != 0 ) {
+         snet_writef( sn, "%d Length doesn't match sent data\r\n", 505 );
+-        (void)unlink( krbpath );
++        removeTGTFromCache( tconf, tgt );
++        releaseCoSignTGT( &tgt );
++        free( krbBuf );
+ 
+-	if ( unlink( av[ 1 ] ) != 0 ) {
+-	    syslog( LOG_ERR, "f_login: unlink: %m" );
+-	}
+-
+-	/* if the krb tkt didn't store, unlink the cookie as well */
+-
+         tv.tv_sec = 60 * 2;
+         tv.tv_usec = 0;
+         for (;;) {
+@@ -404,6 +333,14 @@
+         return( -1 );
+     }
+ 
++    if( addKerberosTicketToTGT( tconf, tgt, len, krbBuf ) )
++    {
++            removeTGTFromCache( tconf, tgt );
++            releaseCoSignTGT( &tgt );
++            free( krbBuf );
++            return -1;
++    }
++    free( krbBuf );
+ 
+     snet_writef( sn, "%d LOGIN successful: Cookie & Ticket Stored.\r\n", 201 );
+     if (( pushersn != NULL ) && ( replicate )) {
+@@ -414,19 +351,10 @@
+ 	syslog( LOG_INFO, "LOGIN %s %s %s", av[ 3 ], av [ 4 ], av [ 2 ] );
+     }
+     return( 0 );
+-
+-file_err:
+-    (void)fclose( tmpfile );
+-    if ( unlink( tmppath ) != 0 ) {
+-	syslog( LOG_ERR, "f_login: unlink: %m" );
+-    }
+-    syslog( LOG_ERR, "f_login: bad file format" );
+-    snet_writef( sn, "%d LOGIN Syntax Error: Bad File Format\r\n", 504 );
+-    return( 1 );
+ }
+ 
+     int
+-f_daemon( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_daemon( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+ 
+     char	hostname[ MAXHOSTNAMELEN ];
+@@ -460,14 +388,14 @@
+ }
+ 
+     int
+-f_time( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_time( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+-    struct utimbuf	new_time;
+-    struct stat		st;
+     struct timeval	tv;
+     int			timestamp, state;
+     int			total = 0, fail = 0;
+     char		*line;
++    CoSignTGT               *tgt;
++    CoSignTicketID  id;
+ 
+     /* TIME */
+     /* 3xx */
+@@ -507,11 +435,6 @@
+ 	    continue;
+ 	}
+ 
+-	if ( strchr( av[ 0 ], '/' ) != NULL ) {
+-	    syslog( LOG_ERR, "f_time: cookie name contains '/'" );
+-	    continue;
+-	}
+-
+ 	if ( strncmp( av[ 0 ], "cosign=", 7 ) != 0 ) {
+ 	    syslog( LOG_ERR, "f_time: cookie name malformat" );
+ 	    continue;
+@@ -523,24 +446,29 @@
+ 	}
+ 
+ 	total++;
+-	if ( stat( av[ 0 ], &st ) != 0 ) {
+-	    /* record a missing cookie here */
+-	    fail++;
+-	    continue;
+-	}
++    if( cosignCNameToTicketID( av[ 0 ], id ) )
++    {
++            syslog( LOG_ERR, "f_time: cannot get the TGT id!" );
++            continue;
++    }
+ 
++    if( !( tgt = getTGTFromCache( tconf, id ) ) )
++    {
++            syslog( LOG_ERR, "f_time: failed to find tgt with  id '%s'", id );
++	    	fail++;
++            continue;
++    }
++
+ 	timestamp = atoi( av[ 1 ] ); 
+-	if ( timestamp > st.st_mtime ) {
+-	    new_time.modtime = timestamp;
+-	    utime( av[ 0 ], &new_time );
+-	}
++    if ( timestamp > getLastAccessTime( tconf, tgt ) )
++            updateAccessTime( tconf, tgt, timestamp );
+ 
++
+ 	state = atoi( av[ 2 ] );
+-	if ( state == 0 ) {
+-	    if ( do_logout( av[ 0 ] ) < 0 ) {
+-		syslog( LOG_ERR, "f_time: %s should be logged out!", av[ 0 ] );
+-	    }
++	if ( state == LoggedOut ) {
++		logUserOut( tconf, tgt );
+ 	}
++	releaseCoSignTGT( &tgt );
+     }
+ 
+     if ( total != 0 ) {
+@@ -552,10 +480,12 @@
+ }
+ 
+     int
+-f_logout( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_logout( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+-    struct cinfo	ci;
++    CoSignTGT               *tgt;
++    CoSignTicketID  ticketID;
+ 
++
+     /*LOGOUT login_cookie ip */
+ 
+     if ( ch->ch_key != CGI ) {
+@@ -571,125 +501,57 @@
+ 	return( 1 );
+     }
+ 
+-    if ( strchr( av[ 1 ], '/' ) != NULL ) {
+-	syslog( LOG_ERR, "f_logout: cookie name contains '/'" );
+-	snet_writef( sn, "%d LOGOUT: Invalid cookie name.\r\n", 511 );
+-	return( 1 );
+-    }
+-
+     if ( strlen( av[ 1 ] ) >= MAXCOOKIELEN ) {
+ 	syslog( LOG_ERR, "f_logout: %s cookie too long", ch->ch_hostname );
+ 	snet_writef( sn, "%d LOGOUT: Cookie too long\r\n", 512 );
+ 	return( 1 );
+     }
+-
+-    if ( read_cookie( av[ 1 ], &ci ) != 0 ) {
+-	syslog( LOG_ERR, "f_logout: read_cookie" );
+-	snet_writef( sn, "%d LOGOUT error: Sorry\r\n", 513 );
+-	return( 1 );
++    if( cosignCNameToTicketID( av[1], ticketID ) )
++    {
++            syslog( LOG_ERR, "f_logout: Failed to convert login cookie to ticket ID" );
++            snet_writef( sn, "500 LOGOUT: Failed to convert cookie to ticket ID\r\n" );
++            return 1;
+     }
+ 
+-    if ( ci.ci_state == 0 ) {
+-	syslog( LOG_ERR, "f_logout: %s already logged out", av[ 1 ] );
+-	snet_writef( sn, "%d LOGOUT: Already logged out\r\n", 411 );
+-	return( 1 );
++    if( !( tgt = getTGTFromCache( tconf, ticketID ) ) )
++    {
++            syslog( LOG_ERR, "f_logout: Failed to get ticket ID '%s'", ticketID );
++            snet_writef( sn, "513 LOGOUT: Failed to locate the login details, "
++                                            "are you alreay logged in?\r\n" );
++            return 1;
+     }
+ 
+-    if ( do_logout( av[ 1 ] ) < 0 ) {
+-	syslog( LOG_ERR, "f_logout: %s: %m", av[ 1 ] );
+-	return( -1 );
++    if ( tgt->state == LoggedOut ) {
++            syslog( LOG_ERR, "f_logout: %s already logged out", av[ 1 ] );
++            snet_writef( sn, "%d LOGOUT: Already logged out\r\n", 411 );
++			releaseCoSignTGT(&tgt);
++            return( 1 );
+     }
+ 
++    logUserOut( tconf, tgt );
++
+     snet_writef( sn, "%d LOGOUT successful: cookie no longer valid\r\n", 210 );
+     if (( pushersn != NULL ) && ( replicate )) {
+ 	snet_writef( pushersn, "LOGOUT %s %s\r\n", av[ 1 ], av [ 2 ] );
+     }
+     if ( replicate ) {
+-	syslog( LOG_INFO, "LOGOUT %s %s %s", ci.ci_user, ci.ci_realm, av[ 2 ] );
++	syslog( LOG_INFO, "LOGOUT %s %s %s", tgt->user, tgt->realm, av[ 2 ] );
+     }
++    releaseCoSignTGT( &tgt );
+     return( 0 );
+-
+ }
+ 
+-/*
+- * associate serivce with login
+- * 0 = OK
+- * -1 = unknown fatal error
+- * 1 = already registered
+- */
+     int
+-do_register( char *login, char *scookie )
++f_register( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+-    int			fd, rc;
+-    char		tmppath[ MAXCOOKIELEN ];
+-    FILE		*tmpfile;
+-    struct timeval	tv;
++    time_t tgtLastAccess;
++    struct timeval      tv;
++    CoSignTGT *tgt;
++    CoSignTicketID tgtID;
++    CoSignTicketID stID;
++    CoSignServiceName srvName;
+ 
+-    if ( gettimeofday( &tv, NULL ) != 0 ){
+-	syslog( LOG_ERR, "do_register: gettimeofday: %m" );
+-	return( -1 );
+-    }
+ 
+-    if ( snprintf( tmppath, sizeof( tmppath ), "%x%x.%i",
+-	    tv.tv_sec, tv.tv_usec, (int)getpid()) >= sizeof( tmppath )) {
+-	syslog( LOG_ERR, "do_register: tmppath too long" );
+-	return( -1 );
+-    }
+-
+-    if (( fd = open( tmppath, O_CREAT|O_EXCL|O_WRONLY, 0644 )) < 0 ) {
+-	syslog( LOG_ERR, "do_register: open: %m" );
+-	return( -1 );
+-    }
+-
+-    if (( tmpfile = fdopen( fd, "w" )) == NULL ) {
+-	if ( unlink( tmppath ) != 0 ) {
+-	    syslog( LOG_ERR, "do_register: unlink: %m" );
+-	}
+-	syslog( LOG_ERR, "do_register: fdopen: %m" );
+-	return( -1 );
+-    }
+-
+-    /* the service cookie file contains the login cookie only */
+-    fprintf( tmpfile, "l%s\n", login );
+-
+-    if ( fclose( tmpfile ) != 0 ) {
+-	syslog( LOG_ERR, "do_register: fclose: %m" );
+-	if ( unlink( tmppath ) != 0 ) {
+-	    syslog( LOG_ERR, "do_register: unlink: %m" );
+-	}
+-	return( -1 );
+-    }
+-
+-    if ( link( tmppath, scookie ) != 0 ) {
+-	if ( errno == EEXIST ) {
+-	    rc = 1;
+-	} else {
+-	    syslog( LOG_ERR, "do_register: link: %m" );
+-	    rc = -1;
+-	}
+-	if ( unlink( tmppath ) != 0 ) {
+-	    syslog( LOG_ERR, "do_register: unlink: %m" );
+-	}
+-	return( rc );
+-    }
+-
+-    if ( unlink( tmppath ) != 0 ) {
+-	syslog( LOG_ERR, "do_register: unlink: %m" );
+-	return( -1 );
+-    }
+-
+-    utime( login, NULL );
+-
+-    return( 0 );
+-}
+-
+-    int
+-f_register( SNET *sn, int ac, char *av[], SNET *pushersn )
+-{
+-    struct cinfo	ci;
+-    struct timeval	tv;
+-    int			rc;
+-
+     /* REGISTER login_cookie ip service_cookie */
+ 
+     if ( ch->ch_key != CGI ) {
+@@ -705,12 +567,6 @@
+ 	return( 1 );
+     }
+ 
+-    if ( strchr( av[ 1 ], '/' ) != NULL ) {
+-	syslog( LOG_ERR, "f_register: cookie name contains '/'" );
+-	snet_writef( sn, "%d REGISTER: Invalid cookie name.\r\n", 521 );
+-	return( 1 );
+-    }
+-
+     if ( strlen( av[ 1 ] ) >= MAXCOOKIELEN ||
+ 	    strlen( av[ 3 ] ) >= MAXCOOKIELEN ) {
+ 	syslog( LOG_ERR, "f_register: cookie name too long." );
+@@ -718,48 +574,63 @@
+ 	return( 1 );
+     }
+ 
+-    if ( read_cookie( av[ 1 ], &ci ) != 0 ) {
+-	snet_writef( sn, "%d REGISTER error: Sorry\r\n", 523 );
+-	return( 1 );
++    if( cosignCNameToTicketID( av[1], tgtID ) )
++    {
++            syslog( LOG_ERR, "f_register: Failed to convert cookie id to TGT ID" );
++            snet_writef( sn, "%d REGISTER error: Failed to get TGT ID\r\n", 523 );
++            return 1;
+     }
+ 
+-    if ( ci.ci_state == 0 ) {
+-	syslog( LOG_ERR,
+-		"f_register: %s logged out, can't register", ci.ci_user );
+-	snet_writef( sn, "%d REGISTER: Already logged out\r\n", 420 );
+-	return( 1 );
++    if( cosignSTToTicketIDServName( av[3], srvName, stID ) )
++    {
++            syslog( LOG_ERR, "f_register: Failed to convert cookie id to ST ID" );
++            snet_writef( sn, "%d REGISTER error: Failed to get ST ID\r\n", 523 );
++            return 1;
+     }
+ 
++    if( !( tgt = getTGTFromCache( tconf, tgtID ) ) )
++    {
++            syslog( LOG_ERR, "f_register: Failed to locate TGT with id '%s'", tgtID );
++            snet_writef( sn, "%d REGISTER error: Failed to locate TGT\r\n", 523 );
++            return 1;
++    }
++
++    if ( tgt->state == LoggedOut ) {
++            syslog( LOG_ERR,
++            "f_register: %s already logged out, can't register", av[ 1 ] );
++            snet_writef( sn, "%d REGISTER: Already logged out\r\n", 420 );
++            releaseCoSignTGT( &tgt );
++            return( 1 );
++    }
++
++    tgtLastAccess = getLastAccessTime( tconf, tgt );
+     if ( gettimeofday( &tv, NULL ) != 0 ){
+-	syslog( LOG_ERR, "f_register: gettimeofday: %m" );
+-	return( -1 );
++            syslog( LOG_ERR, "f_register: gettimeofday: %m" );
++            releaseCoSignTGT( &tgt );
++            return( -1 );
+     }
+ 
+     /* check for idle timeout, and if so, log'em out */
+-    if ( tv.tv_sec - ci.ci_itime > idle_out &&
+-	    tv.tv_sec - ci.ci_itime < (idle_out + grey )) {
+-	snet_writef( sn, "%d REGISTER: Idle Grey Window\r\n", 521 );
+-	return( 1 );
+-     } else if ( tv.tv_sec - ci.ci_itime >  ( idle_out + grey )) {
+-	if ( do_logout( av[ 1 ] ) < 0 ) {
+-	    syslog( LOG_ERR, "f_register: %s: %m", av[ 1 ] );
+-	    snet_writef( sn, "%d REGISTER error: Sorry!\r\n", 524 );
+-	    return( -1 );
+-	}
+-	snet_writef( sn, "%d REGISTER: Idle logged out\r\n", 421 );
+-	return( 1 );
++    if ( tv.tv_sec - tgtLastAccess > idle_out &&
++            tv.tv_sec - tgtLastAccess < (idle_out + grey )) {
++        snet_writef( sn, "%d REGISTER: Idle Grey Window\r\n", 521 );
++        releaseCoSignTGT( &tgt );
++        return( 1 );
++     } else if ( tv.tv_sec - tgtLastAccess >  ( idle_out + grey )) {
++        syslog( LOG_INFO, "f_register: idle time out!\n" );
++        logUserOut( tconf, tgt);
++        releaseCoSignTGT( &tgt );
++        snet_writef( sn, "%d REGISTER: Idle logged out\r\n", 421 );
++        return( 1 );
+     }
+ 
+-    if (( rc = do_register( av[ 1 ], av[ 3 ] )) < 0 ) {
+-	return( -1 );
++    if( addSTDetailsToCache( tconf, tgt, stID, srvName, NULL ) ) {
++        syslog( LOG_ERR, "f_register: addSTDetailsToCahce failed" );
++        snet_writef( sn, "%d REGISTER: Register failed\r\n", 421 );
++        releaseCoSignTGT( &tgt );
++        return( -1 );
+     }
+ 
+-    /* because already registered is not fatal */
+-    if ( rc > 0 ) {
+-	snet_writef( sn,
+-		"%d REGISTER error: Cookie already exists\r\n", 226 );
+-	return( rc );
+-    }
+ 
+     snet_writef( sn, "%d REGISTER successful: Cookie Stored \r\n", 220 );
+     if (( pushersn != NULL ) && ( replicate )) {
+@@ -769,20 +640,22 @@
+     (void)strtok( av[ 3 ], "=" );
+     if ( replicate ) {
+ 	syslog( LOG_INFO, "REGISTER %s %s %s %s", 
+-		ci.ci_user, ci.ci_realm, ci.ci_ipaddr, av[ 3 ] );
++		tgt->user, tgt->realm, inet_ntoa(tgt->addr), av[ 3 ] );
+     }
++    releaseCoSignTGT( &tgt );
+     return( 0 );
+ }
+ 
+     int
+-f_check( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_check( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+-    struct cinfo 	ci;
++    CoSignTGT *tgt = NULL;
+     struct timeval	tv;
+-    char		login[ MAXCOOKIELEN ];
+     int			status;
+     double		rate;
++    time_t  lastAccess;
+ 
++
+     /* CHECK (service/login)cookie */
+ 
+     if (( ch->ch_key != CGI ) && ( ch->ch_key != SERVICE )) {
+@@ -798,12 +671,6 @@
+ 	return( 1 );
+     }
+ 
+-    if ( strchr( av[ 1 ], '/' ) != NULL ) {
+-	syslog( LOG_ERR, "f_check: cookie name contains '/'" );
+-	snet_writef( sn, "%d CHECK: Invalid cookie name.\r\n", 531 );
+-	return( 1 );
+-    }
+-
+     if ( strlen( av[ 1 ] ) >= MAXCOOKIELEN ) {
+ 	syslog( LOG_ERR, "f_check: service cookie too long." );
+ 	snet_writef( sn, "%d CHECK: Service Cookie too long\r\n", 532 );
+@@ -811,84 +678,108 @@
+     }
+ 
+     if ( strncmp( av[ 1 ], "cosign-", 7 ) == 0 ) {
+-	status = 231;
+-	if ( service_to_login( av[ 1 ], login ) != 0 ) {
+-	    if (( rate = rate_tick( &checkunknown )) != 0.0 ) {
++        CoSignServiceName srvName;
++        CoSignTicketID stid;
++		status = 231;
++    if( cosignSTToTicketIDServName( av[ 1 ], srvName, stid ) )
++	{
++		if (( rate = rate_tick( &checkunknown )) != 0.0 ) {
+ 		syslog( LOG_NOTICE, "STATS CHECK %s: UNKNOWN %.5f / sec",
+ 			inet_ntoa( cosign_sin.sin_addr), rate );
+ 	    }
+ 	    snet_writef( sn, "%d CHECK: cookie not in db!\r\n", 533 );
+ 	    return( 1 );
+ 	}
++	if(!(tgt=getTGTForSTID(tconf,srvName,stid)))
++	{
++		if (( rate = rate_tick( &checkunknown )) != 0.0 ) {
++		syslog( LOG_NOTICE, "STATS CHECK %s: UNKNOWN %.5f / sec",
++			inet_ntoa( cosign_sin.sin_addr), rate );
++	    }
++	    snet_writef( sn, "%d CHECK: cookie not in db!\r\n", 533 );
++	    return( 1 );
++	}
+     } else {
+-	status = 232;
+-	strcpy( login, av[ 1 ] );
+-    }
++        CoSignTicketID tgtid;
++        status = 232;
+ 
+-    if ( read_cookie( login, &ci ) != 0 ) {
+-	if (( rate = rate_tick( &checkunknown )) != 0.0 ) {
+-	    syslog( LOG_NOTICE, "STATS CHECK %s: UNKNOWN %.5f / sec",
+-		    inet_ntoa( cosign_sin.sin_addr), rate);
+-	}
+-	snet_writef( sn, "%d CHECK: Who me? Dunno.\r\n", 534 );
+-	return( 1 );
++        if( cosignCNameToTicketID( av[ 1 ], tgtid ) )
++        {
++            snet_writef( sn, "%d CHECK: login cookie not in db!\r\n", 533 );
++            return( 1 );
++        }
++        if( !( tgt = getTGTFromCache( tconf, tgtid ) ) )
++        {
++fprintf( stderr, "Failed to find the cookie\n" ); fflush( stderr ); //BRETT
++            snet_writef( sn, "%d CHECK: login cookie not in db!\r\n", 533 );
++            return( 1 );
++        }
++
+     }
+ 
+-    if ( ci.ci_state == 0 ) {
+-	if (( rate = rate_tick( &checkfail )) != 0.0 ) {
+-	    syslog( LOG_NOTICE, "STATS CHECK %s: FAIL %.5f / sec",
+-		    inet_ntoa( cosign_sin.sin_addr), rate);
++    if ( tgt->state == LoggedOut ) {
++	if((rate=rate_tick(&checkfail)) != 0.0 )
++	{
++		syslog( LOG_NOTICE,"STATS CHECK %s: FAIL %.5f / sec",
++			inet_ntoa(cosign_sin.sin_addr),rate);
+ 	}
+-	snet_writef( sn, "%d CHECK: Already logged out\r\n", 430 );
+-	return( 1 );
++    syslog( LOG_ERR,
++        "f_check: %s logged out", tgt->id );
++    snet_writef( sn, "%d CHECK: Already logged out\r\n", 430 );
++    releaseCoSignTGT( &tgt );
++    return( 1 );
+     }
+ 
+-
+     /* check for idle timeout, and if so, log'em out */
+     if ( gettimeofday( &tv, NULL ) != 0 ){
+-	syslog( LOG_ERR, "f_check: gettimeofday: %m" );
+-	return( -1 );
++        syslog( LOG_ERR, "f_check: gettimeofday: %m" );
++        releaseCoSignTGT( &tgt );
++        return( -1 );
+     }
+ 
+-    if ( tv.tv_sec - ci.ci_itime > idle_out &&
+-	    tv.tv_sec - ci.ci_itime < (idle_out + grey )) {
++    lastAccess = getLastAccessTime( tconf, tgt );
++
++    if ( tv.tv_sec - lastAccess > idle_out &&
++	    tv.tv_sec - lastAccess < (idle_out + grey )) {
+ 	if (( rate = rate_tick( &checkunknown )) != 0.0 ) {
+ 	    syslog( LOG_NOTICE, "STATS CHECK %s: UNKNOWN %.5f / sec",
+ 		    inet_ntoa( cosign_sin.sin_addr), rate);
+ 	}
+ 	snet_writef( sn, "%d CHECK: Idle Grey Window\r\n", 531 );
++    releaseCoSignTGT( &tgt );
+ 	return( 1 );
+-    } else if ( tv.tv_sec - ci.ci_itime > idle_out ) {
++    } else if ( tv.tv_sec - lastAccess > idle_out ) {
+ 	if (( rate = rate_tick( &checkfail )) != 0.0 ) {
+ 	    syslog( LOG_NOTICE, "STATS CHECK %s: FAIL %.5f / sec",
+ 		    inet_ntoa( cosign_sin.sin_addr), rate);
+ 	}
+ 	snet_writef( sn, "%d CHECK: Idle logged out\r\n", 431 );
+-	if ( do_logout( login ) < 0 ) {
+-	    syslog( LOG_ERR, "f_check: %s: %m", login );
+-	    return( -1 );
+-	}
++    logUserOut( tconf, tgt );
++    releaseCoSignTGT( &tgt );
+ 	return( 1 );
+     }
+ 
+     /* prevent idle out if we are actually using it */
+-    utime( login, NULL );
++    updateAccessTime( tconf, tgt,tv.tv_sec );
+ 
+     if (( rate = rate_tick( &checkpass )) != 0.0 ) {
+ 	syslog( LOG_NOTICE, "STATS CHECK %s: PASS %.5f / sec",
+ 		inet_ntoa( cosign_sin.sin_addr), rate);
+     }
+     snet_writef( sn,
+-	    "%d %s %s %s\r\n", status, ci.ci_ipaddr, ci.ci_user, ci.ci_realm );
++	    "%d %s %s %s\r\n", status, inet_ntoa(tgt->addr),tgt->user, tgt->realm );
++    releaseCoSignTGT( &tgt );
+     return( 0 );
+ }
+ 
+     int
+-f_retr( SNET *sn, int ac, char *av[], SNET *pushersn )
++f_retr( TokenCacheTConf *tconf,SNET *sn, int ac, char *av[], SNET *pushersn )
+ {
+-    struct cinfo        ci;
+     struct timeval      tv;
+-    char		login[ MAXCOOKIELEN ];
++    CoSignTicketID  stID;
++    CoSignServiceName srvName;
++    CoSignTGT *tgt;
++    time_t lastaccess;
+ 
+     if (( ch->ch_key != SERVICE ) || ( ch->ch_key == CGI )) {
+ 	syslog( LOG_ERR, "f_retr: %s not allowed", ch->ch_hostname );
+@@ -909,50 +800,58 @@
+ 	return( 1 );
+     }
+ 
+-    if ( strchr( av[ 1 ], '/' ) != NULL ) {
+-	syslog( LOG_ERR, "f_retr: cookie name contains '/'" );
+-	snet_writef( sn, "%d RETR: Invalid cookie name.\r\n", 541 );
+-	return( 1 );
++    if( cosignSTToTicketIDServName( av[1], srvName, stID ) )
++    {
++        syslog( LOG_ERR, "f_retr: Failed to convert cookie id to ST ID" );
++        snet_writef( sn, "%d RETR error: Failed to get ST ID\r\n", 523 );
++        return 1;
+     }
+ 
+-    if ( service_to_login( av[ 1 ], login ) != 0 ) {
+-	snet_writef( sn, "%d RETR: cookie not in db!\r\n", 543 );
+-	return( 1 );
++    if( !( tgt = getTGTForSTID( tconf, srvName, stID ) ) )
++    {
++        syslog( LOG_ERR, "f_retr: Failed to locate the TGT for ST '%s' of service '%s'", stID, srvName );
++        snet_writef( sn, "%d RETR: Who me? Dunno.\r\n", 544 );
++        return( 1 );
+     }
+ 
+-    if ( read_cookie( login, &ci ) != 0 ) {
+-	snet_writef( sn, "%d RETR: Who me? Dunno.\r\n", 544 );
+-	return( 1 );
++    if ( tgt->state == LoggedOut ) {
++        syslog( LOG_ERR,
++                        "f_retr: %s logged out ('%s', service '%s')", tgt->user, tgt->id, srvName );
++        snet_writef( sn, "%d RETR: Already logged out\r\n", 440 );
++        releaseCoSignTGT( &tgt );
++        return( 1 );
+     }
+ 
+-    if ( ci.ci_state == 0 ) {
+-	snet_writef( sn, "%d RETR: Already logged out\r\n", 440 );
+-	return( 1 );
+-    }
+-
+     /* check for idle timeout, and if so, log'em out */
+     if ( gettimeofday( &tv, NULL ) != 0 ){
+ 	syslog( LOG_ERR, "f_retr: gettimeofday: %m" );
++        releaseCoSignTGT( &tgt );
+ 	return( -1 );
+     }
+-
+-    if ( tv.tv_sec - ci.ci_itime > idle_out &&
+-	    tv.tv_sec - ci.ci_itime < (idle_out + grey )) {
++    lastaccess = getLastAccessTime( tconf, tgt );
++    
++    if ( tv.tv_sec - lastaccess > idle_out &&
++	    tv.tv_sec - lastaccess < (idle_out + grey )) {
+ 	snet_writef( sn, "%d RETR: Idle Grey Window\r\n", 541 );
++        releaseCoSignTGT( &tgt );
+ 	return( 1 );
+-    } else if ( tv.tv_sec - ci.ci_itime > idle_out ) {
++    } else if ( tv.tv_sec - lastaccess > idle_out ) {
+ 	snet_writef( sn, "%d RETR: Idle logged out\r\n", 441 );
+-	if ( do_logout( login ) < 0 ) {
+-	    syslog( LOG_ERR, "f_retr: %s: %m", login );
++        logUserOut( tconf, tgt );
++        releaseCoSignTGT( &tgt );
+ 	    return( -1 );
+ 	}
+-	return( 1 );
+-    }
+ 
+     if ( strcmp( av[ 2 ], "tgt") == 0 ) {
+-	return( retr_ticket( sn, &ci ));
++	int ret;
++	ret = retr_ticket( tconf, sn, tgt );
++        releaseCoSignTGT( &tgt );
++	return ret;
+     } else if ( strcmp( av[ 2 ], "cookies") == 0 ) {
+-	return( retr_proxy( sn, login, pushersn ));
++	int ret;
++	ret= retr_proxy( tconf, sn, tgt, pushersn );
++        releaseCoSignTGT( &tgt );
++	return ret;
+     }
+ 
+     syslog( LOG_ERR, "f_retr: no such retrieve type: %s", av[ 1 ] );
+@@ -961,12 +860,12 @@
+ }
+ 
+     int
+-retr_proxy( SNET *sn, char *login, SNET *pushersn )
++retr_proxy( TokenCacheTConf *tconf,SNET *sn, CoSignTGT *tgt, SNET *pushersn )
+ {
+     char		cookiebuf[ 128 ];
+     char		tmppath[ MAXCOOKIELEN ];
++	char		*srvname;
+     struct proxies	*proxy;
+-    int			rc;
+ 
+     if (( ch->ch_flag & CH_PROXY ) == 0 ) {
+ 	syslog( LOG_ERR, "%s cannot retrieve cookies", ch->ch_hostname );
+@@ -976,25 +875,32 @@
+     }
+ 
+     for ( proxy = ch->ch_proxies; proxy != NULL; proxy = proxy->pr_next ) {
+-	if ( mkcookie( sizeof( cookiebuf ), cookiebuf ) != 0 ) {
+-	    return( -1 );
+-	}
+ 
+-	if ( snprintf( tmppath, sizeof( tmppath ), "%s=%s",
+-		proxy->pr_cookie, cookiebuf ) >= sizeof( tmppath )) {
+-	    syslog( LOG_ERR, "retr_proxy: tmppath too long" );
+-	    return( -1 );
+-	}
++		if(!strncmp(proxy->pr_cookie,"cosign-",7))
++			srvname=proxy->pr_cookie+7;
++		else
++			srvname=proxy->pr_cookie;
+ 
+-	if (( rc = do_register( login, tmppath )) < 0 ) {
+-	    continue;
+-	}
++		if ( mkcookie( sizeof( cookiebuf ), cookiebuf ) != 0 )
++		{
++	    	return( -1 );
++		}
+ 
+-	if (( pushersn != NULL ) && ( replicate )) {
+-	    snet_writef( pushersn, "REGISTER %s - %s\r\n",
+-		    login, tmppath );
+-	}
+-	snet_writef( sn, "%d-%s %s\r\n", 241, tmppath, proxy->pr_hostname );
++        if( !addSTDetailsToCache( tconf, tgt, cookiebuf, srvname, NULL ) )
++            continue;
++
++		if ( snprintf( tmppath, sizeof( tmppath ), "%s=%s",
++				proxy->pr_cookie, cookiebuf ) >= sizeof( tmppath ))
++		{
++	    	syslog( LOG_ERR, "retr_proxy: tmppath too long" );
++	    	return( -1 );
++		}
++
++		if (( pushersn != NULL ) && ( replicate )) {
++	    	snet_writef( pushersn, "REGISTER %s - %s\r\n",
++		    	tgt->id, tmppath );
++		}
++		snet_writef( sn, "%d-%s %s\r\n", 241, tmppath, proxy->pr_hostname );
+     }
+     snet_writef( sn, "%d Cookies registered and sent\r\n", 241 );
+ 
+@@ -1002,11 +908,9 @@
+ }
+ 
+     int
+-retr_ticket( SNET *sn, struct cinfo *ci )
++retr_ticket( TokenCacheTConf *tconf,SNET *sn, CoSignTGT *tgt )
+ {
+-    struct stat		st;
+-    int			fd;
+-    ssize_t             readlen;
++	unsigned int	bufsz = 8192;
+     char                buf[8192];
+     struct timeval      tv;
+ 
+@@ -1018,59 +922,25 @@
+ 	return( 1 );
+     }
+ 
+-    /* if we get here, we can give them the data pointed to by k */
++    getKerberosTicketFromTGT( tconf, tgt, &bufsz, buf );
+ 
+-    if (( fd = open( ci->ci_krbtkt, O_RDONLY, 0 )) < 0 ) {
+-        syslog( LOG_ERR, "open: %s: %m", ci->ci_krbtkt );
+-        snet_writef( sn, "%d Unable to access %s.\r\n", 547, ci->ci_krbtkt );
+-        return( 1 );
+-    }
+-   
+-    /* dump file info */
+-
+-    if ( fstat( fd, &st ) < 0 ) {
+-        syslog( LOG_ERR, "f_retr: fstat: %m" );
+-        snet_writef( sn, "%d Access Error: %s\r\n", 548, ci->ci_krbtkt );
+-        if ( close( fd ) < 0 ) {
+-            syslog( LOG_ERR, "close: %m" );
+-            return( -1 );
+-        }
+-        return( 1 );
+-    }
+-
+     snet_writef( sn, "%d Retrieving file\r\n", 240 );
+-    snet_writef( sn, "%d\r\n", (int)st.st_size );
++    snet_writef( sn, "%d\r\n", bufsz );
+ 
+-    /* dump file */
+-
+-    while (( readlen = read( fd, buf, sizeof( buf ))) > 0 ) {
+-        tv.tv_sec = 60 * 60 ;
+-        tv.tv_usec = 0;
+-        if ( snet_write( sn, buf, (int)readlen, &tv ) != readlen ) {
+-            syslog( LOG_ERR, "snet_write: %m" );
+-            return( -1 );
+-        }
+-    }
+-
+-    if ( readlen < 0 ) {
+-        syslog( LOG_ERR, "read: %m" );
+-	close( fd );
++    tv.tv_sec = 60 * 60 ;
++    tv.tv_usec = 0;
++    if ( snet_write( sn, buf, (int)bufsz, &tv ) != bufsz) {
++        syslog( LOG_ERR, "snet_write: %m" );
+         return( -1 );
+     }
+ 
+-    if ( close( fd ) < 0 ) {
+-        syslog( LOG_ERR, "close: %m" );
+-        return( -1 );
+-    }
+-
+     snet_writef( sn, ".\r\n" );
+-
+     return( 0 );
+ }
+ 
+ 
+     int
+-command( int fd, SNET *pushersn )
++command( TokenCacheTConf *tconf, int fd, SNET *pushersn )
+ {
+     SNET				*snet;
+     int					ac, i;
+@@ -1131,7 +1001,7 @@
+ 	    continue;
+ 	}
+ 
+-	if ( (*(commands[ i ].c_func))( snet, ac, av, pushersn ) < 0 ) {
++	if ( (*(commands[ i ].c_func))( tconf, snet, ac, av, pushersn ) < 0 ) {
+ 	    break;
+ 	}
+     }
+Index: daemon/cparse.h
+===================================================================
+--- daemon/cparse.h	(revision 18)
++++ daemon/cparse.h	(working copy)
+@@ -1,16 +1 @@
+-struct cinfo {
+-    int		ci_version;
+-    int		ci_state;
+-    char	ci_ipaddr[ 256 ];	/* longer than necessary */
+-    char	ci_user[ 130 ];		/* "64@64\0" */
+-    char	ci_realm[ 256 ];	/* longer than necessary */
+-    char	ci_ctime[ 12 ];		
+-    char	ci_krbtkt[ MAXPATHLEN ];
+-    time_t	ci_itime;
+-};
+-
+-int do_logout( char * );
+-int service_to_login( char *, char * );
+-int read_cookie( char *, struct cinfo * );
+-
+ #define MAXCOOKIELEN	1024
+Index: daemon/command.h
+===================================================================
+--- daemon/command.h	(revision 18)
++++ daemon/command.h	(working copy)
+@@ -3,7 +3,8 @@
+  * All Rights Reserved.  See LICENSE.
+  */
+ 
++#include "../common/tokencache/tokenCache.h"
+ extern int	tlsopt;
+ 
+-int		command( int, SNET * );
++int		command( TokenCacheTConf *,int, SNET * );
+ int		argcargv( char *, char **[] );
+Index: daemon/monster.c
+===================================================================
+--- daemon/monster.c	(revision 18)
++++ daemon/monster.c	(working copy)
+@@ -22,6 +22,7 @@
+ #include "rate.h"
+ #include "monster.h"
+ #include "config.h"
++#include "../common/tokencache/tokenCache.h"
+ 
+ /* idle_cache = (idle+grey) from cosignd, plus loggedout_cache here */
+ int		idle_cache = 16200;
+@@ -32,11 +33,14 @@
+ int		lc_gone;
+ extern char	*cosign_version;
+ 
++char    **tckeys=NULL,**tcvals=NULL;
++unsigned int ntckeys=0;
++
+ static void (*logger)( char * ) = NULL;
+ static struct timeval           timeout = { 10 * 60, 0 };
+ 
+ 
+-int decision( char *, struct timeval *, time_t *, int * );
++int decision( TokenCacheTConf *,CoSignTGT *, struct timeval *);
+ 
+ char        *cosign_dir = _COSIGN_DIR;
+ char		*cryptofile = _COSIGN_TLS_KEY;
+@@ -47,6 +51,8 @@
+ configure()
+ {
+ 	char *val;
++	char **vals;
++	unsigned int nVals;
+ 
+ 	if((val=getConfigValue(COSIGNDBKEY)))
+ 	{
+@@ -72,20 +78,43 @@
+ 				cryptofile,val);
+ 		cryptofile=val;
+ 	}
++    if((vals=getAllConfigValues(COSIGNTOKCACHEKEY,&nVals)))
++    {
++        if(vals && nVals)
++        {
++            int i = 0;
++            if(!(tckeys=(char **)calloc(nVals,sizeof(char *))))
++                return;
++            if(!(tcvals=(char **)calloc(nVals,sizeof(char *))))
++            {
++                free(tckeys);
++                return;
++            }
++            for(;i<nVals;i++)
++            {
++                char *ptr = strchr(vals[i],'=');
++                if(ptr)
++                {
++                    *ptr='\0';
++                    tckeys[i]=strdup(vals[i]);
++                    tcvals[i]=strdup(ptr+1);
++                    *ptr='=';
++                }
++            }
++            ntckeys=nVals;
++        }
++    }
+ }
+ 
+ int
+ main( int ac, char **av )
+ {
+-    DIR			*dirp;
+-    struct dirent	*de;
+     struct timeval	tv, now;
+     struct hostent	*he;
+     struct cl		*head = NULL, **tail = NULL, **cur, *new = NULL, *temp;
+     char                login[ MAXCOOKIELEN ], hostname[ MAXHOSTNAMELEN ];
+-    time_t		itime = 0;
+     char		*prog, *line;
+-    int			c, i, err = 0, state = 0;
++    int			c, i, err = 0;
+     int			lc_count, sc_count, sc_gone;
+     unsigned short	port = htons( 6663 );
+     int			rc;
+@@ -96,17 +125,19 @@
+     extern int          optind;
+     extern char         *optarg;
+ 
++    TokenCacheGConf *tgf = NULL;
++    TokenCacheTConf *ttc = NULL;
++	CoSignTGT 	*tgts = NULL;
++	CoSignST	*sts = NULL;
++	unsigned int nTickets = 0;
++
++
+     if (( prog = strrchr( av[ 0 ], '/' )) == NULL ) {
+ 	prog = av[ 0 ];
+     } else {
+ 	prog++;
+     }
+ 
+-    /*
+-     * Read config file before chdir(), in case config file is relative path.
+-     * We read configuration this early so command line options can override
+-     * any configuration in the conf file.
+-     */
+     if ( parseConfig( cosign_conf ) < 0 ) {
+     exit( 1 );
+     }
+@@ -285,12 +316,14 @@
+     }
+ 	}
+ 
+-    if ( chdir( cosign_dir ) < 0 ) {
+-	perror( cosign_dir );
+-	exit( 1 );
++    // Setup the tokencache
++    if( !( tgf = globalInitialiseCache( ntckeys,
++            tckeys, tcvals ) ) )
++    {
++        fprintf( stderr, "Failed is initialise the token cache " _COSIGNTOKENCACHEIMPL "\n" );
++        exit( 1 );
+     }
+ 
+-
+     /*
+      * Disassociate from controlling tty.
+      */
+@@ -328,18 +361,13 @@
+     setlogmask( LOG_UPTO( level ));
+ 
+ 
+-    syslog( LOG_INFO, "restart %s", cosign_version );
++    syslog( LOG_INFO, "restart %s with " _COSIGNTOKENCACHEIMPL " token cache", cosign_version );
+ 
+ 	for (;;) {
++    sleep( interval );
+ 
+-    sleep( interval );
+     lc_count = sc_count = lc_gone = sc_gone = 0;
+ 
+-    if (( dirp = opendir( cosign_dir )) == NULL ) {
+-	syslog( LOG_ERR, "%s: %m", cosign_dir);
+-	exit( -1 );
+-    }
+-
+     if ( gettimeofday( &now, NULL ) != 0 ){
+ 	syslog( LOG_ERR, "gettimeofday: %m" );
+ 	exit( -1 );
+@@ -422,47 +450,67 @@
+ 	cur = &(*cur)->cl_next;
+     }
+ 
+-    while (( de = readdir( dirp )) != NULL ) {
+-	/* is a login cookie */
+-	if ( strncmp( de->d_name, "cosign=", 7 ) == 0 ) {
++    if( !( ttc = initialiseCache( tgf, 0, NULL, NULL ) ) )
++    {
++        syslog( LOG_ERR, "Failed to initialise cache for processing" );
++		continue;
++    }
++	tgts=getAllTGTs(ttc,&nTickets);
++
++	for(;nTickets>0;nTickets--)
++	{
++		CoSignTGT *temp;
+ 	    lc_count++;
+-	    if (( rc = decision( de->d_name, &now, &itime, &state )) < 0 ) {
+-		syslog( LOG_ERR, "decision failure: %s", de->d_name );
+-		continue;
++	    if (( rc = decision( ttc,tgts, &now)) < 0 )
++		{
++			syslog( LOG_ERR, "decision failure: %s", tgts->id );
++			goto tgtnext;
+ 	    }
+ 	    for ( cur = &head; *cur != NULL; cur = &(*cur)->cl_next ) {
+-		if (( itime > (*cur)->cl_last_time ) &&
++		if (( getLastAccessTime(ttc,tgts) > (*cur)->cl_last_time ) &&
+ 			((*cur)->cl_sn != NULL )) {
+-		    if ( snet_writef( (*cur)->cl_sn, "%s %d %d\r\n",
+-			    de->d_name, itime, state ) < 0 ) {
++		    if ( snet_writef( (*cur)->cl_sn, "cosign=%s %d %d\r\n",
++			    tgts->id, getLastAccessTime(ttc,tgts), (tgts->state==LoggedIn) ) < 0 ) {
+ 			if ( snet_close( (*cur)->cl_sn ) != 0 ) {
+ 			    syslog( LOG_ERR, "snet_close: 11: %m" );
+ 			}
+ 			(*cur)->cl_sn = NULL;
+-			continue;
++			goto tgtnext;
+ 		    }
+ 		}
+ 	    }
+-	} else if ( strncmp( de->d_name, "cosign-", 7 ) == 0 ) {
++tgtnext:
++		temp=tgts;
++		tgts=tgts->next;
++		releaseCoSignTGT(&temp);
++	}
++
++	nTickets=0;
++	sts=getAllSTs(ttc,&nTickets);
++	for(;nTickets>0;nTickets--)
++ 	{
++		CoSignTGT *tgt=NULL;
++		CoSignST *temp;
+ 	    sc_count++;
+-	    if ( service_to_login( de->d_name, login ) != 0 ) {
+-		continue;
+-	    }
+-	    if (( rc = decision( login, &now, &itime, &state )) < 0 ) {
+-		syslog( LOG_ERR, "decision failure: %s", login );
+-		continue;
+-	    }
+-	    if ( rc == 0 ) {
+-		if ( unlink( de->d_name ) != 0 ) {
+-		    syslog( LOG_ERR, "%s: 12: %m", de->d_name );
++		if(!(tgt=getTGTForSTID(ttc,sts->serviceName,sts->id)))
++		{
++			syslog(LOG_ERR,"Failed to locate TGT for ST '%s' -> removing ST",
++					sts->id);
++			removeSTFromCache(ttc,sts);
++			sc_gone++;
++			goto stnext;
+ 		}
+-		sc_gone++;
++	    if (( rc = decision( ttc,tgt, &now)) < 0 ) {
++			syslog( LOG_ERR, "decision failure: %s", login );
++			goto stnext;
+ 	    }
+-	} else {
+-	    continue;
++stnext:
++		if(tgt) releaseCoSignTGT(&tgt);
++		temp=sts;
++		sts=sts->next;
++		releaseCoSignST(&temp);
+ 	}
+-    }
+-    closedir( dirp );
++	closeCache(&ttc);
+ 
+     for ( cur = &head; *cur != NULL; cur = &(*cur)->cl_next ) {
+ 	if ( (*cur)->cl_sn != NULL ) {
+@@ -493,57 +541,38 @@
+     syslog( LOG_NOTICE, "STATS MONSTER: %d/%d login %d/%d service",
+ 	    lc_gone, lc_count, sc_gone, sc_count );
+ 	}
++
++	globalCloseCache(&tgf);
+ }
+ 
+     int
+-decision( char *name, struct timeval *now, time_t *itime, int *state )
++decision( TokenCacheTConf *tconf, CoSignTGT *tgt, struct timeval *now )
+ {
+-    struct cinfo	ci = { 0, 0, "\0","\0","\0", "\0","\0", 0, };
+-    int			rc, create = 0;
+     extern int		errno;
++	time_t		lastaccess = getLastAccessTime(tconf,tgt);
++	time_t		create;
+ 
+-
+-    if (( rc = read_cookie( name, &ci )) < 0 ) {
+-	syslog( LOG_ERR, "read_cookie error: %s", name );
+-	return( -1 );
+-    }
+-
+-    /* login cookie gave us an ENOENT so we think it's gone */
+-    if ( rc == 1 ) {
+-	return( 0 );
+-    }
+-
+     /* logged out plus extra non-fail overtime */
+-    if ( !ci.ci_state && (( now->tv_sec - ci.ci_itime ) > loggedout_cache )) {
++    if ( tgt->state==LoggedOut && (( now->tv_sec - lastaccess ) > loggedout_cache )) {
+ 	goto delete_stuff;
+     }
+ 
+     /* idle out, plus gray window, plus non-failover */
+-    if (( now->tv_sec - ci.ci_itime )  > idle_cache ) {
++    if (( now->tv_sec - lastaccess )  > idle_cache ) {
+ 	goto delete_stuff;
+     }
+ 
+     /* hard timeout */
+-    create = atoi( ci.ci_ctime );
++    create = getCreationTime(tconf,tgt);
+     if (( now->tv_sec - create )  > hard_timeout ) {
+ 	goto delete_stuff;
+     }
+-
+-    *itime = ci.ci_itime; 
+-    *state = ci.ci_state;
+     return( 1 );
+ 
+ delete_stuff:
+ 
+     /* clean up ticket and file */
+-    if ( strcmp( ci.ci_krbtkt, "\0" ) != 0 ) {
+-	if ( unlink( ci.ci_krbtkt ) != 0 ) {
+-	    syslog( LOG_ERR, "%s: %m", ci.ci_krbtkt );
+-	}
+-    }
+-    if ( unlink( name ) != 0 ) {
+-	syslog( LOG_ERR, "%s: %m", name );
+-    } 
++	removeTGTFromCache(tconf,tgt);
+     lc_gone++;
+ 
+     return( 0 );
+Index: aclocal.m4
+===================================================================
+--- aclocal.m4	(revision 18)
++++ aclocal.m4	(working copy)
+@@ -221,3 +221,26 @@
+     AC_SUBST(HAVE_MYSQL)
+     AC_MSG_RESULT($ac_cv_path_mysql)
+ ])
++AC_DEFUN([COSIGN_TOKENCACHE],
++[
++    AC_MSG_CHECKING(for the token cache implementation $withval in $srcdir/common/tokencache/)
++    if test -e "$srcdir/common/tokencache/$withval.c"; then
++        TOKENCACHE=$withval
++        AC_MSG_RESULT(using $TOKENCACHE as token cache implementation)
++
++        if test $TOKENCACHE = "oracleCache"; then
++            if test ! -e ${ORACLE_HOME}/lib/libclntsh.so -o ! -e ${ORACLE_HOME}/rdbms/public/oci.h; then                AC_MSG_ERROR(Cannot locate the Oracle client library or oci.h; Either Oracle not installed or the ORACLE_HOME env was not set correctly)
++            else
++                ORALDFLAGS="$LDFLAGS -L${ORACLE_HOME}/lib"
++                ORACPPFLAGS="$CPPFLAGS -I${ORACLE_HOME}/rdbms/public"
++                ORALIBS="$LIBS -lclntsh"
++		AC_SUBST(ORALDFLAGS)
++		AC_SUBST(ORACPPFLAGS)
++		AC_SUBST(ORALIBS)
++            fi
++        fi
++    else
++            AC_MSG_WARN(cannot find the token cache implementation source - using default)
++        TOKENCACHE=fileSystemCache
++    fi
++])
+
+Property changes on: 
+___________________________________________________________________
+Name: svn:ignore
+   - config.log
+config.status
+Makefile
+
+   + config.log
+config.status
+Makefile
+autom4te.cache
+tags
+
+

@@ -1,0 +1,154 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Qualifications for end of Session -->
+<!--X-From-R13: "Iulgr, [vpunry" <zwj20Ncfh.rqh> -->
+<!--X-Date: Thu, 18 Aug 2005 13:49:46 &#45;0400 (EDT) -->
+<!--X-Message-Id: C1F34134634A8442AA7E93A1C300C97101EACCED@avalanche.vprsrch.psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00520.shtml">Date Prev</a>][<a href="msg00522.shtml">Date Next</a>][<a href="msg00520.shtml">Thread Prev</a>][<a href="msg00522.shtml">Thread Next</a>][<a href="maillist.shtml#00521">Date Index</a>][<a href="threads.shtml#00521">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Qualifications for end of Session</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Qualifications for end of Session</li>
+<li><em>From</em>: &quot;Whyte, Michael&quot; &lt;<a href="mailto:mjw20@DOMAIN.HIDDEN">mjw20@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 18 Aug 2005 13:47:55 -0400</li>
+<li><em>Thread-index</em>: AcWiXQ1NXKAe8YZJTxORHxcdVN5WSQBvoqkw</li>
+<li><em>Thread-topic</em>: Qualifications for end of Session</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hello,
+
+The cookie in my browser says it expires at end of session. What
+initiates an end of session?  The cookie DB setting in the
+cosign.dll.config is set to about 10 hours.  
+
+Just want to know what signifies so that we can create user warnings and
+or auto state saving of information on a web form, when page is idle.
+
+Just to save time and email exchanges, below is a copy of the config.
+
+&lt;Cosign&gt;
+	&lt;CAFilePath&gt;c:\Program Files\IISCosign\SSL&lt;/CAFilePath&gt;
+	&lt;ChainFilePath&gt;c:\Program
+Files\IISCosign\SSL\simscert.pem&lt;/ChainFilePath&gt;
+	&lt;PrivateKeyFilePath&gt;c:\Program
+Files\IISCosign\SSL\simsserver.key&lt;/PrivateKeyFilePath&gt;
+	&lt;LogFilePath fileSizeInKB=&quot;4096&quot; &gt;C:\Program
+Files\IISCosign\Logs&lt;/LogFilePath&gt;
+	&lt;CookieDBPath&gt;C:\Program Files\IISCosign\CookieDB&lt;/CookieDBPath&gt;
+	&lt;CosignServer port=&quot;6663&quot;&gt;webaccess.psu.edu&lt;/CosignServer&gt;
+	&lt;RedirectURL&gt;<a  href="https://webaccess.psu.edu/">https://webaccess.psu.edu/</a>?&lt;/RedirectURL&gt;
+	&lt;ConnectionPool size=&quot;4&quot; /&gt;&lt;!--4--&gt;
+	&lt;CookieDBExpireTime seconds=&quot;36000&quot; /&gt;
+	&lt;WriteDataToEventViewer&gt;FALSE&lt;/WriteDataToEventViewer&gt;
+	&lt;CheckIPAddress&gt;FALSE&lt;/CheckIPAddress&gt;
+	&lt;Service IISDescription=&quot;sims
+development&quot;&gt;cosign-dev.sims.psu.edu	
+		&lt;Protected&gt;/&lt;/Protected&gt;
+	&lt;/Service&gt;
+	&lt;Service IISDescription=&quot;prams
+developement&quot;&gt;cosign-dev.prams.psu.edu	
+		&lt;Protected&gt;/&lt;/Protected&gt;
+	&lt;/Service&gt;
+	&lt;Service IISDescription=&quot;SIMSBudgets&quot;&gt;cosign-devbud.sims.psu.edu
+
+		&lt;Protected&gt;/&lt;/Protected&gt;
+	&lt;/Service&gt;
+&lt;/Cosign&gt;
+
+
+
+Thanks
+
+Michael Whyte
+Penn State University
+Office of Research Information Systems 
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00522" href="msg00522.shtml">Re: Qualifications for end of Session</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00520.shtml">Cialis - $2.99/dose</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00522.shtml">Re: Qualifications for end of Session</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00520.shtml">Cialis - $2.99/dose</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00522.shtml">Re: Qualifications for end of Session</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00521"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00521"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

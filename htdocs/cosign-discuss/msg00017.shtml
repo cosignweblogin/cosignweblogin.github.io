@@ -1,0 +1,128 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: COSIGN: implement cosign cgis as php? -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Tue, 23 Mar 2004 09:32:01 &#45;0500 (EST) -->
+<!--X-Message-Id: C7D8718A&#45;7CD6&#45;11D8&#45;9342&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00016.shtml">Date Prev</a>][<a href="msg00018.shtml">Date Next</a>][<a href="msg00019.shtml">Thread Prev</a>][<a href="msg00020.shtml">Thread Next</a>][<a href="maillist.shtml#00017">Date Index</a>][<a href="threads.shtml#00017">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>COSIGN: implement cosign cgis as php?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: COSIGN: implement cosign cgis as php?</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 23 Mar 2004 09:31:32 -0500</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>cosign.cgi (responsible for LOGIN, CHECK, &amp; REGISTER) and logout 
+(responsible for, you guessed it, LOGOUT) are both CGIs written in C.  
+These work well and perform fine on our servers under all but the 
+heaviest loads.</tt><br>
+<br>
+<tt>What would you think about rewriting these CGIs in PHP -- strictly for 
+enhanced performance/load resilience?  Would a dependency on PHP on the 
+weblogin server be a deal breaker for anyone considering the use of 
+Cosign?  Would it make installation of the weblogin server too 
+complicated?  Is there anyone for whom this change would be a great 
+positive?  Note that we're not considering doing it anytime soon -- I'm 
+just trying to gather opinions.  Would mod_fastcgi support be more or 
+less appealing than using PHP?  mod_perl?  rewriting the CGIs as an 
+Apache module?</tt><br>
+<br>
+<tt>I should note for completeness that PHP is already required by 
+'friend.'  Anyone using the friend guest account functionality is 
+likely to have to install PHP anyway.  What I'm asking about is this 
+idea of requiring PHP for the core functionality.</tt><br>
+<br>
+<tt>Kevin</tt><br>
+<br>
+<tt>                                      ... &quot;In, as you say, the mud.&quot; ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00020" href="msg00020.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+<ul><li><em>From:</em> Mark Montague</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00016.shtml">COSIGN: note: login form action=&quot;/&quot;</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00018.shtml">Re: COSIGN: note: login form action=&quot;/&quot;</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00019.shtml">Re: COSIGN: note: login form action=&quot;/&quot;</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00020.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00017"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00017"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

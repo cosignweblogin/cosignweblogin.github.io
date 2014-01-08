@@ -1,0 +1,150 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign and Squid? -->
+<!--X-From-R13: Pevna Vngpu <oevNvsbxe.bet> -->
+<!--X-Date: Thu, 27 Oct 2005 13:53:08 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20051027175149.GN27666@ifokr.org -->
+<!--X-Content-Type: multipart/signed -->
+<!--X-Reference: 20051019135530.GG21767@ifokr.org -->
+<!--X-Reference: 26590157&#45;A2D5&#45;4EDA&#45;BB79&#45;B375ED730F39@umich.edu -->
+<!--X-Derived: pgp00021.pgp -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00597.shtml">Date Prev</a>][<a href="msg00599.shtml">Date Next</a>][<a href="msg00597.shtml">Thread Prev</a>][<a href="msg00588.shtml">Thread Next</a>][<a href="maillist.shtml#00598">Date Index</a>][<a href="threads.shtml#00598">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign and Squid?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Wesley Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign and Squid?</li>
+<li><em>From</em>: Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 27 Oct 2005 10:51:50 -0700</li>
+<li><em>Cc</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00597.shtml">26590157-A2D5-4EDA-BB79-B375ED730F39@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00586.shtml">20051019135530.GG21767@ifokr.org</a>&gt; &lt;<a href="msg00597.shtml">26590157-A2D5-4EDA-BB79-B375ED730F39@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mutt/1.5.9i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+
+&gt; squid has an authentication extension architecture, so it might be  
+&gt; possible to add the equivalent of mod_cosign to squid.  Can you say  
+&gt; more about what you're trying to do?
+
+Pretty much the same as the forwarded message you have below.
+
+  * User sets up their browser to use the squid proxy
+  * User requests a page (cnn.com)
+  * Squid's mod_cosign authenticator validates cookies or causes
+    redirects to weblogin sign on, etc, just like normal websites.
+
+&gt; Somewhat related, we received a patch from OpenSourcery that they did  
+&gt; for Reed College.  It changes mod_cosign so that apache2 can be used  
+&gt; as a cosign-protected proxy.  While we haven't yet tested it, it  
+&gt; seems pretty reasonable.  See below.
+
+If they were able to get it to work with Apache2, that would seem to
+indicate that the browser functionality is there.  That was my biggest
+question.
+
+I haven't investigated squid's authentication system yet -- it could be
+as basic as OK/ERR, in which case it would require patching to support
+sending the redirects.  If anyone's looked into this, let me know.  Else
+I'll try to take a look at it next week.
+
+
+-- 
+Brian Hatch                  This is the Postfix program at Rinat.
+   Systems and                The message returned below could not
+   Security Engineer          be delivered because Edwin will no
+<a  href="http://www.ifokr.org/bri/">http://www.ifokr.org/bri/</a>     longer answer requests from Brian
+                              when he should be home.
+Every message PGP signed
+</pre><p><strong>Attachment:
+<a href="pgp00021.pgp" ><tt>signature.asc</tt></a></strong><br>
+<em>Description:</em> Digital signature</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00586" href="msg00586.shtml">Cosign and Squid?</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+<li><strong><a name="00597" href="msg00597.shtml">Re: Cosign and Squid?</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00597.shtml">Re: Cosign and Squid?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00599.shtml">logout vbscript</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00597.shtml">Re: Cosign and Squid?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00588.shtml">IISCosign v1.1.1 and Windows Server 2003, SP1.</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00598"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00598"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

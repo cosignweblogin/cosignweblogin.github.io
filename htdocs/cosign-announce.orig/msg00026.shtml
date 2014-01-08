@@ -1,0 +1,144 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Cosign 1.8.0 Released -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Tue, 15 Mar 2005 17:24:07 &#45;0500 (EST) -->
+<!--X-Message-Id: F8DD55A5&#45;95A0&#45;11D9&#45;9551&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="announce" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-announce at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            cosign release and update announcements
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00025.shtml">Date Prev</a>][<a href="msg00027.shtml">Date Next</a>][<a href="msg00025.shtml">Thread Prev</a>][<a href="msg00027.shtml">Thread Next</a>][<a href="maillist.shtml#00026">Date Index</a>][<a href="threads.shtml#00026">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Cosign 1.8.0 Released</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-announce@DOMAIN.HIDDEN">cosign-announce@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Cosign 1.8.0 Released</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 15 Mar 2005 17:24:18 -0500</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>The Cosign Team is pleased to announce the availability of version 
+1.8.0 of cosign  [ MD5 64a025b4dc1de31a3cd2ff59cf086c1e ]</tt><br>
+<br>
+<tt>Changelog at <a  href="http://www.umich.edu/~umweb/software/cosign/changelog.txt">http://www.umich.edu/~umweb/software/cosign/changelog.txt</a></tt><br>
+<br>
+<tt>Changes:<br>
+	updates to READMES<br>
+	config: make install rule works from top level Makefile for apache 2.<br>
+	common: cgi and daemon can both read several config options from<br>
+                the cosign.conf file, see README and man pages. Many 
+thanks<br>
+                to Brett Lomas at University of Auckland.<br>
+	common: TCP_NODELAY on by default in daemon, filters, and cgi,<br>
+                and off by default in monster. This should cause a<br>
+                noticeable improvement in replication and a small<br>
+                improvement in the cgis &amp; filters.<br>
+	cgi: basiccosign.cgi and cosign.cgi are now 1 cgi. BasicAuth support<br>
+                is now implicitly built-in.<br>
+	cgi: massive code re-structure.<br>
+	cgi: subfile() now shared across both cgis (cosign.cgi and logout)<br>
+	cgi: filters can now optionally include (or not) a semi-colon at<br>
+                the end of the cookie when they re-direct for a 
+register.<br>
+                The cgi can parse both ways.<br>
+	cgi: if logout is unable to run, we now tell the user to quit<br>
+                their browser instead.<br>
+	daemon/monster: code clean-up and small re-organization.<br>
+	daemon/monster: renamed some variables for clarity.<br>
+	daemon: fixed bug where a timed-out child was giving a 4xx,<br>
+                causing filters to set unnecessary new cookies and 
+re-register.<br>
+	daemon: fixed bug in hup() and child() signal handlers (removed<br>
+		possibly non-reentrant calls)<br>
+	filters: fixed bug with PostErrorRedirect - it works, now.<br>
+	filters: logging now using ap_log_error() so it's more syslog-esque.<br>
+	filters: fixed bug in apache2 where building with krb and then not<br>
+		getting tickets would cause garbage to be written into the<br>
+		cookie file, and the server to core dump.<br>
+	filters: specifically apache2, fixed misc build errors.</tt><br>
+<br>
+<tt>Thanks to Brian Hatch for minor bug fixes, and Brett Lomas from U of 
+Auckland for all of the runtime configuration work.</tt><br>
+<br>
+<tt>-Johanna, and the core cosign dev team</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00025.shtml">Re: IISCosign 1.2.0 beta available</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00027.shtml">Cosign 1.8.5 Released</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00025.shtml">Re: IISCosign 1.2.0 beta available</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00027.shtml">Cosign 1.8.5 Released</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00026"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00026"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,121 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Using UM certificate for cosign -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Tue, 20 Apr 2004 16:23:18 &#45;0400 (EDT) -->
+<!--X-Message-Id: 40858681.2070301@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 200404201752.i3KHq9HV021692@wanderer.mr.itd.umich.edu -->
+<!--X-Reference: 1192056947.1082477918@spike.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00072.shtml">Date Prev</a>][<a href="msg00074.shtml">Date Next</a>][<a href="msg00072.shtml">Thread Prev</a>][<a href="msg00074.shtml">Thread Next</a>][<a href="maillist.shtml#00073">Date Index</a>][<a href="threads.shtml#00073">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Using UM certificate for cosign</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Konstantin Voyk &lt;<a href="mailto:kvoyk@DOMAIN.HIDDEN">kvoyk@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Using UM certificate for cosign</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 20 Apr 2004 16:22:25 -0400</li>
+<li><em>Cc</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00072.shtml">1192056947.1082477918@spike.itd.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00071.shtml">200404201752.i3KHq9HV021692@wanderer.mr.itd.umich.edu</a>&gt; &lt;<a href="msg00072.shtml">1192056947.1082477918@spike.itd.umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7b) Gecko/20040316</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 4/20/04 4:18 PM, jarod@xxxxxxxxx wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>3) I assure you, people have Windows 2003/IIS6 with IISCosign 
+up-and-running *besides me*!
+</tt></blockquote><tt></tt><br>
+<br>
+<tt>I've gotten it running (with some stumbling at first).</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00071" href="msg00071.shtml">RE: Using UM certificate for cosign</a></strong>
+<ul><li><em>From:</em> Konstantin Voyk</li></ul></li>
+<li><strong><a name="00072" href="msg00072.shtml">RE: Using UM certificate for cosign</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00072.shtml">RE: Using UM certificate for cosign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00074.shtml">Libtool</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00072.shtml">RE: Using UM certificate for cosign</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00074.shtml">Libtool</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00073"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00073"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

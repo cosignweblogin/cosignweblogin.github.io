@@ -1,0 +1,163 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: Conditional Authentication Question -->
+<!--X-From-R13: "Ybafgnagva Hblx" <xiblxNhzvpu.rqh> -->
+<!--X-Date: Mon, 8 Nov 2004 13:16:38 &#45;0500 (EST) -->
+<!--X-Message-Id: 200411081815.iA8IFSZs014588@struggle.mr.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: EB268B96DB8C4742B5CF686E40BB44A461EE9A@metis.mri.psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00271.shtml">Date Prev</a>][<a href="msg00273.shtml">Date Next</a>][<a href="msg00271.shtml">Thread Prev</a>][<a href="msg00273.shtml">Thread Next</a>][<a href="maillist.shtml#00272">Date Index</a>][<a href="threads.shtml#00272">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: Conditional Authentication Question</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'Daniel E. Lehman'&quot; &lt;<a href="mailto:del3@DOMAIN.HIDDEN">del3@xxxxxxx</a>&gt;, &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: Conditional Authentication Question</li>
+<li><em>From</em>: &quot;Konstantin Voyk&quot; &lt;<a href="mailto:kvoyk@DOMAIN.HIDDEN">kvoyk@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 8 Nov 2004 13:15:57 -0500</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00271.shtml">EB268B96DB8C4742B5CF686E40BB44A461EE9A@metis.mri.psu.edu</a>&gt;</li>
+<li><em>Thread-index</em>: AcTFqrou/4mv2EnzQu6yuvb6QsPA8QAEzdrw</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Daniel,
+You take a road along Second Avenue and find out whenever user was
+authenticated by checking server variables 
+Request.ServerVariables(&quot;HTTP_REMOTE_USER&quot;)
+Request.ServerVariables(&quot;HTTP_REMOTE_REALM&quot;)
+Request.ServerVariables(&quot;HTTP_COSIGN_SERVICE&quot;)
+ Or you can create your own cookie in resource protected with cosign.
+Konstantin.
+
+-----Original Message-----
+From: Daniel E. Lehman [<a  href="mailto:del3@xxxxxxx">mailto:del3@xxxxxxx</a>] 
+Sent: Monday, November 08, 2004 10:51 AM
+To: cosign-discuss@xxxxxxxxx
+Subject: Conditional Authentication Question
+
+OK, so maybe the subject isn't worded properly, but here is what I would
+like to do.  I'm shopping for ideas.
+
+We're running IIS using VBScript coded ASP pages.  We have a database
+driven, online directory where we have elected to hide e-mail addresses to
+prevent spambots from harvesting addresses.  Essentially, a link is present
+that takes the user to a form that the user can complete to send a message
+to the directory listee.  The problem is that all our addresses are hidden
+all the time.  We would like that to change.
+
+I see two avenues - one is to display the addresses only to hosts within the
+Penn State IP space while the other is to use some sort of authentication.
+I think the best way is to use CoSign, but I am running into a problem - it
+appears that CoSign is an &quot;all or nothing&quot; product - meaning if I want Penn
+State people to see the addresses I would need to create a duplicate set of
+directory pages that would be protected by CoSign leaving the original set
+of pages available to anonymous access.  What I would like to do is to code
+the page to look for the cosign cookie and if present, present a link to a
+pop-up page that would first check the validity of the cookie then display
+the address.  Is this possible?  Is there a better way that I haven't
+thought of?
+
+-Dan
+
+===================================
+Daniel E. Lehman
+Facilities and Network Coordinator
+Penn State Materials Research Institute
+196 MRI Building
+Innovation Park
+University Park PA 16802
+
+814-865-1516
+del3@xxxxxxx
+<a  href="http://www.mri.psu.edu">http://www.mri.psu.edu</a>
+===================================
+&#xA0; 
+
+
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00271" href="msg00271.shtml">Conditional Authentication Question</a></strong>
+<ul><li><em>From:</em> Daniel E. Lehman</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00271.shtml">Conditional Authentication Question</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00273.shtml">multiple cosign configuration and runtime issues</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00271.shtml">Conditional Authentication Question</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00273.shtml">multiple cosign configuration and runtime issues</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00272"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00272"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

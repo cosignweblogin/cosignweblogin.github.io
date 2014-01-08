@@ -1,0 +1,159 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: v1.6.0: install error, short array -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Tue, 11 May 2004 19:59:09 &#45;0400 (EDT) -->
+<!--X-Message-Id: 40A1688E.1050100@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00105.shtml">Date Prev</a>][<a href="msg00107.shtml">Date Next</a>][<a href="msg00105.shtml">Thread Prev</a>][<a href="msg00107.shtml">Thread Next</a>][<a href="maillist.shtml#00106">Date Index</a>][<a href="threads.shtml#00106">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>v1.6.0: install error, short array</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: v1.6.0: install error, short array</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 11 May 2004 19:58:06 -0400</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7b) Gecko/20040421</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Get this trying to install 1.6.0:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>        cd common; make  all<br>
+Target &quot;all&quot; is up to date.<br>
+        cd libsnet; make  all<br>
+Target &quot;all&quot; is up to date.<br>
+        cd filters/apache; make  all<br>
+Target &quot;all&quot; is up to date.<br>
+        cd libcgi; make  all<br>
+Target &quot;all&quot; is up to date.<br>
+        cd cgi; make  all<br>
+Target &quot;all&quot; is up to date.<br>
+        cd html; make  all<br>
+Target &quot;all&quot; is up to date.<br>
+        cd daemon; make  all<br>
+Target &quot;all&quot; is up to date.<br>
+        for i in cgi html daemon  filters/apache;  do (cd $i; make  
+install);  done<br>
+        mkdir -p /webaccess<br>
+        mkdir -p /webaccess/html<br>
+        if [ x != x ]; then  .././install-sh -c -m 0755 -c  
+/webaccess/html/;  fi<br>
+        if [ x != xcosign.cgi ]; then  .././install-sh -c -m 0755 -c 
+cosign.cgi /webaccess/html/;  mkdir -p /webaccess/cgi-ssl;  
+.././install-sh -c -m 0755 -c logout /webaccess/cgi-ssl/;  fi<br>
+        mkdir -p /webaccess<br>
+        mkdir -p /webaccess/templates<br>
+        for i in error.html login.html login_error.html redirect.html 
+verify-logout.html post_error.html; do  .././install-sh -c -m 0644 -c 
+$i /webaccess/templates/;  cp -r images/ services/ cosign.css 
+post_error.html /webaccess/html/;  done<br>
+cp: services: A file or directory in the path name does not exist.<br>
+make: 1254-004 The error code from the last command is 1.</tt><br>
+<br>
+<pre style="margin: 0em;"><br>Stop.
+make: 1254-004 The error code from the last command is 2.
+</pre></blockquote><tt></tt><br>
+<br>
+<tt>I can't find anything named &quot;*services*&quot; in my source tree.</tt><br>
+<br>
+<tt>Also, regarding the new config directive to set the ticket cache 
+location: In the files that use it:</tt><br>
+<br>
+<pre style="margin: 0em;">./cgi/cgi.c
+./daemon/command.c
+./filters/apache/connect.c
+./filters/apache2/connect.c</pre><br>
+<tt>&quot;krbpath&quot; isn't long enough (currently 24 chars) to hold long names.  
+Also, only cgi.c is using snprintf, the others are using sprintf 
+(possible overwrites?).  krb4path seems to have similar issues.</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00107" href="msg00107.shtml">RE: v1.6.0: install error, short array</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00108" href="msg00108.shtml">Re: v1.6.0: install error, short array</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00105.shtml">IISCosign 1.0.0 Installer bug</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00107.shtml">RE: v1.6.0: install error, short array</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00105.shtml">IISCosign 1.0.0 Installer bug</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00107.shtml">RE: v1.6.0: install error, short array</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00106"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00106"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

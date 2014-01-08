@@ -1,0 +1,191 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Replication Problems -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Wed, 2 Feb 2005 16:29:54 &#45;0500 (EST) -->
+<!--X-Message-Id: 1107379718.4669.20.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1107376433.4669.16.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Reference: 33dfdc95918ce3975fd6d7ffeff94084@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00314.shtml">Date Prev</a>][<a href="msg00316.shtml">Date Next</a>][<a href="msg00314.shtml">Thread Prev</a>][<a href="msg00316.shtml">Thread Next</a>][<a href="maillist.shtml#00315">Date Index</a>][<a href="threads.shtml#00315">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Replication Problems</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Replication Problems</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 03 Feb 2005 10:28:39 +1300</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;,   Timothy Chaffe &lt;<a href="mailto:t.chaffe@DOMAIN.HIDDEN">t.chaffe@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;33dfdc95918ce3975fd6d7ffeff94084@umich.edu&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00314.shtml">1107376433.4669.16.camel@brett.enarc.auckland.ac.nz</a>&gt;	 &lt;33dfdc95918ce3975fd6d7ffeff94084@umich.edu&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>That's fine, thanks heaps for that Kevin
+
+I am not surpirsed about the replication error though, because if the
+machine is under high load, and has like 1000 processes most of which
+are cosign daemons servicing requests, then the replication process will
+only get a small amount of CPU time to actually process the events. At
+least that is my understanding of things. That is why I am worndering if
+I am putting an unreasonable load on it.
+
+
+Brett
+
+
+On Thu, 2005-02-03 at 10:13, kevin mcgowan wrote:
+&gt; Brett,
+&gt; 
+&gt; I can get you Michigan's numbers for these things, but it will be 
+&gt; tomorrow morning (EDT) at the soonest.  My sense is that the load 
+&gt; you're generating  is massive, but the check errors surprise me 
+&gt; nonetheless.
+&gt; 
+&gt; I'll get you our numbers as soon as I can.
+&gt; 
+&gt; Kevin
+&gt; 
+&gt; On Feb 2, 2005, at 3:33 PM, Brett Lomas wrote:
+&gt; 
+&gt; &gt; Hello all.
+&gt; &gt;
+&gt; &gt; We have just done a large scale distributed test of our cosign
+&gt; &gt; installation and have noticed a couple of problems and are just
+&gt; &gt; wondering if anyone else has seen this.
+&gt; &gt;
+&gt; &gt; We have 2 servers, each with apache and the cosign daemon and monster.
+&gt; &gt; Each replication to the other pretty much as normal. Each of the 
+&gt; &gt; servers
+&gt; &gt; are behind a foundry, so access to 443 and 6663 is load balanced
+&gt; &gt; effectively accross the two boxes.
+&gt; &gt;
+&gt; &gt; When i ran a stress test (the code for which I will publish so other 
+&gt; &gt; can
+&gt; &gt; use this as it is useful as a tester and user experience monitor for
+&gt; &gt; things like nagios etc) on 83 machines, each creating 20 processes, 
+&gt; &gt; thus
+&gt; &gt; giving a maximum concurrancy of 1660 logins sustained over about 2 
+&gt; &gt; hours
+&gt; &gt; we see a lot of cosign check errors.
+&gt; &gt;
+&gt; &gt; It appears this is because the cosign replication processes are
+&gt; &gt; competing for CPU on a box which can, during this test get up to about
+&gt; &gt; 700 cosignd processes. So the replication events seem to just queue up
+&gt; &gt; and eventually get processed, but not before the check may have failed.
+&gt; &gt;
+&gt; &gt; Has anyone seen this, or are we infact stressing too much for the an
+&gt; &gt; expected load we will not get. We have approximately 4000 student
+&gt; &gt; computers and about 11000 desktops in total.
+&gt; &gt;
+&gt; &gt; I cant help wondering if i am stressing it way beyond what we would
+&gt; &gt; normally get. Can someone who is running this in production send me
+&gt; &gt; details of the number of logins and check you get a day and the number
+&gt; &gt; of machines you have on campus?
+&gt; &gt;
+&gt; &gt; Thanks
+&gt; &gt;
+&gt; &gt; Brett
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; !DSPAM:420139b8250431892128387!
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; 
+&gt;                  ... &quot;I love being weird, or at least, I've made my 
+&gt; peace with it.&quot; ...
+&gt; 
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00316" href="msg00316.shtml">Re: Replication Problems</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00314" href="msg00314.shtml">Replication Problems</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00314.shtml">Replication Problems</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00316.shtml">Re: Replication Problems</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00314.shtml">Replication Problems</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00316.shtml">Re: Replication Problems</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00315"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00315"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

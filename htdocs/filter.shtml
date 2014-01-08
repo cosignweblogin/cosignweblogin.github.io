@@ -1,0 +1,78 @@
+<!--#set var="title" value="filter" -->             
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" --> 
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="y" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#include file="header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="images
+/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            Cosign Authentication Filter
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            Specification &amp; UM Example Installation
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;</td> 
+    </tr>
+</table>
+
+	    <p class="software">
+		In cosign parlance, an 'authentication filter' is
+		the piece of software required on a web or
+		application server to participate in the single
+		sign-on & proxy environment.  Authentication
+		filters are available or in development for:
+		Apache 1.3.x, Apache 2.x, IIS, J2EE.
+	    </p>
+
+	    <p class="software">
+		If you are interested in developing an authentication
+		filter, send a note to the mailing list, and we'll get
+		you started.
+	    </p>
+
+	    <p class="software">
+		<a href="media/authentication_filter2006a.rtf">authentication_filter.rtf</a> <br />
+	    </p>
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;</td> 
+    </tr>
+</table>
+	    <p class="hedr">
+		Authentication Filter Installation Demo: 4th March 2003
+	    </p>
+
+        <p class="software">
+            Mark Montague, UM LS&amp;A IT, showed ACSF members
+            how to set up Cosign on an Apache web server and
+            how to get commercial web-based applications to
+            work with Cosign.
+        </p>
+
+        <p class="software">
+            His presentation is included below in PDF and
+            PowerPoint formats with all talking notes
+            included.
+        </p>
+
+        <p class="software">
+            <a href="media/cosign-client.pdf">Cosign Demo ( pdf )</a> <br />
+            <a href="media/cosign-client.ppt">Cosign Demo ( ppt )</a> <br />
+        </p>
+
+<!--#include file="footer.shtml" -->
+

@@ -1,0 +1,163 @@
+diff --git a/common/conf.c b/common/conf.c
+index c3484f6..a8617bf 100644
+--- a/common/conf.c
++++ b/common/conf.c
+@@ -134,10 +134,11 @@ service_find( char *cookie, regmatch_t matches[], int nmatch )
+ }
+ 
+     struct authlist *
+-authlist_find( char *hostname, regmatch_t matches[], int nmatch )
++authlist_find( char *hostname )
+ {
+     struct authlist	*cur = NULL;
+     regex_t		preg;
++    regmatch_t		matches[ 1 ];
+     char		error[ 1024 ];
+     int			rc;
+ 
+@@ -150,15 +151,16 @@ authlist_find( char *hostname, regmatch_t matches[], int nmatch )
+ 	    return( NULL );
+ 	}
+ 
+-	rc = regexec( &preg, hostname, nmatch, matches, 0 );
+-	if ( rc != REG_NOMATCH ) {
+-	    if ( rc != 0 ) {
+-		regerror( rc, &preg, error, sizeof( error ));
+-		fprintf( stderr, "regexec failed: %s\n", error );
+-		cur = NULL;
++	if (( rc = regexec( &preg, hostname, 1, matches, 0 )) == 0 ) {
++	    if ( matches[ 0 ].rm_so == 0 &&
++			matches[ 0 ].rm_eo == strlen( hostname )) {
++		regfree( &preg );
++		break;
+ 	    }
+-	    regfree( &preg );
+-	    break;
++	} else if ( rc != REG_NOMATCH ) {
++	    regerror( rc, &preg, error, sizeof( error ));
++	    fprintf( stderr, "regexec failed: %s\n", error );
++	    cur = NULL;
+ 	}
+ 	regfree( &preg );
+     }
+diff --git a/common/conf.h b/common/conf.h
+index cb1609f..7299e15 100644
+--- a/common/conf.h
++++ b/common/conf.h
+@@ -87,7 +87,7 @@ struct matchlist {
+ #endif
+ 
+ int		cosign_ssl( char *, char *, char *, SSL_CTX ** );
+-struct authlist	*authlist_find( char *, regmatch_t [], int );
++struct authlist	*authlist_find( char * );
+ struct servicelist	*service_find( char *, regmatch_t [], int );
+ int		cosign_config( char * );
+ char		*cosign_config_get( char * );
+diff --git a/daemon/command.c b/daemon/command.c
+index f376596..b1c0865 100755
+--- a/daemon/command.c
++++ b/daemon/command.c
+@@ -201,7 +201,7 @@ f_starttls( SNET *sn, int ac, char *av[], SNET *pushersn )
+     X509_NAME_get_text_by_NID( X509_get_subject_name( peer ),
+ 		NID_commonName, buf, sizeof( buf ));
+     X509_free( peer );
+-    if (( al = authlist_find( buf, NULL, 0 )) == NULL ) {
++    if (( al = authlist_find( buf )) == NULL ) {
+ 	syslog( LOG_ERR, "f_starttls: No access for %s", buf );
+ 	snet_writef( sn, "%d No access for %s\r\n", 401, buf );
+ 	exit( 1 );
+@@ -938,6 +938,15 @@ service_valid( char *service )
+ 	goto service_valid_done;
+     }
+ 
++    /* only match whole CNs */
++    if ( svm[ 0 ].rm_so != 0 || svm[ 0 ].rm_eo != strlen( remote_cn )) {
++	syslog( LOG_ERR, "service_valid: CN %s not allowed "
++			 "access to cookie %s (partial match)",
++			 remote_cn, service );
++	sl = NULL;
++	goto service_valid_done;
++    }
++
+     /*
+      * if there's a custom cookie substitution pattern, use it.
+      * otherwise, the service_find call + the regexec above
+@@ -1401,7 +1410,7 @@ command( int fd, SNET *pushersn )
+     if ( tlsopt ) {
+ 	commands = auth_commands;
+ 	ncommands = sizeof( auth_commands ) / sizeof( auth_commands[ 0 ] );
+-	if (( al = authlist_find( "NOTLS", NULL, 0 )) == NULL ) {
++	if (( al = authlist_find( "NOTLS" )) == NULL ) {
+ 	    syslog( LOG_ERR, "No debugging access" );
+ 	    snet_writef( snet, "%d No NOTLS access\r\n", 508 );
+ 	    exit( 1 );
+diff --git a/filters/apache/mod_cosign.c b/filters/apache/mod_cosign.c
+index 5ff2f06..9605889 100755
+--- a/filters/apache/mod_cosign.c
++++ b/filters/apache/mod_cosign.c
+@@ -248,6 +248,11 @@ cosign_handler( request_rec *r )
+ 			"mod_cosign: invalid destination: %s", dest );
+ 	goto validation_failed;
+     }
++    if ( matches[ 0 ].rm_so != 0 || matches[ 0 ].rm_eo != strlen( dest )) {
++	cosign_log( APLOG_NOTICE, r->server, "mod_cosign: "
++		    "invalid destination: %s (partial match)", dest );
++	goto validation_failed;
++    }
+ 
+     if ( !validchars( cookie )) {
+ 	cosign_log( APLOG_NOTICE, r->server,
+diff --git a/filters/apache2/mod_cosign.c b/filters/apache2/mod_cosign.c
+index 3e0807b..48c1988 100755
+--- a/filters/apache2/mod_cosign.c
++++ b/filters/apache2/mod_cosign.c
+@@ -248,6 +248,11 @@ cosign_handler( request_rec *r )
+ 			"mod_cosign: invalid destination: %s", dest );
+ 	goto validation_failed;
+     }
++    if ( matches[ 0 ].rm_so != 0 || matches[ 0 ].rm_eo != strlen( dest )) {
++	cosign_log( APLOG_NOTICE, r->server, "mod_cosign: "
++		    "invalid destination: %s (partial match)", dest );
++	goto validation_failed;
++    }
+ 
+     /* validate service cookie */
+     if ( !validchars( cookie )) {
+diff --git a/filters/lighttpd/mod_cosign.c b/filters/lighttpd/mod_cosign.c
+index a435d99..b955be5 100644
+--- a/filters/lighttpd/mod_cosign.c
++++ b/filters/lighttpd/mod_cosign.c
+@@ -929,7 +929,8 @@ cosign_handler( server *srv, connection *con, plugin_data *p_d )
+     dest = buffer_init_string( pt );
+ 
+     if (( rc = pcre_exec( p->conf.validpcre, NULL, dest->ptr, dest->used,
+-				0, 0, ovec, sizeof( ovec ))) < 0 ) {
++				0, PCRE_ANCHORED,
++				ovec, sizeof( ovec ))) < 0 ) {
+ 	if ( rc != PCRE_ERROR_NOMATCH ) {
+ 	    log_error_write( srv, __FILE__, __LINE__, "sbsd",
+ 		    "mod_cosign: pcre_exec", p->conf.validref,
+@@ -946,6 +947,23 @@ cosign_handler( server *srv, connection *con, plugin_data *p_d )
+ 		    "mod_cosign: invalid destination:", dest );
+ 	goto validation_failed;
+     }
++    if ( rc == 0 ) {
++	/*
++	 * ovector not big enough to hold captured substrings.
++	 * we're not using captured substrings, so consider it
++	 * an error.
++	 */
++	log_error_write( srv, __FILE__, __LINE__, "sbs",
++		    "mod_cosign: cosign.valid-reference pattern",
++		    p->conf.validref, "contains substring matches, "
++		    "but substring matches are unsupported." );
++	goto validation_failed;
++    }
++    if (( ovec[ 1 ] - ovec[ 0 ] ) != strlen( dest->ptr )) {
++	log_error_write( srv, __FILE__, __LINE__, "sb",
++		    "mod_cosign: invalid destination (partial match):", dest );
++	goto validation_failed;
++    }
+ 		
+     /* validate service cookie. */
+     if ( !validchars( cookie->ptr )) {

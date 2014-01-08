@@ -1,0 +1,161 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: friend functionality -->
+<!--X-From-R13: [nex [bagnthr <znexzbagNhzvpu.rqh> -->
+<!--X-Date: Mon, 29 Mar 2004 11:00:16 &#45;0500 (EST) -->
+<!--X-Message-Id: Pine.SOL.4.58.0403291036250.14796@mozi.lsait.lsa.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.SOL.4.58.0402041450130.9151@zektor.gpcc.itd.umich.edu -->
+<!--X-Reference: 9357385.1075910563@spike.itd.umich.edu -->
+<!--X-Reference: 4068411E.3080509@utoronto.ca -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00035.shtml">Date Prev</a>][<a href="msg00037.shtml">Date Next</a>][<a href="msg00035.shtml">Thread Prev</a>][<a href="msg00037.shtml">Thread Next</a>][<a href="maillist.shtml#00036">Date Index</a>][<a href="threads.shtml#00036">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: friend functionality</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Darren Jacobs &lt;<a href="mailto:darren.jacobs@DOMAIN.HIDDEN">darren.jacobs@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: friend functionality</li>
+<li><em>From</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 29 Mar 2004 10:59:34 -0500 (EST)</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discussion@DOMAIN.HIDDEN">cosign-discussion@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00035.shtml">4068411E.3080509@utoronto.ca</a>&gt;</li>
+<li><em>References</em>: &lt;Pine.SOL.4.58.0402041450130.9151@zektor.gpcc.itd.umich.edu&gt; &lt;9357385.1075910563@spike.itd.umich.edu&gt; &lt;<a href="msg00035.shtml">4068411E.3080509@utoronto.ca</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Mon, 29 Mar 2004, Darren Jacobs wrote:
+
+&gt; Don't have a lot of experience with webiso systems (yet &lt;g&gt; ) so please
+&gt; excuse me if my question is a bit basic...what exactly does the friend
+&gt; functionality of Cosign give you?
+
+Hi, Darren,
+
+Let me take a shot at this with the hopes that someone will correct
+me if I get anything wrong.  Disclaimer: I work for the College
+of Literature, Science, and the Arts here at the UofM, not on the
+team that developed cosign.
+
+Essentially, Friend allows arbitrary people to create their own
+&quot;accounts&quot; for use with the cosign WebISO infrastructure.  If you
+have Friend enabled, then a random person, for example, Joe User
+at the University of Maryland (joeuser@xxxxxxx) can create themselves
+a Friend account at the University of Toronto.  The can then
+authenticate to your cosign servers as joeuser@xxxxxxx -- the
+&quot;@umd.edu&quot; shows that they are a Friend and not a local user.
+How useful this is depends on how you set up your cosign-protected
+web services -- there are many possibilities.  The simplest
+example is that a professor member could restrict a certain
+document in their web space so that only joeuser@xxxxxxx can
+read it (the restriction is via an .htaccess file containing
+a directive &quot;require joeuser@xxxxxxx&quot; or by other means).  The
+web server and cosign will then enforce this access control.
+The beauty of this is that it makes the task easy both on the
+professor and on his colleague Joe -- the professor does not have
+to deal with setting up an account for Joe or giving Joe a
+password, and Joe signs himself up for Friend in the same way
+he is already used to doing with Yahoo and many other free
+web services.  A more complicated example would be allowing
+prospective graduate students to create and manage their own
+accounts for tracking the status of their application for
+adminission over the web.
+
+It is important to keep in mind that Friend allows you to say
+very little about the identity of the person who is authenticating.
+Essentially, all you know is that the person has access to email
+sent to the Friend username (in this example, that the person
+who is accessing the professor's restricted file is the same
+person who reads mail sent to joeuser@xxxxxxx).  cosign and
+shibboleth can be used together to provide a stronger statement
+about identity than cosign and friend together can.
+
+                Mark Montague
+                LS&amp;A Information Technology
+                The University of Michigan
+                markmont@xxxxxxxxx
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00035" href="msg00035.shtml">friend functionality</a></strong>
+<ul><li><em>From:</em> Darren Jacobs</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00035.shtml">friend functionality</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00037.shtml">Re: friend functionality</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00035.shtml">friend functionality</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00037.shtml">Re: friend functionality</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00036"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00036"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

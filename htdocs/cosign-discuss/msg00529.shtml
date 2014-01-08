@@ -1,0 +1,131 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: [OT] Re: login cgi argument sanity checking -->
+<!--X-From-R13: Enpun [nyynvf <fnpunNtybony&#45;ivyyntr.arg> -->
+<!--X-Date: Tue, 23 Aug 2005 15:05:55 &#45;0400 (EDT) -->
+<!--X-Message-Id: F4912516&#45;8703&#45;491A&#45;875D&#45;BFC600155AA0@global&#45;village.net -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.GSO.4.58.0508161019330.7320@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: 430B6D34.7000605@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00528.shtml">Date Prev</a>][<a href="msg00530.shtml">Date Next</a>][<a href="msg00528.shtml">Thread Prev</a>][<a href="msg00520.shtml">Thread Next</a>][<a href="maillist.shtml#00529">Date Index</a>][<a href="threads.shtml#00529">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[OT] Re: login cgi argument sanity checking</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cory Snavely &lt;<a href="mailto:csnavely@DOMAIN.HIDDEN">csnavely@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: [OT] Re: login cgi argument sanity checking</li>
+<li><em>From</em>: Sacha Mallais &lt;<a href="mailto:sacha@DOMAIN.HIDDEN">sacha@xxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 23 Aug 2005 12:04:29 -0700</li>
+<li><em>Cc</em>: Sacha Mallais &lt;<a href="mailto:sacha@DOMAIN.HIDDEN">sacha@xxxxxxxxxxxxxxxxxx</a>&gt;,   Graeme Wood &lt;<a href="mailto:Graeme.Wood@DOMAIN.HIDDEN">Graeme.Wood@xxxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00528.shtml">430B6D34.7000605@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00517.shtml">Pine.GSO.4.58.0508161019330.7320@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00528.shtml">430B6D34.7000605@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On Aug 23, 2005, at 11:38 AM, Cory Snavely wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt><br>(I will occasionally see strings like &quot;|cat /etc/passwd&quot; passed as  
+a CGI argument to web applications we run, and thoroughly roll my  
+eyes at such pathetic attempts, but it goes to show that some folks  
+will try an exploit in any conceivable place.)
+</tt></blockquote><tt><br>Not as pathetic as you might think.  The Daily WTF (http:// 
+www.thedailywtf.com/) is filled with code from deployed systems that  
+have such ridiculous holes.  A recent, somewhat relevant post: http:// 
+www.thedailywtf.com/forums/41153/ShowPost.aspx</tt><br>
+<br>
+<tt>Sorry for the only tangentially-related post,</tt><br>
+<br>
+<tt><br>sacha</tt><br>
+<br>
+<pre style="margin: 0em;"><br>--
+Sacha Michel Mallais - 800 lb. gorilla
+Global Village Consulting Inc.:   <a  href="http://www.global-village.net/">http://www.global-village.net/</a>
+            1. Never tell everything at once.
+            -- Ken Venturi, Ken Venturi's Two Great Rules of Life</pre><br>
+<tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00517" href="msg00517.shtml">login cgi argument sanity checking</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00528" href="msg00528.shtml">Re: login cgi argument sanity checking</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00528.shtml">Re: login cgi argument sanity checking</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00530.shtml">Re: Fwd: IdP v1.3a, CoSign, and Mozilla/Firefox</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00528.shtml">Re: login cgi argument sanity checking</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00520.shtml">Cialis - $2.99/dose</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00529"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00529"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

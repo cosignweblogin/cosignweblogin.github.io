@@ -1,0 +1,148 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: IIS 6 fails to start with cosign.dll -->
+<!--X-From-R13: Xnebq <wnebqNhzvpu.rqh> -->
+<!--X-Date: Fri, 15 Jul 2005 17:24:35 &#45;0400 (EDT) -->
+<!--X-Message-Id: Pine.LNX.4.61.0507151714310.28175@donkeykong.gpcc.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 42D574A9.6030104@psu.edu -->
+<!--X-Reference: Pine.LNX.4.61.0507141737470.25863@centipede.gpcc.itd.umich.edu -->
+<!--X-Reference: 42D7D15B.1060407@psu.edu -->
+<!--X-Reference: 42D810EC.1030009@psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00453.shtml">Date Prev</a>][<a href="msg00455.shtml">Date Next</a>][<a href="msg00453.shtml">Thread Prev</a>][<a href="msg00455.shtml">Thread Next</a>][<a href="maillist.shtml#00454">Date Index</a>][<a href="threads.shtml#00454">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: IIS 6 fails to start with cosign.dll</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: IIS 6 fails to start with cosign.dll</li>
+<li><em>From</em>: Jarod &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 15 Jul 2005 17:20:52 -0400 (EDT)</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00453.shtml">42D810EC.1030009@psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00449.shtml">42D574A9.6030104@psu.edu</a>&gt; &lt;<a href="msg00451.shtml">Pine.LNX.4.61.0507141737470.25863@centipede.gpcc.itd.umich.edu</a>&gt; &lt;<a href="msg00452.shtml">42D7D15B.1060407@psu.edu</a>&gt; &lt;<a href="msg00453.shtml">42D810EC.1030009@psu.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Glad that it's working!  If this should happen again one thing to 
+check is whether the MSXML 4.0 dll is registered.  How to register msxml 
+4.0:</tt><br>
+<br>
+<pre style="margin: 0em;">1) Open a command prompt
+2) cd to Windows\system32
+3) run the command regsvr32 msxml4.dll</pre><br>
+<tt>You will see a dialog box proclaiming it succeeded or, if it's not there, 
+that the dll is missing.  After registering msxml4, perform an IIS restart 
+and see if the filter loads.</tt><br>
+<br>
+<tt>--Jarod</tt><br>
+<br>
+<tt>On Fri, 15 Jul 2005, Phil Pishioneri wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>On 7/15/05 11:08 AM, Phil Pishioneri wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>One specific machine, happens everytime IIS 6 tries to start.  Remove the 
+Cosign ISAPI filter, IIS starts up. Try another ISAPI filter (just to see 
+if there was a general ISAPI problem), IIS starts up.</tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt>With an uninstall/install of the CoSign filter and associated steps, it's 
+working now.  I'm guessing some permissions weren't quite right, but that's 
+just a guess.</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00449" href="msg00449.shtml">IIS 6 fails to start with cosign.dll</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+<li><strong><a name="00451" href="msg00451.shtml">Re: IIS 6 fails to start with cosign.dll</a></strong>
+<ul><li><em>From:</em> Jarod</li></ul></li>
+<li><strong><a name="00452" href="msg00452.shtml">Re: IIS 6 fails to start with cosign.dll</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+<li><strong><a name="00453" href="msg00453.shtml">Re: IIS 6 fails to start with cosign.dll</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00453.shtml">Re: IIS 6 fails to start with cosign.dll</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00455.shtml">Tech Forum #21 -- July 20th [TOMORROW] (fwd)</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00453.shtml">Re: IIS 6 fails to start with cosign.dll</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00455.shtml">Tech Forum #21 -- July 20th [TOMORROW] (fwd)</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00454"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00454"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

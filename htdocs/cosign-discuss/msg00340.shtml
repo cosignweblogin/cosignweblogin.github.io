@@ -1,0 +1,172 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: REGISTER and a lost login cookie -->
+<!--X-From-R13: Pevna Vngpu <oevNvsbxe.bet> -->
+<!--X-Date: Wed, 9 Mar 2005 02:58:34 &#45;0500 (EST) -->
+<!--X-Message-Id: 20050309075643.GH30886@ifokr.org -->
+<!--X-Content-Type: multipart/signed -->
+<!--X-Derived: pgp00006.pgp -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00339.shtml">Date Prev</a>][<a href="msg00341.shtml">Date Next</a>][<a href="msg00345.shtml">Thread Prev</a>][<a href="msg00341.shtml">Thread Next</a>][<a href="maillist.shtml#00340">Date Index</a>][<a href="threads.shtml#00340">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>REGISTER and a lost login cookie</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: REGISTER and a lost login cookie</li>
+<li><em>From</em>: Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 8 Mar 2005 23:56:43 -0800</li>
+<li><em>User-agent</em>: Mutt/1.5.6+20040907i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>I am having some problems with my cosign instance with basicauth.
+
+Say you log in, go get a service cookie or two, and then sit
+idle.  Monster comes along and deletes the service cookie.
+When you come back to either the login page (possibly via
+a redirect by a service page) your browser sends the login
+cookie which is no longer present in the daemon/ directory.
+
+The basicosign.cgi program simply reads REMOTE_USER and then
+connects to the cosign server on port 6663 and issues the
+following:[1]
+
+f_starttls arg 0: STARTTLS
+f_register arg 0: REGISTER
+f_register arg 1: cosign=GaKaf+9ne7JxhBo.....UvA6zZZ060Pg
+f_register arg 2: 192.168.1.1
+f_register arg 3: cosign-hostname.example.com=n9-Tj3...+J9klJo---o
+
+Now, since the file /var/lib/cosign/daemon/cosign=GaKaf+9ne....
+doesn't exist (monster ate it) then I'm getting an error in
+the read_cookie() call inside f_register function.  (Note: 
+would be nice to have a syslog call before the snet_write/return
+to make debugging this easier.)
+
+Is this to be expected?
+
+I was thinking there are two ways around this (given that I'm
+intercepting things before basicosign.cgi actually runs):
+
+	* If I get an error from basicosign.cgi, then re-run it
+	  without any login cookie - this will cause basicosign.cgi
+	  to generate a new one, register it as a login cookie, and
+	  pass it back to the browser.
+
+	* Have my interceptor CGI look in the /var/lib/cosign/daemon
+	  directory to see if the cookie is there, and if not clear
+	  the cookie before running basicosign.cgi.  This suffers
+	  from a race condition, in that monster could remove the
+	  file between the time my interceptor sees it and
+	  basicosign.cgi calls the daemon, and doesn't work when
+	  the daemon is on a different machine at all.
+
+
+
+
+Suggestions welcome....
+
+
+
+[1] I modified all the f_ functions in command.c to include debug
+    output by adding a line like the following just after all
+    variable declarations, which is how I'm getting this output that
+    is normally inside the SSL stream:
+
+      int i; for ( i=0; i&lt;ac; i++ ) { syslog( LOG_DEBUG, &quot;f_login arg %d: %s&quot;,i,av[i]); }
+
+
+-- 
+Brian Hatch                  Initiative comes to those
+   Systems and                who wait.
+   Security Engineer
+<a  href="http://www.ifokr.org/bri/">http://www.ifokr.org/bri/</a>
+
+Every message PGP signed
+</pre><p><strong>Attachment:
+<a href="pgp00006.pgp" ><tt>signature.asc</tt></a></strong><br>
+<em>Description:</em> Digital signature</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00341" href="msg00341.shtml">Re: REGISTER and a lost login cookie</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00339.shtml">Cosign Friend Meetings, 3/14 and 3/16</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00341.shtml">Re: REGISTER and a lost login cookie</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00345.shtml">Re: Cosign Friend Meetings, 3/14 and 3/16</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00341.shtml">Re: REGISTER and a lost login cookie</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00340"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00340"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

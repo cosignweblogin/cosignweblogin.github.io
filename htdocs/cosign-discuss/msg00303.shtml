@@ -1,0 +1,138 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: [Fwd: [Bug libc/671] New: It appears syslog can go into deadlock when it receives a signal where the signal handler also syslogs] -->
+<!--X-From-R13: Irfyrl R Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Sat, 15 Jan 2005 21:53:39 &#45;0500 (EST) -->
+<!--X-Message-Id: A68957F0&#45;6769&#45;11D9&#45;B271&#45;000A95A0453E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1105842741.4061.33.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00302.shtml">Date Prev</a>][<a href="msg00304.shtml">Date Next</a>][<a href="msg00302.shtml">Thread Prev</a>][<a href="msg00304.shtml">Thread Next</a>][<a href="maillist.shtml#00303">Date Index</a>][<a href="threads.shtml#00303">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: [Fwd: [Bug libc/671] New: It appears syslog can go into deadlock when it receives a signal where the signal handler also syslogs]</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: [Fwd: [Bug libc/671] New: It appears syslog can go into deadlock when it receives a signal where the signal handler also syslogs]</li>
+<li><em>From</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sat, 15 Jan 2005 21:52:24 -0500</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00302.shtml">1105842741.4061.33.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00302.shtml">1105842741.4061.33.camel@brett.enarc.auckland.ac.nz</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 15 Jan 2005, at 21:32, Brett Lomas wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">FYI, I just reported this bug, because I was seeing it in the cosign
+daemon when using the replication and stressing it.</pre><br>
+<pre style="margin: 0em;">I have removed all of the sysloging in pusherchld to stop pusherparent
+from going into deadlock, at least until i hear back on this.
+</pre></blockquote><tt><br>We noticed this problem some time ago in another project (radmind) and  
+have been fixing all of our projects since.  The CVS HEAD version of  
+cosign has fixed the problem by removing all &quot;interesting&quot; code from  
+all signal handlers.  See:</tt><br>
+<br>
+<tt>	<a  href="http://cvs.web.itd.umich.edu/horde/chora/cvs.php?f=cosign/daemon/">http://cvs.web.itd.umich.edu/horde/chora/cvs.php?f=cosign/daemon/</a> 
+pusher.c</tt><br>
+<br>
+<tt>Revision 1.35.  BTW, I don't think this is a bug in libc.  See:</tt><br>
+<br>
+<tt>	<a  href="http://www.opengroup.org/onlinepubs/009695399/functions/sigaction.html">http://www.opengroup.org/onlinepubs/009695399/functions/sigaction.html</a></tt><br>
+<br>
+<tt>&quot;Application Usage.&quot;  There is a specific prohibition against calling  
+non-reentrant functions from a signal handler.  Examples of  
+non-reentrant functions include malloc/free and stdio.  While syslog is  
+not specifically mentioned, syslod is not required to be reentrant, and  
+it works an awful lot like printf.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00304" href="msg00304.shtml">Re: [Fwd: [Bug libc/671] New: It appears syslog can go into	deadlock when it receives a signal where the signal handler also syslogs]</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00302" href="msg00302.shtml">[Fwd: [Bug libc/671] New: It appears syslog can go into deadlock	when it receives a signal where the signal handler also syslogs]</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00302.shtml">[Fwd: [Bug libc/671] New: It appears syslog can go into deadlock	when it receives a signal where the signal handler also syslogs]</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00304.shtml">Re: [Fwd: [Bug libc/671] New: It appears syslog can go into	deadlock when it receives a signal where the signal handler also syslogs]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00302.shtml">[Fwd: [Bug libc/671] New: It appears syslog can go into deadlock	when it receives a signal where the signal handler also syslogs]</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00304.shtml">Re: [Fwd: [Bug libc/671] New: It appears syslog can go into	deadlock when it receives a signal where the signal handler also syslogs]</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00303"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00303"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

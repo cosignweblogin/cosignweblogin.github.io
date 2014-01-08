@@ -1,0 +1,268 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: replication -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Wed, 28 Jul 2004 10:22:46 &#45;0400 (EDT) -->
+<!--X-Message-Id: 45F6F1D6&#45;E0A1&#45;11D8&#45;A7E9&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.GSO.4.58.0407261519430.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: 7975C00E&#45;DF4E&#45;11D8&#45;B4BC&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: Pine.GSO.4.58.0407271001140.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Reference: Pine.GSO.4.58.0407281414570.644@sagittarius.ucs.ed.ac.uk -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00195.shtml">Date Prev</a>][<a href="msg00197.shtml">Date Next</a>][<a href="msg00195.shtml">Thread Prev</a>][<a href="msg00197.shtml">Thread Next</a>][<a href="maillist.shtml#00196">Date Index</a>][<a href="threads.shtml#00196">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: replication</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Graeme Wood &lt;<a href="mailto:Graeme.Wood@DOMAIN.HIDDEN">Graeme.Wood@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: replication</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 28 Jul 2004 10:20:27 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00195.shtml">Pine.GSO.4.58.0407281414570.644@sagittarius.ucs.ed.ac.uk</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00189.shtml">Pine.GSO.4.58.0407261519430.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00192.shtml">7975C00E-DF4E-11D8-B4BC-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00193.shtml">Pine.GSO.4.58.0407271001140.644@sagittarius.ucs.ed.ac.uk</a>&gt; &lt;<a href="msg00195.shtml">Pine.GSO.4.58.0407281414570.644@sagittarius.ucs.ed.ac.uk</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Hi Graeme,</tt><br>
+<br>
+<tt>Apologies for the delay in our response. I'm guessing you've run into  
+the same bug the Penn State folks pointed out a few weeks ago...  
+there's a discrepancy between type casting of the variable &quot;port&quot; in  
+the daemon code.</tt><br>
+<br>
+<tt><a  href="http://www.umich.edu/~umweb/downloads/cosign-20040707.tar.gz">http://www.umich.edu/~umweb/downloads/cosign-20040707.tar.gz</a></tt><br>
+<br>
+<tt>should fix this.</tt><br>
+<br>
+<tt>I'll be releasing a new bug fix version in the next day or so, but give  
+this a snapshot  a try in the meantime ( if you like ) and let us know  
+if that doesn't fix the problem. :)</tt><br>
+<br>
+<pre style="margin: 0em;">Thanks,
+Johanna</pre><br>
+<tt><br>On Jul 28, 2004, at 9:15 AM, Graeme Wood wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I have confirmed that the two cosign daemons are talking to one  
+another.<br>
+But no cookies or tickets get transferred. Is there no one that has  
+done<br>
+this?</tt><br>
+<br>
+<tt>On Tue, 27 Jul 2004, Graeme Wood wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>On A I see:</tt><br>
+<br>
+<tt>Jul 26 15:13:35 app monster[990]: [ID 159427 daemon.info] restart  
+internal<br>
+Jul 26 15:15:48 app cosignd[998]: [ID 801519 daemon.info] connect:<br>
+129.215.13.193<br>
+Jul 26 16:08:38 app cosignd[1048]: [ID 801519 daemon.info] connect:<br>
+129.215.16.88<br>
+Jul 26 16:08:38 app cosignd[1048]: [ID 536247 daemon.debug] f_check:<br>
+cosign=RZe9FBeTz9flTlNXHDclFwsOuqgwu8OEpVXCFca9dEDRwLS4m2NQDYLM2ZyLKkP 
+2OTqfSH7jpoXhPa6PUtHXILoGpxm-G-SZSnWK0kTL9IXDcr6x5tLecg2gX9n+<br>
+Jul 26 16:08:44 app cosignd[1050]: [ID 801519 daemon.info] connect:<br>
+129.215.16.88<br>
+Jul 26 16:08:44 app cosignd[1051]: [ID 801513 daemon.error] connect:<br>
+Cannot assign requested address<br>
+Jul 26 16:08:44 app cosignd[1051]: [ID 767929 daemon.error] pusher:<br>
+connect_sn transient failure<br>
+Jul 26 16:08:44 app cosignd[987]: [ID 295091 daemon.error] CHILD 1051<br>
+exited with 1<br>
+Jul 26 17:01:49 app cosignd[1117]: [ID 801519 daemon.info] connect:<br>
+129.215.16.88<br>
+Jul 26 17:02:00 app cosignd[1118]: [ID 801519 daemon.info] connect:<br>
+129.215.16.88<br>
+Jul 26 17:02:00 app cosignd[1118]: [ID 894444 daemon.error]<br>
+service_to_login:<br>
+cosign- 
+eucsCosign.ease=vozdoQU82fV3se9k2xDx0hodUQKPQc7zR6s4+T7FMFFsYojrHk0Wyl 
+TrjmAGuaQ8r7tb1NEKxAGfIGYSVXAvy78584nmdiIdpSOdKMGa7A+bRwR693NlsEn7amou 
+:<br>
+No such file or directory<br>
+Jul 26 17:02:00 app cosignd[1120]: [ID 801519 daemon.info] connect:<br>
+129.215.16.88<br>
+Jul 26 17:02:00 app cosignd[1120]: [ID 715341 daemon.debug]  
+f_register:<br>
+cosign=oh19e4TIZ9EXQDQZqfmRXznUwtAuxYWGxv0TgrfEkwwxmeBJ8Zg0kDWVHQmCx8Q 
++1zU7PUbpV0nGGr5nX92lDRV0n9Ln9G4piVdAqYSqKgjPauDMwGHmCU78asHY<br>
+Jul 26 17:02:00 app cosignd[1120]: [ID 536247 daemon.debug] f_check:<br>
+cosign=oh19e4TIZ9EXQDQZqfmRXznUwtAuxYWGxv0TgrfEkwwxmeBJ8Zg0kDWVHQmCx8Q 
++1zU7PUbpV0nGGr5nX92lDRV0n9Ln9G4piVdAqYSqKgjPauDMwGHmCU78asHY</tt><br>
+<br>
+<tt>On B I see:</tt><br>
+<br>
+<tt>Jul 26 15:13:48 beat.ease.ed.ac.uk monster[22336]: [ID 159427  
+daemon.info]<br>
+restart internal<br>
+Jul 26 15:15:35 beat.ease.ed.ac.uk cosignd[22342]: [ID 801519  
+daemon.info]<br>
+connect: 129.215.16.88<br>
+Jul 26 15:15:35 beat.ease.ed.ac.uk cosignd[22342]: [ID 230735<br>
+daemon.debug] f_time:<br>
+cosign=qSwwNGiscU8SjEmcd7qy1O4l0prvxXUveN+DLK+IrSA3zXCiNgGZJBy33+fMiJG 
+jRH3NEniXg6Yplpa6dPb09AsePrXn94FA-3lRIqIJik8gVyqKm+5zJpi5mpT8:<br>
+No such file or directory<br>
+Jul 26 16:09:36 beat.ease.ed.ac.uk cosignd[22342]: [ID 230735<br>
+daemon.debug] f_time:<br>
+cosign=hJpLgbjDEGUGlsl8kWuw8IWafZpjM2ca1zSqOlAc9qVmRnTRywtrDXjL+zsBQmu 
+6svagGtPS02lKaINOZpXHulYhESjZ-4vE6PzeQgBNnWfHePyK6uCr1podTIvc:<br>
+No such file or directory</tt><br>
+<br>
+<tt>Cheers</tt><br>
+<br>
+<tt>On Mon, 26 Jul 2004, johanna bromberg craig wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>what do you get in your cosignd logs? any errors?</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<tt>On Jul 26, 2004, at 10:22 AM, Graeme Wood wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;"><br>Perhaps someone can help with a replication problem. I have two
+servers,
+call them A and B. I have cosignd and monster running on both. If I
+login
+to server A, a cookie file is created in /var/cosign/daemon and a
+kerberos
+ticket in /ticket. Neither the cookie file nor the ticket gets
+transferred
+to server B.</pre><br>
+<tt>On A I start the following:</tt><br>
+<br>
+<pre style="margin: 0em;">cosignd -h B
+monster -h B</pre><br>
+<tt>On B I start:</tt><br>
+<br>
+<pre style="margin: 0em;">cosignd -h A
+monster -h A</pre><br>
+<tt>What is the silly mistake I am making?</tt><br>
+<br>
+<tt>Cheers</tt><br>
+<br>
+<tt>--<br>
+==================================================================== 
+===<br>
+======<br>
+Graeme Wood                                 Email:  
+Graeme.Wood@xxxxxxxx<br>
+Unix Systems Support                        Phone: +44 131 650 5003<br>
+The University of Edinburgh                 Fax:   +44 131 650 6552<br>
+==================================================================== 
+===<br>
+======</tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+</blockquote><tt><br>--<br>
+======================================================================= 
+======<br>
+Graeme Wood                                 Email: Graeme.Wood@xxxxxxxx<br>
+Unix Systems Support                        Phone: +44 131 650 5003<br>
+The University of Edinburgh                 Fax:   +44 131 650 6552<br>
+======================================================================= 
+======</tt><br>
+<br>
+<tt><br>!DSPAM:4107a79d269711424813566!
+</tt></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00197" href="msg00197.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00189" href="msg00189.shtml">replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00192" href="msg00192.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00193" href="msg00193.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+<li><strong><a name="00195" href="msg00195.shtml">Re: replication</a></strong>
+<ul><li><em>From:</em> Graeme Wood</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00195.shtml">Re: replication</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00197.shtml">Re: replication</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00195.shtml">Re: replication</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00197.shtml">Re: replication</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00196"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00196"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

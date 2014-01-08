@@ -1,0 +1,272 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign and Squid? -->
+<!--X-From-R13: Irfyrl Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Wed, 26 Oct 2005 22:14:43 &#45;0400 (EDT) -->
+<!--X-Message-Id: 26590157&#45;A2D5&#45;4EDA&#45;BB79&#45;B375ED730F39@umich.edu -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: 20051019135530.GG21767@ifokr.org -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00596.shtml">Date Prev</a>][<a href="msg00598.shtml">Date Next</a>][<a href="msg00586.shtml">Thread Prev</a>][<a href="msg00598.shtml">Thread Next</a>][<a href="maillist.shtml#00597">Date Index</a>][<a href="threads.shtml#00597">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign and Squid?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign and Squid?</li>
+<li><em>From</em>: Wesley Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 26 Oct 2005 22:12:11 -0400</li>
+<li><em>Cc</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00586.shtml">20051019135530.GG21767@ifokr.org</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00586.shtml">20051019135530.GG21767@ifokr.org</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 19 Oct 2005, at 09:55, Brian Hatch wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Has anyone implemented a cosign-protected squid proxy?
+</tt></blockquote><tt><br>squid has an authentication extension architecture, so it might be  
+possible to add the equivalent of mod_cosign to squid.  Can you say  
+more about what you're trying to do?</tt><br>
+<br>
+<tt>Somewhat related, we received a patch from OpenSourcery that they did  
+for Reed College.  It changes mod_cosign so that apache2 can be used  
+as a cosign-protected proxy.  While we haven't yet tested it, it  
+seems pretty reasonable.  See below.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<tt>Begin forwarded message:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">From: Josh Partlow &lt;jpartlow@xxxxxxxxxxxxxxxx&gt;
+Date: 18 July 2005 21:08:00 GMT-04:00
+To: wes@xxxxxxxxx
+Cc: Kirsten Comandich &lt;kirsten@xxxxxxxxxxxxxxxx&gt;
+Subject: Re: [Fwd: [Fwd: Re: patch to mod_cosign.c]]</pre><br>
+<tt>Hi Wes,</tt><br>
+<br>
+<pre style="margin: 0em;">Kirsten forwarded this to me, since I wrote the original patch.  Sorry
+for the delay, I've been very busy with other projects.</pre><br>
+<tt>So here's the background:</tt><br>
+<br>
+<tt>Reed College has a proxy server that allows users logged onto to its<br>
+internal network to access an array of periodical and research  
+services<br>
+which Reed pays for.  Reed also has a Cosign system set up to handle<br>
+authentication of users using web services on their network.  Reed<br>
+wanted legitimate users of their network to be able to login  
+outside of<br>
+Reed's internal network (from the Internet, at large) and still get<br>
+access to these various proxied services, and they wanted to be  
+able to<br>
+use their same cosignd server for authentication.</tt><br>
+<br>
+<tt>The purpose of this patch is to allow Cosign to authenticate requests<br>
+made to a proxy server.  By default, the Apache2 mod_cosign filter  
+(the<br>
+only one we worked with), doesn't handle HTTP proxy requests.   
+(Here's a<br>
+snippet of a text doc I wrote up for Reed describing the issue.)</tt><br>
+<br>
+<tt>The Problem:</tt><br>
+<br>
+<pre style="margin: 0em;">The mod_cosign filter assumes that it is dealing with a normal,
+non-proxied request of the form:</pre><br>
+<pre style="margin: 0em;">GET /foo HTTP/1.1
+Host www.example.com</pre><br>
+<tt>In order to get confirmation of this request, cosign redirects the  
+user<br>
+to the cosign server, via HTTPS, creates a service cookie and  
+appends a<br>
+full URI that the cosign login server can redirect to once the user is<br>
+authenticated. To create this URI it appends<br>
+scheme://resource-host/path, so for our example above, assuming that<br>
+resource /foo is hosted on www.example.com it creates:</tt><br>
+<br>
+<tt><a  href="https://www.example.com/foo">https://www.example.com/foo</a></tt><br>
+<br>
+<tt>However if a proxied request of the form:</tt><br>
+<br>
+<pre style="margin: 0em;">GET <a  href="http://www.proxied.com/bar">http://www.proxied.com/bar</a> HTTP/1.1
+Host www.proxied.com</pre><br>
+<pre style="margin: 0em;">is requested, this causes problems, because when cosign attempts to
+'recreate' a proper return URI to add to the querystring, it comes up
+with:</pre><br>
+<tt><a  href="https://www.proxied.comhttp//www.proxied.com/bar">https://www.proxied.comhttp//www.proxied.com/bar</a></tt><br>
+<br>
+<pre style="margin: 0em;">The non-parsed uri (http//www.proxied.com/bar - the colon removed) is
+appended (as if it were just the path info) to a newly constructed
+scheme and server.</pre><br>
+<pre style="margin: 0em;">Once cosign validates the user, this mangled url is returned to the
+proxy server, which, of course, fails to retrieve anything for it.</pre><br>
+<tt>------</tt><br>
+<br>
+<tt>The Patch:</tt><br>
+<br>
+<pre style="margin: 0em;">The two changes made are in the attached context diff, and are in the
+set_cookie_and_redirect() method of the filters/apache2/mod_cosign.c
+source file.</pre><br>
+<tt>The first change ensures that cookies associated with an http proxy<br>
+request are not secured; otherwise the cookies don't get associated  
+with<br>
+the original request and the service never gets athorized, even though<br>
+the user authenticates.</tt><br>
+<br>
+<tt>Of course, this allows the authenticating cookie for a particular<br>
+proxied service to be hijacked by a man-in-the-middle attack.  This  
+was<br>
+deemed an acceptable risk, since it would only affect a particular<br>
+proxied service, and would be subject to timeouts.  The actual login<br>
+authentication is still over HTTPS since we didn't fiddle with  
+cosignd.</tt><br>
+<br>
+<pre style="margin: 0em;">The second change just checks to see if the request object matches a
+proxy-request, and if so, sets the reference to the original request
+object's unparsed uri (the original proxy request address).</pre><br>
+<tt>They're very small changes.  It takes longer to explain the reasons  
+than<br>
+to apply the work-around :).  I don't know if the changes would have a<br>
+security impact on an unproxied server or not.  And we only tested<br>
+against Apache2.</tt><br>
+<br>
+<tt>Please let me know if you have any questions.  Thank you for the  
+Cosign<br>
+work!</tt><br>
+<br>
+<tt>Josh</tt><br>
+<br>
+<pre style="margin: 0em;">--
+Josh Partlow                               OpenSourcery, LLC
+jpartlow@xxxxxxxxxxxxxxxx                  www.osourcery.com</pre><br>
+</blockquote><pre>--- ../../cosign-1.8.5/filters/apache2/mod_cosign.c     2005-04-06 13:36:28.000000000 -0700
++++ filters/apache2/mod_cosign.c        2005-06-09 22:35:04.000000000 -0700
+@@ -158,6 +158,16 @@
+     /* returned upon revisit. */
+
+     gettimeofday( &amp;now, NULL );
++    /* proxy request service cookies should only be secure if the scheme is https */
++    if ( r-&gt;proxyreq == PROXYREQ_PROXY ) {
++        if ( r-&gt;parsed_uri.scheme &amp;&amp; strcmp( r-&gt;parsed_uri.scheme, &quot;https&quot;) == 0 ) {
++            full_cookie = apr_psprintf( r-&gt;pool, &quot;%s/%lu;;path=/;secure&quot;,
++                my_cookie, now.tv_sec );
++        } else {
++            full_cookie = apr_psprintf( r-&gt;pool, &quot;%s/%lu;;path=/&quot;,
++                my_cookie, now.tv_sec );
++        }
++    } else {
+     if ( cfg-&gt;http ) { /* living dangerously */
+        full_cookie = apr_psprintf( r-&gt;pool, &quot;%s/%lu;;path=/&quot;,
+                my_cookie, now.tv_sec );
+@@ -165,6 +175,7 @@
+        full_cookie = apr_psprintf( r-&gt;pool, &quot;%s/%lu;;path=/;secure&quot;,
+                my_cookie, now.tv_sec );
+     }
++    }
+
+     /* cookie needs to be set and sent in error headers as
+      * standard headers don't get returned when we redirect,
+@@ -176,6 +187,10 @@
+     if ( cfg-&gt;siteentry != NULL ) {
+        ref = cfg-&gt;siteentry;
+     } else {
++    /* proxy requests should be redirected exactly as requested */
++    if ( r-&gt;proxyreq == PROXYREQ_PROXY) {
++        ref = r-&gt;unparsed_uri;
++    } else {
+        /* live dangerously, we're redirecting to http */
+        if ( cfg-&gt;http ) {
+            if (( port = ap_get_server_port( r )) == 80 ) {
+@@ -196,6 +211,7 @@
+            }
+        }
+     }
++    }
+
+     dest = apr_psprintf( r-&gt;pool, &quot;%s?%s;&amp;%s&quot;, cfg-&gt;redirect, my_cookie, ref );
+     apr_table_set( r-&gt;headers_out, &quot;Location&quot;, dest );
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00598" href="msg00598.shtml">Re: Cosign and Squid?</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00586" href="msg00586.shtml">Cosign and Squid?</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00596.shtml">RE: Re: cosign question</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00598.shtml">Re: Cosign and Squid?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00586.shtml">Cosign and Squid?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00598.shtml">Re: Cosign and Squid?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00597"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00597"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

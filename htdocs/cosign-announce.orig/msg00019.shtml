@@ -1,0 +1,189 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: IISCosign 1.1.0 RC1 available for download -->
+<!--X-From-R13: Xnebq [nyrfgrva <wnebqNhzvpu.rqh> -->
+<!--X-Date: Mon, 13 Sep 2004 17:49:40 &#45;0400 (EDT) -->
+<!--X-Message-Id: DDDA1B6839768ADC247621FC@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: CF9247C0CEB4020395D5A863@spike.itd.umich.edu -->
+<!--X-Reference: 14272838ECFD00B88D72F514@spike.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="announce" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-announce at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            cosign release and update announcements
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00018.shtml">Date Prev</a>][<a href="msg00020.shtml">Date Next</a>][<a href="msg00018.shtml">Thread Prev</a>][<a href="msg00020.shtml">Thread Next</a>][<a href="maillist.shtml#00019">Date Index</a>][<a href="threads.shtml#00019">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: IISCosign 1.1.0 RC1 available for download</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-announce@DOMAIN.HIDDEN">cosign-announce@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: IISCosign 1.1.0 RC1 available for download</li>
+<li><em>From</em>: Jarod Malestein &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 13 Sep 2004 17:47:40 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00018.shtml">14272838ECFD00B88D72F514@spike.itd.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;CF9247C0CEB4020395D5A863@spike.itd.umich.edu&gt; &lt;<a href="msg00018.shtml">14272838ECFD00B88D72F514@spike.itd.umich.edu</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Very important thing I forgot to mention: since this is a release candidate 
+do not forget to backup your IISCosign folder!  In particular, the 
+cosign.dll.config file and the contents of the /SSL folder!</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--IT Central Services</pre><br>
+<tt>--On Monday, September 13, 2004 3:55 PM -0400 Jarod Malestein 
+&lt;jarod@xxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;"><br>Release Candidate 1 for IISCosign version 1.1.0 is now available.  We'd
+like to receive feedback, complaints, test reports, and bugs.  Please
+give this a spin and let us know what you think!  If there's anything
+we've left out or a promised or omitted feature you're waiting for,
+please let us know.</pre><br>
+<pre style="margin: 0em;">Download here:
+&lt;<a  href="http://weblogin.org/">http://weblogin.org/</a>&gt;</pre><br>
+<pre style="margin: 0em;">Previous versions available here:
+&lt;<a  href="http://www.umich.edu/~umweb/software/cosign/download.html">http://www.umich.edu/~umweb/software/cosign/download.html</a>&gt;</pre><br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--IT Central Services</pre><br>
+<tt>Changes in IISCosign 1.1.0:</tt><br>
+<br>
+<pre style="margin: 0em;">+ You can now specify allowUnauthenticatedAccess to &lt;Protected/&gt; pages.
+Example:</pre><br>
+<tt>&lt;Protected allowUnauthenticatedAccess=&quot;TRUE&quot;&gt;/MySweetWebApp&lt;/Protected&gt;</tt><br>
+<br>
+<pre style="margin: 0em;">What?  Yes, now you can have a folder or web page(s) that can be accessed
+by both logged in and non-logged in users.  If the user is logged in, the
+HTTP_REMOTE_USER, HTTP_REMOTE_REALM, and HTTP_COSIGN_SERVICE variables
+will be available.  If the user is not logged in, he is not redirected
+and only the HTTP_COSIGN_SERVICE variable is available.</pre><br>
+<pre style="margin: 0em;">+ Log file locking issue circumvented.  This prevented multiple instances
+of the filter from being instantiated in IIS 6.0.  Unfortunately,
+multiple log files are not created.  This will be corrected.</pre><br>
+<pre style="margin: 0em;">+ &lt;HttpsOnly /&gt; option added. Default is TRUE. Set to FALSE to allow
+users to access cosign-protected pages without a secure connection.
+Example:</pre><br>
+<tt>&lt;HttpsOnly&gt;FALSE&lt;/HttpsOnly&gt;</tt><br>
+<br>
+<pre style="margin: 0em;">+ Corrected bug that would protect something like &quot;/studentsAndStaff&quot; if
+&quot;/students&quot; was protected.  Then broke it, fixed it, broke it, fixed it.
+This is something you may want to double-check.</pre><br>
+<pre style="margin: 0em;">+ Extra info put into log file.  Please provide feedback on what you
+would and wouldn't like to have in the cosign log file.</pre><br>
+<tt>+ Https redirect bug fixed.</tt><br>
+<br>
+<pre style="margin: 0em;">+ Specifying web sites by their IIS description rather than DNS name is
+now an option.
+Change your &lt;Service /&gt; tag as follows:</pre><br>
+<pre style="margin: 0em;">&lt;Service IISDescription=&quot;IISCosign web site&quot;&gt;cosign-service-name
+...
+&lt;/Service&gt;</pre><br>
+<pre style="margin: 0em;">You can use either the original websitename item to refer to the DNS name
+or the new IISDescription. If both are present, IISCosign first looks for
+IISDescription and will ignore websitename.</pre><br>
+<pre style="margin: 0em;">For the curious parties, the &quot;IISDescription&quot; is compared to the
+ServerComment for the web site in the IIS metabase.</pre><br>
+<pre style="margin: 0em;">+ You can now limit the log file size. Change your &lt;LogFilePath&gt; to look
+like this:</pre><br>
+<pre style="margin: 0em;">&lt;LogFilePath fileSizeInKB=&quot;4096&quot;&gt;C:\Program
+Files\CosignFilter\Logs&lt;/LogFilePath&gt;</pre><br>
+<tt><br>What's on the roadmap (in no particular order):</tt><br>
+<br>
+<pre style="margin: 0em;">- Creating multiple cosign log files when multiple instances of the
+filter are loaded.
+- A logging level option.  Something like &quot;normal/debug/trace.&quot;
+- Implementing Apache-style on/off cosign protection mechanism.  This
+would allow something like &quot;/foo&quot; to be protected and &quot;/foo/bar&quot; to be
+unprotected.  As IISCosign stands now, &quot;/foo&quot;, by default, will also
+protect &quot;/foo/bar&quot;.
+- And, of course, rolling in contributions from other organizations.</pre><br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00018" href="msg00018.shtml">IISCosign 1.1.0 RC1 available for download</a></strong>
+<ul><li><em>From:</em> Jarod Malestein</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00018.shtml">IISCosign 1.1.0 RC1 available for download</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00020.shtml">Cosign 1.7.0 Released</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00018.shtml">IISCosign 1.1.0 RC1 available for download</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00020.shtml">Cosign 1.7.0 Released</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00019"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00019"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

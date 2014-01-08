@@ -1,0 +1,170 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: 503 service unavailable error -->
+<!--X-From-R13: Rnivq Oyrknaqre <nyrknaqqNbuvb.rqh> -->
+<!--X-Date: Fri, 5 Aug 2005 09:46:42 &#45;0400 (EDT) -->
+<!--X-Message-Id: 7EEA9AA10CCB15653179A4FB@OHIO&#45;LZ8JRIPC1D.ohio.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: AAA87E4C52D096E7460C0BB7@OHIO&#45;LZ8JRIPC1D.ohio.edu -->
+<!--X-Reference: E4E0D8EF&#45;0C13&#45;4990&#45;9533&#45;D08696BD9EB5@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00475.shtml">Date Prev</a>][<a href="msg00477.shtml">Date Next</a>][<a href="msg00475.shtml">Thread Prev</a>][<a href="msg00477.shtml">Thread Next</a>][<a href="maillist.shtml#00476">Date Index</a>][<a href="threads.shtml#00476">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: 503 service unavailable error</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: 503 service unavailable error</li>
+<li><em>From</em>: David Alexander &lt;<a href="mailto:alexandd@DOMAIN.HIDDEN">alexandd@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 05 Aug 2005 09:42:10 -0400</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00475.shtml">E4E0D8EF-0C13-4990-9533-D08696BD9EB5@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00474.shtml">AAA87E4C52D096E7460C0BB7@OHIO-LZ8JRIPC1D.ohio.edu</a>&gt; &lt;<a href="msg00475.shtml">E4E0D8EF-0C13-4990-9533-D08696BD9EB5@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Kevin,</tt><br>
+<br>
+<tt>Thanks for the troubleshooting steps.  It turns out that the filter 
+directory path was not what I expected it to be, so the directory didn't 
+exist.  The error appeared in the Apache logs.</tt><br>
+<br>
+<tt>Dave</tt><br>
+<br>
+<tt><br>--On Thursday, August 04, 2005 1:39 PM -0400 kevin mcgowan 
+&lt;clunis@xxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">so it looks like your certs are fine if you're seeing LOGIN and  REGISTER
+requests on the weblogin server.  What about logs on the web  server that
+is attempting to provide the service?  There is nothing  in the apache
+logs on the service?</pre><br>
+<pre style="margin: 0em;">This error is intermittent?  How many weblogin servers do you have?   Are
+the success and error experiences between the same service and  weblogin
+servers?  Are these happening with the same web browser?   Can you tell
+me OS, Apache version, Cosign version, and web browser  versions being
+used?</pre><br>
+<pre style="margin: 0em;">Are cookie files being created in the filter cache directory (if you  su
+to your web server user can you create files?)?  Is this machine
+receiving Kerberos tickets and can the web server user write those as
+well?</pre><br>
+<tt>k</tt><br>
+<br>
+<tt>On Aug 4, 2005, at 1:11 PM, David Alexander wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt><br>What are the possible causes of 503 service unavailable?</tt><br>
+<br>
+<pre style="margin: 0em;">I have the correct owner on the filter directory.  The only clue
+that I have is in syslog.</pre><br>
+<tt>failure:</tt><br>
+<br>
+<pre style="margin: 0em;">[root@cosign11 root]# tail -f /var/log/cosignd.log
+Aug  4 12:41:57 cosign11 cosignd[6286]: connect: 132.235.xxx.xxx
+Aug  4 12:41:57 cosign11 cosignd[6286]: LOGIN user xxx_cell
+132.235.yyy.yyy
+Aug  4 12:41:57 cosign11 cosignd[6286]: REGISTER user xxx_cell
+132.235.yyy.yyy cosign-shibboleth</pre><br>
+<tt>success:</tt><br>
+<br>
+<pre style="margin: 0em;">[root@cosign11 root]# tail -f /var/log/cosignd.log
+Aug  4 12:43:00 cosign11 cosignd[6404]: connect: 132.235.xxx.xxx
+Aug  4 12:43:00 cosign11 cosignd[6404]: LOGIN user xxx_cell
+132.235.yyy.yyy
+Aug  4 12:43:00 cosign11 cosignd[6404]: REGISTER user xxx_cell
+132.235.yyy.yyy cosign-shibboleth
+Aug  4 12:43:00 cosign11 cosignd[6405]: connect: 132.235.xxx.xxx</pre><br>
+<tt><br>--Dave</tt><br>
+<br>
+<tt>!DSPAM:42f24fb3163651852320630!</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote></blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00474" href="msg00474.shtml">503 service unavailable error</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00475" href="msg00475.shtml">Re: 503 service unavailable error</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00475.shtml">Re: 503 service unavailable error</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00477.shtml">Re[3]: Bustamante Shinde Nicson Bozovic</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00475.shtml">Re: 503 service unavailable error</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00477.shtml">Re[3]: Bustamante Shinde Nicson Bozovic</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00476"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00476"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

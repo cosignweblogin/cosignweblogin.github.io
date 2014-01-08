@@ -1,0 +1,174 @@
+<!--#set var="title" value="download" -->
+<!--#set var="download" value="y" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+
+
+<!--#include file="header.html" -->
+
+<!--#set var="trail" value="../.." -->
+<!--#if expr="\"$HTTP_HOST\" = \"weblogin.org\"" -->
+<!--#set var="download_prefix" value="http://www.umich.edu/~umweb" -->
+<!--#else -->
+<!--#set var="download_prefix" value="$trail" -->
+<!--#endif -->
+
+<table cellpadding="6" cellspacing="0" border="0" width="90%">
+    <tr>
+    <td >
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="images
+/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+		cosign Source Code and Installers
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+		to verify checksum: openssl md5 filename
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td> 
+    </tr>
+</table>
+	</td>
+    </tr>
+
+    <tr>
+    <td>
+	<h3>Apache Filter &amp; Weblogin Server:</h3>
+	<p class="software">
+	    See our change log for revision information: <b><a
+	    href="changelog.txt"
+	    target="_blank">changelog.txt</a></b>
+	</p>
+
+	<p class="software">
+	    <b>Versions of cosign older than 3.0 have an architectural flaw
+	    (detailed <a href="http://weblogin.org/cosign-vuln-2009-002.txt"
+	    target="_blank">here</a>).</b> New users of cosign should select
+	    the latest cosign 3 release for download. Existing legacy cosign
+	    installations should upgrade to cosign 3 as soon as possible. An
+	    overview of that process may be found <a
+	    href="http://sourceforge.net/mailarchive/message.php?msg_name=D377407D-BD11-4561-87EF-5EC5007B09AD%40umich.edu"
+	    target="_blank">here</a>.
+	</p>
+	<ul>
+		<li>
+		<b><a href="http://prdownloads.sourceforge.net/cosign/cosign-3.0.2.tar.gz?download">cosign-3.0.2.tar.gz</a></b><br />
+		[ RIPEMD160 3bd08f53075f90bb8846238419ff5817ef3e07b0 ]<br />
+		[ SHA1 1140dc64453381c871929ee88369f185ed643809 ]<br />
+		[ MD5 6be4e8e0c10519c1ea0d7e566ff29b79 ]<br />
+		<a href="http://cosign.git.sourceforge.net/">browse git source repository</a></b> <br /><br />
+		NOTE: the cosign 3.0 apache filters are incompatible with earlier versions of the cosign weblogin software.<br /><br />
+		</li>
+	</ul>
+
+	<h3>Friend guest account system:</h3>
+        <ul><li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/friend-2.0.2.tar.gz">friend-2.0.2.tar.gz</></a></b><br />
+	[ MD5 c227045bb0a4eb7d921547ecccc01f7d ]<br />
+	<a href="http://cosignfriend.cvs.sourceforge.net/">browse cvs source repository</a><br />
+	</li>
+</ul>
+
+	<h3>Windows Module:</h3>
+	<p class="software">
+	Module for Windows 2008/IIS 7.</p>
+    <ul>
+	<li><b><a href="http://sourceforge.net/projects/cosign/files/cosign-windows/cosignmodule-3.0.0/cosignmodule-3.0.0.zip/download">Cosign module 3.0.0</a></b><br />
+	[ MD5 b5491c35b9f345491b8eb4d54bfe3e0e ]<br />
+	[ SHA1 fd47db5f767963d045ff646af584bff729dd1b57 ]<br />
+	[ RIPEMD160 81d926b8c3ab416cf8780cab76064ac5337cc591 ]<br />
+	</li>
+	<a href="http://cosign.cvs.sourceforge.net/cosign/cosignmodule">browse cvs source repository</a><br />
+	</li>
+	</ul>
+
+
+	<h3>Windows Filter:</h3>
+        <p class="software">
+		Filter for Windows 2003/IIS 6.
+        </p>
+
+	<ul>
+	<li><b><a href="http://prdownloads.sourceforge.net/cosign/iiscosign-3.0.0.zip?download">IISCosign 3.0.0</a></b><br />
+		[ MD5 d4c13a55614a3622bb12455c8825ada8 ]<br />
+		[ SHA1 d3e19cdd9ba34e9e7c9287ba1da66ad559a20d68 ]<br />
+		[ RIPEMD160 005ec13be341ee9920f43e7472521f3c9421f9e3 ]<br /></li>
+	    <a href="http://cosign.cvs.sourceforge.net/cosign/iiscosign/">browse cvs source repository</a></b><br /><br/>
+	<li><b><a href="http://prdownloads.sourceforge.net/cosign/iiscosign-2.1.0-rc2.zip?download">IISCosign 2.1.0 RC2</a></b><br />
+		[ MD5 fb2379bfc39ec35c36d6b6a6d558ad59 ]<br />
+		[ SHA1 928a1fc6a8a77b89556e7c35aa2b6aab79fd714c ]<br />
+		[ RIPEMD60 4e58545e2920b51a60c67ebd412a62f8939d0546 ]<br />
+		<li><b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.3.msi">IISCosign 2.0.3 (msi)</a></b><br />
+		[ MD5 439281ed476dd5a4437dfb9acdc3df7c ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.3.zip">IISCosign 2.0.3 (zipped)</a></b><br />
+		[ MD5 075f159e1a35e49c41679e7f95ec9113 ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosignlogout-1.0.0a.zip">IISCosign Logout 1.0.0a DLL</a></b> <br />
+		[ MD5 ce126f5c7f06718076f7acbc8cf0b994 ]
+		</li>
+		<li>
+		<b><a href="<!--#echo var="download_prefix" -->/downloads/iiscosign-2.0.3-src.zip">IISCosign 2.0.3 source</a></b> <br />
+		[ MD5 045e5192376d63e4e857f30592438fd1 ]<br />
+		</li>
+	</ul>
+
+	<h3>Java cosign Filter:</h3>
+	<ul>
+	<li><b><a href="http://prdownloads.sourceforge.net/cosign/JavaCosignV3.jar?download">JavaCosign 3.0.0 RC0</a></b><br />
+		[ MD5 619e76a77217d45c2ef2baf9867fce83 ] <br />
+		[ SHA1 a17d6aa60853e2c3f2e4272680bfa90272489e3a ]<br />
+		[ RMD160 477634f8f2a920fe6408d3a5322b7118a89ec967 ] <br />
+	    <li><b><a href="<!--#echo var="download_prefix" -->/downloads/jcosign-2.0.jar">JavaCosign 2.0</a></b></br><br />
+		[ MD5 3f9754073992daa645ab92fd773d40e3 ] <br />
+	    <a href="http://cosign.cvs.sourceforge.net/cosign/javacosign/">browse cvs source repository</a></b> <br/><br />
+	    </li>
+            <li><b><a href="<!--#echo var="download_prefix" -->/downloads/jcosign-1.5.b1.jar">JavaCosign 1.5 beta 1</a></b><br />
+                [ MD5 d5e175ef087e2d583956e727da3da435 ] <br />
+            </li>
+            <li><b><a href="<!--#echo var="download_prefix" -->/downloads/jcosign-1.1.jar">JavaCosign 1.1</a></b><br />
+		[ MD5 66c209119e0e8b8b4c9a1940b24caaec ] <br />
+		</li>
+	</ul>
+
+        <p class="software">&nbsp;</p>
+	    <h3>AuthZ Resources:</h3>
+	    <p class="software">
+	    <ul>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/mod_authz_ldap-NOTES.txt">How-To Build and Configure mod_authz_ldap to do AuthZ for cosign AuthN</a></b> <br>
+		</li>
+		<li>
+		    <b><a href="<!--#echo var="download_prefix" -->/downloads/UMICH-authz-ldap.txt">mod_authz_ldap for AuthZ for cosign AuthN - UMICH Specific</a></b> <br>
+		</li>
+	    </ul>
+	    </p>
+
+        <p class="software">&nbsp;</p>
+	    <h3>Older Versions:</h3>
+	    <p class="software">
+	    <ul>
+		<li>
+		    <h4>Please see <a href="./download-older.html">our attic</a> for previous releases of cosign.</h4>
+		</li>
+	    </ul>
+    </td>
+    </tr>
+</table>
+
+<!--#include file="footer.html" -->
+

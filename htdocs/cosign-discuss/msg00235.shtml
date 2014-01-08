@@ -1,0 +1,177 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: upcoming features in IIS filter? -->
+<!--X-From-R13: Xnebq [nyrfgrva <wnebqNhzvpu.rqh> -->
+<!--X-Date: Thu, 9 Sep 2004 11:48:41 &#45;0400 (EDT) -->
+<!--X-Message-Id: 6E129320589F38F42B554C6D@[192.168.1.101] -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 414075D2.7010903@psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00234.shtml">Date Prev</a>][<a href="msg00236.shtml">Date Next</a>][<a href="msg00234.shtml">Thread Prev</a>][<a href="msg00236.shtml">Thread Next</a>][<a href="maillist.shtml#00235">Date Index</a>][<a href="threads.shtml#00235">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: upcoming features in IIS filter?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;,   Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: upcoming features in IIS filter?</li>
+<li><em>From</em>: Jarod Malestein &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 09 Sep 2004 11:46:34 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00234.shtml">414075D2.7010903@psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00234.shtml">414075D2.7010903@psu.edu</a>&gt;</li>
+<li><em>Reply-to</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>AllowUnauthenticatedAccess is in the current build of IISCosign and will be 
+included in the 1.1.0 release.  I should be able to get a release candidate 
+out for testing by tomorrow.</tt><br>
+<br>
+<tt>First, realize that if you continue to use the current 
+&lt;Protected&gt;/Foo&lt;/Protected&gt; format that IISCosign will behave as it does 
+now.  The default for allowUnauthN is FALSE.  That is the current behavior 
+of IISCosign.</tt><br>
+<br>
+<tt>By setting allowUnauthN to TRUE you can specify parts of your web site that 
+can be viewed by both cosign-authenticated and unauthenticated users.  This 
+makes it possible for web pages to be be customized for those who are 
+authenticated and dispay a generic page for those who are not authenticated.</tt><br>
+<br>
+<tt>If you have a portion of your web site protected as follows:</tt><br>
+<br>
+<tt>&lt;Protected allowUnauthenticatedAccess=&quot;TRUE&quot;&gt;/Foo&lt;/Protected&gt;</tt><br>
+<br>
+<tt>Users who access <a  href="https://my.web.edu/Foo">https://my.web.edu/Foo</a> (and are not logged in or have 
+expired cookies) will NOT be redirected to your weblogin server.  However, 
+if the user is logged in then the HTTP_REMOTE_USER and HTTP_REMOTE_REALMS 
+server variables will be made available.  HTTP_COSIGN_SERVICE will be made 
+available in both cases.</tt><br>
+<br>
+<tt>Please ignore &lt;RequireAuthN /&gt;.  This is a temporary fix to an issue we 
+were facing at U of M.  The behavior that results from ReqAuthN will be 
+made available in the next major release of IISCosign.  (Basically, it was 
+easier to add this feature rather than have a department rewrite major 
+portions of their very expansive web site.)   That behavior is to act more 
+like the Apache module mod_cosign.  In mod_cosign admins are able to turn 
+on cosign protected /foo then turn it off for /foo/bar then, optionally, 
+back on for /foo/bar/goo.  This ON-OFF-ON alternating protection mechanism 
+is not available for IISCosign currently.  That is, if you have /foo 
+protected then /foo/bar and /foo/bar/goo will also be protected.</tt><br>
+<br>
+<tt>This becomes more complicated when you don't want to allowUnauthN on /foo, 
+but you do on /foo/bar.  ReqAuthN overrides some of IISCosign's default 
+behavior, but it IS NOT RECOMMENDED THAT YOU USE REQAUTHN!  The alternating 
+Apache-style cosign-protection will be implemented and ReqAuthN will 
+eventually be deprecated.</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--ITCS</pre><br>
+<tt><br>--On Thursday, September 09, 2004 11:25 AM -0400 Phil Pishioneri 
+&lt;pgp@xxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">Can anyone give more details on these new parameters for a future version
+of the IIS ISAPI filter?</pre><br>
+<pre style="margin: 0em;">&gt; You can now specify allowUnauthenticatedAccess to &lt;Protected/&gt; pages.
+&gt; example:
+&gt; &lt;Protected allowUnauthenticatedAccess=&quot;TRUE&quot;&gt;/MySweetWebApp&lt;/Protected&gt;</pre><br>
+<tt><br>and</tt><br>
+<br>
+<pre style="margin: 0em;">&gt; Added &lt;RequireAuthN/&gt; option. This was added because the IISCosign dll
+&gt; does not follow the Apache rules of specifying cosign authentication.</pre><br>
+<tt><br>-Phil</tt><br>
+<br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00236" href="msg00236.shtml">Re: upcoming features in IIS filter?</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00234" href="msg00234.shtml">upcoming features in IIS filter?</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00234.shtml">upcoming features in IIS filter?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00236.shtml">Re: upcoming features in IIS filter?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00234.shtml">upcoming features in IIS filter?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00236.shtml">Re: upcoming features in IIS filter?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00235"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00235"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

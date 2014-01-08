@@ -1,0 +1,126 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: IISCosign &#45; one physical server more than 1 cosign&#45;service possible? -->
+<!--X-From-R13: Syvnf Ofsnj&#45;Yveol <ryvnfnxNhzvpu.rqh> -->
+<!--X-Date: Fri, 12 Aug 2005 13:29:52 &#45;0400 (EDT) -->
+<!--X-Message-Id: BF225469.2C00%eliasak@umich.edu -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00496.shtml">Date Prev</a>][<a href="msg00498.shtml">Date Next</a>][<a href="msg00496.shtml">Thread Prev</a>][<a href="msg00499.shtml">Thread Next</a>][<a href="maillist.shtml#00497">Date Index</a>][<a href="threads.shtml#00497">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>IISCosign - one physical server more than 1 cosign-service possible?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: IISCosign - one physical server more than 1 cosign-service possible?</li>
+<li><em>From</em>: Elias Asfaw-Kirby &lt;<a href="mailto:eliasak@DOMAIN.HIDDEN">eliasak@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 12 Aug 2005 13:28:09 -0400</li>
+<li><em>User-agent</em>: Microsoft-Entourage/11.1.0.040913</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<address>Title: <strong>IISCosign - one physical server more than 1 cosign-service possible?</strong></address>
+
+
+
+<FONT FACE="Verdana, Helvetica, Arial"><SPAN STYLE='font-size:12.0px'><BR>
+&nbsp;Is it possible to have more than one cosign service running off one physical server using IIS Cosign.<BR>
+(OS &#8211; Windows Server 2003)<BR>
+<BR>
+Ex.<BR>
+&nbsp;Currently hosting website &nbsp;ws1.umich.edu on iisserver.umich.edu and cosign works great.<BR>
+Is it possible to host host ws2.umich.edu on iisserver.umich.edu and use cosign there also.<BR>
+<BR>
+Thanks Team,<BR>
+-- <BR>
+Elias Asfaw-Kirby | 734-615-6490<BR>
+Web Developer &nbsp;&nbsp;&nbsp;&nbsp;| eliasak@xxxxxxxxx<BR>
+</SPAN></FONT>
+
+
+
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00499" href="msg00499.shtml">RE: IISCosign - one physical server more than 1 cosign-service possible?</a></strong>
+<ul><li><em>From:</em> Konstantin Voyk</li></ul></li>
+<li><strong><a name="00500" href="msg00500.shtml">Re: IISCosign - one physical server more than 1 cosign-service	possible?</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00496.shtml">Where files are placed</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00498.shtml">RE: IISCosign - one physical server more than 1 cosign-service possible?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00496.shtml">Where files are placed</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00499.shtml">RE: IISCosign - one physical server more than 1 cosign-service possible?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00497"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00497"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

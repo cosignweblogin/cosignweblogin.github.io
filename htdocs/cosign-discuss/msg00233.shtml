@@ -1,0 +1,154 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: IIS Cosign failure mode &#45; security hole? -->
+<!--X-From-R13: Xnebq [nyrfgrva <wnebqNhzvpu.rqh> -->
+<!--X-Date: Mon, 30 Aug 2004 13:47:45 &#45;0400 (EDT) -->
+<!--X-Message-Id: F75C8F50A56E8998E16B65EE@spike.itd.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 15DC7DDC&#45;FA91&#45;11D8&#45;9FC5&#45;000A95A0453E@bus.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00232.shtml">Date Prev</a>][<a href="msg00234.shtml">Date Next</a>][<a href="msg00231.shtml">Thread Prev</a>][<a href="msg00234.shtml">Thread Next</a>][<a href="maillist.shtml#00233">Date Index</a>][<a href="threads.shtml#00233">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: IIS Cosign failure mode - security hole?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;Townsend, Paul&quot; &lt;<a href="mailto:townsend@DOMAIN.HIDDEN">townsend@xxxxxxxxxxxxx</a>&gt;, &quot;Craig, Wesley&quot; &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: IIS Cosign failure mode - security hole?</li>
+<li><em>From</em>: Jarod Malestein &lt;<a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 30 Aug 2004 13:40:39 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;15DC7DDC-FA91-11D8-9FC5-000A95A0453E@bus.umich.edu&gt;</li>
+<li><em>References</em>: &lt;15DC7DDC-FA91-11D8-9FC5-000A95A0453E@bus.umich.edu&gt;</li>
+<li><em>Reply-to</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Read below correspondence for context.  Basically, if IISCosign fails to 
+load this does not stop IIS from starting.  Effectively this means a web 
+site can be running without cosign protection.  In Apache you can set a 
+directive to prevent the http server from running if a module fails to 
+load.  Does anybody know of an analogue in Windows/IIS that would allow 
+similar behavior?  I'll look into it myself, but if somebody's already done 
+this it will greatly reduce my search time. :)</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--IT Central Services</pre><br>
+<tt><br>--On Monday, August 30, 2004 10:28 AM -0400 &quot;Townsend, Paul&quot; 
+&lt;townsend@xxxxxxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;"><br>&gt; -----Original Message-----
+&gt; From: Wesley D Craig [<a  href="mailto:wes@xxxxxxxxx">mailto:wes@xxxxxxxxx</a>]
+&gt;
+&gt; On 30 Aug 2004, at 09:58, Townsend, Paul wrote:
+&gt;&gt; It seems to me that the failure mode should be &quot;nobody gets
+&gt; anything&quot;
+&gt;&gt; rather than &quot;everybody gets everything&quot;.  i.e. if Cosign
+&gt; can't find or
+&gt;&gt; parse the config file, it should still load into the IIS
+&gt; process but
+&gt;&gt; block all requests and return an error message.
+&gt;&gt;
+&gt;&gt; Maybe I'm missing something here.  Does the Apache version
+&gt; have this
+&gt;&gt; behavior?  Is there some other setting that I'm unaware of?
+&gt;
+&gt; In apache, if you've used cosign-specific commands in the
+&gt; config file,
+&gt; then apache will not run if the module is not there.  One can
+&gt; write the
+&gt; configuration to test that cosign is loaded before using the
+&gt; cosign-specific commands, but that gives you the failure mode
+&gt; that you don't want.</pre><br>
+<pre style="margin: 0em;">IOW, you can set up apache so that it won't run unless the Cosign module
+is present.  Good.</pre><br>
+<tt>Anybody have any idea how to do this (or something similar) in IIS?</tt><br>
+<br>
+<tt>-Paul</tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00232.shtml">Re: small updates for apache filter and cgi</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00234.shtml">upcoming features in IIS filter?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00231.shtml">Re: CGI problem with expired passwords</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00234.shtml">upcoming features in IIS filter?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00233"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00233"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

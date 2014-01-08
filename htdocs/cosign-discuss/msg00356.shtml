@@ -1,0 +1,177 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: cosign with multiple kerberos realms -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Thu, 10 Mar 2005 17:04:08 &#45;0500 (EST) -->
+<!--X-Message-Id: 1110491879.3961.30.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20050310194743.GQ3816@tristero.reed.edu -->
+<!--X-Reference: 1110489339.3961.26.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Reference: 20050310214836.GR3816@tristero.reed.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00355.shtml">Date Prev</a>][<a href="msg00357.shtml">Date Next</a>][<a href="msg00355.shtml">Thread Prev</a>][<a href="msg00359.shtml">Thread Next</a>][<a href="maillist.shtml#00356">Date Index</a>][<a href="threads.shtml#00356">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: cosign with multiple kerberos realms</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Ben Poliakoff &lt;<a href="mailto:benp@DOMAIN.HIDDEN">benp@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: cosign with multiple kerberos realms</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 11 Mar 2005 10:57:59 +1300</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00355.shtml">20050310214836.GR3816@tristero.reed.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00353.shtml">20050310194743.GQ3816@tristero.reed.edu</a>&gt;	 &lt;<a href="msg00354.shtml">1110489339.3961.26.camel@brett.enarc.auckland.ac.nz</a>&gt;	 &lt;<a href="msg00355.shtml">20050310214836.GR3816@tristero.reed.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hey Ben,
+
+I think from the CGI and cosign server this would be trivial.
+But what about when i choose to auth against realm A and the webserver I
+am going to know nothing about realm A. That is probably the hard part
+about this setup
+
+We here (University of Auckland) have one kerberos realm for the whole
+unversity population (so kinda lucky in this regard :))
+
+Brett
+
+On Fri, 2005-03-11 at 10:48, Ben Poliakoff wrote:
+&gt; Thanks for the reply Brett,
+&gt; 
+&gt; The underlying krb5 layer should be relatively straight forward I
+&gt; would think, given that a krb5.conf file can hold info about lots of
+&gt; realms.  But I guess I was specifically wondering whether a single
+&gt; cosign weblogin server could be made to do initial authentication from a
+&gt; pool of user selectable realms (hence my reference to a drop down menu
+&gt; on the login page).  So there would be explicit control over the allowed
+&gt; realms (and the weblogin server would need to have service principals in
+&gt; its keytab file from all of the participating realms).  
+&gt; 
+&gt; To give a more specific example, we're toying with the idea of enabling
+&gt; cosign on some existing web apps that serve two distinct groups: users
+&gt; with current accounts and alums.  The two groups can't be merged due
+&gt; to namespace (principal name) collisions, but they could &quot;coexist&quot;
+&gt; within two distinct krb5 realms.  If our weblogin server could allow
+&gt; the user to select the realm to which to authenticate then we could
+&gt; use cosign auth for both groups of users.  Our web apps could readily
+&gt; distinguish the populations by reading the value of the CGI variable,
+&gt; &quot;REMOTE_REALM&quot;.
+&gt; 
+&gt; Has this sort of thing been discussed before?  I know umich maintains
+&gt; a collection of different realms.....
+&gt; 
+&gt; Ben
+&gt; 
+&gt; * Brett Lomas &lt;b.lomas@xxxxxxxxxxxxxx&gt; [20050310 13:17]:
+&gt; &gt; I don't believe it has.
+&gt; &gt; 
+&gt; &gt; Having said that most of the code will handle multiple realms already.
+&gt; &gt; The only problem i could see with this how you handle an application
+&gt; &gt; getting an incorrect kerberos ticket (in a realm it know nothing about).
+&gt; &gt; e.g. a user chooses to authenticate to realm A and accesses web service
+&gt; &gt; X which is part of realm B and get a kerberos ticket from the cosign
+&gt; &gt; server for A. The possibly needs to be a mechanism for the webservers to
+&gt; &gt; requests a ticket in a certain realm, and if not there get the user to
+&gt; &gt; re-authenticate in that realm?? Unless you can build kerberos trust?
+&gt; &gt; (not sure on this)
+&gt; &gt; 
+&gt; &gt; Brett
+&gt; &gt; 
+&gt; &gt; On Fri, 2005-03-11 at 08:47, Ben Poliakoff wrote:
+&gt; &gt; &gt; I haven't been able to find much info about how cosign might be able to
+&gt; &gt; &gt; work with multiple krb5 realms.
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Has such functionality (login page featuring a drop down menu of
+&gt; &gt; &gt; realms) ever been implemented?
+&gt; &gt; &gt; 
+&gt; &gt; &gt; Ben
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00353" href="msg00353.shtml">cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+<li><strong><a name="00354" href="msg00354.shtml">Re: cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00355" href="msg00355.shtml">Re: cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00355.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00357.shtml">Re: UMich Webmail and IMAP question</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00355.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00359.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00356"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00356"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

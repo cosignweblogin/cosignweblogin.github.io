@@ -1,0 +1,219 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: error &#45;12281 -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Thu, 18 Mar 2004 01:17:30 &#45;0500 (EST) -->
+<!--X-Message-Id: EF364F00&#45;78A3&#45;11D8&#45;8EFB&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00013.shtml">Date Prev</a>][<a href="msg00014.shtml">Date Next</a>][<a href="msg00013.shtml">Thread Prev</a>][<a href="msg00014.shtml">Thread Next</a>][<a href="maillist.shtml#00012">Date Index</a>][<a href="threads.shtml#00012">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: error -12281</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Sam Noble &lt;<a href="mailto:ns@DOMAIN.HIDDEN">ns@xxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: error -12281</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 17 Mar 2004 20:47:50 -0500</li>
+<li><em>Cc</em>: Sam Noble &lt;<a href="mailto:nobles@DOMAIN.HIDDEN">nobles@xxxxxxxx</a>&gt;,   &quot;'<a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>' '<a href="mailto:Cosign@DOMAIN.HIDDEN">Cosign@xxxxxxxxx</a>'&quot; &lt;<a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a>&gt;</li>
+<li><em>Resent-date</em>: Thu, 18 Mar 2004 01:17:29 -0500</li>
+<li><em>Resent-from</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Resent-message-id</em>: &lt;43CB2BCC-787E-11D8-8EFB-000A95CD7232@umich.edu&gt;</li>
+<li><em>Resent-to</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>well.. . the error is from mod_ssl, but I agree that it is unhelpful  
+(try searching google for &quot;\x80g\x01\x03&quot;).  We're putting all of this  
+in our faq so other users with the same mod_ssl problem will hopefully  
+be able to find an answer easily.</tt><br>
+<br>
+<tt>In fact, I'm putting it in our faq ... right ... this ... very ...  
+minute. :)</tt><br>
+<br>
+<tt>kevin</tt><br>
+<br>
+<tt>On Mar 17, 2004, at 8:12 PM, Sam Noble wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">	Fair enough. If I restrict my HTTP queries to using https I don't
+get any remarkable error numbers. In fact, things seem to be working
+relatively smoothly. helloCosign is reaffirming my identity (isn't that
+always nice? :))</pre><br>
+<pre style="margin: 0em;">	Thanks. I guess that cosign protected services need to simply
+reject non-ssl queries to avoid this most unhelpful error.</pre><br>
+<tt><br>On Wed, Mar 17, 2004 at 06:11:49PM -0500, kevin mcgowan wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>This line:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>134.10.7.24 - - [17/Mar/2004:14:30:21 -0800] &quot;\x80g\x01\x03&quot; 200 4779
+</tt></blockquote><pre style="margin: 0em;"><br>suggests maybe a client is trying to talk https on a non-encrypted
+port.  and the line before it says:</pre><br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt><a  href="https://weblogin.reed.edu:80/test/test.html">https://weblogin.reed.edu:80/test/test.html</a>
+</tt></blockquote><tt><br>which suggests the same thing.  Are you trying to host a cosign  
+service<br>
+over http?  This is definitely something we've talked about enabling,<br>
+but it is precluded by default (since the cookie would be replayable<br>
+and easily sniffed).</tt><br>
+<br>
+<tt>One other thing is that the CosignService setting:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>CosignService cosign-reed
+</tt></blockquote><tt><br>doesn't need to include the &quot;cosign-&quot; since we'll append that.  This<br>
+will prevent service names like 'cosign-cosign-reed.'  This won't  
+cause<br>
+any problems, of course, but it is worth knowing, I think.</tt><br>
+<br>
+<tt>Kevin</tt><br>
+<br>
+<tt>On Mar 17, 2004, at 5:45 PM, Sam Noble wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">	Hopefully my problem is obvious, but I seem to have run into a
+wall configuring cosign for my site.</pre><br>
+<pre style="margin: 0em;">	I don't know if this -12281 error is a Mozilla error code,
+something apache understands, or something specific to cosign.
+Certainly
+IE doesn't bother giving me an error code at all (in fact, I get the
+error
+page that looks like DNS problems from IE). Mozilla (well, firefox)
+reports that &quot;weblogin.reed.edu has sent an incorrect or unexpect
+message&quot; and then presents me with this error code.</pre><br>
+<pre style="margin: 0em;">	As best I can tell, I've followed the cosign installation
+instructions.</pre><br>
+<pre style="margin: 0em;">	I tried running cosignd in debug mode:
+debug: STARTTLS
+debug: REGISTER
+cosign=IBWtm41+KEAFH1hXrKlxBliHoUI8MpDZt6+30ZD+UnwSho8X9yjsTp5-
+RAVZhtZ+hGDDWPsSwAtNh5iGYa34BndCV+3Fx54WImgoNcRnbo477vYoLQli1hhqGF8K
+134.10.7.24
+cosign-cosign-
+reed=plgKDvatwIBF4maF38AkvzDmxrc5+mB2bldYmlWmJnJbAeabwTxvh9u14y-
+oc4dDURM2GA59UbZQTo+VCy7jyuo43ZHnh99Z9BVitpTJ5aV+ZnLLkPW-4S6W34Mm</pre><br>
+<tt>Something similar is shown on stdout whenever I try to access a  
+cosign<br>
+protected page (and I get this -12281 error as well).</tt><br>
+<br>
+<tt>My apache 2 access_log looks like the following:<br>
+134.10.7.24 - - [17/Mar/2004:14:30:20 -0800] &quot;GET /test/test.html<br>
+HTTP/1.1&quot; 302 403<br>
+134.10.7.24 - - [17/Mar/2004:14:30:20 -0800] &quot;GET<br>
+/?cosign-cosign-reed=36J+O2jiQ2s0v8WTi6o1GgZPFlTTQukO-<br>
+sb8UjiE2aK7t50Kt6gWVrrrZqSi9W22+W9Sp4fSiYESEkV9NjHJPjonT394hbIzHlwaPQ 
+G+<br>
+-9WN41jL7Nd2k2O-b3PF;&amp;<a  href="https://weblogin.reed.edu:80/test/test.html">https://weblogin.reed.edu:80/test/test.html</a><br>
+HTTP/1.1&quot; 302 227<br>
+134.10.7.24 - - [17/Mar/2004:14:30:21 -0800] &quot;\x80g\x01\x03&quot; 200 4779</tt><br>
+<br>
+<pre style="margin: 0em;">The error log doesn't seem to say a whole lot -- although once in a
+while
+I see:
+[Wed Mar 17 14:27:37 2004] [error] [client 134.10.7.24] net_check: 3:
+534 CHECK: Who me? Dunno.</pre><br>
+<pre style="margin: 0em;">These errors don't typically correspond to the major error I receive
+whenever I try to look at a cosign protected page.</pre><br>
+<tt><br>strace'ing the cosign daemon doesn't reveal any smoking guns.</tt><br>
+<br>
+<tt>I use the following in my httpd.conf:</tt><br>
+<br>
+<pre style="margin: 0em;">CosignProtected On
+CosignHostname weblogin.reed.edu
+CosignRedirect <a  href="https://weblogin.reed.edu/">https://weblogin.reed.edu/</a>
+CosignPostErrorRedirect <a  href="https://weblogin.reed.edu/post_error.html">https://weblogin.reed.edu/post_error.html</a>
+CosignCrypto /var/cosign/certs/key.pem /var/cosign/certs/cert.pem
+/var/cosign/certs/CA
+CosignService cosign-reed</pre><br>
+<tt><br>And my (self-signed) ssl certs check out okay.</tt><br>
+<br>
+<pre style="margin: 0em;">	Is there anything else I can/should take a look at to diagnose
+my problem?</pre><br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+</blockquote><tt><br>                                       ... &quot;In, as you say, the mud.&quot;  
+...
+</tt></blockquote><tt></tt><br>
+<br>
+<tt><br>!DSPAM:4058f7a739952909813147!</tt><br>
+<br>
+<br>
+</blockquote><tt><br>                                      ... &quot;In, as you say, the mud.&quot; ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00013.shtml">Re: error -12281</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00014.shtml">Design question</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00013.shtml">Re: error -12281</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00014.shtml">Design question</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00012"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00012"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

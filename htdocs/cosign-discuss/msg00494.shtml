@@ -1,0 +1,129 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Where does cosign write its log(s)? <EOM> -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Fri, 12 Aug 2005 10:37:47 &#45;0400 (EDT) -->
+<!--X-Message-Id: F673F0D7&#45;83C1&#45;412C&#45;9586&#45;422A3FE9CD0A@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 80003447&#45;0656&#45;429B&#45;982E&#45;63532DB7ECA3@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00493.shtml">Date Prev</a>][<a href="msg00495.shtml">Date Next</a>][<a href="msg00492.shtml">Thread Prev</a>][<a href="msg00502.shtml">Thread Next</a>][<a href="maillist.shtml#00494">Date Index</a>][<a href="threads.shtml#00494">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Where does cosign write its log(s)? &lt;EOM&gt;</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jonathan Maybaum &lt;<a href="mailto:maybaum@DOMAIN.HIDDEN">maybaum@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Where does cosign write its log(s)? &lt;EOM&gt;</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 12 Aug 2005 10:34:42 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00492.shtml">80003447-0656-429B-982E-63532DB7ECA3@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00492.shtml">80003447-0656-429B-982E-63532DB7ECA3@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>The default location is whatever you have defined as LOG_DAEMON  
+( likely daemon )</tt><br>
+<br>
+<tt>This is set in this line of the Makefile:</tt><br>
+<br>
+<tt>COSIGNSYSLOG=LOG_DAEMON</tt><br>
+<br>
+<tt>And can be overridden with command line option -F.</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<tt><br>On Aug 12, 2005, at 9:07 AM, Jonathan Maybaum wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Where does cosign write its log(s)?</tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00502" href="msg00502.shtml">Re: Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00492" href="msg00492.shtml">Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+<ul><li><em>From:</em> Jonathan Maybaum</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00493.shtml">Need to reach conclusion soon</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00495.shtml">Re: Need to reach conclusion soon</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00492.shtml">Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00502.shtml">Re: Where does cosign write its log(s)? &lt;EOM&gt;</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00494"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00494"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

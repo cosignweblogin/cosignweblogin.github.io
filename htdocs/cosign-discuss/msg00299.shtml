@@ -1,0 +1,166 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Webmail and Cosign -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Sun, 9 Jan 2005 16:03:29 &#45;0500 (EST) -->
+<!--X-Message-Id: 1105304541.6987.25.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1105301445.6987.18.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Reference: 73676840&#45;627C&#45;11D9&#45;8183&#45;000A95CD7232@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00298.shtml">Date Prev</a>][<a href="msg00300.shtml">Date Next</a>][<a href="msg00298.shtml">Thread Prev</a>][<a href="msg00300.shtml">Thread Next</a>][<a href="maillist.shtml#00299">Date Index</a>][<a href="threads.shtml#00299">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Webmail and Cosign</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Webmail and Cosign</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 10 Jan 2005 10:02:21 +1300</li>
+<li><em>Cc</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;,   cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00298.shtml">73676840-627C-11D9-8183-000A95CD7232@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00297.shtml">1105301445.6987.18.camel@brett.enarc.auckland.ac.nz</a>&gt;	 &lt;<a href="msg00298.shtml">73676840-627C-11D9-8183-000A95CD7232@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hey Kevin,
+
+thanks for your response. I am not referring to previous emails :) I was
+just wondering. We need to authorise users who are coming into IMAP
+directly, which cannot be based solely on the fact they may have or have
+not got a mail box.
+
+Just wondering if you have authorisation on your imap service other than
+mailboxes existing or not?
+
+Brett
+
+On Mon, 2005-01-10 at 09:24, kevin mcgowan wrote:
+&gt; Users can access the IMAP servers directly (mulberry, mail.app, pine,  
+&gt; etc.) or through the web mail interface.  It is also possible to access  
+&gt; the same mailbox using a POP3 client.
+&gt; 
+&gt; (since I'm guessing that you're referring to the previous thread on  
+&gt; cosign-discuss regarding IMP  
+&gt; <a  href="http://www.umich.edu/~umweb/software/cosign/cosign-discuss/">http://www.umich.edu/~umweb/software/cosign/cosign-discuss/</a>
+&gt; msg00266.html ) I'll add that the instances of proxyd running on the  
+&gt; web mail servers are accessible only locally.  Stand alone clients and  
+&gt; web mail do not talk to the same cyrus murder proxies.
+&gt; 
+&gt; k
+&gt; 
+&gt; On Jan 9, 2005, at 3:10 PM, Brett Lomas wrote:
+&gt; 
+&gt; &gt; Hi all,
+&gt; &gt;
+&gt; &gt; Hope you all had a good break over the new year period.
+&gt; &gt;
+&gt; &gt; Just a quick question relating to you webmail (using Horde/IMP I
+&gt; &gt; assume). Do you allow access to the IMAP server directly, or only
+&gt; &gt; through the webmail interface?
+&gt; &gt;
+&gt; &gt; Thanks
+&gt; &gt;
+&gt; &gt; Brett
+&gt; &gt;
+&gt; &gt;
+&gt; &gt; !DSPAM:41e19002252401047429180!
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; 
+&gt;                    ... being a rock I am without movement ...
+&gt; 
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00300" href="msg00300.shtml">Re: Webmail and Cosign</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00297" href="msg00297.shtml">Webmail and Cosign</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00298" href="msg00298.shtml">Re: Webmail and Cosign</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00298.shtml">Re: Webmail and Cosign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00300.shtml">Re: Webmail and Cosign</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00298.shtml">Re: Webmail and Cosign</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00300.shtml">Re: Webmail and Cosign</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00299"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00299"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

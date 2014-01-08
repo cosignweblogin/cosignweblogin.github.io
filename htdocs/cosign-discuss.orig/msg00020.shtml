@@ -1,0 +1,178 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: COSIGN: implement cosign cgis as php? -->
+<!--X-From-R13: [nex [bagnthr <znexzbagNhzvpu.rqh> -->
+<!--X-Date: Tue, 23 Mar 2004 09:55:08 &#45;0500 (EST) -->
+<!--X-Message-Id: Pine.SOL.4.58.0403230937440.26407@mozi.lsait.lsa.umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: C7D8718A&#45;7CD6&#45;11D8&#45;9342&#45;000A95CD7232@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00019.shtml">Date Prev</a>][<a href="msg00021.shtml">Date Next</a>][<a href="msg00017.shtml">Thread Prev</a>][<a href="msg00021.shtml">Thread Next</a>][<a href="maillist.shtml#00020">Date Index</a>][<a href="threads.shtml#00020">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: COSIGN: implement cosign cgis as php?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: COSIGN: implement cosign cgis as php?</li>
+<li><em>From</em>: Mark Montague &lt;<a href="mailto:markmont@DOMAIN.HIDDEN">markmont@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 23 Mar 2004 09:54:07 -0500 (EST)</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00017.shtml">C7D8718A-7CD6-11D8-9342-000A95CD7232@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00017.shtml">C7D8718A-7CD6-11D8-9342-000A95CD7232@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Tue, 23 Mar 2004, kevin mcgowan wrote:
+
+&gt; What would you think about rewriting these CGIs in PHP -- strictly for
+&gt; enhanced performance/load resilience?  Would a dependency on PHP on the
+&gt; weblogin server be a deal breaker for anyone considering the use of
+&gt; Cosign?  Would it make installation of the weblogin server too
+&gt; complicated?  Is there anyone for whom this change would be a great
+&gt; positive?  Note that we're not considering doing it anytime soon -- I'm
+&gt; just trying to gather opinions.  Would mod_fastcgi support be more or
+&gt; less appealing than using PHP?  mod_perl?  rewriting the CGIs as an
+&gt; Apache module?
+
+&gt; I should note for completeness that PHP is already required by
+&gt; 'friend.'  Anyone using the friend guest account functionality is
+&gt; likely to have to install PHP anyway.  What I'm asking about is this
+&gt; idea of requiring PHP for the core functionality.
+
+Any way to get rid of PHP for Friend? :) I've had some bad experiences
+with PHP, and it's still evolving rapidly (in comparison to, say,
+Perl 5).  I'm currently having what I suspect are race conditions
+in threaded code betweeh Apache 1.3.29 and PHP 4.3.4 on Solaris 8 --
+PHP works fine for me until the server load goes up, and then some
+but not all pages start getting served without being executed (i.e.,
+many users are treated to a view of the pages' source code).  I
+haven't been able to track this down yet, but the next thing on
+my list is to try PHP 5 and make sure both PHP and Apache are
+using the same libraries for everything (but especially for
+threading).
+
+Given that I'm a system administrator, I'd prefer Perl if we had
+to switch to a scripted language.
+
+mod_fastcgi seems more like a halfway solution to me.  If we're
+going to make a change, let's do it right and go all the way.
+
+Honestly, I like the small size, easy auditabilty, lack of
+dependencies, and security of the present C code.  But of course,
+if the fork/exec is killing us under heavly load, we may have
+to switch.
+
+Rewriting the present C code as web server modules would
+technicaly solve the problem, but since we currently have
+multiple CGIs and multiple supported web servers, this is
+a problem that grows c*s (O(n**2)) as the number of CGIs and
+web servers increase.
+
+Here's an out-in-left-field idea:  instead of pulling in a
+huge scripting engine, how about writing (or finding) an
+web server module that uses IPC to hand of the request to a
+separately running threaded daemon?  This would mean rewriting
+the current CGIs, but we'd only have to write the module once
+for each web server, making it closer to an O(n) solution.
+It's conceivable that this module (packaged as a separate
+product) could be useful for other non-weblogin/cosign related
+services.  And it isolates any security problems in the
+weblogin daemons (formerly CGIs) from the web server processes;
+the daemons could even run as a different user &quot;for free&quot;.
+
+I'm not seriously advocating this idea right now, just throwing
+it onto the table.  As I said, it's out there in left field.
+
+                Mark Montague
+                LS&amp;A Information Technology
+                markmont@xxxxxxxxx
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00021" href="msg00021.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00017" href="msg00017.shtml">COSIGN: implement cosign cgis as php?</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00019.shtml">Re: COSIGN: note: login form action=&quot;/&quot;</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00021.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00017.shtml">COSIGN: implement cosign cgis as php?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00021.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00020"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00020"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

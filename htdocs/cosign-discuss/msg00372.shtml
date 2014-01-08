@@ -1,0 +1,143 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: replication behind load balancer -->
+<!--X-From-R13: Rnivq Oyrknaqre <nyrknaqqNbuvb.rqh> -->
+<!--X-Date: Wed, 23 Mar 2005 15:56:34 &#45;0500 (EST) -->
+<!--X-Message-Id: 1903C2857DAD40192421385B@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00371.shtml">Date Prev</a>][<a href="msg00373.shtml">Date Next</a>][<a href="msg00371.shtml">Thread Prev</a>][<a href="msg00373.shtml">Thread Next</a>][<a href="maillist.shtml#00372">Date Index</a>][<a href="threads.shtml#00372">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>replication behind load balancer</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: replication behind load balancer</li>
+<li><em>From</em>: David Alexander &lt;<a href="mailto:alexandd@DOMAIN.HIDDEN">alexandd@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 23 Mar 2005 15:41:28 -0500</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>I am having trouble getting replication to work behind a load balancer.  I 
+have two Linux blades with addresses 10.41.0.11 and 10.41.0.12 behind a F5 
+load balancer.  I configured cosign so that it works on either blade, but I 
+am having problems getting the cosignd processes to talk to each other.  I 
+started cosignd and monster with the following commands:</tt><br>
+<br>
+<pre style="margin: 0em;">On 10.41.0.11:
+cosignd -d -F local5 -h 10.41.0.12
+monster -d -F local5 -h 10.41.0.12</pre><br>
+<pre style="margin: 0em;">On 10.41.0.12:
+cosignd -d -F local5 -h 10.41.0.11
+monster -d -F local5 -h 10.41.0.11</pre><br>
+<tt>Here is the error from /var/log/cosignd.log on 10.41.0.12:</tt><br>
+<br>
+<tt>Mar 23 15:03:48 cosign12 cosignd[14293]: connect: 132.235.51.142<br>
+Mar 23 15:03:48 cosign12 cosignd[14293]: f_starttls: No access for 
+10.41.0.11<br>
+Mar 23 15:03:48 cosign12 cosignd[11950]: child 14293 exited with 1</tt><br>
+<br>
+<tt>The 132.235.51.142 address is a virtual address for outgoing traffic from 
+the load balancer that originated on one of the blades.</tt><br>
+<br>
+<tt>One problem is the client certificate.  Originally, I had certificates with 
+CN=weblogin.ohio.edu, which is the host name associated with the load 
+balanced pool.  This caused a problem when I started cosignd on each blade 
+because the CN didn't match the hostname/IP address of the individual 
+blade.  I created new client certs on each host with the IP address of the 
+host as the CN.</tt><br>
+<br>
+<tt>Here is the contents of my cosign.conf file on each host:</tt><br>
+<br>
+<pre style="margin: 0em;">cgi             weblogin.ohio.edu
+service         shibboleth.ohio.edu     0
+service         weblogin.ohio.edu       0
+cosignHostname  weblogin.ohio.edu</pre><br>
+<tt><br>Has anyone been able to get cosign to work behind a F5 load balancer?  Is 
+this even how cosign replication is intended to work?</tt><br>
+<br>
+<pre style="margin: 0em;">Thanks,
+Dave</pre><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00373" href="msg00373.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00371.shtml">Re: CoSign 1.8.0 Compile Problem</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00373.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00371.shtml">Re: CoSign 1.8.0 Compile Problem</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00373.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00372"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00372"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

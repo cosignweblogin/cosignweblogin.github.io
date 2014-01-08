@@ -1,0 +1,165 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: error &#45;12281 -->
+<!--X-From-R13: Enz @boyr <aboyrfNerrq.rqh> -->
+<!--X-Date: Thu, 18 Mar 2004 01:17:11 &#45;0500 (EST) -->
+<!--X-Message-Id: E21180C2&#45;78A3&#45;11D8&#45;8EFB&#45;000A95CD7232@reed.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00009.shtml">Date Prev</a>][<a href="msg00011.shtml">Date Next</a>][<a href="msg00009.shtml">Thread Prev</a>][<a href="msg00011.shtml">Thread Next</a>][<a href="maillist.shtml#00010">Date Index</a>][<a href="threads.shtml#00010">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>error -12281</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign@DOMAIN.HIDDEN">cosign@xxxxxxxxx</a></li>
+<li><em>Subject</em>: error -12281</li>
+<li><em>From</em>: Sam Noble &lt;<a href="mailto:nobles@DOMAIN.HIDDEN">nobles@xxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 17 Mar 2004 14:45:59 -0800</li>
+<li><em>Resent-date</em>: Thu, 18 Mar 2004 01:17:07 -0500</li>
+<li><em>Resent-from</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Resent-message-id</em>: &lt;20040317144559.A18266@rogue.shadow.org&gt;</li>
+<li><em>Resent-to</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre style="margin: 0em;">	Hopefully my problem is obvious, but I seem to have run into a
+wall configuring cosign for my site.</pre><br>
+<tt>	I don't know if this -12281 error is a Mozilla error code,<br>
+something apache understands, or something specific to cosign. Certainly<br>
+IE doesn't bother giving me an error code at all (in fact, I get the  
+error<br>
+page that looks like DNS problems from IE). Mozilla (well, firefox)<br>
+reports that &quot;weblogin.reed.edu has sent an incorrect or unexpect<br>
+message&quot; and then presents me with this error code.</tt><br>
+<br>
+<pre style="margin: 0em;">	As best I can tell, I've followed the cosign installation
+instructions.</pre><br>
+<tt>	I tried running cosignd in debug mode:<br>
+debug: STARTTLS<br>
+debug: REGISTER<br>
+cosign=IBWtm41+KEAFH1hXrKlxBliHoUI8MpDZt6+30ZD+UnwSho8X9yjsTp5- 
+RAVZhtZ+hGDDWPsSwAtNh5iGYa34BndCV+3Fx54WImgoNcRnbo477vYoLQli1hhqGF8K<br>
+134.10.7.24<br>
+cosign-cosign- 
+reed=plgKDvatwIBF4maF38AkvzDmxrc5+mB2bldYmlWmJnJbAeabwTxvh9u14y- 
+oc4dDURM2GA59UbZQTo+VCy7jyuo43ZHnh99Z9BVitpTJ5aV+ZnLLkPW-4S6W34Mm</tt><br>
+<br>
+<pre style="margin: 0em;">Something similar is shown on stdout whenever I try to access a cosign
+protected page (and I get this -12281 error as well).</pre><br>
+<tt>My apache 2 access_log looks like the following:<br>
+134.10.7.24 - - [17/Mar/2004:14:30:20 -0800] &quot;GET /test/test.html  
+HTTP/1.1&quot; 302 403<br>
+134.10.7.24 - - [17/Mar/2004:14:30:20 -0800] &quot;GET  
+/?cosign-cosign-reed=36J+O2jiQ2s0v8WTi6o1GgZPFlTTQukO- 
+sb8UjiE2aK7t50Kt6gWVrrrZqSi9W22+W9Sp4fSiYESEkV9NjHJPjonT394hbIzHlwaPQG+- 
+9WN41jL7Nd2k2O-b3PF;&amp;<a  href="https://weblogin.reed.edu:80/test/test.html">https://weblogin.reed.edu:80/test/test.html</a>  
+HTTP/1.1&quot; 302 227<br>
+134.10.7.24 - - [17/Mar/2004:14:30:21 -0800] &quot;\x80g\x01\x03&quot; 200 4779</tt><br>
+<br>
+<tt>The error log doesn't seem to say a whole lot -- although once in a  
+while<br>
+I see:<br>
+[Wed Mar 17 14:27:37 2004] [error] [client 134.10.7.24] net_check: 3:  
+534 CHECK: Who me? Dunno.</tt><br>
+<br>
+<pre style="margin: 0em;">These errors don't typically correspond to the major error I receive
+whenever I try to look at a cosign protected page.</pre><br>
+<tt><br>strace'ing the cosign daemon doesn't reveal any smoking guns.</tt><br>
+<br>
+<tt>I use the following in my httpd.conf:</tt><br>
+<br>
+<tt>CosignProtected On<br>
+CosignHostname weblogin.reed.edu<br>
+CosignRedirect <a  href="https://weblogin.reed.edu/">https://weblogin.reed.edu/</a><br>
+CosignPostErrorRedirect <a  href="https://weblogin.reed.edu/post_error.html">https://weblogin.reed.edu/post_error.html</a><br>
+CosignCrypto /var/cosign/certs/key.pem /var/cosign/certs/cert.pem  
+/var/cosign/certs/CA<br>
+CosignService cosign-reed</tt><br>
+<br>
+<tt><br>And my (self-signed) ssl certs check out okay.</tt><br>
+<br>
+<pre style="margin: 0em;">	Is there anything else I can/should take a look at to diagnose
+my problem?</pre><br>
+<tt></tt><br>
+<br>
+<tt>!DSPAM:4058d53620934772920602!</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00009.shtml">Re: Restricting access</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00011.shtml">Re: error -12281</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00009.shtml">Re: Restricting access</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00011.shtml">Re: error -12281</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00010"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00010"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

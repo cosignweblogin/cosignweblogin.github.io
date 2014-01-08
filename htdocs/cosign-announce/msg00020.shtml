@@ -1,0 +1,137 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Cosign 1.7.0 Released -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Mon, 1 Nov 2004 15:30:49 &#45;0500 (EST) -->
+<!--X-Message-Id: D402CBFC&#45;2C44&#45;11D9&#45;8D91&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="announce" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-announce at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            cosign release and update announcements
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00019.shtml">Date Prev</a>][<a href="msg00021.shtml">Date Next</a>][<a href="msg00019.shtml">Thread Prev</a>][<a href="msg00021.shtml">Thread Next</a>][<a href="maillist.shtml#00020">Date Index</a>][<a href="threads.shtml#00020">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Cosign 1.7.0 Released</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-announce@DOMAIN.HIDDEN">cosign-announce@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Cosign 1.7.0 Released</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 1 Nov 2004 15:30:11 -0500</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>The Cosign Team is pleased to announce the availability of version 
+1.7.0 of cosign [ MD5 f4cece2c7b8b642c8135e90da7c4d422] .</tt><br>
+<br>
+<tt>Changelog at <a  href="http://www.umich.edu/~umweb/software/cosign/changelog.txt">http://www.umich.edu/~umweb/software/cosign/changelog.txt</a></tt><br>
+<br>
+<tt>Changes:</tt><br>
+<br>
+<pre style="margin: 0em;">	config: must specify path to apxs to build either filter, no default.
+	common: first pass at rate logging, see README and man pages
+	cgi: issue a new login cookie if the one presented is more than
+		24 hours old.
+	cgi: looping page a redirect now instead of just an error.
+	cgi: check for sql injection prior to username query.
+	cgi: less verbose logging, more sumamries.
+	daemon: default log facility now daemon.
+	daemon: more precise logging, supression of common errors.
+	daemon/monster: override syslog facility and level from cmd line.
+	filter: all settings configureable thorough runtime directives.
+	filter: new directive to delimit authN optional, which allows you
+		to push authN deicsions back into the application.
+	filter: issue a new service cookie if the one presented is more than
+		24 hours old.
+	html: new looping page, a redirect from the cgi, will allow you to
+		capture the browser info ( in access logs ) for clients
+		who are looping.</pre><br>
+<tt>Thanks to Phil Pishioneri from Penn State University for some minor bug 
+fixes.</tt><br>
+<br>
+<tt>FYI: Cosign 1.8.0, which will mostly be Brett Lomas' (University of 
+Auckland) changes to allow runtime configuration of the cgi and daemon 
+from a single configuration file, will be released as soon as we get it 
+reviewed and checked in. The only planned filter change is to allow 
+CosignProtected On/Off in .htaccess files. Those of you who do not like 
+to upgrade often and/or really want the runtime configuration for the 
+cgi and daemon are advised to consider waiting.</tt><br>
+<br>
+<tt>-Johanna, and the core cosign dev team</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00019.shtml">Re: IISCosign 1.1.0 RC1 available for download</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00021.shtml">IISCosign 1.1.1 available for download</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00019.shtml">Re: IISCosign 1.1.0 RC1 available for download</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00021.shtml">IISCosign 1.1.1 available for download</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00020"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00020"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

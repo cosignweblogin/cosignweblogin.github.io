@@ -1,0 +1,180 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: small updates for apache filter and cgi -->
+<!--X-From-R13: Yriva [pUbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Wed, 25 Aug 2004 16:50:31 &#45;0400 (EDT) -->
+<!--X-Message-Id: 9E6FA3F0&#45;F6D7&#45;11D8&#45;86E5&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 412526F7.8040301@psu.edu -->
+<!--X-Reference: 41258A5F.6070503@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00231.shtml">Date Prev</a>][<a href="msg00233.shtml">Date Next</a>][<a href="msg00229.shtml">Thread Prev</a>][<a href="msg00230.shtml">Thread Next</a>][<a href="maillist.shtml#00232">Date Index</a>][<a href="threads.shtml#00232">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: small updates for apache filter and cgi</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Michael Skora &lt;<a href="mailto:parsec@DOMAIN.HIDDEN">parsec@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: small updates for apache filter and cgi</li>
+<li><em>From</em>: Kevin McGowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 25 Aug 2004 16:44:54 -0400</li>
+<li><em>Cc</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;,   Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00229.shtml">41258A5F.6070503@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00227.shtml">412526F7.8040301@psu.edu</a>&gt; &lt;<a href="msg00229.shtml">41258A5F.6070503@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>We've deployed a version locally that catches the error and then prints 
+a location header to a &quot;looping.html&quot; file on the local server.  This 
+has the side benefit of giving the server administrator both the full 
+flexibility of writing the page however they like (including using PHP 
+or SSI or whatever to give custom errors) in addition to providing a 
+nice log of how many people are getting the error and what their 
+referer(sic) was.</tt><br>
+<br>
+<tt>Does this sound like it does what you're describing, Michael?</tt><br>
+<br>
+<tt>k</tt><br>
+<br>
+<tt>On Aug 20, 2004, at 1:21 AM, Michael Skora wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Could we make it a little more informative while we're at it? Maybe 
+give the public an idea of why it might have happened and what step 
+they should try next? (Try on a different computer, or again later.)</tt><br>
+<br>
+<pre style="margin: 0em;">,
+m</pre><br>
+<tt>Phil Pishioneri wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>First, for cgi.c, make a message a little more palatable for the 
+public:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">*** cgi.c.DIST  Tue Jul  6 12:25:09 2004
+--- cgi.c       Wed Aug 11 11:47:35 2004
+***************
+*** 96,102 ****
+                exit( 0 );
+            }
+            title = &quot;Error: Loop detected&quot;;
+!           err = &quot;We have detected you are looping. That sucks. &quot;;
+            subfile( tmpl );
+            exit( 0 );
+        } else {
+--- 96,102 ----
+                exit( 0 );
+            }
+            title = &quot;Error: Loop detected&quot;;
+!           err = &quot;We have detected looping between sites.&quot;;
+            subfile( tmpl );
+            exit( 0 );
+        } else {
+</pre></blockquote><tt></tt><br>
+<br>
+<tt><br>Second, for apache filter (only have v1 update):</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">*** Makefile.in.DIST    Fri Jul 30 15:58:56 2004
+--- Makefile.in Wed Aug 11 12:21:18 2004
+***************
+*** 48,53 ****
+--- 48,55 ----
+  reload: install restart
+   #   the general Apache start/restart/stop procedures
++ startssl:
++       $(APACHECTL) startssl
+  start:
+        $(APACHECTL) start
+  restart:
+</pre></blockquote><tt></tt><br>
+<br>
+<tt><br>-Phil
+</tt></blockquote><tt></tt><br>
+<br>
+<tt><br>!DSPAM:41258b0911842594314726!</tt><br>
+<br>
+</blockquote><tt><br>                ... &quot;you can't give yourself a nickname.&quot; ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00227" href="msg00227.shtml">small updates for apache filter and cgi</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+<li><strong><a name="00229" href="msg00229.shtml">Re: small updates for apache filter and cgi</a></strong>
+<ul><li><em>From:</em> Michael Skora</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00231.shtml">Re: CGI problem with expired passwords</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00233.shtml">RE: IIS Cosign failure mode - security hole?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00229.shtml">Re: small updates for apache filter and cgi</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00230.shtml">CGI problem with expired passwords</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00232"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00232"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,154 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Excluding a directory from the cosign filter -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Mon, 12 Apr 2004 20:03:59 &#45;0400 (EDT) -->
+<!--X-Message-Id: 514337127.1081800203@[192.168.1.105] -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.SOL.4.58.0404121909080.21442@mspacman.gpcc.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00056.shtml">Date Prev</a>][<a href="msg00058.shtml">Date Next</a>][<a href="msg00056.shtml">Thread Prev</a>][<a href="msg00059.shtml">Thread Next</a>][<a href="maillist.shtml#00057">Date Index</a>][<a href="threads.shtml#00057">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Excluding a directory from the cosign filter</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Chassy &lt;<a href="mailto:chassy@DOMAIN.HIDDEN">chassy@xxxxxxxxx</a>&gt;, <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: Excluding a directory from the cosign filter</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Mon, 12 Apr 2004 20:03:23 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00056.shtml">Pine.SOL.4.58.0404121909080.21442@mspacman.gpcc.itd.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00056.shtml">Pine.SOL.4.58.0404121909080.21442@mspacman.gpcc.itd.umich.edu</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Chassy,</tt><br>
+<br>
+<tt>IISCosign does not offer that functionality.  By default, whatever 
+directory is specified as &lt;Protected&gt; will apply to all subdirectories. 
+This cannot be overridden.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">As a related question, if I am able to exclude a specific directory form
+cosign protection, will the cosign-related CGI environment variables still
+be available if someone has previously logged in?
+</pre></blockquote><tt><br>As a related answer :) if somebody is logged in via cosign and they access 
+an unprotected directory, at least on IISCosign, their login information 
+will not be available.</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--ITCS</pre><br>
+<tt>--On Monday, April 12, 2004 7:18 PM -0400 Chassy &lt;chassy@xxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">I currently have Cosign configured to protect an entire directory.  In the
+services section of my cosign.dll.config file, I have a single entry:</pre><br>
+<tt>  &lt;Protected&gt;/&lt;/Protected&gt;</tt><br>
+<br>
+<tt>Is there a way to exclude a subdirectory, something like:</tt><br>
+<br>
+<pre style="margin: 0em;">  &lt;Protected&gt;/&lt;/Protected&gt;
+  &lt;NotProtected&gt;/facultyHandbook/&lt;/NotProtected&gt;</pre><br>
+<tt>I'm running IIS6 on a Win2K3 server.</tt><br>
+<br>
+<pre style="margin: 0em;">My purpose for asking is that I want to make one section of our intranet
+publicly accessible.  I could make it available to people with friend
+accounts, but that creates a fairly significant barrier to someone needing
+the information immediately.</pre><br>
+<pre style="margin: 0em;">As a related question, if I am able to exclude a specific directory form
+cosign protection, will the cosign-related CGI environment variables still
+be available if someone has previously logged in?</pre><br>
+<pre style="margin: 0em;">Thanks,
+Chassy
+</pre></blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00059" href="msg00059.shtml">RE: Excluding a directory from the cosign filter</a></strong>
+<ul><li><em>From:</em> Konstantin Voyk</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00056" href="msg00056.shtml">Excluding a directory from the cosign filter</a></strong>
+<ul><li><em>From:</em> Chassy</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00056.shtml">Excluding a directory from the cosign filter</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00058.shtml">cosign certificate.</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00056.shtml">Excluding a directory from the cosign filter</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00059.shtml">RE: Excluding a directory from the cosign filter</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00057"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00057"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

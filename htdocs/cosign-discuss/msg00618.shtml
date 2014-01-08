@@ -1,0 +1,105 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Fwd: anonymous user w/ cosign? -->
+<!--X-From-R13: Quevf Osevpn <pnsevpnNhzvpu.rqh> -->
+<!--X-Date: Mon, 7 Nov 2005 17:18:04 &#45;0500 (EST) -->
+<!--X-Message-Id: E26EF7EA&#45;592B&#45;4083&#45;B15D&#45;835C11C64919@umich.edu -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Reference: p0623090dbf9565c5af94@[141.212.131.63] -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00617.shtml">Date Prev</a>][<a href="msg00619.shtml">Date Next</a>][<a href="msg00616.shtml">Thread Prev</a>][<a href="msg00619.shtml">Thread Next</a>][<a href="maillist.shtml#00618">Date Index</a>][<a href="threads.shtml#00618">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Fwd: anonymous user w/ cosign?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Fwd: anonymous user w/ cosign?</li>
+<li><em>From</em>: Chris Africa &lt;<a href="mailto:cafrica@DOMAIN.HIDDEN">cafrica@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 7 Nov 2005 17:15:11 -0500</li>
+<li><em>References</em>: &lt;p0623090dbf9565c5af94@[141.212.131.63]&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<table width="100%"><tr><td style="">Paul Townsend had this suggestion to Kevin Worth's question (see below):<DIV><BR class="khtml-block-placeholder"></DIV><BLOCKQUOTE type="cite"><BLOCKQUOTE type="cite"><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">Asuming you've got all your other SSL ducks in a row, this should be</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">simply a matter of editing the cosine.dll.config file to indicate which</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">sections require authentication and which ones don't.</DIV></BLOCKQUOTE></BLOCKQUOTE><DIV><BR class="khtml-block-placeholder"></DIV><DIV>However, Paul uses IIS Cosign, while Kevin &amp; I use Apache on OS X Server. I presume this is handled in Apache's&#xA0;httpd.conf -- if not, where else should I look?</DIV><DIV><BR class="khtml-block-placeholder"></DIV><DIV>Also, for anyone out there using Zope, our goal is actually to run (on the same machine, either same Zope server or separate installations) one Zope site that is Cosign protected and one that is only SSL protected. If you're doing this, we'd love to hear how.&#xA0;</DIV><DIV><BR class="khtml-block-placeholder"></DIV><DIV>Many thanks!</DIV><DIV><BR><DIV> <SPAN class="Apple-style-span" style="border-collapse: separate; border-spacing: 0px 0px; color: rgb(0, 0, 0); font-family: Helvetica; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: auto; -khtml-text-decorations-in-effect: none; text-indent: 0px; -apple-text-size-adjust: auto; text-transform: none; orphans: 2; white-space: normal; widows: 2; word-spacing: 0px; "><DIV>--</DIV><DIV>Chris Africa</DIV><DIV>Sr. Web Designer/Administrator</DIV><DIV>Department of Mechanical Engineering</DIV><DIV>University of Michigan</DIV><DIV>734-764-8482</DIV></SPAN></DIV><DIV><BR class="khtml-block-placeholder"></DIV><BLOCKQUOTE type="cite"><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">-----Original Message-----</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">From: Kevin Worth [<A href="mailto:kworth@xxxxxxxxxxxxxxx">mailto:kworth@xxxxxxxxxxxxxxx</A>]</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">Sent: Monday, November 07, 2005 1:52 PM</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">To: <A href="mailto:cosign-discuss@xxxxxxxxx">cosign-discuss@xxxxxxxxx</A></DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">Subject: anonymous user w/ cosign?</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; min-height: 14px; "><BR></DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">Hello-</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; min-height: 14px; "><BR></DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">We have cosign setup for various sections of our site to work with</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">our users.&#xA0; In a couple of places, we don't need to authenticate, but</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">we do want SSL.&#xA0; Is this possible?&#xA0; We've also tried setting up</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">another SSL port, but that doesn't seem to be possible, or at least</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">it isn't straightforward.</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; min-height: 14px; "><BR></DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">thanks</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; min-height: 14px; "><BR></DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">Kevin</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">--</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">-----------------------------------------------</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">Kevin Worth &lt;<A href="mailto:kworth@xxxxxxxxxxxxxxx">kworth@xxxxxxxxxxxxxxx</A>&gt;</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">Computer Systems Consultant III</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">Department of Materials Science and Engineering</DIV><DIV style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; ">University of Michigan</DIV></BLOCKQUOTE><FONT class="Apple-style-span" color="#006312"></FONT></DIV></td></tr></table>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00619" href="msg00619.shtml">Re: anonymous user w/ cosign?</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00617.shtml">Re: Cosign Multi-factor Authentication Spec</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00619.shtml">Re: anonymous user w/ cosign?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00616.shtml">anonymous user w/ cosign?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00619.shtml">Re: anonymous user w/ cosign?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00618"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00618"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

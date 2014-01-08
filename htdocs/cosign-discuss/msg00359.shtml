@@ -1,0 +1,133 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: cosign with multiple kerberos realms -->
+<!--X-From-R13: Irfyrl R Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Thu, 10 Mar 2005 21:24:51 &#45;0500 (EST) -->
+<!--X-Message-Id: C4D4A2F7&#45;4F53&#45;4410&#45;9EB9&#45;B2414A64A04A@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20050310194743.GQ3816@tristero.reed.edu -->
+<!--X-Reference: 1110489339.3961.26.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Reference: 20050310214836.GR3816@tristero.reed.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00358.shtml">Date Prev</a>][<a href="msg00360.shtml">Date Next</a>][<a href="msg00356.shtml">Thread Prev</a>][<a href="msg00358.shtml">Thread Next</a>][<a href="maillist.shtml#00359">Date Index</a>][<a href="threads.shtml#00359">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: cosign with multiple kerberos realms</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Ben Poliakoff &lt;<a href="mailto:benp@DOMAIN.HIDDEN">benp@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: cosign with multiple kerberos realms</li>
+<li><em>From</em>: Wesley D Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 10 Mar 2005 21:23:52 -0500</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00355.shtml">20050310214836.GR3816@tristero.reed.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00353.shtml">20050310194743.GQ3816@tristero.reed.edu</a>&gt; &lt;<a href="msg00354.shtml">1110489339.3961.26.camel@brett.enarc.auckland.ac.nz</a>&gt; &lt;<a href="msg00355.shtml">20050310214836.GR3816@tristero.reed.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 10 Mar 2005, at 16:48, Ben Poliakoff wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">I know umich maintains
+a collection of different realms.....
+</pre></blockquote><tt>Multiple realms was an initial requirement because of the multiple 
+kerberos realms on campus.  Early versions didn't have support for 
+multiple realms, since we were just concentrating on getting basic 
+functionality working.  Once we had it working, we just never offered 
+the admins of other realms the option to use the multi-realm support 
+that was embedded in the protocol.  They never asked, so we never 
+implemented it.<br>
+Certainly a drop-down on the login screen was how we envisioned it 
+working.  The user selected realm would then be posted to the CGI, 
+which would use it in the kerberos password check.  Once the account 
+was verified, the realm would be passed on to cosignd and hence to all 
+connecting filters.  Simple to get more or less working, only a little 
+harder to make the UI issues smooth.<br>
+If you were to undertake these changes, we'd be happy to accept 
+contributed code back into the distribution.<br>
+:wes</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00353" href="msg00353.shtml">cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+<li><strong><a name="00354" href="msg00354.shtml">Re: cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00355" href="msg00355.shtml">Re: cosign with multiple kerberos realms</a></strong>
+<ul><li><em>From:</em> Ben Poliakoff</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00358.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00360.shtml">Re: Cosign Filter creates unparsable URL on post</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00356.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00358.shtml">Re: cosign with multiple kerberos realms</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00359"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00359"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

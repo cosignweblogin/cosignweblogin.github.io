@@ -1,0 +1,277 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: runtime requirements for IISCosign -->
+<!--X-From-R13: wnebqNhzvpu.rqh -->
+<!--X-Date: Mon, 19 Apr 2004 21:04:26 &#45;0400 (EDT) -->
+<!--X-Message-Id: 1122273403.1082408134@[192.168.1.109] -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20040419225045.2FCF335B75@smtp1.ec.auckland.ac.nz -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00069.shtml">Date Prev</a>][<a href="msg00071.shtml">Date Next</a>][<a href="msg00069.shtml">Thread Prev</a>][<a href="msg00063.shtml">Thread Next</a>][<a href="maillist.shtml#00070">Date Index</a>][<a href="threads.shtml#00070">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: runtime requirements for IISCosign</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;,   &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: runtime requirements for IISCosign</li>
+<li><em>From</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Date</em>: Mon, 19 Apr 2004 20:55:34 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00068.shtml">20040419225045.2FCF335B75@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00068.shtml">20040419225045.2FCF335B75@smtp1.ec.auckland.ac.nz</a>&gt;</li>
+<li><em>Sender</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>Brett,</tt><br>
+<br>
+<tt>You can download the zipped source for IISCosign and libsnet 
+here:&lt;<a  href="http://cowboybebop.staff.itd.umich.edu/iiscosign/">http://cowboybebop.staff.itd.umich.edu/iiscosign/</a>&gt;  It's at the 
+bottom of the page.  There are VS 6.0 and VS.NET project files included.</tt><br>
+<br>
+<tt>For MS XML you'll need to install the SDK from Microsoft. 
+&lt;<a  href="http://www.microsoft.com/downloads/details.aspx?FamilyID=3144b72b-b4f2-46d">http://www.microsoft.com/downloads/details.aspx?FamilyID=3144b72b-b4f2-46d</a><br>
+a-b4b6-c5d7485f2b42&amp;DisplayLang=en&gt;  msxml.msi is the file you'll be 
+interested in.</tt><br>
+<br>
+<tt>As Wes said, we are aware of the updates for OpenSSL.  The next release of 
+IISCoSign will also be built against the updated version of OpenSSL.  (I've 
+already done this, and it works.  yay!)</tt><br>
+<br>
+<tt>We will get both a Windows-friendly libsnet (*nix-happy version available 
+here &lt;<a  href="http://rsug.itd.umich.edu/cgi-bin/cvsweb.cgi/libsnet/">http://rsug.itd.umich.edu/cgi-bin/cvsweb.cgi/libsnet/</a>&gt;) and most 
+likely the Installshield files into CVS.  I can't give a timeline, but will 
+say soon since interest in the IISCosign source code has increased 
+dramatically in recent days.  It will all be sorted out!</tt><br>
+<br>
+<tt>Very sorry the Installshield 7 files aren't compatible.  We aren't 
+committed to using Installshield 7.  It was available and easy to learn. :) 
+The work that the installer does is pretty trivial so making a new 
+installer wouldn't require too much effort.  If you'd like, I could make a 
+list of the things the installer is taking care of for admins.  Also, if 
+you do not want to 'reinvent the wheel' I can certainly incorporate any 
+changes or suggestions you have.</tt><br>
+<br>
+<tt>Let me know if I forgot anything!</tt><br>
+<br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--ITCS</pre><br>
+<tt>--On Tuesday, April 20, 2004 10:50 AM +1200 Brett Lomas 
+&lt;b.lomas@xxxxxxxxxxxxxx&gt; wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Hi Jarod,</tt><br>
+<br>
+<pre style="margin: 0em;">thanks for that... I am using the InstallShield Multiplatform 5, which
+appears not to like the files I got from you :(</pre><br>
+<pre style="margin: 0em;">Also, I am trying to compile the CoSign IIS project, which relies on the
+libsnet. Where can I get the project for this? I see it is included in the
+cosign server source but I am wondering if there is the VS .net 2003 (or
+equiv) project files I can use :) - perhaps these could also be included
+in the cosign CVS to make a compilation easier??</pre><br>
+<pre style="margin: 0em;">Is there anything else I am going to need to compile it. I have already
+compiled the openssl for Win32, what about the MS XML thingy?</pre><br>
+<pre style="margin: 0em;">Also, you may or may not know the security bulletin release for OpenSSL
+suggesting upgrading to OpenSSL 0.9.7d (exploits I think)</pre><br>
+<tt>Thanks for your help.</tt><br>
+<br>
+<tt>Brett</tt><br>
+<br>
+<tt>------------</tt><br>
+<br>
+<pre style="margin: 0em;">Brett Lomas
+Integration Architect
+Information Technology Systems and Services
+The University of Auckland
+New Zealand</pre><br>
+<pre style="margin: 0em;">Phone:		+64 9 3737 599 extn 86499
+Mobile:		+64 21 757 096</pre><br>
+<pre style="margin: 0em;">-----Original Message-----
+From: jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+[<a  href="mailto:jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx">mailto:jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>] On Behalf Of jarod@xxxxxxxxx
+Sent: Tuesday, 20 April 2004 8:55 a.m.
+To: Brett Lomas; 'Cosign Discussion'
+Subject: RE: runtime requirements for IISCosign</pre><br>
+<tt><br>Brett,</tt><br>
+<br>
+<pre style="margin: 0em;">Sorry for the delayed response.  I was out sick for a few days and am
+working through my e-mail in reverse chronological order. :)</pre><br>
+<pre style="margin: 0em;">I did a quick zip of the Installshield Project 7 files.  So if anything
+is  missing, please let me know.  You (or anyone else) can grab them from
+here  for now.  &lt;<a  href="http://www-personal.umich.edu/~jarod/projects/cosign/">http://www-personal.umich.edu/~jarod/projects/cosign/</a>&gt;</pre><br>
+<tt>MD5 sum: 37bc174c4c9aab2fb5cbfbe7a8f80a14</tt><br>
+<br>
+<pre style="margin: 0em;">Note there are two items that will be unzipped.  One is the actual
+Installshield project the other is a Visual Studio .NET project.  The
+latter is just a custom dialog box I put together since Installshield
+didn't quite provide the customizable dialog I thought would be useful.
+You'll also probably want the contents of the latest IISCosign installer
+itself.  (The IS project undoubtedly points to files in directories that
+aren't on your machine.)</pre><br>
+<pre style="margin: 0em;">I'll work on getting this into CVS to make this easier in the future.
+Any  critiques, updates, or suggestions are appreciated!</pre><br>
+<pre style="margin: 0em;">--Jarod Malestein
+--University of Michigan
+--ITCS</pre><br>
+<pre style="margin: 0em;">--On Thursday, April 15, 2004 9:08 AM +1200 Brett Lomas
+&lt;b.lomas@xxxxxxxxxxxxxx&gt; wrote:</pre><br>
+<pre style="margin: 0em;">&gt; Hi Jarod,
+&gt;
+&gt; Can I get the InstallShield 7 project files? Could these be included in
+&gt; the IISCosign CVS project?
+&gt;
+&gt; Cheers
+&gt;
+&gt; Brett
+&gt;
+&gt; ------------
+&gt;
+&gt; Brett Lomas
+&gt; Integration Architect
+&gt; Information Technology Systems and Services
+&gt; The University of Auckland
+&gt; New Zealand
+&gt;
+&gt; Phone:		+64 9 3737 599 extn 86499
+&gt; Mobile:		+64 21 757 096
+&gt;
+&gt; -----Original Message-----
+&gt; From: jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+&gt; [<a  href="mailto:jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx">mailto:jarod@xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a>] On Behalf Of
+&gt; jarod@xxxxxxxxx Sent: Tuesday, 13 April 2004 9:56 a.m.
+&gt; To: Phil Pishioneri; Cosign Discussion
+&gt; Subject: Re: runtime requirements for IISCosign
+&gt;
+&gt; Phil,
+&gt;
+&gt; Almost everything you need to run IISCosign is included with the
+&gt; installer.  The installer registers the MSXML 4.0 dlls for you.  (If
+&gt; you'd like to make  sure, check to see that msxml4.dll and msxmlr4.dll
+&gt; are in your
+&gt; \windows\system32 folder.)
+&gt;
+&gt; The extra run-time requirements involves SSL certificates.  You will
+&gt; need a  certificate authority file as well as a private key and a signed
+&gt; certificate.  The installer comes with the umweb.CA file which is pretty
+&gt; useless to anyone outside of U-M.  If you'd like to customize the
+&gt; installer  for your organization -- anybody -- we can get you the source
+&gt; code and  project files for the installer.  It uses Installshield 7.
+&gt; Also feel free  to provide any suggestions to make the installer more
+&gt; institutionally  agnostic.  That is something we can certainly provide!
+&gt;
+&gt; Were you having trouble getting IISCosign to load?  Did any of this
+&gt; help?
+&gt;
+&gt; --Jarod Malestein
+&gt; --University of Michigan
+&gt; --ITCS
+&gt;
+&gt; --On Monday, April 12, 2004 5:36 PM -0400 Phil Pishioneri &lt;pgp@xxxxxxx&gt;
+&gt; wrote:
+&gt;
+&gt; &gt; Using the pre-built IISCosignInstaller 1.0.0 on Win2k3, IIS 6:
+&gt; &gt;
+&gt; &gt; I've found the extra registry key, and permissions that need to be set
+&gt; &gt; for Win 2003, and did those.
+&gt; &gt;
+&gt; &gt; Also found references to libsnet, OpenSSL, and MSXML at cowboybebop.
+&gt; &gt; Do I need to install MSXML and a separate OpenSSL (one appears to be
+&gt; &gt; included in the installation) just for run-time support?  (libsnet is
+&gt; &gt; listed as only required if you want to compile IISCosign.)
+&gt; &gt;
+&gt;
+&gt;
+&gt;
+&gt;
+&gt;</pre><br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00068" href="msg00068.shtml">RE: runtime requirements for IISCosign</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00069.shtml">Re: runtime requirements for IISCosign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00071.shtml">RE: Using UM certificate for cosign</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00069.shtml">Re: runtime requirements for IISCosign</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00063.shtml">Re: runtime requirements for IISCosign</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00070"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00070"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

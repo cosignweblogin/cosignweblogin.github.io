@@ -1,0 +1,145 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: duplicate k5 tgt's? -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Wed, 23 Jun 2004 22:10:27 &#45;0400 (EDT) -->
+<!--X-Message-Id: 719F5A0C&#45;C583&#45;11D8&#45;9362&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 40D9CAEA.6030103@psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00143.shtml">Date Prev</a>][<a href="msg00145.shtml">Date Next</a>][<a href="msg00141.shtml">Thread Prev</a>][<a href="msg00145.shtml">Thread Next</a>][<a href="maillist.shtml#00144">Date Index</a>][<a href="threads.shtml#00144">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: duplicate k5 tgt's?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: duplicate k5 tgt's?</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 23 Jun 2004 22:08:54 -0400</li>
+<li><em>Cc</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00141.shtml">40D9CAEA.6030103@psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00141.shtml">40D9CAEA.6030103@psu.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Hey Phil,</tt><br>
+<br>
+<tt>Hmm, perhaps a call to unlink() is in order? I could have sworn we 
+caught this before, but maybe we never checked it in. The cgi transfers 
+the ticket to the daemon, which in your case is probably the same 
+machine. We should be unlinking the cgi's copy of the file, and then 
+you'd only have the one the daemon knows about.</tt><br>
+<br>
+<tt>I'll get that in tomorrow.</tt><br>
+<br>
+<tt>Thanks for catching this!</tt><br>
+<br>
+<tt>-J</tt><br>
+<br>
+<tt><br>On Jun 23, 2004, at 2:24 PM, Phil Pishioneri wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Has anyone noticed their Kerberos ticket directory containing 
+duplicate TGTs?  I've noticed that my systems generate two ticket 
+files in my ticket directory.  Same timestamp (to the second), 
+identical contents (&quot;cmp&quot; even says so).</tt><br>
+<br>
+<tt>Since only one is listed in the login cookie's info, the other isn't 
+cleaned up upon logout.</tt><br>
+<br>
+<tt>Any ideas?</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt>!DSPAM:40d9cb5f172761704410504!
+</tt></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00145" href="msg00145.shtml">Re: duplicate k5 tgt's?</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00141" href="msg00141.shtml">duplicate k5 tgt's?</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00143.shtml">Re: php + cosign scalability</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00145.shtml">Re: duplicate k5 tgt's?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00141.shtml">duplicate k5 tgt's?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00145.shtml">Re: duplicate k5 tgt's?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00144"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00144"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

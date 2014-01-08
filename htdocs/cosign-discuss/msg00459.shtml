@@ -1,0 +1,200 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cookie Deletion in PHP5 on IIS6 -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Wed, 27 Jul 2005 17:44:40 &#45;0400 (EDT) -->
+<!--X-Message-Id: 6B044D7B&#45;6A92&#45;48F2&#45;ABFD&#45;70C7CC09E0C5@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 42E7E533.203@psu.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00458.shtml">Date Prev</a>][<a href="msg00460.shtml">Date Next</a>][<a href="msg00458.shtml">Thread Prev</a>][<a href="msg00460.shtml">Thread Next</a>][<a href="maillist.shtml#00459">Date Index</a>][<a href="threads.shtml#00459">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cookie Deletion in PHP5 on IIS6</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Christopher Lafty &lt;<a href="mailto:chl114@DOMAIN.HIDDEN">chl114@xxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cookie Deletion in PHP5 on IIS6</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 27 Jul 2005 17:41:17 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00458.shtml">42E7E533.203@psu.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00458.shtml">42E7E533.203@psu.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>There are two things going on.  The first is that PHP will reject  
+setcookie calls that do not specify the same scope as the cookie  
+being overwritten;  in this case, path, expiration, name, value, and  
+secure flag are all set.  The second issue is that changes to the  
+user's cookies will not be visible to php until the next reload.  The  
+following PHP should work for mod_cosign:</tt><br>
+<br>
+<pre style="margin: 0em;">&lt;?php
+    $service = $_SERVER[ 'COSIGN_SERVICE' ];
+    setcookie( $service, &quot;null&quot;, time()-1, '/', &quot;&quot;, 1 );</pre><br>
+<tt>    echo( &quot;&lt;br /&gt; cosign-cookie: &quot; . $service . &quot; = &quot; . $_COOKIE 
+[ $service ]);<br>
+?&gt;</tt><br>
+<br>
+<tt>and IIS should be able to use:</tt><br>
+<br>
+<pre style="margin: 0em;">&lt;?php
+    $service = $_SERVER[ 'HTTP_COSIGN_SERVICE' ];
+    setcookie( $service, &quot;null&quot;, time()-1, '/', &quot;&quot;, 1 );</pre><br>
+<tt>    echo( &quot;&lt;br /&gt; cosign-cookie: &quot; . $service . &quot; = &quot; . $_COOKIE 
+[ $service ]);<br>
+?&gt;</tt><br>
+<br>
+<tt>Of course, all this script will do is change the service cookie  
+payload echoed after each page reload.  You also need to print a  
+redirect to the central weblogin server.  Here at Michigan that might  
+be:</tt><br>
+<br>
+<tt>&lt;?php<br>
+    $central_logout = &quot;<a  href="https://weblogin.umich.edu/cgi-bin/logout&quot">https://weblogin.umich.edu/cgi-bin/logout&quot</a>;;<br>
+    setcookie( $_SERVER[ 'COSIGN_SERVICE' ], &quot;null&quot;, time()-1, '/',  
+&quot;&quot;, 1 );</tt><br>
+<br>
+<tt>    echo( &quot;&lt;br /&gt; cosign-cookie: &quot; . $service . &quot; = &quot; . $_COOKIE 
+[ $service ]);<br>
+    /* it's important that there be no output on this page, at least<br>
+        before this line */<br>
+    header( &quot;Location: $central_logout&quot; );<br>
+    exit;<br>
+?&gt;</tt><br>
+<br>
+<tt>I have not tested this on IIS myself, but would be happy to help  
+debug if anything comes up.  I hope this is helpful,</tt><br>
+<br>
+<tt>k</tt><br>
+<br>
+<tt>On Jul 27, 2005, at 3:49 PM, Christopher Lafty wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Anybody had luck destroying the cosign service cookie with PHP5?  
+I've been trying all day long and I can't seem to remove it with a  
+logout page.</tt><br>
+<br>
+<tt>Using phpinfo(), I see the cookie as _COOKIE[&quot;cosign- 
+xxx_xxx_xxx_xxx&quot;], but with the web developer toolbar in firefox,  
+the cookie shows up as cosign-xxx.xxx.xxx.xxx.  I am trying to  
+delete both, but still can't.</tt><br>
+<br>
+<pre style="margin: 0em;">&lt;?php
+//get service name, contains &quot;.&quot;
+$service = $_SERVER['HTTP_COSIGN_SERVICE'];</pre><br>
+<pre style="margin: 0em;">//delete the cookie with &quot;.&quot;
+setcookie ($service, FALSE, time()-1000);</pre><br>
+<pre style="margin: 0em;">//put in &quot;_&quot; instead of &quot;.&quot;
+$service1 = str_replace(&quot;.&quot;, &quot;_&quot;, $service);
+setcookie ($service1, FALSE, time()-1000);</pre><br>
+<pre style="margin: 0em;">//output to see if successful
+echo &quot;&lt;/br&gt;cosign-cookie:&quot; . $_COOKIE[$service];
+echo &quot;&lt;/br&gt;cosign-cookie:&quot; . $_COOKIE[$service1];
+?&gt;</pre><br>
+<tt>browser output:</tt><br>
+<br>
+<pre style="margin: 0em;">cosign-cookie:
+cosign-cookie: XXXXXXXXXXXXXXXXXXXXXXXXXXX  (&quot;_&quot; contains the cookie?)</pre><br>
+<tt>web developer cookie information:</tt><br>
+<br>
+<pre style="margin: 0em;">Namecosign-www.bio.psu.edu
+ValueXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Hostxxx.xxx.xxx.xxx
+Path/
+SecureNo
+ExpiresAt End Of Session</pre><br>
+<tt><br>Am I missing something?</tt><br>
+<br>
+<tt>Thanks in advance,<br>
+Chris<br>
+-- ..................................... :: Christopher Lafty ::  
+Computer Support/Web Site Administrator :: Department of Biology ::  
+Pennsylvania State University :: 109 Mueller Lab :: University  
+Park, PA 16802 :: Phone: 814-865-6590 ::  
+chrislafty@xxxxxxx ..................................... !DSPAM: 
+42e7e57d310441124611809!
+</tt></blockquote><tt></tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00458" href="msg00458.shtml">Cookie Deletion in PHP5 on IIS6</a></strong>
+<ul><li><em>From:</em> Christopher Lafty</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00458.shtml">Cookie Deletion in PHP5 on IIS6</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00460.shtml">cosign and LDAP authentication?</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00458.shtml">Cookie Deletion in PHP5 on IIS6</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00460.shtml">cosign and LDAP authentication?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00459"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00459"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

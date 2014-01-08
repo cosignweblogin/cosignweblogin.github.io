@@ -1,0 +1,178 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: RE: a couple of patches -->
+<!--X-From-R13: Pergg Zbznf ba ikpunatr <oybz001Nikpunatr.ipe.nhpxynaq.np.am> -->
+<!--X-Date: Mon, 28 Jun 2004 18:10:57 &#45;0400 (EDT) -->
+<!--X-Message-Id: 14A270C0E2F4124AB0B7320BDBEA949F04B0305F@vxchange.vcr.auckland.ac.nz -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Derived: bin00006.bin -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00149.shtml">Date Prev</a>][<a href="msg00151.shtml">Date Next</a>][<a href="msg00147.shtml">Thread Prev</a>][<a href="msg00148.shtml">Thread Next</a>][<a href="maillist.shtml#00150">Date Index</a>][<a href="threads.shtml#00150">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>RE: a couple of patches</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;,   Brett Lomas on vxchange &lt;<a href="mailto:blom001@DOMAIN.HIDDEN">blom001@xxxxxxxxxxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: RE: a couple of patches</li>
+<li><em>From</em>: Brett Lomas on vxchange &lt;<a href="mailto:blom001@DOMAIN.HIDDEN">blom001@xxxxxxxxxxxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 29 Jun 2004 10:08:59 +1200</li>
+<li><em>Cc</em>: &quot;'Cosign Discussion'&quot; &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi,
+
+Can anyone give thoughts on this change I am making? I an altering the
+cosignd, monster and the cosign.cgi and logout programs to read the
+configuration file for things which are currently specified at compile time,
+like:
+1. the cosigndb directory
+2. the CA dir, cert and key files
+3. friend host, user and password etc.
+
+All of these things in my opinion should be defined at run-time, not at
+compile time. So what I am doing to having them read the configuration file
+to get these values etc. The configuration define (currently used for the
+location of the ACL file) will be this configuration file I am talking
+about. The configuration file will define the location of the ACL file.
+
+This means the code need not be recompiled if anything like this changes.
+The main reason I am doing this is I have created an RPM spec file (so I can
+build and RPM of the cosign server). This I will be using to migrate between
+our dev/test/prod cosign environments.
+
+The only impact this will have on the way you do this currently is the
+configuration define at compile time no longer defines the ACL, but the ACL
+file location will be in the config file. I have attached an example
+configuration file... which is essentially the defaults from the
+configure.ac.
+
+Any thoughts?
+
+Brett
+
+-----Original Message-----
+From: johanna bromberg craig [<a  href="mailto:canna@xxxxxxxxx">mailto:canna@xxxxxxxxx</a>] 
+Sent: Tuesday, 29 June 2004 12:49 a.m.
+To: Brett Lomas on vxchange
+Cc: 'Cosign Discussion'
+Subject: Re: a couple of patches
+
+Thanks, Brett. I made the apache 2 change, and am holding the 
+login_error bit, as I haven't fully finished integrating all the 
+defines bits due to the complications and deep proliferation of that 
+suite of changes throughout the source. I should have that done by the 
+next release, though.
+
+Thanks again,
+J
+
+
+
+
+On Jun 24, 2004, at 11:14 PM, Brett Lomas on vxchange wrote:
+
+&gt; Hi Jo, and others.
+&gt;
+&gt; &#xA0;
+&gt;
+&gt; A couple of bug I have noticed. The --enable-apache2=path ignores the 
+&gt; path specified. I have altered the aclocal.m4 to handle the path 
+&gt; specified and check it.
+&gt;
+&gt; &#xA0;
+&gt;
+&gt; Also the html/login_error.m4 doesn't include the defines.m4 to get the 
+&gt; login URL correctly - this is may fault J.
+&gt;
+&gt; &#xA0;
+&gt;
+&gt; Thanks
+&gt;
+&gt; &#xA0;
+&gt;
+&gt; Brett
+&gt;  !DSPAM:40db992f280631883129336! 
+&gt; &lt;login_error.m4.patch&gt;&lt;aclocal.m4.patch&gt;
+
+</pre><p><strong>Attachment:
+<a href="bin00006.bin" ><tt>cosign.conf</tt></a></strong><br>
+<em>Description:</em> Binary data</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00149.shtml">Re: logout when already logged out</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00151.shtml">enabling replication</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00147.shtml">Re: a couple of patches</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00148.shtml">logout when already logged out</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00150"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00150"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

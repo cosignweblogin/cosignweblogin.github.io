@@ -1,0 +1,175 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: re: cosign and shibboleth -->
+<!--X-From-R13: Pvyy Rbfgre <Pvyy.RbfgreNhzvpu.rqh> -->
+<!--X-Date: Mon, 25 Jul 2005 16:36:07 &#45;0400 (EDT) -->
+<!--X-Message-Id: 20050725163210.0k942fc974ss8wk0@web.mail.umich.edu -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Derived: doc00000.doc -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00456.shtml">Date Prev</a>][<a href="msg00458.shtml">Date Next</a>][<a href="msg00456.shtml">Thread Prev</a>][<a href="msg00458.shtml">Thread Next</a>][<a href="maillist.shtml#00457">Date Index</a>][<a href="threads.shtml#00457">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>re: cosign and shibboleth</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: vrao &lt;<a href="mailto:vrao@DOMAIN.HIDDEN">vrao@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: re: cosign and shibboleth</li>
+<li><em>From</em>: Bill Doster &lt;<a href="mailto:Bill.Doster@DOMAIN.HIDDEN">Bill.Doster@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 25 Jul 2005 16:32:10 -0400</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>User-agent</em>: Internet Messaging Program (IMP) H3 (4.0.3)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>(Had to get cosign-discuss reset back to &quot;anyone-can-post-to-it)
+
+Here's my (rough) notes on when I did it some months ago.
+
+I've attached the actual MS-Word document as well as
+including a cut-paste of its contents.  Hopefully
+you can view the doc since the indentation gets lost
+in a cut-paste...  (I've added some of the indentation
+and white-space back in)
+
+Once you've already gotten the pre-requisites working,
+it's around fifteen minutes of effort.  Trying to get
+anything working in one flying leap is ... just asking
+for it.
+----
+
+Marrying Cosign and Shibboleth
+
+Overview
+Shibboleth provides the underpinnings for an Authorization framework for
+web-based (and increasingly non web-based) services that can be used both
+within an institution and between institutions.  It is designed so that each
+institution can continue using its existing Authentication infrastructure with
+the institution?s Origin.  This paper documents the pre-requisites and changes
+needed to use Cosign for Authentication with an institution?s Shibboleth
+Origin.
+
+Pre-requisites
+
+Overview
+This document focuses on the changes needed to marry two already functioning
+services together, leaving it to the Cosign and Shibboleth documentation to
+detail how to bring themselves up.  Below are those aspects of the two systems
+that a successful marriage depends upon.
+
+Shibboleth Origin
+Chapters 3 &amp; 4 (from
+<a  href="http://shibboleth.internet2.edu/guides/deploy-guide-origin1.2.1.html">http://shibboleth.internet2.edu/guides/deploy-guide-origin1.2.1.html</a>)
+Chap 3 lists the following five requirements
+   Apache 1.3.26+
+   Tomcat 4.1.18-24 LE Java server and above
+   Sun J2SE JDK v1.4.1_01 and above
+   mod_jk or mod_jk2
+   Shib Origin 1.0+
+   An enterprise authentication mechanism
+      Mod_cosign
+         <a  href="http://weblogin.org">http://weblogin.org</a> for downloads and documentation
+
+Cosign weblogin service
+Not changed in anyway.  The above Shibb origin is simply yet another
+Cosign-dependent web-server.
+
+
+Changes
+
+Overview
+Once you have the pre-requisites in place, marrying the two is simply a matter
+of having all references to the location of the Origin?s Handle Service (HS) be
+protected by Cosign.  The five lines below demonstrate how it?s implemented at a
+large institution.
+
+Shibboleth Origin
+
+Apache
+   Httpd.conf (or equiv)
+        &lt;IfModule mod_cosign.c&gt;
+            &lt;Location /shibboleth/HS&gt;
+                CosignProtected On
+            &lt;/Location&gt;
+        &lt;/IfModule&gt;
+
+</pre><p><strong>Attachment:
+<a href="doc00000.doc" ><tt>Marrying Cosign and Shibboleth.doc</tt></a></strong><br>
+<em>Description:</em> MS-Word document</p>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00456.shtml">Fw: cosign and shibboleth</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00458.shtml">Cookie Deletion in PHP5 on IIS6</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00456.shtml">Fw: cosign and shibboleth</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00458.shtml">Cookie Deletion in PHP5 on IIS6</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00457"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00457"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,127 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Compilation problem with debian sarge -->
+<!--X-From-R13: @vpbynf Pbpdhrg <aobpdhrgNpev74.bet> -->
+<!--X-Date: Wed, 29 Sep 2004 04:33:17 &#45;0400 (EDT) -->
+<!--X-Message-Id: 415A730F.50104@cri74.org -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00240.shtml">Date Prev</a>][<a href="msg00242.shtml">Date Next</a>][<a href="msg00240.shtml">Thread Prev</a>][<a href="msg00242.shtml">Thread Next</a>][<a href="maillist.shtml#00241">Date Index</a>][<a href="threads.shtml#00241">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Compilation problem with debian sarge</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Compilation problem with debian sarge</li>
+<li><em>From</em>: Nicolas Bocquet &lt;<a href="mailto:nbocquet@DOMAIN.HIDDEN">nbocquet@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 29 Sep 2004 10:32:15 +0200</li>
+<li><em>Organization</em>: CRI74</li>
+<li><em>User-agent</em>: Mozilla Thunderbird 0.5 (X11/20040306)</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Hello,</tt><br>
+<br>
+<tt>I have a problem with the compilation of weblogin basic authentification 
+on debian sarge<br>
+....<br>
+cd libcgi; make  all<br>
+make[1]: Entering directory `/download/cosign-1.6.2/libcgi'<br>
+gcc -p -DTLS -Wall -Wmissing-prototypes -g -O2  -c parse.c<br>
+btyaccpa.ske:96: error: erreur d'analyse syntaxique before &quot;yylval&quot;<br>
+btyaccpa.ske:96: attention : type defaults to `int' in declaration of `<br>
+....<br>
+there are several similar errors lines</tt><br>
+<br>
+<tt>Had someone this problem before?</tt><br>
+<br>
+<tt>Thanks</tt><br>
+<br>
+<tt>Best Regards</tt><br>
+<br>
+<pre style="margin: 0em;">--
+Nicolas Bocquet
+<a  href="http://www.cri74.org">http://www.cri74.org</a></pre><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00242" href="msg00242.shtml">Re: Compilation problem with debian sarge</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00240.shtml">Re: Question about service cookie</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00242.shtml">Re: Compilation problem with debian sarge</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00240.shtml">Re: Question about service cookie</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00242.shtml">Re: Compilation problem with debian sarge</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00241"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00241"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

@@ -1,0 +1,246 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: [Fwd: [Bug libc/671] New: It appears syslog can go into deadlock	when it receives a signal where the signal handler also syslogs] -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Sat, 15 Jan 2005 21:33:52 &#45;0500 (EST) -->
+<!--X-Message-Id: 1105842741.4061.33.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00301.shtml">Date Prev</a>][<a href="msg00303.shtml">Date Next</a>][<a href="msg00301.shtml">Thread Prev</a>][<a href="msg00303.shtml">Thread Next</a>][<a href="maillist.shtml#00302">Date Index</a>][<a href="threads.shtml#00302">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[Fwd: [Bug libc/671] New: It appears syslog can go into deadlock	when it receives a signal where the signal handler also syslogs]</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: [Fwd: [Bug libc/671] New: It appears syslog can go into deadlock	when it receives a signal where the signal handler also syslogs]</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Sun, 16 Jan 2005 15:32:22 +1300</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>FYI, I just reported this bug, because I was seeing it in the cosign
+daemon when using the replication and stressing it.
+
+I have removed all of the sysloging in pusherchld to stop pusherparent
+from going into deadlock, at least until i hear back on this.
+
+Brett
+</pre><blockquote><small>---&nbsp;<i>Begin&nbsp;Message</i>&nbsp;---</small>
+<ul>
+<li><em>To</em>: <a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a></li>
+<li><em>Subject</em>: [Bug libc/671] New: It appears syslog can go into deadlock when it	receives a signal where the signal handler also syslogs</li>
+<li><em>From</em>: &quot;b dot lomas at auckland dot ac dot nz&quot; &lt;<a href="mailto:sourceware-bugzilla@DOMAIN.HIDDEN">sourceware-bugzilla@xxxxxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: 16 Jan 2005 01:44:03 -0000</li>
+<li><em>Reply-to</em>: <a href="mailto:sourceware-bugzilla@DOMAIN.HIDDEN">sourceware-bugzilla@xxxxxxxxxxxxxxxxxx</a></li>
+</ul>
+<pre>I had a program which seemed unresponsive. So I attached GDB to it and got the
+following stack strace:
+#0  0x00a7e579 in __lll_mutex_lock_wait () from /lib/tls/libc.so.6
+#1  0x00a6d955 in _L_mutex_lock_328 () from /lib/tls/libc.so.6
+#2  0x093979f8 in ?? ()
+#3  0x0805322f in _IO_stdin_used ()
+#4  0xbfff90cc in ?? ()
+#5  0xbfff9064 in ?? ()
+#6  0x00ac79a0 in map () from /lib/tls/libc.so.6
+#7  0x00000000 in ?? ()
+#8  0x00000000 in ?? ()
+#9  0x00000000 in ?? ()
+#10 0xbfff8f04 in ?? ()
+#11 0x00000000 in ?? ()
+#12 0x00000000 in ?? ()
+#13 0x0000006e in ?? ()
+#14 0x00000014 in ?? ()
+#15 0x00000001 in ?? ()
+#16 0x09397c88 in ?? ()
+#17 0x00000000 in ?? ()
+#18 0x41e9970f in ?? ()
+#19 0x09397c88 in ?? ()
+#20 0x0000003d in ?? ()
+#21 0x00a6d8f0 in sigpipe_handler () from /lib/tls/libc.so.6
+#22 0x00a6ceef in syslog () from /lib/tls/libc.so.6
+#23 0x0804d519 in pusherchld (sig=17) at pusher.c:212
+#24 &lt;signal handler called&gt;
+#25 0x00a71e8a in send () from /lib/tls/libc.so.6
+#26 0x00a6d2a2 in vsyslog () from /lib/tls/libc.so.6
+#27 0x00a6ceef in syslog () from /lib/tls/libc.so.6
+#28 0x0804d8ef in pusherparent (ppipe=5, gconf=0x9395890) at pusher.c:355
+#29 0x0804a821 in main (ac=1024, av=0x1) at daemon.c:465
+
+
+It appears that while syslog was attempting to send it got a SIGCHLD signal,
+which also syslogs.
+
+I have a trivial program (below) which reproduces the problem more often than
+not with the follow stack trace:
+#0  0x0042be09 in __lll_mutex_lock_wait () from /lib/tls/libc.so.6
+#1  0x0041b1b5 in _L_mutex_lock_328 () from /lib/tls/libc.so.6
+#2  0x09eaa008 in ?? ()
+#3  0x08048808 in _IO_stdin_used ()
+#4  0xbfffb258 in ?? ()
+#5  0xbfffb1f4 in ?? ()
+#6  0x004743a0 in map () from /lib/tls/libc.so.6
+#7  0x00000000 in ?? ()
+
+
+The program is:
+#include &lt;stdio.h&gt;
+#include &lt;syslog.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;signal.h&gt;
+ 
+ 
+void
+sigchldHandler(int sig)
+{
+        syslog(LOG_INFO,&quot;Child %d died!!\n&quot;,getpid());
+}
+ 
+#define SLEEP_MAX 20.0
+void
+child()
+{
+        int usecsleep;
+        srand(time(NULL)+getpid());
+         
+        usecsleep=1+(int) (SLEEP_MAX*rand()/(RAND_MAX+1.0));
+ 
+        usleep(usecsleep);
+}
+ 
+#define CHILDREN 50
+#define NUM_SYSLOGS 1000
+ 
+int
+main(int argc,char **argv)
+{
+        pid_t pids[CHILDREN];
+        int i;
+ 
+        signal(SIGCHLD,sigchldHandler);
+ 
+        for(i=0;i&lt;CHILDREN;i++)
+        {
+                switch((pids[i]=fork()))
+                {
+                        case 0:
+                                child();
+                                exit(0);
+                        case -1:
+                                fprintf(stderr,&quot;Failed fork\n&quot;);
+                                exit(1);
+                }
+        }
+ 
+        for(i=0;i&lt;NUM_SYSLOGS;i++)
+                syslog(LOG_INFO,&quot;parent: hello!&quot;);
+ 
+        for(i=0;i&lt;CHILDREN;i++)
+                waitpid(pids[i],NULL,0);
+ 
+        return 0;
+}
+
+Thanks
+
+-- 
+           Summary: It appears syslog can go into deadlock when it receives
+                    a signal where the signal handler also syslogs
+           Product: glibc
+           Version: 2.3.2
+            Status: NEW
+          Severity: normal
+          Priority: P2
+         Component: libc
+        AssignedTo: gotom at debian dot or dot jp
+        ReportedBy: b dot lomas at auckland dot ac dot nz
+                CC: glibc-bugs at sources dot redhat dot com
+
+
+<a  href="http://sources.redhat.com/bugzilla/show_bug.cgi?id=671">http://sources.redhat.com/bugzilla/show_bug.cgi?id=671</a>
+
+------- You are receiving this mail because: -------
+You reported the bug, or are watching the reporter.
+</pre><br><small>---&nbsp;<i>End Message</i>&nbsp;---</small></blockquote>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00303" href="msg00303.shtml">Re: [Fwd: [Bug libc/671] New: It appears syslog can go into deadlock when it receives a signal where the signal handler also syslogs]</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00301.shtml">Re: PHP with oracle interaction</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00303.shtml">Re: [Fwd: [Bug libc/671] New: It appears syslog can go into deadlock when it receives a signal where the signal handler also syslogs]</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00301.shtml">Re: PHP with oracle interaction</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00303.shtml">Re: [Fwd: [Bug libc/671] New: It appears syslog can go into deadlock when it receives a signal where the signal handler also syslogs]</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00302"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00302"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

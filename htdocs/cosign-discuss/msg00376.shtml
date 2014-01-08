@@ -1,0 +1,209 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: replication behind load balancer -->
+<!--X-From-R13: wbunaan oebzoret penvt <pnaanNhzvpu.rqh> -->
+<!--X-Date: Thu, 24 Mar 2005 10:47:07 &#45;0500 (EST) -->
+<!--X-Message-Id: F535BC10&#45;9C7B&#45;11D9&#45;81A3&#45;000A95E48A4E@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 1903C2857DAD40192421385B@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Reference: 20050323214127.GR4631@ifokr.org -->
+<!--X-Reference: 260EF50AA0A1432810FC6D3C@dhcp&#45;196&#45;004.cns.ohiou.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00375.shtml">Date Prev</a>][<a href="msg00377.shtml">Date Next</a>][<a href="msg00375.shtml">Thread Prev</a>][<a href="msg00377.shtml">Thread Next</a>][<a href="maillist.shtml#00376">Date Index</a>][<a href="threads.shtml#00376">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: replication behind load balancer</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: David Alexander &lt;<a href="mailto:alexandd@DOMAIN.HIDDEN">alexandd@xxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: replication behind load balancer</li>
+<li><em>From</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Thu, 24 Mar 2005 10:46:59 -0500</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>, Brian Hatch &lt;<a href="mailto:bri@DOMAIN.HIDDEN">bri@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00374.shtml">260EF50AA0A1432810FC6D3C@dhcp-196-004.cns.ohiou.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00372.shtml">1903C2857DAD40192421385B@dhcp-196-004.cns.ohiou.edu</a>&gt; &lt;<a href="msg00373.shtml">20050323214127.GR4631@ifokr.org</a>&gt; &lt;<a href="msg00374.shtml">260EF50AA0A1432810FC6D3C@dhcp-196-004.cns.ohiou.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt><br>On Mar 23, 2005, at 4:58 PM, David Alexander wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt></tt><br>
+<br>
+<tt>I added the opposite blade's IP address to the /etc/hosts file on each 
+blade.  Now, communication between cosignd processes is not crossing 
+the load balancer, so I think I am just dealing with cosign 
+configuration issues at this point.</tt><br>
+<br>
+<tt>The documentation is a little thin on replication.  What should the 
+consign.conf file contain on each host?  Now that I can use the host 
+names of the individual blades, I created client certs for 'cosign11' 
+and 'cosign12'.  I have tried various permutations in the cosign.conf 
+file, but I still get the error &quot;f_starttls: No access for 
+cosign1[12]&quot; in the log file.  I get a &quot;CHILD xxxxx talking to itself&quot; 
+error in the other host's log file.  I was also getting a &quot;cosign[12] 
+is not a daemon&quot; error at some point.</tt><br>
+<br>
+<tt>Can someone tell me more about these errors?</tt><br>
+<br>
+</blockquote><tt><br>I think from your setup, cosign11 and cosign12 ( or whatever the cert 
+names are that the daemon is using ) need to both be permitted as cgis. 
+The &quot;talking to itself&quot; bit is basically so we can use a multiple A 
+record like weblogin.umich.edu ( which contains a.umich.edu, 
+b.umich.edu, and c.umich.edu ), and when we get the individual host 
+records a only replicates to b and c, not itself. That's what the 
+daemon flag/command is for ( f_daemon ).</tt><br>
+<br>
+<tt>In pusherhosts() ( in pusher.c ) we call gethostbyname() which I 
+believe is aware of /etc/hosts.</tt><br>
+<br>
+<tt>The &quot;%s is not a daemon&quot; message comes from the CN of the host trying 
+to do the replication ( aka the replicator ) not being listed as a cgi 
+in the cosign.conf of the replicatee. The No access message is probably 
+the same thing.</tt><br>
+<br>
+<tt>Since you have 2 hosts with 2 separate IPs, at least for testing 
+purposes I'd just start with this do this:</tt><br>
+<br>
+<tt>host A:</tt><br>
+<br>
+<tt>cosign.conf:</tt><br>
+<br>
+<tt>cgi	a.weblogin.ohio.edu ( just needs itself, and this is the CN for the 
+cert A is running with, not domain name )</tt><br>
+<br>
+<tt>%/usr/local/sbin/cosignd -h b.weblogin.ohio.edu</tt><br>
+<br>
+<tt>( you also want to run monster the same way - %/usr/local/sbin/monster 
+-h b.weblogin.ohio.edu )</tt><br>
+<br>
+<tt><br>and on host B you should also have &quot;a.weblogin.ohio.edu&quot; permitted in 
+cosign.conf, and just the regular<br>
+% /usr/local/sbin/cosignd ( and /usr/local/sbin/monster, too ).</tt><br>
+<br>
+<tt>So A should replicate to B, one way. And only A would also house the 
+CGI.</tt><br>
+<br>
+<tt>Once that's up and happy, you can do the exact same thing on B, so now 
+permit A and B both as CGIs on each cosign.conf, and have A do % 
+cosignd -h b.weblogin.ohio.edu and B do % cosignd -h 
+a.weblogin.ohio.edu</tt><br>
+<br>
+<tt>I can see why this might need a bit more documentation. :) We're 
+working on a few small tweaks for 1.8.1 release, so I'll try and add 
+something to that or just put it up on the website.</tt><br>
+<br>
+<tt>Also, as a side note, I'm not sure fail over in the clients will work 
+right if both cosign servers are behind a load balancer. I haven't 
+drawn it all out yet, but the basic idea behind client fail over is 
+that the filters ask every weblogin server they are aware of ( A, B, 
+and C ) based on the lookup they did at startup. If they are talking to 
+a load balancer that only had 1 IP/name, they might only get A when in 
+fact B happen to have the most  up-to-date information. Like I said, I 
+haven't really thought about this though, so I might be wrong, too.</tt><br>
+<br>
+<tt>In any case, let us know if the above suggestions help with replication 
+and/or what else we can do to help.</tt><br>
+<br>
+<tt>-Johanna</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00377" href="msg00377.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+<li><strong><a name="00380" href="msg00380.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00384" href="msg00384.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Wesley Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00372" href="msg00372.shtml">replication behind load balancer</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+<li><strong><a name="00373" href="msg00373.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+<li><strong><a name="00374" href="msg00374.shtml">Re: replication behind load balancer</a></strong>
+<ul><li><em>From:</em> David Alexander</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00375.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00377.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00375.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00377.shtml">Re: replication behind load balancer</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00376"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00376"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

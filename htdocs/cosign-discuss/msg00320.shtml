@@ -1,0 +1,123 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign and windows apache server -->
+<!--X-From-R13: Egrir Evzzbaf <fpfNhzvpu.rqh> -->
+<!--X-Date: Tue, 8 Feb 2005 14:24:09 &#45;0500 (EST) -->
+<!--X-Message-Id: 20050208192240.GD13932@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20050204171621.GC14804@umich.edu -->
+<!--X-Reference: E3AEF7E2&#45;79FE&#45;11D9&#45;B77E&#45;000A95E48A4E@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00319.shtml">Date Prev</a>][<a href="msg00321.shtml">Date Next</a>][<a href="msg00319.shtml">Thread Prev</a>][<a href="msg00323.shtml">Thread Next</a>][<a href="maillist.shtml#00320">Date Index</a>][<a href="threads.shtml#00320">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign and windows apache server</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: johanna bromberg craig &lt;<a href="mailto:canna@DOMAIN.HIDDEN">canna@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign and windows apache server</li>
+<li><em>From</em>: Steve Simmons &lt;<a href="mailto:scs@DOMAIN.HIDDEN">scs@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Tue, 8 Feb 2005 14:22:40 -0500</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00319.shtml">E3AEF7E2-79FE-11D9-B77E-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00317.shtml">20050204171621.GC14804@umich.edu</a>&gt; &lt;<a href="msg00319.shtml">E3AEF7E2-79FE-11D9-B77E-000A95E48A4E@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mutt/1.5.6i</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>On Tue, Feb 08, 2005 at 01:26:03PM -0500, johanna bromberg craig wrote:
+
+&gt; Several people have mentioned interest in this, but we've heard neither 
+&gt; a success nor a horror story. ;) As such, go ahead and give it a whirl, 
+&gt; and if you need help we're here for ya. Just give a shout and we'll set 
+&gt; something up.
+
+I discussed this with the boss this morning.  With luck, I'll give it
+a shot next week.
+
+I'm going to be really disappointed if this turns out to be easy.  :-)
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00317" href="msg00317.shtml">Cosign and windows apache server</a></strong>
+<ul><li><em>From:</em> Steve Simmons</li></ul></li>
+<li><strong><a name="00319" href="msg00319.shtml">Re: Cosign and windows apache server</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00319.shtml">Re: Cosign and windows apache server</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00321.shtml">Re: Question</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00319.shtml">Re: Cosign and windows apache server</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00323.shtml">Invitation to join from Mat</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00320"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00320"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

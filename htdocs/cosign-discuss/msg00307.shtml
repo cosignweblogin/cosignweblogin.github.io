@@ -1,0 +1,351 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign or IP&#45;based access control -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Tue, 18 Jan 2005 19:46:54 &#45;0500 (EST) -->
+<!--X-Message-Id: 1106095539.4269.11.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: multipart/mixed -->
+<!--X-Reference: 9615F710&#45;698C&#45;11D9&#45;9072&#45;000A95DA58FE@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00306.shtml">Date Prev</a>][<a href="msg00308.shtml">Date Next</a>][<a href="msg00306.shtml">Thread Prev</a>][<a href="msg00308.shtml">Thread Next</a>][<a href="maillist.shtml#00307">Date Index</a>][<a href="threads.shtml#00307">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign or IP-based access control</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jim Zajkowski &lt;<a href="mailto:jamesez@DOMAIN.HIDDEN">jamesez@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign or IP-based access control</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 19 Jan 2005 13:45:39 +1300</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00305.shtml">9615F710-698C-11D9-9072-000A95DA58FE@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00305.shtml">9615F710-698C-11D9-9072-000A95DA58FE@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi all,
+
+I have a patch for the apache2 filter only which will allow you to
+specify an ip range for which the cosign module will not authenticate.
+The format for the apache conf is:
+CosignDisableIP [ip]/[mask in dot notation]
+eg:
+CosignDisableIP 130.216.0.0/255.255.0.0
+
+
+Brett
+
+
+
+On Wed, 2005-01-19 at 09:07, Jim Zajkowski wrote:
+&gt; Hi folks,
+&gt; 
+&gt; We want to put up a site that is instantly available from a UM IP 
+&gt; address, or requires Cosign from outside those addresses.
+&gt; 
+&gt; Any ideas?
+&gt; 
+&gt; Thanks,
+&gt; 
+&gt; --Jim
+</pre><pre>Index: cosign.h
+===================================================================
+--- cosign.h	(revision 10)
++++ cosign.h	(working copy)
+@@ -1,4 +1,11 @@
++#include &lt;netinet/in.h&gt;
++
+ typedef struct {
++	in_addr_t baseip;
++	in_addr_t mask;
++} iprange;
++
++typedef struct {
+     char                *host;
+     char                *service;
+     char		*siteentry;
+@@ -26,6 +33,8 @@
+     int			krbtkt;
+     int			krb524;
+ #endif /* KRB */
++
++	iprange		pubaccessips;
+ } cosign_host_config;
+ 
+ 
+</pre><pre>Index: mod_cosign.c
+===================================================================
+--- mod_cosign.c	(revision 10)
++++ mod_cosign.c	(working copy)
+@@ -76,6 +76,10 @@
+     cfg-&gt;krb524 = 0;
+ #endif /* KRB4 */
+ #endif /* KRB */
++
++	/* Set up to ip address of 0.0.0.0 and mask of 255.255.255.255 */
++	cfg-&gt;pubaccessips.baseip=0;
++	cfg-&gt;pubaccessips.mask=0xFFFFFFFF;
+     return( cfg );
+ 
+ }
+@@ -115,6 +119,10 @@
+     cfg-&gt;krb524 = 0;
+ #endif /* KRB4 */
+ #endif /* KRB */
++
++	/* Set up to ip address of 0.0.0.0 and mask of 255.255.255.255 */
++	cfg-&gt;pubaccessips.baseip=0;
++	cfg-&gt;pubaccessips.mask=0xFFFFFFFF;
+     return( cfg );
+ }
+ 
+@@ -209,6 +217,7 @@
+     if ( strcasecmp( authn, &quot;Cosign&quot; ) != 0 ) {
+ 	return( DECLINED );
+     } 
++
+     /* we OK here to claim this as our AuthZ call.
+      * otherwise, we'll get a 503 as basic auth will
+      * try and nab it, but things won't be set up
+@@ -275,6 +284,16 @@
+ 	return( HTTP_SERVICE_UNAVAILABLE );
+     }
+ 
++	if((r-&gt;connection-&gt;remote_addr-&gt;sa.sin.sin_addr.s_addr&amp;cfg-&gt;pubaccessips.mask) == 
++			(cfg-&gt;pubaccessips.baseip&amp;cfg-&gt;pubaccessips.mask))
++	{
++		ap_log_error( APLOG_MARK, APLOG_WARNING|APLOG_NOERRNO, 0, r-&gt;server,
++			&quot;mod_cosign: Declining to service client on ip %s because of config&quot;,
++			r-&gt;connection-&gt;remote_ip );
++		
++		return DECLINED;
++	}
++
+     /*
+      * Look for cfg-&gt;service cookie. if there isn't one,
+      * set it and redirect.
+@@ -366,7 +385,82 @@
+     return( HTTP_MOVED_TEMPORARILY );
+ }
+ 
++static void
++convertIPRange(char *rangestr, struct in_addr *ip, struct in_addr *mask)
++{
++    char ipstr[16],maskstr[16],*ptr;
++                                                                                        
++    memset(ipstr,'\0',16);
++    memset(maskstr,'\0',16);
++    if(!(ptr=strchr(rangestr,'/')))
++        return;
++                                                                                        
++    *ptr='\0';
++                                                                                        
++    strncpy(ipstr,rangestr,15);
++    strncpy(maskstr,ptr+1,15);
++                                                                                        
++    inet_aton(ipstr,ip);
++    inet_aton(maskstr,mask);
++                                                                                        
++    *ptr='/';
++}
++
+     static const char *
++set_cosign_ip_disable( cmd_parms *params, void *mconfig, char *arg )
++{
++    cosign_host_config		*cfg, *scfg;
++	struct in_addr ip,mask;
++
++    scfg = (cosign_host_config *) ap_get_module_config(
++		params-&gt;server-&gt;module_config, &amp;cosign_module );
++    if ( params-&gt;path == NULL ) {
++	cfg = scfg;
++    } else {
++	cfg = (cosign_host_config *)mconfig;
++	cfg-&gt;redirect = apr_pstrdup( params-&gt;pool, scfg-&gt;redirect );
++	cfg-&gt;filterdb = apr_pstrdup( params-&gt;pool, scfg-&gt;filterdb );
++	cfg-&gt;proxydb = apr_pstrdup( params-&gt;pool, scfg-&gt;proxydb);
++	cfg-&gt;tkt_prefix = apr_pstrdup( params-&gt;pool, scfg-&gt;tkt_prefix );
++	if ( cfg-&gt;siteentry != NULL ) {
++	    cfg-&gt;siteentry = apr_pstrdup( params-&gt;pool, scfg-&gt;siteentry );
++	}
++	cfg-&gt;public = scfg-&gt;public;
++	cfg-&gt;posterror = apr_pstrdup( params-&gt;pool, scfg-&gt;posterror );
++	cfg-&gt;host = apr_pstrdup( params-&gt;pool, scfg-&gt;host );
++	cfg-&gt;cl = scfg-&gt;cl;
++	cfg-&gt;port = scfg-&gt;port; 
++	cfg-&gt;ctx = scfg-&gt;ctx;
++	if ( cfg-&gt;service == NULL ) {
++	    cfg-&gt;service = apr_pstrdup( params-&gt;pool, scfg-&gt;service );
++	}
++	cfg-&gt;proxy = scfg-&gt;proxy;
++	cfg-&gt;http = scfg-&gt;http;
++	cfg-&gt;expiretime = scfg-&gt;expiretime;
++#ifdef KRB
++	cfg-&gt;krbtkt = scfg-&gt;krbtkt; 
++#ifdef GSS
++	cfg-&gt;gss = scfg-&gt;gss;
++#endif /* GSS */
++#ifdef KRB4
++	cfg-&gt;krb524 = scfg-&gt;krb524;
++#endif /* KRB4 */
++#endif /* KRB */
++	if(!cfg-&gt;pubaccessips.baseip)
++	{
++		cfg-&gt;pubaccessips.baseip=scfg-&gt;pubaccessips.baseip;
++		cfg-&gt;pubaccessips.mask=scfg-&gt;pubaccessips.mask;
++	}
++    }
++
++	convertIPRange(arg,&amp;ip,&amp;mask);
++	cfg-&gt;pubaccessips.baseip=ip.s_addr;
++	cfg-&gt;pubaccessips.mask=mask.s_addr;
++
++    return( NULL );
++}
++
++    static const char *
+ set_cosign_protect( cmd_parms *params, void *mconfig, int flag )
+ {
+     cosign_host_config		*cfg, *scfg;
+@@ -406,6 +500,11 @@
+ #endif /* KRB4 */
+ #endif /* KRB */
+ 
++	if(!cfg-&gt;pubaccessips.baseip)
++	{
++		cfg-&gt;pubaccessips.baseip=scfg-&gt;pubaccessips.baseip;
++		cfg-&gt;pubaccessips.mask=scfg-&gt;pubaccessips.mask;
++	}
+     }
+ 
+     cfg-&gt;protect = flag; 
+@@ -470,6 +569,11 @@
+ 	cfg-&gt;krb524 = scfg-&gt;krb524;
+ #endif /* KRB4 */
+ #endif /* KRB */
++	if(!cfg-&gt;pubaccessips.baseip)
++	{
++		cfg-&gt;pubaccessips.baseip=scfg-&gt;pubaccessips.baseip;
++		cfg-&gt;pubaccessips.mask=scfg-&gt;pubaccessips.mask;
++	}
+     }
+ 
+     cfg-&gt;service = apr_psprintf( params-&gt;pool,&quot;cosign-%s&quot;, arg );
+@@ -513,6 +617,11 @@
+         cfg-&gt;krb524 = scfg-&gt;krb524;
+ #endif /* KRB4 */
+ #endif /* KRB */
++	if(!cfg-&gt;pubaccessips.baseip)
++	{
++		cfg-&gt;pubaccessips.baseip=scfg-&gt;pubaccessips.baseip;
++		cfg-&gt;pubaccessips.mask=scfg-&gt;pubaccessips.mask;
++	}
+     }
+ 
+     if ( strcasecmp( arg, &quot;none&quot; ) != 0 ) {
+@@ -562,6 +671,12 @@
+         cfg-&gt;krb524 = scfg-&gt;krb524;
+ #endif /* KRB4 */
+ #endif /* KRB */
++	if(!cfg-&gt;pubaccessips.baseip)
++	{
++		cfg-&gt;pubaccessips.baseip=scfg-&gt;pubaccessips.baseip;
++		cfg-&gt;pubaccessips.mask=scfg-&gt;pubaccessips.mask;
++	}
++
+     }
+ 
+     cfg-&gt;public = flag;
+@@ -886,6 +1001,10 @@
+ 
+ static command_rec cosign_cmds[ ] =
+ {
++        AP_INIT_TAKE1( &quot;CosignDisableIP&quot;, set_cosign_ip_disable,
++        NULL, RSRC_CONF|ACCESS_CONF,
++        &quot;An IP address or ranges list to not cosign authenticate for&quot; ),
++
+         AP_INIT_TAKE1( &quot;CosignPostErrorRedirect&quot;, set_cosign_post_error,
+         NULL, RSRC_CONF,
+         &quot;the URL to deliver bad news about POSTed data&quot; ),
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00305" href="msg00305.shtml">Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00306.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00308.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00306.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00308.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00307"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00307"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

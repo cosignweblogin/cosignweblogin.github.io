@@ -1,0 +1,130 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign or IP&#45;based access control -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Tue, 18 Jan 2005 15:25:23 &#45;0500 (EST) -->
+<!--X-Message-Id: 1106079837.4269.1.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 9615F710&#45;698C&#45;11D9&#45;9072&#45;000A95DA58FE@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00305.shtml">Date Prev</a>][<a href="msg00307.shtml">Date Next</a>][<a href="msg00305.shtml">Thread Prev</a>][<a href="msg00307.shtml">Thread Next</a>][<a href="maillist.shtml#00306">Date Index</a>][<a href="threads.shtml#00306">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign or IP-based access control</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Jim Zajkowski &lt;<a href="mailto:jamesez@DOMAIN.HIDDEN">jamesez@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign or IP-based access control</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 19 Jan 2005 09:23:57 +1300</li>
+<li><em>Cc</em>: cosign-discuss &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00305.shtml">9615F710-698C-11D9-9072-000A95DA58FE@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00305.shtml">9615F710-698C-11D9-9072-000A95DA58FE@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hey,
+
+we have the same requirement here at the University of Auckland. I am
+currently adding a config line to apache cosign module which will allow
+'public' access from a given set of IP ranges.
+
+If anyone has a better way of doing this let me know ;)
+
+Brett
+
+On Wed, 2005-01-19 at 09:07, Jim Zajkowski wrote:
+&gt; Hi folks,
+&gt; 
+&gt; We want to put up a site that is instantly available from a UM IP 
+&gt; address, or requires Cosign from outside those addresses.
+&gt; 
+&gt; Any ideas?
+&gt; 
+&gt; Thanks,
+&gt; 
+&gt; --Jim
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00305" href="msg00305.shtml">Cosign or IP-based access control</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00305.shtml">Cosign or IP-based access control</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00307.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00305.shtml">Cosign or IP-based access control</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00307.shtml">Re: Cosign or IP-based access control</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00306"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00306"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

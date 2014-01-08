@@ -1,0 +1,29 @@
+Index: html/login_error.m4
+===================================================================
+RCS file: /cvsrep/prog/uoa.itss.enarc.CoSign/html/login_error.m4,v
+retrieving revision 1.1.1.1
+diff -c -r1.1.1.1 login_error.m4
+*** html/login_error.m4	10 May 2004 08:58:42 -0000	1.1.1.1
+--- html/login_error.m4	25 Jun 2004 03:40:59 -0000
+***************
+*** 1,9 ****
+  define( `LOGIN_ONLOAD', `1' )
+  include(`header.html')
+  
+  <!-- if you change the action to a subdir, be sure it ends 
+      in a / e.g.  /login/ -->
+! <form name="f" action="/"
+  	enctype="application/x-www-form-urlencoded"
+  		method="post" autocomplete="off">
+  		<input type="hidden" name="ref" value="$r">
+--- 1,10 ----
+  define( `LOGIN_ONLOAD', `1' )
++ include(`defines.m4')
+  include(`header.html')
+  
+  <!-- if you change the action to a subdir, be sure it ends 
+      in a / e.g.  /login/ -->
+! <form name="f" action="LOGIN_URL"
+  	enctype="application/x-www-form-urlencoded"
+  		method="post" autocomplete="off">
+  		<input type="hidden" name="ref" value="$r">

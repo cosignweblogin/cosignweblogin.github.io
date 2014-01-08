@@ -1,0 +1,140 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: new jcosign service produces error message at authn -->
+<!--X-From-R13: Qbel Eaniryl <pfanirylNhzvpu.rqh> -->
+<!--X-Date: Mon, 14 Mar 2005 15:32:57 &#45;0500 (EST) -->
+<!--X-Message-Id: 4235F49C.9070201@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 42320B98.3090406@umich.edu -->
+<!--X-Reference: 4A21B481&#45;4C17&#45;46B0&#45;A6F7&#45;85D0791C95CA@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00362.shtml">Date Prev</a>][<a href="msg00364.shtml">Date Next</a>][<a href="msg00362.shtml">Thread Prev</a>][<a href="msg00364.shtml">Thread Next</a>][<a href="maillist.shtml#00363">Date Index</a>][<a href="threads.shtml#00363">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: new jcosign service produces error message at authn</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: new jcosign service produces error message at authn</li>
+<li><em>From</em>: Cory Snavely &lt;<a href="mailto:csnavely@DOMAIN.HIDDEN">csnavely@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 14 Mar 2005 15:31:24 -0500</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00362.shtml">4A21B481-4C17-46B0-A6F7-85D0791C95CA@umich.edu</a>&gt;</li>
+<li><em>Organization</em>: UM Library IT Core Services</li>
+<li><em>References</em>: &lt;<a href="msg00361.shtml">42320B98.3090406@umich.edu</a>&gt; &lt;<a href="msg00362.shtml">4A21B481-4C17-46B0-A6F7-85D0791C95CA@umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.5) Gecko/20050105 Debian/1.7.5-1</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>It is</tt><br>
+<br>
+<tt><a  href="https://weblogin.umich.edu/?deepblue.lib=qa3enaniTO2elCoLA0VnlGuyDQaiNFW44etne4zkV8bsj2ghPgt3TMk7h+N3dcU-qc8p+XBnh6hR0QPqhmPTaJn8dScZRxWmlAvqnVvXS9UkiERLe+cwe4GPyDDjx3QgyAzp5RdO1j-JQDQW+lWrk9uusNikhVpk;&amp;http://deepblue.lib.umich.edu/dspace/password-login">https://weblogin.umich.edu/?deepblue.lib=qa3enaniTO2elCoLA0VnlGuyDQaiNFW44etne4zkV8bsj2ghPgt3TMk7h+N3dcU-qc8p+XBnh6hR0QPqhmPTaJn8dScZRxWmlAvqnVvXS9UkiERLe+cwe4GPyDDjx3QgyAzp5RdO1j-JQDQW+lWrk9uusNikhVpk;&amp;http://deepblue.lib.umich.edu/dspace/password-login</a></tt><br>
+<br>
+<pre style="margin: 0em;">thx,
+c</pre><br>
+<tt>Wesley D Craig wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I know that error, for sure.  It means that JCoSign didn't form the 
+&quot;register&quot; redirect properly.  What's the full URL that you are 
+redirected to?</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+<tt>On 11 Mar 2005, at 16:20, Cory Snavely wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>I have JCoSign installed and mostly configured properly, I think, with 
+a brand new service.<br>
+I am seeing an error upon redirection to the authentication page:<br>
+  Unable to determine referring service from query string.<br>
+What does this error indicate? Is this a certificate problem?
+</tt></blockquote><tt></tt><br>
+<br>
+<br>
+</blockquote><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00364" href="msg00364.shtml">Re: new jcosign service produces error message at authn</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00361" href="msg00361.shtml">new jcosign service produces error message at authn</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+<li><strong><a name="00362" href="msg00362.shtml">Re: new jcosign service produces error message at authn</a></strong>
+<ul><li><em>From:</em> Wesley D Craig</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00362.shtml">Re: new jcosign service produces error message at authn</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00364.shtml">Re: new jcosign service produces error message at authn</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00362.shtml">Re: new jcosign service produces error message at authn</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00364.shtml">Re: new jcosign service produces error message at authn</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00363"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00363"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

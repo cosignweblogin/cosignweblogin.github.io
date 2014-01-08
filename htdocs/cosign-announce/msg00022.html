@@ -1,0 +1,221 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: IISCosign 1.1.1 available for download -->
+<!--X-From-R13: Pergg Zbznf <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Sun, 20 Feb 2005 22:57:22 &#45;0500 (EST) -->
+<!--X-Message-Id: 1108958197.4269.32.camel@brett.enarc.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 5B1F8FA740A3BBC0188C8723@spike.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="announce" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.html" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-announce at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            cosign release and update announcements
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00021.html">Date Prev</a>][<a href="msg00023.html">Date Next</a>][<a href="msg00021.html">Thread Prev</a>][<a href="msg00023.html">Thread Next</a>][<a href="maillist.html#00022">Date Index</a>][<a href="threads.html#00022">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: IISCosign 1.1.1 available for download</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:jarod@DOMAIN.HIDDEN">jarod@xxxxxxxxx</a></li>
+<li><em>Subject</em>: Re: IISCosign 1.1.1 available for download</li>
+<li><em>From</em>: Brett Lomas &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 21 Feb 2005 16:56:37 +1300</li>
+<li><em>Cc</em>: <a href="mailto:cosign-announce@DOMAIN.HIDDEN">cosign-announce@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00021.html">5B1F8FA740A3BBC0188C8723@spike.itd.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00021.html">5B1F8FA740A3BBC0188C8723@spike.itd.umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hey Jarod,
+
+thanks for this, sounds good. We will start deploying this here ;)
+Is the source for this version available at
+<a  href="http://cowboybebop.staff.itd.umich.edu/iiscosign/">http://cowboybebop.staff.itd.umich.edu/iiscosign/</a> ?? I tried to connect
+before but was timing out.
+
+Also, any idea on the date of the next release, as we would love the
+kerberos stuff. In fact we need it for one of our applications. Is it
+being developed now and in a state for us to test or not that far
+advanced?
+
+Thanks
+
+Brett
+
+On Sat, 2005-02-19 at 11:26, jarod@xxxxxxxxx wrote:
+&gt; IISCosign 1.1.1 is now availble for download from &lt;<a  href="http://weblogin.org">http://weblogin.org</a>&gt;.
+&gt; 
+&gt; This is being called 1.1.1 instead of 1.1.0 since the versioning with 
+&gt; InstallShield was slightly off.  Therefore, to make sure people are given 
+&gt; the upgrade option with the installer and to avoid confusion, this one is 
+&gt; being labeled 1.1.1.  It is highly recommended you upgrade as soon as 
+&gt; possible, especially if you are on a pre-1.1.0 version, due to many useful 
+&gt; bug fixes.
+&gt; 
+&gt; We are constantly refining and improving IISCosign and the installer.  If 
+&gt; there are any recommendation or questions you have, please send them to 
+&gt; cosign@xxxxxxxxxx
+&gt; 
+&gt; The next major item on the IISCosign roadmap is adding the Kerberos ticket 
+&gt; passing functionality.
+&gt; 
+&gt; A list of the major changes since version 1.0.0 is below.
+&gt; 
+&gt; Happy upgrading!
+&gt; 
+&gt; --Jarod Malestein
+&gt; --University of Michigan - ITCS
+&gt; 
+&gt; 
+&gt; 
+&gt; Changes in IISCosign 1.1.1:
+&gt; + Installer
+&gt; 
+&gt; Various, small fixes.
+&gt; 
+&gt; + Some major IISCosign failures reported to the Event Viewer.
+&gt; 
+&gt; There is now a facility with IISCosign to report events directly to the
+&gt; Event Viewer.  This is very useful for diagnosing problems, especially if
+&gt; the log files cannot be created.  The events reported are not comprehensive
+&gt; and will continue to be tweaked based on administrators' experience and
+&gt; input.
+&gt; 
+&gt; + You can now specify allowUnauthenticatedAccess to &lt;Protected/pages.
+&gt; Example:
+&gt; 
+&gt; &lt;Protected allowPublicAccess=&quot;TRUE&quot;&gt;/MySweetWebApp&lt;/Protected&gt;
+&gt; 
+&gt; NOTE: this was previously labeled allowUnauthenticatedAccess.  For clarity
+&gt; and parity with the Apache version, this has been changed to
+&gt; allowPublicAccess.  Both will still work, but the former will, eventually,
+&gt; be deprecated.
+&gt; 
+&gt; You can have a folder or web page(s) that can be accessed
+&gt; by both logged in and non-logged in users.  If the user is logged in, the
+&gt; HTTP_REMOTE_USER, HTTP_REMOTE_REALM, and HTTP_COSIGN_SERVICE variables
+&gt; will be available.  If the user is not logged in, he is not redirected
+&gt; and only the HTTP_COSIGN_SERVICE variable is available.
+&gt; 
+&gt; + Log file locking issue circumvented.  This prevented multiple instances
+&gt; of the filter from being instantiated in IIS 6.0.  Multiple log files are
+&gt; created if possible.
+&gt; 
+&gt; + &lt;HttpsOnly /option added. Default is TRUE. Set to FALSE to allow
+&gt; users to access cosign-protected pages without a secure connection.
+&gt; Example:
+&gt; 
+&gt; &lt;HttpsOnly&gt;FALSE&lt;/HttpsOnly&gt;
+&gt; 
+&gt; + Corrected bug that would protect something like &quot;/studentsAndStaff&quot; if
+&gt; &quot;/students&quot; was protected.  Then broke it, fixed it, broke it, fixed it.
+&gt; This is something you may want to double-check.
+&gt; 
+&gt; + Extra info put into log file.  Please provide feedback on what you
+&gt; would and wouldn't like to have in the cosign log file.
+&gt; 
+&gt; + Https redirect bug fixed.
+&gt; 
+&gt; + Specifying web sites by their IIS description rather than DNS name is
+&gt; now an option.
+&gt; Change your &lt;Service /tag as follows:
+&gt; 
+&gt; &lt;Service IISDescription=&quot;IISCosign web site&quot;&gt;cosign-service-name
+&gt; ...
+&gt; &lt;/Service&gt;
+&gt; 
+&gt; You can use either the original websitename item to refer to the DNS name
+&gt; or the new IISDescription. If both are present, IISCosign first looks for
+&gt; IISDescription and will ignore websitename.
+&gt; 
+&gt; For the curious parties, the &quot;IISDescription&quot; is compared to the
+&gt; ServerComment for the web site in the IIS metabase.
+&gt; 
+&gt; + You can now limit the log file size. Change your &lt;LogFilePathto look
+&gt; like this:
+&gt; 
+&gt; &lt;LogFilePath fileSizeInKB=&quot;4096&quot;&gt;C:\Program
+&gt; Files\CosignFilter\Logs&lt;/LogFilePath&gt;
+&gt; 
+&gt; 
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00021" href="msg00021.html">IISCosign 1.1.1 available for download</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00021.html">IISCosign 1.1.1 available for download</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00023.html">IISCosign 1.1.1 available for download addendum</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00021.html">IISCosign 1.1.1 available for download</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00023.html">IISCosign 1.1.1 available for download addendum</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00022"><strong>Date</strong></a></li>
+<li><a href="threads.html#00022"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.html" -->
+

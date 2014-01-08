@@ -1,0 +1,170 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: Cosign Re&#45;Authentication Specification -->
+<!--X-From-R13: Irfyrl Qenvt <jrfNhzvpu.rqh> -->
+<!--X-Date: Fri, 25 Mar 2005 16:57:48 &#45;0500 (EST) -->
+<!--X-Message-Id: 610E2B4E&#45;6779&#45;445E&#45;AA76&#45;21433710C4D8@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 62899842&#45;9CA8&#45;11D9&#45;81A3&#45;000A95E48A4E@umich.edu -->
+<!--X-Reference: 1111708551.5508.13.camel@localhost.localdomain -->
+<!--X-Reference: 20050325001001.GL4631@ifokr.org -->
+<!--X-Reference: 42447BAD.1020700@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00386.shtml">Date Prev</a>][<a href="msg00388.shtml">Date Next</a>][<a href="msg00386.shtml">Thread Prev</a>][<a href="msg00388.shtml">Thread Next</a>][<a href="maillist.shtml#00387">Date Index</a>][<a href="threads.shtml#00387">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: Cosign Re-Authentication Specification</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cory Snavely &lt;<a href="mailto:csnavely@DOMAIN.HIDDEN">csnavely@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: Cosign Re-Authentication Specification</li>
+<li><em>From</em>: Wesley Craig &lt;<a href="mailto:wes@DOMAIN.HIDDEN">wes@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 25 Mar 2005 16:56:23 -0500</li>
+<li><em>Cc</em>: cosign-discuss Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;, <a href="mailto:tamerman@DOMAIN.HIDDEN">tamerman@xxxxxxxxx</a>,   linderman Mark &lt;<a href="mailto:mlinderm@DOMAIN.HIDDEN">mlinderm@xxxxxxxxxxxx</a>&gt;, <a href="mailto:bdandamu@DOMAIN.HIDDEN">bdandamu@xxxxxxxxx</a>,   daniel Drumm &lt;<a href="mailto:dgdrumm@DOMAIN.HIDDEN">dgdrumm@xxxxxxxxxxxx</a>&gt;, Seth Meyer &lt;<a href="mailto:smeyer@DOMAIN.HIDDEN">smeyer@xxxxxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00386.shtml">42447BAD.1020700@umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00378.shtml">62899842-9CA8-11D9-81A3-000A95E48A4E@umich.edu</a>&gt; &lt;<a href="msg00381.shtml">1111708551.5508.13.camel@localhost.localdomain</a>&gt; &lt;<a href="msg00382.shtml">20050325001001.GL4631@ifokr.org</a>&gt; &lt;<a href="msg00386.shtml">42447BAD.1020700@umich.edu</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 25 Mar 2005, at 15:59, Cory Snavely wrote:
+</tt><blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">* Suggestion. On the re-auth page, it occurs to me that if someone
+  *innocently* arrives there, they are unlikely to suffer through n
+  attempts at impersonation without knowing that afterward they get
+  to authenticate as themselves. The way it is currently kind of
+  assumes they are up to no good.</pre><br>
+<pre style="margin: 0em;">  I think there should be a &quot;this isn't me--log on as a different
+  person&quot; button. Not quite sure how to word that, but I think it's
+  needed to help the innocent victim.
+</pre></blockquote><tt><br>Good idea.  Let's add a button/text.  If the user selects this path,  
+they will logout the previous user, and be redirected back to the  
+URL.  Since the URL required (unsatisfied) reauthN, there should be  
+no cached cookies, the &quot;CHECK&quot; will fail, a new service cookie will  
+be set, and a login will be triggered.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><pre style="margin: 0em;">* I agree with the others that the *service* sometimes needs to have
+  weblogin force reauthen. I definitely can think of instances where
+  the service might want to decide to reauth--for example, for a
+  particularly sensitive operation, as you see on e.g. buy.com or
+  travelocity before you complete a transaction.</pre><br>
+<tt>  To do that securely, though, the application must somehow  
+communicate<br>
+  that need to the local cosign module or weblogin. I think this is<br>
+  trickier than it sounds to do in such a way that the user can't<br>
+  easily defeat. The two secure approaches I can think of require<br>
+  state.</tt><br>
+<br>
+<tt>  So, I would propose that service-side forcing of authen--IOW,  
+forcing<br>
+  authen *after* a service cookie exists--be considered a case of the<br>
+  &quot;authen timeout&quot; feature that has been discussed before. I would<br>
+  conceive this as Apache directives that specify pairs of regexps and<br>
+  time thresholds that the local cosign module enforces by ignoring  
+the<br>
+  service cookie if the age of authen falls outside the allowable<br>
+  parameters. Set it to 15 seconds for a regexp that matches your VISA<br>
+  card entry page URL; set it to 10 minutes for a regexp that matches<br>
+  the whole financial module of your application.</tt><br>
+<br>
+<pre style="margin: 0em;">  So, a distinctly different feature, and not combined with this
+  proposed reauth change for whole services that always require
+  reauthen for entry.
+</pre></blockquote><tt><br>As of 1.7.x, cosign service cookies have timeouts.  Currently, they  
+are server-wide, but it could be moved to a directory/location.</tt><br>
+<br>
+<tt>:wes</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00388" href="msg00388.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00390" href="msg00390.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00378" href="msg00378.shtml">Cosign Re-Authentication Specification</a></strong>
+<ul><li><em>From:</em> johanna bromberg craig</li></ul></li>
+<li><strong><a name="00381" href="msg00381.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+<ul><li><em>From:</em> Brett Lomas</li></ul></li>
+<li><strong><a name="00382" href="msg00382.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+<ul><li><em>From:</em> Brian Hatch</li></ul></li>
+<li><strong><a name="00386" href="msg00386.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+<ul><li><em>From:</em> Cory Snavely</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00386.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00388.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00386.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00388.shtml">Re: Cosign Re-Authentication Specification</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00387"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00387"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

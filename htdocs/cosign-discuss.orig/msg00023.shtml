@@ -1,0 +1,219 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: A couple of CoSign design and deployment questions -->
+<!--X-From-R13: "Pergg Zbznf" <o.ybznfNnhpxynaq.np.am> -->
+<!--X-Date: Tue, 23 Mar 2004 20:25:23 &#45;0500 (EST) -->
+<!--X-Message-Id: 20040324012424.D59D334B9F@smtp1.ec.auckland.ac.nz -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: B46BFD0C&#45;7CC8&#45;11D8&#45;9342&#45;000A95CD7232@umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00022.shtml">Date Prev</a>][<a href="msg00024.shtml">Date Next</a>][<a href="msg00022.shtml">Thread Prev</a>][<a href="msg00024.shtml">Thread Next</a>][<a href="maillist.shtml#00023">Date Index</a>][<a href="threads.shtml#00023">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>A couple of CoSign design and deployment questions</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &quot;'kevin mcgowan'&quot; &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: A couple of CoSign design and deployment questions</li>
+<li><em>From</em>: &quot;Brett Lomas&quot; &lt;<a href="mailto:b.lomas@DOMAIN.HIDDEN">b.lomas@xxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Wed, 24 Mar 2004 13:24:24 +1200</li>
+<li><em>Cc</em>: &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>In-reply-to</em>: &lt;B46BFD0C-7CC8-11D8-9342-000A95CD7232@umich.edu&gt;</li>
+<li><em>Thread-index</em>: AcQQ1ZZdm7q8cjVoSTaZmfpE446o5wAZ058w</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>Hi Kevin (and others :) ),
+
+I have a few more questions about Cosign:
+
+1. Why was it decided to store the cookies on disk? There are a couple of
+reasons I ask this question. Linux/Unix default to only allowing around
+65500 objects under a single directory. This in itself wouldn't normally be
+a problem, but because the cosign and cosign service cookies (for the
+daemon) are stored in one directory; this will fill up very quickly. If it
+is suggested we go ahead with CoSign I will be suggesting to management that
+we spend some time changing the storage to either a shared memory table
+(because the cosignd and children have a shared parent) OR change it to use
+a DB backend for storage (and it may also possible handle the replication to
+other cosignd server databases). What do you think of these? Also having the
+files named the same as the cookie is big security risk (in my opinion)...
+it could possibly lead to exploits, although I am still doing my security
+review and have not found a concrete example yet.
+
+2. What size is your deployment at UM? Can you give me some stats, like the
+hardware you are using and the number of authentications etc you service a
+day. Only if this is not too much of an effort on your part, because I will
+be stressing the application myself, I am just curious.
+
+3. Have you successfully deployed CoSign to an n-tiered application? I
+specifically ask because will needing the chosen implementation to be able
+to SSO to our Cyrus IMAP server via Horde/IMP
+
+Thanks very much for your time.
+
+
+------------
+
+Brett Lomas
+Integration Architect
+Information Technology Systems and Services
+The University of Auckland
+New Zealand
+
+Phone:		+64 9 373 599 extn 86499
+Mobile:		+64 21 757 096
+
+
+-----Original Message-----
+From: kevin mcgowan [<a  href="mailto:clunis@xxxxxxxxx">mailto:clunis@xxxxxxxxx</a>] 
+Sent: Wednesday, 24 March 2004 12:51 a.m.
+To: cosign-discuss@xxxxxxxxx
+Subject: COSIGN: note: login form action=&quot;/&quot;
+
+This isn't really cosign, per se, but it came up in a discussion with 
+someone trying to implement cosign yesterday so I thought I'd share 
+with the group.  Those of you who've set up your own weblogin server 
+(cosign.cgi, cosignd, monster) or read the weblogin server README 
+probably know that, on Michigan's weblogin server, we do the following 
+in the apache conf:
+
+     1.  set up cosign.cgi as DirectoryIndex and make cosign.cgi's home 
+DocumentRoot
+     2.  set up AddHandler cgi-script  for files ending in .cgi
+     3.  turn on ExecCGI for DocumentRoot
+
+This has the effect of letting us give out:
+
+      <a  href="https://weblogin.umich.edu/">https://weblogin.umich.edu/</a>
+
+as our url without using mod_rewrite or similar tricks to hide the cgi 
+from the url -- also without redirecting or modifying the URL in any 
+way (e.g. never <a  href="https://weblogin.umich.edu/cosign.cgi">https://weblogin.umich.edu/cosign.cgi</a> even though that 
+would, of course, work perfectly).  This let's us use &quot;/&quot; as the action 
+for our login form.
+
+The problem we ran into shows up if you decide to move cosign.cgi down 
+into a subdirectory, e.g.:
+
+      <a  href="https://weblogin.umich.edu/login/">https://weblogin.umich.edu/login/</a>
+
+If you use the same apache configs we do and then try to set the action 
+of your login form as:
+
+      action=&quot;/login&quot;
+
+you won't be able to submit your form (submitting will always just 
+return you to the login screen).  This happens because apache gets the 
+form's POST to a path that doesn't exist ( &quot;/login&quot; ) and redirects the 
+request to &quot;/login/&quot;.  As you might expect, though, this redirect 
+happens as a GET, the POSTed information is lost, and all apache can do 
+is display the DirectoryIndex.  This is pretty much exactly what 
+happens when you ask for <a  href="http://servername/docs">http://servername/docs</a> when what you want is 
+<a  href="http://servername/docs/index.html">http://servername/docs/index.html</a>  -- Apache redirects the url to 
+handle the display of the DirectoryIndex.  As an interesting wrinkle, 
+if you happen to use Lynx as your UA during testing you'll be asked if 
+you'd like to go ahead and rePOST your information to the newly 
+redirected URI presented by Apache. :)
+
+The fix is setting your action to:
+
+      action=&quot;/login/&quot;
+
+so the initial redirect won't happen and the POST can go where you, and 
+cosign.cgi, expect it to.  Seemed like something folks might run into 
+and find subtle.  Also it points up that our Apache config might not be 
+the most obvious thing in the world.  I'd be happy to hear other 
+suggestions for a setup that would allow URLs like the ones we use 
+while maybe being more straightforward to operate or debug.
+
+Kevin
+
+                                       ... &quot;In, as you say, the mud.&quot; ...
+
+
+
+</pre>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00024" href="msg00024.shtml">Re: A couple of CoSign design and deployment questions</a></strong>
+<ul><li><em>From:</em> kevin mcgowan</li></ul></li>
+<li><strong><a name="00025" href="msg00025.shtml">Re: A couple of CoSign design and deployment questions</a></strong>
+<ul><li><em>From:</em> Jim Zajkowski</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00022.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00024.shtml">Re: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00022.shtml">Re: COSIGN: implement cosign cgis as php?</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00024.shtml">Re: A couple of CoSign design and deployment questions</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00023"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00023"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

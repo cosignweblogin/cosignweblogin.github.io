@@ -1,0 +1,115 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: anonymous user w/ cosign? -->
+<!--X-From-R13: Yriva Ibegu <xjbeguNratva.hzvpu.rqh> -->
+<!--X-Date: Mon, 7 Nov 2005 13:53:19 &#45;0500 (EST) -->
+<!--X-Message-Id: p06230908bf9552161293@[141.212.131.63] -->
+<!--X-Content-Type: text/plain -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00615.shtml">Date Prev</a>][<a href="msg00617.shtml">Date Next</a>][<a href="msg00611.shtml">Thread Prev</a>][<a href="msg00618.shtml">Thread Next</a>][<a href="maillist.shtml#00616">Date Index</a>][<a href="threads.shtml#00616">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>anonymous user w/ cosign?</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: <a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a></li>
+<li><em>Subject</em>: anonymous user w/ cosign?</li>
+<li><em>From</em>: Kevin Worth &lt;<a href="mailto:kworth@DOMAIN.HIDDEN">kworth@xxxxxxxxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 7 Nov 2005 13:51:43 -0500</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>Hello-</tt><br>
+<br>
+<tt>We have cosign setup for various sections of our site to work with 
+our users.  In a couple of places, we don't need to authenticate, but 
+we do want SSL.  Is this possible?  We've also tried setting up 
+another SSL port, but that doesn't seem to be possible, or at least 
+it isn't straightforward.</tt><br>
+<br>
+<tt>thanks</tt><br>
+<br>
+<pre style="margin: 0em;">Kevin
+--
+-----------------------------------------------
+Kevin Worth &lt;kworth@xxxxxxxxxxxxxxx&gt;
+Computer Systems Consultant III
+Department of Materials Science and Engineering
+University of Michigan</pre><br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00615.shtml">Re: logout vbscript</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00617.shtml">Re: Cosign Multi-factor Authentication Spec</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00611.shtml">RE: local logout not being run</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00618.shtml">Fwd: anonymous user w/ cosign?</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00616"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00616"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

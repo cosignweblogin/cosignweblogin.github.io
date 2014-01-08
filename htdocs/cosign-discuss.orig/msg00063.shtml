@@ -1,0 +1,180 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: runtime requirements for IISCosign -->
+<!--X-From-R13: Buvy Bvfuvbarev <ctcNcfh.rqh> -->
+<!--X-Date: Fri, 16 Apr 2004 17:20:18 &#45;0400 (EDT) -->
+<!--X-Message-Id: 40804DB3.7080909@psu.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 407B0BC9.1060100@psu.edu -->
+<!--X-Reference: 506695028.1081792561@spike.itd.umich.edu -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00062.shtml">Date Prev</a>][<a href="msg00064.shtml">Date Next</a>][<a href="msg00070.shtml">Thread Prev</a>][<a href="msg00066.shtml">Thread Next</a>][<a href="maillist.shtml#00063">Date Index</a>][<a href="threads.shtml#00063">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: runtime requirements for IISCosign</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Cosign Discussion &lt;<a href="mailto:cosign-discuss@DOMAIN.HIDDEN">cosign-discuss@xxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: runtime requirements for IISCosign</li>
+<li><em>From</em>: Phil Pishioneri &lt;<a href="mailto:pgp@DOMAIN.HIDDEN">pgp@xxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Fri, 16 Apr 2004 17:18:43 -0400</li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00055.shtml">506695028.1081792561@spike.itd.umich.edu</a>&gt;</li>
+<li><em>References</em>: &lt;<a href="msg00054.shtml">407B0BC9.1060100@psu.edu</a>&gt; &lt;<a href="msg00055.shtml">506695028.1081792561@spike.itd.umich.edu</a>&gt;</li>
+<li><em>User-agent</em>: Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.7b) Gecko/20040316</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>On 4/12/04 5:56 PM, jarod@xxxxxxxxx wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Almost everything you need to run IISCosign is included with the 
+installer. ...</tt><br>
+<br>
+<tt>The extra run-time requirements involves SSL certificates.  You will 
+need a certificate authority file as well as a private key and a 
+signed certificate.
+</tt></blockquote><tt></tt><br>
+<br>
+<tt>I had been testing on apache earlier with my own CA, which was working fine.</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>Were you having trouble getting IISCosign to load?  Did any of this help?
+</tt></blockquote><tt></tt><br>
+<br>
+<tt>Yes, it was related to my CA file (almost seems related to the name I'd 
+choose for it), and I still don't know why it works now.  I could use 
+the openssl you supply to examine both CA files without any problems.</tt><br>
+<br>
+<tt>When the filter would fail for me (specifying it in CAFilePath), 
+CosignLog.csl (trimmed) would show this error (note the first &quot;line 556&quot; 
+entry)</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>GetFilterVersion: Getting SSL certificates.<br>
+SSL_CTX_load_verify_locations( C:\Program 
+Files\IISCosign\SSL\ASET-CA.pem ) failed.<br>
+D:\Dev\cvsified\IISCosign\Cosign\CosignMain.cpp line 556: SSL Error: 
+Input/output error<br>
+fopen<br>
+system library<br>
+D:\Dev\cvsified\IISCosign\Cosign\CosignMain.cpp line 556: SSL Error: 
+system lib<br>
+BIO_new_file<br>
+BIO routines<br>
+D:\Dev\cvsified\IISCosign\Cosign\CosignMain.cpp line 556: SSL Error: 
+system lib<br>
+X509_load_cert_crl_file<br>
+x509 certificate routines<br>
+GetFilterVersion::SetCosignCerts() failed<br>
+Terminating Cosign Filter
+</tt></blockquote><tt><br>which isn't quite the same as when I'd rename the file to see if I had 
+mistyped the path</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt>GetFilterVersion: Getting SSL certificates.<br>
+SSL_CTX_load_verify_locations( C:\Program 
+Files\IISCosign\SSL\ASET-CA.pem ) failed.<br>
+D:\Dev\cvsified\IISCosign\Cosign\CosignMain.cpp line 556: SSL Error: 
+No such file or directory<br>
+fopen<br>
+system library<br>
+D:\Dev\cvsified\IISCosign\Cosign\CosignMain.cpp line 556: SSL Error: 
+no such file<br>
+BIO_new_file<br>
+BIO routines<br>
+D:\Dev\cvsified\IISCosign\Cosign\CosignMain.cpp line 556: SSL Error: 
+system lib<br>
+X509_load_cert_crl_file<br>
+x509 certificate routines<br>
+GetFilterVersion::SetCosignCerts() failed<br>
+Terminating Cosign Filter
+</tt></blockquote><tt><br>I would like to get a handle on this for when we start deploying the 
+service.</tt><br>
+<br>
+<tt>-Phil</tt><br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<ul><li><strong>Follow-Ups</strong>:
+<ul>
+<li><strong><a name="00066" href="msg00066.shtml">Re: runtime requirements for IISCosign</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00054" href="msg00054.shtml">runtime requirements for IISCosign</a></strong>
+<ul><li><em>From:</em> Phil Pishioneri</li></ul></li>
+<li><strong><a name="00055" href="msg00055.shtml">Re: runtime requirements for IISCosign</a></strong>
+<ul><li><em>From:</em> jarod</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00062.shtml">RE: runtime requirements for IISCosign</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00064.shtml">Using UM cerfificate for cosign</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00070.shtml">RE: runtime requirements for IISCosign</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00066.shtml">Re: runtime requirements for IISCosign</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00063"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00063"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+

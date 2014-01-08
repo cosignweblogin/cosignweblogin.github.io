@@ -1,0 +1,154 @@
+<!-- MHonArc v2.6.8 -->
+<!--X-Subject: Re: friend functionality -->
+<!--X-From-R13: xriva zptbjna <pyhavfNhzvpu.rqh> -->
+<!--X-Date: Mon, 29 Mar 2004 11:13:00 &#45;0500 (EST) -->
+<!--X-Message-Id: DBA4C5D3&#45;819B&#45;11D8&#45;8782&#45;000A95CD7232@umich.edu -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: Pine.SOL.4.58.0402041450130.9151@zektor.gpcc.itd.umich.edu -->
+<!--X-Reference: 9357385.1075910563@spike.itd.umich.edu -->
+<!--X-Reference: 4068411E.3080509@utoronto.ca -->
+<!--X-Head-End-->
+<!--#set var="trail" value="../" -->
+<!--#set var="title" value="discuss" -->
+<!--#set var="download" value="" -->
+<!--#set var="build" value="" -->
+<!--#set var="overview" value="" -->
+<!--#set var="faq" value="" -->
+<!--#set var="filter" value="" -->
+<!--#set var="roadmap" value="" -->
+<!--#set var="license" value="" -->
+<!--#set var="lists" value="y" -->
+<!--#include virtual="../header.shtml" -->
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="18" rowspan="2" align="left" valign="middle"><img src="../images/chevron_blue_lg.gif" width="12" height="20"></td>
+        <td class="cnt-head1">
+            cosign-discuss at umich.edu
+        </td>
+    </tr>
+
+    <tr>
+        <td class="cnt-sub-ital">
+            general discussion of cosign development and deployment
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" align="left" valign="middle" class="line-bluedot">&nbsp;
+</td>
+    </tr>
+</table>
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00037.shtml">Date Prev</a>][<a href="msg00039.shtml">Date Next</a>][<a href="msg00037.shtml">Thread Prev</a>][<a href="msg00041.shtml">Thread Next</a>][<a href="maillist.shtml#00038">Date Index</a>][<a href="threads.shtml#00038">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Re: friend functionality</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: Darren Jacobs &lt;<a href="mailto:darren.jacobs@DOMAIN.HIDDEN">darren.jacobs@xxxxxxxxxxx</a>&gt;</li>
+<li><em>Subject</em>: Re: friend functionality</li>
+<li><em>From</em>: kevin mcgowan &lt;<a href="mailto:clunis@DOMAIN.HIDDEN">clunis@xxxxxxxxx</a>&gt;</li>
+<li><em>Date</em>: Mon, 29 Mar 2004 11:12:21 -0500</li>
+<li><em>Cc</em>: <a href="mailto:cosign-discussion@DOMAIN.HIDDEN">cosign-discussion@xxxxxxxxx</a></li>
+<li><em>In-reply-to</em>: &lt;<a href="msg00035.shtml">4068411E.3080509@utoronto.ca</a>&gt;</li>
+<li><em>References</em>: &lt;Pine.SOL.4.58.0402041450130.9151@zektor.gpcc.itd.umich.edu&gt; &lt;9357385.1075910563@spike.itd.umich.edu&gt; &lt;<a href="msg00035.shtml">4068411E.3080509@utoronto.ca</a>&gt;</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<tt>The simple answer is:  guest accounts that aren't in (and probably 
+don't belong in) our Kerberos database.</tt><br>
+<br>
+<tt>As we were rolling out our weblogin service on Michigan's campus, we 
+discovered that one of the major sticking points with many departments 
+was the pre-existence in their systems of non-umich 'guest' accounts 
+that CoSign couldn't really account for.  Some of these users had a 
+clear relationship with the University (vendor, visiting scholar, etc.) 
+that should have (and, in many cases, has) entitled them to a Kerberos 
+principal.  There were, however, numerous levels of guest user who 
+didn't make sense to include in our campus SSO but who, nonetheless, 
+needed login accounts on web servers (e.g. young athletes visiting our 
+summer camps, research study participants, someone at a remote site 
+trying to download a single, private, large file, etc.).</tt><br>
+<br>
+<tt>Phil Ray, manager of IT services for UM's School of Natural Resources 
+and Environment, recommended to us that a centralized guest account 
+system would solve this problem while making the management of accounts 
+easier for campus admins and users alike.  Now guest users create a 
+single account with a single password (that they set initially and can 
+reset or change later) and campus admins don't have to do any account 
+creation or management at all for them (although they still have to 
+handle AuthZ, of course).</tt><br>
+<br>
+<tt>Is this the kind of explanation you were hoping for?</tt><br>
+<br>
+<tt>Kevin</tt><br>
+<br>
+<tt>On Mar 29, 2004, at 10:30 AM, Darren Jacobs wrote:</tt><br>
+<br>
+<blockquote style="border-left: #0000FF solid 0.1em; margin: 0em; padding-left: 1.0em"><tt><br>Don't have a lot of experience with webiso systems (yet &lt;g&gt; ) so 
+please excuse me if my question is a bit basic...what exactly does the 
+friend functionality of Cosign give you?</tt><br>
+<br>
+<pre style="margin: 0em;"><br>Darren Jacobs
+_</pre><br>
+<tt>University of Toronto</tt><br>
+<br>
+<tt></tt><br>
+<br>
+<tt></tt><br>
+<br>
+</blockquote><tt><br>                                      ... &quot;In, as you say, the mud.&quot; ...</tt><br>
+<br>
+<br>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00035" href="msg00035.shtml">friend functionality</a></strong>
+<ul><li><em>From:</em> Darren Jacobs</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00037.shtml">Re: friend functionality</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00039.shtml">Re: Another quick question and possible bug report</a></strong>
+</li>
+<li>Previous by thread:
+<strong><a href="msg00037.shtml">Re: friend functionality</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00041.shtml">IISCosign install, Registry error</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.shtml#00038"><strong>Date</strong></a></li>
+<li><a href="threads.shtml#00038"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+<!--#include virtual="../footer.shtml" -->
+
