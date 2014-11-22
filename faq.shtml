@@ -306,8 +306,13 @@
 	Cache' option in Server Admin for your website.
     </p>
 
+    <li>I want to use Apache's MPM worker. Is that okay?</li>
+
+    <p>Version 3.2.0 and prior are not thread-safe. If you use them with any multi-threaded version of Apache, you'll experience random cookie validation failures (and possibly, but unlikely, user impersonation). Wait for a thread-safe version (development is underway, and is likely to be in the 3.3.0 filter).
+      </p>
+
 	    <p class="margins">
-		<em>markmont : 22 April 2009</em>
+		<em>last updated by jorj : 22 November 2014</em>
 		</ul>
 	    </p>
 
