@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<title>cosign: {% if page.title %} {{ page.title }} | {% endif %} {{ site.name }}</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="cosign.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+</style>
+</head>
+
+<body>
+
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="l2-hd-bg">
+  <tr>
+    <td width="362"><img src="images/l2_headmain.jpg" alt="CoSign: Collaborative Single Sign-On" width="362" height="97"></td>
+    <td>&nbsp;</td>
+      </tr>
+</table>
+
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr align="right" valign="middle">
+    <td colspan="2" class="hd-subgray-bg"><a href="cosign-announce/" class="headerlinks">Announcements</a><a href="cosign-discuss/" class="headerlinks">Discussion</a></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" class="navzone"><table width="200" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="nav-ed-top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="nav-ed-l"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="menu-l1"><img src="images/chevron_gray_sm.gif" width="6" height="10" hspace="4">
+<a href="/" class="link-l1">home</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+{% if page.download == "y" %}
+            <td class="menu-l1y"><img src="images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><a href="download.shtml" class="link-l1y">download</a></td>
+{% else %}
+            <td class="menu-l1"><img src="images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><a href="download.shtml" class="link-l1">download</a></td>
+{% endif %}
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+{% if page.build == "y" %}
+            <td class="menu-l1y"><img src="images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><a href="build.shtml" class="link-l1y">build</a></td>
+{% else %}
+            <td class="menu-l1"><img src="images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><a href="build.shtml" class="link-l1">build</a></td>
+{% endif %}
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+{% if page.overview == "y" %}
+            <td class="menu-l1y"><img src="images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><a href="overview.shtml" class="link-l1y">overview</a></td>
+{% else %}
+            <td class="menu-l1"><img src="images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><a href="overview.shtml" class="link-l1">overview</a></td>
+{% endif %}
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+            <td class="menu-l1"><img src="images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><a href="http://webapps.itcs.umich.edu/cosign/" class="link-l1">wiki</a></td>
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+{% if page.faq == "y" %}
+            <td class="menu-l1y"><img src="images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><a href="faq.shtml" class="link-l1y">faq</a></td>
+{% else %}
+            <td class="menu-l1"><img src="images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><a href="faq.shtml" class="link-l1">faq</a></td>
+{% endif %}
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+{% if page.filter == "y" %}
+            <td class="menu-l1y"><img src="images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><a href="filter.shtml" class="link-l1y">filter</a></td>
+{% else %}
+            <td class="menu-l1"><img src="images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><a href="filter.shtml" class="link-l1">filter</a></td>
+{% endif %}
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+{% if page.roadmap == "y" %}
+            <td class="menu-l1y>"><img src="images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><a href="roadmap.shtml" class="link-l1y">roadmap/a></td>
+{% else %}
+            <td class="menu-l1"><img src="images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><a href="roadmap.shtml" class="link-l1">roadmap</a></td>
+{% endif %}
+          </tr>
+          <tr>
+            <td class="navdivider"><img src="images/spacer.gif" width="1" height="2"></td>
+          </tr>
+          <tr>
+{% if page.license == "y" %}
+            <td class="menu-l1y"><img src="images/chevron_gold_sm.gif" width="6" height="10" hspace="4"><a href="license.shtml" class="link-l1y">license</a></td>
+{% else %}
+            <td class="menu-l1"><img src="images/chevron_gray_sm.gif" width="6" height="10" hspace="4"><a href="license.shtml" class="link-l1">license</a></td>
+{% endif %}
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td class="nav-ed-bot"><img src="images/navcap_bot2.gif" width="200" height="12"></td>
+      </tr>
+    </table>
+    <p></p></td>
+    <td valign="top"> <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td valign="top" class="contentzone"><p> 
+<!-- end header -->
+
+{{ content }}
+
+<!-- start footer -->
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2" nowrap class="foot-gold">Copyright &copy; 2002 - 2004 Regents of the University of Michigan : &nbsp;Page last updated {{ page.last_modified_at | date: '%d-%B-%Y' }}<img src="images/spacer.gif" width="15" height="1"> </td>
+  </tr>
+</table>
+</body>
+</html>
+

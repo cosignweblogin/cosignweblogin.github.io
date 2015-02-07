@@ -1,21 +1,14 @@
-<!--#set var="title" value="download" -->
-<!--#set var="download" value="y" -->
-<!--#set var="build" value="" -->
-<!--#set var="overview" value="" -->
-<!--#set var="faq" value="" -->
-<!--#set var="filter" value="" -->
-<!--#set var="roadmap" value="" -->
-<!--#set var="license" value="" -->
-
-
-<!--#include file="header.shtml" -->
-
-<!--#set var="trail" value="../.." -->
-<!--#if expr="\"$HTTP_HOST\" = \"weblogin.org\"" -->
-<!--#set var="download_prefix" value="http://www.umich.edu/~umweb" -->
-<!--#else -->
-<!--#set var="download_prefix" value="$trail" -->
-<!--#endif -->
+---
+layout: default
+title: Download
+download: y
+build: 
+overview: 
+faq: 
+filter: 
+roadmap: 
+license: 
+---
 
 <table cellpadding="6" cellspacing="0" border="0" width="90%">
     <tr>
@@ -140,6 +133,3 @@
     </td>
     </tr>
 </table>
-
-<!--#include file="footer.shtml" -->
-

@@ -1,12 +1,15 @@
-<!--#set var="title" value="faq" -->             
-<!--#set var="download" value="" -->
-<!--#set var="build" value="" --> 
-<!--#set var="overview" value="" -->
-<!--#set var="faq" value="y" -->
-<!--#set var="filter" value="" -->
-<!--#set var="roadmap" value="" -->
-<!--#set var="license" value="" -->
-<!--#include file="header.shtml" -->
+---
+layout: default
+title: FAQ
+download: 
+build:
+overview:
+faq: y
+filter:
+roadmap:
+license:
+---
+
 
 <table width="100%"  border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -316,4 +319,3 @@
 		</ul>
 	    </p>
 
-<!--#include file="footer.shtml" -->

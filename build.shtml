@@ -1,12 +1,14 @@
-<!--#set var="long_title" value="cosign: download" -->
-<!--#set var="download" value="" -->
-<!--#set var="build" value="y" -->
-<!--#set var="overview" value="" -->
-<!--#set var="faq" value="" -->
-<!--#set var="filter" value="" -->
-<!--#set var="roadmap" value="" -->
-<!--#set var="license" value="" -->
-<!--#include file="header.shtml" -->
+---
+layout: default
+title: Building CoSign
+download: 
+build: y
+overview: 
+faq: 
+filter: 
+roadmap: 
+license: 
+---
 
 <table cellpadding="6" cellspacing="0" border="0" width="90%">
     <tr>
@@ -254,5 +256,4 @@ CosignProtected         [ on | off ]
     </tr>
 </table>
 
-<!--#include file="footer.shtml" -->
 

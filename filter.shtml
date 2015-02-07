@@ -1,12 +1,14 @@
-<!--#set var="title" value="filter" -->             
-<!--#set var="download" value="" -->
-<!--#set var="build" value="" --> 
-<!--#set var="overview" value="" -->
-<!--#set var="faq" value="" -->
-<!--#set var="filter" value="y" -->
-<!--#set var="roadmap" value="" -->
-<!--#set var="license" value="" -->
-<!--#include file="header.shtml" -->
+---
+layout: default
+title: Filter
+download: 
+build:
+overview:
+faq:
+filter: y
+roadmap:
+license:
+---
 
 <table width="100%"  border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -74,5 +76,4 @@
             <a href="media/cosign-client.ppt">Cosign Demo ( ppt )</a> <br />
         </p>
 
-<!--#include file="footer.shtml" -->
 
